@@ -6,7 +6,7 @@
   "completeWindow": false,
   "highParity": false,
   "rawFlagUnchanged": false,
-  "packageManifestSHA256": "1e7e955fb61012b5b3b0f1fc08a36a1165acd4a556986ac8817a683765e43d9c",
+  "packageManifestSHA256": "b6fd1ca78f8bf04f5dff979aa0f7733477edfc5a970139b0d891273423ae18f5",
   "rawSHA256": "9fd9aff3638a0c9e569e22737c2c7b7376faa38411c2b1992879666ff90bf5fa",
   "ownedRunSHA256": "200f0431cf93ac6c666189601985eb7126cc7ac3d6bc677c201202e8b7797f6f",
   "analysisSHA256": "064f302ddd7d948f9ef0ab8993210af2928e1f81c8bd1f4ec5c858316b5e3886",
@@ -1454,5 +1454,6 @@
   "retainedFailures": [
     "prototypes/godot-render-observer/history/renderer-energy-gpu-1.log",
     "prototypes/godot-render-observer/history/renderer-color-gpu-2.log"
-  ]
+  ],
+  "originalStagingManifestSHA256": "1e7e955fb61012b5b3b0f1fc08a36a1165acd4a556986ac8817a683765e43d9c"
 }

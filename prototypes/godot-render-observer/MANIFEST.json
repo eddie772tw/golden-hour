@@ -160,6 +160,11 @@
       "path": "source-manifest.json",
       "bytes": 5351,
       "sha256": "2f164a02a4c834c0c11fe90108ec6bd9fc97d9014bf8b2d6603fe07fe6e3bb58"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 65,
+      "sha256": "178d9c5e7840dc0ec316e3c7b75e7d42fd6b2589ce2d6fd7b9a08712eb5b3954"
     }
   ],
   "checks": {
@@ -173,5 +178,6 @@
     "launch-v3.gd": true
   },
   "totalBytes": 692899,
-  "fileCount": 32
+  "fileCount": 32,
+  "publicationNote": "Root added raw-log whitespace attributes so original CRLF/native trailing spaces and archived SHA remain unchanged; forced only manifest-listed logs into index."
 }

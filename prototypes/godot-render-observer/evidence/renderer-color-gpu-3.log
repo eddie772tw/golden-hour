@@ -1,0 +1,28 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Vulkan 1.4.359 - Forward+ - Using Device #0: AMD - AMD Radeon RX 9070 XT
+
+GH_GODOT_COMPONENT_READY {"load_ms":9626.035,"objects":516,"parity":false,"source":{"background":null,"camera":{"aspect":1.77777777777778,"far":2500.0,"fov":67.7013380504004,"layers":3.0,"matrix":[0.994613892602931,0.00115498695137059,-0.103642996127996,0.0,-0.0033797947109607,0.999767565152684,-0.0212930189589184,0.0,0.103594312724963,0.0215286245221394,0.994386613293455,0.0,-3.87696078058918,1.62168737021987,8.34169000686362,1.0],"near":0.06,"projection":[0.838647161732535,0.0,0.0,0.0,0.0,1.49092828752451,0.0,0.0,0.0,0.0,-1.00004800115203,-1.0,0.0,0.0,-0.120002880069122,0.0],"zoom":1.0},"capturedAt":1794857832028.4,"capturedFrom":"GH.debug.gfx.scene","coreSHA256":"b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b","environmentIntensity":0.24,"pageBundle":"5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3","quality":"high","rendererInfo":{"calls":1380.0,"lines":0.0,"points":3456.0,"scope":"last native gfx including all passes; NOT a main-only comparator","triangles":8471056.0},"state":"paused","tick":240.0,"viewport":[1920.0,1080.0]}}
+Observer launcher v3 scene added; GPU coverage requires raw marker review
+GPU PROFILE (total 3.219ms): 
+	-Render Depth Pre-Pass: 0.42000004601857ms
+	-Setup Shadows: 0.03641268942091ms
+	-Render Directional/SpotLight Shadows: 1.09987289186508ms
+	-Render 3D Cluster Elements: 0.02187301052941ms
+	-Pack 3D Cluster Elements: 0.01031745804681ms
+	-Render Opaque Pass: 1.13623797704303ms
+	-Render 3D Transparent Pass: 0.29903184799921ms
+	-Resolve: 0.09549206022232ms
+	-Tonemap: 0.02580952455127ms
+	-Render CanvasItems: 0.01126984755198ms
+GH_GODOT_COMPONENT_REPORT D:\Golden-Hour\work\godot-native\evidence\observed-color-component-3.json
+GPU PROFILE (total 3.197ms): 
+	-Render Depth Pre-Pass: 0.42360000610352ms
+	-Setup Shadows: 0.03728332122167ms
+	-Render Directional/SpotLight Shadows: 1.10876668294271ms
+	-Render 3D Cluster Elements: 0.02213333249092ms
+	-Pack 3D Cluster Elements: 0.01051666537921ms
+	-Render Opaque Pass: 1.1420166015625ms
+	-Render 3D Transparent Pass: 0.3021333694458ms
+	-Resolve: 0.09534999529521ms
+	-Tonemap: 0.02603333791097ms
+	-Render CanvasItems: 0.01146666904291ms

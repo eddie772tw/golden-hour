@@ -1,0 +1,2 @@
+evidence/*.log -text -whitespace
+history/*.log -text -whitespace
