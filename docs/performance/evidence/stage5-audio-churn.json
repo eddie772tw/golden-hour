@@ -1,0 +1,901 @@
+{
+  "stage": 5,
+  "productRuntimeChange": "none: dry-layer ablation is diagnostic only; independent audio-host probe is not a product migration",
+  "runs": [
+    {
+      "input": "dry-off-native-threads-high-1.json",
+      "inputSHA256": "93ad113f6952c49dab5480d6a91f5d2087f3acaf7396aafa35e5b9889d93dbec",
+      "traceFile": "dry-off-native-threads-high-1.trace.json",
+      "traceBytes": 396743212,
+      "gate": "off",
+      "diagnosticOnly": true,
+      "createdDelta": 113003,
+      "traceWindowPageMS": [
+        35698.60000014305,
+        55853.10000014305
+      ],
+      "rendererPIDTID": [
+        374876,
+        593012
+      ],
+      "handlerDeletion": {
+        "tasks": 6370,
+        "wallMS": 264.861,
+        "largestWallMS": 224.791,
+        "largestThreadCPUMS": 208.382,
+        "largestPostingSource": {
+          "src_file": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "src_func": "RequestToDeleteHandlersOnMainThread",
+          "src_line": 386
+        }
+      },
+      "majorGC": {
+        "tasks": 1,
+        "wallMS": 38.898,
+        "maxMS": 38.898
+      },
+      "fullScenarioDiagnostic": {
+        "name": "dry-off-native-threads-high-1",
+        "coreSHA256": "3ecf567254fd947d38208376a1926db8c8a6dfc085cc720e58d7da7e3f919fce",
+        "diagnosticOnly": true,
+        "wallSeconds": 60.66920000004768,
+        "logicalHz": 59.33818148248486,
+        "renderHz": 46.26729872814862,
+        "overflowDroppedMs": 686.3333333333417,
+        "windows": {
+          "complete": {
+            "frames": 2806,
+            "fps": 46.27987946787067,
+            "onePercentLowFPS": 14.79139039501362,
+            "onePercentTailFrames": 29,
+            "p95Ms": 33.799999952316284,
+            "p99Ms": 44.69999980926514,
+            "reciprocalP99FPS": 22.371364748702444,
+            "maxMs": 316.5,
+            "over50PerMinute": 12.864684955430906,
+            "over100": 3
+          },
+          "warmTick301": {
+            "frames": 2628,
+            "fps": 47.37918128478136,
+            "onePercentLowFPS": 15.883287251300224,
+            "onePercentTailFrames": 27,
+            "p95Ms": 32.200000047683716,
+            "p99Ms": 40.30000019073486,
+            "reciprocalP99FPS": 24.81389566419665,
+            "maxMs": 316.5,
+            "over50PerMinute": 7.572015273823505,
+            "over100": 2
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      }
+    },
+    {
+      "input": "dry-all-native-threads-high-1.json",
+      "inputSHA256": "41ea98b8e9089b6a96fafd9a61c8e85a5fb6c834614118eee816cb0272775975",
+      "traceFile": "dry-all-native-threads-high-1.trace.json",
+      "traceBytes": 401208417,
+      "gate": "all",
+      "diagnosticOnly": true,
+      "createdDelta": 47934,
+      "traceWindowPageMS": [
+        36590.39999985695,
+        56535.70000004768
+      ],
+      "rendererPIDTID": [
+        570352,
+        538228
+      ],
+      "handlerDeletion": {
+        "tasks": 3976,
+        "wallMS": 75.888,
+        "largestWallMS": 55.744,
+        "largestThreadCPUMS": 55.506,
+        "largestPostingSource": {
+          "src_file": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "src_func": "RequestToDeleteHandlersOnMainThread",
+          "src_line": 386
+        }
+      },
+      "majorGC": {
+        "tasks": 1,
+        "wallMS": 13.041,
+        "maxMS": 13.041
+      },
+      "fullScenarioDiagnostic": {
+        "name": "dry-all-native-threads-high-1",
+        "coreSHA256": "3ecf567254fd947d38208376a1926db8c8a6dfc085cc720e58d7da7e3f919fce",
+        "diagnosticOnly": true,
+        "wallSeconds": 60.255299999952314,
+        "logicalHz": 59.745781698918584,
+        "renderHz": 49.73836326434972,
+        "overflowDroppedMs": 274.09999999999934,
+        "windows": {
+          "complete": {
+            "frames": 2996,
+            "fps": 49.749839342597596,
+            "onePercentLowFPS": 19.753736760319153,
+            "onePercentTailFrames": 30,
+            "p95Ms": 31.0,
+            "p99Ms": 38.89999985694885,
+            "reciprocalP99FPS": 25.706940968570883,
+            "maxMs": 152.39999985694885,
+            "over50PerMinute": 6.974276543354803,
+            "over100": 1
+          },
+          "warmTick301": {
+            "frames": 2740,
+            "fps": 49.64109848137431,
+            "onePercentLowFPS": 20.27956834470781,
+            "onePercentTailFrames": 28,
+            "p95Ms": 31.09999990463257,
+            "p99Ms": 38.299999952316284,
+            "reciprocalP99FPS": 26.109660606919206,
+            "maxMs": 152.39999985694885,
+            "over50PerMinute": 5.435156768033684,
+            "over100": 1
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      }
+    },
+    {
+      "input": "dry-all-native-late-threads-high-1.json",
+      "inputSHA256": "c593942d66fe12f8fd3e63278f1b5d24e2a6c49b631c2f28b6b1e41bf903c2d9",
+      "traceFile": "dry-all-native-late-threads-high-1.trace.json",
+      "traceBytes": 432735843,
+      "gate": "all",
+      "diagnosticOnly": true,
+      "createdDelta": 49338,
+      "traceWindowPageMS": [
+        61900.20000004768,
+        80956.60000014305
+      ],
+      "rendererPIDTID": [
+        598340,
+        566204
+      ],
+      "handlerDeletion": {
+        "tasks": 2452,
+        "wallMS": 85.306,
+        "largestWallMS": 73.35,
+        "largestThreadCPUMS": 70.435,
+        "largestPostingSource": {
+          "src_file": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "src_func": "RequestToDeleteHandlersOnMainThread",
+          "src_line": 386
+        }
+      },
+      "majorGC": {
+        "tasks": 1,
+        "wallMS": 17.027,
+        "maxMS": 17.027
+      },
+      "fullScenarioDiagnostic": {
+        "name": "dry-all-native-late-threads-high-1",
+        "coreSHA256": "3ecf567254fd947d38208376a1926db8c8a6dfc085cc720e58d7da7e3f919fce",
+        "diagnosticOnly": true,
+        "wallSeconds": 60.16470000004768,
+        "logicalHz": 59.83575086383123,
+        "renderHz": 51.17618803048232,
+        "overflowDroppedMs": 181.9333333333294,
+        "windows": {
+          "complete": {
+            "frames": 3078,
+            "fps": 51.186962125306614,
+            "onePercentLowFPS": 20.735785956484143,
+            "onePercentTailFrames": 31,
+            "p95Ms": 32.40000009536743,
+            "p99Ms": 38.5,
+            "reciprocalP99FPS": 25.974025974025974,
+            "maxMs": 110.0,
+            "over50PerMinute": 5.986779195942294,
+            "over100": 1
+          },
+          "warmTick301": {
+            "frames": 2804,
+            "fps": 50.85274466976049,
+            "onePercentLowFPS": 20.751341685114493,
+            "onePercentTailFrames": 29,
+            "p95Ms": 32.700000047683716,
+            "p99Ms": 38.5,
+            "reciprocalP99FPS": 25.974025974025974,
+            "maxMs": 110.0,
+            "over50PerMinute": 5.440735877649125,
+            "over100": 1
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      }
+    },
+    {
+      "input": "dry-off-native-late-threads-high-1.json",
+      "inputSHA256": "81dd01ab76ec33033a9995fc88bb101c09d47f825a7da469b1b5684360d3ce2c",
+      "traceFile": "dry-off-native-late-threads-high-1.trace.json",
+      "traceBytes": 417865484,
+      "gate": "off",
+      "diagnosticOnly": true,
+      "createdDelta": 114232,
+      "traceWindowPageMS": [
+        61972.70000004768,
+        81171.59999990463
+      ],
+      "rendererPIDTID": [
+        550896,
+        542576
+      ],
+      "handlerDeletion": {
+        "tasks": 5611,
+        "wallMS": 169.331,
+        "largestWallMS": 133.079,
+        "largestThreadCPUMS": 132.336,
+        "largestPostingSource": {
+          "src_file": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "src_func": "RequestToDeleteHandlersOnMainThread",
+          "src_line": 386
+        }
+      },
+      "majorGC": {
+        "tasks": 1,
+        "wallMS": 27.803,
+        "maxMS": 27.803
+      },
+      "fullScenarioDiagnostic": {
+        "name": "dry-off-native-late-threads-high-1",
+        "coreSHA256": "3ecf567254fd947d38208376a1926db8c8a6dfc085cc720e58d7da7e3f919fce",
+        "diagnosticOnly": true,
+        "wallSeconds": 60.77979999995232,
+        "logicalHz": 59.23020477202663,
+        "renderHz": 46.42989940740532,
+        "overflowDroppedMs": 798.3999999999985,
+        "windows": {
+          "complete": {
+            "frames": 2821,
+            "fps": 46.4408771910701,
+            "onePercentLowFPS": 14.837554367159193,
+            "onePercentTailFrames": 29,
+            "p95Ms": 37.09999990463257,
+            "p99Ms": 46.0,
+            "reciprocalP99FPS": 21.73913043478261,
+            "maxMs": 268.7999999523163,
+            "over50PerMinute": 12.840795536701412,
+            "over100": 3
+          },
+          "warmTick301": {
+            "frames": 2641,
+            "fps": 47.447006131722034,
+            "onePercentLowFPS": 14.857205749074405,
+            "onePercentTailFrames": 27,
+            "p95Ms": 36.200000047683716,
+            "p99Ms": 45.09999990463257,
+            "reciprocalP99FPS": 22.172949049103707,
+            "maxMs": 268.7999999523163,
+            "over50PerMinute": 9.701394665327488,
+            "over100": 3
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      }
+    }
+  ],
+  "hostSandbox": [
+    {
+      "source": "results-root-idle-1/same.json",
+      "sha256": "1a8764243616169d7798c479d3d3ae25b4a84df3742d174074b58c00f2054192",
+      "browserVersion": "157.0.4341.60",
+      "summary": {
+        "rendererPidTid": {
+          "parent": [
+            392852,
+            569652
+          ],
+          "child": [
+            392852,
+            569652
+          ]
+        },
+        "separateRenderer": false,
+        "parentClickStartedAudio": true,
+        "childReceiveMarks": 20,
+        "batches": 20,
+        "scheduled": 80,
+        "errors": [],
+        "maxParentIssueDelayMs": null,
+        "oneWayMsP50P95Max": [
+          0.0,
+          0.199951171875,
+          0.2998046875
+        ],
+        "traceOneWayMsP50P95Max": [
+          0.175,
+          0.299,
+          0.317
+        ],
+        "roundTripMsP50P95Max": [
+          0.39990234375,
+          0.7001953125,
+          1.5
+        ],
+        "byRequestedLeadMs": {
+          "3": {
+            "batches": 10,
+            "scheduledOnsets": 10,
+            "missedFirstOnsets": 0,
+            "minFirstOnsetLeadMs": 1.800048828125,
+            "unscheduledFirstOnsets": 0,
+            "lateCommandsIncludingOffsets": 0
+          },
+          "32": {
+            "batches": 10,
+            "scheduledOnsets": 10,
+            "missedFirstOnsets": 0,
+            "minFirstOnsetLeadMs": 31.60009765625,
+            "unscheduledFirstOnsets": 0,
+            "lateCommandsIncludingOffsets": 0
+          }
+        },
+        "lateSchedules": 0,
+        "minLeadMs": 1.800048828125
+      }
+    },
+    {
+      "source": "results-root-idle-1/cross.json",
+      "sha256": "7ad9587dd5ac4a2a787e203e90f1039741bcd7b8b1c3e10a2276e0f178f5174f",
+      "browserVersion": "157.0.4341.60",
+      "summary": {
+        "rendererPidTid": {
+          "parent": [
+            571300,
+            585976
+          ],
+          "child": [
+            572876,
+            569308
+          ]
+        },
+        "separateRenderer": true,
+        "parentClickStartedAudio": true,
+        "childReceiveMarks": 20,
+        "batches": 20,
+        "scheduled": 80,
+        "errors": [],
+        "maxParentIssueDelayMs": null,
+        "oneWayMsP50P95Max": [
+          0.800048828125,
+          1.099853515625,
+          1.699951171875
+        ],
+        "traceOneWayMsP50P95Max": [
+          0.68,
+          1.438,
+          1.459
+        ],
+        "roundTripMsP50P95Max": [
+          1.300048828125,
+          2.10009765625,
+          3.0
+        ],
+        "byRequestedLeadMs": {
+          "3": {
+            "batches": 10,
+            "scheduledOnsets": 10,
+            "missedFirstOnsets": 0,
+            "minFirstOnsetLeadMs": 1.2001953125,
+            "unscheduledFirstOnsets": 0,
+            "lateCommandsIncludingOffsets": 0
+          },
+          "32": {
+            "batches": 10,
+            "scheduledOnsets": 10,
+            "missedFirstOnsets": 0,
+            "minFirstOnsetLeadMs": 30.199951171875,
+            "unscheduledFirstOnsets": 0,
+            "lateCommandsIncludingOffsets": 0
+          }
+        },
+        "lateSchedules": 0,
+        "minLeadMs": 1.2001953125
+      }
+    },
+    {
+      "source": "results-root-stall200-1/same.json",
+      "sha256": "e621022533dab605bde5f9a0c03901fb43a581ca6f16f276f5f7bb9e8e62825a",
+      "browserVersion": "157.0.4341.60",
+      "summary": {
+        "rendererPidTid": {
+          "parent": [
+            585956,
+            598808
+          ],
+          "child": [
+            585956,
+            598808
+          ]
+        },
+        "separateRenderer": false,
+        "parentClickStartedAudio": true,
+        "childReceiveMarks": 20,
+        "batches": 20,
+        "scheduled": 80,
+        "errors": [],
+        "maxParentIssueDelayMs": 174.199951171875,
+        "oneWayMsP50P95Max": [
+          0.300048828125,
+          0.699951171875,
+          0.7001953125
+        ],
+        "traceOneWayMsP50P95Max": [
+          0.261,
+          0.593,
+          0.689
+        ],
+        "roundTripMsP50P95Max": [
+          0.60009765625,
+          1.7998046875,
+          200.699951171875
+        ],
+        "byRequestedLeadMs": {
+          "3": {
+            "batches": 10,
+            "scheduledOnsets": 10,
+            "missedFirstOnsets": 0,
+            "minFirstOnsetLeadMs": 1.400146484375,
+            "unscheduledFirstOnsets": 0,
+            "lateCommandsIncludingOffsets": 0
+          },
+          "32": {
+            "batches": 10,
+            "scheduledOnsets": 10,
+            "missedFirstOnsets": 0,
+            "minFirstOnsetLeadMs": 31.199951171875,
+            "unscheduledFirstOnsets": 0,
+            "lateCommandsIncludingOffsets": 0
+          }
+        },
+        "lateSchedules": 0,
+        "minLeadMs": 1.400146484375
+      }
+    },
+    {
+      "source": "results-root-stall200-1/cross.json",
+      "sha256": "50ef7e4abe193559305912b0faa2176e10c92a73a4a3e178c13d251127f4ccc7",
+      "browserVersion": "157.0.4341.60",
+      "summary": {
+        "rendererPidTid": {
+          "parent": [
+            587012,
+            568820
+          ],
+          "child": [
+            589780,
+            600528
+          ]
+        },
+        "separateRenderer": true,
+        "parentClickStartedAudio": true,
+        "childReceiveMarks": 20,
+        "batches": 20,
+        "scheduled": 80,
+        "errors": [],
+        "maxParentIssueDelayMs": 15.099853515625,
+        "oneWayMsP50P95Max": [
+          0.800048828125,
+          140.400146484375,
+          170.400146484375
+        ],
+        "traceOneWayMsP50P95Max": [
+          0.873,
+          140.65,
+          170.597
+        ],
+        "roundTripMsP50P95Max": [
+          2.60009765625,
+          171.39990234375,
+          201.5
+        ],
+        "byRequestedLeadMs": {
+          "3": {
+            "batches": 10,
+            "scheduledOnsets": 10,
+            "missedFirstOnsets": 3,
+            "minFirstOnsetLeadMs": -137.800048828125,
+            "unscheduledFirstOnsets": 0,
+            "lateCommandsIncludingOffsets": 12
+          },
+          "32": {
+            "batches": 10,
+            "scheduledOnsets": 10,
+            "missedFirstOnsets": 4,
+            "minFirstOnsetLeadMs": -138.900146484375,
+            "unscheduledFirstOnsets": 0,
+            "lateCommandsIncludingOffsets": 13
+          }
+        },
+        "lateSchedules": 25,
+        "minLeadMs": -138.900146484375
+      }
+    }
+  ],
+  "conclusions": [
+    "Two independent trace windows and reversed ordering support lowering transient audio-node churn as a high-priority path.",
+    "Ablation changes dry audio and DSP as well as node creation/deletion; it does not isolate deletion as the sole causal improvement and cannot be shipped.",
+    "All four runs retained the eight logical exports and complete native AI.",
+    "Large spikes remain, including peaks outside each short trace window. Do not treat missing coverage as disappearance.",
+    "Independent renderer ownership works in the tested Edge build and idle transport had no missed onset deadlines in a tiny workload.",
+    "Synthetic child 200ms blocking protected parent issue timing but introduced overdue audio commands. It is not a usable product fix by itself.",
+    "No FPS acceptance or target achievement is claimed.",
+    "Fixed 120-tick CDP GC cadence failed the tail-frame goal despite a smaller maximum interval. Desktop host API control is not itself a demonstrated fix."
+  ],
+  "nextPriority": "Preserve sound layers/timing/RNG/voice-steal while reducing native transient node creation, or prove a persistent audio processing owner can meet deadlines. Continue large render pipeline opportunities separately.",
+  "controlledGC": {
+    "input": "gc-small-batch-native-high-1.json",
+    "inputSHA256": "046dc20b4dafaa8e040e0dd73269c87d03804a7acfecb44123ffcd1c9681c4b2",
+    "intervalLogicalTicks": 120,
+    "requests": 29,
+    "cdpRoundTripMeanMS": 107.67225515707557,
+    "cdpRoundTripMaxMS": 172.38090001046658,
+    "roundTripLimit": "Includes transport, scheduling, collector and follow-up evaluate; not pure GC or handler CPU time.",
+    "fullScenarioDiagnostic": {
+      "name": "gc-small-batch-native-high-1",
+      "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+      "diagnosticOnly": true,
+      "wallSeconds": 61.087199999809265,
+      "logicalHz": 58.93214945211502,
+      "renderHz": 52.85886405024427,
+      "overflowDroppedMs": 1102.9999999999977,
+      "windows": {
+        "complete": {
+          "frames": 3228,
+          "fps": 52.868198010072476,
+          "onePercentLowFPS": 12.868005460350155,
+          "onePercentTailFrames": 33,
+          "p95Ms": 29.100000143051147,
+          "p99Ms": 59.39999985694885,
+          "reciprocalP99FPS": 16.835016875560076,
+          "maxMs": 114.20000004768372,
+          "over50PerMinute": 35.37648937476968,
+          "over100": 2
+        },
+        "warmTick301": {
+          "frames": 2953,
+          "fps": 52.77030709709701,
+          "onePercentLowFPS": 12.780641589765505,
+          "onePercentTailFrames": 30,
+          "p95Ms": 29.100000143051147,
+          "p99Ms": 59.39999985694885,
+          "reciprocalP99FPS": 16.835016875560076,
+          "maxMs": 114.20000004768372,
+          "over50PerMinute": 34.31052814982264,
+          "over100": 2
+        }
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+      "onePercentGatePassed": false
+    },
+    "decision": "Reject this cadence. Largest interval falls but more slow frames and worse 1% low; no repeated tuning or production GC scheduling."
+  },
+  "renderScreening": {
+    "rows": [
+      {
+        "stage": "reflection",
+        "tick": 301,
+        "commands": 333,
+        "eligible": 184,
+        "runs": 4,
+        "nativeTransitions": 92,
+        "idealTransitions": 87,
+        "potentialReduction": 5,
+        "truncated": false
+      },
+      {
+        "stage": "main",
+        "tick": 301,
+        "commands": 345,
+        "eligible": 190,
+        "runs": 6,
+        "nativeTransitions": 100,
+        "idealTransitions": 95,
+        "potentialReduction": 5,
+        "truncated": false
+      },
+      {
+        "stage": "main",
+        "tick": 900,
+        "commands": 280,
+        "eligible": 125,
+        "runs": 3,
+        "nativeTransitions": 97,
+        "idealTransitions": 92,
+        "potentialReduction": 5,
+        "truncated": false
+      },
+      {
+        "stage": "reflection",
+        "tick": 901,
+        "commands": 282,
+        "eligible": 125,
+        "runs": 3,
+        "nativeTransitions": 97,
+        "idealTransitions": 92,
+        "potentialReduction": 5,
+        "truncated": false
+      },
+      {
+        "stage": "reflection",
+        "tick": 1500,
+        "commands": 398,
+        "eligible": 180,
+        "runs": 5,
+        "nativeTransitions": 111,
+        "idealTransitions": 104,
+        "potentialReduction": 7,
+        "truncated": false
+      },
+      {
+        "stage": "main",
+        "tick": 1500,
+        "commands": 429,
+        "eligible": 196,
+        "runs": 6,
+        "nativeTransitions": 121,
+        "idealTransitions": 114,
+        "potentialReduction": 7,
+        "truncated": false
+      },
+      {
+        "stage": "main",
+        "tick": 2100,
+        "commands": 383,
+        "eligible": 170,
+        "runs": 5,
+        "nativeTransitions": 109,
+        "idealTransitions": 102,
+        "potentialReduction": 7,
+        "truncated": false
+      },
+      {
+        "stage": "reflection",
+        "tick": 2101,
+        "commands": 382,
+        "eligible": 170,
+        "runs": 5,
+        "nativeTransitions": 106,
+        "idealTransitions": 99,
+        "potentialReduction": 7,
+        "truncated": false
+      },
+      {
+        "stage": "main",
+        "tick": 2700,
+        "commands": 349,
+        "eligible": 157,
+        "runs": 5,
+        "nativeTransitions": 103,
+        "idealTransitions": 96,
+        "potentialReduction": 7,
+        "truncated": false
+      },
+      {
+        "stage": "reflection",
+        "tick": 2701,
+        "commands": 350,
+        "eligible": 157,
+        "runs": 5,
+        "nativeTransitions": 107,
+        "idealTransitions": 100,
+        "potentialReduction": 7,
+        "truncated": false
+      },
+      {
+        "stage": "main",
+        "tick": 3301,
+        "commands": 323,
+        "eligible": 126,
+        "runs": 5,
+        "nativeTransitions": 112,
+        "idealTransitions": 105,
+        "potentialReduction": 7,
+        "truncated": false
+      },
+      {
+        "stage": "reflection",
+        "tick": 3302,
+        "commands": 318,
+        "eligible": 122,
+        "runs": 5,
+        "nativeTransitions": 108,
+        "idealTransitions": 101,
+        "potentialReduction": 7,
+        "truncated": false
+      }
+    ],
+    "byStage": {
+      "main": {
+        "commands": 351.5,
+        "eligible": 160.66666666666666,
+        "nativeTransitions": 107,
+        "idealTransitions": 100.66666666666667,
+        "potentialReduction": 6.333333333333333
+      },
+      "reflection": {
+        "commands": 343.8333333333333,
+        "eligible": 156.33333333333334,
+        "nativeTransitions": 103.5,
+        "idealTransitions": 97.16666666666667,
+        "potentialReduction": 6.333333333333333
+      }
+    },
+    "receiverGate": {
+      "version": 1,
+      "diagnosticOnly": true,
+      "observationOnly": true,
+      "installed": true,
+      "config": {
+        "budgetMs": 0.25,
+        "maxTriangleVertices": 250000,
+        "maxSupportPolygons": 512
+      },
+      "setup": {
+        "ms": 8.700000047683716,
+        "expectedSourceMaterials": 4,
+        "materials": [
+          {
+            "id": 45,
+            "uuid": "4a5e5133-2d9f-4578-b45c-52c38fc63a06",
+            "name": "marbleFloor",
+            "uniformVerified": true,
+            "uReflK": 1
+          },
+          {
+            "id": 47,
+            "uuid": "52877945-95e4-4066-bc52-54e037f87c54",
+            "name": "oakFloor",
+            "uniformVerified": true,
+            "uReflK": 0.6
+          },
+          {
+            "id": 52,
+            "uuid": "46fc7a32-f90c-4170-9038-b25d3b927b7a",
+            "name": "kitchenFloor",
+            "uniformVerified": true,
+            "uReflK": 0.55
+          },
+          {
+            "id": 50,
+            "uuid": "be042a49-114b-4c28-88ef-89e01330e8f6",
+            "name": "terraceStone",
+            "uniformVerified": true,
+            "uReflK": 0.22
+          }
+        ],
+        "receivers": [
+          {
+            "mesh": 1324,
+            "material": 45,
+            "name": "marbleFloor",
+            "triangles": 7540,
+            "supportPolygons": 4,
+            "error": null
+          },
+          {
+            "mesh": 1325,
+            "material": 47,
+            "name": "oakFloor",
+            "triangles": 36,
+            "supportPolygons": 6,
+            "error": null
+          },
+          {
+            "mesh": 1329,
+            "material": 52,
+            "name": "kitchenFloor",
+            "triangles": 12,
+            "supportPolygons": 2,
+            "error": null
+          },
+          {
+            "mesh": 1330,
+            "material": 50,
+            "name": "terraceStone",
+            "triangles": 1224,
+            "supportPolygons": 8,
+            "error": null
+          }
+        ],
+        "triangleVerticesBudgetPerReceiver": 250000,
+        "maxSupportPolygonsPerReceiver": 512
+      },
+      "limits": [
+        "No render is skipped and no quality/cadence/AI changes are made.",
+        "Potential receiver means geometric support intersects clip volume; walls/depth/occlusion may still hide it. This is not visible-pixel proof.",
+        "zeroCandidate requires every static receiver support polygon outside expanded clip volume and no unknown. Unknown/budget/mutation always fail open.",
+        "Runtime clips cached world-y/normal-qualified polygons, never rescans original triangles per frame. Rebuild only while uninstalled. Only non-warming playing-state preRender calls enter the denominator.",
+        "Conservative numeric padding and unsupported state can reduce the skip ratio. Diagnostic CPU overhead is measured separately; do not use run as clean FPS acceptance."
+      ]
+    },
+    "receiverStats": {
+      "eligiblePreRenderCalls": 1409,
+      "nonGameplayCalls": 8,
+      "zeroCandidateCalls": 95,
+      "potentialReceiverCalls": 1313,
+      "unknownCalls": 1,
+      "cpuMs": 26.299997806549072,
+      "maxCpuMs": 0.5,
+      "budgetExceeded": 1,
+      "reasons": {
+        "cpu-budget": 1
+      },
+      "zeroCandidateRatio": 0.06742370475514549,
+      "meanCpuMs": 0.018665718812313038
+    },
+    "limits": "Passive sampled native commands, offline ideal reordering, not measured sorting latency/net performance or quality equivalence. Equal-depth order risk remains; conservative barriers retained.",
+    "rawInput": "pipeline-native-observation-high-1.json",
+    "rawInputSHA256": "71fa4ca438d95833d69f08311ec7380d70d4912615a29c28383fa305f12878a9",
+    "decision": "Defer both opaque program sorting and receiver gate: only5–7 ideal transition reductions per sampled view;6.742% receiver-zero calls concentrated in final96 eligiblecalls. No net benefit measured.",
+    "allLogicalExportsEqual": {
+      "manifest": true,
+      "seed": true,
+      "equipment": true,
+      "decisionTrace": true,
+      "events": true,
+      "checkpoints": true,
+      "state": true,
+      "coverage": true
+    }
+  }
+}

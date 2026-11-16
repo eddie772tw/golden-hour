@@ -222,3 +222,63 @@ from performance acceptance. Current product core remains stage 3, High1080p,
 reflection maximum30Hz. The 60FPS/1%low>45 target is still unmet. Raw-source
 hashes, diagnostic boundaries and derived values are recorded in
 [stage4-screening.json](evidence/stage4-screening.json).
+
+## Stage 5: prioritize native audio churn
+
+Same-run tracing pinned a 281.6 ms submitted-render interval to the renderer
+main thread: a 31.992 ms MajorGC followed by a Web Audio deletion task posted
+from RequestToDeleteHandlersOnMainThread. The latter consumed212.020 ms wall
+and209.164 ms thread CPU. This identifies one long frame's owner; another
+225.1 ms interval outside the short trace window remains unattributed.
+
+Four complete native-AI diagnostics used the same instrumented core, with
+normal dry sound versus omitting footstep/impact/casing dry-layer construction.
+Spatial routing, RNG consumption, voice lifetime and stealing remained active;
+all eight logical exports matched. Omitted layers are audibly muted, so this
+is causal screening and cannot be a production performance optimization.
+
+| Trace window / execution order | Nodes created in full scenario | Largest handler deletion | MajorGC total in trace |
+|---|---:|---:|---:|
+| Early, normal first |113,003|224.791 ms|38.898 ms|
+| Early, omitted second |47,934|55.744 ms|13.041 ms|
+| Late, omitted first |49,338|73.350 ms|17.027 ms|
+| Late, normal second |114,232|133.079 ms|27.803 ms|
+
+The second pair reversed ordering and observed ticks2400-3550 rather than
+900-2100. Both support prioritizing transient-node churn. They do not isolate
+node deletion from dry DSP, graph construction or allocation/GC changes, and
+large complete-scenario intervals still occurred outside each trace window.
+The next real candidate must preserve sound content, timing, RNG, spatial
+routing and voice stealing while reducing that work.
+
+An independent audio-host sandbox confirmed separate renderer PID/TID with
+127.0.0.1 versus localhost in this Edge build. Parent-click autoplay worked.
+In its tiny idle workload, all80 commands scheduled and the ten3ms onsets had
+zero misses. A synthetic200ms child busy loop protected parent issue timing
+relative to the same-renderer control, but25 commands became overdue; first
+onset misses were3/10 at3ms lead and4/10 at32ms. This artificial test does not
+measure actual game cleanup or speaker latency. Moving ownership alone can
+trade game stalls for delayed audio and is not sufficient for adoption.
+
+A separate product-core experiment requested CDP collectGarbage every120
+logical ticks:29 requests, with every GC and subsequent delay retained. It
+measured52.87FPS but1%low12.87FPS, P9959.4ms, maximum114.2ms and35.38
+intervals>50ms/min. The previous product single run was50.72FPS/low17.01,
+P9938.6ms and6.95 intervals>50ms/min. This cadence is rejected: a smaller
+maximum and higher mean do not compensate for more slow frames. CDP round
+trip includes transport/scheduling and is not pure GC CPU time.
+
+Rendering screening also narrowed priorities. Twelve passive main/reflection
+command samples could reduce only5-7 program transitions/view under the
+conservative reorder barriers. Receiver geometry proved zero potential
+reflection receivers for95/1409 eligible calls(6.742%), all in the final96
+calls; one CPU-budget unknown failed open. Neither observer changed drawing.
+These directions remain lower priority; no net sorting/gating gain is claimed.
+A separate investigation now measures actual High MSAA resolve ownership,
+while preserving4x main/FX/VM edges. Desktop Electron/Tauri reassessment is
+research only and must compare actual versions and measured behavior.
+
+Product runtime remains stage3. All new observer, dry-layer and forced-GC
+flags are excluded from acceptance. The target remains unmet. Source hashes,
+full diagnostic distributions, host scheduling evidence and limitations are
+recorded in [stage5-audio-churn.json](evidence/stage5-audio-churn.json).
