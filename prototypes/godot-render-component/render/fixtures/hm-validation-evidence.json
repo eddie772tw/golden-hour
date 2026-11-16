@@ -1,0 +1,187 @@
+{
+  "schema": "gh-hm-portable-validation-summary-v1",
+  "classification": "Root-owned fixed native GPU component evidence; not full High/AI/FPS acceptance",
+  "engine": {
+    "build": "official",
+    "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "hex": 263938,
+    "major": 4,
+    "minor": 7,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.7.2-stable (official)",
+    "timestamp": 0
+  },
+  "renderer": "forward_plus",
+  "driver": "vulkan",
+  "adapter": "AMD Radeon RX 9070 XT",
+  "volumeOracle": {
+    "source": "native-hm-volume-oracle-1.json",
+    "sha256": "4ee9ed977847a38d2882d877be121e545ee364d265e58b1d0b28698f289c560a",
+    "invalidCases": 0,
+    "binding": {
+      "asset_bytes": 397440,
+      "asset_sha256": "86c55fed4284279faa5b547a9a5a52d6b9b29e220d90dcf16a58c2d67819b1dd",
+      "clock_note": "Source ZD closure accumulates hotel.update(delta) through menu/loading as well as playing; benchmark resets G.time but not this closure. No live clock mapping implemented.",
+      "cpu_image_bytes_exact": true,
+      "enabled": true,
+      "errors": [],
+      "fixed_source_time": 8.47988888936572,
+      "fixture_sha256": "6059bd1d092ac0a9ccfa0117021513b2b0cc32da5631e0c48031f16237776558",
+      "fullMaterialParity": false,
+      "image_format": "RGBAH",
+      "matched": [],
+      "native_ty_sha256": "fc34ffabe3b51cd5b61af778ccd79653de8abc809ee9e737d86fb9391d7cf229",
+      "sample_filter": "linear/clamp/no-mips",
+      "slice_count": 46,
+      "source_color_hint": false,
+      "source_manifest_sha256": "685d847b6530608c9b94e7478c141dc91fd76ec5672491e0d7e4079f156978c9",
+      "source_ty_sha256": "816626b43c124689d10e219892476995d35381a7606cb1a2bd81002d8a7e0b5f",
+      "texture_uploaded": true,
+      "time_source": "Fixed original HM lighting accumulator; not G.time/tick/60, Node simSeconds or Godot TIME",
+      "unmatched": []
+    },
+    "cases": [
+      {
+        "name": "texel-center-normal-0_1_0",
+        "AAmaxDiff": 0.0,
+        "differencePerChannel": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "texel-center-normal-0_-1_0",
+        "AAmaxDiff": 0.0,
+        "differencePerChannel": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "texel-center-normal-1_0_0",
+        "AAmaxDiff": 0.0,
+        "differencePerChannel": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "clamp-outside",
+        "AAmaxDiff": 0.0,
+        "differencePerChannel": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "interpolate-offset-plus",
+        "AAmaxDiff": 0.0,
+        "differencePerChannel": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "interpolate-offset-minus",
+        "AAmaxDiff": 0.0,
+        "differencePerChannel": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "pool-caustic-witness",
+        "AAmaxDiff": 0.0,
+        "differencePerChannel": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "observedExtraWitnessPerChannel": [
+          0.117647051811218,
+          0.223529398441315,
+          0.203921556472778
+        ]
+      },
+      {
+        "name": "chandelier-sparkle-witness",
+        "AAmaxDiff": 0.0,
+        "differencePerChannel": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "observedExtraWitnessPerChannel": [
+          0.372549042105675,
+          0.349019631743431,
+          0.301960781216621
+        ]
+      },
+      {
+        "name": "full-source-clock",
+        "AAmaxDiff": 0.0,
+        "differencePerChannel": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  "receiver": {
+    "source": "native-hm-receiver-smoke-1.json",
+    "sha256": "c08983bb64f8f135c4ae9802635d56e3488cc88b88deb37a8632c22aa3c7ecf9",
+    "frames": 120,
+    "sourceCounts": {
+      "bakedSkins": 11.0,
+      "enumeratedTriangles": 2327332.0,
+      "geometries": 252.0,
+      "instances": 3452.0,
+      "lights": 15.0,
+      "materials": 192.0,
+      "objectVertexReferences": 6065089.0,
+      "objects": 516.0,
+      "omitted": {
+        "hidden": 31.0,
+        "noPosition": 0.0,
+        "unsupportedObject": 2.0
+      },
+      "surfaces": 516.0,
+      "uniqueExportedVertices": 5330835.0
+    },
+    "importCounts": {
+      "empty_objects": 0,
+      "instances": 3452,
+      "multimat_mesh_variants": 0,
+      "multimeshes": 15,
+      "nodes": 516,
+      "shader_instancing_approximations": 2,
+      "surface_vertex_uploads": 5330835,
+      "surfaces": 516
+    },
+    "matchedMaterials": 173,
+    "sourceCompiledReferences": 177,
+    "unmatched": [
+      {
+        "material": "bf088e65-1ee5-41d6-b1ef-3887a88e8f38",
+        "reason": "Owner/path/nativeID/slot/geometry/flags/factors relation absent or ambiguous (UUID never used)"
+      }
+    ],
+    "errors": []
+  },
+  "limitations": [
+    "Adds only source HM irradiance→diffuse/PI to EMISSION, never replaces environment IRRADIANCE",
+    "Current ALBEDO/normal differ where original surface hooks/layout/skin are unported",
+    "Full Nj ghAO/joints/wear and direct specular AO are not restored; HM receiver AO uses only already-supported aoMap when present",
+    "177 captured ghLV references do not mean177 fully matched receiver materials or material/High parity",
+    "Fixed source clock; no live-clock proof",
+    "Counts are pre-frustum/occlusion/discard, not pixel coverage"
+  ]
+}

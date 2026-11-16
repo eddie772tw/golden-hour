@@ -115,3 +115,6 @@ Official semantics: [Godot spatial shader modes and built-ins](https://docs.godo
 [shader sampling/color-space hints](https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/shading_language.html),
 [StandardMaterial channels](https://docs.godotengine.org/en/stable/classes/class_basematerial3d.html),
 [Image data and PNG loading](https://docs.godotengine.org/en/stable/classes/class_image.html).
+
+
+Fixed source HM diffuse-term overlay: see [HM-LIGHTFIELD.md](../HM-LIGHTFIELD.md). Default off; fixed original clock and external byte-pinned asset, not full High/live-AI parity.

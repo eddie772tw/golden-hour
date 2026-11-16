@@ -6,6 +6,7 @@ var viewport: Viewport
 var textures: Dictionary = {}
 var shaders: Dictionary = {}
 var emission_scale: float = 1.0
+var lightfield = null
 var report: Dictionary = {"mode":"pbr-adaptor-v1","bound":[],"unsupported":[],"warnings":[],"loaded_assets":0,"global_af":8,"source_af_raised":[],"mirrored_tiles":[],"normal_basis":"view-position/normal-map-UV Jacobian cotangent frame; source XY scale; not baked rest tangents","highParity":false}
 
 func prepare(loader, view: Viewport, emission: float) -> void:
@@ -75,6 +76,7 @@ func _reject(id: String, slot: String, reason: String) -> void:
 
 func make_material(id: String) -> ShaderMaterial:
 	var source: Dictionary=binding.snapshot.materials[id]
+	var hm_receiver: bool=lightfield!=null and lightfield.matched.has(id)
 	var maps: Dictionary=binding.manifest.materials[id]
 	var modes: PackedStringArray=PackedStringArray(["diffuse_burley","specular_schlick_ggx"])
 	if source.type=="MeshBasicMaterial": modes.append("unshaded")
@@ -129,6 +131,7 @@ func make_material(id: String) -> ShaderMaterial:
 		if float(item.anisotropy)>1.0 and float(item.anisotropy)<8.0: report.source_af_raised.append({"material":id,"slot":slot,"source":item.anisotropy,"target":8,"cost_quality_change":true})
 		report.bound.append({"material":id,"slot":slot,"texture":item.id,"source_af":item.anisotropy,"target_af":8 if float(item.anisotropy)>1.0 else 1,"wrap":[item.wrapS,item.wrapT],"uv":item.matrix})
 	code+=helpers
+	if hm_receiver: code+=lightfield.shader_source
 	code+="void fragment() { vec4 base=source_albedo;"
 	if int(source.side)==1: code+="NORMAL=-NORMAL;"
 	elif int(source.side)==2: code+="if(!FRONT_FACING){NORMAL=-NORMAL;}"
@@ -146,12 +149,19 @@ func make_material(id: String) -> ShaderMaterial:
 		# Solve dP/dUV with signed determinant: invariant under framebuffer Y flip.
 		# Common scale preserves UV anisotropy; Gram projection follows smooth N.
 		code+="vec3 n=normalize(NORMAL);vec2 uvn=uv_normalMap("+_uv(available.normalMap.metadata)+");vec3 px=dFdx(VERTEX);vec3 py=dFdy(VERTEX);vec2 ux=dFdx(uvn);vec2 uy=dFdy(uvn);float det=ux.x*uy.y-ux.y*uy.x;vec3 nm=read_normalMap("+_uv(available.normalMap.metadata)+").rgb*2.0-1.0;nm.xy*=source_normal_scale;if(abs(det)>1e-10){vec3 t=(px*uy.y-py*ux.y)/det;vec3 b=(py*ux.x-px*uy.x)/det;t-=n*dot(n,t);b-=n*dot(n,b);float s=inversesqrt(max(max(dot(t,t),dot(b,b)),1e-10));NORMAL=normalize(t*(nm.x*s)+b*(nm.y*s)+n*nm.z);}"
+	if hm_receiver:
+		# Source r9 adds HM to irradiance, which RE_IndirectDiffuse multiplies
+		# by diffuseColor/PI. It does NOT add to iblIrradiance. EMISSION is an
+		# additive transport of that known linear term, not emissive relighting.
+		var hm_ao: String="clamp(1.0+(read_aoMap("+_uv(available.aoMap.metadata)+").r-1.0)*source_ao_intensity,0.0,1.0)" if available.has("aoMap") else "1.0"
+		code+="vec3 ghWp=(INV_VIEW_MATRIX*vec4(VERTEX,1.0)).xyz;vec3 ghWn=normalize(mat3(INV_VIEW_MATRIX)*NORMAL);EMISSION+=ghLightVolumeWorld(ghWp,ghWn)*ALBEDO*(1.0-METALLIC)*("+hm_ao+")/PI;"
 	code+="}\n"
 	if not shaders.has(code):
 		var shader: Shader=Shader.new()
 		shader.code=code
 		shaders[code]=shader
 	material.shader=shaders[code]
+	if hm_receiver: lightfield.bind(material)
 	material.set_shader_parameter("source_albedo",Vector4(source.color[0],source.color[1],source.color[2],source.opacity))
 	material.set_shader_parameter("source_emission",Vector3(source.emissive[0],source.emissive[1],source.emissive[2])*float(source.emissiveIntensity)*emission_scale)
 	material.set_shader_parameter("source_roughness",float(source.roughness))

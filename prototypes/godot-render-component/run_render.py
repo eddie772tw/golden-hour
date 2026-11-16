@@ -30,12 +30,19 @@ def main():
     parser.add_argument('--source-decay',type=int,choices=[0,1],default=0,help='Map original PointLight decay; native control remains0')
     parser.add_argument('--direct-energy',choices=['native','source-irradiance'],default='native',help='Explicit direct-light input convention; source mode uses I/PI')
     parser.add_argument('--light-color',choices=['native','source-linear'],default='native',help='Source mode encodes original linear RGB once at Light3D property boundary')
+    parser.add_argument('--lightfield',choices=['off','source-diffuse'],default='off',help='Fixed reviewed HM diffuse term; not live clock or High parity')
+    parser.add_argument('--volume-bytes',type=Path,help='External exact original HM half-float asset')
+    parser.add_argument('--lightfield-fixture',type=Path,help='Byte-pinned HM role/code/clock proof; default render/fixtures/hm-source.json')
     parser.add_argument('--light-energy-scale',type=float,default=1)
     parser.add_argument('--emission-scale',type=float,default=1)
     parser.add_argument('--tonemap',choices=['linear','aces'],default='linear')
     args=parser.parse_args()
     if args.shader_audit and args.material_mode!='pbr-adaptor':
         parser.error('--shader-audit requires explicit --material-mode=pbr-adaptor')
+    if args.lightfield!='off' and (args.material_mode!='pbr-adaptor' or args.volume_bytes is None):
+        parser.error('--lightfield=source-diffuse requires --material-mode=pbr-adaptor and --volume-bytes')
+    if args.lightfield=='off' and (args.volume_bytes is not None or args.lightfield_fixture is not None):
+        parser.error('HM assets require explicit --lightfield=source-diffuse')
     assert re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]{0,100}',args.name)
     assert 1<=args.frames<=7200 and 2<=args.warmup<=7200 and 1<=args.timeout<=600
     assert all(math.isfinite(value) and value>=0 for value in [args.light_energy_scale,args.emission_scale])
@@ -48,6 +55,8 @@ def main():
     assert not any(path.exists() for path in paths.values()),'Use a fresh name'
     source_hashes={name:sha(project/name) for name in ['main.gd','main.tscn','project.godot',
       'texture_binding.gd','pbr_adaptor.gd','source_shaders.gd','shaft.gdshader']}
+    if args.lightfield!='off':
+        source_hashes.update({name:sha(project/name) for name in ['lightfield_binding.gd','lightfield.gdshaderinc']})
     command=[str(engine),'--path',str(project),'--rendering-method','forward_plus',
       '--rendering-driver','vulkan','--','--snapshot='+str(snapshot),
       '--report='+str(paths['report']),'--screenshot='+str(paths['screenshot']),
@@ -62,12 +71,23 @@ def main():
     if args.shader_audit:
         assert args.shader_audit.is_file(),'Missing explicit shader proof'
         command.append('--shader-audit='+str(args.shader_audit.resolve()))
+    if args.lightfield!='off':
+        assert args.volume_bytes.is_file(),'Missing original external HM binary'
+        assert args.volume_bytes.stat().st_size==397440,'Original HM byte length required'
+        assert sha(args.volume_bytes)=='86c55fed4284279faa5b547a9a5a52d6b9b29e220d90dcf16a58c2d67819b1dd','Original HM SHA mismatch'
+        command+=['--lightfield=source-diffuse','--volume-bytes='+str(args.volume_bytes.resolve())]
+        if args.lightfield_fixture is not None:
+            assert args.lightfield_fixture.is_file(),'Missing reviewed HM fixture'
+            command.append('--lightfield-fixture='+str(args.lightfield_fixture.resolve()))
     result={'classification':'Frozen real-scene render-component smoke; not full AI/High acceptance',
       'acceptanceEligible':False,'ok':False,'command':command,'runtime':runtime,
       'snapshot':str(snapshot),'snapshotSHA256':sha(snapshot),'projectSHA256':source_hashes}
     result['lightMappingOptions']={'sourceDecay':args.source_decay,'directEnergy':args.direct_energy,'lightColor':args.light_color}
     if args.textures: result['textureManifestSHA256']=sha(args.textures)
     if args.shader_audit: result['shaderProofSHA256']=sha(args.shader_audit)
+    if args.lightfield!='off':
+        fixture=args.lightfield_fixture or project/'fixtures/hm-source.json'
+        result['lightfieldOptions']={'mode':args.lightfield,'fixtureSHA256':sha(fixture),'volumeSHA256':sha(args.volume_bytes),'fixedClock':True,'liveClock':False}
     started=time.perf_counter();proc=None
     try:
         with paths['log'].open('wb') as log:
@@ -85,6 +105,11 @@ def main():
         assert len(report['frames'])==args.frames
         assert report['viewport']==[1920,1080] and report['viewport_msaa_3d']==2
         assert report['directional_shadow_size']==4096
+        if args.lightfield!='off':
+            hm=report['source_lightfield']
+            assert hm['enabled'] and hm['texture_uploaded'] and not hm['errors']
+            assert hm['asset_bytes']==397440 and hm['cpu_image_bytes_exact'] and hm['matched_materials']>0
+            result['sourceLightfield']=hm
         assert report['gpu'] and not any(x in report['gpu'].lower() for x in ['llvmpipe','software','swiftshader','warp'])
         assert paths['screenshot'].is_file() and paths['screenshot'].stat().st_size>1000
         result.update(ok=True,gpu=report['gpu'],engine=report['engine'],sourceCounts=report['sourceCounts'],

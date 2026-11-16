@@ -1,0 +1,357 @@
+{
+  "schema": "gh-godot-hm-source-overlay-v1",
+  "baseCommit": "95b467e",
+  "targetDirectory": "prototypes/godot-render-component",
+  "encoding": "UTF-8 LF",
+  "default": "off",
+  "runtimeByteIdenticalToRootVerifiedExperiment": [
+    "render/main.gd",
+    "render/pbr_adaptor.gd",
+    "render/lightfield_binding.gd",
+    "render/lightfield.gdshaderinc",
+    "render/fixtures/hm-source.json"
+  ],
+  "externalRequiredAsset": {
+    "bytes": 397440,
+    "sha256": "86c55fed4284279faa5b547a9a5a52d6b9b29e220d90dcf16a58c2d67819b1dd",
+    "included": false
+  },
+  "treeSHA256": "1583812c9d7745c01d1147c9505891285a58588be3ef1fe3e10f0a7c7e467887",
+  "patch": {
+    "file": "repo-ready.patch",
+    "bytes": 835885,
+    "sha256": "f5c56c6b8ea31afa453bca7eca3c0ea7d92769cada0754fe4228c29583f4d7e8"
+  },
+  "validation": {
+    "node": {
+      "pass": 25,
+      "fail": 0,
+      "skip": 0,
+      "externalDataSupplied": true
+    },
+    "pythonCaptureAdapter": {
+      "pass": 2,
+      "fail": 0
+    },
+    "headless": {
+      "mainCheckOnlyExit": 0,
+      "typedVolumePass": 7,
+      "receiverPass": 6,
+      "fail": 0,
+      "engineErrors": 0
+    },
+    "relocatedNoAuthoringOverride": {
+      "nodePass": 6,
+      "nodeSkipExternalData": 3,
+      "pythonPass": 2,
+      "fail": 0
+    },
+    "gpuByAuthoringAgent": false,
+    "patchApplyExact95b467e": "PASS, applied output byte-identical (repository .gitattributes * -text; explicit core.autocrlf=false for isolated check)"
+  },
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 51,
+      "sha256": "f9bbc8a927dd4f6496373bc306cf23ce53b221ddd3a2b7cf765029dbe30e7fc0",
+      "change": "unchanged",
+      "baseSHA256": "f9bbc8a927dd4f6496373bc306cf23ce53b221ddd3a2b7cf765029dbe30e7fc0"
+    },
+    {
+      "path": "capture_compiled_materials.py",
+      "bytes": 4392,
+      "sha256": "de0951d98abe4b94d2fc543689db9147d0d434f21a2d7eb9a92f1b4eaa6db9a9",
+      "change": "new"
+    },
+    {
+      "path": "capture_compiled_materials_test.py",
+      "bytes": 1794,
+      "sha256": "ab382465cca2b91c1a27eedb6b69c4df9ce967d9befae2826d1d2e19fd4838a8",
+      "change": "new"
+    },
+    {
+      "path": "capture_materials.py",
+      "bytes": 3090,
+      "sha256": "2b1cf0a48ecf25dacb30a3530fb46c1eeee9d0de29f7ce3d9dce37da3b5893d5",
+      "change": "unchanged",
+      "baseSHA256": "2b1cf0a48ecf25dacb30a3530fb46c1eeee9d0de29f7ce3d9dce37da3b5893d5"
+    },
+    {
+      "path": "capture_scene.py",
+      "bytes": 3894,
+      "sha256": "d951f5b5c25d46630ad5b5d7f044d1dbb75f3bfe32a023a798fa01c3517f0ec1",
+      "change": "unchanged",
+      "baseSHA256": "d951f5b5c25d46630ad5b5d7f044d1dbb75f3bfe32a023a798fa01c3517f0ec1"
+    },
+    {
+      "path": "HM-LIGHTFIELD.md",
+      "bytes": 14003,
+      "sha256": "4475543d8774d4eb952677a5b7cda8bc6e97ebf5facd4a127eff8230550a02d9",
+      "change": "new"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7449,
+      "sha256": "5ac3f8975ba6c624114ebae840966cc5ed28e04825f7da5edf23fd08f07de66b",
+      "change": "modified",
+      "baseSHA256": "0331940cb641aefde37af3747a8686d4cd5ee702daef601bb8414e43c50d76c5"
+    },
+    {
+      "path": "render/browser-compiled-uniforms.js",
+      "bytes": 16025,
+      "sha256": "b80a4c8b33185f78453556eb40a80fc93b9c452faea862ca05dbd73058ee1e73",
+      "change": "new"
+    },
+    {
+      "path": "render/browser-exporter.js",
+      "bytes": 16174,
+      "sha256": "b8a17c1bcd6fefa78dda70f0a579aa395009b3e6ee728111f893577fc64b0175",
+      "change": "unchanged",
+      "baseSHA256": "b8a17c1bcd6fefa78dda70f0a579aa395009b3e6ee728111f893577fc64b0175"
+    },
+    {
+      "path": "render/browser-textures.js",
+      "bytes": 7742,
+      "sha256": "9e94b7271e88ae633138ebe068da6dd5dc3b7c83f800d95fa531e60d85cfc064",
+      "change": "unchanged",
+      "baseSHA256": "9e94b7271e88ae633138ebe068da6dd5dc3b7c83f800d95fa531e60d85cfc064"
+    },
+    {
+      "path": "render/browser-textures.test.mjs",
+      "bytes": 3756,
+      "sha256": "2a5b5d48f4110a4b8bfdbe6a16e282805da7a021797adbbb1c95edbe42213f1d",
+      "change": "unchanged",
+      "baseSHA256": "2a5b5d48f4110a4b8bfdbe6a16e282805da7a021797adbbb1c95edbe42213f1d"
+    },
+    {
+      "path": "render/compiled-uniforms.test.mjs",
+      "bytes": 5505,
+      "sha256": "c542b37bc3c2e08f39bcbc9653c45fb2f0753ec5496399298efcb11c684de99a",
+      "change": "new"
+    },
+    {
+      "path": "render/exporter.test.mjs",
+      "bytes": 4639,
+      "sha256": "f2d200f16dddf3634de48fe4e495574462c5af04a26287c6d4571ba8c526ce08",
+      "change": "unchanged",
+      "baseSHA256": "f2d200f16dddf3634de48fe4e495574462c5af04a26287c6d4571ba8c526ce08"
+    },
+    {
+      "path": "render/fixtures/gl-audit-proof.json",
+      "bytes": 8302,
+      "sha256": "c2aa2a04e395a6f5590467ecc6db4976d8f478b27d3a7159e6dc6463b593c4d0",
+      "change": "unchanged",
+      "baseSHA256": "c2aa2a04e395a6f5590467ecc6db4976d8f478b27d3a7159e6dc6463b593c4d0"
+    },
+    {
+      "path": "render/fixtures/hm-oracle-cases.json",
+      "bytes": 9608,
+      "sha256": "d1aefd81b27a315ac1f88843f09a5c305ce3a8c1c2b8affb7c15b0cb00db9ecf",
+      "change": "new"
+    },
+    {
+      "path": "render/fixtures/hm-source.json",
+      "bytes": 686257,
+      "sha256": "6059bd1d092ac0a9ccfa0117021513b2b0cc32da5631e0c48031f16237776558",
+      "change": "new"
+    },
+    {
+      "path": "render/fixtures/hm-validation-evidence.json",
+      "bytes": 5496,
+      "sha256": "6222a4b3776124c7b8770f0b33431b0d529919974fc3af078a70b346e9d38eef",
+      "change": "new"
+    },
+    {
+      "path": "render/fixtures/shaft-capture3-fixture.json",
+      "bytes": 88950,
+      "sha256": "529bd4c13b196041908c1ca4f02bcb3f33bed5a63f7d35aad920a9a6086b3763",
+      "change": "unchanged",
+      "baseSHA256": "529bd4c13b196041908c1ca4f02bcb3f33bed5a63f7d35aad920a9a6086b3763"
+    },
+    {
+      "path": "render/HM-COVERAGE.json",
+      "bytes": 4338,
+      "sha256": "e21c3432a11007749ebe6125e20dc6af0b7e102f93914faed14a9928bc9869d2",
+      "change": "new"
+    },
+    {
+      "path": "render/hm-reference.test.mjs",
+      "bytes": 4977,
+      "sha256": "cfb872e129fc58746f12b11e58ba0b92ec70c650c0f813d83a28547333958600",
+      "change": "new"
+    },
+    {
+      "path": "render/light_mapping_headless_test.gd",
+      "bytes": 2295,
+      "sha256": "f907801546e31567d84800c3064b40d1f128ffaf32d60c3534373fb4d32405ed",
+      "change": "unchanged",
+      "baseSHA256": "f907801546e31567d84800c3064b40d1f128ffaf32d60c3534373fb4d32405ed"
+    },
+    {
+      "path": "render/lightfield.gdshaderinc",
+      "bytes": 2331,
+      "sha256": "fc34ffabe3b51cd5b61af778ccd79653de8abc809ee9e737d86fb9391d7cf229",
+      "change": "new"
+    },
+    {
+      "path": "render/lightfield_binding.gd",
+      "bytes": 9254,
+      "sha256": "5e9926255b618b9ee5b97c16763ad0e9ee649296e4502ae96a33b0d907ea57d0",
+      "change": "new"
+    },
+    {
+      "path": "render/lightfield_cpu_test.gd",
+      "bytes": 2211,
+      "sha256": "029b8951dd7bd24436d3e1565979f9ddbf07918235d97c61813a8562af638db5",
+      "change": "new"
+    },
+    {
+      "path": "render/lightfield_receiver_test.gd",
+      "bytes": 3894,
+      "sha256": "499ed56248cfd2fa98ce69b2805e7e6fc494d2efd21dee48d8e671a00548371f",
+      "change": "new"
+    },
+    {
+      "path": "render/main.gd",
+      "bytes": 30277,
+      "sha256": "f82ec9731e986767fd49ac6826e6e2142e581d2341789d315b88c97cca1ff407",
+      "change": "modified",
+      "baseSHA256": "08dad12b8af93d2d6f2eae5bedec6a898afd08d32d1ebf288338e6c93edf7304"
+    },
+    {
+      "path": "render/main.tscn",
+      "bytes": 172,
+      "sha256": "7cfc94c5c8be7f1e9b40720cddae94f10aa51161e125ff56b014520509a26b4f",
+      "change": "unchanged",
+      "baseSHA256": "7cfc94c5c8be7f1e9b40720cddae94f10aa51161e125ff56b014520509a26b4f"
+    },
+    {
+      "path": "render/pbr_adaptor.gd",
+      "bytes": 12248,
+      "sha256": "45c2040d5865223a5c827319daa6946dbdd834704de33feede3fb7f3d4431332",
+      "change": "modified",
+      "baseSHA256": "b1ad272722b954b87268798d3b7d175c0320b5eb3fff80332d9c9639fe37d821"
+    },
+    {
+      "path": "render/project.godot",
+      "bytes": 639,
+      "sha256": "e5ebd93f6e014b5438ddf2d6e484c2692b12659004d6bea63b7ec275c916949d",
+      "change": "unchanged",
+      "baseSHA256": "e5ebd93f6e014b5438ddf2d6e484c2692b12659004d6bea63b7ec275c916949d"
+    },
+    {
+      "path": "render/proof.test.mjs",
+      "bytes": 1421,
+      "sha256": "2fc6c6a9c8a39cb58f131f71241029f6402a89a1fa0c6cd45cf516e385365db6",
+      "change": "unchanged",
+      "baseSHA256": "2fc6c6a9c8a39cb58f131f71241029f6402a89a1fa0c6cd45cf516e385365db6"
+    },
+    {
+      "path": "render/README.md",
+      "bytes": 7377,
+      "sha256": "f652980f8f9c076a439792a561721c1531ea807345b3de950653a5483826d5a9",
+      "change": "modified",
+      "baseSHA256": "2740c154dadb0c044586a9f450a75af0cc15f12acb7e0a8a6ac3fedf06657813"
+    },
+    {
+      "path": "render/sampler_math.test.mjs",
+      "bytes": 3369,
+      "sha256": "931562ccc48c95a8dfb5c97322b798d6b1d66055c4bb4ecdd92fc0784e0a15de",
+      "change": "unchanged",
+      "baseSHA256": "931562ccc48c95a8dfb5c97322b798d6b1d66055c4bb4ecdd92fc0784e0a15de"
+    },
+    {
+      "path": "render/SCHEMA.md",
+      "bytes": 6466,
+      "sha256": "23170bbb9dbc6c6564b04df3a72031ea121b3b8cabe703b90251a68076ed72d5",
+      "change": "unchanged",
+      "baseSHA256": "23170bbb9dbc6c6564b04df3a72031ea121b3b8cabe703b90251a68076ed72d5"
+    },
+    {
+      "path": "render/shaft.gdshader",
+      "bytes": 1270,
+      "sha256": "a592ccabc24ddc49fc9fa11a057ee3f8d61f6c5d86ef899f04cf53aac2bc6554",
+      "change": "unchanged",
+      "baseSHA256": "a592ccabc24ddc49fc9fa11a057ee3f8d61f6c5d86ef899f04cf53aac2bc6554"
+    },
+    {
+      "path": "render/shaft.test.mjs",
+      "bytes": 3333,
+      "sha256": "8d5a58cd2f84666749ade727e306749b8d6eb044e6693e17aa3eba1d78cf5e5f",
+      "change": "unchanged",
+      "baseSHA256": "8d5a58cd2f84666749ade727e306749b8d6eb044e6693e17aa3eba1d78cf5e5f"
+    },
+    {
+      "path": "render/shaft_headless_test.gd",
+      "bytes": 2435,
+      "sha256": "d3c8daa36381d562d74726ad7be34649aec6c4ae527b87448fab78e9e55e0039",
+      "change": "unchanged",
+      "baseSHA256": "d3c8daa36381d562d74726ad7be34649aec6c4ae527b87448fab78e9e55e0039"
+    },
+    {
+      "path": "render/source_shaders.gd",
+      "bytes": 7287,
+      "sha256": "f2470c506aad7c89cb8d0dae0398619ba19f88a0f01e86b4ef58f82301949918",
+      "change": "unchanged",
+      "baseSHA256": "f2470c506aad7c89cb8d0dae0398619ba19f88a0f01e86b4ef58f82301949918"
+    },
+    {
+      "path": "render/texture_binding.gd",
+      "bytes": 8248,
+      "sha256": "2849fb5db86d98db8d9c84b81ee1ee2b11c26778d0e8e5312d3a3748342d4334",
+      "change": "unchanged",
+      "baseSHA256": "2849fb5db86d98db8d9c84b81ee1ee2b11c26778d0e8e5312d3a3748342d4334"
+    },
+    {
+      "path": "render/tools/build_oracle_cases.mjs",
+      "bytes": 2336,
+      "sha256": "5ad8e727b69341f6b8aad7a763e3e4473e1ff3d5deca73a1f9d13e577bc25088",
+      "change": "new"
+    },
+    {
+      "path": "render/tools/hm_reference.mjs",
+      "bytes": 3495,
+      "sha256": "35eda6144281d4c38382fd989ba84b03a9a53bd1f729523b28c0b4731b1c0ad0",
+      "change": "new"
+    },
+    {
+      "path": "render/tools/project_gl_proof.mjs",
+      "bytes": 2306,
+      "sha256": "c5de7c0ca4999eb85c020986870aec80827ee781128e8efbfd73379556e10481",
+      "change": "unchanged",
+      "baseSHA256": "c5de7c0ca4999eb85c020986870aec80827ee781128e8efbfd73379556e10481"
+    },
+    {
+      "path": "render/tools/project_hm_fixture.mjs",
+      "bytes": 5308,
+      "sha256": "9add607b40928c6274f2cc2fc7fde68a9578823280760bc04ce9ca16755cd1d3",
+      "change": "new"
+    },
+    {
+      "path": "render/volume_oracle.gd",
+      "bytes": 6382,
+      "sha256": "02fdc6096745ac457198a07b5d29d5d25419437bda0b9a4815ec6eff96e3cfc8",
+      "change": "new"
+    },
+    {
+      "path": "render/volume_oracle.tscn",
+      "bytes": 176,
+      "sha256": "1ac92969db1d4c69461ae49251eef06257187e548cac5c902f6e7331715a680b",
+      "change": "new"
+    },
+    {
+      "path": "run_render.py",
+      "bytes": 9039,
+      "sha256": "974c6aa08d6b2df295aa2ef1792bad1c7a7c07723ac7b50e8c8c34fac80b9c74",
+      "change": "modified",
+      "baseSHA256": "a50bf9f89fecf88107a258126c3fa8003a7dc71f2d93b7e4c25b0fa2fa39219c"
+    },
+    {
+      "path": "STAGE17-LIGHT-MAPPING.md",
+      "bytes": 3579,
+      "sha256": "220314d57da9e76da760bdddca3bbfb93552f9e0877be7eed820405edafe9add",
+      "change": "unchanged",
+      "baseSHA256": "220314d57da9e76da760bdddca3bbfb93552f9e0877be7eed820405edafe9add"
+    }
+  ]
+}

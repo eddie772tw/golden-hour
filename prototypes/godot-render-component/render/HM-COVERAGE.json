@@ -1,0 +1,140 @@
+{
+  "schema": "gh-hm-receiver-coverage-v1",
+  "receiverReportSHA256": "c08983bb64f8f135c4ae9802635d56e3488cc88b88deb37a8632c22aa3c7ecf9",
+  "captureSceneSHA256": "303479ee57c16476fdac821dc91dbd8f3017f1088a46730556b46ae571c4346a",
+  "coverage": {
+    "snapshotOwners": 516,
+    "matchedMaterials": 173,
+    "matchedSourceRoleIDs": 173,
+    "snapshotPBRMaterials": 174,
+    "matchedReceiverOwners": 494,
+    "matchedReceiverMainLayerOwners": 494,
+    "matchedMainLayerNonzeroNativeInstanceOwners": 494,
+    "matchedReceiverSurfaceSlots": 494,
+    "unmatchedCrystalOwners": 1,
+    "NjMatchedMaterialCount": 38,
+    "sourceRolesAbsentFromCapture3": 4
+  },
+  "unmatched": {
+    "captureMaterial": {
+      "id": "bf088e65-1ee5-41d6-b1ef-3887a88e8f38",
+      "name": "prop:crystal",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        0.8796223968851662,
+        0.7304607400847158
+      ],
+      "emissive": [
+        1,
+        0.5394794890033748,
+        0.19461783043107173
+      ],
+      "emissiveIntensity": 1.1,
+      "roughness": 0.07,
+      "metalness": 1,
+      "opacity": 1,
+      "transparent": false,
+      "alphaTest": 0,
+      "side": 0,
+      "blending": 1,
+      "depthWrite": true,
+      "depthTest": true,
+      "colorWrite": true,
+      "stencilWrite": false,
+      "vertexColors": false,
+      "visible": true,
+      "forceSinglePass": false,
+      "wireframe": false,
+      "size": 1,
+      "textures": {},
+      "shaderMaterial": false,
+      "customCompile": false,
+      "renderOrderNotMapped": true
+    },
+    "captureOwners": [
+      {
+        "nativeID": 1187,
+        "name": "bulb",
+        "path": "world/124:chandelier/1:bulb",
+        "type": "Mesh",
+        "layers": 1,
+        "renderOrder": 0
+      }
+    ],
+    "sourceCompiledUniformKeys": [],
+    "sourcePrograms": [
+      {
+        "id": 23,
+        "cacheKey": "physical,STANDARD,,highp,srgb-linear,306,1024,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,,true,false,0,,1,13,0,0,1,0,1,0,0,0,0,2,0,0,0,0,33,132099,srgb,gh-crystal",
+        "fragmentSHA256": "eb2082bf1d4f0fae06040822832d52f54e6c6a18bc43bc4760cbb426ee4c4701",
+        "hasLightVolume": false
+      }
+    ],
+    "reason": "Original D9 subclass overrides onBeforeCompile directly; compiled crystal shader contains no source TY/ghLV. Correctly absent from177 source-HM roles, no guard relaxation needed.",
+    "sourceLines": {
+      "D9Override": [
+        23031,
+        23048
+      ],
+      "creation": 23053
+    },
+    "zeroDiffuseTermBecauseMetalness": true
+  },
+  "sourceRolesNotPresentInCapture3": [
+    {
+      "name": "k9:fx",
+      "sourceMaterialProvenance": "a03b691b-8b20-4261-ba62-6eb39df549f2",
+      "owners": [
+        {
+          "nativeID": 1857,
+          "path": "world/317:k9/0:body/6:k9:fx",
+          "type": "SkinnedMesh",
+          "effectiveVisible": false
+        }
+      ]
+    },
+    {
+      "name": "k9:main",
+      "sourceMaterialProvenance": "1c5df145-d73b-4f0c-960d-752ac94a3055",
+      "owners": [
+        {
+          "nativeID": 1856,
+          "path": "world/317:k9/1:k9:mesh",
+          "type": "SkinnedMesh",
+          "effectiveVisible": false
+        }
+      ]
+    },
+    {
+      "name": "k9:fx",
+      "sourceMaterialProvenance": "4ce4c4d3-4739-4abb-868c-2eb2b9d94581",
+      "owners": [
+        {
+          "nativeID": 1896,
+          "path": "world/318:k9/0:body/6:k9:fx",
+          "type": "SkinnedMesh",
+          "effectiveVisible": false
+        }
+      ]
+    },
+    {
+      "name": "k9:main",
+      "sourceMaterialProvenance": "081d5732-d302-4e56-a290-39fa253734f4",
+      "owners": [
+        {
+          "nativeID": 1895,
+          "path": "world/318:k9/1:k9:mesh",
+          "type": "SkinnedMesh",
+          "effectiveVisible": false
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Counts reflect real retained capture3 active surface material relations and layer-mask eligibility, before frustum/occlusion/shader-driven discard; not pixel coverage",
+    "Zero-instance check covers standard InstancedMesh only, not custom shader discard",
+    "38 matched Nj materials still do not have complete original ALBEDO/ghAO/layout/specularAO restored",
+    "Fixed source clock only; no live-clock or177-material/High parity claim"
+  ]
+}

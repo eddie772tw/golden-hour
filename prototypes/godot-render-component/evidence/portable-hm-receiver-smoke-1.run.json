@@ -1,0 +1,3164 @@
+{
+  "classification": "Frozen real-scene render-component smoke; not full AI/High acceptance",
+  "acceptanceEligible": false,
+  "ok": true,
+  "command": [
+    "D:\\Golden-Hour\\work\\tools\\godot-4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+    "--path",
+    "D:\\Golden-Hour\\public\\golden-hour\\prototypes\\godot-render-component\\render",
+    "--rendering-method",
+    "forward_plus",
+    "--rendering-driver",
+    "vulkan",
+    "--",
+    "--snapshot=D:\\Golden-Hour\\work\\godot-native\\evidence\\native-materials-tick240-3-scene.json",
+    "--report=D:\\Golden-Hour\\public\\golden-hour\\prototypes\\godot-render-component\\evidence\\portable-hm-receiver-smoke-1.json",
+    "--screenshot=D:\\Golden-Hour\\public\\golden-hour\\prototypes\\godot-render-component\\evidence\\portable-hm-receiver-smoke-1.png",
+    "--quit-on-complete=1",
+    "--warmup-frames=2",
+    "--sample-frames=120",
+    "--fps-cap=60",
+    "--material-mode=pbr-adaptor",
+    "--light-energy-scale=1",
+    "--emission-scale=1",
+    "--tonemap=aces",
+    "--source-decay=1",
+    "--direct-energy=source-irradiance",
+    "--light-color=source-linear",
+    "--textures=D:\\Golden-Hour\\work\\godot-native\\evidence\\native-materials-tick240-3-assets\\manifest.json",
+    "--shader-audit=D:\\Golden-Hour\\public\\golden-hour\\prototypes\\godot-render-component\\render\\fixtures\\gl-audit-proof.json",
+    "--lightfield=source-diffuse",
+    "--volume-bytes=D:\\Golden-Hour\\work\\godot-native\\evidence\\compiled-materials-tick240-1-compiled-assets\\assets\\a0.bin"
+  ],
+  "runtime": {
+    "console": "D:\\Golden-Hour\\work\\tools\\godot-4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+    "consoleSHA256": "c8f0a6bc45a19b33541501e57f6f7cd972ab18453743266339d495cbbe846643",
+    "kind": "Caller-selected native Godot executable; acquisition verification is separate evidence"
+  },
+  "snapshot": "D:\\Golden-Hour\\work\\godot-native\\evidence\\native-materials-tick240-3-scene.json",
+  "snapshotSHA256": "303479ee57c16476fdac821dc91dbd8f3017f1088a46730556b46ae571c4346a",
+  "projectSHA256": {
+    "main.gd": "f82ec9731e986767fd49ac6826e6e2142e581d2341789d315b88c97cca1ff407",
+    "main.tscn": "7cfc94c5c8be7f1e9b40720cddae94f10aa51161e125ff56b014520509a26b4f",
+    "project.godot": "e5ebd93f6e014b5438ddf2d6e484c2692b12659004d6bea63b7ec275c916949d",
+    "texture_binding.gd": "2849fb5db86d98db8d9c84b81ee1ee2b11c26778d0e8e5312d3a3748342d4334",
+    "pbr_adaptor.gd": "45c2040d5865223a5c827319daa6946dbdd834704de33feede3fb7f3d4431332",
+    "source_shaders.gd": "f2470c506aad7c89cb8d0dae0398619ba19f88a0f01e86b4ef58f82301949918",
+    "shaft.gdshader": "a592ccabc24ddc49fc9fa11a057ee3f8d61f6c5d86ef899f04cf53aac2bc6554",
+    "lightfield_binding.gd": "5e9926255b618b9ee5b97c16763ad0e9ee649296e4502ae96a33b0d907ea57d0",
+    "lightfield.gdshaderinc": "fc34ffabe3b51cd5b61af778ccd79653de8abc809ee9e737d86fb9391d7cf229"
+  },
+  "lightMappingOptions": {
+    "sourceDecay": 1,
+    "directEnergy": "source-irradiance",
+    "lightColor": "source-linear"
+  },
+  "textureManifestSHA256": "4c265b8d317edd1a8c5696ea53a9eb83c41ee7e3a80220e2e1fa880e4e080125",
+  "shaderProofSHA256": "c2aa2a04e395a6f5590467ecc6db4976d8f478b27d3a7159e6dc6463b593c4d0",
+  "lightfieldOptions": {
+    "mode": "source-diffuse",
+    "fixtureSHA256": "6059bd1d092ac0a9ccfa0117021513b2b0cc32da5631e0c48031f16237776558",
+    "volumeSHA256": "86c55fed4284279faa5b547a9a5a52d6b9b29e220d90dcf16a58c2d67819b1dd",
+    "fixedClock": true,
+    "liveClock": false
+  },
+  "ownedRootPID": 313932,
+  "exitCode": 0,
+  "elapsedSeconds": 15.694503499893472,
+  "engineErrors": [],
+  "sourceLightfield": {
+    "asset_bytes": 397440,
+    "asset_sha256": "86c55fed4284279faa5b547a9a5a52d6b9b29e220d90dcf16a58c2d67819b1dd",
+    "clock_note": "Source ZD closure accumulates hotel.update(delta) through menu/loading as well as playing; benchmark resets G.time but not this closure. No live clock mapping implemented.",
+    "cpu_image_bytes_exact": true,
+    "enabled": true,
+    "errors": [],
+    "fixed_source_time": 8.47988888936572,
+    "fixture_sha256": "6059bd1d092ac0a9ccfa0117021513b2b0cc32da5631e0c48031f16237776558",
+    "fullMaterialParity": false,
+    "image_format": "RGBAH",
+    "limitations": [
+      "Adds only source HM irradiance→diffuse/PI to EMISSION, never replaces environment IRRADIANCE",
+      "Current ALBEDO/normal differ where original surface hooks/layout/skin are unported",
+      "Full Nj ghAO/joints/wear and direct specular AO are not restored; HM receiver AO uses only already-supported aoMap when present",
+      "177 captured ghLV references do not mean177 fully matched receiver materials or material/High parity"
+    ],
+    "matched": [
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b975c9cb27dc34b12bb5afa27b074165a5b40c2eb0f669c92d0b1f111876a3e4",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 4.0,
+            "vertexSHA256": "daf9a6c3b71d02fb0f54dbfa09f036f64245a491b88f6b532fa7b6e6381804be"
+          },
+          {
+            "fragmentSHA256": "53e35dd6aa6fdb29b925813afb3ad6683b8df67b824ef5c417d260350042615a",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 5.0,
+            "vertexSHA256": "2a44bd1663a4bb0b78fd81aab9489548346b196e642268e91e3c6aaf88a8888d"
+          },
+          {
+            "fragmentSHA256": "b975c9cb27dc34b12bb5afa27b074165a5b40c2eb0f669c92d0b1f111876a3e4",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 47.0,
+            "vertexSHA256": "900cc9df17be15b31f5eb0368e287066c4258192e2c1f144f438254ae6f2139f"
+          },
+          {
+            "fragmentSHA256": "53e35dd6aa6fdb29b925813afb3ad6683b8df67b824ef5c417d260350042615a",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 48.0,
+            "vertexSHA256": "f5dc67b521d02ee0d58de03aef533274e2447d94a8d43084908db8dda495785f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "02fcf105-85f1-4c90-ac9b-4890a7c257a5",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 103.0,
+        "source_role_provenance": "02fcf105-85f1-4c90-ac9b-4890a7c257a5"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "c2120c79cf8186c2bebb6d3299d8a5287750acd18e38a6db2e623791ab4f7c1a",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 6.0,
+            "vertexSHA256": "e6853864b518fdcda46ef74618318af92bbe2a6671289bf3ca5d8b326dc1681d"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "121836f0-55be-4056-bce1-d444f7b7a498",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 104.0,
+        "source_role_provenance": "121836f0-55be-4056-bce1-d444f7b7a498"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "9df39b18f9bdf77a30266c5ee8bd393a2a41f9865274bd727a53ff58f07a8c52",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 82.0,
+            "vertexSHA256": "c922d98b1865e8ae70560704470acaf7574167c147e736621995bce21cfea687"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "1c36a9be-d740-4b9f-964e-cf65c997aba7",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 339.0,
+        "source_role_provenance": "1c36a9be-d740-4b9f-964e-cf65c997aba7"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "76eefc3d-6979-4972-8059-04f42b684320",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "steel",
+        "role_nativeID": 64.0,
+        "source_role_provenance": "76eefc3d-6979-4972-8059-04f42b684320"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "d61a4ae79e69027bb8c38ce64b086ca83d0b6c8d464a8f47225648f70435dffb",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 13.0,
+            "vertexSHA256": "4fe38d7e291fb6bea6a8ae43dec9c745741fe3f59d857c9452a721bc08b7d916"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "c6c9335e-797c-445b-90e1-8b18bb2d923e",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:tablesAtlas",
+        "role_nativeID": 111.0,
+        "source_role_provenance": "c6c9335e-797c-445b-90e1-8b18bb2d923e"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "e6440670-197d-4326-b0a9-be4f5b1703d3",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "plasticBlack",
+        "role_nativeID": 86.0,
+        "source_role_provenance": "e6440670-197d-4326-b0a9-be4f5b1703d3"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "f9213cba64e696fc9d7965749cafcdb3a250efd9cb2fd98c3549166c7194e72a",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 14.0,
+            "vertexSHA256": "b812f8c73c6f69ff6362b77587e3c442ccb0e25c78d4c5602286ad01fc7a04e5"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "c67c6fb8-7993-4e35-900c-4946bb5c4f23",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "screenOn",
+        "role_nativeID": 78.0,
+        "source_role_provenance": "c67c6fb8-7993-4e35-900c-4946bb5c4f23"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "5eb97e72-3137-41a5-a8ac-5e7d3391e335",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "ceramicBlack",
+        "role_nativeID": 84.0,
+        "source_role_provenance": "5eb97e72-3137-41a5-a8ac-5e7d3391e335"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "92f3659f-d5e3-43bd-bcc9-4ea277799285",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "brass",
+        "role_nativeID": 63.0,
+        "source_role_provenance": "92f3659f-d5e3-43bd-bcc9-4ea277799285"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "020becd2-85b4-4912-ac82-c006a77d78fe",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "rubber",
+        "role_nativeID": 85.0,
+        "source_role_provenance": "020becd2-85b4-4912-ac82-c006a77d78fe"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "a2d88dee-a5e5-4e05-8cc0-76c5c76b4d68",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "leatherTan",
+        "role_nativeID": 67.0,
+        "source_role_provenance": "a2d88dee-a5e5-4e05-8cc0-76c5c76b4d68"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "0272679cbfb9b18310ed38e02dea3549a156f7c7b10b849c305d910a1c819476",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 15.0,
+            "vertexSHA256": "ee49d53e33ab5cf2b57beeda4d35d377d94870be99be13e2f87d9e1a81a183f4"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "aa4c5d51-0dfa-4a07-943a-dda76f44dc93",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "velvetTeal",
+        "role_nativeID": 69.0,
+        "source_role_provenance": "aa4c5d51-0dfa-4a07-943a-dda76f44dc93"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "b2416376-759b-4136-9cdc-9a8e17322eb3",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "fabricCharcoal",
+        "role_nativeID": 71.0,
+        "source_role_provenance": "b2416376-759b-4136-9cdc-9a8e17322eb3"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "fa2b7a28-1d31-4c43-a465-ad13ff5d3346",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "ceramicWhite",
+        "role_nativeID": 83.0,
+        "source_role_provenance": "fa2b7a28-1d31-4c43-a465-ad13ff5d3346"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "fa21aab23903f587c79d87d9ae8a93b136652a57dec9e5fa90df92503d3311d0",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 17.0,
+            "vertexSHA256": "65dfa8248e48d6fec601f1645026c7f6d08e3eb035119f7902ff2af0beb657da"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "a61430bf-d989-491e-b0cf-014b1b823606",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lobbyAtlas",
+        "role_nativeID": 115.0,
+        "source_role_provenance": "a61430bf-d989-491e-b0cf-014b1b823606"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "861cd7e7-3930-4880-9082-1a017bd79c94",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "leatherBlack",
+        "role_nativeID": 68.0,
+        "source_role_provenance": "861cd7e7-3930-4880-9082-1a017bd79c94"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "0acbe176-eda4-4f10-b427-bf4e4f924940",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "plasticWhite",
+        "role_nativeID": 87.0,
+        "source_role_provenance": "0acbe176-eda4-4f10-b427-bf4e4f924940"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "e2796fae-e595-4369-8c34-5d8d07c62ca2",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:yellow",
+        "role_nativeID": 126.0,
+        "source_role_provenance": "e2796fae-e595-4369-8c34-5d8d07c62ca2"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b441067e539757addfbc7a59f20d50501e72b6852705a44af90c16016827ffbc",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 19.0,
+            "vertexSHA256": "dd01501b6ed522ba759f224da28e2296a78447925bc845739ad5c5d29892e2ce"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "3e8a8260-9112-4ca6-8810-f4cd93e32494",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:serviceAtlas",
+        "role_nativeID": 125.0,
+        "source_role_provenance": "3e8a8260-9112-4ca6-8810-f4cd93e32494"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "fe1c2305-5106-4c51-88f1-b18a53cd15c4",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "blackMetal",
+        "role_nativeID": 66.0,
+        "source_role_provenance": "fe1c2305-5106-4c51-88f1-b18a53cd15c4"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "d67ec68e-490e-4cf6-a029-f7ed0b3098d0",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "terracotta",
+        "role_nativeID": 82.0,
+        "source_role_provenance": "d67ec68e-490e-4cf6-a029-f7ed0b3098d0"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "eb244d2328240c2d06be43020237b3dff93a14baf0dee51650a49cbd56e19ee5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 16.0,
+            "vertexSHA256": "2672f937c45a5236eaefa3908f17a4c10ec8dd2dab30823e82236d6222077b67"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "ea5d7b7d-4d5a-41ef-949d-e91bafce4819",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:leaf",
+        "role_nativeID": 117.0,
+        "source_role_provenance": "ea5d7b7d-4d5a-41ef-949d-e91bafce4819"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "e997bd1962b467e6cd5324c166806977343838334b6f76e1df1f7d13649ee980",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 20.0,
+            "vertexSHA256": "01e2107372c860831c280763239b33a7363fbf1efd557acf9e7f5f36304f4893"
+          },
+          {
+            "fragmentSHA256": "ffe17601082a9ef5e2a609b009b2cab51e86b4197f5b793054757133392181ad",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 39.0,
+            "vertexSHA256": "7d9f502ff9ad84fd0d5b62834c9ed20ce2a14072d2bb87438df85596e090a3e6"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "128cd7ad-55a2-4ba0-bc75-1adaf73b255a",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "bottleGreen",
+        "role_nativeID": 89.0,
+        "source_role_provenance": "128cd7ad-55a2-4ba0-bc75-1adaf73b255a"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "e997bd1962b467e6cd5324c166806977343838334b6f76e1df1f7d13649ee980",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 20.0,
+            "vertexSHA256": "01e2107372c860831c280763239b33a7363fbf1efd557acf9e7f5f36304f4893"
+          },
+          {
+            "fragmentSHA256": "ffe17601082a9ef5e2a609b009b2cab51e86b4197f5b793054757133392181ad",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 39.0,
+            "vertexSHA256": "7d9f502ff9ad84fd0d5b62834c9ed20ce2a14072d2bb87438df85596e090a3e6"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "f6ce6f81-e9df-4191-808e-885fab126563",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "bottleAmber",
+        "role_nativeID": 90.0,
+        "source_role_provenance": "f6ce6f81-e9df-4191-808e-885fab126563"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "e997bd1962b467e6cd5324c166806977343838334b6f76e1df1f7d13649ee980",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 20.0,
+            "vertexSHA256": "01e2107372c860831c280763239b33a7363fbf1efd557acf9e7f5f36304f4893"
+          },
+          {
+            "fragmentSHA256": "ffe17601082a9ef5e2a609b009b2cab51e86b4197f5b793054757133392181ad",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 39.0,
+            "vertexSHA256": "7d9f502ff9ad84fd0d5b62834c9ed20ce2a14072d2bb87438df85596e090a3e6"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "1a6ecd60-bd4c-4fc1-848d-67859f1a5e0a",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "bottleClear",
+        "role_nativeID": 91.0,
+        "source_role_provenance": "1a6ecd60-bd4c-4fc1-848d-67859f1a5e0a"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "f0bd0d8694b8299a0bfb3a355af299cd86e6a6311f11f1449bf872931c5915d8",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 21.0,
+            "vertexSHA256": "d7de66ab5583b66cdce0c36280cb0d910d95d3e7e2243ae0c44f0d46146cf5e8"
+          },
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "de08144d-b140-43ff-a828-8256b3d6656f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "woodLight",
+        "role_nativeID": 58.0,
+        "source_role_provenance": "de08144d-b140-43ff-a828-8256b3d6656f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "7ac355f6-9de2-4f01-a469-16887f8b6d5e",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "woodDark",
+        "role_nativeID": 57.0,
+        "source_role_provenance": "7ac355f6-9de2-4f01-a469-16887f8b6d5e"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "9ac5a8e7-3dbe-4f8a-8450-a6031f08f38c",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "chrome",
+        "role_nativeID": 65.0,
+        "source_role_provenance": "9ac5a8e7-3dbe-4f8a-8450-a6031f08f38c"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "0e0dd330-2197-4114-982c-9d8fa3266d75",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "fabricCream",
+        "role_nativeID": 70.0,
+        "source_role_provenance": "0e0dd330-2197-4114-982c-9d8fa3266d75"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "6780e8e9-a6e8-4e4a-994d-b2ae70c3cbc0",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 174.0,
+        "source_role_provenance": "6780e8e9-a6e8-4e4a-994d-b2ae70c3cbc0"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "c2120c79cf8186c2bebb6d3299d8a5287750acd18e38a6db2e623791ab4f7c1a",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 25.0,
+            "vertexSHA256": "c155390b8eb0b985319567f990693444082233979a07baca965d3cb1be5467c7"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "83ca3a2b-12d4-4fa1-954a-c71abcfd9142",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 212.0,
+        "source_role_provenance": "83ca3a2b-12d4-4fa1-954a-c71abcfd9142"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "cb16fe2c9f81f2a2625e5933ef13d50831ed9c6c46511810b63e977610c6484a",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 27.0,
+            "vertexSHA256": "a733068a57a3ad8a324f1dcd219c7a75d64916cc91fac5482f6fcd6145567d4f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "cfe84f1e-eea5-4059-819a-3b9ff897b728",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 218.0,
+        "source_role_provenance": "cfe84f1e-eea5-4059-819a-3b9ff897b728"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "367399e640f87c212d5c8fa9c938114e4a5c9e63276ef2145f87302bd0584648",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 28.0,
+            "vertexSHA256": "c12d8b29866a5e30402a2192e3f90961b0ecfa39e06cc736d3c5554055978b99"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "d779110a-5633-469b-8938-e343a05153c3",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 216.0,
+        "source_role_provenance": "d779110a-5633-469b-8938-e343a05153c3"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "367399e640f87c212d5c8fa9c938114e4a5c9e63276ef2145f87302bd0584648",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 28.0,
+            "vertexSHA256": "c12d8b29866a5e30402a2192e3f90961b0ecfa39e06cc736d3c5554055978b99"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "dbc5d152-8aa7-4758-add7-0663f4b75b07",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 217.0,
+        "source_role_provenance": "dbc5d152-8aa7-4758-add7-0663f4b75b07"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "3ce264dfb242caf95d20bbb2044ef71c81349c2a317286d68ddd99810e1919d4",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 33.0,
+            "vertexSHA256": "da869ff6a8591ebe9b0fb1c1c8c2164d4771a51e0ffc436872a3f5477d065887"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "4a5e5133-2d9f-4578-b45c-52c38fc63a06",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "marbleFloor",
+        "role_nativeID": 45.0,
+        "source_role_provenance": "4a5e5133-2d9f-4578-b45c-52c38fc63a06"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "3ce264dfb242caf95d20bbb2044ef71c81349c2a317286d68ddd99810e1919d4",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 33.0,
+            "vertexSHA256": "da869ff6a8591ebe9b0fb1c1c8c2164d4771a51e0ffc436872a3f5477d065887"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "52877945-95e4-4066-bc52-54e037f87c54",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "oakFloor",
+        "role_nativeID": 47.0,
+        "source_role_provenance": "52877945-95e4-4066-bc52-54e037f87c54"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "5ad1eee1-fdd6-4c4e-8412-1d3adf5eed8d",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "carpetHall",
+        "role_nativeID": 49.0,
+        "source_role_provenance": "5ad1eee1-fdd6-4c4e-8412-1d3adf5eed8d"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "36de258f-2926-444b-809f-33f0eb723494",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "carpetLobby",
+        "role_nativeID": 48.0,
+        "source_role_provenance": "36de258f-2926-444b-809f-33f0eb723494"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "8292ba6f-0596-438e-acf5-c9e7275b7877",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "concrete",
+        "role_nativeID": 59.0,
+        "source_role_provenance": "8292ba6f-0596-438e-acf5-c9e7275b7877"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "3ce264dfb242caf95d20bbb2044ef71c81349c2a317286d68ddd99810e1919d4",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 33.0,
+            "vertexSHA256": "da869ff6a8591ebe9b0fb1c1c8c2164d4771a51e0ffc436872a3f5477d065887"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "46fc7a32-f90c-4170-9038-b25d3b927b7a",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "kitchenFloor",
+        "role_nativeID": 52.0,
+        "source_role_provenance": "46fc7a32-f90c-4170-9038-b25d3b927b7a"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "3ce264dfb242caf95d20bbb2044ef71c81349c2a317286d68ddd99810e1919d4",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 33.0,
+            "vertexSHA256": "da869ff6a8591ebe9b0fb1c1c8c2164d4771a51e0ffc436872a3f5477d065887"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "be042a49-114b-4c28-88ef-89e01330e8f6",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "terraceStone",
+        "role_nativeID": 50.0,
+        "source_role_provenance": "be042a49-114b-4c28-88ef-89e01330e8f6"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "625c55fb-6516-4f08-8cba-85fa879a5275",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "poolTile",
+        "role_nativeID": 51.0,
+        "source_role_provenance": "625c55fb-6516-4f08-8cba-85fa879a5275"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "ee706ee6-81e9-40f8-b89a-16440308a5d5",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "exterior",
+        "role_nativeID": 62.0,
+        "source_role_provenance": "ee706ee6-81e9-40f8-b89a-16440308a5d5"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "6684c528-99b6-46ef-b095-d164db0c4e6e",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "ceiling",
+        "role_nativeID": 60.0,
+        "source_role_provenance": "6684c528-99b6-46ef-b095-d164db0c4e6e"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "cee4b20d-e10b-468d-9899-eb426339e387",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "plaster",
+        "role_nativeID": 54.0,
+        "source_role_provenance": "cee4b20d-e10b-468d-9899-eb426339e387"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "8a420131-6db6-45b9-b40a-7720cf1fc562",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "ceilingTile",
+        "role_nativeID": 61.0,
+        "source_role_provenance": "8a420131-6db6-45b9-b40a-7720cf1fc562"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "56deaf10-c9e7-42de-a034-59f38bc5a746",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "walnut",
+        "role_nativeID": 56.0,
+        "source_role_provenance": "56deaf10-c9e7-42de-a034-59f38bc5a746"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "6a48d5f8-cd42-41ec-946b-8ba62f4b47c6",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "kitchenTile",
+        "role_nativeID": 53.0,
+        "source_role_provenance": "6a48d5f8-cd42-41ec-946b-8ba62f4b47c6"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "72b59a46-35fc-402e-9c46-cf82d710ba4f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "plasterDark",
+        "role_nativeID": 55.0,
+        "source_role_provenance": "72b59a46-35fc-402e-9c46-cf82d710ba4f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "e2949eb1-e5f4-49fa-8c07-2a7d077da506",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "ledStrip",
+        "role_nativeID": 77.0,
+        "source_role_provenance": "e2949eb1-e5f4-49fa-8c07-2a7d077da506"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "1ebf4b448742b90718e6cb3548cabc544253a3d80b8e3727d3c3bf34845377e6",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 34.0,
+            "vertexSHA256": "f7e793510eaf13b3eab81c89182dca0664781c71f6f1eca10deb38d8c5f8f751"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "b63e000c-a90c-4e11-8054-0b736b9d93cb",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "lampShade",
+        "role_nativeID": 74.0,
+        "source_role_provenance": "b63e000c-a90c-4e11-8054-0b736b9d93cb"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "ea90c5b4-4df1-4749-9448-396eaf7d76b8",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "screenOff",
+        "role_nativeID": 79.0,
+        "source_role_provenance": "ea90c5b4-4df1-4749-9448-396eaf7d76b8"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "ae68985c-41fe-48e2-b828-d4ccc3ba7f25",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "marbleDark",
+        "role_nativeID": 46.0,
+        "source_role_provenance": "ae68985c-41fe-48e2-b828-d4ccc3ba7f25"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "cebbdfb8f3f353c48868ae2a78e88075700ffe63a2b52b308a0701e8941f5e3a",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 35.0,
+            "vertexSHA256": "ee569a149a46ceaacdb8ade5ec8824aa2d7f77080e5d43718d3c453cb53c4261"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "d29f1af6-1523-42f3-bc7f-7b3bb73ab5e9",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "onyx",
+        "role_nativeID": 73.0,
+        "source_role_provenance": "d29f1af6-1523-42f3-bc7f-7b3bb73ab5e9"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "5d2337143441dcd0b7444c7c89dd93662a783e80547546e6f143ce37d346d4d1",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 36.0,
+            "vertexSHA256": "f1cbc6c25b4d23998b927fc387c045b88d79b6ce3308fd5e439eb29f8dd4e43f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "cab6c6f9-ad1d-4ef2-b4c9-97ce0f497cda",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lobbyGlow",
+        "role_nativeID": 116.0,
+        "source_role_provenance": "cab6c6f9-ad1d-4ef2-b4c9-97ce0f497cda"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "f20d144d-b57a-4d80-9cb2-b84057934f8e",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "soil",
+        "role_nativeID": 81.0,
+        "source_role_provenance": "f20d144d-b57a-4d80-9cb2-b84057934f8e"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "d61a4ae79e69027bb8c38ce64b086ca83d0b6c8d464a8f47225648f70435dffb",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 13.0,
+            "vertexSHA256": "4fe38d7e291fb6bea6a8ae43dec9c745741fe3f59d857c9452a721bc08b7d916"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "f29d2732-b5ca-4bfe-9cc2-6202576352b6",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "rug0:1.3",
+        "role_nativeID": 118.0,
+        "source_role_provenance": "f29d2732-b5ca-4bfe-9cc2-6202576352b6"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "d61a4ae79e69027bb8c38ce64b086ca83d0b6c8d464a8f47225648f70435dffb",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 13.0,
+            "vertexSHA256": "4fe38d7e291fb6bea6a8ae43dec9c745741fe3f59d857c9452a721bc08b7d916"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "9e2cccc6-7191-4b0a-a8c2-eaef7325b8ea",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "rug1:1.3",
+        "role_nativeID": 122.0,
+        "source_role_provenance": "9e2cccc6-7191-4b0a-a8c2-eaef7325b8ea"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "6e41471a-0180-4659-b83f-268583627b6f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "paper",
+        "role_nativeID": 88.0,
+        "source_role_provenance": "6e41471a-0180-4659-b83f-268583627b6f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b14ddf199662cbf997a77c08bd89f12c1e6a4631f18766f959b8371a5003a8d7",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 37.0,
+            "vertexSHA256": "3b6556485109728a88e58644ed2ecb50587b6e96940affbd8a251ca089f37dc5"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "7e0d72db-d13c-4124-88b6-3c7fd3c7eca9",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "art1",
+        "role_nativeID": 92.0,
+        "source_role_provenance": "7e0d72db-d13c-4124-88b6-3c7fd3c7eca9"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b14ddf199662cbf997a77c08bd89f12c1e6a4631f18766f959b8371a5003a8d7",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 37.0,
+            "vertexSHA256": "3b6556485109728a88e58644ed2ecb50587b6e96940affbd8a251ca089f37dc5"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "2291c7b8-2544-404e-8c8d-dfdf47ce9a79",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "art2",
+        "role_nativeID": 93.0,
+        "source_role_provenance": "2291c7b8-2544-404e-8c8d-dfdf47ce9a79"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "4a7643cd-2dd7-4017-b434-c4a48fbe12ed",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 119.0,
+        "source_role_provenance": "4a7643cd-2dd7-4017-b434-c4a48fbe12ed"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b14ddf199662cbf997a77c08bd89f12c1e6a4631f18766f959b8371a5003a8d7",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 37.0,
+            "vertexSHA256": "3b6556485109728a88e58644ed2ecb50587b6e96940affbd8a251ca089f37dc5"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "061d843c-b936-44c8-90d6-7daffb21d343",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "art3",
+        "role_nativeID": 94.0,
+        "source_role_provenance": "061d843c-b936-44c8-90d6-7daffb21d343"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b14ddf199662cbf997a77c08bd89f12c1e6a4631f18766f959b8371a5003a8d7",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 37.0,
+            "vertexSHA256": "3b6556485109728a88e58644ed2ecb50587b6e96940affbd8a251ca089f37dc5"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "2a154e1f-8d28-4801-9496-df7feff65585",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "art4",
+        "role_nativeID": 95.0,
+        "source_role_provenance": "2a154e1f-8d28-4801-9496-df7feff65585"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "d61a4ae79e69027bb8c38ce64b086ca83d0b6c8d464a8f47225648f70435dffb",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 13.0,
+            "vertexSHA256": "4fe38d7e291fb6bea6a8ae43dec9c745741fe3f59d857c9452a721bc08b7d916"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "b72cb8f5-b688-4276-a9ce-37fe002e3690",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "rug2:1.7",
+        "role_nativeID": 150.0,
+        "source_role_provenance": "b72cb8f5-b688-4276-a9ce-37fe002e3690"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "9336cb56-e2b0-43f0-a560-74d70c836902",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:red",
+        "role_nativeID": 160.0,
+        "source_role_provenance": "9336cb56-e2b0-43f0-a560-74d70c836902"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "3e75d005-9101-4309-8833-d85693aaacd8",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "bulbCool",
+        "role_nativeID": 76.0,
+        "source_role_provenance": "3e75d005-9101-4309-8833-d85693aaacd8"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "d61a4ae79e69027bb8c38ce64b086ca83d0b6c8d464a8f47225648f70435dffb",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 13.0,
+            "vertexSHA256": "4fe38d7e291fb6bea6a8ae43dec9c745741fe3f59d857c9452a721bc08b7d916"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "ff68d734-5e48-4500-b17a-408be81347ee",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "rug1:6.0",
+        "role_nativeID": 162.0,
+        "source_role_provenance": "ff68d734-5e48-4500-b17a-408be81347ee"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "03a76377e6785c53ce8a264a23740e6fa3a01c1f5e9ed516af0f7b91d6309f6f",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 12.0,
+            "vertexSHA256": "a8495a70066c8f4421e0215693ded801261bf6ea8a81d0cab44c8084cfc9b18f"
+          }
+        ],
+        "has_unported_Nj": true,
+        "receiver_material": "2eb9e8fa-c114-40c9-b84d-c7484395e3e1",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "bedLinen",
+        "role_nativeID": 72.0,
+        "source_role_provenance": "2eb9e8fa-c114-40c9-b84d-c7484395e3e1"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "daf932c3-7de5-45db-84ce-a9ca5ff1ad60",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "bulbWarm",
+        "role_nativeID": 75.0,
+        "source_role_provenance": "daf932c3-7de5-45db-84ce-a9ca5ff1ad60"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "b7ee2003-b662-40d4-a9e0-17ee0018c3c7",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 177.0,
+        "source_role_provenance": "b7ee2003-b662-40d4-a9e0-17ee0018c3c7"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "6358ab03005a434cbcb7ee1684336f682f463703f42b529c139cf425a342522e",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 38.0,
+            "vertexSHA256": "301c4396fbbde28d8a0b2de15d87cc732e6393e312e524831cedc6d942066c0f"
+          },
+          {
+            "fragmentSHA256": "ffe17601082a9ef5e2a609b009b2cab51e86b4197f5b793054757133392181ad",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 39.0,
+            "vertexSHA256": "7d9f502ff9ad84fd0d5b62834c9ed20ce2a14072d2bb87438df85596e090a3e6"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "0fed7992-2e5d-4467-8168-7f163891965f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 175.0,
+        "source_role_provenance": "0fed7992-2e5d-4467-8168-7f163891965f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "43098243-d283-4e61-95b7-5cb67c033d51",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 176.0,
+        "source_role_provenance": "43098243-d283-4e61-95b7-5cb67c033d51"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "9d7d3c30e277929aa3e12583a4cf4ea064056012024e4410e958579ed5a261b2",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 40.0,
+            "vertexSHA256": "ae77cefdab46d9bf203478ea9dc83978cc1ccedcf36c152abf77d496dfb08771"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "177aee7c-96b6-4885-8963-df51e0f63612",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "west-print-glow",
+        "role_nativeID": 179.0,
+        "source_role_provenance": "177aee7c-96b6-4885-8963-df51e0f63612"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b441067e539757addfbc7a59f20d50501e72b6852705a44af90c16016827ffbc",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 19.0,
+            "vertexSHA256": "dd01501b6ed522ba759f224da28e2296a78447925bc845739ad5c5d29892e2ce"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "b78259ca-b6e6-47f1-a994-a127003c7925",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "west-5",
+        "role_nativeID": 185.0,
+        "source_role_provenance": "b78259ca-b6e6-47f1-a994-a127003c7925"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b36aacb1447d6c585b9666d996f4b7ee52f2962f2d448a4341b4d9524a679612",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 41.0,
+            "vertexSHA256": "a5caa74878561f514ed5b9d1b7889e0b305b599814f1c91961824472cce86350"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "a3ee54ff-b269-4858-b5a3-044c5c4452e8",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "west-print",
+        "role_nativeID": 178.0,
+        "source_role_provenance": "a3ee54ff-b269-4858-b5a3-044c5c4452e8"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "ffe17601082a9ef5e2a609b009b2cab51e86b4197f5b793054757133392181ad",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 39.0,
+            "vertexSHA256": "7d9f502ff9ad84fd0d5b62834c9ed20ce2a14072d2bb87438df85596e090a3e6"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "cb22902b-baff-4946-9d71-98c6a42f392e",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "west-glass",
+        "role_nativeID": 180.0,
+        "source_role_provenance": "cb22902b-baff-4946-9d71-98c6a42f392e"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "73fc70e675b531346eb1ce2184fedf6d571d0c3070d124f1ef584320abaef689",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 42.0,
+            "vertexSHA256": "9eed66d38b9d3b623c71e731de5b301e86a0018f87da574a4fdcd592a7b35326"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "4e75b716-6162-44f1-98fe-dcf6e353b0a9",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "foliage",
+        "role_nativeID": 80.0,
+        "source_role_provenance": "4e75b716-6162-44f1-98fe-dcf6e353b0a9"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "989365fe33593f95ab38ec139f32de07c046ab08dc2df302029a966b016ddef1",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 43.0,
+            "vertexSHA256": "67b24986b522ec51d871a8f631e5730871c2f739ff17a5001b1e8a61f89fefb8"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "6714ec39-a66c-453b-9901-3f2a70e7a8aa",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "west-3",
+        "role_nativeID": 183.0,
+        "source_role_provenance": "6714ec39-a66c-453b-9901-3f2a70e7a8aa"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "5d2337143441dcd0b7444c7c89dd93662a783e80547546e6f143ce37d346d4d1",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 36.0,
+            "vertexSHA256": "f1cbc6c25b4d23998b927fc387c045b88d79b6ce3308fd5e439eb29f8dd4e43f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "6b65984d-da21-41cd-bded-fd28c43642af",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "west-6",
+        "role_nativeID": 186.0,
+        "source_role_provenance": "6b65984d-da21-41cd-bded-fd28c43642af"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "ffe17601082a9ef5e2a609b009b2cab51e86b4197f5b793054757133392181ad",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 39.0,
+            "vertexSHA256": "7d9f502ff9ad84fd0d5b62834c9ed20ce2a14072d2bb87438df85596e090a3e6"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "bf1c6f05-1ee9-4797-b123-ff55a83258c5",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "west-1",
+        "role_nativeID": 181.0,
+        "source_role_provenance": "bf1c6f05-1ee9-4797-b123-ff55a83258c5"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "f3db9958-c256-4684-850d-4e19ec8385ea",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "west-2",
+        "role_nativeID": 182.0,
+        "source_role_provenance": "f3db9958-c256-4684-850d-4e19ec8385ea"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "d61a4ae79e69027bb8c38ce64b086ca83d0b6c8d464a8f47225648f70435dffb",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 13.0,
+            "vertexSHA256": "4fe38d7e291fb6bea6a8ae43dec9c745741fe3f59d857c9452a721bc08b7d916"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "77d2872e-7673-4844-a93a-dda0c0264b41",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "rug1:2.3",
+        "role_nativeID": 188.0,
+        "source_role_provenance": "77d2872e-7673-4844-a93a-dda0c0264b41"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "d61a4ae79e69027bb8c38ce64b086ca83d0b6c8d464a8f47225648f70435dffb",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 13.0,
+            "vertexSHA256": "4fe38d7e291fb6bea6a8ae43dec9c745741fe3f59d857c9452a721bc08b7d916"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "0ff20bd3-2e9e-4c5a-81b5-b048387ac515",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "rug0:2.3",
+        "role_nativeID": 189.0,
+        "source_role_provenance": "0ff20bd3-2e9e-4c5a-81b5-b048387ac515"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "d61a4ae79e69027bb8c38ce64b086ca83d0b6c8d464a8f47225648f70435dffb",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 13.0,
+            "vertexSHA256": "4fe38d7e291fb6bea6a8ae43dec9c745741fe3f59d857c9452a721bc08b7d916"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "47675c7d-06e2-4e81-b937-2e4ed0e32510",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "rug2:2.3",
+        "role_nativeID": 190.0,
+        "source_role_provenance": "47675c7d-06e2-4e81-b937-2e4ed0e32510"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "1bba42cd-ca8e-456b-ad15-5ffd3461e41a",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "west-4",
+        "role_nativeID": 184.0,
+        "source_role_provenance": "1bba42cd-ca8e-456b-ad15-5ffd3461e41a"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "5d2337143441dcd0b7444c7c89dd93662a783e80547546e6f143ce37d346d4d1",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 36.0,
+            "vertexSHA256": "f1cbc6c25b4d23998b927fc387c045b88d79b6ce3308fd5e439eb29f8dd4e43f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "e3541d36-f21a-43f6-b523-0f999c473487",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 197.0,
+        "source_role_provenance": "e3541d36-f21a-43f6-b523-0f999c473487"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b441067e539757addfbc7a59f20d50501e72b6852705a44af90c16016827ffbc",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 19.0,
+            "vertexSHA256": "dd01501b6ed522ba759f224da28e2296a78447925bc845739ad5c5d29892e2ce"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "bb3da01c-eafd-4690-8d7a-6828543d16dc",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 195.0,
+        "source_role_provenance": "bb3da01c-eafd-4690-8d7a-6828543d16dc"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b441067e539757addfbc7a59f20d50501e72b6852705a44af90c16016827ffbc",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 19.0,
+            "vertexSHA256": "dd01501b6ed522ba759f224da28e2296a78447925bc845739ad5c5d29892e2ce"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "afee4c43-4e32-419d-a1fb-606158c3165f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 196.0,
+        "source_role_provenance": "afee4c43-4e32-419d-a1fb-606158c3165f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "a765201b-e60c-4d72-99a5-fb28b0b188b4",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 209.0,
+        "source_role_provenance": "a765201b-e60c-4d72-99a5-fb28b0b188b4"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "33f9a85a-0253-4280-855c-cb092c0ab6cb",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 208.0,
+        "source_role_provenance": "33f9a85a-0253-4280-855c-cb092c0ab6cb"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b36aacb1447d6c585b9666d996f4b7ee52f2962f2d448a4341b4d9524a679612",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 41.0,
+            "vertexSHA256": "a5caa74878561f514ed5b9d1b7889e0b305b599814f1c91961824472cce86350"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "9f02dd30-7ed5-4308-9164-28e908be2904",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 213.0,
+        "source_role_provenance": "9f02dd30-7ed5-4308-9164-28e908be2904"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "c3e7f10eec68891ea7b9f49b8a2f0d0c8e77926a5b0b4c6a97590641c3cbd91d",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 44.0,
+            "vertexSHA256": "d7b823a12b5c7e113f9379ac72a1aa3598ef4ef961f9c23454a83dee4fa96d89"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "4f7aee19-6e09-4784-81a8-330b784731cb",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 211.0,
+        "source_role_provenance": "4f7aee19-6e09-4784-81a8-330b784731cb"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "5b7f7538-0a13-415b-ad4c-c6e674af657a",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 210.0,
+        "source_role_provenance": "5b7f7538-0a13-415b-ad4c-c6e674af657a"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "73fc70e675b531346eb1ce2184fedf6d571d0c3070d124f1ef584320abaef689",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 42.0,
+            "vertexSHA256": "9eed66d38b9d3b623c71e731de5b301e86a0018f87da574a4fdcd592a7b35326"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "0b985096-fa73-47d4-9dd9-c8cfe4ed1104",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "foliage",
+        "role_nativeID": 206.0,
+        "source_role_provenance": "0b985096-fa73-47d4-9dd9-c8cfe4ed1104"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "73fc70e675b531346eb1ce2184fedf6d571d0c3070d124f1ef584320abaef689",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 42.0,
+            "vertexSHA256": "9eed66d38b9d3b623c71e731de5b301e86a0018f87da574a4fdcd592a7b35326"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "ff457ed1-5e81-4c05-b15f-d444e8b407a5",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "foliage",
+        "role_nativeID": 207.0,
+        "source_role_provenance": "ff457ed1-5e81-4c05-b15f-d444e8b407a5"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "d61a4ae79e69027bb8c38ce64b086ca83d0b6c8d464a8f47225648f70435dffb",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 13.0,
+            "vertexSHA256": "4fe38d7e291fb6bea6a8ae43dec9c745741fe3f59d857c9452a721bc08b7d916"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "dff2ace3-be88-4c6c-91ff-c4fc4813d378",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "rug2:1.3",
+        "role_nativeID": 214.0,
+        "source_role_provenance": "dff2ace3-be88-4c6c-91ff-c4fc4813d378"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "7618645abba095637d5ab817091201f0249146b702b11f613119c08e16ee1e18",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 45.0,
+            "vertexSHA256": "7513e92bae62fc1af8cb1fbd544bf438b61490c7bed0740d36d7d0bce64b0571"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "7a13c782-9df2-4019-a439-a4777f1b8159",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 112.0,
+        "source_role_provenance": "7a13c782-9df2-4019-a439-a4777f1b8159"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "7618645abba095637d5ab817091201f0249146b702b11f613119c08e16ee1e18",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 45.0,
+            "vertexSHA256": "7513e92bae62fc1af8cb1fbd544bf438b61490c7bed0740d36d7d0bce64b0571"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "eec0a072-81f9-4ef2-b86a-0d6603980d36",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 113.0,
+        "source_role_provenance": "eec0a072-81f9-4ef2-b86a-0d6603980d36"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "7618645abba095637d5ab817091201f0249146b702b11f613119c08e16ee1e18",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 45.0,
+            "vertexSHA256": "7513e92bae62fc1af8cb1fbd544bf438b61490c7bed0740d36d7d0bce64b0571"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "a2285196-a5f5-492c-8c90-2636c7fb1a7e",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 114.0,
+        "source_role_provenance": "a2285196-a5f5-492c-8c90-2636c7fb1a7e"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "e6dc82bc-1935-4785-b001-9fd45b8f778d",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 120.0,
+        "source_role_provenance": "e6dc82bc-1935-4785-b001-9fd45b8f778d"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "06b87f56-b915-4d7c-9029-4b2afb58526a",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 121.0,
+        "source_role_provenance": "06b87f56-b915-4d7c-9029-4b2afb58526a"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "6a9b409f-cd79-463e-9436-393d2f9afc7e",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 123.0,
+        "source_role_provenance": "6a9b409f-cd79-463e-9436-393d2f9afc7e"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "d6224813-4962-495b-a06d-7cde0ba474c4",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 124.0,
+        "source_role_provenance": "d6224813-4962-495b-a06d-7cde0ba474c4"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "0a583ab1-edcd-4c14-b43c-e07d4fa355e0",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 127.0,
+        "source_role_provenance": "0a583ab1-edcd-4c14-b43c-e07d4fa355e0"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "1a3b7dbd-bdb5-4a86-84e2-21bb9f6bb24f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 128.0,
+        "source_role_provenance": "1a3b7dbd-bdb5-4a86-84e2-21bb9f6bb24f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "2a222511-8dd1-413d-942b-8347ef870263",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 129.0,
+        "source_role_provenance": "2a222511-8dd1-413d-942b-8347ef870263"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "3a0d8361-5d21-4fb2-a419-7df13ff86acc",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 130.0,
+        "source_role_provenance": "3a0d8361-5d21-4fb2-a419-7df13ff86acc"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "4afc27fc-2da5-4f9c-b4aa-c8098fbc505b",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 131.0,
+        "source_role_provenance": "4afc27fc-2da5-4f9c-b4aa-c8098fbc505b"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "5aefe4d6-fd5c-40bd-84e0-5ef3dfd4584c",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 132.0,
+        "source_role_provenance": "5aefe4d6-fd5c-40bd-84e0-5ef3dfd4584c"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "7618645abba095637d5ab817091201f0249146b702b11f613119c08e16ee1e18",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 45.0,
+            "vertexSHA256": "7513e92bae62fc1af8cb1fbd544bf438b61490c7bed0740d36d7d0bce64b0571"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "3ade4383-5dbe-4fa5-a412-e33c3f9dce92",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 133.0,
+        "source_role_provenance": "3ade4383-5dbe-4fa5-a412-e33c3f9dce92"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "ae876393-4191-43a0-b89f-0fc0c3c5eecf",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 134.0,
+        "source_role_provenance": "ae876393-4191-43a0-b89f-0fc0c3c5eecf"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "7618645abba095637d5ab817091201f0249146b702b11f613119c08e16ee1e18",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 45.0,
+            "vertexSHA256": "7513e92bae62fc1af8cb1fbd544bf438b61490c7bed0740d36d7d0bce64b0571"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "bee3384d-119e-4710-8826-7fae13fb457f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 135.0,
+        "source_role_provenance": "bee3384d-119e-4710-8826-7fae13fb457f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "ce83f5be-e11e-42a0-9890-0a0163c4dfa4",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 136.0,
+        "source_role_provenance": "ce83f5be-e11e-42a0-9890-0a0163c4dfa4"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "7618645abba095637d5ab817091201f0249146b702b11f613119c08e16ee1e18",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 45.0,
+            "vertexSHA256": "7513e92bae62fc1af8cb1fbd544bf438b61490c7bed0740d36d7d0bce64b0571"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "de677a47-b113-40c7-a8df-3a36b321b143",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 137.0,
+        "source_role_provenance": "de677a47-b113-40c7-a8df-3a36b321b143"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "ee8fe881-817c-4e8c-b811-d9920313efef",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 138.0,
+        "source_role_provenance": "ee8fe881-817c-4e8c-b811-d9920313efef"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "7618645abba095637d5ab817091201f0249146b702b11f613119c08e16ee1e18",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 45.0,
+            "vertexSHA256": "7513e92bae62fc1af8cb1fbd544bf438b61490c7bed0740d36d7d0bce64b0571"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "fefba055-5159-4a55-8828-eeb153980e1f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 139.0,
+        "source_role_provenance": "fefba055-5159-4a55-8828-eeb153980e1f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "0eac4406-21aa-40b7-9823-c314a3b1c477",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 140.0,
+        "source_role_provenance": "0eac4406-21aa-40b7-9823-c314a3b1c477"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "7618645abba095637d5ab817091201f0249146b702b11f613119c08e16ee1e18",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 45.0,
+            "vertexSHA256": "7513e92bae62fc1af8cb1fbd544bf438b61490c7bed0740d36d7d0bce64b0571"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "1ea0b443-f16e-4e47-a801-e1b2f35e0622",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 141.0,
+        "source_role_provenance": "1ea0b443-f16e-4e47-a801-e1b2f35e0622"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "2ed8113a-c1a7-4068-b8c4-108a43a00817",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 142.0,
+        "source_role_provenance": "2ed8113a-c1a7-4068-b8c4-108a43a00817"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "7618645abba095637d5ab817091201f0249146b702b11f613119c08e16ee1e18",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 45.0,
+            "vertexSHA256": "7513e92bae62fc1af8cb1fbd544bf438b61490c7bed0740d36d7d0bce64b0571"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "3e54bda1-9154-441c-886a-5b2e93754071",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 143.0,
+        "source_role_provenance": "3e54bda1-9154-441c-886a-5b2e93754071"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "4e1458cf-6175-46d7-98f5-095ae3de62bc",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 144.0,
+        "source_role_provenance": "4e1458cf-6175-46d7-98f5-095ae3de62bc"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "73579daa-429c-4821-8594-fc016c65df80",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 145.0,
+        "source_role_provenance": "73579daa-429c-4821-8594-fc016c65df80"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "37d66d61-3624-45dd-a9b4-0ef680d5102f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 146.0,
+        "source_role_provenance": "37d66d61-3624-45dd-a9b4-0ef680d5102f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "3bd022a0-6a6e-4793-8d30-4172d4814ec7",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 147.0,
+        "source_role_provenance": "3bd022a0-6a6e-4793-8d30-4172d4814ec7"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "7f2999e0-de0e-4fb8-b18e-562b681e11dc",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 148.0,
+        "source_role_provenance": "7f2999e0-de0e-4fb8-b18e-562b681e11dc"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "03068321-92d9-4fba-9591-d8293c9f6fe4",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 149.0,
+        "source_role_provenance": "03068321-92d9-4fba-9591-d8293c9f6fe4"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "4f4448bf-6e4b-426a-8102-12a878d95724",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 151.0,
+        "source_role_provenance": "4f4448bf-6e4b-426a-8102-12a878d95724"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "5d2337143441dcd0b7444c7c89dd93662a783e80547546e6f143ce37d346d4d1",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 36.0,
+            "vertexSHA256": "f1cbc6c25b4d23998b927fc387c045b88d79b6ce3308fd5e439eb29f8dd4e43f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "433b855a-d20d-44b4-95b9-70fd7c1d0d18",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lobbyGlow",
+        "role_nativeID": 152.0,
+        "source_role_provenance": "433b855a-d20d-44b4-95b9-70fd7c1d0d18"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "8ff1df5d-ae97-4dd2-8161-7682b82fa486",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 153.0,
+        "source_role_provenance": "8ff1df5d-ae97-4dd2-8161-7682b82fa486"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "df498929-bef3-4642-916e-7e5248b6778c",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 154.0,
+        "source_role_provenance": "df498929-bef3-4642-916e-7e5248b6778c"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "9378ffd8-e20a-47d1-a5f2-ab030ced67a7",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 155.0,
+        "source_role_provenance": "9378ffd8-e20a-47d1-a5f2-ab030ced67a7"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "e3a1ee05-f203-426d-b5f8-e6d99c18089e",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 156.0,
+        "source_role_provenance": "e3a1ee05-f203-426d-b5f8-e6d99c18089e"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "7f1e9c03-de7f-439a-b14b-56f068b75b37",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 157.0,
+        "source_role_provenance": "7f1e9c03-de7f-439a-b14b-56f068b75b37"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "030b48b7-921a-4f52-95de-b4ee3c884d2f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 158.0,
+        "source_role_provenance": "030b48b7-921a-4f52-95de-b4ee3c884d2f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "c7de8f37-86f3-4823-b91b-1a5d50714506",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 159.0,
+        "source_role_provenance": "c7de8f37-86f3-4823-b91b-1a5d50714506"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "072dbe59-c66c-40f6-b9c3-ca6f907c87ca",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 163.0,
+        "source_role_provenance": "072dbe59-c66c-40f6-b9c3-ca6f907c87ca"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "5743546a-d66e-43c9-893e-64642099915b",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 164.0,
+        "source_role_provenance": "5743546a-d66e-43c9-893e-64642099915b"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "a72d694e-e634-4f95-99ad-e7ebb019b56d",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 165.0,
+        "source_role_provenance": "a72d694e-e634-4f95-99ad-e7ebb019b56d"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "e376567a-f2d4-4582-b595-fe9a9c11c929",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 166.0,
+        "source_role_provenance": "e376567a-f2d4-4582-b595-fe9a9c11c929"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "a710289e-e6bb-42db-9988-7fd2b038ad07",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 167.0,
+        "source_role_provenance": "a710289e-e6bb-42db-9988-7fd2b038ad07"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "9f61c54a-7ea8-4a35-911b-b34d08091f43",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 168.0,
+        "source_role_provenance": "9f61c54a-7ea8-4a35-911b-b34d08091f43"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "971b5479-16ea-4a9a-8900-014b60f62c7f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 169.0,
+        "source_role_provenance": "971b5479-16ea-4a9a-8900-014b60f62c7f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "1fe3c0ed-fe3b-4957-9199-451c88681060",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 170.0,
+        "source_role_provenance": "1fe3c0ed-fe3b-4957-9199-451c88681060"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "c3ba3488-5287-4a66-95e4-1d9cfc52ad65",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 171.0,
+        "source_role_provenance": "c3ba3488-5287-4a66-95e4-1d9cfc52ad65"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "b7d78e9de9c0e68ace04b61033078a2fe79cd89a1e4e8146b45a73e772bdfca5",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 18.0,
+            "vertexSHA256": "1027493c3dba46217f9ce251d56035c54dd5eee9f6197104f7726d423adbd50f"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "134835f9-6294-4f28-a5ee-c3818cb2542c",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 187.0,
+        "source_role_provenance": "134835f9-6294-4f28-a5ee-c3818cb2542c"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "bf72343a-1e47-414b-b1e9-2ce7a8408fb7",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 191.0,
+        "source_role_provenance": "bf72343a-1e47-414b-b1e9-2ce7a8408fb7"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "f37b0854-c276-44fd-85ad-d5d6eca32834",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 192.0,
+        "source_role_provenance": "f37b0854-c276-44fd-85ad-d5d6eca32834"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "07eff105-c646-4d46-b9d5-ad2790663b5c",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 193.0,
+        "source_role_provenance": "07eff105-c646-4d46-b9d5-ad2790663b5c"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "ff8f8256-5e43-40b6-b139-41cfe8c66a55",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 194.0,
+        "source_role_provenance": "ff8f8256-5e43-40b6-b139-41cfe8c66a55"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "fb5f7f0c21e442b4bed915f2b6fed5b4c51f3dedf4de5ac822dfc87e9fc917ea",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 46.0,
+            "vertexSHA256": "65424367bccbe0f1741c99ebb140c2a506298ebe5d11c4f0cf69d238acf0afcb"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "6f14bf17-0e9d-4792-a1e7-4c28183cc07e",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 198.0,
+        "source_role_provenance": "6f14bf17-0e9d-4792-a1e7-4c28183cc07e"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "fb5f7f0c21e442b4bed915f2b6fed5b4c51f3dedf4de5ac822dfc87e9fc917ea",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 46.0,
+            "vertexSHA256": "65424367bccbe0f1741c99ebb140c2a506298ebe5d11c4f0cf69d238acf0afcb"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "f3e3fbdb-c2be-4007-8555-e5cfec2be47e",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 199.0,
+        "source_role_provenance": "f3e3fbdb-c2be-4007-8555-e5cfec2be47e"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "171df942e6f4dba08fa6598aa1d8c27448d862993177435b1a4c784fcaff14ef",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 24.0,
+            "vertexSHA256": "d1e31cd1c956dbb37bfcdede1f54f0a1491c734886a88329872567b1155cc844"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "5ba07fbf-0ac0-4a78-ad15-52e874e494e1",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "prop:lampGlow",
+        "role_nativeID": 200.0,
+        "source_role_provenance": "5ba07fbf-0ac0-4a78-ad15-52e874e494e1"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "7618645abba095637d5ab817091201f0249146b702b11f613119c08e16ee1e18",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 45.0,
+            "vertexSHA256": "7513e92bae62fc1af8cb1fbd544bf438b61490c7bed0740d36d7d0bce64b0571"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "b329e018-82c9-42e3-8561-a88dac443afe",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 201.0,
+        "source_role_provenance": "b329e018-82c9-42e3-8561-a88dac443afe"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "fb5f7f0c21e442b4bed915f2b6fed5b4c51f3dedf4de5ac822dfc87e9fc917ea",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 46.0,
+            "vertexSHA256": "65424367bccbe0f1741c99ebb140c2a506298ebe5d11c4f0cf69d238acf0afcb"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "27a3e723-662c-4c49-993e-9d82307d66a2",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 202.0,
+        "source_role_provenance": "27a3e723-662c-4c49-993e-9d82307d66a2"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "fb5f7f0c21e442b4bed915f2b6fed5b4c51f3dedf4de5ac822dfc87e9fc917ea",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 46.0,
+            "vertexSHA256": "65424367bccbe0f1741c99ebb140c2a506298ebe5d11c4f0cf69d238acf0afcb"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "2b30558c-9aed-4f02-bdc6-7c0684b8cfa3",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 203.0,
+        "source_role_provenance": "2b30558c-9aed-4f02-bdc6-7c0684b8cfa3"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "fb5f7f0c21e442b4bed915f2b6fed5b4c51f3dedf4de5ac822dfc87e9fc917ea",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 46.0,
+            "vertexSHA256": "65424367bccbe0f1741c99ebb140c2a506298ebe5d11c4f0cf69d238acf0afcb"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "7b9f405c-aa74-4e3e-8d02-6a6e14a20048",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 204.0,
+        "source_role_provenance": "7b9f405c-aa74-4e3e-8d02-6a6e14a20048"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "fb5f7f0c21e442b4bed915f2b6fed5b4c51f3dedf4de5ac822dfc87e9fc917ea",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 46.0,
+            "vertexSHA256": "65424367bccbe0f1741c99ebb140c2a506298ebe5d11c4f0cf69d238acf0afcb"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "1f754845-fea5-470f-91fb-3c8d8862ac3f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 205.0,
+        "source_role_provenance": "1f754845-fea5-470f-91fb-3c8d8862ac3f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "7618645abba095637d5ab817091201f0249146b702b11f613119c08e16ee1e18",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 45.0,
+            "vertexSHA256": "7513e92bae62fc1af8cb1fbd544bf438b61490c7bed0740d36d7d0bce64b0571"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "2b117432-9a5a-47b8-bd4f-bb0184ad92b1",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "sign",
+        "role_nativeID": 215.0,
+        "source_role_provenance": "2b117432-9a5a-47b8-bd4f-bb0184ad92b1"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "d09a7791450ec62e3896eb53d3bc4759f331b1e6c39815c5e05bf348844439ed",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 84.0,
+            "vertexSHA256": "4de7788f2aead02507a7dfff5e04d6bb11cab49311064cbf0de23bdadf4013b7"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "0202b7fd-853f-423b-ac91-813fa7404043",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 333.0,
+        "source_role_provenance": "0202b7fd-853f-423b-ac91-813fa7404043"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "cdd3c1369875f40d7d51950e51c804469fb1c86838d409f9eced64e8f6f77e4a",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 90.0,
+            "vertexSHA256": "6c7863c9581957c07d96a1a6d734843568baff9ce0337b7864a81bf01308c017"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "3085cec6-db3c-469f-8ab2-3b476d662d13",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 340.0,
+        "source_role_provenance": "3085cec6-db3c-469f-8ab2-3b476d662d13"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "f029c2168c51cf4110ece211d7936032066d660719aa5f38c88a5651454b14d3",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 92.0,
+            "vertexSHA256": "dc97b399349c5cfd5498b4ff526c06891b37485b61f6d9259eed691e34a621a2"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "6c1ec677-e7ec-423a-a66b-e1fe59ee6175",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 332.0,
+        "source_role_provenance": "6c1ec677-e7ec-423a-a66b-e1fe59ee6175"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "c2120c79cf8186c2bebb6d3299d8a5287750acd18e38a6db2e623791ab4f7c1a",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 25.0,
+            "vertexSHA256": "c155390b8eb0b985319567f990693444082233979a07baca965d3cb1be5467c7"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "5cbdf735-179f-4b2d-9697-41b709d0e87a",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 264.0,
+        "source_role_provenance": "5cbdf735-179f-4b2d-9697-41b709d0e87a"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "05ec62aecec4a2828668e6d15399484c9c95a83c634d29b7c558b63824a5052e",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 93.0,
+            "vertexSHA256": "c99b24edbc8e9780325f73eb512a9f3bc029f53f617c97e1ce041dcced0934ab"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "ffff18f5-5ef3-43a4-b129-d110e8f65973",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "camo:fracture|metal",
+        "role_nativeID": 403.0,
+        "source_role_provenance": "ffff18f5-5ef3-43a4-b129-d110e8f65973"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "c2120c79cf8186c2bebb6d3299d8a5287750acd18e38a6db2e623791ab4f7c1a",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 25.0,
+            "vertexSHA256": "c155390b8eb0b985319567f990693444082233979a07baca965d3cb1be5467c7"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "306faad6-db1e-4de7-8a2c-81f76d98509f",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "kr7:world",
+        "role_nativeID": 273.0,
+        "source_role_provenance": "306faad6-db1e-4de7-8a2c-81f76d98509f"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "05ec62aecec4a2828668e6d15399484c9c95a83c634d29b7c558b63824a5052e",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 93.0,
+            "vertexSHA256": "c99b24edbc8e9780325f73eb512a9f3bc029f53f617c97e1ce041dcced0934ab"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "f108325f-a8d3-4be1-b308-7fcdc29f4729",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "camo:timberline|metal",
+        "role_nativeID": 404.0,
+        "source_role_provenance": "f108325f-a8d3-4be1-b308-7fcdc29f4729"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "05ec62aecec4a2828668e6d15399484c9c95a83c634d29b7c558b63824a5052e",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 93.0,
+            "vertexSHA256": "c99b24edbc8e9780325f73eb512a9f3bc029f53f617c97e1ce041dcced0934ab"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "6fbdafac-0e32-4686-a178-e8ef18996cc6",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "camo:tigerstripe|metal",
+        "role_nativeID": 418.0,
+        "source_role_provenance": "6fbdafac-0e32-4686-a178-e8ef18996cc6"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "f029c2168c51cf4110ece211d7936032066d660719aa5f38c88a5651454b14d3",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 92.0,
+            "vertexSHA256": "dc97b399349c5cfd5498b4ff526c06891b37485b61f6d9259eed691e34a621a2"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "a98dd9af-00e1-46ae-abc6-07d0da0e6f46",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 419.0,
+        "source_role_provenance": "a98dd9af-00e1-46ae-abc6-07d0da0e6f46"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "05ec62aecec4a2828668e6d15399484c9c95a83c634d29b7c558b63824a5052e",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 93.0,
+            "vertexSHA256": "c99b24edbc8e9780325f73eb512a9f3bc029f53f617c97e1ce041dcced0934ab"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "992bef29-3086-4dea-9b49-8f498a5b9f46",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "camo:dune|metal",
+        "role_nativeID": 420.0,
+        "source_role_provenance": "992bef29-3086-4dea-9b49-8f498a5b9f46"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "476db562ddc47c8605265e95b93b734ef5a0d61ff8894a810c32495956387973",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 94.0,
+            "vertexSHA256": "3f6677edf309c71df88ba18c01e9b61879b7f96304038f8a15cae0f2bd8e6d77"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "e3c2349d-f2b0-4746-b5c1-0e239c4d23d0",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 422.0,
+        "source_role_provenance": "e3c2349d-f2b0-4746-b5c1-0e239c4d23d0"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "ee440480a52b913ea5dc1121293c7b084a22180b785d90be4c9920d91ef62327",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 61.0,
+            "vertexSHA256": "2081ce7dba95c5a4dcb7f1529ab058d14a568164903278705290b250381bfad2"
+          },
+          {
+            "fragmentSHA256": "964953b2d263265dbc840f617f960c4cc32867e356ee713e89b760720f9dce3c",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 70.0,
+            "vertexSHA256": "2aaf3b30bacad5d24f4c1c88f3fc857b2ec16fa647875d1c11074f6979b00bb2"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "18315d2d-a367-4b77-b28e-f2b3758416f4",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 300.0,
+        "source_role_provenance": "18315d2d-a367-4b77-b28e-f2b3758416f4"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "ee440480a52b913ea5dc1121293c7b084a22180b785d90be4c9920d91ef62327",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 61.0,
+            "vertexSHA256": "2081ce7dba95c5a4dcb7f1529ab058d14a568164903278705290b250381bfad2"
+          },
+          {
+            "fragmentSHA256": "964953b2d263265dbc840f617f960c4cc32867e356ee713e89b760720f9dce3c",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 70.0,
+            "vertexSHA256": "2aaf3b30bacad5d24f4c1c88f3fc857b2ec16fa647875d1c11074f6979b00bb2"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "00106cc6-6b29-45ee-9a15-9fb17d519bc6",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 286.0,
+        "source_role_provenance": "00106cc6-6b29-45ee-9a15-9fb17d519bc6"
+      },
+      {
+        "compiledVariants": [
+          {
+            "fragmentSHA256": "ee440480a52b913ea5dc1121293c7b084a22180b785d90be4c9920d91ef62327",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 61.0,
+            "vertexSHA256": "2081ce7dba95c5a4dcb7f1529ab058d14a568164903278705290b250381bfad2"
+          },
+          {
+            "fragmentSHA256": "964953b2d263265dbc840f617f960c4cc32867e356ee713e89b760720f9dce3c",
+            "hasIrradianceCall": true,
+            "hasSourceTY": true,
+            "id": 70.0,
+            "vertexSHA256": "2aaf3b30bacad5d24f4c1c88f3fc857b2ec16fa647875d1c11074f6979b00bb2"
+          }
+        ],
+        "has_unported_Nj": false,
+        "receiver_material": "54c4361b-afc9-4d9c-8e51-9e82618e95e3",
+        "relation": "source/core/unique owner path+nativeID+slot/object/geometry counts+type/raster flags/base color+metalness; UUID not matched",
+        "role_name": "",
+        "role_nativeID": 287.0,
+        "source_role_provenance": "54c4361b-afc9-4d9c-8e51-9e82618e95e3"
+      }
+    ],
+    "matched_materials": 173,
+    "native_ty_sha256": "fc34ffabe3b51cd5b61af778ccd79653de8abc809ee9e737d86fb9391d7cf229",
+    "sample_filter": "linear/clamp/no-mips",
+    "slice_count": 46,
+    "source_color_hint": false,
+    "source_compiled_references": 177,
+    "source_manifest_sha256": "685d847b6530608c9b94e7478c141dc91fd76ec5672491e0d7e4079f156978c9",
+    "source_ty_sha256": "816626b43c124689d10e219892476995d35381a7606cb1a2bd81002d8a7e0b5f",
+    "texture_uploaded": true,
+    "time_source": "Fixed original HM lighting accumulator; not G.time/tick/60, Node simSeconds or Godot TIME",
+    "unmatched": [
+      {
+        "material": "bf088e65-1ee5-41d6-b1ef-3887a88e8f38",
+        "reason": "Owner/path/nativeID/slot/geometry/flags/factors relation absent or ambiguous (UUID never used)"
+      }
+    ]
+  },
+  "gpu": "AMD Radeon RX 9070 XT",
+  "engine": {
+    "build": "official",
+    "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "hex": 263938,
+    "major": 4,
+    "minor": 7,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.7.2-stable (official)",
+    "timestamp": 0
+  },
+  "sourceCounts": {
+    "bakedSkins": 11.0,
+    "enumeratedTriangles": 2327332.0,
+    "geometries": 252.0,
+    "instances": 3452.0,
+    "lights": 15.0,
+    "materials": 192.0,
+    "objectVertexReferences": 6065089.0,
+    "objects": 516.0,
+    "omitted": {
+      "hidden": 31.0,
+      "noPosition": 0.0,
+      "unsupportedObject": 2.0
+    },
+    "surfaces": 516.0,
+    "uniqueExportedVertices": 5330835.0
+  },
+  "importCounts": {
+    "empty_objects": 0,
+    "instances": 3452,
+    "multimat_mesh_variants": 0,
+    "multimeshes": 15,
+    "nodes": 516,
+    "shader_instancing_approximations": 2,
+    "surface_vertex_uploads": 5330835,
+    "surfaces": 516
+  },
+  "loadMS": 11192.0,
+  "frames": 120
+}

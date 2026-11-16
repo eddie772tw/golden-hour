@@ -1,0 +1,838 @@
+{
+  "HDRReadbackContract": "Source positive HDR v encoded as v/(1+v), compared to identically encoded CPU reference through same native pipeline; no input clipping/no assumption that returned components are linear",
+  "adapter": "AMD Radeon RX 9070 XT",
+  "binding": {
+    "asset_bytes": 397440,
+    "asset_sha256": "86c55fed4284279faa5b547a9a5a52d6b9b29e220d90dcf16a58c2d67819b1dd",
+    "clock_note": "Source ZD closure accumulates hotel.update(delta) through menu/loading as well as playing; benchmark resets G.time but not this closure. No live clock mapping implemented.",
+    "cpu_image_bytes_exact": true,
+    "enabled": true,
+    "errors": [],
+    "fixed_source_time": 8.47988888936572,
+    "fixture_sha256": "6059bd1d092ac0a9ccfa0117021513b2b0cc32da5631e0c48031f16237776558",
+    "fullMaterialParity": false,
+    "image_format": "RGBAH",
+    "matched": [],
+    "native_ty_sha256": "fc34ffabe3b51cd5b61af778ccd79653de8abc809ee9e737d86fb9391d7cf229",
+    "sample_filter": "linear/clamp/no-mips",
+    "slice_count": 46,
+    "source_color_hint": false,
+    "source_manifest_sha256": "685d847b6530608c9b94e7478c141dc91fd76ec5672491e0d7e4079f156978c9",
+    "source_ty_sha256": "816626b43c124689d10e219892476995d35381a7606cb1a2bd81002d8a7e0b5f",
+    "texture_uploaded": true,
+    "time_source": "Fixed original HM lighting accumulator; not G.time/tick/60, Node simSeconds or Godot TIME",
+    "unmatched": []
+  },
+  "cases": [
+    {
+      "AAmaxDiff": 0.0,
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expectedCPU": {
+        "above": [
+          0.044586181640625,
+          0.03314208984375,
+          0.0243682861328125
+        ],
+        "base": [
+          0.044586181640625,
+          0.03314208984375,
+          0.0243682861328125
+        ],
+        "below": [
+          0.038116455078125,
+          0.0295562744140625,
+          0.022216796875
+        ],
+        "caustics": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "q": [
+          0.341666666666667,
+          0.5,
+          0.402173913043478
+        ],
+        "sparkle": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "time": 8.47988888936572,
+        "value": [
+          0.044586181640625,
+          0.03314208984375,
+          0.0243682861328125
+        ]
+      },
+      "name": "texel-center-normal-0_1_0",
+      "reference": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.227450981736183,
+          0.196078434586525,
+          0.168627455830574,
+          1.0
+        ],
+        "reference": true
+      },
+      "sample": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.227450981736183,
+          0.196078434586525,
+          0.168627455830574,
+          1.0
+        ],
+        "reference": false
+      },
+      "worldNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "worldPosition": [
+        -9.5,
+        4.08,
+        -3.5
+      ]
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expectedCPU": {
+        "above": [
+          0.044586181640625,
+          0.03314208984375,
+          0.0243682861328125
+        ],
+        "base": [
+          0.038116455078125,
+          0.0295562744140625,
+          0.022216796875
+        ],
+        "below": [
+          0.038116455078125,
+          0.0295562744140625,
+          0.022216796875
+        ],
+        "caustics": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "q": [
+          0.341666666666667,
+          0.5,
+          0.402173913043478
+        ],
+        "sparkle": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "time": 8.47988888936572,
+        "value": [
+          0.038116455078125,
+          0.0295562744140625,
+          0.022216796875
+        ]
+      },
+      "name": "texel-center-normal-0_-1_0",
+      "reference": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.211764708161354,
+          0.184313729405403,
+          0.160784319043159,
+          1.0
+        ],
+        "reference": true
+      },
+      "sample": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.211764708161354,
+          0.184313729405403,
+          0.160784319043159,
+          1.0
+        ],
+        "reference": false
+      },
+      "worldNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "worldPosition": [
+        -9.5,
+        4.92,
+        -3.5
+      ]
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expectedCPU": {
+        "above": [
+          0.044586181640625,
+          0.03314208984375,
+          0.0243682861328125
+        ],
+        "base": [
+          0.041351318359375,
+          0.0313491821289063,
+          0.0232925415039063
+        ],
+        "below": [
+          0.038116455078125,
+          0.0295562744140625,
+          0.022216796875
+        ],
+        "caustics": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "q": [
+          0.341666666666667,
+          0.5,
+          0.402173913043478
+        ],
+        "sparkle": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "time": 8.47988888936572,
+        "value": [
+          0.041351318359375,
+          0.0313491821289063,
+          0.0232925415039063
+        ]
+      },
+      "name": "texel-center-normal-1_0_0",
+      "reference": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.219607844948769,
+          0.192156866192818,
+          0.164705887436867,
+          1.0
+        ],
+        "reference": true
+      },
+      "sample": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.219607844948769,
+          0.192156866192818,
+          0.164705887436867,
+          1.0
+        ],
+        "reference": false
+      },
+      "worldNormal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "worldPosition": [
+        -9.92,
+        4.5,
+        -3.5
+      ]
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expectedCPU": {
+        "above": [
+          0.33984375,
+          0.339599609375,
+          0.46630859375
+        ],
+        "base": [
+          0.33984375,
+          0.339599609375,
+          0.46630859375
+        ],
+        "below": [
+          0.147216796875,
+          0.1419677734375,
+          0.183837890625
+        ],
+        "caustics": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "q": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "sparkle": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "time": 8.47988888936572,
+        "value": [
+          0.33984375,
+          0.339599609375,
+          0.46630859375
+        ]
+      },
+      "name": "clamp-outside",
+      "reference": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.541176497936249,
+          0.541176497936249,
+          0.600000023841858,
+          1.0
+        ],
+        "reference": true
+      },
+      "sample": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.541176497936249,
+          0.541176497936249,
+          0.600000023841858,
+          1.0
+        ],
+        "reference": false
+      },
+      "worldNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "worldPosition": [
+        100.0,
+        -20.0,
+        -100.0
+      ]
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expectedCPU": {
+        "above": [
+          0.262412705616603,
+          0.147221468785551,
+          0.100910579724521
+        ],
+        "base": [
+          0.353460904455839,
+          0.193534111306666,
+          0.131526109261689
+        ],
+        "below": [
+          1.4604019549245,
+          0.756591544796614,
+          0.50374199995015
+        ],
+        "caustics": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "q": [
+          0.522725995548013,
+          0.281795476409126,
+          0.401479992257415
+        ],
+        "sparkle": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "time": 8.47988888936572,
+        "value": [
+          0.353460904455839,
+          0.193534111306666,
+          0.131526109261689
+        ]
+      },
+      "name": "interpolate-offset-plus",
+      "reference": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.549019634723663,
+          0.439215689897537,
+          0.376470595598221,
+          1.0
+        ],
+        "reference": true
+      },
+      "sample": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.549019634723663,
+          0.439215689897537,
+          0.376470595598221,
+          1.0
+        ],
+        "reference": false
+      },
+      "worldNormal": [
+        0.3,
+        0.8,
+        0.4
+      ],
+      "worldPosition": [
+        1.23,
+        2.18,
+        -3.71
+      ]
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expectedCPU": {
+        "above": [
+          0.366943443008446,
+          0.186572435557266,
+          0.121467948768009
+        ],
+        "base": [
+          1.47762487132673,
+          0.756858554554421,
+          0.502148043743886
+        ],
+        "below": [
+          1.56898072400719,
+          0.803765771461523,
+          0.533459771651011
+        ],
+        "caustics": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "q": [
+          0.518274004451987,
+          0.202648968035318,
+          0.393737399046933
+        ],
+        "sparkle": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "time": 8.47988888936572,
+        "value": [
+          1.47762487132673,
+          0.756858554554421,
+          0.502148043743886
+        ]
+      },
+      "name": "interpolate-offset-minus",
+      "reference": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.796078443527222,
+          0.686274528503418,
+          0.61176472902298,
+          1.0
+        ],
+        "reference": true
+      },
+      "sample": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.796078443527222,
+          0.686274528503418,
+          0.61176472902298,
+          1.0
+        ],
+        "reference": false
+      },
+      "worldNormal": [
+        -0.3,
+        -0.8,
+        -0.4
+      ],
+      "worldPosition": [
+        1.23,
+        2.18,
+        -3.71
+      ]
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "baseOnlyControl": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.592156887054443,
+          0.615686297416687,
+          0.635294139385223,
+          1.0
+        ],
+        "reference": false
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expectedCPU": {
+        "above": [
+          0.45172119140625,
+          0.50421142578125,
+          0.565673828125
+        ],
+        "base": [
+          0.45172119140625,
+          0.50421142578125,
+          0.565673828125
+        ],
+        "below": [
+          0.454345703125,
+          0.58502197265625,
+          0.542205810546875
+        ],
+        "caustics": [
+          0.399220402196201,
+          1.54697905851028,
+          1.49707650823575
+        ],
+        "q": [
+          0.55,
+          0.0133333333333333,
+          0.853260869565217
+        ],
+        "sparkle": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "time": 8.47988888936572,
+        "value": [
+          0.850941593602451,
+          2.05119048429153,
+          2.06275033636075
+        ]
+      },
+      "name": "pool-caustic-witness",
+      "observedExtraWitnessPerChannel": [
+        0.117647051811218,
+        0.223529398441315,
+        0.203921556472778
+      ],
+      "reference": {
+        "baseOnly": false,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.709803938865662,
+          0.839215695858002,
+          0.839215695858002,
+          1.0
+        ],
+        "reference": true
+      },
+      "sample": {
+        "baseOnly": false,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.709803938865662,
+          0.839215695858002,
+          0.839215695858002,
+          1.0
+        ],
+        "reference": false
+      },
+      "worldNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "worldPosition": [
+        3.0,
+        -0.3,
+        17.25
+      ]
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "baseOnlyControl": {
+        "baseOnly": true,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.200000002980232,
+          0.180392161011696,
+          0.152941182255745,
+          1.0
+        ],
+        "reference": false
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expectedCPU": {
+        "above": [
+          0.0348733020010316,
+          0.0276902486416694,
+          0.0211407583008224
+        ],
+        "base": [
+          0.0348733020010316,
+          0.0276902486416694,
+          0.0211407583008224
+        ],
+        "below": [
+          0.0389325763078108,
+          0.0299419125205205,
+          0.0226852038616022
+        ],
+        "caustics": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "q": [
+          0.562642862416963,
+          0.88,
+          0.611663436534276
+        ],
+        "sparkle": [
+          0.369473938097766,
+          0.295579150478212,
+          0.192126447810838
+        ],
+        "time": 8.47988888936572,
+        "value": [
+          0.404347240098797,
+          0.323269399119882,
+          0.21326720611166
+        ]
+      },
+      "name": "chandelier-sparkle-witness",
+      "observedExtraWitnessPerChannel": [
+        0.372549042105675,
+        0.349019631743431,
+        0.301960781216621
+      ],
+      "reference": {
+        "baseOnly": false,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.572549045085907,
+          0.529411792755127,
+          0.454901963472366,
+          1.0
+        ],
+        "reference": true
+      },
+      "sample": {
+        "baseOnly": false,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.572549045085907,
+          0.529411792755127,
+          0.454901963472366,
+          1.0
+        ],
+        "reference": false
+      },
+      "worldNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "worldPosition": [
+        3.75857174501781,
+        7.5,
+        6.13651808057669
+      ]
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "diffuseProduct": {
+        "baseOnly": false,
+        "diffuseProduct": true,
+        "imageFormat": 4,
+        "pixel": [
+          0.227450981736183,
+          0.137254908680916,
+          0.0705882385373116,
+          1.0
+        ],
+        "reference": false
+      },
+      "diffuseProductDifferencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "diffuseProductReference": {
+        "baseOnly": false,
+        "diffuseProduct": true,
+        "imageFormat": 4,
+        "pixel": [
+          0.227450981736183,
+          0.137254908680916,
+          0.0705882385373116,
+          1.0
+        ],
+        "reference": true
+      },
+      "expectedCPU": {
+        "above": [
+          0.386264304614644,
+          0.226858822384323,
+          0.161953748500787
+        ],
+        "base": [
+          0.436200768097491,
+          0.253675052544652,
+          0.179913258404056
+        ],
+        "below": [
+          1.10810040105609,
+          0.614489854903405,
+          0.421560088605958
+        ],
+        "caustics": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "q": [
+          0.503446561747421,
+          0.217987664831026,
+          0.477136990734537
+        ],
+        "sparkle": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "time": 8.47988888936572,
+        "value": [
+          0.436200768097491,
+          0.253675052544652,
+          0.179913258404056
+        ]
+      },
+      "name": "full-source-clock",
+      "reference": {
+        "baseOnly": false,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.588235318660736,
+          0.486274510622025,
+          0.427450984716415,
+          1.0
+        ],
+        "reference": true
+      },
+      "sample": {
+        "baseOnly": false,
+        "diffuseProduct": false,
+        "imageFormat": 4,
+        "pixel": [
+          0.588235318660736,
+          0.486274510622025,
+          0.427450984716415,
+          1.0
+        ],
+        "reference": false
+      },
+      "worldNormal": [
+        0.4,
+        0.7,
+        -0.1
+      ],
+      "worldPosition": [
+        0.0,
+        1.6,
+        0.0
+      ]
+    }
+  ],
+  "driver": "vulkan",
+  "engine": {
+    "build": "official",
+    "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "hex": 263938,
+    "major": 4,
+    "minor": 7,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.7.2-stable (official)",
+    "timestamp": 0
+  },
+  "fixedSourceTime": 8.47988888936572,
+  "invalidCases": 0,
+  "referenceLimits": "Independent CPU Float64 trilinear/trigonometry vs GPU float interpolation; record all differences, no automatic parity tolerance or full High claim",
+  "renderer": "forward_plus",
+  "schema": "gh-hm-native-volume-oracle-v1",
+  "scope": "Actual397440B RGBAH/TY/phase/component diagnostic; not game FPS or177-material parity"
+}

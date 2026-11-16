@@ -1,0 +1,151 @@
+{
+  "stage": 20,
+  "kind": "Godot-fixed-original-HM-diffuse-overlay",
+  "acceptanceEligible": false,
+  "fullAI": false,
+  "highParity": false,
+  "productRuntimeChanged": false,
+  "defaultMode": "off",
+  "fullMaterialParity": false,
+  "sourceManifest": {
+    "path": "prototypes/godot-render-component/HM-SOURCE-MANIFEST.json",
+    "bytes": 12482,
+    "sha256": "52d70c96c0cfb2b0e0dfdd64c93083758825ddd1e2885af16700620d9fb8d2ec",
+    "availability": "Committed source-only overlay manifest"
+  },
+  "rootPortableSmoke": {
+    "raw": [
+      {
+        "path": "prototypes/godot-render-component/evidence/portable-hm-receiver-smoke-1.json",
+        "bytes": 266986,
+        "sha256": "dc5aa2883201b5d02757b67524ce4160709f98863532bb17313d876a6e3098e2",
+        "availability": "Committed raw validation evidence"
+      },
+      {
+        "path": "prototypes/godot-render-component/evidence/portable-hm-receiver-smoke-1.run.json",
+        "bytes": 144362,
+        "sha256": "244de39c1c9b75e0b6166b0426fb268d137dd92d1993e2249397ca15c5093385",
+        "availability": "Committed raw validation evidence"
+      },
+      {
+        "path": "prototypes/godot-render-component/evidence/portable-hm-receiver-smoke-1.log",
+        "bytes": 1369,
+        "sha256": "88312d05c42d9cd2c8ed3e29b7dc4cd60014b6fffd20551f6ed9b4670092472d",
+        "availability": "Committed raw validation evidence"
+      }
+    ],
+    "ok": true,
+    "exitCode": 0,
+    "engineErrors": [],
+    "frames": 120,
+    "sourceCounts": {
+      "bakedSkins": 11.0,
+      "enumeratedTriangles": 2327332.0,
+      "geometries": 252.0,
+      "instances": 3452.0,
+      "lights": 15.0,
+      "materials": 192.0,
+      "objectVertexReferences": 6065089.0,
+      "objects": 516.0,
+      "omitted": {
+        "hidden": 31.0,
+        "noPosition": 0.0,
+        "unsupportedObject": 2.0
+      },
+      "surfaces": 516.0,
+      "uniqueExportedVertices": 5330835.0
+    },
+    "importCounts": {
+      "empty_objects": 0,
+      "instances": 3452,
+      "multimat_mesh_variants": 0,
+      "multimeshes": 15,
+      "nodes": 516,
+      "shader_instancing_approximations": 2,
+      "surface_vertex_uploads": 5330835,
+      "surfaces": 516
+    },
+    "matchedMaterials": 173,
+    "unmatchedMaterials": 1,
+    "textureUploaded": true,
+    "cpuImageBytesExact": true,
+    "fixedSourceTime": 8.47988888936572,
+    "liveClock": false,
+    "lightMappingOptions": {
+      "sourceDecay": 1,
+      "directEnergy": "source-irradiance",
+      "lightColor": "source-linear"
+    },
+    "performanceRanking": false
+  },
+  "rootVolumeOracle": {
+    "raw": {
+      "path": "prototypes/godot-render-component/evidence/native-hm-volume-oracle-1.json",
+      "bytes": 18243,
+      "sha256": "4ee9ed977847a38d2882d877be121e545ee364d265e58b1d0b28698f289c560a",
+      "availability": "Committed root GPU oracle"
+    },
+    "cases": 9,
+    "invalidCases": 0,
+    "allAADifferencesZero": true,
+    "allReferenceChannelsZero": true,
+    "contract": "Source positive HDR v encoded as v/(1+v), compared to identically encoded CPU reference through same native pipeline; no input clipping/no assumption that returned components are linear"
+  },
+  "coverage": {
+    "snapshotOwners": 516,
+    "matchedMaterials": 173,
+    "matchedSourceRoleIDs": 173,
+    "snapshotPBRMaterials": 174,
+    "matchedReceiverOwners": 494,
+    "matchedReceiverMainLayerOwners": 494,
+    "matchedMainLayerNonzeroNativeInstanceOwners": 494,
+    "matchedReceiverSurfaceSlots": 494,
+    "unmatchedCrystalOwners": 1,
+    "NjMatchedMaterialCount": 38,
+    "sourceRolesAbsentFromCapture3": 4
+  },
+  "checks": {
+    "portableNodeTests": {
+      "pass": 9,
+      "fail": 0,
+      "skip": 0,
+      "externalOriginalDataSupplied": true
+    },
+    "portableCapturePythonTests": 2,
+    "portableNativeTypedImageChecks": 7,
+    "liveWorldSourcePackage": {
+      "pass": true,
+      "siblingHashesChecked": 39,
+      "runtimeUnchanged": true
+    }
+  },
+  "integration": {
+    "schema": "gh-hm-overlay-public-integration-v1",
+    "changedLiveWorldSiblingPins": [
+      {
+        "path": "prototypes/godot-render-component/render/main.gd",
+        "beforeSHA256": "08dad12b8af93d2d6f2eae5bedec6a898afd08d32d1ebf288338e6c93edf7304",
+        "afterSHA256": "f82ec9731e986767fd49ac6826e6e2142e581d2341789d315b88c97cca1ff407"
+      },
+      {
+        "path": "prototypes/godot-render-component/render/pbr_adaptor.gd",
+        "beforeSHA256": "b1ad272722b954b87268798d3b7d175c0320b5eb3fff80332d9c9639fe37d821",
+        "afterSHA256": "45c2040d5865223a5c827319daa6946dbdd834704de33feede3fb7f3d4431332"
+      }
+    ],
+    "liveWorldRuntimeChanged": false,
+    "historicalStage19ManifestUnchangedInArchive": true,
+    "currentLiveWorldManifestSHA256": "7bc26f9dbb5e8ae39dd3737298550f2ded9e5488fe36f794c48b489f57d58d9e",
+    "overlayManifestSHA256": "52d70c96c0cfb2b0e0dfdd64c93083758825ddd1e2885af16700620d9fb8d2ec"
+  },
+  "limits": [
+    "Fixed source lighting accumulator includes menu/loading history; not tick/60 or Godot TIME; no live clock mapping.",
+    "Only the known HM irradiance*currentALBEDO*(1-metallic)*supportedAO/PI term is added. Native environment/emission retained.",
+    "Current ALBEDO/normal and custom Nj layout/wear/ghAO/specular remain incomplete; this does not establish material parity.",
+    "494 eligible owner/surface relations in captured geometry are not visible pixel coverage; hidden K9 roles remain absent.",
+    "One crystal role excluded because the real subclass overrides the HM hook; no UUID cross-session matching.",
+    "Frozen scene, no live AI/audio/full High; callback intervals are not GPU/physical-present times or an FPS ranking.",
+    "Stage19 receiver copied runtime untouched. Only two sibling dependency hashes repinned; archived Stage19 manifest remains historical.",
+    "The original volume is external and byte-pinned. New captures require explicit proof review, not automatic acceptance."
+  ]
+}

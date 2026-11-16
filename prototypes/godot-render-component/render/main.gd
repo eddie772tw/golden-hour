@@ -10,6 +10,9 @@ const PBRAdaptor = preload("res://pbr_adaptor.gd")
 var pbr_adaptor = PBRAdaptor.new()
 const SourceShaders = preload("res://source_shaders.gd")
 var source_shaders = SourceShaders.new()
+const LightfieldBinding = preload("res://lightfield_binding.gd")
+var lightfield = LightfieldBinding.new()
+var lightfield_mode: String="off"
 var texture_manifest_path: String = ""
 var normal_shaders: Dictionary = {}
 var material_mode: String = "source-scalars"
@@ -87,6 +90,10 @@ func _ready() -> void:
 		_fail("Invalid real-scene snapshot schema")
 		return
 	snapshot = data
+	lightfield_mode=str(args.get("lightfield","off"))
+	if not lightfield_mode in ["off","source-diffuse"]:
+		_fail("Unknown explicit lightfield mode")
+		return
 	if not texture_manifest_path.is_empty() and not texture_binding.load_manifest(texture_manifest_path,snapshot):
 		_fail("Texture manifest/session/core/material IDs do not match this geometry snapshot")
 		return
@@ -95,6 +102,14 @@ func _ready() -> void:
 			_fail("Explicit pbr-adaptor mode requires the same-session texture manifest")
 			return
 		pbr_adaptor.prepare(texture_binding,get_viewport(),emission_scale)
+	if lightfield_mode=="source-diffuse":
+		if material_mode!="pbr-adaptor":
+			_fail("Source HM diffuse term requires explicit PBR adaptor receivers")
+			return
+		if not lightfield.load_source(str(args.get("lightfield-fixture","res://fixtures/hm-source.json")),str(args.get("volume-bytes","")),true) or not lightfield.match_snapshot(snapshot):
+			_fail("Source HM asset/compiled-role/receiver guard did not match")
+			return
+		pbr_adaptor.lightfield=lightfield
 	if snapshot.get("source", {}).get("capturedFrom", "") != "GH.debug.gfx.scene" or snapshot.get("objects", []).is_empty():
 		_fail("Empty/synthetic scene is not a valid render-component capture")
 		return
@@ -463,6 +478,7 @@ func _finish() -> void:
 		"source_decay_mapping":{"enabled":source_decay,"lights":light_mapping,"energy_normalization_changed":direct_energy=="source-irradiance","highParity":false},
 		"direct_energy_mapping":{"mode":direct_energy,"lights":energy_mapping,"physical_light_units":ProjectSettings.get_setting("rendering/lights_and_shadows/use_physical_light_units",false),"emission_or_exposure_changed":false,"highParity":false},
 		"light_color_mapping":{"mode":light_color_mode,"lights":light_color_mapping,"scope":"Point/Directional/Spot Light3D properties only; raw linear PBR uniforms unchanged","highParity":false},
+		"source_lightfield":lightfield.report if lightfield_mode=="source-diffuse" else {"enabled":false},
 		"mapping":{"material_mode":material_mode,"unknown_shader_source_scalar_fallback":"untranslated source ShaderMaterial becomes unshaded scalar proxy; unsafe for visual acceptance", "light_energy_scale":light_energy_scale,"emission_scale":emission_scale,"tonemap":tonemap_mode,"artistic_scale_controls_are_diagnostic":true,"no_fps_comparison":true,"diagnostics":mapping_diagnostics},
 		"unsupported":snapshot.unsupported,"additionalLimitations":limitations,"load_ms":load_ms,"pose_updates":pose_updates,
 		"warmup_frames_requested":warmup_frames,"warmup":warm_frames,"frames":frames,"record_cap":max_records,
