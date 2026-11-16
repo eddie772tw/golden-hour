@@ -1,0 +1,1090 @@
+{
+  "raw": "work/browser-render-next/evidence/loop-request-native-observation-high-1.json",
+  "rawSHA256": "dd06736047765817bb4787f420733a62ac3d5da42dd0bf795222d94393f92835",
+  "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "ok": true,
+  "completionPollingMs": 100,
+  "drops": {
+    "rawDropped": 0,
+    "orphanDropped": 0,
+    "callbackDropped": 0
+  },
+  "coverage": {
+    "gameCallbackIDs": [
+      4
+    ],
+    "allRows": 11232,
+    "gameRows": 5616,
+    "callbacks": [
+      {
+        "id": 1,
+        "name": "next",
+        "arity": 0
+      },
+      {
+        "id": 2,
+        "name": "",
+        "arity": 0
+      },
+      {
+        "id": 3,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 4,
+        "name": "n",
+        "arity": 2
+      },
+      {
+        "id": 5,
+        "name": "",
+        "arity": 0
+      },
+      {
+        "id": 6,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 7,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 8,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 9,
+        "name": "loop",
+        "arity": 1
+      },
+      {
+        "id": 10,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 11,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 12,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 13,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 14,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 15,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 16,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 17,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 18,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 19,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 20,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 21,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 22,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 23,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 24,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 25,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 26,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 27,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 28,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 29,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 30,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 31,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 32,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 33,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 34,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 35,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 36,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 37,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 38,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 39,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 40,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 41,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 42,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 43,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 44,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 45,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 46,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 47,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 48,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 49,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 50,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 51,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 52,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 53,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 54,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 55,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 56,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 57,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 58,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 59,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 60,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 61,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 62,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 63,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 64,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 65,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 66,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 67,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 68,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 69,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 70,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 71,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 72,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 73,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 74,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 75,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 76,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 77,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 78,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 79,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 80,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 81,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 82,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 83,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 84,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 85,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 86,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 87,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 88,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 89,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 90,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 91,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 92,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 93,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 94,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 95,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 96,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 97,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 98,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 99,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 100,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 101,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 102,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 103,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 104,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 105,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 106,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 107,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 108,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 109,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 110,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 111,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 112,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 113,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 114,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 115,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 116,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 117,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 118,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 119,
+        "name": "",
+        "arity": 1
+      },
+      {
+        "id": 120,
+        "name": "next",
+        "arity": 0
+      }
+    ],
+    "callbackCounts": {
+      "4": 5616,
+      "9": 5616
+    },
+    "scenarioTick": 3600,
+    "done": true,
+    "botTicks": [
+      3600,
+      3600,
+      3600,
+      3600,
+      3600,
+      3600,
+      3600,
+      3600,
+      3600
+    ],
+    "scenarioTiming": {
+      "startWallMs": 20495,
+      "endWallMs": 80786.79999995232,
+      "startLoopStats": {
+        "logicalTicks": 208,
+        "renderFrames": 214,
+        "playingRenders": 184,
+        "logicalSeconds": 3.4666666666666592,
+        "activeSeconds": 3.5960999999999994,
+        "wallSeconds": 5.021099999999996,
+        "dropped": 0.13333333333333333
+      },
+      "endLoopStats": {
+        "logicalTicks": 3808,
+        "renderFrames": 3419,
+        "playingRenders": 3389,
+        "logicalSeconds": 63.466666666664345,
+        "activeSeconds": 63.88660000000128,
+        "wallSeconds": 65.31160000000125,
+        "dropped": 0.4304000000000024
+      },
+      "endBoundary": "logical tick 3600 after input endFrame; final visual submit may follow",
+      "elapsedMs": 60291.799999952316,
+      "loopStatsDelta": {
+        "logicalTicks": 3600,
+        "renderFrames": 3205,
+        "playingRenders": 3205,
+        "logicalSeconds": 59.999999999997684,
+        "activeSeconds": 60.29050000000128,
+        "wallSeconds": 60.29050000000125,
+        "dropped": 0.29706666666666903
+      },
+      "logicalHz": 59.70961225245966,
+      "renderHz": 53.158140908092555
+    },
+    "window": {
+      "startWallMs": 20495,
+      "endWallMs": 80786.79999995232,
+      "durationMs": 60291.799999952316
+    },
+    "activeGameCallbacks": 5548,
+    "rendersCompletedInsideWindow": 3205,
+    "zeroTickRenders": 1208,
+    "noRenderCallbacks": 2343,
+    "stepsHistogram": {
+      "1": 2826,
+      "2": 363,
+      "0": 2343,
+      "3": 16
+    },
+    "renderStepsHistogram": {
+      "1": 1618,
+      "2": 363,
+      "0": 1208,
+      "3": 16
+    },
+    "tickDifferenceBetweenRenders": {
+      "1": 2705,
+      "2": 421,
+      "0": 61,
+      "3": 17
+    },
+    "sameTickConsecutiveRenderPairs": 61,
+    "nativeFlags": {
+      "(False, False, False, False, False)": 5548
+    }
+  },
+  "metrics": {
+    "nativeStampGap": {
+      "count": 5547,
+      "mean": 10.869028303587523,
+      "min": 2.5,
+      "p50": 8.399999999997817,
+      "p90": 20.900000000001455,
+      "p95": 25.099999999998545,
+      "p99": 33.400000000001455,
+      "max": 141.5
+    },
+    "nativeStampCommonGaps": [
+      [
+        4.2,
+        489
+      ],
+      [
+        4.1,
+        488
+      ],
+      [
+        4.0,
+        332
+      ],
+      [
+        4.3,
+        317
+      ],
+      [
+        8.3,
+        249
+      ],
+      [
+        12.5,
+        220
+      ],
+      [
+        8.4,
+        208
+      ],
+      [
+        12.6,
+        175
+      ],
+      [
+        16.7,
+        174
+      ],
+      [
+        4.4,
+        168
+      ],
+      [
+        8.2,
+        165
+      ],
+      [
+        12.4,
+        160
+      ],
+      [
+        8.5,
+        154
+      ],
+      [
+        16.6,
+        136
+      ],
+      [
+        16.8,
+        115
+      ]
+    ],
+    "callbackEntryGap": {
+      "count": 5547,
+      "mean": 10.868703803866538,
+      "min": 0.09999990463256836,
+      "p50": 9.700000047683716,
+      "p90": 21.600000143051147,
+      "p95": 25.300000190734863,
+      "p99": 33.40000009536743,
+      "max": 144.59999990463257
+    },
+    "dispatchDelay": {
+      "count": 5548,
+      "mean": 1.326676233423229,
+      "min": -0.10000004768517101,
+      "p50": 0.6999999046383891,
+      "p90": 3.199999856951763,
+      "p95": 3.699999856951763,
+      "p99": 4.699999952317739,
+      "max": 127.29999990462966
+    },
+    "allCallbackCPU": {
+      "count": 5548,
+      "mean": 8.629163661102812,
+      "min": 0.0,
+      "p50": 8.400000095367432,
+      "p90": 19.299999952316284,
+      "p95": 22.699999809265137,
+      "p99": 29.59999990463257,
+      "max": 50.59999990463257
+    },
+    "renderCallbackCPU": {
+      "count": 3205,
+      "mean": 14.140499217573455,
+      "min": 4.3999998569488525,
+      "p50": 13.0,
+      "p90": 22.100000143051147,
+      "p95": 25.299999952316284,
+      "p99": 31.299999952316284,
+      "max": 50.59999990463257
+    },
+    "noRenderCallbackCPU": {
+      "count": 2343,
+      "mean": 1.0901835251709258,
+      "min": 0.0,
+      "p50": 0.9000000953674316,
+      "p90": 2.6999998092651367,
+      "p95": 3.299999952316284,
+      "p99": 4.900000095367432,
+      "max": 17.90000009536743
+    },
+    "gfxRenderCPU": {
+      "count": 3205,
+      "mean": 12.008268331849074,
+      "min": 4.299999952316284,
+      "p50": 11.299999952316284,
+      "p90": 18.200000047683716,
+      "p95": 20.5,
+      "p99": 24.200000047683716,
+      "max": 28.40000009536743
+    },
+    "renderEntryGap": {
+      "count": 3204,
+      "mean": 18.808614232194856,
+      "min": 9.200000047683716,
+      "p50": 17.0,
+      "p90": 25.399999856948853,
+      "p95": 29.299999952316284,
+      "p99": 36.09999990463257,
+      "max": 148.20000004768372
+    },
+    "nonGfxCPU": {
+      "count": 5548,
+      "mean": 1.692159334575004,
+      "min": 0.0,
+      "p50": 1.3000001907348633,
+      "p90": 3.9000000953674316,
+      "p95": 5.400000095367432,
+      "p99": 8.500000238418579,
+      "max": 38.5
+    },
+    "requestChains": {
+      "entryToNextStamp": {
+        "count": 5548,
+        "mean": 9.541330255410168,
+        "min": -1.4999998569473973,
+        "p50": 8.099999999998545,
+        "p90": 19.80000004768226,
+        "p95": 23.80000000000291,
+        "p99": 31.80000004768226,
+        "max": 51.10000004768517
+      },
+      "exitToNextStamp": {
+        "count": 5548,
+        "mean": 0.9123468394407369,
+        "min": -4.000000047686626,
+        "p50": 0.8000001430518751,
+        "p90": 3.8000000476822606,
+        "p95": 4.000000143045327,
+        "p99": 4.699999952317739,
+        "max": 41
+      },
+      "requestMinusPriorRenderEnd": {
+        "count": 5548,
+        "mean": 0.005623648470910917,
+        "min": -0.10000014305114746,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.09999990463256836,
+        "p99": 0.10000014305114746,
+        "max": 0.9000000953674316
+      },
+      "requestMinusPriorExit": {
+        "count": 5548,
+        "mean": -0.011481614317409237,
+        "min": -0.20000004768371582,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0,
+        "max": 0.0
+      },
+      "requestToStamp": {
+        "count": 5548,
+        "mean": 0.9238284537581462,
+        "min": -4.0,
+        "p50": 0.899999952314829,
+        "p90": 3.8000000476822606,
+        "p95": 4.000000143045327,
+        "p99": 4.69999999999709,
+        "max": 41
+      },
+      "requestToEntry": {
+        "count": 5548,
+        "mean": 2.250504687181375,
+        "min": 0.09999990463256836,
+        "p50": 1.7999999523162842,
+        "p90": 4.099999904632568,
+        "p95": 4.299999952316284,
+        "p99": 6.1000001430511475,
+        "max": 128.29999995231628
+      },
+      "requestCPU": {
+        "count": 5548,
+        "mean": 0.010580388951318765,
+        "min": 0.0,
+        "p50": 0.0,
+        "p90": 0.09999990463256836,
+        "p95": 0.09999990463256836,
+        "p99": 0.10000014305114746,
+        "max": 0.20000004768371582
+      },
+      "priorCPU": {
+        "count": 5548,
+        "mean": 8.628983415969431,
+        "min": 0.0,
+        "p50": 8.400000095367432,
+        "p90": 19.299999952316284,
+        "p95": 22.699999809265137,
+        "p99": 29.59999990463257,
+        "max": 50.59999990463257
+      },
+      "priorRender": {
+        "count": 5548,
+        "mean": 0.5776856524873828,
+        "min": false,
+        "p50": true,
+        "p90": true,
+        "p95": true,
+        "p99": true,
+        "max": true
+      }
+    },
+    "links": 5548,
+    "postRenderRequestToEntry": {
+      "count": 3205,
+      "mean": 2.006302653236806,
+      "min": 0.19999980926513672,
+      "p50": 1.6999998092651367,
+      "p90": 2.9000000953674316,
+      "p95": 3.700000047683716,
+      "p99": 6.8999998569488525,
+      "max": 128.29999995231628
+    },
+    "postNoRenderRequestToEntry": {
+      "count": 2343,
+      "mean": 2.5845497229442196,
+      "min": 0.09999990463256836,
+      "p50": 2.4000000953674316,
+      "p90": 4.200000047683716,
+      "p95": 4.400000095367432,
+      "p99": 5.200000047683716,
+      "max": 42.59999990463257
+    }
+  },
+  "sameCallbackReplay": {
+    "mismatches": 0,
+    "actualDraws": 3205,
+    "currentDraws": 3205,
+    "absoluteDraws": 3194,
+    "phaseResets": 476,
+    "extraAbsoluteDecisions": 1435,
+    "removedActualDecisions": 1446,
+    "currentLatenessDraws": {
+      "count": 3205,
+      "mean": 3.521476859056839,
+      "min": -0.4999999999781721,
+      "p50": 0.33333333279006183,
+      "p90": 12.33333333333212,
+      "p95": 16.233333333329938,
+      "p99": 21.233333333333576,
+      "max": 124.83333333332848
+    },
+    "extraAbsoluteNoTick": 486,
+    "warning": "Same observed callbacks only; added render work changes future dispatch and cannot be counted as measured recovered FPS."
+  },
+  "otherNativeChain": {
+    "callbackID": 9,
+    "name": "loop",
+    "allGameRowsWithSameTimestamp": 5616,
+    "rowsInsideControllerWindow": 5547,
+    "gameRowsWithSameTimestamp": 5547,
+    "otherCallbackCPU": {
+      "count": 5547,
+      "mean": 0.027023616214475053,
+      "min": 0.0,
+      "p50": 0,
+      "p90": 0.10000014305114746,
+      "p95": 0.10000014305114746,
+      "p99": 0.10000014305114746,
+      "max": 0.40000009536743164
+    },
+    "entryAfterGameExit": {
+      "count": 5547,
+      "mean": 0.021146566304340433,
+      "min": 0.0,
+      "p50": 0.0,
+      "p90": 0.09999990463256836,
+      "p95": 0.10000014305114746,
+      "p99": 0.20000004768371582,
+      "max": 1.1000001430511475
+    }
+  },
+  "requestTimingQualifications": {
+    "nextStampEarlierThanRequestByOverPoint2ms": 1625,
+    "nextStampAtOrEarlierThanPriorExit": 1807,
+    "explanation": "RAF timestamp is not callback dispatch time. A strictly-future display grid after return does not describe every observed callback.",
+    "gridCandidateResiduals": [
+      {
+        "hz": 120,
+        "periodMs": 8.333333333333334,
+        "gapResidualToNearestMultiple": {
+          "count": 5547,
+          "mean": 2.613022053963161,
+          "min": 0.0,
+          "p50": 3.9333333333391547,
+          "p90": 4.133333333336244,
+          "p95": 4.133333333336244,
+          "p99": 4.166666666666668,
+          "max": 4.166666666666668
+        },
+        "fractionResidualUnderPoint5ms": 0.3327925004506941
+      },
+      {
+        "hz": 144,
+        "periodMs": 6.944444444444445,
+        "gapResidualToNearestMultiple": {
+          "count": 5547,
+          "mean": 2.0692366244015377,
+          "min": 0.0,
+          "p50": 2.5444444444429895,
+          "p90": 2.9444444444444446,
+          "p95": 3.0444444444357135,
+          "p99": 3.3000000000029104,
+          "max": 3.4666666666695747
+        },
+        "fractionResidualUnderPoint5ms": 0.06724355507481522
+      },
+      {
+        "hz": 165,
+        "periodMs": 6.0606060606060606,
+        "gapResidualToNearestMultiple": {
+          "count": 5547,
+          "mean": 1.681671774532799,
+          "min": 0.0030303030273941545,
+          "p50": 1.860606060608971,
+          "p90": 2.5181818181789097,
+          "p95": 2.7181818181759994,
+          "p99": 2.96060606060024,
+          "max": 3.0212121212208523
+        },
+        "fractionResidualUnderPoint5ms": 0.13358572201189833
+      },
+      {
+        "hz": 240,
+        "periodMs": 4.166666666666667,
+        "gapResidualToNearestMultiple": {
+          "count": 5547,
+          "mean": 0.1782284718467257,
+          "min": 0.0,
+          "p50": 0.13333333332896657,
+          "p90": 0.36666666666375747,
+          "p95": 0.6666666666666661,
+          "p99": 1.1666666666666643,
+          "max": 1.9666666666659367
+        },
+        "fractionResidualUnderPoint5ms": 0.924283396430503
+      }
+    ],
+    "warning": "Relative delta fit supports an approximate opportunity grid; it does not measure physical monitor refresh or prove a display opportunity could have delivered native callbacks earlier."
+  },
+  "committedObserverSHA256": "eaf59824e7fca768394ca00d1a1293a81e7530bd4165fef49fc02c30a29820ae",
+  "observerNote": "Committed copy normalizes line endings; same JavaScript behavior. Newest request-metadata observer mock and full130-test suite pass.",
+  "productDecision": "No timing policy change. Reject the pure absolute-phase proposal on this opportunity replay; defer early-request changes because no several-FPS loss was attributed to late registration."
+}

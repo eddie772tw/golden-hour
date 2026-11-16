@@ -1,0 +1,42 @@
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const script=readFileSync(new URL('../scripts/performance/loop_observer.js',import.meta.url),'utf8');
+let clock=0,requests=0;
+const queue=[];
+const originalRAF=callback=>{ requests++; queue.push(callback); return requests; };
+const render=function(dt){clock+=5;return dt;};
+const stats={logicalTicks:0,renderFrames:0,dropped:0,mode:'playing:native'};
+const gfx={render,preparation:{pending:false,error:null}};
+const scope={requestAnimationFrame:originalRAF,performance:{now:()=>clock,timeOrigin:1},
+  document:{hidden:false,visibilityState:'visible',body:{classList:{contains:()=>false}}},
+  navigator:{userAgent:'CPU-mock'},GH:{debug:{gfx},loopStats:stats}};
+vm.runInNewContext(script,scope);
+assert.equal(requests,0,'INIT must not request RAF');
+function game(timestamp){stats.logicalTicks++;assert.equal(gfx.render(1/60),1/60);stats.renderFrames++;return timestamp;}
+assert.equal(scope.requestAnimationFrame(game),1);
+assert.equal(queue.shift()(12),12);
+assert.equal(requests,1);
+let result=scope.__loopPhase.export();
+assert.equal(result.rows.length,1);
+assert.equal(result.rows[0].tickBefore,0);
+assert.equal(result.rows[0].tickAfter,1);
+assert.equal(result.rows[0].renderCPU,5);
+assert.equal(result.rows[0].requestAt,0);
+assert.equal(result.rows[0].requestReturnAt,0);
+assert.equal(result.rows[0].nativeHandle,1);
+assert.equal(result.rows[0].renders[0].tick,1);
+assert.deepEqual([...result.gameCallbackIDs],[1]);
+scope.__loopPhase.reset('combat');
+assert.equal(scope.__loopPhase.export().rows.length,0);
+scope.requestAnimationFrame(()=>{throw Error('native failure');});
+assert.throws(()=>queue.shift()(24),/native failure/);
+assert.equal(scope.__loopPhase.export().rows[0].error,true);
+scope.requestAnimationFrame(game);
+scope.__loopPhase.restore();
+assert.equal(scope.requestAnimationFrame,originalRAF);
+assert.equal(gfx.render,render);
+assert.equal(queue.shift()(36),36,'already queued callback remains native pass-through');
+assert.equal(scope.__loopPhase.export().rows.length,1,'restored wrapper stops recording');
+assert.equal(requests,3);
+console.log('PASS: zero extra RAF, native return/throw, exact ticks/render span, reset and wrapper restore');

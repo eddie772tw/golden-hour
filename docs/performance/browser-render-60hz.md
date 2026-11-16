@@ -335,3 +335,59 @@ polling; a separate diagnostic is checking actual request chains with interval
 polling, to avoid adding an automation RAF chain. Submission capture still
 requires the existing lightweight render wrapper; no physical-present claim
 is made. See [stage6-msaa-screening.json](evidence/stage6-msaa-screening.json).
+
+## Stage 7: observe native RAF ownership before changing the scheduler
+
+The passive INIT observer now records existing request/callback chains and
+actual native render/tick spans. It requests zero extra RAFs, timers or draws,
+does not change clocks/FPS, and is never installed in normal product pages.
+The benchmark flag --loop-observe explicitly marks a diagnostic run. Optional
+--completion-poll-ms 100 uses interval completion checks instead of adding an
+automation RAF polling chain;0 preserves the legacy runner behavior.
+
+The original scene-core controller window lasted60.2918s, with nine bots each
+completing3600ticks and3205 completed renders(53.158Hz, logical59.710Hz).
+All observer row/identity drop counters were zero. The same native callback
+ID also covered no-render callbacks, so a no-render callback was not discarded
+from timing analysis. There were5616 game callback rows overall; timestamps
+were mostly4.1/4.2ms and multiples, consistent with roughly240Hz opportunities,
+not the earlier synthetic165Hz assumption.
+
+Replaying the owning deadline formula on observed opportunities matched all
+3205 actual decisions. Simply preserving absolute phase selected3194 draws,
+11 fewer, despite476 half-interval resets. This conditional replay is not a
+new performance run: changed CPU work would feed back into later opportunities.
+It nevertheless does not support claiming the resets are a removable FPS loss.
+
+Post-render requests were close to render return(P95 gap0.1ms); registration
+to next callback entry averaged2.006ms/P953.7ms. Many callback frame timestamps
+preceded registration or the preceding callback exit: frame timestamp is not
+dispatch time. The separate native input-device gamepad RAF chain used the
+same timestamps as all5616 game callbacks overall, without demonstrating
+several FPS of game-only missed opportunities. No early-request product
+prototype is adopted from these data.
+
+A callback with zero ticks does not necessarily repeat the last rendered logical pose.1208
+render-bearing callbacks had zero ticks, but only61/3204 adjacent render pairs
+shared the same logical tick; other renders followed poses updated by earlier
+non-render callbacks. Skipping all zero-tick callbacks would discard valid
+updated frames. The existing simulation/render decoupling remains unchanged.
+
+The new recorder preserves native handles, return values and thrown errors;
+restore preserves newer wrapper owners and disables recording in retained pass-through
+wrappers. Callback identity and row caps/drops are explicit, and unknown ID0 is
+never labeled a game callback. Syntax, one no-extra-RAF regression check and
+the complete130-test suite passed. This is source/control-flow validation;
+the native data remain diagnostic, not physical-present/FPS acceptance.
+
+Reproduce separately from clean acceptance:
+
+```powershell
+python scripts/performance/run_browser.py --client PATH_TO_PORTABLE --name unique-loop-observation --quality high --native-loop --loop-observe --completion-poll-ms 100
+```
+
+Use scenario.timing start/end for controller windows. The outer scenarioWallMs
+can include post-completion JSON serialization, diagnostics and restoration;
+it is not interchangeable with controller time. Source hash, callback scope,
+request delays, duplicate-tick counts and replay limits are retained in
+[stage7-native-loop.json](evidence/stage7-native-loop.json).

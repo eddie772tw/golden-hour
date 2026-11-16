@@ -15,6 +15,8 @@ P.add_argument('--smoke', action='store_true')
 P.add_argument('--functional', action='store_true')
 P.add_argument('--diagnostic', action='store_true')
 P.add_argument('--deep-render', action='store_true', help='diagnostic-only passive shadow/program/AI/body timings')
+P.add_argument('--loop-observe', action='store_true', help='passive native RAF request/callback/render diagnostic')
+P.add_argument('--completion-poll-ms', type=int, default=0, help='benchmark completion interval polling; 0 retains legacy RAF polling')
 P.add_argument('--profile', action='store_true')
 P.add_argument('--trace-threads', action='store_true', help='diagnostic-only browser trace during native ticks 900..2100')
 P.add_argument('--program-audit', action='store_true', help='requires isolated diagnostic core patch; never primary FPS')
@@ -28,13 +30,17 @@ P.add_argument('--seed', type=int, default=0x47484d31)
 P.add_argument('--width', type=int, default=1920)
 P.add_argument('--height', type=int, default=1080)
 args = P.parse_args()
-from playwright.sync_api import sync_playwright
 if args.native_loop:
     args.full_ai = True
 if args.full_ai:
     args.scripted = True
 if args.deep_render:
     args.diagnostic = True
+if args.loop_observe and not args.scripted:
+    P.error('--loop-observe requires --scripted, --full-ai or --native-loop')
+if args.completion_poll_ms < 0:
+    P.error('--completion-poll-ms must be zero or a positive interval')
+from playwright.sync_api import sync_playwright
 OUT = Path(os.environ.get('GH_BENCH_OUT', str(ROOT / 'evidence'))).resolve()
 OUT.mkdir(parents=True, exist_ok=True)
 name = args.name
@@ -167,6 +173,10 @@ try:
         performance_events=bool(args.diagnostic or args.profile or args.trace_threads or args.program_audit or args.render_dev)
         result['performanceEventsObserver']=performance_events
         context.add_init_script('window.__ghObservePerformanceEvents='+json.dumps(performance_events)+';'+INIT)
+        if args.loop_observe:
+            context.add_init_script((ROOT/'loop_observer.js').read_text(encoding='utf8'))
+            result['developerProbeDiagnostic']=True
+        result['benchmarkCompletionPolling']=args.completion_poll_ms or 'raf'
         if args.full_ai:
             context.add_init_script('window.__fullAI=true;')
         if args.scripted:
@@ -204,6 +214,8 @@ try:
         deploy(page)
         result['deployToLiveMs']=page.evaluate('performance.now()-__frames.entryAt')
         if args.scripted:
+            if args.loop_observe:
+                page.evaluate("__loopPhase.reset('scenario')")
             result['scenarioStart']=page.evaluate('''async(options)=>{
               const {installBenchmarkScenario}=await import('/client/'+(window.__fullAI?'benchmark-full-ai.js':'benchmark-scenario.js'));
               await installBenchmarkScenario(GH,{seed:options.seed,followNativeLoop:options.nativeLoop});
@@ -219,14 +231,14 @@ try:
                 install_render_dev(page)
             if args.trace_threads:
                 # Trace is its own diagnostic window; never use this run for the FPS gate.
-                page.wait_for_function('GH.benchmark.tick>=900',timeout=90000)
+                page.wait_for_function('GH.benchmark.tick>=900',polling=args.completion_poll_ms or 'raf',timeout=90000)
                 tracer=browser.new_browser_cdp_session()
                 complete=[]
                 tracer.on('Tracing.tracingComplete',lambda event:complete.append(event))
                 tracer.send('Tracing.start',{'categories':'toplevel,devtools.timeline,blink.user_timing,gpu,cc,viz,renderer.scheduler','transferMode':'ReturnAsStream'})
                 result['traceWindowStart']=page.evaluate('({now:performance.now(),tick:GH.benchmark.tick,timeOrigin:performance.timeOrigin})')
                 page.evaluate("performance.mark('gh-thread-window-start')")
-                page.wait_for_function('GH.benchmark.tick>=2100',timeout=90000)
+                page.wait_for_function('GH.benchmark.tick>=2100',polling=args.completion_poll_ms or 'raf',timeout=90000)
                 page.evaluate("performance.mark('gh-thread-window-end')")
                 result['traceWindowEnd']=page.evaluate('({now:performance.now(),tick:GH.benchmark.tick})')
                 tracer.send('Tracing.end')
@@ -243,8 +255,11 @@ try:
                         if chunk.get('eof'):break
                 tracer.send('IO.close',{'handle':handle})
                 result['trace']=True
-            page.wait_for_function('GH.benchmark.done',timeout=180000)
+            page.wait_for_function('GH.benchmark.done',polling=args.completion_poll_ms or 'raf',timeout=180000)
             result['scenario']=page.evaluate('GH.benchmark.export()')
+            if args.loop_observe:
+                result['loopPhase']=page.evaluate('__loopPhase.export()')
+                page.evaluate('__loopPhase.restore()')
             if args.fracture_oracle:
                 page.evaluate((ROOT/'fracture_oracle.js').read_text(encoding='utf8'))
                 result['fractureOracle']=page.evaluate('(source)=>__fractureOracle.run({panes:3,oblique:true,source})',{'coreSHA256':result['coreSHA256']})
