@@ -1,0 +1,113 @@
+{
+  "tag": "4.7.2-stable",
+  "engineCommit": "ed1daf0bf",
+  "files": [
+    {
+      "path": "servers/rendering/rendering_server_default.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/servers/rendering/rendering_server_default.cpp",
+      "sha256": "60cdf149a4cb8c8c7b49d562edcce2273e028e4a0a6cb067c7c478054a3dc3c9",
+      "bytes": 16829
+    },
+    {
+      "path": "servers/rendering/rendering_device.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/servers/rendering/rendering_device.cpp",
+      "sha256": "cb319128c2650189dc3ebff5aad7e70ac73b0bd4c4d0c58993f06d4d002ddc62",
+      "bytes": 453665
+    },
+    {
+      "path": "servers/rendering/renderer_viewport.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/servers/rendering/renderer_viewport.cpp",
+      "sha256": "e1b9638d0e817a8784dbf1a6d3971d4b081bdb8f81884ada6b794336abe11ed2",
+      "bytes": 69329
+    },
+    {
+      "path": "servers/rendering/rendering_server.h",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/servers/rendering/rendering_server.h",
+      "sha256": "5e0e9b836f0c2e41c7237c0a72b76c5d60f632bd8294294a5f28ff1b975c2cd8",
+      "bytes": 73293
+    },
+    {
+      "path": "servers/rendering/rendering_server.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/servers/rendering/rendering_server.cpp",
+      "sha256": "b108f62d9d6113061dd1261e7bef51515fbdba9080b4393245e84cecc67ad7ca",
+      "bytes": 197506
+    },
+    {
+      "path": "main/performance.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/main/performance.cpp",
+      "sha256": "1e1b3d1468b383f69399d25e7637e4c34f9718987684a74191cd6ecb12f52c4d",
+      "bytes": 26035
+    },
+    {
+      "path": "main/main.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/main/main.cpp",
+      "sha256": "1831257f5c8eb0707d278f04b21b1e4b3ba863f8dca5cab36022d4b19e36b8c1",
+      "bytes": 210345
+    },
+    {
+      "path": "servers/rendering/renderer_rd/renderer_scene_render_rd.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/servers/rendering/renderer_rd/renderer_scene_render_rd.cpp",
+      "sha256": "a39eb541966b8afd8a663390f679fb5ac4aa58ad44a6571b159bc581943bfc7c",
+      "bytes": 87948
+    },
+    {
+      "path": "servers/rendering/renderer_rd/forward_clustered/render_forward_clustered.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/servers/rendering/renderer_rd/forward_clustered/render_forward_clustered.cpp",
+      "sha256": "e343ceb9157fc494c385820aaaadfd8a1009ae7b4301e99c9764eab0e7cf638a",
+      "bytes": 238693
+    },
+    {
+      "path": "servers/rendering/storage/utilities.h",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/servers/rendering/storage/utilities.h",
+      "sha256": "d1da80f29e8ce5f26cd390a58ffdcea517ffaf4070ab58b951f54a1ab2471781",
+      "bytes": 7461
+    },
+    {
+      "path": "servers/rendering/renderer_rd/storage_rd/utilities.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/servers/rendering/renderer_rd/storage_rd/utilities.cpp",
+      "sha256": "c1a81ae2c2287c1bce89534a3637996c0c74007f758ac000e150b04d38293f36",
+      "bytes": 14059
+    },
+    {
+      "path": "servers/rendering/renderer_rd/storage_rd/utilities.h",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/servers/rendering/renderer_rd/storage_rd/utilities.h",
+      "sha256": "bc3f8eb9492ed96fe71839e846d5fdf30983bf995e0d992cc26df20fa3b5761f",
+      "bytes": 5360
+    },
+    {
+      "path": "core/profiling/profiling.h",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/core/profiling/profiling.h",
+      "sha256": "6e0cab4e17ec28b3f37b85eb996789bb6168687875fae016cee0fbe70c964208",
+      "bytes": 12354
+    },
+    {
+      "path": "core/os/thread.h",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/ed1daf0bf001b61586d9930840f2f1394092c079/core/os/thread.h",
+      "sha256": "61af794840340478bf42e614fd7fe8d325e88d15a568bb3d948c64db64b70695",
+      "bytes": 6795
+    },
+    {
+      "path": "core/os/thread.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/ed1daf0bf001b61586d9930840f2f1394092c079/core/os/thread.cpp",
+      "sha256": "bb59a431dc40ac6f23b950e6dff46145a7b32158b027cc8184e126dffda27299",
+      "bytes": 5249
+    },
+    {
+      "path": "core/core_bind.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/ed1daf0bf001b61586d9930840f2f1394092c079/core/core_bind.cpp",
+      "sha256": "e90ccae66bffe1e4aee4e319e7cf731df1202b2b262eacbded9b99b79d359e50",
+      "bytes": 93506
+    },
+    {
+      "path": "platform/windows/platform_config.h",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/ed1daf0bf001b61586d9930840f2f1394092c079/platform/windows/platform_config.h",
+      "sha256": "29164d421c9f0879279727eec90b889cb1d562cfb7cf67aef0306ef02d718785",
+      "bytes": 2268
+    }
+  ],
+  "officialTagObject": {
+    "sha": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "type": "commit",
+    "url": "https://api.github.com/repos/godotengine/godot/git/commits/ed1daf0bf001b61586d9930840f2f1394092c079"
+  }
+}

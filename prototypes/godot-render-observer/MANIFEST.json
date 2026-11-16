@@ -1,0 +1,177 @@
+{
+  "schema": "godot-render-observer-portable-manifest-v1",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 107,
+      "sha256": "3a442a14f3dfee54f811bdc5826899d725404aa5c18d0c18a2b14a4a3e6e0f5e"
+    },
+    {
+      "path": "analyze.py",
+      "bytes": 12424,
+      "sha256": "5f9c44acb5f3639217cb91587e61d0c80157b6fd1ebe426faaee0542039b31de"
+    },
+    {
+      "path": "analyze_test.py",
+      "bytes": 2528,
+      "sha256": "2d39fba762bf19b8b17798d4bf22c559d48772e9037d562eb78c28e08816dcba"
+    },
+    {
+      "path": "api-subset.json",
+      "bytes": 5784,
+      "sha256": "760006a691ac0a545b4d7eb6307882ea4b57292607f3837328ba5325e5a6fbe0"
+    },
+    {
+      "path": "check-v2.gd",
+      "bytes": 3571,
+      "sha256": "eb57073ce7b792c22a6989277b1be0c72a6b7fea30af3e830d2c1fe23bc4e83b"
+    },
+    {
+      "path": "evidence/headless-check-v2.json",
+      "bytes": 3929,
+      "sha256": "c2c20c76cd68f113edf335311ac3a3e083dd23cb29f16dbdc6212c08ac8ab059"
+    },
+    {
+      "path": "evidence/observed-color-component-3.json",
+      "bytes": 163617,
+      "sha256": "d5889d02e6955331ec1bc1a6502d8d1c00268c6bfe2c49d6a47a5a3082c346a0"
+    },
+    {
+      "path": "evidence/renderer-color-gpu-3-analysis-v2.json",
+      "bytes": 87812,
+      "sha256": "288a0903a9dc6005d97cb3332429464ad054d902debb2ed637cd5eeb65c401ec"
+    },
+    {
+      "path": "evidence/renderer-color-gpu-3-analysis-v2.md",
+      "bytes": 5323,
+      "sha256": "56120c50d0aa4aa6d508cc020e2a6803bfaa697122adfc4fa6bfe30e09702dd1"
+    },
+    {
+      "path": "evidence/renderer-color-gpu-3-source-review.json",
+      "bytes": 1063,
+      "sha256": "4a6bcdad5f0899e9cec0b8148636679c4ad2a22a0e4d08486bdd325c1dabe4c6"
+    },
+    {
+      "path": "evidence/renderer-color-gpu-3.json",
+      "bytes": 343420,
+      "sha256": "9fd9aff3638a0c9e569e22737c2c7b7376faa38411c2b1992879666ff90bf5fa"
+    },
+    {
+      "path": "evidence/renderer-color-gpu-3.log",
+      "bytes": 2340,
+      "sha256": "4b24eee0ea5fd99272f595e52fd437cb0c2577d6aecf5d8804d5a1d81c8519ba"
+    },
+    {
+      "path": "evidence/renderer-color-gpu-3.run.json",
+      "bytes": 2080,
+      "sha256": "200f0431cf93ac6c666189601985eb7126cc7ac3d6bc677c201202e8b7797f6f"
+    },
+    {
+      "path": "history/failures.json",
+      "bytes": 704,
+      "sha256": "7bb6d7722d4b0bd2a837b467d59f3456dc95274d872056091f5d57f31ddfe244"
+    },
+    {
+      "path": "history/launch-v2.gd",
+      "bytes": 3693,
+      "sha256": "ed13a03581ce1f033cc1b12f55b34e1b98985024a0bf68f5c46f8b64c4a9d409"
+    },
+    {
+      "path": "history/launch.gd",
+      "bytes": 1192,
+      "sha256": "ec59d71c3ddad23f2ebba855b2a7208058f7d0425916e3a4ce2493712d150657"
+    },
+    {
+      "path": "history/observer.gd",
+      "bytes": 4952,
+      "sha256": "36a3d2661d525839852eb0d06defd30e6f2579917682dc84758f662b4a06d320"
+    },
+    {
+      "path": "history/renderer-color-gpu-2.json",
+      "bytes": 7594,
+      "sha256": "7735a440e51ad736bc4e78b63ae71e9f6d05f29d65cebe0a134ae94958f3e56e"
+    },
+    {
+      "path": "history/renderer-color-gpu-2.json.startup.json",
+      "bytes": 537,
+      "sha256": "8bd4fb3a12be8ba84c46cdc73cfe3de28c86f245f6792424184eef8276fa2bb2"
+    },
+    {
+      "path": "history/renderer-color-gpu-2.log",
+      "bytes": 2710,
+      "sha256": "51c2077ea7b5f570aed9170b006d7fd156a3d4c7f4ae31b25d07d760486736f9"
+    },
+    {
+      "path": "history/renderer-color-gpu-2.run.json",
+      "bytes": 2192,
+      "sha256": "3a62237c88eb858ffcd9061a16ae06a80c96c9c9d8c14b6377846a6e3741eeb0"
+    },
+    {
+      "path": "history/renderer-energy-gpu-1.log",
+      "bytes": 3431,
+      "sha256": "17f24aecf402e645031e82835f9762ae72a338bcd6e5005a0ef8acbfb6b9082d"
+    },
+    {
+      "path": "launch-v3.gd",
+      "bytes": 3793,
+      "sha256": "fad7b7026d7e2e7cc68827f1261c296bda9d99df2f69336cafc21c3b17409b3e"
+    },
+    {
+      "path": "launcher-fixture.gd",
+      "bytes": 149,
+      "sha256": "367a00745e8acaca122b2d7e73ab8a51b1506090758882a5888d96ee814a3cb6"
+    },
+    {
+      "path": "launcher-fixture.tscn",
+      "bytes": 181,
+      "sha256": "1b2b31c30e5e9dbc30dd0e4496b95424f7c4ee0370542265802d9d9aacefbbfd"
+    },
+    {
+      "path": "launcher_test.py",
+      "bytes": 2643,
+      "sha256": "5fa75b265509c27b52a9896d6cb637d48dd541537ddba86b81d5b0900f27c588"
+    },
+    {
+      "path": "observer-v2.gd",
+      "bytes": 7852,
+      "sha256": "c19fe3436fd4bce5315312101dc9bed074100f09be24751c20da2f1430c07ad8"
+    },
+    {
+      "path": "project.godot",
+      "bytes": 77,
+      "sha256": "724372bb421cc94a3bd81568d49f73bf36510b0ccf8c6413562ca58f2a94723f"
+    },
+    {
+      "path": "PROVENANCE.json",
+      "bytes": 770,
+      "sha256": "46c49ef523cd7947f9a2d857872cf3771463874a0444efc520a096758bb9154d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5035,
+      "sha256": "a637c7b97685128a39a92643f8328b97d9bcb32c73a1d0b9503eab824da3b863"
+    },
+    {
+      "path": "REVIEW-GPU3.md",
+      "bytes": 6045,
+      "sha256": "ac4c08ed01b0f0aa612a39c2de7c80afb9f673fd4b0fc2727eaf7e3a42770db0"
+    },
+    {
+      "path": "source-manifest.json",
+      "bytes": 5351,
+      "sha256": "2f164a02a4c834c0c11fe90108ec6bd9fc97d9014bf8b2d6603fe07fe6e3bb58"
+    }
+  ],
+  "checks": {
+    "analyzerUnitTests": 3,
+    "actualBinaryHeadlessCollectorChecks": true,
+    "headlessLauncherCases": 5,
+    "gpuLaunchedByPackaging": false
+  },
+  "runtimeMatchesGpu3": {
+    "observer-v2.gd": true,
+    "launch-v3.gd": true
+  },
+  "totalBytes": 692899,
+  "fileCount": 32
+}

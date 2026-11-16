@@ -1,0 +1,18 @@
+{
+  "schema": "godot-observer-portable-provenance-v1",
+  "intendedDestination": "prototypes/godot-render-observer",
+  "engineCommit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+  "engineInstallBundled": false,
+  "runtimeScriptsByteIdenticalToGpu3": true,
+  "gpuRawNotModified": true,
+  "collectorRawGPUValidated": false,
+  "reviewScope": "partial 119/120 requested frozen PBR component frames, not full High or clean FPS",
+  "portableChanges": [
+    "launcher_test.py receives explicit --godot instead of workspace-relative executable"
+  ],
+  "sourceFixtureProvenance": {
+    "componentPath": "work\\godot-native\\evidence\\observed-color-component-3.json",
+    "componentSHA256": "d5889d02e6955331ec1bc1a6502d8d1c00268c6bfe2c49d6a47a5a3082c346a0"
+  },
+  "files": []
+}

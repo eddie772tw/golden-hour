@@ -141,3 +141,12 @@ The performance target remains 1080p High, complete full-AI workload, stable
 an actual exported release package will be measured once an equivalent slice
 exists; the current editor binary, JSON dump and engine memory monitors do not
 provide those results.
+
+
+The [native render observer](../../prototypes/godot-render-observer/README.md)
+now exposes real built-in CPU/GPU pass markers with logical thread ownership.
+Its first accepted data are a119/120frame partial frozen-PBR window; raw
+validation flags and both prior failures are preserved. They identify opaque
+and shadow work as the dominant GPU intervals in that slice without claiming
+full High, complete-window or physical-present timing.
+[Stage18 evidence](evidence/stage18-godot-render-observer.json).

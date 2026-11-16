@@ -1,0 +1,24 @@
+{
+  "schema": "godot-observer-preserved-failures-v1",
+  "records": [
+    {
+      "run": "renderer-energy-gpu-1",
+      "usable": false,
+      "failure": "launcher asserted consumed --gpu-profile absent from OS arguments; actual scene never added",
+      "evidence": [
+        "history/renderer-energy-gpu-1.log"
+      ],
+      "emptySceneTimingsAccepted": false
+    },
+    {
+      "run": "renderer-color-gpu-2",
+      "usable": false,
+      "failure": "collector called unbound get_device_api_name; pending stuck; no samples",
+      "evidence": [
+        "history/renderer-color-gpu-2.json",
+        "history/renderer-color-gpu-2.run.json",
+        "history/renderer-color-gpu-2.log"
+      ]
+    }
+  ]
+}

@@ -772,3 +772,22 @@ Each engine was compared against its own same-pipeline unshaded references, with
 This corrects lighting inputs, not all native BRDF, near-field attenuation, shared material/lightfield, final grade or reflection behavior. There is no full High or FPS acceptance. The new compiled evidence also showed that ceiling/plaster/metal ORM.R is1; merely adding AO cannot explain or solve their broad brightness difference.
 
 ![Source decay, direct irradiance and RGB mapping; incomplete High parity](assets/godot-source-light-mapping.png)
+
+
+## Stage 18: actual native render pass timestamps and thread ownership
+
+An opt-in [native observer](../../prototypes/godot-render-observer/README.md) now reads existing RenderingDevice CPU/GPU timestamps on the rendering thread, using engine `--gpu-profile`. It adds no custom pass, timer, timestamp or fence. Required methods are checked against the actual4.7.2 ClassDB. The first launcher incorrectly inspected an engine-consumed flag and left an empty scene; that owned tree was stopped. The next collector called an unbound metadata method and produced no samples. Both failures remain archived; neither zero/incomplete result is accepted.
+
+The corrected native capture returns122samples: one startup empty and121nonempty, with monotonic CPU/GPU timestamps and zero read errors/timeouts/cap drops. Buffered readback leaves one pending delivery: the intended120frame component window has **119captured frames**. Raw `gpu_validated:false` remains unchanged; an independent review marks only those partial data usable. Frame tokens are one ahead of actual source draws in this capture and cannot be equated with pose ticks. Source draw mapping uses original CPU envelopes and callback boundaries.
+
+| Frozen PBR component,119frame partial window | CPU wall P50 /P95 ms | GPU queue elapsed P50 /P95 ms |
+|---|---:|---:|
+| Opaque |0.125 /0.1735|1.14536 /1.154032|
+| Directional/spot shadow stage |0.297 /0.4263|1.11176 /1.120324|
+| Depth prepass |0.110 /0.1651|0.42444 /0.426964|
+| Transparent |0.046 /0.0671|0.30276 /0.309444|
+| Whole marker envelope |0.858 /1.208|3.21012 /3.232932|
+
+Opaque and shadow intervals account for about70.15% of the average GPU marker envelope. These are render-thread wall intervals and GPU queue elapsed times, not exclusive self time, shader utilization, physical present or full application frame cost. Inclusive nested groups stay separate from disjoint segments to prevent double counting. Actual main/render reads all used Godot logical Thread::ID1 under thread-model setting1; this is not Win32TID and cannot be mapped directly to ETW.
+
+The published package includes raw/command/component evidence, analysis, both failures and source/API pins; its analyzer3checks, actual headless collector and5startup cases pass after relocation. Root reran its archived analysis and reproduced119/120coverage. [Evidence](evidence/stage18-godot-render-observer.json) and [full review](../../prototypes/godot-render-observer/REVIEW-GPU3.md) preserve all gaps. This is a diagnostic frozen PBR slice with profiling overhead, not a clean full-High FPS result.

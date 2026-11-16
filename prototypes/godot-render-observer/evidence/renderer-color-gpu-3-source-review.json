@@ -1,0 +1,25 @@
+{
+  "sourceSHAReview": [
+    {
+      "path": "D:\\Golden-Hour\\work\\godot-native\\observe\\launch-v3.gd",
+      "expected": "fad7b7026d7e2e7cc68827f1261c296bda9d99df2f69336cafc21c3b17409b3e",
+      "actual": "fad7b7026d7e2e7cc68827f1261c296bda9d99df2f69336cafc21c3b17409b3e",
+      "match": true
+    },
+    {
+      "path": "D:\\Golden-Hour\\work\\godot-native\\observe\\observer-v2.gd",
+      "expected": "c19fe3436fd4bce5315312101dc9bed074100f09be24751c20da2f1430c07ad8",
+      "actual": "c19fe3436fd4bce5315312101dc9bed074100f09be24751c20da2f1430c07ad8",
+      "match": true
+    },
+    {
+      "path": "D:\\Golden-Hour\\public\\golden-hour\\prototypes\\godot-render-component\\render\\main.gd",
+      "expected": "08dad12b8af93d2d6f2eae5bedec6a898afd08d32d1ebf288338e6c93edf7304",
+      "actual": "08dad12b8af93d2d6f2eae5bedec6a898afd08d32d1ebf288338e6c93edf7304",
+      "match": true
+    }
+  ],
+  "raw_gpu_validated_value": false,
+  "raw_sha256": "9fd9aff3638a0c9e569e22737c2c7b7376faa38411c2b1992879666ff90bf5fa",
+  "raw_bytes_match_before_analysis": true
+}

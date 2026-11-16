@@ -1,0 +1,7 @@
+.godot/
+*.uid
+__pycache__/
+*.pyc
+/local-evidence/
+/headless-check-v2.json
+/launcher-v3-headless-tests.json

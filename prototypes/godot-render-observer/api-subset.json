@@ -1,0 +1,235 @@
+{
+  "header": {
+    "version_major": 4,
+    "version_minor": 7,
+    "version_patch": 2,
+    "version_status": "stable",
+    "version_build": "official",
+    "version_full_name": "Godot Engine v4.7.2.stable.official",
+    "precision": "single"
+  },
+  "sourceDumpSHA256": "d0e4c08c03b165156dabe6bfb6a906baf0069189f62035341230a246c86d6986",
+  "classes": {
+    "RenderingServer": {
+      "methods": [
+        {
+          "name": "viewport_set_measure_render_time",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1265174801,
+          "arguments": [
+            {
+              "name": "viewport",
+              "type": "RID"
+            },
+            {
+              "name": "enable",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "viewport_get_measured_render_time_cpu",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 866169185,
+          "return_value": {
+            "type": "float",
+            "meta": "double"
+          },
+          "arguments": [
+            {
+              "name": "viewport",
+              "type": "RID"
+            }
+          ]
+        },
+        {
+          "name": "viewport_get_measured_render_time_gpu",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 866169185,
+          "return_value": {
+            "type": "float",
+            "meta": "double"
+          },
+          "arguments": [
+            {
+              "name": "viewport",
+              "type": "RID"
+            }
+          ]
+        },
+        {
+          "name": "get_frame_setup_time_cpu",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1740695150,
+          "return_value": {
+            "type": "float",
+            "meta": "double"
+          }
+        },
+        {
+          "name": "is_on_render_thread",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 2240911060,
+          "return_value": {
+            "type": "bool"
+          }
+        },
+        {
+          "name": "call_on_render_thread",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1611583062,
+          "arguments": [
+            {
+              "name": "callable",
+              "type": "Callable"
+            }
+          ]
+        }
+      ]
+    },
+    "RenderingDevice": {
+      "methods": [
+        {
+          "name": "capture_timestamp",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 83702148,
+          "arguments": [
+            {
+              "name": "name",
+              "type": "String"
+            }
+          ]
+        },
+        {
+          "name": "get_captured_timestamps_count",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3905245786,
+          "return_value": {
+            "type": "int",
+            "meta": "uint32"
+          }
+        },
+        {
+          "name": "get_captured_timestamps_frame",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3905245786,
+          "return_value": {
+            "type": "int",
+            "meta": "uint64"
+          }
+        },
+        {
+          "name": "get_captured_timestamp_gpu_time",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 923996154,
+          "return_value": {
+            "type": "int",
+            "meta": "uint64"
+          },
+          "arguments": [
+            {
+              "name": "index",
+              "type": "int",
+              "meta": "uint32"
+            }
+          ]
+        },
+        {
+          "name": "get_captured_timestamp_cpu_time",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 923996154,
+          "return_value": {
+            "type": "int",
+            "meta": "uint64"
+          },
+          "arguments": [
+            {
+              "name": "index",
+              "type": "int",
+              "meta": "uint32"
+            }
+          ]
+        },
+        {
+          "name": "get_captured_timestamp_name",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 844755477,
+          "return_value": {
+            "type": "String"
+          },
+          "arguments": [
+            {
+              "name": "index",
+              "type": "int",
+              "meta": "uint32"
+            }
+          ]
+        }
+      ]
+    },
+    "OS": {
+      "methods": [
+        {
+          "name": "get_thread_caller_id",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3905245786,
+          "return_value": {
+            "type": "int",
+            "meta": "uint64"
+          }
+        },
+        {
+          "name": "get_main_thread_id",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3905245786,
+          "return_value": {
+            "type": "int",
+            "meta": "uint64"
+          }
+        }
+      ]
+    }
+  }
+}
