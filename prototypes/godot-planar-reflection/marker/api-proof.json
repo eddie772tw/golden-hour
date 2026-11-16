@@ -1,0 +1,1030 @@
+{
+  "engine": {
+    "version_major": 4,
+    "version_minor": 7,
+    "version_patch": 2,
+    "version_status": "stable",
+    "version_build": "official",
+    "version_full_name": "Godot Engine v4.7.2.stable.official",
+    "precision": "single"
+  },
+  "classes": {
+    "Camera3D": {
+      "methods": [
+        {
+          "name": "get_camera_projection",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 2910717950,
+          "return_value": {
+            "type": "Projection"
+          }
+        },
+        {
+          "name": "set_cull_mask",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1286410249,
+          "arguments": [
+            {
+              "name": "mask",
+              "type": "int",
+              "meta": "uint32"
+            }
+          ]
+        },
+        {
+          "name": "get_cull_mask",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3905245786,
+          "return_value": {
+            "type": "int",
+            "meta": "uint32"
+          }
+        },
+        {
+          "name": "set_cull_mask_value",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 300928843,
+          "arguments": [
+            {
+              "name": "layer_number",
+              "type": "int",
+              "meta": "int32"
+            },
+            {
+              "name": "value",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "get_cull_mask_value",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1116898809,
+          "return_value": {
+            "type": "bool"
+          },
+          "arguments": [
+            {
+              "name": "layer_number",
+              "type": "int",
+              "meta": "int32"
+            }
+          ]
+        }
+      ],
+      "enums": []
+    },
+    "DrawableTexture2D": {
+      "methods": [
+        {
+          "name": "set_use_mipmaps",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 2586408642,
+          "arguments": [
+            {
+              "name": "mipmaps",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "get_use_mipmaps",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 36873697,
+          "return_value": {
+            "type": "bool"
+          }
+        },
+        {
+          "name": "setup",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 674365339,
+          "arguments": [
+            {
+              "name": "width",
+              "type": "int",
+              "meta": "int32"
+            },
+            {
+              "name": "height",
+              "type": "int",
+              "meta": "int32"
+            },
+            {
+              "name": "format",
+              "type": "enum::DrawableTexture2D.DrawableFormat"
+            },
+            {
+              "name": "color",
+              "type": "Color",
+              "default_value": "Color(1, 1, 1, 1)"
+            },
+            {
+              "name": "use_mipmaps",
+              "type": "bool",
+              "default_value": "false"
+            }
+          ]
+        },
+        {
+          "name": "blit_rect",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 319217173,
+          "arguments": [
+            {
+              "name": "rect",
+              "type": "Rect2i"
+            },
+            {
+              "name": "source",
+              "type": "Texture2D"
+            },
+            {
+              "name": "modulate",
+              "type": "Color",
+              "default_value": "Color(1, 1, 1, 1)"
+            },
+            {
+              "name": "mipmap",
+              "type": "int",
+              "meta": "int32",
+              "default_value": "0"
+            },
+            {
+              "name": "material",
+              "type": "Material",
+              "default_value": "null"
+            }
+          ]
+        },
+        {
+          "name": "blit_rect_multi",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3074783066,
+          "arguments": [
+            {
+              "name": "rect",
+              "type": "Rect2i"
+            },
+            {
+              "name": "sources",
+              "type": "typedarray::Texture2D"
+            },
+            {
+              "name": "extra_targets",
+              "type": "typedarray::DrawableTexture2D"
+            },
+            {
+              "name": "modulate",
+              "type": "Color",
+              "default_value": "Color(1, 1, 1, 1)"
+            },
+            {
+              "name": "mipmap",
+              "type": "int",
+              "meta": "int32",
+              "default_value": "0"
+            },
+            {
+              "name": "material",
+              "type": "Material",
+              "default_value": "null"
+            }
+          ]
+        },
+        {
+          "name": "generate_mipmaps",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3218959716
+        }
+      ],
+      "enums": [
+        {
+          "name": "DrawableFormat",
+          "is_bitfield": false,
+          "values": [
+            {
+              "name": "DRAWABLE_FORMAT_RGBA8",
+              "value": 0
+            },
+            {
+              "name": "DRAWABLE_FORMAT_RGBA8_SRGB",
+              "value": 1
+            },
+            {
+              "name": "DRAWABLE_FORMAT_RGBAH",
+              "value": 2
+            },
+            {
+              "name": "DRAWABLE_FORMAT_RGBAF",
+              "value": 3
+            }
+          ]
+        }
+      ]
+    },
+    "RenderingServer": {
+      "methods": [
+        {
+          "name": "texture_drawable_create",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1993613667,
+          "return_value": {
+            "type": "RID"
+          },
+          "arguments": [
+            {
+              "name": "width",
+              "type": "int",
+              "meta": "int32"
+            },
+            {
+              "name": "height",
+              "type": "int",
+              "meta": "int32"
+            },
+            {
+              "name": "format",
+              "type": "enum::RenderingServer.TextureDrawableFormat"
+            },
+            {
+              "name": "color",
+              "type": "Color",
+              "default_value": "Color(1, 1, 1, 1)"
+            },
+            {
+              "name": "with_mipmaps",
+              "type": "bool",
+              "default_value": "false"
+            }
+          ]
+        },
+        {
+          "name": "texture_drawable_blit_rect",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 4077763890,
+          "arguments": [
+            {
+              "name": "textures",
+              "type": "typedarray::RID"
+            },
+            {
+              "name": "rect",
+              "type": "Rect2i"
+            },
+            {
+              "name": "material",
+              "type": "RID"
+            },
+            {
+              "name": "modulate",
+              "type": "Color"
+            },
+            {
+              "name": "source_textures",
+              "type": "typedarray::RID"
+            },
+            {
+              "name": "to_mipmap",
+              "type": "int",
+              "meta": "int32",
+              "default_value": "0"
+            }
+          ]
+        },
+        {
+          "name": "texture_drawable_generate_mipmaps",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 2722037293,
+          "arguments": [
+            {
+              "name": "texture",
+              "type": "RID"
+            }
+          ]
+        },
+        {
+          "name": "texture_drawable_get_default_material",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 2944877500,
+          "return_value": {
+            "type": "RID"
+          }
+        },
+        {
+          "name": "light_set_cull_mask",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3411492887,
+          "arguments": [
+            {
+              "name": "light",
+              "type": "RID"
+            },
+            {
+              "name": "mask",
+              "type": "int",
+              "meta": "uint32"
+            }
+          ]
+        },
+        {
+          "name": "reflection_probe_set_update_mode",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3853670147,
+          "arguments": [
+            {
+              "name": "probe",
+              "type": "RID"
+            },
+            {
+              "name": "mode",
+              "type": "enum::RenderingServer.ReflectionProbeUpdateMode"
+            }
+          ]
+        },
+        {
+          "name": "reflection_probe_set_cull_mask",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3411492887,
+          "arguments": [
+            {
+              "name": "probe",
+              "type": "RID"
+            },
+            {
+              "name": "layers",
+              "type": "int",
+              "meta": "uint32"
+            }
+          ]
+        },
+        {
+          "name": "decal_set_cull_mask",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3411492887,
+          "arguments": [
+            {
+              "name": "decal",
+              "type": "RID"
+            },
+            {
+              "name": "mask",
+              "type": "int",
+              "meta": "uint32"
+            }
+          ]
+        },
+        {
+          "name": "particles_collision_set_cull_mask",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3411492887,
+          "arguments": [
+            {
+              "name": "particles_collision",
+              "type": "RID"
+            },
+            {
+              "name": "mask",
+              "type": "int",
+              "meta": "uint32"
+            }
+          ]
+        },
+        {
+          "name": "camera_set_perspective",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 157498339,
+          "arguments": [
+            {
+              "name": "camera",
+              "type": "RID"
+            },
+            {
+              "name": "fovy_degrees",
+              "type": "float",
+              "meta": "float"
+            },
+            {
+              "name": "z_near",
+              "type": "float",
+              "meta": "float"
+            },
+            {
+              "name": "z_far",
+              "type": "float",
+              "meta": "float"
+            }
+          ]
+        },
+        {
+          "name": "camera_set_orthogonal",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 157498339,
+          "arguments": [
+            {
+              "name": "camera",
+              "type": "RID"
+            },
+            {
+              "name": "size",
+              "type": "float",
+              "meta": "float"
+            },
+            {
+              "name": "z_near",
+              "type": "float",
+              "meta": "float"
+            },
+            {
+              "name": "z_far",
+              "type": "float",
+              "meta": "float"
+            }
+          ]
+        },
+        {
+          "name": "camera_set_frustum",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1889878953,
+          "arguments": [
+            {
+              "name": "camera",
+              "type": "RID"
+            },
+            {
+              "name": "size",
+              "type": "float",
+              "meta": "float"
+            },
+            {
+              "name": "offset",
+              "type": "Vector2"
+            },
+            {
+              "name": "z_near",
+              "type": "float",
+              "meta": "float"
+            },
+            {
+              "name": "z_far",
+              "type": "float",
+              "meta": "float"
+            }
+          ]
+        },
+        {
+          "name": "camera_set_transform",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3935195649,
+          "arguments": [
+            {
+              "name": "camera",
+              "type": "RID"
+            },
+            {
+              "name": "transform",
+              "type": "Transform3D"
+            }
+          ]
+        },
+        {
+          "name": "camera_set_cull_mask",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3411492887,
+          "arguments": [
+            {
+              "name": "camera",
+              "type": "RID"
+            },
+            {
+              "name": "layers",
+              "type": "int",
+              "meta": "uint32"
+            }
+          ]
+        },
+        {
+          "name": "camera_set_environment",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 395945892,
+          "arguments": [
+            {
+              "name": "camera",
+              "type": "RID"
+            },
+            {
+              "name": "env",
+              "type": "RID"
+            }
+          ]
+        },
+        {
+          "name": "camera_set_camera_attributes",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 395945892,
+          "arguments": [
+            {
+              "name": "camera",
+              "type": "RID"
+            },
+            {
+              "name": "effects",
+              "type": "RID"
+            }
+          ]
+        },
+        {
+          "name": "camera_set_compositor",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 395945892,
+          "arguments": [
+            {
+              "name": "camera",
+              "type": "RID"
+            },
+            {
+              "name": "compositor",
+              "type": "RID"
+            }
+          ]
+        },
+        {
+          "name": "camera_set_use_vertical_aspect",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1265174801,
+          "arguments": [
+            {
+              "name": "camera",
+              "type": "RID"
+            },
+            {
+              "name": "enable",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "viewport_set_canvas_cull_mask",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3411492887,
+          "arguments": [
+            {
+              "name": "viewport",
+              "type": "RID"
+            },
+            {
+              "name": "canvas_cull_mask",
+              "type": "int",
+              "meta": "uint32"
+            }
+          ]
+        },
+        {
+          "name": "viewport_set_update_mode",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3161116010,
+          "arguments": [
+            {
+              "name": "viewport",
+              "type": "RID"
+            },
+            {
+              "name": "update_mode",
+              "type": "enum::RenderingServer.ViewportUpdateMode"
+            }
+          ]
+        },
+        {
+          "name": "viewport_get_update_mode",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3803901472,
+          "return_value": {
+            "type": "enum::RenderingServer.ViewportUpdateMode"
+          },
+          "arguments": [
+            {
+              "name": "viewport",
+              "type": "RID"
+            }
+          ]
+        },
+        {
+          "name": "viewport_set_use_hdr_2d",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1265174801,
+          "arguments": [
+            {
+              "name": "viewport",
+              "type": "RID"
+            },
+            {
+              "name": "enabled",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "viewport_set_vrs_update_mode",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 2696154815,
+          "arguments": [
+            {
+              "name": "viewport",
+              "type": "RID"
+            },
+            {
+              "name": "mode",
+              "type": "enum::RenderingServer.ViewportVRSUpdateMode"
+            }
+          ]
+        },
+        {
+          "name": "canvas_light_set_item_cull_mask",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3411492887,
+          "arguments": [
+            {
+              "name": "light",
+              "type": "RID"
+            },
+            {
+              "name": "mask",
+              "type": "int",
+              "meta": "int32"
+            }
+          ]
+        },
+        {
+          "name": "canvas_light_set_item_shadow_cull_mask",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3411492887,
+          "arguments": [
+            {
+              "name": "light",
+              "type": "RID"
+            },
+            {
+              "name": "mask",
+              "type": "int",
+              "meta": "int32"
+            }
+          ]
+        },
+        {
+          "name": "get_frame_setup_time_cpu",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1740695150,
+          "return_value": {
+            "type": "float",
+            "meta": "double"
+          }
+        }
+      ],
+      "enums": [
+        {
+          "name": "TextureDrawableFormat",
+          "is_bitfield": false,
+          "values": [
+            {
+              "name": "TEXTURE_DRAWABLE_FORMAT_RGBA8",
+              "value": 0
+            },
+            {
+              "name": "TEXTURE_DRAWABLE_FORMAT_RGBA8_SRGB",
+              "value": 1
+            },
+            {
+              "name": "TEXTURE_DRAWABLE_FORMAT_RGBAH",
+              "value": 2
+            },
+            {
+              "name": "TEXTURE_DRAWABLE_FORMAT_RGBAF",
+              "value": 3
+            }
+          ]
+        }
+      ]
+    },
+    "SubViewport": {
+      "methods": [
+        {
+          "name": "set_update_mode",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1295690030,
+          "arguments": [
+            {
+              "name": "mode",
+              "type": "enum::SubViewport.UpdateMode"
+            }
+          ]
+        },
+        {
+          "name": "get_update_mode",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 2980171553,
+          "return_value": {
+            "type": "enum::SubViewport.UpdateMode"
+          }
+        }
+      ],
+      "enums": []
+    },
+    "Viewport": {
+      "methods": [
+        {
+          "name": "set_use_hdr_2d",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 2586408642,
+          "arguments": [
+            {
+              "name": "enable",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "is_using_hdr_2d",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 36873697,
+          "return_value": {
+            "type": "bool"
+          }
+        },
+        {
+          "name": "set_canvas_cull_mask",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1286410249,
+          "arguments": [
+            {
+              "name": "mask",
+              "type": "int",
+              "meta": "uint32"
+            }
+          ]
+        },
+        {
+          "name": "get_canvas_cull_mask",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3905245786,
+          "return_value": {
+            "type": "int",
+            "meta": "uint32"
+          }
+        },
+        {
+          "name": "set_canvas_cull_mask_bit",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 300928843,
+          "arguments": [
+            {
+              "name": "layer",
+              "type": "int",
+              "meta": "uint32"
+            },
+            {
+              "name": "enable",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "get_canvas_cull_mask_bit",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1116898809,
+          "return_value": {
+            "type": "bool"
+          },
+          "arguments": [
+            {
+              "name": "layer",
+              "type": "int",
+              "meta": "uint32"
+            }
+          ]
+        },
+        {
+          "name": "set_world_3d",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 1400875337,
+          "arguments": [
+            {
+              "name": "world_3d",
+              "type": "World3D"
+            }
+          ]
+        },
+        {
+          "name": "get_world_3d",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 317588385,
+          "return_value": {
+            "type": "World3D"
+          }
+        },
+        {
+          "name": "find_world_3d",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 317588385,
+          "return_value": {
+            "type": "World3D"
+          }
+        },
+        {
+          "name": "set_use_own_world_3d",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 2586408642,
+          "arguments": [
+            {
+              "name": "enable",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "name": "is_using_own_world_3d",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 36873697,
+          "return_value": {
+            "type": "bool"
+          }
+        },
+        {
+          "name": "set_vrs_update_mode",
+          "is_const": false,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 3182412319,
+          "arguments": [
+            {
+              "name": "mode",
+              "type": "enum::Viewport.VRSUpdateMode"
+            }
+          ]
+        },
+        {
+          "name": "get_vrs_update_mode",
+          "is_const": true,
+          "is_vararg": false,
+          "is_static": false,
+          "is_virtual": false,
+          "hash": 2255951583,
+          "return_value": {
+            "type": "enum::Viewport.VRSUpdateMode"
+          }
+        }
+      ],
+      "enums": []
+    }
+  }
+}

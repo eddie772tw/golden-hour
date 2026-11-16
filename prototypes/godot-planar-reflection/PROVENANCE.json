@@ -1,0 +1,236 @@
+{
+  "schema": "gh-stage21-source-evidence-provenance-v1",
+  "copiedFiles": [
+    {
+      "path": "marker/project.godot",
+      "originalWorkPath": "work/godot-native/reflection-contract/project.godot",
+      "sha256": "78f4a5b8aa15414fb457a16fcd5f6ce7ce32fc935b4a502709a4663b6a144631",
+      "bytes": 240
+    },
+    {
+      "path": "marker/main.tscn",
+      "originalWorkPath": "work/godot-native/reflection-contract/main.tscn",
+      "sha256": "68af234c5a820b8811927de79538e65bc5980ddea2c736813255d2a86163a649",
+      "bytes": 167
+    },
+    {
+      "path": "marker/oracle.gd",
+      "originalWorkPath": "work/godot-native/reflection-contract/oracle.gd",
+      "sha256": "e90f3dcd4dcb03866bbaae68dc2fbcd8c523a88cd2e468cb4c869f8ddbaff751",
+      "bytes": 10260
+    },
+    {
+      "path": "marker/marker.gdshader",
+      "originalWorkPath": "work/godot-native/reflection-contract/marker.gdshader",
+      "sha256": "8a5a983b9a3e7aae5e2be60f182b38218dc5dafae68b89d66978fcedc39a2fa0",
+      "bytes": 492
+    },
+    {
+      "path": "marker/receiver.gdshader",
+      "originalWorkPath": "work/godot-native/reflection-contract/receiver.gdshader",
+      "sha256": "e917c6764371055763038428e93eff9119c2ed0a9a93c7da49fccee9b41a2094",
+      "bytes": 795
+    },
+    {
+      "path": "marker/check.gd",
+      "originalWorkPath": "work/godot-native/reflection-contract/check.gd",
+      "sha256": "b01de485453a8e638e80ec82b33562323005f1c9f348ffa1bb7bb7ea7b29a646",
+      "bytes": 1921
+    },
+    {
+      "path": "marker/headless-check.json",
+      "originalWorkPath": "work/godot-native/reflection-contract/headless-check.json",
+      "sha256": "46c82be51a4fe2e8ac49da943550f0b3d4b3cfd866aa3693d773a8f6c7815a8a",
+      "bytes": 784
+    },
+    {
+      "path": "marker/candidate.json",
+      "originalWorkPath": "work/godot-native/reflection-contract/candidate.json",
+      "sha256": "75eef0944946dab8c32178235eefa2264b4ab0e947adb01a7c1c010b92c97f87",
+      "bytes": 2135
+    },
+    {
+      "path": "marker/CONTRACT.md",
+      "originalWorkPath": "work/godot-native/reflection-contract/CONTRACT.md",
+      "sha256": "8c4d79d83df510966fd860475d10ce03814e4c015bf5b4cb1d83b11e114cbc63",
+      "bytes": 8824
+    },
+    {
+      "path": "marker/README.md",
+      "originalWorkPath": "work/godot-native/reflection-contract/README.md",
+      "sha256": "682a75d43a33e8ce9d9f8b9043fb7ed493849405f9551284ed055499c60564b0",
+      "bytes": 3233
+    },
+    {
+      "path": "marker/compiled-proof.json",
+      "originalWorkPath": "work/godot-native/reflection-contract/compiled-proof.json",
+      "sha256": "edda25d0ba12b5934cf8984b0fddee8914269304dd7aeb60cfae2173706522b7",
+      "bytes": 2889
+    },
+    {
+      "path": "marker/api-proof.json",
+      "originalWorkPath": "work/godot-native/reflection-contract/api-proof.json",
+      "sha256": "df9a50b72363ee09f48644bb5f7332aa6004401b1362c2d264bfd598d3436f4d",
+      "bytes": 25393
+    },
+    {
+      "path": "marker/source-manifest.json",
+      "originalWorkPath": "work/godot-native/reflection-contract/source-manifest.json",
+      "sha256": "426c4119cbf85b37511ed7ebad4c8ace085a46208ca0adb20ad649de00cce29e",
+      "bytes": 1489
+    },
+    {
+      "path": "marker/MARKER-RESULT.json",
+      "originalWorkPath": "work/godot-native/reflection-contract/MARKER-RESULT.json",
+      "sha256": "484a402ed12be482719bdee56d04de9cd877e626999fb3b6c2ac48cb73017a86",
+      "bytes": 985
+    },
+    {
+      "path": "marker/MARKER-RESULT.md",
+      "originalWorkPath": "work/godot-native/reflection-contract/MARKER-RESULT.md",
+      "sha256": "c3ca3847a17c788fbdbc4368b360d9b920d7b07a611f1c46ac05d5db40137d32",
+      "bytes": 1245
+    },
+    {
+      "path": "marker/planar-marker-gpu-1.json",
+      "originalWorkPath": "work/godot-native/reflection-contract/planar-marker-gpu-1.json",
+      "sha256": "3f353dc8b86a5a0efc49898edb13c5aac0a795e36915e8b74374e9107c2eefb0",
+      "bytes": 3112
+    },
+    {
+      "path": "marker/planar-marker-gpu-1.run.json",
+      "originalWorkPath": "work/godot-native/reflection-contract/planar-marker-gpu-1.run.json",
+      "sha256": "fd6215e1699b8163d68bdbc203ecaa6d03aec8a88e49838ce4e29d11955532c3",
+      "bytes": 2749
+    },
+    {
+      "path": "marker/planar-marker-gpu-1.log",
+      "originalWorkPath": "work/godot-native/reflection-contract/planar-marker-gpu-1.log",
+      "sha256": "d60d2daa6cdb31fc0554a7abc28332104e7f50e95a79f7df571ccd0707ea10d0",
+      "bytes": 186
+    },
+    {
+      "path": "rough-mips/project.godot",
+      "originalWorkPath": "work/godot-native/reflection-mips/project.godot",
+      "sha256": "78f4a5b8aa15414fb457a16fcd5f6ce7ce32fc935b4a502709a4663b6a144631",
+      "bytes": 240
+    },
+    {
+      "path": "rough-mips/main.tscn",
+      "originalWorkPath": "work/godot-native/reflection-mips/main.tscn",
+      "sha256": "aab3e6d7d738f3e799f91a39ab258cdc00dbaeb0fa6dcfee9604128caa7b078f",
+      "bytes": 160
+    },
+    {
+      "path": "rough-mips/base_oracle.gd",
+      "originalWorkPath": "work/godot-native/reflection-mips/base_oracle.gd",
+      "sha256": "e90f3dcd4dcb03866bbaae68dc2fbcd8c523a88cd2e468cb4c869f8ddbaff751",
+      "bytes": 10260
+    },
+    {
+      "path": "rough-mips/marker.gdshader",
+      "originalWorkPath": "work/godot-native/reflection-mips/marker.gdshader",
+      "sha256": "8a5a983b9a3e7aae5e2be60f182b38218dc5dafae68b89d66978fcedc39a2fa0",
+      "bytes": 492
+    },
+    {
+      "path": "rough-mips/receiver.gdshader",
+      "originalWorkPath": "work/godot-native/reflection-mips/receiver.gdshader",
+      "sha256": "cab71772cc628065f27154a50237ccdefd798f14c046d76627815d19ef7161a2",
+      "bytes": 1003
+    },
+    {
+      "path": "rough-mips/copy.gdshader",
+      "originalWorkPath": "work/godot-native/reflection-mips/copy.gdshader",
+      "sha256": "0a3e4e655b751cadaee3be2f1a5c5f6c8efd8c08ad49579c58f45511cda2a934",
+      "bytes": 204
+    },
+    {
+      "path": "rough-mips/probe.gdshader",
+      "originalWorkPath": "work/godot-native/reflection-mips/probe.gdshader",
+      "sha256": "f93f32f0f718355f924609a87b213a7c12cc394801fe2a8bbfc01e8a910a7781",
+      "bytes": 755
+    },
+    {
+      "path": "rough-mips/reflection_math.gdshaderinc",
+      "originalWorkPath": "work/godot-native/reflection-mips/reflection_math.gdshaderinc",
+      "sha256": "dcb65acfe03b76e3be7344a247ebe8162123cebc2c4fef1179131b9281bce087",
+      "bytes": 441
+    },
+    {
+      "path": "rough-mips/mips.gd",
+      "originalWorkPath": "work/godot-native/reflection-mips/mips.gd",
+      "sha256": "b05a529685a8c34c0a0a37bd0d14272ef4d65c2192895ee59fe56ad89b0c7494",
+      "bytes": 13062
+    },
+    {
+      "path": "rough-mips/check.gd",
+      "originalWorkPath": "work/godot-native/reflection-mips/check.gd",
+      "sha256": "9e8e60762baae3b5a3a4802dc93961d91ed8c31e42fb4b4ca9c9ff5bcaaf33dc",
+      "bytes": 2001
+    },
+    {
+      "path": "rough-mips/headless-check.json",
+      "originalWorkPath": "work/godot-native/reflection-mips/headless-check.json",
+      "sha256": "9bcec7e4ee3a0865c2a555e439472e4c6fc97dca0ad72750423fdf07614ff3fb",
+      "bytes": 918
+    },
+    {
+      "path": "rough-mips/candidate.json",
+      "originalWorkPath": "work/godot-native/reflection-mips/candidate.json",
+      "sha256": "64baf911c388092f504bfcf0bfe95e8f00fadb27738c6b23e45156ef43a93b97",
+      "bytes": 2598
+    },
+    {
+      "path": "rough-mips/README.md",
+      "originalWorkPath": "work/godot-native/reflection-mips/README.md",
+      "sha256": "c9ecedc4fa2b85b0b859b9f8c4b198c948d338708b070ed11d20427d7f384e1f",
+      "bytes": 5498
+    },
+    {
+      "path": "rough-mips/planar-mips-gpu-1.json",
+      "originalWorkPath": "work/godot-native/reflection-mips/planar-mips-gpu-1.json",
+      "sha256": "f170d7e095c9bcccbd017ddf160556d7aa60260304d372644742e7ed02ec4ccb",
+      "bytes": 14054
+    },
+    {
+      "path": "rough-mips/planar-mips-gpu-1.run.json",
+      "originalWorkPath": "work/godot-native/reflection-mips/planar-mips-gpu-1.run.json",
+      "sha256": "6e821ce2fb1c73fd6baed353000ac3e17168c54084d022e37f87aab76776a908",
+      "bytes": 1807
+    },
+    {
+      "path": "rough-mips/planar-mips-gpu-1.log",
+      "originalWorkPath": "work/godot-native/reflection-mips/planar-mips-gpu-1.log",
+      "sha256": "91a396343b31134c7bf00f21dca9440f6f40e838b362cd926a7cbfda92a7a46e",
+      "bytes": 722
+    }
+  ],
+  "omittedGeneratedImages": "Original EXR/PNG files remain in private work evidence; original run manifests preserve their hashes. They are intentionally absent from this source-only package.",
+  "omittedUpstreamSources": {
+    "reason": "Large upstream sources are not required to execute the oracle; original source manifests/official links/hashes retained.",
+    "mipsTextureStorage": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/ed1daf0bf001b61586d9930840f2f1394092c079/servers/rendering/renderer_rd/storage_rd/texture_storage.cpp",
+      "sha256": "37d32f106cefe17872676d7a35c9ca30e881ad6474f335d7df18e826378a4917",
+      "bytes": 186779
+    },
+    "renderingDevice": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/ed1daf0bf001b61586d9930840f2f1394092c079/servers/rendering/rendering_device.cpp",
+      "sha256": "cb319128c2650189dc3ebff5aad7e70ac73b0bd4c4d0c58993f06d4d002ddc62",
+      "proofLines": [
+        8090,
+        8100,
+        8830,
+        8854
+      ]
+    }
+  },
+  "historicalCandidatePins": {
+    "marker": "All listed files included; its source-manifest points to intentionally omitted upstream sources.",
+    "roughMips": "pin_candidate.py and source/texture_storage.cpp are intentionally omitted historical candidate entries; all runtime/test/README pins are included and unchanged. The historical pin-generator is not a portable runtime dependency."
+  },
+  "pathRelocation": {
+    "reflection-contract": "marker",
+    "reflection-mips": "rough-mips"
+  }
+}

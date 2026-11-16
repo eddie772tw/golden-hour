@@ -1,0 +1,73 @@
+{
+  "schema": "gh-planar-contract-candidate-v1",
+  "engineCommit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+  "GPUExecuted": false,
+  "headlessScriptApiMirrorMathPassed": true,
+  "fullWorldLoaded": false,
+  "AIStarted": false,
+  "highParity": false,
+  "roughMipFilteringImplemented": false,
+  "originalObliqueClipImplemented": false,
+  "files": [
+    {
+      "path": "project.godot",
+      "bytes": 240,
+      "sha256": "78f4a5b8aa15414fb457a16fcd5f6ce7ce32fc935b4a502709a4663b6a144631"
+    },
+    {
+      "path": "main.tscn",
+      "bytes": 167,
+      "sha256": "68af234c5a820b8811927de79538e65bc5980ddea2c736813255d2a86163a649"
+    },
+    {
+      "path": "oracle.gd",
+      "bytes": 10260,
+      "sha256": "e90f3dcd4dcb03866bbaae68dc2fbcd8c523a88cd2e468cb4c869f8ddbaff751"
+    },
+    {
+      "path": "marker.gdshader",
+      "bytes": 492,
+      "sha256": "8a5a983b9a3e7aae5e2be60f182b38218dc5dafae68b89d66978fcedc39a2fa0"
+    },
+    {
+      "path": "receiver.gdshader",
+      "bytes": 795,
+      "sha256": "e917c6764371055763038428e93eff9119c2ed0a9a93c7da49fccee9b41a2094"
+    },
+    {
+      "path": "check.gd",
+      "bytes": 1921,
+      "sha256": "b01de485453a8e638e80ec82b33562323005f1c9f348ffa1bb7bb7ea7b29a646"
+    },
+    {
+      "path": "headless-check.json",
+      "bytes": 784,
+      "sha256": "46c82be51a4fe2e8ac49da943550f0b3d4b3cfd866aa3693d773a8f6c7815a8a"
+    },
+    {
+      "path": "CONTRACT.md",
+      "bytes": 8824,
+      "sha256": "8c4d79d83df510966fd860475d10ce03814e4c015bf5b4cb1d83b11e114cbc63"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3233,
+      "sha256": "682a75d43a33e8ce9d9f8b9043fb7ed493849405f9551284ed055499c60564b0"
+    },
+    {
+      "path": "compiled-proof.json",
+      "bytes": 2889,
+      "sha256": "edda25d0ba12b5934cf8984b0fddee8914269304dd7aeb60cfae2173706522b7"
+    },
+    {
+      "path": "api-proof.json",
+      "bytes": 25393,
+      "sha256": "df9a50b72363ee09f48644bb5f7332aa6004401b1362c2d264bfd598d3436f4d"
+    },
+    {
+      "path": "source-manifest.json",
+      "bytes": 1489,
+      "sha256": "426c4119cbf85b37511ed7ebad4c8ace085a46208ca0adb20ad649de00cce29e"
+    }
+  ]
+}

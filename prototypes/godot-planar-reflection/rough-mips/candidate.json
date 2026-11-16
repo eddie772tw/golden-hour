@@ -1,0 +1,83 @@
+{
+  "schema": "gh-planar-mip-candidate-v1",
+  "engineCommit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+  "GPUExecuted": false,
+  "highParity": false,
+  "fullWorld": false,
+  "AIStarted": false,
+  "headlessScriptActualApiCpuSamplerPassed": true,
+  "nativeSourceURL": "https://raw.githubusercontent.com/godotengine/godot/ed1daf0bf001b61586d9930840f2f1394092c079/servers/rendering/renderer_rd/storage_rd/texture_storage.cpp",
+  "originalContract": "../reflection-contract/CONTRACT.md",
+  "files": [
+    {
+      "path": "project.godot",
+      "bytes": 240,
+      "sha256": "78f4a5b8aa15414fb457a16fcd5f6ce7ce32fc935b4a502709a4663b6a144631"
+    },
+    {
+      "path": "main.tscn",
+      "bytes": 160,
+      "sha256": "aab3e6d7d738f3e799f91a39ab258cdc00dbaeb0fa6dcfee9604128caa7b078f"
+    },
+    {
+      "path": "base_oracle.gd",
+      "bytes": 10260,
+      "sha256": "e90f3dcd4dcb03866bbaae68dc2fbcd8c523a88cd2e468cb4c869f8ddbaff751"
+    },
+    {
+      "path": "marker.gdshader",
+      "bytes": 492,
+      "sha256": "8a5a983b9a3e7aae5e2be60f182b38218dc5dafae68b89d66978fcedc39a2fa0"
+    },
+    {
+      "path": "mips.gd",
+      "bytes": 13062,
+      "sha256": "b05a529685a8c34c0a0a37bd0d14272ef4d65c2192895ee59fe56ad89b0c7494"
+    },
+    {
+      "path": "receiver.gdshader",
+      "bytes": 1003,
+      "sha256": "cab71772cc628065f27154a50237ccdefd798f14c046d76627815d19ef7161a2"
+    },
+    {
+      "path": "copy.gdshader",
+      "bytes": 204,
+      "sha256": "0a3e4e655b751cadaee3be2f1a5c5f6c8efd8c08ad49579c58f45511cda2a934"
+    },
+    {
+      "path": "probe.gdshader",
+      "bytes": 755,
+      "sha256": "f93f32f0f718355f924609a87b213a7c12cc394801fe2a8bbfc01e8a910a7781"
+    },
+    {
+      "path": "reflection_math.gdshaderinc",
+      "bytes": 441,
+      "sha256": "dcb65acfe03b76e3be7344a247ebe8162123cebc2c4fef1179131b9281bce087"
+    },
+    {
+      "path": "check.gd",
+      "bytes": 2001,
+      "sha256": "9e8e60762baae3b5a3a4802dc93961d91ed8c31e42fb4b4ca9c9ff5bcaaf33dc"
+    },
+    {
+      "path": "headless-check.json",
+      "bytes": 918,
+      "sha256": "9bcec7e4ee3a0865c2a555e439472e4c6fc97dca0ad72750423fdf07614ff3fb"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5498,
+      "sha256": "c9ecedc4fa2b85b0b859b9f8c4b198c948d338708b070ed11d20427d7f384e1f"
+    },
+    {
+      "path": "pin_candidate.py",
+      "bytes": 1537,
+      "sha256": "6627eaba223c99409aedbc4fd290bc4b81342a1f3d982c296b1dcc2ad819a7ee"
+    },
+    {
+      "path": "source/texture_storage.cpp",
+      "bytes": 186779,
+      "sha256": "37d32f106cefe17872676d7a35c9ca30e881ad6474f335d7df18e826378a4917"
+    }
+  ]
+}

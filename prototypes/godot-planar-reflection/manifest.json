@@ -1,0 +1,203 @@
+{
+  "schema": "gh-stage21-planar-package-v1",
+  "proposedPublicPath": "prototypes/godot-planar-reflection",
+  "files": [
+    {
+      "path": "marker/api-proof.json",
+      "bytes": 25393,
+      "sha256": "df9a50b72363ee09f48644bb5f7332aa6004401b1362c2d264bfd598d3436f4d"
+    },
+    {
+      "path": "marker/candidate.json",
+      "bytes": 2135,
+      "sha256": "75eef0944946dab8c32178235eefa2264b4ab0e947adb01a7c1c010b92c97f87"
+    },
+    {
+      "path": "marker/check.gd",
+      "bytes": 1921,
+      "sha256": "b01de485453a8e638e80ec82b33562323005f1c9f348ffa1bb7bb7ea7b29a646"
+    },
+    {
+      "path": "marker/compiled-proof.json",
+      "bytes": 2889,
+      "sha256": "edda25d0ba12b5934cf8984b0fddee8914269304dd7aeb60cfae2173706522b7"
+    },
+    {
+      "path": "marker/CONTRACT.md",
+      "bytes": 8824,
+      "sha256": "8c4d79d83df510966fd860475d10ce03814e4c015bf5b4cb1d83b11e114cbc63"
+    },
+    {
+      "path": "marker/headless-check.json",
+      "bytes": 784,
+      "sha256": "46c82be51a4fe2e8ac49da943550f0b3d4b3cfd866aa3693d773a8f6c7815a8a"
+    },
+    {
+      "path": "marker/main.tscn",
+      "bytes": 167,
+      "sha256": "68af234c5a820b8811927de79538e65bc5980ddea2c736813255d2a86163a649"
+    },
+    {
+      "path": "marker/MARKER-RESULT.json",
+      "bytes": 985,
+      "sha256": "484a402ed12be482719bdee56d04de9cd877e626999fb3b6c2ac48cb73017a86"
+    },
+    {
+      "path": "marker/MARKER-RESULT.md",
+      "bytes": 1245,
+      "sha256": "c3ca3847a17c788fbdbc4368b360d9b920d7b07a611f1c46ac05d5db40137d32"
+    },
+    {
+      "path": "marker/marker.gdshader",
+      "bytes": 492,
+      "sha256": "8a5a983b9a3e7aae5e2be60f182b38218dc5dafae68b89d66978fcedc39a2fa0"
+    },
+    {
+      "path": "marker/oracle.gd",
+      "bytes": 10260,
+      "sha256": "e90f3dcd4dcb03866bbaae68dc2fbcd8c523a88cd2e468cb4c869f8ddbaff751"
+    },
+    {
+      "path": "marker/planar-marker-gpu-1.json",
+      "bytes": 3112,
+      "sha256": "3f353dc8b86a5a0efc49898edb13c5aac0a795e36915e8b74374e9107c2eefb0"
+    },
+    {
+      "path": "marker/planar-marker-gpu-1.log",
+      "bytes": 186,
+      "sha256": "d60d2daa6cdb31fc0554a7abc28332104e7f50e95a79f7df571ccd0707ea10d0"
+    },
+    {
+      "path": "marker/planar-marker-gpu-1.run.json",
+      "bytes": 2749,
+      "sha256": "fd6215e1699b8163d68bdbc203ecaa6d03aec8a88e49838ce4e29d11955532c3"
+    },
+    {
+      "path": "marker/project.godot",
+      "bytes": 240,
+      "sha256": "78f4a5b8aa15414fb457a16fcd5f6ce7ce32fc935b4a502709a4663b6a144631"
+    },
+    {
+      "path": "marker/README.md",
+      "bytes": 3233,
+      "sha256": "682a75d43a33e8ce9d9f8b9043fb7ed493849405f9551284ed055499c60564b0"
+    },
+    {
+      "path": "marker/receiver.gdshader",
+      "bytes": 795,
+      "sha256": "e917c6764371055763038428e93eff9119c2ed0a9a93c7da49fccee9b41a2094"
+    },
+    {
+      "path": "marker/source-manifest.json",
+      "bytes": 1489,
+      "sha256": "426c4119cbf85b37511ed7ebad4c8ace085a46208ca0adb20ad649de00cce29e"
+    },
+    {
+      "path": "PROVENANCE.json",
+      "bytes": 9803,
+      "sha256": "6bff84083da5779f0b1b8d7654a048b3471a4a08669d037e2c5bce5d391a7018"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3731,
+      "sha256": "a72669dccbd75dc410fc4e8feeef2473919f59140aee9d55d404f0cadce186ca"
+    },
+    {
+      "path": "RESULT.json",
+      "bytes": 2039,
+      "sha256": "50cda2260f921d59103985a963ca21e6749a68058b9c0655ed6a68a0a6c1a4df"
+    },
+    {
+      "path": "RESULT.md",
+      "bytes": 4404,
+      "sha256": "2ae9c5affd0547c3c1a23369a96e2f8815e384a5a8724e1752f0cbafaafe185b"
+    },
+    {
+      "path": "rough-mips/base_oracle.gd",
+      "bytes": 10260,
+      "sha256": "e90f3dcd4dcb03866bbaae68dc2fbcd8c523a88cd2e468cb4c869f8ddbaff751"
+    },
+    {
+      "path": "rough-mips/candidate.json",
+      "bytes": 2598,
+      "sha256": "64baf911c388092f504bfcf0bfe95e8f00fadb27738c6b23e45156ef43a93b97"
+    },
+    {
+      "path": "rough-mips/check.gd",
+      "bytes": 2001,
+      "sha256": "9e8e60762baae3b5a3a4802dc93961d91ed8c31e42fb4b4ca9c9ff5bcaaf33dc"
+    },
+    {
+      "path": "rough-mips/copy.gdshader",
+      "bytes": 204,
+      "sha256": "0a3e4e655b751cadaee3be2f1a5c5f6c8efd8c08ad49579c58f45511cda2a934"
+    },
+    {
+      "path": "rough-mips/headless-check.json",
+      "bytes": 918,
+      "sha256": "9bcec7e4ee3a0865c2a555e439472e4c6fc97dca0ad72750423fdf07614ff3fb"
+    },
+    {
+      "path": "rough-mips/main.tscn",
+      "bytes": 160,
+      "sha256": "aab3e6d7d738f3e799f91a39ab258cdc00dbaeb0fa6dcfee9604128caa7b078f"
+    },
+    {
+      "path": "rough-mips/marker.gdshader",
+      "bytes": 492,
+      "sha256": "8a5a983b9a3e7aae5e2be60f182b38218dc5dafae68b89d66978fcedc39a2fa0"
+    },
+    {
+      "path": "rough-mips/mips.gd",
+      "bytes": 13062,
+      "sha256": "b05a529685a8c34c0a0a37bd0d14272ef4d65c2192895ee59fe56ad89b0c7494"
+    },
+    {
+      "path": "rough-mips/planar-mips-gpu-1.json",
+      "bytes": 14054,
+      "sha256": "f170d7e095c9bcccbd017ddf160556d7aa60260304d372644742e7ed02ec4ccb"
+    },
+    {
+      "path": "rough-mips/planar-mips-gpu-1.log",
+      "bytes": 722,
+      "sha256": "91a396343b31134c7bf00f21dca9440f6f40e838b362cd926a7cbfda92a7a46e"
+    },
+    {
+      "path": "rough-mips/planar-mips-gpu-1.run.json",
+      "bytes": 1807,
+      "sha256": "6e821ce2fb1c73fd6baed353000ac3e17168c54084d022e37f87aab76776a908"
+    },
+    {
+      "path": "rough-mips/probe.gdshader",
+      "bytes": 755,
+      "sha256": "f93f32f0f718355f924609a87b213a7c12cc394801fe2a8bbfc01e8a910a7781"
+    },
+    {
+      "path": "rough-mips/project.godot",
+      "bytes": 240,
+      "sha256": "78f4a5b8aa15414fb457a16fcd5f6ce7ce32fc935b4a502709a4663b6a144631"
+    },
+    {
+      "path": "rough-mips/README.md",
+      "bytes": 5498,
+      "sha256": "c9ecedc4fa2b85b0b859b9f8c4b198c948d338708b070ed11d20427d7f384e1f"
+    },
+    {
+      "path": "rough-mips/receiver.gdshader",
+      "bytes": 1003,
+      "sha256": "cab71772cc628065f27154a50237ccdefd798f14c046d76627815d19ef7161a2"
+    },
+    {
+      "path": "rough-mips/reflection_math.gdshaderinc",
+      "bytes": 441,
+      "sha256": "dcb65acfe03b76e3be7344a247ebe8162123cebc2c4fef1179131b9281bce087"
+    },
+    {
+      "path": "verify_package.py",
+      "bytes": 1698,
+      "sha256": "5b479ed4e701afcbf9514da038e6a51c3f40e4c8f3509739ff319dcb7b7f5a1c"
+    }
+  ],
+  "bytes": 142789,
+  "runtimeBytesUnchangedFromRootGPU": true
+}

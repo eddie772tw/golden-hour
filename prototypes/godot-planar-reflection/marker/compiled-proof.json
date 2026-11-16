@@ -1,0 +1,90 @@
+{
+  "source": {
+    "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+    "sessionId": "compiled-materials-tick240-1",
+    "tick": 240,
+    "state": "paused",
+    "quality": "high",
+    "capturedAt": 1794861875365.4,
+    "pageBundle": "5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3",
+    "cameraMatrix": [
+      0.9946138926029308,
+      0.0011549869513705936,
+      -0.10364299612799593,
+      0,
+      -0.0033797947109607046,
+      0.9997675651526843,
+      -0.021293018958918403,
+      0,
+      0.10359431272496275,
+      0.02152862452213936,
+      0.9943866132934551,
+      0,
+      -3.876960780589182,
+      1.621687370219873,
+      8.341690006863624,
+      1
+    ],
+    "scene": "GH.debug.gfx.scene",
+    "provenance": "Existing compiled renderer.properties.get(material).uniforms + material.ghUniforms; no recompilation; no UUID cross-session binding"
+  },
+  "manifestSHA256": "685d847b6530608c9b94e7478c141dc91fd76ec5672491e0d7e4079f156978c9",
+  "floors": [
+    {
+      "name": "marbleFloor",
+      "variants": [
+        {
+          "cacheKeyContainsFloorRefl": true,
+          "vertexSHA256": "da869ff6a8591ebe9b0fb1c1c8c2164d4771a51e0ffc436872a3f5477d065887",
+          "fragmentSHA256": "3ce264dfb242caf95d20bbb2044ef71c81349c2a317286d68ddd99810e1919d4",
+          "hasReflMatrix": true,
+          "hasTextureLod": true,
+          "hasAdditiveClamp": true,
+          "hasReflectionUniforms": true
+        }
+      ]
+    },
+    {
+      "name": "oakFloor",
+      "variants": [
+        {
+          "cacheKeyContainsFloorRefl": true,
+          "vertexSHA256": "da869ff6a8591ebe9b0fb1c1c8c2164d4771a51e0ffc436872a3f5477d065887",
+          "fragmentSHA256": "3ce264dfb242caf95d20bbb2044ef71c81349c2a317286d68ddd99810e1919d4",
+          "hasReflMatrix": true,
+          "hasTextureLod": true,
+          "hasAdditiveClamp": true,
+          "hasReflectionUniforms": true
+        }
+      ]
+    },
+    {
+      "name": "kitchenFloor",
+      "variants": [
+        {
+          "cacheKeyContainsFloorRefl": true,
+          "vertexSHA256": "da869ff6a8591ebe9b0fb1c1c8c2164d4771a51e0ffc436872a3f5477d065887",
+          "fragmentSHA256": "3ce264dfb242caf95d20bbb2044ef71c81349c2a317286d68ddd99810e1919d4",
+          "hasReflMatrix": true,
+          "hasTextureLod": true,
+          "hasAdditiveClamp": true,
+          "hasReflectionUniforms": true
+        }
+      ]
+    },
+    {
+      "name": "terraceStone",
+      "variants": [
+        {
+          "cacheKeyContainsFloorRefl": true,
+          "vertexSHA256": "da869ff6a8591ebe9b0fb1c1c8c2164d4771a51e0ffc436872a3f5477d065887",
+          "fragmentSHA256": "3ce264dfb242caf95d20bbb2044ef71c81349c2a317286d68ddd99810e1919d4",
+          "hasReflMatrix": true,
+          "hasTextureLod": true,
+          "hasAdditiveClamp": true,
+          "hasReflectionUniforms": true
+        }
+      ]
+    }
+  ]
+}

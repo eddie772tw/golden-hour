@@ -1,0 +1,70 @@
+{
+  "schema": "gh-planar-marker-root-run-record-v1",
+  "exitCode": 0,
+  "exitCodeAuthority": "root reported; this review did not launch the process",
+  "independentPrelaunchSHARecorded": false,
+  "sourceVerification": "Post-run runtime bytes match pre-existing candidate pins; not an independent launch-time snapshot",
+  "runtimeSourceChecks": [
+    {
+      "path": "project.godot",
+      "candidatePinnedSHA256": "78f4a5b8aa15414fb457a16fcd5f6ce7ce32fc935b4a502709a4663b6a144631",
+      "postRunSHA256": "78f4a5b8aa15414fb457a16fcd5f6ce7ce32fc935b4a502709a4663b6a144631",
+      "match": true
+    },
+    {
+      "path": "main.tscn",
+      "candidatePinnedSHA256": "68af234c5a820b8811927de79538e65bc5980ddea2c736813255d2a86163a649",
+      "postRunSHA256": "68af234c5a820b8811927de79538e65bc5980ddea2c736813255d2a86163a649",
+      "match": true
+    },
+    {
+      "path": "oracle.gd",
+      "candidatePinnedSHA256": "e90f3dcd4dcb03866bbaae68dc2fbcd8c523a88cd2e468cb4c869f8ddbaff751",
+      "postRunSHA256": "e90f3dcd4dcb03866bbaae68dc2fbcd8c523a88cd2e468cb4c869f8ddbaff751",
+      "match": true
+    },
+    {
+      "path": "marker.gdshader",
+      "candidatePinnedSHA256": "8a5a983b9a3e7aae5e2be60f182b38218dc5dafae68b89d66978fcedc39a2fa0",
+      "postRunSHA256": "8a5a983b9a3e7aae5e2be60f182b38218dc5dafae68b89d66978fcedc39a2fa0",
+      "match": true
+    },
+    {
+      "path": "receiver.gdshader",
+      "candidatePinnedSHA256": "e917c6764371055763038428e93eff9119c2ed0a9a93c7da49fccee9b41a2094",
+      "postRunSHA256": "e917c6764371055763038428e93eff9119c2ed0a9a93c7da49fccee9b41a2094",
+      "match": true
+    }
+  ],
+  "rawArtifacts": [
+    {
+      "path": "planar-marker-gpu-1.json",
+      "bytes": 3112,
+      "sha256": "3f353dc8b86a5a0efc49898edb13c5aac0a795e36915e8b74374e9107c2eefb0"
+    },
+    {
+      "path": "planar-marker-gpu-1.log",
+      "bytes": 186,
+      "sha256": "d60d2daa6cdb31fc0554a7abc28332104e7f50e95a79f7df571ccd0707ea10d0"
+    },
+    {
+      "path": "planar-marker-gpu-1-main.png",
+      "bytes": 14971,
+      "sha256": "568b6cdbf6f63ac8d18e44d174a64db50db811334891a1eef18c8665ad1b1b86"
+    },
+    {
+      "path": "planar-marker-gpu-1-clip-off.exr",
+      "bytes": 12135,
+      "sha256": "e96e538c5e55d8ad12b11502ebae9eda73555cf680b193e364b7ea9c986aea45"
+    },
+    {
+      "path": "planar-marker-gpu-1-clip-on.exr",
+      "bytes": 10968,
+      "sha256": "b849c1783adbb52ebed4821525a74f553b6e98dab6f559d89c207167ee1359d0"
+    }
+  ],
+  "logEngineErrors": [],
+  "observedLogVulkanForwardPlus": true,
+  "actualCommandIndependentlyCaptured": false,
+  "documentedCommand": "Godot --path reflection-contract --rendering-method forward_plus --rendering-driver vulkan --resolution 1920x1080 --quit-after 1200 -- --output=NEW.json"
+}

@@ -1,0 +1,29 @@
+{
+  "commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+  "files": [
+    {
+      "path": "servers/rendering/renderer_rd/shaders/effects/tonemap.glsl",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/ed1daf0bf001b61586d9930840f2f1394092c079/servers/rendering/renderer_rd/shaders/effects/tonemap.glsl",
+      "sha256": "266774b9f98a798f2f7f4c8388598f322723c1cfc2813975ed8a3153c6fd68a8",
+      "bytes": 36841
+    },
+    {
+      "path": "servers/rendering/renderer_rd/renderer_scene_render_rd.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/ed1daf0bf001b61586d9930840f2f1394092c079/servers/rendering/renderer_rd/renderer_scene_render_rd.cpp",
+      "sha256": "a39eb541966b8afd8a663390f679fb5ac4aa58ad44a6571b159bc581943bfc7c",
+      "bytes": 87948
+    },
+    {
+      "path": "servers/rendering/renderer_rd/forward_clustered/render_forward_clustered.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/ed1daf0bf001b61586d9930840f2f1394092c079/servers/rendering/renderer_rd/forward_clustered/render_forward_clustered.cpp",
+      "sha256": "e343ceb9157fc494c385820aaaadfd8a1009ae7b4301e99c9764eab0e7cf638a",
+      "bytes": 238693
+    },
+    {
+      "path": "scene/3d/camera_3d.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/ed1daf0bf001b61586d9930840f2f1394092c079/scene/3d/camera_3d.cpp",
+      "sha256": "d0abe5ffd9bd294faf4f965097b06d6132d7e7ac308d6c63baa72b75e3cd7ff6",
+      "bytes": 30550
+    }
+  ]
+}

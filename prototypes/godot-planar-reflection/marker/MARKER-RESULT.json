@@ -1,0 +1,26 @@
+{
+  "schema": "gh-planar-marker-result-v1",
+  "narrowOraclePassed": true,
+  "highParity": false,
+  "fullWorld": false,
+  "AIStarted": false,
+  "SSRUsed": false,
+  "HDRPeak": 4.0,
+  "centroidMaxErrorPixels": 0.701911985874176,
+  "magentaClipOffPixels": 482,
+  "magentaClipOnPixels": 0,
+  "minimumRequestIntervalMS": 33.335,
+  "postDrawCallbacks": 120,
+  "actualGpuViewportRendersCounted": false,
+  "requestRateClaim": "Maximum cap proven for requested updates, not sustained30Hz/physical present",
+  "independentPrelaunchSHARecorded": false,
+  "runtimePinsMatchPostRun": true,
+  "runRecord": "planar-marker-gpu-1.run.json",
+  "limits": [
+    "GPU result requires root error-log review",
+    "No original world/AI/performance equivalence",
+    "Exact oblique clip/reverseZ projection, shadow behavior and clip-crossing depth need proof",
+    "Original mip rough-blur and perturbed-normal sampling unimplemented",
+    "Receiver geometry omitted from reflection only in this oracle"
+  ]
+}

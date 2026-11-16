@@ -1,0 +1,41 @@
+{
+  "command": [
+    "D:\\Golden-Hour\\work\\tools\\godot-4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+    "--path",
+    "D:\\Golden-Hour\\work\\godot-native\\reflection-mips",
+    "--rendering-method",
+    "forward_plus",
+    "--rendering-driver",
+    "vulkan",
+    "--resolution",
+    "1920x1080",
+    "--quit-after",
+    "1200",
+    "--gpu-profile",
+    "--",
+    "--output=D:\\Golden-Hour\\work\\godot-native\\reflection-mips\\planar-mips-gpu-1.json"
+  ],
+  "engineSHA256": "c8f0a6bc45a19b33541501e57f6f7cd972ab18453743266339d495cbbe846643",
+  "sourceSHA256": {
+    "base_oracle.gd": "e90f3dcd4dcb03866bbaae68dc2fbcd8c523a88cd2e468cb4c869f8ddbaff751",
+    "check.gd": "9e8e60762baae3b5a3a4802dc93961d91ed8c31e42fb4b4ca9c9ff5bcaaf33dc",
+    "copy.gdshader": "0a3e4e655b751cadaee3be2f1a5c5f6c8efd8c08ad49579c58f45511cda2a934",
+    "main.tscn": "aab3e6d7d738f3e799f91a39ab258cdc00dbaeb0fa6dcfee9604128caa7b078f",
+    "marker.gdshader": "8a5a983b9a3e7aae5e2be60f182b38218dc5dafae68b89d66978fcedc39a2fa0",
+    "mips.gd": "b05a529685a8c34c0a0a37bd0d14272ef4d65c2192895ee59fe56ad89b0c7494",
+    "probe.gdshader": "f93f32f0f718355f924609a87b213a7c12cc394801fe2a8bbfc01e8a910a7781",
+    "project.godot": "78f4a5b8aa15414fb457a16fcd5f6ce7ce32fc935b4a502709a4663b6a144631",
+    "receiver.gdshader": "cab71772cc628065f27154a50237ccdefd798f14c046d76627815d19ef7161a2",
+    "reflection_math.gdshaderinc": "dcb65acfe03b76e3be7344a247ebe8162123cebc2c4fef1179131b9281bce087"
+  },
+  "acceptanceEligible": false,
+  "startedUnixSeconds": 1794869652.816523,
+  "ownedPID": 599156,
+  "exitCode": 0,
+  "elapsedSeconds": 6.447861909866333,
+  "sourceHashMismatches": [],
+  "engineErrors": [],
+  "reportExists": true,
+  "reportSHA256": "f170d7e095c9bcccbd017ddf160556d7aa60260304d372644742e7ed02ec4ccb",
+  "launchValid": true
+}
