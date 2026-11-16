@@ -453,3 +453,127 @@ signatures and limitations are preserved in
 [browser-stage8-audio-owner.json](evidence/browser-stage8-audio-owner.json).
 The product runtime and existing60FPS/full1%low>45 acceptance remain unchanged;
 this audio-only diagnostic does not measure game frames.
+
+## Stage 9: screen reflection scheduling and desktop hosts
+
+### Reflection phase slack screening
+
+A static follow-up examined moving the existing30Hz reflection submission from
+its main-render callback into native RAF callbacks that do not submit a main
+frame. The proposed temporal contract permits the latest live scene/camera and
+latest completed reflection texture; High shaders/resolution/samples and full
+AI remain required. This screen did not reject the idea merely because a new
+reflection phase changes per-main-frame pixels.
+
+The existing Stage7 native capture provides the opportunity bound:5548 game
+callbacks and3205 main submissions in60.2918 seconds, with2343 no-main callbacks.
+One final idle callback has no next main inside the controller window, leaving
+2342 paired observations. Of these,1207 already performed a native logical tick;
+the source updates simulation before testing the render gate. Reading the
+current live scene would therefore be necessary, rather than replaying the
+previous main frame's matrices.
+
+| Idle callback exit to next main… | Median | P95 | P99 |
+|---|---:|---:|---:|
+| RAF request registration |0.0ms|4.1ms|5.8ms|
+| Native RAF timestamp |3.8ms|7.8ms|8.9ms|
+| Callback entry |4.0ms|8.0ms|9.1ms|
+| gfx.render entry |4.4ms|8.6ms|10.2ms|
+
+These intervals use future baseline observations and are unavailable as a causal
+request/dispatch prediction. Even with hindsight, only68 idle callbacks have
+at least8.3ms before the next main entry; choosing the best idle per main gap
+leaves54 distinct slots, about0.90/s, before reflection30Hz eligibility or a
+safety margin. A10ms service budget leaves only9 distinct gaps. The8.3ms value
+is a separate inclusive reflection CPU mean, not a guaranteed P95/P99 budget;
+shadow cost is nested and is not added again.
+
+The runtime-known current ghNextFrame timestamp gate is also insufficient:
+only43 idle callbacks have8.3ms estimated headroom, and two of those still have
+less than8.3ms before the actual next main entry. A10ms gate offers two slots;
+12ms offers none. Native RAF timestamp is a timebase, not a future dispatch or
+presentation deadline. Adding reflection would delay the existing post-return
+RAF request and change subsequent opportunities, so this is not a simulated
+FPS gain.
+
+The inline path also owns the shared world-matrix snapshot, first due shadow
+update, FX mirror/depth bracket and synchronous warmup. Splitting it would need
+to preserve those dependencies while avoiding another main render, extra input
+consumption or more reflection updates. Current measured slack is too scarce
+to justify that complexity: no prototype or product change was made. This does
+not reopen earlier-request, absolute-phase or zero-tick-skip scheduling ideas.
+Source/raw hashes, coverage, causal-versus-hindsight metrics and limits are in
+[stage9-reflection-phase.json](evidence/stage9-reflection-phase.json).
+
+### Desktop host screen
+
+The existing visible Electron/Tauri shells were reused through their external
+server/CDP blank-target mode, with the current public runner's INIT, seed and
+High settings registered before the first game navigation. No new browser
+context/page was substituted for the owned native window. The product core
+remained b3b3084a, without MSAA or audio prototypes. Each run used1920x1080,
+DPR/scale1, full native AI and100ms completion polling; performance-event
+observers, CPU profiling, tracing and GPU timers were off.
+
+| Complete valid run | Actual runtime | FPS / full1%low | P95 / P99 | Maximum | >50ms/min |
+|---|---|---:|---:|---:|---:|
+| First Edge |Edge157.0.4341.60|47.36 /13.03|37.3 /48.6ms|294.5ms|21.66|
+| Electron |Electron45.3.3 / Chromium156.0.8078.100|51.76 /21.37|31.0 /39.9ms|86.1ms|6.99|
+| Tauri retry |WebView2157.0.4341.46|53.61 /16.93|29.1 /38.8ms|219.5ms|8.93|
+| Final Edge |Edge157.0.4341.60|51.77 /16.99|30.8 /37.4ms|241.9ms|6.95|
+
+All four valid runs completed nine bots times3600ticks and retained all eight
+logical exports exactly against first Edge. Geometry/focus/visibility checks
+passed; every active controller frame was visible, playing and scripted. Full
+intervals retain first use and long frames. These are render submissions,
+not physical presents, and logicalHz is reported separately.
+
+Edge's47.36-to51.77FPS and13.03-to16.99low bracket drift prevents attributing
+the improvement over the first run to desktop hosting. Electron's average
+matches final Edge; its single-run21.37low is a tail hypothesis rather than a
+repeated advantage. Tauri's higher53.61average accompanies16.93low, essentially
+final Edge's16.99, with a higher>50ms frequency. None reached stable60FPS or
+complete1%low>45. No formal migration or host-winner decision is supported.
+No trace in this screen attributes differences to GC/WebAudio cleanup.
+
+The first Tauri attempt remains invalid/excluded: it completed the full AI and
+exact exports, but an immediate post-taskkill CDP-port check raced shutdown and
+the runner did not write ok. Its failed raw was preserved. A new run allowed
+at most3seconds/100ms polling outside the performance window, retaining both
+immediate and settled states; retry CDP closure settled in312.68ms. Root also
+verified closed service/CDP ports and no native-profile process residue.
+This is cleanup evidence, not process-tree memory measurement.
+
+Each shell retained the same independently owned Node server and a fresh
+native profile. Electron's initial language was en-US and Tauri's zh-TW; host,
+version and locale effects are not separated by this single ordered screen.
+There was no full functional/device/context-restoration sweep or cross-runtime
+pixel/PCM oracle. Setup snapshots, shell-ready and Deploy timings are not
+integrated packaged cold startup. Current whole-tree memory, final release
+package size and distribution acceptance remain unmeasured; old e3f040c
+artifacts cannot substitute. The separate Node arrangement lowers prototype
+integration risk and is not a claim of minimum final overhead.
+See [stage9-desktop-screen.json](evidence/stage9-desktop-screen.json) for raw
+hashes, exact-export checks, complete metrics and the retained invalid attempt.
+
+### Render-gate clock screening
+
+A separate conditional replay kept the native simulation RAF clock and the
+existing 60Hz deadline/reset formula, but screened using wall-clock time only
+for the render gate. The captured observer has tick counts, not an exact
+post-simulation wall timestamp. Callback entry is an earlier time sample;
+pre-gfx render entry already includes post-gate HUD/audio work. An estimated
+post-simulation sample is therefore explicitly an estimate, not a measured
+gate boundary; time-sample bounds do not imply monotonic submission-count bounds.
+
+The original RAF-time replay matched all3205 native selections. Callback-entry,
+estimated post-simulation and later pre-gfx/idle-exit clocks selected3099,
+3027 and2979 respectively on the same observed opportunities. The representative
+estimate added739 previously idle selections but removed917 previous render
+selections; callback-entry gaps worsened from P9528.5/P9935.9ms to32.2/39.1ms,
+while intervals below12ms increased from11 to41. These are changed selections
+and phase/spacing, not measured recovered FPS: different work changes subsequent
+opportunities. There is no evidence here for a wall-clock-gate product prototype.
+No simulation clock, deadline, frame count or product behavior was changed.
+Source hashes, clock estimates and replay limits are retained in
+[stage9-render-gate-clock.json](evidence/stage9-render-gate-clock.json).

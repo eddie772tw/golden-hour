@@ -1,5 +1,13 @@
 # Electron／Tauri 再評估：是否更容易接近性能驗收
 
+**後續實測已完成：** [Stage9桌面宿主screen](browser-render-60hz.md#desktop-host-screen)及
+[機器證據](evidence/stage9-desktop-screen.json)使用目前b3b產品core跑完Edge→Electron→Tauri→Edge，
+四個有效run皆保留完整native AI與8項exact輸出。Edge前後47.36→51.77FPS／low13.03→16.99有漂移；
+Electron51.76／low21.37僅單輪尾部較好，Tauri53.61／low16.93與末Edge尾部相近。
+沒有宿主達成穩定60FPS或完整1%low>45，**不支持正式遷移或勝出判定**。
+這次未量完整程序樹記憶體、整合發行包冷啟動或新包大小；原型保留獨立Node，不能視為最終最低負擔。
+以下研究記錄保留screen前的推論與試驗規劃，不能把其中「尚未執行」讀成後續screen的現況。
+
 研究日期：**2026-11-17，Asia/Taipei**。本次只讀既有原型、最新實機證據及官方文件，沒有修改 main、正式遷移、啟動 GPU 或另跑桌面性能測試。官方文件描述能力／ownership；性能結論仍須同工作負載實測。
 
 ## 決策先行
@@ -109,4 +117,4 @@ WebView2 Evergreen會自動更新；fixed runtime可固定版本但需要自己�
 
 **最後建議：目前更容易接近驗收的路徑仍是保聲降低audio churn，並處理已量到的render CPU。桌面保留為版本差異／host控制／發行候選；GC已跑的策略與單純audio-owner隔離都不足以接受。若要先試一個桌面宿主，Electron既有殼與本地Debugger API整合較省驗證工，這是試驗成本排序，不是性能勝出判定。**
 
-所有上述官方URL於2026-11-17查閱。`local-evidence.json`保存本次讀到的runtime inventory與host-probe摘要；新三宿主實測尚未執行。
+所有上述官方URL於2026-11-17查閱。`local-evidence.json`保存研究階段讀到的runtime inventory與host-probe摘要；後續三宿主screen結果與界線見本文頂部Stage9連結。

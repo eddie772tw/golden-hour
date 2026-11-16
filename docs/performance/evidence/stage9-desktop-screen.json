@@ -1,0 +1,596 @@
+{
+  "stage": 9,
+  "kind": "current-product-three-host-native-full-ai-screen-not-migration-acceptance",
+  "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "runOrder": [
+    "edge-desktop-screen-high-1",
+    "electron-native-high-1",
+    "tauri-native-high-1 (invalid cleanup)",
+    "tauri-native-high-2",
+    "edge-desktop-screen-high-2"
+  ],
+  "validRunCount": 4,
+  "excludedRunCount": 1,
+  "commonPolicy": {
+    "width": 1920,
+    "height": 1080,
+    "dpr": 1,
+    "renderScale": 1,
+    "quality": "high",
+    "nativeAIActors": 9,
+    "ticksPerActor": 3600,
+    "completionPollingMs": 100,
+    "performanceEventsObserver": false,
+    "profile": false,
+    "trace": false,
+    "gpuTimer": false,
+    "msaaCandidate": false,
+    "audioPrototype": false,
+    "coldProfiles": "fresh isolated native/browser profile; OS and driver caches retained"
+  },
+  "metricDefinition": {
+    "scope": "complete controller start/end, no trimming first use or long frames; render submissions, not physical presents",
+    "onePercentLow": "1000 / mean(slowest ceil(intervalCount*.01) intervals), not reciprocal P99",
+    "over33_3": "strict interval >33.3ms; counts and frequency per measured interval-minute",
+    "comparisonFlag": "exactCleanComparisonPassed means capture checks and exact logical exports passed; it is NOT performance target acceptance"
+  },
+  "runnerComparison": {
+    "public": "public/golden-hour/scripts/performance/run_browser.py",
+    "work": "work/browser-render-next/run_browser.py",
+    "runnerSHA256": {
+      "public": "e45db11157db75d944afa48954f850a4808b5d756904058242d1dfa03095251d",
+      "work": "b69a988406c3468aab9fffbf7e361f1631e07f3e7dd9b1dbf3903a682466583f"
+    },
+    "INITEqual": true,
+    "controllerInstallEqual": true,
+    "seedSettingsPreloadEqual": true,
+    "INITDiff": [],
+    "controllerDiff": [],
+    "preloadDiff": []
+  },
+  "sources": {
+    "summary": "work/browser-render-next/desktop-screen/summary.json",
+    "summarySHA256": "b6863b7b25e3d3322b1a275ebae63cdf0f56c3f878bd3f2da4ba1a93d5c054a8",
+    "analyzer": "work/browser-render-next/desktop-screen/analyze_desktop.py",
+    "analyzerSHA256": "f4dcb6e6d37e8d7bd74066eb4f5a17df301c884c5b2d70f9321a651254df3708",
+    "owningAnalyzer": "public/golden-hour/scripts/performance/analyze_browser.py",
+    "owningAnalyzerSHA256": "631586e466403b77cfc8c87199c0f76a4583e2e9e525d512ed131577d50737cb"
+  },
+  "runs": [
+    {
+      "name": "edge-desktop-screen-high-1",
+      "raw": "work/browser-render-next/desktop-screen/evidence/edge-desktop-screen-high-1.json",
+      "rawSHA256": "ae7b5898a5412c6e55d6dc29a509861df67f8c4f2ad419be9f2341de4638893b",
+      "valid": true,
+      "validationFailures": [],
+      "runtime": {
+        "shell": "edge",
+        "browserVersion": "157.0.4341.60",
+        "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+        "cdpVersion": null,
+        "initialTarget": null,
+        "cleanup": null,
+        "electronVersions": null
+      },
+      "flags": {
+        "nativeLoop": true,
+        "completionPolling": 100,
+        "performanceEventsObserver": false,
+        "profiler": false,
+        "trace": false,
+        "gpuTimer": false,
+        "osSampler": false,
+        "deepRender": false
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "allEightExportsEqual": true,
+      "scenarioFrameValidation": {
+        "frames": 2887,
+        "hidden": 0,
+        "nonplaying": 0,
+        "nonscripted": 0
+      },
+      "controllerTiming": {
+        "wallSeconds": 60.97969999980926,
+        "logicalHz": 59.03603986263069,
+        "renderHz": 47.34362418983744,
+        "overflowDroppedMs": 998.1333333333293
+      },
+      "diagnosticOnly": false,
+      "completeSubmittedFrames": {
+        "frames": 2886,
+        "fps": 47.35766854554853,
+        "onePercentLowFPS": 13.028437930472549,
+        "onePercentTailFrames": 29,
+        "p95Ms": 37.299999952316284,
+        "p99Ms": 48.60000014305115,
+        "reciprocalP99FPS": 20.576131626678205,
+        "maxMs": 294.5,
+        "over50PerMinute": 21.660472099835086,
+        "over100": 4,
+        "meanFrameMs": 21.115904365904367,
+        "over33_3": 236,
+        "over50": 22,
+        "over33_3PerMinute": 232.35779161641273
+      },
+      "exactCleanComparisonPassed": true,
+      "limits": "Render submission intervals, not physical presents. Exact eight-output equality is reported without tolerance. No packaged cold-start, integrated cold-start, release size or memory result is derived from snapshot/entry/processToReady.",
+      "actualRenderer": "ANGLE (AMD, AMD Radeon RX 9070 XT (0x00007550) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "controllerTick": 3600,
+      "botTicks": [
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600
+      ],
+      "snapshotCheckScope": "cold/warm public-runner snapshots; all active frame visibility/state checked offline"
+    },
+    {
+      "name": "electron-native-high-1",
+      "raw": "work/browser-render-next/desktop-screen/evidence/electron-native-high-1.json",
+      "rawSHA256": "1ccb6ee82950d1ecff77c4f7364fcd813799fa0821b1c15b6441c766ae871148",
+      "valid": true,
+      "validationFailures": [],
+      "runtime": {
+        "shell": "electron",
+        "browserVersion": "156.0.8078.100",
+        "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+        "cdpVersion": {
+          "Browser": "Chrome/156.0.8078.100",
+          "File-Path-Style": "windows",
+          "Protocol-Version": "1.3",
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.100 Electron/45.3.3 Safari/537.36",
+          "V8-Version": "15.6.75.57",
+          "WebKit-Version": "537.36 (@6dfd71204defe632c62c0dec4b3f30dcb892ce64)"
+        },
+        "initialTarget": {
+          "visibility": "visible",
+          "focus": true,
+          "url": "about:blank",
+          "language": "en-US",
+          "languages": [
+            "en-US",
+            "zh-Hant-TW"
+          ],
+          "dpr": 1
+        },
+        "cleanup": {
+          "pid": 521344,
+          "alreadyExited": false,
+          "taskkillReturnCode": 0,
+          "output": "SUCCESS: The process with PID 536528 (child process of PID 521344) has been terminated.\nSUCCESS: The process with PID 355780 (child process of PID 521344) has been terminated.\nSUCCESS: The process with PID 606368 (child process of PID 521344) has been terminated.\nSUCCESS: The process with PID 560004 (child process of PID 521344) has been terminated.\nSUCCESS: The process with PID 521344 (child process of PID 563528) has been terminated.\n",
+          "exitCode": 1,
+          "cdpPortOpenAfter": false,
+          "independentNodePortOpenAfterShell": true
+        },
+        "electronVersions": {
+          "node": "24.22.3",
+          "acorn": "8.18.0",
+          "ada": "4.0.0",
+          "amaro": "1.1.11",
+          "ares": "1.34.9",
+          "brotli": "1.2.0",
+          "cldr": "48.0",
+          "icu": "78.2",
+          "llhttp": "9.4.4",
+          "merve": "1.2.2",
+          "modules": "150",
+          "napi": "10",
+          "nbytes": "0.1.4",
+          "ncrypto": "0.0.1",
+          "nghttp2": "1.70.0",
+          "nghttp3": "",
+          "ngtcp2": "",
+          "openssl": "0.0.0",
+          "simdjson": "4.6.11",
+          "simdutf": "7.7.0",
+          "sqlite": "3.54.1",
+          "tz": "2026e",
+          "undici": "7.30.2",
+          "unicode": "17.0",
+          "uv": "1.52.1",
+          "uvwasi": "0.0.23",
+          "v8": "15.6.75.57-electron.0",
+          "zlib": "1.3.2.1-motley",
+          "zstd": "1.6.0",
+          "electron": "45.3.3",
+          "chrome": "156.0.8078.100"
+        }
+      },
+      "flags": {
+        "nativeLoop": true,
+        "completionPolling": 100,
+        "performanceEventsObserver": false,
+        "profiler": false,
+        "trace": false,
+        "gpuTimer": false,
+        "osSampler": false,
+        "deepRender": false
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "allEightExportsEqual": true,
+      "scenarioFrameValidation": {
+        "frames": 3112,
+        "hidden": 0,
+        "nonplaying": 0,
+        "nonscripted": 0
+      },
+      "controllerTiming": {
+        "wallSeconds": 60.140799999952314,
+        "logicalHz": 59.85952963716569,
+        "renderHz": 51.74523784190546,
+        "overflowDroppedMs": 196.86666666666446
+      },
+      "diagnosticOnly": false,
+      "completeSubmittedFrames": {
+        "frames": 3111,
+        "fps": 51.75916266955606,
+        "onePercentLowFPS": 21.37037531585546,
+        "onePercentTailFrames": 32,
+        "p95Ms": 31.0,
+        "p99Ms": 39.89999985694885,
+        "reciprocalP99FPS": 25.062656731459693,
+        "maxMs": 86.09999990463257,
+        "over50PerMinute": 6.987736522408726,
+        "over100": 0,
+        "meanFrameMs": 19.320250723224788,
+        "over33_3": 92,
+        "over50": 7,
+        "over33_3PerMinute": 91.83882286594326
+      },
+      "exactCleanComparisonPassed": true,
+      "limits": "Render submission intervals, not physical presents. Exact eight-output equality is reported without tolerance. No packaged cold-start, integrated cold-start, release size or memory result is derived from snapshot/entry/processToReady.",
+      "actualRenderer": "ANGLE (AMD, AMD Radeon RX 9070 XT (0x00007550) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "controllerTick": 3600,
+      "botTicks": [
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600
+      ],
+      "snapshotCheckScope": "cold/preScenario/postScenario/warm including actual4x native targets"
+    },
+    {
+      "name": "tauri-native-high-2",
+      "raw": "work/browser-render-next/desktop-screen/evidence/tauri-native-high-2.json",
+      "rawSHA256": "8763931b39da635982bced3733a47eb145077dddee67cb8e8a2093d66269fe7a",
+      "valid": true,
+      "validationFailures": [],
+      "runtime": {
+        "shell": "tauri",
+        "browserVersion": "157.0.4341.46",
+        "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+        "cdpVersion": {
+          "Browser": "Edg/157.0.4341.46",
+          "File-Path-Style": "windows",
+          "Protocol-Version": "1.3",
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+          "V8-Version": "15.7.11.4",
+          "WebKit-Version": "537.36 (@a0c6bd61d7884b3c402a34c67d05100107a9e5e4)"
+        },
+        "initialTarget": {
+          "visibility": "visible",
+          "focus": true,
+          "url": "about:blank",
+          "language": "zh-TW",
+          "languages": [
+            "zh-TW",
+            "en",
+            "en-GB",
+            "en-US"
+          ],
+          "dpr": 1
+        },
+        "cleanup": {
+          "pid": 568940,
+          "alreadyExited": false,
+          "taskkillReturnCode": 0,
+          "output": "SUCCESS: The process with PID 577456 (child process of PID 532060) has been terminated.\nSUCCESS: The process with PID 539440 (child process of PID 532060) has been terminated.\nSUCCESS: The process with PID 398224 (child process of PID 532060) has been terminated.\nSUCCESS: The process with PID 565036 (child process of PID 532060) has been terminated.\nSUCCESS: The process with PID 559760 (child process of PID 532060) has been terminated.\nSUCCESS: The process with PID 551668 (child process of PID 532060) has been terminated.\nSUCCESS: The process with PID 532060 (child process of PID 568940) has been terminated.\nSUCCESS: The process with PID 568940 (child process of PID 552272) has been terminated.\n",
+          "exitCode": 1,
+          "cdpPortImmediateOpen": true,
+          "cdpPortSettledOpen": false,
+          "cdpPortSettleElapsedMs": 312.67650006338954,
+          "cdpPortSettlePolls": 2,
+          "cdpPortSettleLimitMs": 3000,
+          "cdpPortOpenAfter": false,
+          "independentNodePortOpenAfterShell": true
+        },
+        "electronVersions": null
+      },
+      "flags": {
+        "nativeLoop": true,
+        "completionPolling": 100,
+        "performanceEventsObserver": false,
+        "profiler": false,
+        "trace": false,
+        "gpuTimer": false,
+        "osSampler": false,
+        "deepRender": false
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "allEightExportsEqual": true,
+      "scenarioFrameValidation": {
+        "frames": 3244,
+        "hidden": 0,
+        "nonplaying": 0,
+        "nonscripted": 0
+      },
+      "controllerTiming": {
+        "wallSeconds": 60.530900000095365,
+        "logicalHz": 59.473756378879685,
+        "renderHz": 53.5924626925238,
+        "overflowDroppedMs": 543.0999999999993
+      },
+      "diagnosticOnly": false,
+      "completeSubmittedFrames": {
+        "frames": 3243,
+        "fps": 53.608622342711676,
+        "onePercentLowFPS": 16.930891177231224,
+        "onePercentTailFrames": 33,
+        "p95Ms": 29.100000143051147,
+        "p99Ms": 38.799999952316284,
+        "reciprocalP99FPS": 25.773195907962933,
+        "maxMs": 219.5,
+        "over50PerMinute": 8.926505107944589,
+        "over100": 3,
+        "meanFrameMs": 18.653715695343816,
+        "over33_3": 81,
+        "over50": 9,
+        "over33_3PerMinute": 80.3385459715013
+      },
+      "exactCleanComparisonPassed": true,
+      "limits": "Render submission intervals, not physical presents. Exact eight-output equality is reported without tolerance. No packaged cold-start, integrated cold-start, release size or memory result is derived from snapshot/entry/processToReady.",
+      "actualRenderer": "ANGLE (AMD, AMD Radeon RX 9070 XT (0x00007550) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "controllerTick": 3600,
+      "botTicks": [
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600
+      ],
+      "snapshotCheckScope": "cold/preScenario/postScenario/warm including actual4x native targets"
+    },
+    {
+      "name": "edge-desktop-screen-high-2",
+      "raw": "work/browser-render-next/desktop-screen/evidence/edge-desktop-screen-high-2.json",
+      "rawSHA256": "40b67054d6fa8cbeca8e135c84310f1c2e1184bbcc75fc000247cc6349b5e38a",
+      "valid": true,
+      "validationFailures": [],
+      "runtime": {
+        "shell": "edge",
+        "browserVersion": "157.0.4341.60",
+        "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+        "cdpVersion": null,
+        "initialTarget": null,
+        "cleanup": null,
+        "electronVersions": null
+      },
+      "flags": {
+        "nativeLoop": true,
+        "completionPolling": 100,
+        "performanceEventsObserver": false,
+        "profiler": false,
+        "trace": false,
+        "gpuTimer": false,
+        "osSampler": false,
+        "deepRender": false
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "allEightExportsEqual": true,
+      "scenarioFrameValidation": {
+        "frames": 3130,
+        "hidden": 0,
+        "nonplaying": 0,
+        "nonscripted": 0
+      },
+      "controllerTiming": {
+        "wallSeconds": 60.471,
+        "logicalHz": 59.53266855186784,
+        "renderHz": 51.760347935373986,
+        "overflowDroppedMs": 484.50000000000074
+      },
+      "diagnosticOnly": false,
+      "completeSubmittedFrames": {
+        "frames": 3129,
+        "fps": 51.770607729646756,
+        "onePercentLowFPS": 16.987843074369568,
+        "onePercentTailFrames": 32,
+        "p95Ms": 30.800000190734863,
+        "p99Ms": 37.39999985694885,
+        "reciprocalP99FPS": 26.737968016708475,
+        "maxMs": 241.90000009536743,
+        "over50PerMinute": 6.949074863039834,
+        "over100": 3,
+        "meanFrameMs": 19.31597954619613,
+        "over33_3": 91,
+        "over50": 7,
+        "over33_3PerMinute": 90.33797321951783
+      },
+      "exactCleanComparisonPassed": true,
+      "limits": "Render submission intervals, not physical presents. Exact eight-output equality is reported without tolerance. No packaged cold-start, integrated cold-start, release size or memory result is derived from snapshot/entry/processToReady.",
+      "actualRenderer": "ANGLE (AMD, AMD Radeon RX 9070 XT (0x00007550) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "controllerTick": 3600,
+      "botTicks": [
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600
+      ],
+      "snapshotCheckScope": "cold/warm public-runner snapshots; all active frame visibility/state checked offline"
+    },
+    {
+      "name": "tauri-native-high-1",
+      "raw": "work/browser-render-next/desktop-screen/evidence/tauri-native-high-1.json",
+      "rawSHA256": "2683cf149915117efe512e3ae101f52ad23c7128e17e198476835d94204c8ee9",
+      "valid": false,
+      "validationFailures": [
+        "KeyError: 'ok'",
+        "Owned shell root/CDP cleanup not verified"
+      ],
+      "runtime": {
+        "shell": "tauri",
+        "browserVersion": "157.0.4341.46",
+        "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+        "cdpVersion": {
+          "Browser": "Edg/157.0.4341.46",
+          "File-Path-Style": "windows",
+          "Protocol-Version": "1.3",
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+          "V8-Version": "15.7.11.4",
+          "WebKit-Version": "537.36 (@a0c6bd61d7884b3c402a34c67d05100107a9e5e4)"
+        },
+        "initialTarget": {
+          "visibility": "visible",
+          "focus": true,
+          "url": "about:blank",
+          "language": "zh-TW",
+          "languages": [
+            "zh-TW",
+            "en",
+            "en-GB",
+            "en-US"
+          ],
+          "dpr": 1
+        },
+        "cleanup": {
+          "pid": 568060,
+          "alreadyExited": false,
+          "taskkillReturnCode": 0,
+          "output": "SUCCESS: The process with PID 437220 (child process of PID 559560) has been terminated.\nSUCCESS: The process with PID 591380 (child process of PID 559560) has been terminated.\nSUCCESS: The process with PID 394944 (child process of PID 559560) has been terminated.\nSUCCESS: The process with PID 564808 (child process of PID 559560) has been terminated.\nSUCCESS: The process with PID 562116 (child process of PID 559560) has been terminated.\nSUCCESS: The process with PID 546236 (child process of PID 559560) has been terminated.\nSUCCESS: The process with PID 559560 (child process of PID 568060) has been terminated.\nSUCCESS: The process with PID 568060 (child process of PID 475828) has been terminated.\n",
+          "exitCode": 1,
+          "cdpPortOpenAfter": true,
+          "independentNodePortOpenAfterShell": true
+        },
+        "electronVersions": null
+      },
+      "flags": {
+        "nativeLoop": true,
+        "completionPolling": 100,
+        "performanceEventsObserver": false,
+        "profiler": false,
+        "trace": false,
+        "gpuTimer": false,
+        "osSampler": false,
+        "deepRender": false
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "allEightExportsEqual": true,
+      "scenarioFrameValidation": {
+        "frames": 3185,
+        "hidden": 0,
+        "nonplaying": 0,
+        "nonscripted": 0
+      },
+      "exactCleanComparisonPassed": false,
+      "limits": "Render submission intervals, not physical presents. Exact eight-output equality is reported without tolerance. No packaged cold-start, integrated cold-start, release size or memory result is derived from snapshot/entry/processToReady.",
+      "actualRenderer": "ANGLE (AMD, AMD Radeon RX 9070 XT (0x00007550) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "controllerTick": 3600,
+      "botTicks": [
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600
+      ],
+      "snapshotCheckScope": "cold/preScenario/postScenario/warm including actual4x native targets",
+      "invalidReason": "Runner failed the immediate post-taskkill CDP listener check and did not write ok; preserved excluded raw, never retroactively accepted."
+    }
+  ],
+  "cleanupRetry": {
+    "excludedFirstTauriRawPreserved": true,
+    "performanceWindowUnchanged": true,
+    "newRunUsesBoundedSettleMs": 3000,
+    "pollMs": 100,
+    "retryImmediateOpen": true,
+    "retrySettledOpen": false,
+    "retryElapsedMs": 312.67650006338954,
+    "retryPolls": 2,
+    "rootIndependentCheck": "Root reported all48910/48913/48919 listeners closed and no matching native-profile process residue after retry; cleanup evidence only, not memory sampling."
+  },
+  "decision": {
+    "targetPassed": false,
+    "migrationPromoted": false,
+    "hostWinnerEstablished": false,
+    "edgeBracket": "47.3577 to51.7706 FPS; full1%low13.0284 to16.9878. Single ordered screen does not isolate host effects from drift.",
+    "electron": "51.7592FPS essentially equals final Edge; single21.3704low is a tail hypothesis, not repeated superiority.",
+    "tauri": "53.6086FPS higher mean, but16.9309low essentially equals final Edge16.9878; no tail acceptance.",
+    "target": "Stable60FPS or complete1%low>45 with High/fullAI retained; none passed."
+  },
+  "limits": [
+    "Single ordered bracket, not repeated randomized/paired host trials. Runtime versions and initial native locale differ.",
+    "No explanatory trace attributes differences to GC, native WebAudio deletion or driver behavior.",
+    "Eight exact logical outputs do not prove cross-runtime pixel/PCM equivalence or a full functional/context/device sweep.",
+    "Independent Node is deliberate prototype risk reduction, not final integrated minimum memory.",
+    "No current process-tree memory, integrated packaged cold startup, release size, signing/update or physical-present acceptance. Snapshot, Popen-ready and entry metadata do not fill those gaps.",
+    "Historical e3f040c package/memory data are not current workload evidence."
+  ]
+}
