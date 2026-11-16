@@ -715,3 +715,14 @@ not real-time60Hz, native Godot rendering, accepted audio DSP or live IPC.
 Audio records remain capped at20000 with838445 dropped records in the root
 run; these drops are reported and cannot be treated as delivered audio.
 See [stage13-node-authoritative.json](evidence/stage13-node-authoritative.json).
+
+
+## Stage 14: original affine skin in native Godot
+
+The original operator mesh can now travel as rest vertices and complete affine bone palettes. Walking/crouch poses contain shear; decomposing them into TRS loses up to 0.11723 in matrix coefficients. The native consumer therefore uploads the full original palette and applies each root once. Both teams preserve all eight source attributes byte-for-byte.
+
+Eight original pose checks pass in Node, with a maximum independent CPU position error of 3.72e-7. Godot CPU checks pass both teams at 4.77e-7. Visible Vulkan smokes pass both teams over 12 draws/four original samples, with zero stored-palette readback error. The published, relocated component also passes its Node export/tests, headless import/CPU check and visible Vulkan team1 smoke.
+
+The [runnable component](../../prototypes/godot-skin-component/README.md) and [source/evidence hashes](evidence/stage14-godot-affine-skin.json) are committed; generated data and the engine are not. This removes a native asset/animation data-path risk. It does not validate GPU-deformed vertex readback, skin normals, continuous live AI, High shaders, full sound or the performance goal. No native FPS comparison applies.
+
+![Original team1 rest mesh with affine pose in Godot; diagnostic material and lighting](assets/godot-affine-skin-team1.png)

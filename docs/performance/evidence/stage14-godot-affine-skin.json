@@ -1,0 +1,646 @@
+{
+  "stage": 14,
+  "kind": "Godot-original-affine-skin-component",
+  "productRuntimeChanged": false,
+  "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "sourcePackage": "prototypes/godot-skin-component/",
+  "acceptanceEligible": false,
+  "highParity": false,
+  "fullAI": false,
+  "fullAudio": false,
+  "gpuVertexReadback": false,
+  "sourceSHA256": {
+    ".gitignore": "ee44e8836076e92dddcbb027203fc231a701d593ff6243e191da29e18291848f",
+    "export-skin.mjs": "27494f17c1d01e34477db270944e14ddb2efa91214aae8afe94a5b3c5a161267",
+    "live_skin.gd": "ff4ee702a1b3238bdde05d22a7dc635f6ca7eab2610440cbb89cca3d68fba3d6",
+    "main.gd": "d6351040216f8dc0c232d5624d38878f7244363d26a9834e0a3cc1d89b5368ed",
+    "main.tscn": "bd59652ab9e935b39b34f51effb9658b2384c8175e41c33e7ccc511bf06034ed",
+    "project.godot": "66f326f45f649f9cb3c6ddcc148529096bc24eb822dab85401dc6f22d9bfc288",
+    "README.md": "94d86f02d412c93250089ea713e71d398317cd1656aa00ec7a9382c11df31fff",
+    "skin-data.mjs": "b0f5ca340416dd543c5fc75bfae4d905d99c8fe31d3dffb5f04572e4959d4f03",
+    "skin-data.test.mjs": "17028550f693754281bd2b48720128b6bddce5310052249df865d8925bca1c86"
+  },
+  "generatedAssets": {
+    "binary": {
+      "bytes": 9039296,
+      "sha256": "8cf202f763d885c96c31c4b01ec87405092c923b05c4453f5fad157553db6153"
+    },
+    "packet": {
+      "bytes": 497069,
+      "sha256": "dbb7ae9c39f3926cacb7a9cdf87cc8b05e2e40d09542cbfd05500c39997f7375",
+      "source": {
+        "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+        "threeRevision": "180",
+        "bundleVersion": "5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3",
+        "operatorsSHA256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
+        "decoderSHA256": "6154093aea3a69e3ddfec8953cfd83891b35c4c1041ee115eecf3e46732b3685",
+        "loaderSHA256": "2f0b70559123576e85af355cb50c9a04bb243df005a5c4a1d3e3171eb0a51d26",
+        "assetBootSHA256": "686ebed45c89a1be9bb32f5465b8d78c39fbba677e9951cf34ec97c6c2aca234",
+        "fixtureSeed": 5281,
+        "poseClock": "Original rig.update fixed1/60; no full-game/AI or native animation-timing parity claimed"
+      }
+    }
+  },
+  "nodeChecks": {
+    "originalAttributesExact": true,
+    "clockwiseIndexRoundTrip": true,
+    "corruptionRejected": true,
+    "poses": 8,
+    "maxNativeCPUError": 3.724285573269981e-07,
+    "maxFloat32PaletteError": 4.7037180017639457e-07
+  },
+  "engineChecks": [
+    {
+      "rawPath": "work\\godot-native\\skin\\evidence\\godot-cpu-team0.json",
+      "rawSHA256": "aa1ad8a1e2d0359e2bf0014cd63d4059e87cba20e37fcaf1ddf7c3bc49f42f62",
+      "result": {
+        "bones": 34,
+        "cpu_pose_checks": [
+          {
+            "cpu_only": true,
+            "label": "original-constructor-joints",
+            "max_position_error": 3.57627868652344e-07,
+            "pose": 0,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "original-walking-update-45",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 1,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "original-crouch-update-70",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 2,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "same-original-pose-transformed-parent",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 3,
+            "vertices": 28468
+          }
+        ],
+        "frames_drawn": 0,
+        "full_ai": false,
+        "godot": {
+          "build": "official",
+          "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "hex": 263938,
+          "major": 4,
+          "minor": 7,
+          "patch": 2,
+          "status": "stable",
+          "string": "4.7.2-stable (official)",
+          "timestamp": 0
+        },
+        "gpu_vertex_positions_readback": false,
+        "high_parity": false,
+        "kind": "original-native-rest-skin-affine-proof",
+        "limits": [
+          "Godot import/engine vertex deformation and skin normals require root validation.",
+          "aux/aux2 and every original attribute are preserved byte-exact but their High shader logic is unported.",
+          "Textures/custom material shader, fade variants, VM/FPbody/reflection/shadow/High effects remain unported.",
+          "Body-only two original team rigs; no invented bone hierarchy or substitute pose animation.",
+          "Position golden is native CPU skinning, not full GPU shader displacement/normal parity."
+        ],
+        "native_render_smoke": false,
+        "palette_readback_error": null,
+        "pose_samples": 4,
+        "source": {
+          "assetBootSHA256": "a19cef1335ad374685b31be91a0be63c60ddc47cc908eb94ed67190741be3e7c",
+          "bundleVersion": "5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3",
+          "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+          "decoderSHA256": "6154093aea3a69e3ddfec8953cfd83891b35c4c1041ee115eecf3e46732b3685",
+          "fixtureSeed": 5281.0,
+          "loaderSHA256": "d1121daf6dd35d582058cd67949a4888e76de8bcdd64d697c77a819dbc4e6a1e",
+          "operatorsSHA256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
+          "poseClock": "Original rig.update fixed1/60; no full-game/AI or native animation-timing parity claimed",
+          "threeRevision": "180"
+        },
+        "team": 0.0,
+        "unported_attributes": [
+          "aux",
+          "aux2"
+        ],
+        "vertices": 28468.0
+      }
+    },
+    {
+      "rawPath": "work\\godot-native\\skin\\evidence\\godot-cpu-team1.json",
+      "rawSHA256": "17a648f71784c10122916aee378200bf5e49c02711dd92892fa7d640a726b5e3",
+      "result": {
+        "bones": 34,
+        "cpu_pose_checks": [
+          {
+            "cpu_only": true,
+            "label": "original-constructor-joints",
+            "max_position_error": 3.57627868652344e-07,
+            "pose": 0,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "original-walking-update-45",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 1,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "original-crouch-update-70",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 2,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "same-original-pose-transformed-parent",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 3,
+            "vertices": 28468
+          }
+        ],
+        "frames_drawn": 0,
+        "full_ai": false,
+        "godot": {
+          "build": "official",
+          "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "hex": 263938,
+          "major": 4,
+          "minor": 7,
+          "patch": 2,
+          "status": "stable",
+          "string": "4.7.2-stable (official)",
+          "timestamp": 0
+        },
+        "gpu_vertex_positions_readback": false,
+        "high_parity": false,
+        "kind": "original-native-rest-skin-affine-proof",
+        "limits": [
+          "Godot import/engine vertex deformation and skin normals require root validation.",
+          "aux/aux2 and every original attribute are preserved byte-exact but their High shader logic is unported.",
+          "Textures/custom material shader, fade variants, VM/FPbody/reflection/shadow/High effects remain unported.",
+          "Body-only two original team rigs; no invented bone hierarchy or substitute pose animation.",
+          "Position golden is native CPU skinning, not full GPU shader displacement/normal parity."
+        ],
+        "native_render_smoke": false,
+        "palette_readback_error": null,
+        "pose_samples": 4,
+        "source": {
+          "assetBootSHA256": "a19cef1335ad374685b31be91a0be63c60ddc47cc908eb94ed67190741be3e7c",
+          "bundleVersion": "5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3",
+          "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+          "decoderSHA256": "6154093aea3a69e3ddfec8953cfd83891b35c4c1041ee115eecf3e46732b3685",
+          "fixtureSeed": 5281.0,
+          "loaderSHA256": "d1121daf6dd35d582058cd67949a4888e76de8bcdd64d697c77a819dbc4e6a1e",
+          "operatorsSHA256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
+          "poseClock": "Original rig.update fixed1/60; no full-game/AI or native animation-timing parity claimed",
+          "threeRevision": "180"
+        },
+        "team": 1.0,
+        "unported_attributes": [
+          "aux",
+          "aux2"
+        ],
+        "vertices": 28468.0
+      }
+    },
+    {
+      "rawPath": "work\\godot-native\\skin\\evidence\\godot-skin-team0.json",
+      "rawSHA256": "76f249d897b5ecbbd7a4f365f241ca88e0fc466ebabc674711f810f4573c72c7",
+      "result": {
+        "bones": 34,
+        "capture_error": 0,
+        "cpu_pose_checks": [
+          {
+            "cpu_only": true,
+            "label": "original-constructor-joints",
+            "max_position_error": 3.57627868652344e-07,
+            "pose": 0,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "original-walking-update-45",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 1,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "original-crouch-update-70",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 2,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "same-original-pose-transformed-parent",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 3,
+            "vertices": 28468
+          }
+        ],
+        "frames_drawn": 12,
+        "full_ai": false,
+        "godot": {
+          "build": "official",
+          "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "hex": 263938,
+          "major": 4,
+          "minor": 7,
+          "patch": 2,
+          "status": "stable",
+          "string": "4.7.2-stable (official)",
+          "timestamp": 0
+        },
+        "gpu_vertex_positions_readback": false,
+        "high_parity": false,
+        "kind": "original-native-rest-skin-affine-proof",
+        "limits": [
+          "Godot import/engine vertex deformation and skin normals require root validation.",
+          "aux/aux2 and every original attribute are preserved byte-exact but their High shader logic is unported.",
+          "Textures/custom material shader, fade variants, VM/FPbody/reflection/shadow/High effects remain unported.",
+          "Body-only two original team rigs; no invented bone hierarchy or substitute pose animation.",
+          "Position golden is native CPU skinning, not full GPU shader displacement/normal parity."
+        ],
+        "native_render_smoke": true,
+        "palette_readback_error": 0.0,
+        "pose_samples": 4,
+        "source": {
+          "assetBootSHA256": "a19cef1335ad374685b31be91a0be63c60ddc47cc908eb94ed67190741be3e7c",
+          "bundleVersion": "5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3",
+          "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+          "decoderSHA256": "6154093aea3a69e3ddfec8953cfd83891b35c4c1041ee115eecf3e46732b3685",
+          "fixtureSeed": 5281.0,
+          "loaderSHA256": "d1121daf6dd35d582058cd67949a4888e76de8bcdd64d697c77a819dbc4e6a1e",
+          "operatorsSHA256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
+          "poseClock": "Original rig.update fixed1/60; no full-game/AI or native animation-timing parity claimed",
+          "threeRevision": "180"
+        },
+        "team": 0.0,
+        "unported_attributes": [
+          "aux",
+          "aux2"
+        ],
+        "vertices": 28468.0
+      }
+    },
+    {
+      "rawPath": "work\\godot-native\\skin\\evidence\\godot-skin-team1.json",
+      "rawSHA256": "d6c14c8ef497529e01ce82e97ce9fa42969683582c07f64cf9ab3b929a849e1e",
+      "result": {
+        "bones": 34,
+        "capture_error": 0,
+        "cpu_pose_checks": [
+          {
+            "cpu_only": true,
+            "label": "original-constructor-joints",
+            "max_position_error": 3.57627868652344e-07,
+            "pose": 0,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "original-walking-update-45",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 1,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "original-crouch-update-70",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 2,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "same-original-pose-transformed-parent",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 3,
+            "vertices": 28468
+          }
+        ],
+        "frames_drawn": 12,
+        "full_ai": false,
+        "godot": {
+          "build": "official",
+          "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "hex": 263938,
+          "major": 4,
+          "minor": 7,
+          "patch": 2,
+          "status": "stable",
+          "string": "4.7.2-stable (official)",
+          "timestamp": 0
+        },
+        "gpu_vertex_positions_readback": false,
+        "high_parity": false,
+        "kind": "original-native-rest-skin-affine-proof",
+        "limits": [
+          "Godot import/engine vertex deformation and skin normals require root validation.",
+          "aux/aux2 and every original attribute are preserved byte-exact but their High shader logic is unported.",
+          "Textures/custom material shader, fade variants, VM/FPbody/reflection/shadow/High effects remain unported.",
+          "Body-only two original team rigs; no invented bone hierarchy or substitute pose animation.",
+          "Position golden is native CPU skinning, not full GPU shader displacement/normal parity."
+        ],
+        "native_render_smoke": true,
+        "palette_readback_error": 0.0,
+        "pose_samples": 4,
+        "source": {
+          "assetBootSHA256": "a19cef1335ad374685b31be91a0be63c60ddc47cc908eb94ed67190741be3e7c",
+          "bundleVersion": "5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3",
+          "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+          "decoderSHA256": "6154093aea3a69e3ddfec8953cfd83891b35c4c1041ee115eecf3e46732b3685",
+          "fixtureSeed": 5281.0,
+          "loaderSHA256": "d1121daf6dd35d582058cd67949a4888e76de8bcdd64d697c77a819dbc4e6a1e",
+          "operatorsSHA256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
+          "poseClock": "Original rig.update fixed1/60; no full-game/AI or native animation-timing parity claimed",
+          "threeRevision": "180"
+        },
+        "team": 1.0,
+        "unported_attributes": [
+          "aux",
+          "aux2"
+        ],
+        "vertices": 28468.0
+      }
+    },
+    {
+      "rawPath": "public\\golden-hour\\prototypes\\godot-skin-component\\evidence\\public-cpu-team0.json",
+      "rawSHA256": "021673efadf153028820854a9f1282e19dd516c5e266677dcd0d8a73201dc1dc",
+      "result": {
+        "bones": 34,
+        "cpu_pose_checks": [
+          {
+            "cpu_only": true,
+            "label": "original-constructor-joints",
+            "max_position_error": 3.57627868652344e-07,
+            "pose": 0,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "original-walking-update-45",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 1,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "original-crouch-update-70",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 2,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "same-original-pose-transformed-parent",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 3,
+            "vertices": 28468
+          }
+        ],
+        "frames_drawn": 0,
+        "full_ai": false,
+        "godot": {
+          "build": "official",
+          "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "hex": 263938,
+          "major": 4,
+          "minor": 7,
+          "patch": 2,
+          "status": "stable",
+          "string": "4.7.2-stable (official)",
+          "timestamp": 0
+        },
+        "gpu_vertex_positions_readback": false,
+        "high_parity": false,
+        "kind": "original-native-rest-skin-affine-proof",
+        "limits": [
+          "Godot import/engine vertex deformation and skin normals require root validation.",
+          "aux/aux2 and every original attribute are preserved byte-exact but their High shader logic is unported.",
+          "Textures/custom material shader, fade variants, VM/FPbody/reflection/shadow/High effects remain unported.",
+          "Body-only two original team rigs; no invented bone hierarchy or substitute pose animation.",
+          "Position golden is native CPU skinning, not full GPU shader displacement/normal parity."
+        ],
+        "native_render_smoke": false,
+        "palette_readback_error": null,
+        "pose_samples": 4,
+        "source": {
+          "assetBootSHA256": "686ebed45c89a1be9bb32f5465b8d78c39fbba677e9951cf34ec97c6c2aca234",
+          "bundleVersion": "5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3",
+          "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+          "decoderSHA256": "6154093aea3a69e3ddfec8953cfd83891b35c4c1041ee115eecf3e46732b3685",
+          "fixtureSeed": 5281.0,
+          "loaderSHA256": "2f0b70559123576e85af355cb50c9a04bb243df005a5c4a1d3e3171eb0a51d26",
+          "operatorsSHA256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
+          "poseClock": "Original rig.update fixed1/60; no full-game/AI or native animation-timing parity claimed",
+          "threeRevision": "180"
+        },
+        "team": 0.0,
+        "unported_attributes": [
+          "aux",
+          "aux2"
+        ],
+        "vertices": 28468.0
+      }
+    },
+    {
+      "rawPath": "public\\golden-hour\\prototypes\\godot-skin-component\\evidence\\public-skin-team1.json",
+      "rawSHA256": "4d2ab46d7c9a25aa8f77a58b649534cdf9d16c0890953fa64aaed381e5381ac2",
+      "result": {
+        "bones": 34,
+        "capture_error": 0,
+        "cpu_pose_checks": [
+          {
+            "cpu_only": true,
+            "label": "original-constructor-joints",
+            "max_position_error": 3.57627868652344e-07,
+            "pose": 0,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "original-walking-update-45",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 1,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "original-crouch-update-70",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 2,
+            "vertices": 28468
+          },
+          {
+            "cpu_only": true,
+            "label": "same-original-pose-transformed-parent",
+            "max_position_error": 4.76837158203125e-07,
+            "pose": 3,
+            "vertices": 28468
+          }
+        ],
+        "frames_drawn": 12,
+        "full_ai": false,
+        "godot": {
+          "build": "official",
+          "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "hex": 263938,
+          "major": 4,
+          "minor": 7,
+          "patch": 2,
+          "status": "stable",
+          "string": "4.7.2-stable (official)",
+          "timestamp": 0
+        },
+        "gpu_vertex_positions_readback": false,
+        "high_parity": false,
+        "kind": "original-native-rest-skin-affine-proof",
+        "limits": [
+          "Godot import/engine vertex deformation and skin normals require root validation.",
+          "aux/aux2 and every original attribute are preserved byte-exact but their High shader logic is unported.",
+          "Textures/custom material shader, fade variants, VM/FPbody/reflection/shadow/High effects remain unported.",
+          "Body-only two original team rigs; no invented bone hierarchy or substitute pose animation.",
+          "Position golden is native CPU skinning, not full GPU shader displacement/normal parity."
+        ],
+        "native_render_smoke": true,
+        "palette_readback_error": 0.0,
+        "pose_samples": 4,
+        "source": {
+          "assetBootSHA256": "686ebed45c89a1be9bb32f5465b8d78c39fbba677e9951cf34ec97c6c2aca234",
+          "bundleVersion": "5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3",
+          "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+          "decoderSHA256": "6154093aea3a69e3ddfec8953cfd83891b35c4c1041ee115eecf3e46732b3685",
+          "fixtureSeed": 5281.0,
+          "loaderSHA256": "2f0b70559123576e85af355cb50c9a04bb243df005a5c4a1d3e3171eb0a51d26",
+          "operatorsSHA256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
+          "poseClock": "Original rig.update fixed1/60; no full-game/AI or native animation-timing parity claimed",
+          "threeRevision": "180"
+        },
+        "team": 1.0,
+        "unported_attributes": [
+          "aux",
+          "aux2"
+        ],
+        "vertices": 28468.0
+      }
+    }
+  ],
+  "decision": "Affine rest-skin transport/import works for both original teams. Continue live original-AI bridge and High shader/audio gates; no FPS ranking.",
+  "limits": [
+    "Visible proof uses finite original pose samples, diagnostic material/lighting/camera.",
+    "RS palette readback is not GPU-deformed vertex readback or skin normal validation.",
+    "First-person subset, full scene, weapons, K9 custom deformation, effects and planar reflection are unported in this component."
+  ],
+  "separateAudioStatus": {
+    "scope": "Finite seven-casing/noise dry mono fixture, not full game",
+    "rawPath": "work\\godot-native\\audio\\live-wasapi-1\\result.json",
+    "rawSHA256": "04651eaefb755b1cf0dfe410fba0cfda7eace424120a03eca40ddd8accaa7c43",
+    "driver": "WASAPI",
+    "sr": 48000,
+    "checks": {
+      "attempted": 93,
+      "received": 93,
+      "missing": [],
+      "duplicate": 0,
+      "ordered": true,
+      "results": [
+        86,
+        7,
+        0,
+        0
+      ]
+    },
+    "callbackStats": {
+      "count": 114,
+      "lastFrames": 512,
+      "maxFrames": 512,
+      "queuePeakUpperBound": 55,
+      "firstSignalFrame": 8337,
+      "lastSignalFrame": 32273,
+      "nonzeroFrames": 23931
+    },
+    "maxLateFrames": 512,
+    "lateRecords": [
+      {
+        "id": 57,
+        "voice": 242,
+        "frame": 9472,
+        "result": 1,
+        "op": "layer",
+        "target": 9296,
+        "lateFrames": 176,
+        "roundTripMs": 9.862300000000687
+      },
+      {
+        "id": 58,
+        "voice": 122,
+        "frame": 16384,
+        "result": 1,
+        "op": "fade",
+        "target": 15872,
+        "lateFrames": 512,
+        "roundTripMs": 12.043399999999565
+      },
+      {
+        "id": 70,
+        "voice": 247,
+        "frame": 16384,
+        "result": 1,
+        "op": "layer",
+        "target": 16016,
+        "lateFrames": 368,
+        "roundTripMs": 12.043399999999565
+      },
+      {
+        "id": 71,
+        "voice": 247,
+        "frame": 16384,
+        "result": 1,
+        "op": "layer",
+        "target": 16016,
+        "lateFrames": 368,
+        "roundTripMs": 12.043399999999565
+      },
+      {
+        "id": 72,
+        "voice": 247,
+        "frame": 16384,
+        "result": 1,
+        "op": "layer",
+        "target": 16016,
+        "lateFrames": 368,
+        "roundTripMs": 12.043399999999565
+      },
+      {
+        "id": 73,
+        "voice": 247,
+        "frame": 16384,
+        "result": 1,
+        "op": "layer",
+        "target": 16016,
+        "lateFrames": 368,
+        "roundTripMs": 12.043399999999565
+      },
+      {
+        "id": 74,
+        "voice": 247,
+        "frame": 16384,
+        "result": 1,
+        "op": "layer",
+        "target": 16016,
+        "lateFrames": 368,
+        "roundTripMs": 12.043399999999565
+      }
+    ],
+    "accepted": false
+  }
+}

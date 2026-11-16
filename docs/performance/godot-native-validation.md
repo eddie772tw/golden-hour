@@ -75,11 +75,23 @@ and the [runnable Node package](../../prototypes/godot-node-logic/README.md)
 retain all fields, source guards and initial-data provenance. Real-time pacing,
 live IPC/state age and accepted audio/rendering remain separate gates.
 
-The audio port keeps original cue/RNG/voice/steal semantics upstream. A fixed
-native C++ mixer is being checked against actual native PCM bytes. Noise cases
-are close to the reference; the initial casing comparison has a substantial
-error and is not an audio-quality pass. Actual Godot playback, spatial/bus
-behavior, cross-process timing and device output remain to be verified.
+The [affine skin component](../../prototypes/godot-skin-component/README.md)
+now preserves both original team rest meshes and complete bone palettes. Both
+teams pass Godot CPU checks and visible Vulkan palette-readback smokes. These
+finite pose samples do not validate continuous live AI, GPU-deformed vertex
+readback, skin normals or High shaders; [Stage 14 evidence](evidence/stage14-godot-affine-skin.json)
+records those limits.
+
+The audio port retains original cue/RNG/voice/steal semantics upstream. A
+correction reduced seven-casing dry PCM residuals to peak 2.67e-6/4.99e-6 at
+44.1/48 kHz, still above the native-repeat floor and not byte-exact or listening
+acceptance. A local two-process Godot 4.7.2 playback prototype now runs. Its
+finite 48 kHz WASAPI test returned all 93 ordered acknowledgements with no
+missing, duplicate or refused records, but seven commands missed deadlines
+(maximum 512 frames / 10.67 ms) and were rejected, causing missing sound.
+The preserved local result is `work/godot-native/audio/live-wasapi-1/result.json`.
+Clock/producer/ingress timing is under investigation. Full cue coverage,
+spatial/bus routing and full-game/device quality remain unaccepted.
 
 Migration acceptance still requires the original full AI/perception/navigation,
 physics/death/ragdolls/grenades/K9, live geometry and skin updates, full sound,
