@@ -1,0 +1,8 @@
+{
+  "name": "golden-hour-community",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.13" },
+  "scripts": { "start": "node server/server.mjs", "test": "node --test server/*.test.mjs server/test.mjs" },
+  "dependencies": { "node-datachannel": "0.33.6" }
+}

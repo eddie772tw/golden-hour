@@ -1,0 +1,837 @@
+/* Loaded after the native and PvP styles. Only opted-in touch devices change. */
+body:not(.touch-device) #touch-controls,
+body:not(.touch-device) #touch-rotate,
+body:not(.touch-device) .touch-utility {
+  display: none !important;
+}
+
+body.touch-device {
+  --touch-safe-top: env(safe-area-inset-top, 0px);
+  --touch-safe-right: env(safe-area-inset-right, 0px);
+  --touch-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --touch-safe-left: env(safe-area-inset-left, 0px);
+  --f0: 11px;
+  --f1: 12px;
+  --f2: 13px;
+  --f3: 14px;
+  --f4: 16px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.touch-device [hidden] {
+  display: none !important;
+}
+
+/* Do not disable browser gestures on the body: menus scroll and rotation is native. */
+body.touch-device #touch-controls {
+  position: fixed;
+  inset: 0;
+  height: 100%;
+  height: 100dvh;
+  z-index: 20;
+  pointer-events: none;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+body.touch-device #touch-look {
+  position: absolute;
+  inset: 0 0 0 50%;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+body.touch-device #touch-stick {
+  position: absolute;
+  left: calc(var(--touch-safe-left) + 34px);
+  bottom: calc(var(--touch-safe-bottom) + 24px);
+  width: 112px;
+  height: 112px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, .04) 42%, rgba(10, 8, 7, .36) 43%);
+  box-shadow: inset 0 0 0 13px rgba(255, 255, 255, .025), 0 1px 8px rgba(0, 0, 0, .25);
+  pointer-events: auto;
+  touch-action: none;
+}
+
+body.touch-device #touch-stick::before,
+body.touch-device #touch-stick::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  background: var(--line);
+}
+
+body.touch-device #touch-stick::before { left: 50%; top: 10px; bottom: 10px; width: 1px; }
+body.touch-device #touch-stick::after { top: 50%; left: 10px; right: 10px; height: 1px; }
+
+body.touch-device .touch-stick-knob {
+  position: absolute;
+  left: 33px;
+  top: 33px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, .65);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .35);
+  transform: translate(var(--stick-x, 0px), var(--stick-y, 0px));
+  pointer-events: none;
+}
+
+body.touch-device .touch-actions {
+  position: absolute;
+  right: calc(var(--touch-safe-right) + 12px);
+  bottom: calc(var(--touch-safe-bottom) + 12px);
+  width: 228px;
+  height: 212px;
+  pointer-events: none;
+}
+
+body.touch-device .touch-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 48px;
+  height: 48px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, .42);
+  border-radius: 50%;
+  background: rgba(10, 8, 7, .46);
+  color: #fff;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: .02em;
+  text-align: center;
+  text-shadow: 0 1px 3px #000;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, .035), 0 1px 5px rgba(0, 0, 0, .25);
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+body.touch-device .touch-button svg { width: 22px; height: 22px; pointer-events: none; }
+body.touch-device .touch-button > * { pointer-events: none; }
+body.touch-device .touch-button:active,
+body.touch-device .touch-button[aria-pressed="true"] {
+  color: var(--or2);
+  border-color: var(--or);
+  background: rgba(85, 40, 9, .72);
+  box-shadow: inset 0 0 14px rgba(255, 138, 42, .24);
+}
+body.touch-device .touch-button:focus-visible { outline: 2px solid var(--or2); outline-offset: 3px; }
+body.touch-device.touch-dead #touch-stick { opacity: .35; }
+
+/* Each action has its own hit box, with at least 4px between neighbouring boxes.
+   Fire deliberately keeps touch-action:none: its captured pointer can also look. */
+body.touch-device .touch-actions .touch-button { position: absolute; }
+body.touch-device .touch-actions [data-action="fire"] {
+  right: 56px;
+  bottom: 92px;
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--or2);
+  background: rgba(84, 39, 8, .5);
+  font-size: 15px;
+}
+body.touch-device .touch-actions [data-action="aim"] { right: 0; bottom: 108px; }
+body.touch-device .touch-actions [data-action="jump"] { right: 0; bottom: 54px; }
+body.touch-device .touch-actions [data-action="crouch"] { right: 0; bottom: 0; }
+body.touch-device .touch-actions [data-action="reload"] { right: 56px; bottom: 36px; }
+body.touch-device .touch-actions [data-action="swap"] { right: 112px; bottom: 0; }
+body.touch-device .touch-actions [data-action="grenade"],
+body.touch-device .touch-actions [data-action="melee"],
+body.touch-device .touch-actions [data-action="upgrade"],
+body.touch-device .touch-actions [data-action="dive"] { right: 168px; width: 44px; height: 44px; }
+body.touch-device .touch-actions [data-action="grenade"] { bottom: 0; }
+body.touch-device .touch-actions [data-action="melee"] { bottom: 52px; }
+body.touch-device .touch-actions [data-action="upgrade"] { bottom: 104px; }
+body.touch-device .touch-actions [data-action="dive"] { bottom: 156px; }
+body.touch-device .touch-actions [data-action="sprint"] {
+  position: fixed;
+  left: calc(var(--touch-safe-left) + 28px);
+  bottom: calc(var(--touch-safe-bottom) + 152px);
+  width: 44px;
+  height: 44px;
+}
+body.touch-device.online-session #touch-controls [data-offline] { display: none !important; }
+
+/* A body-level sibling of #touch-controls, so fullscreen works in native menus. */
+body.touch-device .touch-utility {
+  position: fixed;
+  top: calc(var(--touch-safe-top) + 8px);
+  right: calc(var(--touch-safe-right) + 12px);
+  z-index: 40;
+  display: flex;
+  gap: 6px;
+  pointer-events: none;
+}
+body.touch-device .touch-utility [data-action="score"] { order: 1; }
+body.touch-device .touch-utility [data-action="pause"] { order: 2; }
+body.touch-device .touch-utility [data-action="inspect"] { order: 3; }
+body.touch-device .touch-utility [data-action="fullscreen"] { order: 4; }
+body.touch-device .touch-utility :is([data-action="score"], [data-action="pause"], [data-action="inspect"], [data-action="fullscreen"]) {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 7px;
+  background: rgba(10, 8, 7, .7);
+}
+
+/* Combat and preview share normalized centers inside the device safe area. */
+.touch-safe-bounds {
+  position: fixed;
+  inset: var(--touch-safe-top, 0px) var(--touch-safe-right, 0px) var(--touch-safe-bottom, 0px) var(--touch-safe-left, 0px);
+  pointer-events: none;
+  visibility: hidden;
+}
+body.touch-device #touch-controls,
+body.touch-device.touch-playing .touch-utility {
+  inset: var(--touch-safe-top) var(--touch-safe-right) var(--touch-safe-bottom) var(--touch-safe-left);
+  height: auto;
+}
+body.touch-device .touch-actions { inset: 0; width: auto; height: auto; }
+body.touch-device #touch-stick,
+body.touch-device .touch-actions [data-action],
+body.touch-device.touch-playing .touch-utility [data-action] { position: absolute; right: auto; bottom: auto; }
+body.touch-device .touch-stick-knob { left: calc(50% - 22px); top: calc(50% - 22px); }
+body.touch-device #touch-stick,
+body.touch-device .touch-button { opacity: var(--touch-opacity, 1); }
+body.touch-device .touch-button:disabled { opacity: calc(var(--touch-opacity, 1) * .4); }
+body.touch-device.touch-dead #touch-stick { opacity: calc(var(--touch-opacity, 1) * .35); }
+body.touch-device.touch-playing .touch-utility { display: block; }
+
+.touch-settings { min-width: 0; padding: 0 0 24px; }
+.touch-settings h4 { color: var(--or2); font-size: var(--f3); margin-bottom: 12px; }
+.touch-settings p,
+.touch-layout-content p { font-size: var(--f2); line-height: 1.6; color: rgba(255, 255, 255, .65); margin: 0 0 12px; text-transform: none; }
+.touch-setting { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; min-height: 44px; margin: 10px 0; font-size: var(--f2); }
+.touch-setting input[type="range"] { flex: 1; min-width: 80px; width: 100px; min-height: 44px; accent-color: var(--or); }
+.touch-setting input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--or); }
+.touch-setting output { min-width: 48px; color: var(--or2); text-align: right; }
+.touch-setting select { color: white; background: #171410; border: 1px solid var(--line); border-radius: 3px; min-height: 44px; padding: 6px; font: inherit; min-width: 0; }
+.touch-setting :is(input, select):focus-visible { outline: 2px solid var(--or2); outline-offset: 2px; }
+.touch-settings .btn { min-height: 44px; width: 100%; white-space: normal; }
+.touch-settings-status { margin-top: 12px !important; }
+.input-device-settings { grid-column: 1 / -1; order: -2; min-width: 0; padding-bottom: 12px; }
+.input-device-settings h4 { color: var(--or2); margin: 0 0 8px; font-size: var(--f3); }
+.input-device-settings p { font-size: var(--f2); line-height: 1.6; color: rgba(255,255,255,.65); margin: 6px 0; text-transform: none; }
+.input-device-settings select { flex: 1; min-width: 150px; max-width: 360px; }
+.input-device-settings [data-gamepad-settings] { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 16px; }
+.input-device-settings [data-gamepad-settings] > p { grid-column: 1 / -1; }
+.input-device-settings [hidden], .touch-settings[hidden] { display: none !important; }
+body:is(.input-touch,.input-gamepad) #pg-settings .binds { display: none; }
+@media(max-width:600px) {
+  .input-device-settings [data-gamepad-settings] { grid-template-columns: minmax(0,1fr); }
+}
+/* Put the controls a touch player can use before the desktop key reference. */
+body.touch-device #ui .touch-settings {
+  order: -1;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 16px;
+  padding-bottom: 8px;
+}
+body.touch-device #ui .touch-settings > :is(h4, p, button) { grid-column: 1 / -1; }
+body.touch-device #ui .touch-settings h4 { margin: 0 0 8px; }
+body.touch-device #ui .touch-settings .touch-setting { margin: 0 0 6px; }
+body.touch-device #ui .touch-settings .touch-settings-status { margin-top: 8px !important; }
+@media (max-width: 600px) {
+  body.touch-device #ui .touch-settings { grid-template-columns: minmax(0, 1fr); }
+}
+.touch-layout-content { position: absolute; left: 4.8rem; right: 4.8rem; top: 14rem; bottom: 5rem; overflow: auto; display: grid; grid-template-columns: minmax(0, 1fr) 260px; align-content: start; gap: 24px; }
+.touch-layout-preview { min-width: 0; }
+.touch-layout-screen { position: relative; width: 100%; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; border: 1px solid var(--line); border-radius: 6px; background: radial-gradient(ellipse at 48% 45%, #4b3523, #151311 75%); }
+.touch-layout-zone { position: absolute; inset: 0 0 0 50%; padding: 8px; border-left: 1px dashed rgba(255, 138, 42, .5); background: rgba(255, 138, 42, .04); color: rgba(255, 255, 255, .45); font-size: 11px; text-align: left; pointer-events: none; }
+.touch-layout-cross { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #fff9; pointer-events: none; font-size: 24px; }
+.touch-layout-key { position: absolute; min-height: 0 !important; min-width: 0; padding: 1px; border: 1px solid #fffa; border-radius: 50%; background: rgba(18, 14, 10, .7); color: white; font: inherit; font-size: clamp(9px, 1.3vw, 13px); touch-action: none !important; user-select: none; -webkit-user-select: none; cursor: grab; opacity: var(--control-opacity, .7); }
+.touch-layout-key[aria-pressed="true"] { outline: 2px solid var(--or2); outline-offset: -2px; border-color: var(--or2); color: var(--or2); opacity: 1; }
+.touch-layout-key:active { cursor: grabbing; }
+.touch-layout-key:focus-visible { outline: 3px solid var(--or2); }
+.touch-layout-key[data-control="stick"] { background: radial-gradient(circle, #ffffff24 25%, transparent 26%); border-style: dashed; }
+.touch-layout-options { min-width: 0; }
+.touch-layout-options .touch-setting { display: grid; grid-template-columns: 70px minmax(0, 1fr) 48px; gap: 6px; }
+.touch-layout-options select { grid-column: 2 / -1; width: 100%; }
+.touch-layout-options input { width: 100%; }
+.touch-layout-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.touch-layout-actions .btn { flex: 1 1 0; min-width: 0; min-height: 44px; padding: 6px 3px; font-size: 12px; letter-spacing: 0; white-space: normal; }
+body.touch-device #ui #pg-touch-layout { padding: calc(var(--touch-safe-top) + 8px) calc(var(--touch-safe-right) + 12px) calc(var(--touch-safe-bottom) + 8px) calc(var(--touch-safe-left) + 12px); }
+body.touch-device #ui #pg-touch-layout .topbar { min-height: 44px; margin-bottom: 8px; }
+body.touch-device #ui #pg-touch-layout h2 { font-size: 22px; }
+body.touch-device #ui .touch-layout-content { position: relative; inset: auto; overflow: visible; grid-template-columns: minmax(0, 1fr) 210px; gap: 12px; }
+body.touch-device #ui .touch-layout-preview p { font-size: 11px; margin-bottom: 8px; }
+body.touch-device #ui .touch-layout-options { max-height: calc(100dvh - var(--touch-safe-top) - var(--touch-safe-bottom) - 76px); overflow: auto; padding: 0 4px 8px; }
+body.touch-device #ui .touch-layout-options .touch-setting { grid-template-columns: 58px minmax(0, 1fr) 42px; margin: 0; font-size: 11px; }
+body.touch-device #ui .touch-layout-status { font-size: 11px; line-height: 1.3; margin: 6px 0; }
+body.touch-device #ui .touch-layout-options input { min-width: 0; }
+body.touch-device #ui .touch-layout-actions { position: sticky; bottom: 0; padding: 8px 0; background: #17120e; }
+body.touch-device.touch-editing .touch-utility { display: none !important; }
+body.touch-device #ui .touch-layout-actions,
+body.touch-device #ui .touch-layout-status { grid-column: 1 / -1; }
+body.touch-device #ui .touch-layout-key { min-height: 0; }
+@media (max-width: 600px) {
+  body.touch-device #ui .touch-layout-content { grid-template-columns: minmax(0, 1fr); }
+  body.touch-device #ui .touch-layout-options { max-height: none; }
+}
+
+body.touch-device #touch-rotate {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  height: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  padding: calc(var(--touch-safe-top) + 24px) calc(var(--touch-safe-right) + 24px) calc(var(--touch-safe-bottom) + 24px) calc(var(--touch-safe-left) + 24px);
+  overflow-y: auto;
+  background: radial-gradient(ellipse at center, rgba(58, 28, 10, .97), rgba(5, 4, 3, .99));
+  text-align: center;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+}
+body.touch-device .touch-rotate-title { color: var(--or2); font-size: clamp(22px, 6vw, 34px); font-weight: 700; letter-spacing: .1em; }
+body.touch-device .touch-rotate-note { max-width: 340px; font-size: 14px; line-height: 1.7; color: rgba(255, 255, 255, .75); text-transform: none; }
+body.touch-device .touch-rotate-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 82px;
+  min-height: 48px;
+  border: 2px solid var(--or2);
+  border-radius: 9px;
+  color: var(--or2);
+  font-size: 30px;
+  transform: rotate(-12deg);
+}
+body.touch-device.touch-portrait #touch-controls { visibility: hidden; }
+
+/* Native menus become document-flow panels inside a dynamic-viewport scroller.
+   No functional menu content is removed to make the phone layout fit. */
+body.touch-device #ui,
+body.touch-device #hud,
+body.touch-device #loading { height: 100%; height: 100dvh; }
+body.touch-device #hud { z-index: 10; }
+body.touch-device #ui { z-index: 30; }
+body.touch-device #ui .page {
+  padding: calc(var(--touch-safe-top) + 64px) calc(var(--touch-safe-right) + 18px) calc(var(--touch-safe-bottom) + 24px) calc(var(--touch-safe-left) + 18px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-x pan-y;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding: 16px;
+}
+body.touch-device #ui :is(.lockup, .vnav, #loadcard, #pcard, #mastery, #p-board, .topbar, .st-body, .gs-left, .gs-right, .gs-stage, .online-layout) {
+  position: relative;
+  inset: auto;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+}
+body.touch-device #ui :is(.legend, .ver) { position: static; margin-top: 16px; flex-wrap: wrap; }
+body.touch-device #ui .legend { display: none; } /* Keyboard-only navigation legend. */
+body.touch-device #ui :is(button, #loadcard, .ms) { touch-action: manipulation; }
+body.touch-device #ui :is(button, .ms, #loadcard) { min-height: 44px; }
+body.touch-device #ui :is(.nv, .nv.primary, #pg-main .nv:not(.primary), #pg-pause .nv:not(.primary)) {
+  width: 100%;
+  height: auto;
+  min-height: 48px;
+  padding: 8px 12px;
+  gap: 10px;
+}
+body.touch-device #ui :is(.nv b, .nv.primary b) { font-size: 19px; letter-spacing: .08em; }
+body.touch-device #ui .nv em { font-size: 11px; letter-spacing: .02em; flex-wrap: wrap; justify-content: flex-end; text-align: right; }
+body.touch-device #ui .nv:is(:focus, .focus, :active) { transform: none; }
+body.touch-device #ui .nv .arr { min-width: 44px; min-height: 44px; }
+body.touch-device #ui .nv :is(#diffv, .val) { min-width: 44px; }
+body.touch-device #ui h1 { font-size: clamp(38px, 5.5vw, 74px); }
+body.touch-device #ui .mode { margin-top: 12px; line-height: 1.5; }
+body.touch-device #ui .kicker { letter-spacing: .15em; line-height: 1.5; }
+
+body.touch-device #ui :is(#pg-main, #pg-pause) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, .85fr);
+  gap: 16px 24px;
+  align-content: start;
+  align-items: start;
+}
+body.touch-device #ui :is(#pg-main, #pg-pause) .lockup { grid-column: 1; grid-row: 1; }
+body.touch-device #ui :is(#pg-main, #pg-pause) .vnav { grid-column: 1; grid-row: 2 / 5; gap: 6px; }
+body.touch-device #ui #pcard { grid-column: 2; grid-row: 1; padding: 12px; }
+body.touch-device #ui #mastery { grid-column: 2; grid-row: 2; padding: 12px; }
+body.touch-device #ui #loadcard { grid-column: 2; grid-row: 3; padding: 12px; }
+body.touch-device #ui #p-board { grid-column: 2; grid-row: 2 / 5; padding: 12px; }
+body.touch-device #ui .ver { grid-column: 1 / -1; }
+body.touch-device #ui .lc-main { gap: 10px; }
+body.touch-device #ui #lc-img { width: 42%; height: 62px; }
+body.touch-device #ui .lc-t b { font-size: 17px; }
+body.touch-device #ui .lc-t :is(span, i) { letter-spacing: .04em; }
+body.touch-device #ui .lc-sub { flex-wrap: wrap; gap: 8px 16px; }
+body.touch-device #ui .pc-lvl b { font-size: 26px; }
+body.touch-device #ui .pc-stats { gap: 8px; }
+body.touch-device #ui .pc-stats span { white-space: normal; }
+body.touch-device #ui .ms { grid-template-columns: 52px minmax(0, 1fr) auto; gap: 8px; }
+body.touch-device #ui .ms img { max-width: 52px; }
+body.touch-device #ui .ms .mn { white-space: normal; flex-wrap: wrap; gap: 3px; }
+body.touch-device #ui .sech { white-space: normal; letter-spacing: .12em; gap: 8px; line-height: 1.5; }
+body.touch-device #ui .p-score { flex-wrap: wrap; font-size: 24px; gap: 10px; }
+body.touch-device #ui .p-score span { margin-left: 0; }
+
+body.touch-device #ui .topbar {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  min-height: 52px;
+  gap: 8px 14px;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+body.touch-device #ui .topbar h2 { font-size: 24px; letter-spacing: .08em; }
+body.touch-device #ui .backb { height: 44px; padding: 0 12px; }
+body.touch-device #ui .tabs { margin: 0; max-width: 100%; overflow-x: auto; align-items: stretch; touch-action: pan-x; }
+body.touch-device #ui .tab { flex: none; min-height: 44px; height: auto; padding: 8px 12px; letter-spacing: .06em; }
+body.touch-device #ui .btn { height: auto; min-height: 44px; padding: 10px 14px; letter-spacing: .12em; white-space: normal; }
+body.touch-device #ui :is(.tb-keys, .slot kbd) { display: none; }
+body.touch-device #ui :is(.btn, .tab, .opt, .slot) { overflow-wrap: anywhere; }
+
+/* Room commands, roster, team selection and long names all remain scrollable. */
+body.touch-device #ui .online-layout { display: grid; grid-template-columns: minmax(230px, .85fr) minmax(0, 1fr); gap: 24px; }
+body.touch-device #ui .online-mode { margin: 0; line-height: 1.5; letter-spacing: .04em; }
+body.touch-device #ui .online-field { display: grid; grid-template-columns: 82px minmax(0, 1fr); margin: 12px 0; padding: 6px 10px; min-height: 52px; }
+body.touch-device #ui .online-field input { font-size: 16px; min-height: 40px; letter-spacing: .03em; user-select: text; -webkit-user-select: text; }
+body.touch-device #ui .online-squad h3 { font-size: 40px; margin: 12px 0; }
+body.touch-device #ui .online-versus { font-size: 72px; margin: 16px 0; }
+body.touch-device #ui .online-versus i { font-size: 40px; }
+body.touch-device #ui .online-squad .tbl { grid-template-columns: 1fr; margin-top: 16px; gap: 16px; }
+body.touch-device #ui .online-squad .tbl .rw.online-member { grid-template-columns: 20px minmax(0, 1fr) 66px; height: auto; min-height: 52px; padding: 8px 4px; }
+body.touch-device #ui .online-team-actions { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
+body.touch-device #ui #online-result { font-size: 26px; }
+
+/* Settings panels no longer rely on the desktop's 86rem first column. */
+body.touch-device #ui .st-panel { display: none; position: relative; inset: auto; grid-template-columns: minmax(0, 1fr) 230px; gap: 20px; }
+body.touch-device #ui .st-panel.on { display: grid; }
+body.touch-device #ui .st-rows { min-width: 0; gap: 8px; }
+body.touch-device #ui .row:not(.online-field) { grid-template-columns: minmax(100px, 150px) minmax(60px, 1fr) 46px; height: auto; min-height: 56px; padding: 6px 10px; gap: 8px; }
+body.touch-device #ui .row :is(label, output) { letter-spacing: .04em; }
+body.touch-device #ui .row:has(.seg) { display: flex; flex-wrap: wrap; }
+body.touch-device #ui .row:has(.seg) label { flex: 1 0 140px; }
+body.touch-device #ui .seg { flex-wrap: wrap; gap: 6px; }
+body.touch-device #ui .seg button { height: 44px; min-width: 58px; padding: 8px 12px; letter-spacing: .04em; }
+body.touch-device #ui input[type="range"] { min-height: 44px; touch-action: pan-y; }
+body.touch-device #ui input[type="range"]::-webkit-slider-thumb { width: 24px; height: 30px; margin-top: -13px; border-radius: 3px; }
+body.touch-device #ui input[type="range"]::-moz-range-thumb { width: 24px; height: 30px; border-radius: 3px; }
+body.touch-device #ui .st-side p { max-width: none; }
+body.touch-device #ui .st-side .ql { grid-template-columns: 72px minmax(0, 1fr); }
+body.touch-device #ui .binds { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+body.touch-device #ui .bind { height: auto; min-height: 44px; flex-wrap: wrap; gap: 8px; letter-spacing: .04em; }
+
+/* Gunsmith: real preview, all five attachment selectors, options and equip/reset
+   actions stay in normal flow. The preview canvas retains an absolute viewport. */
+body.touch-device #ui #pg-gunsmith { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-content: start; align-items: start; gap: 20px; }
+body.touch-device #ui #pg-gunsmith .topbar { grid-column: 1 / -1; margin-bottom: 0; }
+body.touch-device #ui #pg-gunsmith .tabs { margin: 0; }
+body.touch-device #ui .gs-stage { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 180px 0 62px; min-height: 350px; }
+body.touch-device #ui #gs-view { inset: 0 0 165px; min-height: 170px; }
+body.touch-device #ui #gs-lines { display: none; } /* Desktop connector lines, not selectors. */
+body.touch-device #ui .gs-stage .slot { position: relative; inset: auto; width: auto; margin: 0; padding: 8px 10px; min-height: 52px; }
+body.touch-device #ui .slot .sk { letter-spacing: .06em; }
+body.touch-device #ui .slot .sv { font-size: 14px; }
+body.touch-device #ui .gs-stage.camo { min-height: 290px; padding-top: 180px; }
+body.touch-device #ui .gs-name { bottom: 8px; }
+body.touch-device #ui .gs-name b { font-size: 28px; }
+body.touch-device #ui .gs-name :is(span, i) { letter-spacing: .12em; }
+body.touch-device #ui .gs-left { grid-column: 1; grid-row: 3; }
+body.touch-device #ui .gs-right { grid-column: 2; grid-row: 3; }
+body.touch-device #ui .gs-pane { flex: auto; min-height: 0; }
+body.touch-device #ui .gs-h { letter-spacing: .12em; flex-wrap: wrap; }
+body.touch-device #ui .opt { padding: 10px; min-height: 52px; }
+body.touch-device #ui .opt .on-n { flex-wrap: wrap; }
+body.touch-device #ui .camogrid { grid-template-columns: repeat(auto-fit, minmax(44px, 1fr)); gap: 8px; }
+body.touch-device #ui .cm { min-width: 44px; min-height: 44px; }
+body.touch-device #ui #gs-tags { min-height: 0; gap: 6px; margin-bottom: 12px; }
+body.touch-device #ui .tag { height: auto; min-height: 24px; padding: 4px 7px; white-space: normal; letter-spacing: .06em; }
+body.touch-device #ui #gs-nums { gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+body.touch-device #ui #gs-nums span { white-space: normal; }
+body.touch-device #ui .gs-actions { margin-top: 18px; gap: 8px; }
+body.touch-device #ui #gs-conf { position: fixed; bottom: calc(var(--touch-safe-bottom) + 12px); max-width: calc(100% - 32px); height: auto; min-height: 32px; white-space: normal; text-align: center; }
+
+/* After-action and pause score tables must also fit; no report columns dropped. */
+body.touch-device #ui #pg-end { align-items: center; }
+body.touch-device #ui .e-k { margin-top: 0; }
+body.touch-device #ui .e-t { font-size: clamp(38px, 7vw, 80px); }
+body.touch-device #ui .e-rule { width: min(100%, 500px); }
+body.touch-device #ui .e-cols { width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+body.touch-device #ui .e-col { min-height: 0; padding: 12px; }
+body.touch-device #ui .e-col:last-child { grid-column: 1 / -1; }
+body.touch-device #ui .e-btns { flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+body.touch-device #ui .e-btns .btn { min-width: 180px; }
+body.touch-device #ui :is(.e-stats, .pc-stats) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+body.touch-device #ui .e-camo .cn { flex-wrap: wrap; white-space: normal; gap: 4px; }
+body.touch-device #ui .tbl { min-width: 0; overflow-x: auto; }
+body.touch-device #ui .tbl > div { min-width: 0; }
+body.touch-device #ui .tbl .rw { grid-template-columns: 18px minmax(60px, 1fr) 48px 32px 32px 40px; height: auto; min-height: 28px; padding: 4px; font-size: 12px; }
+body.touch-device #ui .tbl .rw span:nth-child(2) { min-width: 0; overflow-wrap: anywhere; }
+body.touch-device #ui .tbl .th { flex-wrap: wrap; gap: 8px; }
+body.touch-device #ui #p-board .tbl { grid-template-columns: 1fr; gap: 12px; }
+
+/* HUD islands: map upper-left, score upper-center, utilities upper-right;
+   HP above the stick, ammo in the bottom-center gap, not under the right thumb. */
+body.touch-device #safe { left: 0; right: 0; }
+body.touch-device #mm { left: calc(var(--touch-safe-left) + 12px); top: calc(var(--touch-safe-top) + 12px); transform: scale(.7); transform-origin: top left; }
+body.touch-device #score { top: calc(var(--touch-safe-top) + 10px); column-gap: 8px; }
+body.touch-device #score .tm { min-width: 70px; gap: 5px; padding-bottom: 6px; }
+body.touch-device #score .nm { font-size: 10px; letter-spacing: .02em; }
+body.touch-device #score .emblem { width: 18px; height: 18px; }
+body.touch-device #score .n { min-width: 25px; font-size: 26px; }
+body.touch-device #score .mid { min-width: 48px; }
+body.touch-device #clock { font-size: 18px; }
+body.touch-device #score .lim { font-size: 10px; letter-spacing: .02em; }
+body.touch-device #feed { top: calc(var(--touch-safe-top) + 64px); right: calc(var(--touch-safe-right) + 12px); max-width: 228px; font-size: 11px; }
+body.touch-device #feed .f { height: 23px; max-width: 100%; gap: 5px; padding: 2px 6px; }
+body.touch-device #feed .f > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+body.touch-device #vitals { left: calc(var(--touch-safe-left) + 88px); bottom: calc(var(--touch-safe-bottom) + 152px); gap: 6px; }
+body.touch-device #vitals .hp { width: 106px; }
+body.touch-device #stance { width: 24px; height: 28px; }
+body.touch-device #stance svg.ic { font-size: 23px; }
+body.touch-device #hpn { font-size: 22px; }
+body.touch-device #hpname { font-size: 10px; letter-spacing: .02em; }
+body.touch-device #hbar { height: 5px; }
+body.touch-device #weapon { left: 50%; right: auto; bottom: calc(var(--touch-safe-bottom) + 12px); width: 180px; min-width: 0; transform: translateX(-50%); }
+body.touch-device #weapon .wtop { font-size: 11px; gap: 5px; letter-spacing: .04em; flex-wrap: wrap; }
+body.touch-device #weapon .wmain { gap: 8px; margin-top: 5px; }
+body.touch-device #wsil { height: 28px; max-width: 74px; }
+body.touch-device #mag { font-size: 34px; min-width: 36px; }
+body.touch-device #res { font-size: 16px; min-width: 28px; }
+body.touch-device #weapon .wsub { gap: 14px; font-size: 12px; }
+body.touch-device #weapon kbd { display: none; }
+body.touch-device #wrule { margin: 5px 0; }
+body.touch-device #w2sil { height: 16px; }
+body.touch-device #wfragi { height: 18px; }
+body.touch-device #fu { right: auto; left: 0; bottom: 86px; width: 42px; }
+body.touch-device #fu .fu-tile { width: 42px; height: 42px; }
+body.touch-device #fu-ico { font-size: 26px; }
+body.touch-device #fu .fu-foot { height: 16px; }
+body.touch-device #fu-pct { font-size: 11px; }
+body.touch-device #fu-call { right: auto; left: 0; top: -32px; font-size: 11px; max-width: 180px; white-space: normal; }
+body.touch-device #hint { bottom: calc(var(--touch-safe-bottom) + 216px); width: min(230px, 36vw); justify-content: center; flex-wrap: wrap; gap: 5px; white-space: normal; font-size: 11px; letter-spacing: .02em; }
+body.touch-device #hint kbd { display: none; }
+body.touch-device #banner { max-width: 65%; top: calc(var(--touch-safe-top) + 65px); gap: 8px; white-space: normal; text-align: center; }
+body.touch-device #banner i { width: 28px; flex: none; }
+body.touch-device #banner b { font-size: 18px; letter-spacing: .08em; }
+body.touch-device #banner span { font-size: 11px; letter-spacing: .06em; }
+body.touch-device #toast { right: auto; left: 50%; top: 25%; max-width: 260px; transform: translateX(-50%); }
+body.touch-device #events { max-width: 240px; }
+body.touch-device #ev-medals { gap: 4px; flex-wrap: wrap; }
+body.touch-device #ev-medals .md { width: 72px; }
+body.touch-device #ev-medals .md span { font-size: 10px; letter-spacing: .02em; }
+body.touch-device #death { top: 50%; max-width: 60%; }
+body.touch-device #dcard { min-width: 0; max-width: 100%; }
+body.touch-device #dcard .dr { min-width: 80px; }
+body.touch-device #dname { font-size: 18px; overflow-wrap: anywhere; }
+body.touch-device #dresp { flex-wrap: wrap; justify-content: center; gap: 8px; letter-spacing: .06em; }
+
+body.touch-device #board {
+  top: calc(var(--touch-safe-top) + 64px);
+  left: calc(var(--touch-safe-left) + 16px);
+  right: calc(var(--touch-safe-right) + 16px);
+  width: auto;
+  max-height: calc(100% - var(--touch-safe-top) - var(--touch-safe-bottom) - 80px);
+  transform: none;
+  padding: 12px;
+  overflow: auto;
+  pointer-events: auto;
+  touch-action: pan-x pan-y;
+  overscroll-behavior: contain;
+  clip-path: none;
+}
+body.touch-device #board .tbl { grid-template-columns: 1fr; gap: 16px; }
+body.touch-device #board .tbl .rw { grid-template-columns: 20px minmax(80px, 1fr) 54px 40px 40px 48px; height: auto; min-height: 28px; font-size: 12px; padding: 4px; }
+body.touch-device #board .tbl .rw span:nth-child(2) { min-width: 0; overflow-wrap: anywhere; }
+body.touch-device #board .bd-h { flex-wrap: wrap; gap: 6px 12px; }
+body.touch-device:has(#hud.is-board) #touch-controls :is(#touch-look, #touch-stick, .touch-actions, .touch-button) { pointer-events: none; }
+body.touch-device:has(#hud.is-board) #touch-controls :is(#touch-stick, .touch-actions) { opacity: .15; }
+
+body.touch-device #loading .in { padding: calc(var(--touch-safe-top) + 24px) calc(var(--touch-safe-right) + 24px) calc(var(--touch-safe-bottom) + 24px) calc(var(--touch-safe-left) + 24px); }
+body.touch-device #loading h1 { font-size: clamp(38px, 7vw, 80px); }
+body.touch-device #loading :is(#lbar, .lrow) { width: min(100%, 420px); }
+body.touch-device #ltip { position: static; width: min(100%, 420px); text-align: left; margin-top: 16px; }
+body.touch-device #ltip p { min-height: 0; }
+
+/* Phone landscape, including 667x375 and 844x390. */
+@media (max-height: 500px) and (orientation: landscape) {
+  body.touch-device #mm { transform: scale(.6); }
+  body.touch-device #score .nm { display: none; } /* Team emblems and live scores remain. */
+  body.touch-device #score .tm { min-width: 48px; }
+  body.touch-device #ui .st-panel { grid-template-columns: minmax(0, 1fr); }
+  body.touch-device #ui .st-side { border-top: 1px solid var(--line); padding-top: 14px; }
+  body.touch-device #center { top: 23%; }
+  body.touch-device #intro .i-map { font-size: 28px; }
+  body.touch-device #intro .emblem { width: 30px; height: 30px; }
+  body.touch-device #banner.threat b { font-size: 20px; }
+}
+
+/* Full-size tablets: keep gunsmith controls beside the real preview. */
+@media (min-width: 1000px) and (min-height: 600px) and (orientation: landscape) {
+  body.touch-device #ui #pg-gunsmith { grid-template-columns: minmax(210px, .8fr) minmax(260px, 1.2fr) minmax(220px, .85fr); }
+  body.touch-device #ui .gs-left { grid-column: 1; grid-row: 2; }
+  body.touch-device #ui .gs-stage { grid-column: 2; grid-row: 2; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 210px; min-height: 460px; }
+  body.touch-device #ui #gs-view { bottom: 240px; }
+  body.touch-device #ui .gs-right { grid-column: 3; grid-row: 2; }
+  body.touch-device #ui .e-cols { grid-template-columns: 1fr 1fr 1.15fr; }
+  body.touch-device #ui .e-col:last-child { grid-column: auto; }
+  body.touch-device #board .tbl { grid-template-columns: 1fr 1fr; }
+  body.touch-device #ui .online-squad .tbl { grid-template-columns: 1fr 1fr; }
+}
+
+/* Portrait menus remain reachable underneath the controller-managed reminder. */
+@media (max-width: 600px) {
+  body.touch-device #ui :is(#pg-main, #pg-pause, #pg-gunsmith, .online-layout) { grid-template-columns: minmax(0, 1fr); }
+  body.touch-device #ui :is(#pcard, #mastery, #loadcard, #p-board, .gs-left, .gs-right, .gs-stage) { grid-column: 1; grid-row: auto; }
+  body.touch-device #ui :is(#pg-main, #pg-pause) .vnav { grid-row: 2; }
+  body.touch-device #ui .gs-stage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body.touch-device #ui #gs-view { bottom: 220px; }
+  body.touch-device #ui .st-panel { grid-template-columns: minmax(0, 1fr); }
+  body.touch-device #ui .binds { grid-template-columns: minmax(0, 1fr); }
+  body.touch-device #ui .row:not(.online-field) { grid-template-columns: minmax(80px, 110px) minmax(40px, 1fr) 40px; padding: 6px; gap: 6px; }
+  body.touch-device #ui .e-cols { grid-template-columns: minmax(0, 1fr); }
+  body.touch-device #ui .e-col:last-child { grid-column: auto; }
+  body.touch-device #ui .topbar .tabs { flex-basis: 100%; }
+}
+
+/* Final layout pass for phone and tablet screens. */
+body.touch-device #ui .page {
+  padding-top: calc(var(--touch-safe-top) + 52px);
+  padding-bottom: calc(var(--touch-safe-bottom) + 16px);
+  scroll-padding-block: 56px 16px;
+}
+body.touch-device #ui .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  padding-top: 4px;
+  background: linear-gradient(rgba(12, 9, 8, .96), rgba(12, 9, 8, .84));
+}
+body.touch-device #ui :is(.st-panel, .gs-left, .gs-right, .online-squad) {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 900px) {
+  body.touch-device #ui #pg-gunsmith {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    gap: 10px;
+  }
+  body.touch-device #ui #pg-gunsmith .topbar,
+  body.touch-device #ui #pg-gunsmith .gs-stage { grid-column: 1 / -1; }
+  body.touch-device #ui .gs-stage {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    min-height: 0;
+    padding: 0;
+  }
+  body.touch-device #ui .gs-stage.camo { min-height: 0; padding: 0; }
+  body.touch-device #ui .gs-stage.camo .slot { display: none; }
+  body.touch-device #ui #gs-view {
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    inset: auto;
+    height: clamp(126px, 20dvh, 190px);
+    min-height: 0;
+    overflow: hidden;
+  }
+  body.touch-device #ui .gs-stage .slot {
+    position: relative;
+    grid-row: auto;
+    grid-column: auto;
+    inset: auto;
+    width: auto;
+    min-height: 48px;
+    margin: 0;
+    padding: 6px;
+  }
+  body.touch-device #ui .gs-stage .slot .sk { gap: 4px; font-size: 10px; letter-spacing: .02em; }
+  body.touch-device #ui .gs-stage .slot .sv { font-size: 12px; letter-spacing: .02em; }
+  body.touch-device #ui #gs-lines { display: none; }
+  body.touch-device #ui .gs-name {
+    position: relative;
+    grid-column: 1 / -1;
+    inset: auto;
+    font-size: 12px;
+  }
+  body.touch-device #ui .gs-name b { font-size: 22px; }
+  body.touch-device #ui .gs-left,
+  body.touch-device #ui .gs-right {
+    position: relative;
+    inset: auto;
+    width: auto;
+    max-height: 30dvh;
+    min-height: 0;
+    overflow: auto;
+    padding-bottom: 4px;
+  }
+  body.touch-device #ui .gs-left { grid-column: 1; grid-row: auto; }
+  body.touch-device #ui .gs-right { grid-column: 2; grid-row: auto; }
+  body.touch-device #ui .gs-actions {
+    position: sticky;
+    bottom: 0;
+    padding: 8px 0 4px;
+    background: linear-gradient(rgba(18, 14, 11, .82), #17120e 30%);
+  }
+}
+
+@media (max-width: 600px) {
+  body.touch-device #ui #pg-main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  body.touch-device #ui #pg-main .lockup,
+  body.touch-device #ui #pg-main .vnav,
+  body.touch-device #ui #pg-main :is(#pcard, #mastery, #loadcard) {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+    margin: 0;
+  }
+  body.touch-device #ui #pg-main .vnav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+  body.touch-device #ui #pg-main .vnav .nv {
+    min-height: 48px;
+    padding: 6px 8px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+  }
+  body.touch-device #ui #pg-main .vnav .nv:last-child { grid-column: 1 / -1; }
+  body.touch-device #ui #pg-main .vnav .nv b { font-size: 16px; }
+  body.touch-device #ui #pg-main .vnav .nv em { justify-content: flex-start; text-align: left; }
+  body.touch-device #ui #pg-main #pcard { padding: 8px 10px; }
+  body.touch-device #ui #pg-main #pcard .rank-svg { width: 38px; height: 38px; }
+  body.touch-device #ui #pg-main .pc-k { letter-spacing: .08em; }
+  body.touch-device #ui #pg-main .pc-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 8px; padding-top: 8px; }
+  body.touch-device #ui #pg-main .pc-stats b { font-size: 18px; }
+  body.touch-device #ui #pg-main .pc-stats span { font-size: 10px; letter-spacing: 0; }
+  body.touch-device #ui #pg-main #mastery { max-height: 164px; overflow: auto; padding: 8px 10px; }
+  body.touch-device #ui #pg-main #mastery .sech { margin-bottom: 4px; }
+  body.touch-device #ui #pg-main .ms { min-height: 38px; padding: 3px 0; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 6px; }
+  body.touch-device #ui #pg-main .ms img { max-width: 42px; }
+  body.touch-device #ui #pg-main .ms .mn { font-size: 11px; }
+  body.touch-device #ui #pg-main .ms .mc { font-size: 11px; }
+  body.touch-device #ui #pg-main #loadcard { padding: 8px 10px; }
+  body.touch-device #ui #pg-main #lc-img { width: 64px; height: 42px; }
+  body.touch-device #ui #pg-main .lc-main { gap: 8px; }
+  body.touch-device #ui #pg-main .lc-sub { gap: 4px 12px; margin-top: 6px; padding-top: 6px; }
+  body.touch-device #ui #pg-main .ver { display: none; }
+
+  body.touch-device #ui #pg-pause .vnav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+  body.touch-device #ui #pg-pause .vnav .nv:last-child { grid-column: 1 / -1; }
+  body.touch-device #ui #pg-pause #p-board {
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: auto;
+    inset: auto;
+    width: 100%;
+    max-height: 30dvh;
+    overflow: auto;
+  }
+
+  body.touch-device #ui #online-connect {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+  body.touch-device #ui #online-connect .online-field,
+  body.touch-device #ui .online-connect-hint { grid-column: 1 / -1; }
+  body.touch-device #ui .online-connect-hint { display: none; }
+  body.touch-device #ui #online-connect .nv { min-height: 52px; padding: 6px; }
+  body.touch-device #ui #online-connect .nv b { font-size: 15px; }
+  body.touch-device #ui #online-connect .nv em { font-size: 10px; }
+  body.touch-device #ui .online-squad .tbl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+  body.touch-device #ui .online-squad .tbl .rw.online-member {
+    grid-template-columns: 18px minmax(0, 1fr) 42px;
+    min-height: 44px;
+    padding: 5px 2px;
+    font-size: 11px;
+  }
+  body.touch-device #ui .online-member small { font-size: 9px; letter-spacing: 0; }
+  body.touch-device #ui .online-member span:last-child { font-size: 10px; }
+  body.touch-device #ui .online-squad h3 { font-size: 30px; }
+
+  body.touch-device #ui .st-panel.on {
+    max-height: calc(100dvh - var(--touch-safe-top) - var(--touch-safe-bottom) - 138px);
+    overflow: auto;
+    padding: 0 2px 8px 0;
+  }
+  body.touch-device #ui .binds { gap: 12px; }
+  body.touch-device #ui .bind { min-height: 40px; }
+
+  body.touch-device #ui .e-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+  body.touch-device #ui .e-col { padding: 8px; }
+  body.touch-device #ui .e-col:last-child { grid-column: 1 / -1; }
+  body.touch-device #ui .e-stats { gap: 8px 4px; }
+  body.touch-device #ui .e-stats b { font-size: 22px; }
+  body.touch-device #ui .e-stats div > span { font-size: 9px; letter-spacing: 0; }
+  body.touch-device #ui .e-btns {
+    position: sticky;
+    bottom: calc(var(--touch-safe-bottom) + 4px);
+    z-index: 10;
+    width: 100%;
+    padding: 8px 0;
+    background: linear-gradient(rgba(10, 8, 7, .2), rgba(10, 8, 7, .94) 30%);
+  }
+  body.touch-device #ui .e-btns .btn { flex: 1 1 140px; min-width: 0; min-height: 48px; padding: 8px; }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  body.touch-device #ui .page {
+    padding-top: calc(var(--touch-safe-top) + 44px);
+    padding-bottom: calc(var(--touch-safe-bottom) + 8px);
+  }
+  body.touch-device #ui #pg-main {
+    grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+    gap: 6px 12px;
+  }
+  body.touch-device #ui #pg-main .lockup { grid-column: 1; grid-row: 1; }
+  body.touch-device #ui #pg-main .vnav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-column: 1;
+    grid-row: 2 / 6;
+    gap: 4px;
+  }
+  body.touch-device #ui #pg-main .vnav .nv:last-child { grid-column: 1 / -1; }
+  body.touch-device #ui #pg-main :is(#pcard, #mastery, #loadcard) { grid-column: 2; }
+  body.touch-device #ui #pg-main .vnav .nv { min-height: 40px; }
+  body.touch-device #ui #pg-main #mastery { max-height: 96px; }
+  body.touch-device #ui #pg-main .ms { min-height: 30px; }
+  body.touch-device #ui .gs-left,
+  body.touch-device #ui .gs-right { max-height: 34dvh; }
+  body.touch-device #ui #gs-view { height: 112px; }
+  body.touch-device #ui .e-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  body.touch-device #ui .e-col:last-child { grid-column: auto; }
+  body.touch-device #ui .online-layout { grid-template-columns: minmax(210px, .8fr) minmax(0, 1.2fr); gap: 12px; }
+  body.touch-device #ui .online-squad .tbl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

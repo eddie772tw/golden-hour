@@ -1,0 +1,13 @@
+node_modules/
+.local/
+*.sqlite*
+*.ghsave
+*.log
+.env
+.env.*
+__pycache__/
+*.zip
+test-results/
+playwright-report/
+
+dist/

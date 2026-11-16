@@ -1,0 +1,380 @@
+[
+  {
+    "resource": "game/assets/armoury.json",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/assets/armoury.json",
+    "upstreamBytes": 749191,
+    "upstreamSha256": "f5ad4a180f1c3fd80bccba7395b89652ede9ab3ccdba2bd3a80fb1e1749f68a5",
+    "status": "unchanged",
+    "candidatePath": "game/assets/armoury.json",
+    "candidateSha256": "f5ad4a180f1c3fd80bccba7395b89652ede9ab3ccdba2bd3a80fb1e1749f68a5"
+  },
+  {
+    "resource": "game/assets/grips.json",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/assets/grips.json",
+    "upstreamBytes": 25088,
+    "upstreamSha256": "5efbf3e21f9931f5f3dee57f63d0a3a23d71acd2ad24ff705da0e751494ac07d",
+    "status": "unchanged",
+    "candidatePath": "game/assets/grips.json",
+    "candidateSha256": "5efbf3e21f9931f5f3dee57f63d0a3a23d71acd2ad24ff705da0e751494ac07d"
+  },
+  {
+    "resource": "game/assets/operators.bin",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/assets/operators.bin",
+    "upstreamBytes": 10078584,
+    "upstreamSha256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
+    "status": "unchanged",
+    "candidatePath": "game/assets/operators.bin",
+    "candidateSha256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942"
+  },
+  {
+    "resource": "game/client/api-config.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/api-config.js",
+    "upstreamBytes": 2356,
+    "upstreamSha256": "3d07a91fb6e79a7ba14c3ff1db3962c404140a0948efb6e5d1767325580cbd01",
+    "status": "unchanged",
+    "candidatePath": "game/client/api-config.js",
+    "candidateSha256": "3d07a91fb6e79a7ba14c3ff1db3962c404140a0948efb6e5d1767325580cbd01"
+  },
+  {
+    "resource": "game/client/bootstrap.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/bootstrap.js",
+    "upstreamBytes": 8939,
+    "upstreamSha256": "9aeafe886be49ba53e5ff471b0716530adea537ccdfc7211c2974e49a1f60fb5",
+    "status": "adapted",
+    "candidatePath": "game/client/bootstrap.js",
+    "candidateSha256": "f8c0a0748b0b18e4179aa38946486e794cd915622ef82391256f73138c9fcfc6"
+  },
+  {
+    "resource": "game/client/desktop-input.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/desktop-input.js",
+    "upstreamBytes": 3477,
+    "upstreamSha256": "dde2f4ed08071bdb128dcef5579c38089b911673ca8be47449bb406ccb92af00",
+    "status": "unchanged",
+    "candidatePath": "game/client/desktop-input.js",
+    "candidateSha256": "dde2f4ed08071bdb128dcef5579c38089b911673ca8be47449bb406ccb92af00"
+  },
+  {
+    "resource": "game/client/engine.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/engine.js",
+    "upstreamBytes": 33078,
+    "upstreamSha256": "9982e25ce1dde29bdd8077ca1e1dca98d39dae6594c29cd030d9a03ad8a27c2c",
+    "status": "unchanged",
+    "candidatePath": "game/client/engine.js",
+    "candidateSha256": "9982e25ce1dde29bdd8077ca1e1dca98d39dae6594c29cd030d9a03ad8a27c2c"
+  },
+  {
+    "resource": "game/client/gamepad-controls.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/gamepad-controls.js",
+    "upstreamBytes": 8568,
+    "upstreamSha256": "ef455ec404e20af301f41700a078ee23b2e93941e18404ee6a3d114096a7b68a",
+    "status": "unchanged",
+    "candidatePath": "game/client/gamepad-controls.js",
+    "candidateSha256": "ef455ec404e20af301f41700a078ee23b2e93941e18404ee6a3d114096a7b68a"
+  },
+  {
+    "resource": "game/client/input-devices.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/input-devices.js",
+    "upstreamBytes": 5350,
+    "upstreamSha256": "58ac3a1f89603460c74a2a1cd0695e9d3706756d37fa2a4724b34ae8152127ad",
+    "status": "unchanged",
+    "candidatePath": "game/client/input-devices.js",
+    "candidateSha256": "58ac3a1f89603460c74a2a1cd0695e9d3706756d37fa2a4724b34ae8152127ad"
+  },
+  {
+    "resource": "game/client/input-settings.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/input-settings.js",
+    "upstreamBytes": 3770,
+    "upstreamSha256": "9f1cf92d22a410d5592fd379ef652e52c0155938e5cda763e1d817eee165629a",
+    "status": "unchanged",
+    "candidatePath": "game/client/input-settings.js",
+    "candidateSha256": "9f1cf92d22a410d5592fd379ef652e52c0155938e5cda763e1d817eee165629a"
+  },
+  {
+    "resource": "game/client/lobby.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/lobby.js",
+    "upstreamBytes": 3049,
+    "upstreamSha256": "03b7e65b8d350017590d3f628797925c0c20c05f83973fadc551d3377f6a175b",
+    "status": "unchanged",
+    "candidatePath": "game/client/lobby.js",
+    "candidateSha256": "03b7e65b8d350017590d3f628797925c0c20c05f83973fadc551d3377f6a175b"
+  },
+  {
+    "resource": "game/client/locomotion.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/locomotion.js",
+    "upstreamBytes": 2105,
+    "upstreamSha256": "170876d2e369ae8cb0e988f3b46eadf7441e18b5c2b08c1caafd0990aaf7d263",
+    "status": "unchanged",
+    "candidatePath": "game/client/locomotion.js",
+    "candidateSha256": "170876d2e369ae8cb0e988f3b46eadf7441e18b5c2b08c1caafd0990aaf7d263"
+  },
+  {
+    "resource": "game/client/native-progress.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/native-progress.js",
+    "upstreamBytes": 5139,
+    "upstreamSha256": "2119e65c50c25567869b206115971f345e7cb5917d335ecd5d318aa10aa6ef18",
+    "status": "unchanged",
+    "candidatePath": "game/client/native-progress.js",
+    "candidateSha256": "2119e65c50c25567869b206115971f345e7cb5917d335ecd5d318aa10aa6ef18"
+  },
+  {
+    "resource": "game/client/net.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/net.js",
+    "upstreamBytes": 17702,
+    "upstreamSha256": "1f0021a6f9f0609b0dc3963e8677a7cf9a449a61aaf03a6028901aa5358fed7c",
+    "status": "adapted",
+    "candidatePath": "game/client/net.js",
+    "candidateSha256": "a3a24096c0434018b0b3adee52cab12cf2085f57bd73ce229016b8e51e2dd348"
+  },
+  {
+    "resource": "game/client/online-kills.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/online-kills.js",
+    "upstreamBytes": 2678,
+    "upstreamSha256": "9707e4e42a2beef667c3ba3304463369e252f65ab77a25f3378752068a170db8",
+    "status": "unchanged",
+    "candidatePath": "game/client/online-kills.js",
+    "candidateSha256": "9707e4e42a2beef667c3ba3304463369e252f65ab77a25f3378752068a170db8"
+  },
+  {
+    "resource": "game/client/online-results.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/online-results.js",
+    "upstreamBytes": 463,
+    "upstreamSha256": "4f5182fd8d672adde7b415c347c4e690c624961e2d40cc6262c6e5919c0d328b",
+    "status": "unchanged",
+    "candidatePath": "game/client/online-results.js",
+    "candidateSha256": "4f5182fd8d672adde7b415c347c4e690c624961e2d40cc6262c6e5919c0d328b"
+  },
+  {
+    "resource": "game/client/performance-policy.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/performance-policy.js",
+    "upstreamBytes": 2702,
+    "upstreamSha256": "19f6d65bae97bb2b4ec28f2c139f2ee97a5f530ebdf789406285ecfdfef5860f",
+    "status": "unchanged",
+    "candidatePath": "game/client/performance-policy.js",
+    "candidateSha256": "19f6d65bae97bb2b4ec28f2c139f2ee97a5f530ebdf789406285ecfdfef5860f"
+  },
+  {
+    "resource": "game/client/pointer-lock.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/pointer-lock.js",
+    "upstreamBytes": 1485,
+    "upstreamSha256": "a70f76eb6aff2cc6604bade700fb44d87f09768707dc783d04d1f76257ed01af",
+    "status": "unchanged",
+    "candidatePath": "game/client/pointer-lock.js",
+    "candidateSha256": "a70f76eb6aff2cc6604bade700fb44d87f09768707dc783d04d1f76257ed01af"
+  },
+  {
+    "resource": "game/client/progress-ledger.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/progress-ledger.js",
+    "upstreamBytes": 9118,
+    "upstreamSha256": "c0d07cf1b3e18c395dfcfc558f6ed46a73ae6f28417b768c6e687d69a3bf82cd",
+    "status": "unchanged",
+    "candidatePath": "game/client/progress-ledger.js",
+    "candidateSha256": "c0d07cf1b3e18c395dfcfc558f6ed46a73ae6f28417b768c6e687d69a3bf82cd"
+  },
+  {
+    "resource": "game/client/pvp.css",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/pvp.css",
+    "upstreamBytes": 7297,
+    "upstreamSha256": "7a3bbea490ead00748cf64c62691a54b046f15210a6e47dd71f8739ffae28cb0",
+    "status": "unchanged",
+    "candidatePath": "game/client/pvp.css",
+    "candidateSha256": "7a3bbea490ead00748cf64c62691a54b046f15210a6e47dd71f8739ffae28cb0"
+  },
+  {
+    "resource": "game/client/pvp.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/pvp.js",
+    "upstreamBytes": 22679,
+    "upstreamSha256": "67707fa2e45e03806670cb1a1b5484af39550849a7479dd9dbbea366301820ed",
+    "status": "adapted",
+    "candidatePath": "game/client/pvp.js",
+    "candidateSha256": "09227bb651650eaa4559a40675da044215ec84ddecd24ba744ff25b1b5e5d0f3"
+  },
+  {
+    "resource": "game/client/runtime-diagnostics.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/runtime-diagnostics.js",
+    "upstreamBytes": 3625,
+    "upstreamSha256": "bb949ec8f9676e94f3a695a7cdad79f17a928e64ed786f9dab8c1def1ed1c900",
+    "status": "unchanged",
+    "candidatePath": "game/client/runtime-diagnostics.js",
+    "candidateSha256": "bb949ec8f9676e94f3a695a7cdad79f17a928e64ed786f9dab8c1def1ed1c900"
+  },
+  {
+    "resource": "game/client/simulation.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/simulation.js",
+    "upstreamBytes": 6473,
+    "upstreamSha256": "a703a3437140aa5df985d8ca6d3c3574f5fc20a03df81f85361698d2bbab8a48",
+    "status": "unchanged",
+    "candidatePath": "game/client/simulation.js",
+    "candidateSha256": "a703a3437140aa5df985d8ca6d3c3574f5fc20a03df81f85361698d2bbab8a48"
+  },
+  {
+    "resource": "game/client/startup-cache.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/startup-cache.js",
+    "upstreamBytes": 11717,
+    "upstreamSha256": "7f16c8f487f920de4e989328c771db0d3255580239d588aa9e9a02859d392374",
+    "status": "unchanged",
+    "candidatePath": "game/client/startup-cache.js",
+    "candidateSha256": "7f16c8f487f920de4e989328c771db0d3255580239d588aa9e9a02859d392374"
+  },
+  {
+    "resource": "game/client/startup-geometry.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/startup-geometry.js",
+    "upstreamBytes": 8673,
+    "upstreamSha256": "6154093aea3a69e3ddfec8953cfd83891b35c4c1041ee115eecf3e46732b3685",
+    "status": "unchanged",
+    "candidatePath": "game/client/startup-geometry.js",
+    "candidateSha256": "6154093aea3a69e3ddfec8953cfd83891b35c4c1041ee115eecf3e46732b3685"
+  },
+  {
+    "resource": "game/client/telemetry.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/telemetry.js",
+    "upstreamBytes": 8046,
+    "upstreamSha256": "296feb476f2e88cd199659ab55e3fe65e54d7ab9c095e96c4330d53572bb9fe6",
+    "status": "adapted",
+    "candidatePath": "game/client/telemetry.js",
+    "candidateSha256": "a804f47ac305472fb2788e410f3e8b3e8b286dc04a424986691bbc66cf17c9d1"
+  },
+  {
+    "resource": "game/client/touch-controls.css",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-controls.css",
+    "upstreamBytes": 43602,
+    "upstreamSha256": "32be49bccf348c7fabf864759d363f5be9faf792c58bc5de76298c76f9872bb2",
+    "status": "unchanged",
+    "candidatePath": "game/client/touch-controls.css",
+    "candidateSha256": "32be49bccf348c7fabf864759d363f5be9faf792c58bc5de76298c76f9872bb2"
+  },
+  {
+    "resource": "game/client/touch-controls.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-controls.js",
+    "upstreamBytes": 18740,
+    "upstreamSha256": "2a7d96ed016c36e0012d478d29f7f5f1a44697df38896ce697a9a8f039706216",
+    "status": "unchanged",
+    "candidatePath": "game/client/touch-controls.js",
+    "candidateSha256": "2a7d96ed016c36e0012d478d29f7f5f1a44697df38896ce697a9a8f039706216"
+  },
+  {
+    "resource": "game/client/touch-input.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-input.js",
+    "upstreamBytes": 1633,
+    "upstreamSha256": "dd9407c85d4ed30f5e0188caa42191625112ab04de88fbaf5668eec7cf796d5a",
+    "status": "unchanged",
+    "candidatePath": "game/client/touch-input.js",
+    "candidateSha256": "dd9407c85d4ed30f5e0188caa42191625112ab04de88fbaf5668eec7cf796d5a"
+  },
+  {
+    "resource": "game/client/touch-layout.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-layout.js",
+    "upstreamBytes": 4309,
+    "upstreamSha256": "66f9299ebeba844aa4b542b203623b18002fe66af801858493cd914ebdec7b9c",
+    "status": "unchanged",
+    "candidatePath": "game/client/touch-layout.js",
+    "candidateSha256": "66f9299ebeba844aa4b542b203623b18002fe66af801858493cd914ebdec7b9c"
+  },
+  {
+    "resource": "game/client/touch-settings.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-settings.js",
+    "upstreamBytes": 10278,
+    "upstreamSha256": "0cca063242fba99a44f10e6ded333105261791394f8569bc13dd5f3f96d843d0",
+    "status": "unchanged",
+    "candidatePath": "game/client/touch-settings.js",
+    "candidateSha256": "0cca063242fba99a44f10e6ded333105261791394f8569bc13dd5f3f96d843d0"
+  },
+  {
+    "resource": "game/client/toy-account.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/toy-account.js",
+    "upstreamBytes": 21562,
+    "upstreamSha256": "6b26b17e33817a1a264f816a34288368bc82fc398dbf357aa62e08e255096692",
+    "status": "adapted",
+    "candidatePath": "game/client/toy-account.js",
+    "candidateSha256": "f9074a357a9d2be12b8ce20061591f6a711df20718213efb64cda1376ee3f636"
+  },
+  {
+    "resource": "game/client/toy-menu.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/toy-menu.js",
+    "upstreamBytes": 9096,
+    "upstreamSha256": "e7be1905f259b446bbb5163f60a4d09217df37eb0906c537cbc44715cf8aed84",
+    "status": "adapted",
+    "candidatePath": "game/client/toy-menu.js",
+    "candidateSha256": "6fecd5f702025b0cc7bba25acc1e58fae33efaf5e82c81f974a631f0b8113d30"
+  },
+  {
+    "resource": "game/client/toy-weapons.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/toy-weapons.js",
+    "upstreamBytes": 9867,
+    "upstreamSha256": "30cfa973492876c2a604cb37d3afd9ba50062496399ef2a6c6ac3bd7bc7c7e24",
+    "status": "replaced",
+    "candidatePath": "game/client/toy-weapons.js",
+    "candidateSha256": "df4053de7ed3453c25a7849619cca6a247867785bb9c056f80fd229ec0b79c6d"
+  },
+  {
+    "resource": "game/client/training-kills.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/training-kills.js",
+    "upstreamBytes": 2559,
+    "upstreamSha256": "5d94898e52263d231a992b6fb6d7f4277bb481e7950b3b5daed1efbad3162220",
+    "status": "unchanged",
+    "candidatePath": "game/client/training-kills.js",
+    "candidateSha256": "5d94898e52263d231a992b6fb6d7f4277bb481e7950b3b5daed1efbad3162220"
+  },
+  {
+    "resource": "game/client/webgl-context.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/webgl-context.js",
+    "upstreamBytes": 9299,
+    "upstreamSha256": "62241925a316d4c38f99e00a232953206fcee68563cc8656ad5b3aa9fdea357a",
+    "status": "unchanged",
+    "candidatePath": "game/client/webgl-context.js",
+    "candidateSha256": "62241925a316d4c38f99e00a232953206fcee68563cc8656ad5b3aa9fdea357a"
+  },
+  {
+    "resource": "game/client/webrtc.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/webrtc.js",
+    "upstreamBytes": 5029,
+    "upstreamSha256": "ba074826576a848514faacf7cc412d3abc25ece823422f62d4b4767a08701ee4",
+    "status": "unchanged",
+    "candidatePath": "game/client/webrtc.js",
+    "candidateSha256": "ba074826576a848514faacf7cc412d3abc25ece823422f62d4b4767a08701ee4"
+  },
+  {
+    "resource": "game/dist/game.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/dist/game.js",
+    "upstreamBytes": 2810154,
+    "upstreamSha256": "5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3",
+    "status": "adapted",
+    "candidatePath": "game/core/game.js",
+    "candidateSha256": "cc27e044981ab07683502c1a68351110bac1aeac7a7c5bd07457402a4abc9feb"
+  },
+  {
+    "resource": "game/i18n-zh.js",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/i18n-zh.js",
+    "upstreamBytes": 28582,
+    "upstreamSha256": "44aa9627f4e510c45b8ca1369006d7f5d3b1f7f939e4d6b477122f0fdfb442dc",
+    "status": "replaced",
+    "candidatePath": "game/i18n/zh-CN.js",
+    "candidateSha256": "ad3a2037ee29b3ae35cf66f82348e78e04345e4d9700fa0abee067ad152005af"
+  },
+  {
+    "resource": "game/icon.png",
+    "upstreamURL": "https://i0.hdslb.com/bfs/static/toy/app/golden-hour/icon_46289_upload.png",
+    "upstreamBytes": 116904,
+    "upstreamSha256": "681a72331e92c05b91e2623d660a8950092514811af88461a3a4b4feef887909",
+    "status": "unchanged",
+    "candidatePath": "game/icon.png",
+    "candidateSha256": "681a72331e92c05b91e2623d660a8950092514811af88461a3a4b4feef887909"
+  },
+  {
+    "resource": "original/entry.html",
+    "upstreamURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/index.html",
+    "upstreamBytes": 100186,
+    "upstreamSha256": "d736f67aa6c6d6f63aba9ef5876c52fc62f94efb79eca6f1eab89ff8ef85301a",
+    "status": "adapted",
+    "candidatePath": "game/index.html",
+    "candidateSha256": "f823a2e0ce08784b84be4a5bd5a674fd9695bf46873caca37e89a38377dd58a7"
+  },
+  {
+    "resource": "original/bilibili.html",
+    "upstreamURL": "https://www.bilibili.com/toy/golden-hour/index.html",
+    "upstreamBytes": 8775,
+    "upstreamSha256": "ac0d870369102bafa1093ffaac47469576a30136e31351c165ac31c94858781c",
+    "status": "omitted",
+    "candidatePath": null,
+    "candidateSha256": null
+  }
+]

@@ -1,0 +1,40 @@
+.weapon-model-panel { margin-bottom: .8rem; font-size: var(--f1); }
+.weapon-model-panel label { display: flex; align-items: center; gap: 1rem; }
+.weapon-model-panel select { font: inherit; color: white; background: #22252b; padding: .35em; }
+.weapon-model-panel p { margin: .4em 0; text-transform: none; }
+#language-menu {
+  position: absolute;
+  bottom: .6rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  z-index: 8;
+  font: 500 clamp(11px, 1.35vw, 15px) system-ui, sans-serif;
+}
+#language-menu label { display: flex; align-items: center; gap: .45em; }
+#language-menu button, #language-menu select, #credits-dialog button {
+  color: #fff; background: #22252b; border: 1px solid #827667;
+  padding: .3em .55em; border-radius: .2em; font: inherit; cursor: pointer;
+}
+#credits-dialog { color: #fff; background: #1a1c21; border: 1px solid #b29b71; padding: 1.5em 2em; max-width: 85vw; }
+#credits-dialog::backdrop { background: #000b; }
+#language-menu, #credits-dialog, [translate=no], [data-l10n-bound] { text-transform: none; }
+#credits-dialog button { display: block; margin-top: 1.5em; }
+@media (max-width: 620px) {
+  #language-menu label span { position: absolute; width: 1px; overflow: hidden; clip-path: inset(50%); }
+  #language-menu { right: .5rem; bottom: .25rem; }
+  .online-layout .online-team-actions { flex-wrap: wrap; }
+  .online-layout .online-fill, .online-layout .online-connect-hint { overflow-wrap: anywhere; }
+}
+
+#account-dialog { z-index:100; color:#f2eee8; background:#201f20; border:1px solid #77685a; max-width:min(30rem,92vw); padding:1.25rem; }
+#account-dialog::backdrop { background:#000a; }
+#account-dialog form { display:grid; gap:.75rem; }
+#account-dialog label, #online-connect label, #online-room label { display:block; }
+#account-dialog input, #join-room-code, #room-invite { background:#111; color:white; border:1px solid #777; padding:.45rem; font:inherit; max-width:100%; }
+#account-dialog input { display:block; width:100%; }
+#account-dialog input[hidden], #account-dialog button[hidden] {display:none;}
+#account-dialog form div { display:flex; flex-wrap:wrap; gap:.4rem; }
+#account-dialog output { color:#ffc492; overflow-wrap:anywhere; }
+#room-invite { width:100%; }
