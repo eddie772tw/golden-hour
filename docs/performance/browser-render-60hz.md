@@ -282,3 +282,9 @@ Product runtime remains stage3. All new observer, dry-layer and forced-GC
 flags are excluded from acceptance. The target remains unmet. Source hashes,
 full diagnostic distributions, host scheduling evidence and limitations are
 recorded in [stage5-audio-churn.json](evidence/stage5-audio-churn.json).
+
+The renewed desktop-host feasibility review is recorded in
+[Electron/Tauri reassessment](desktop-reassessment.md). It separates actual
+runtime version differences from ownership/DSP changes, preserves full process
+and shipping-package comparison requirements, and reports the failed controlled
+GC/isolated-owner shortcuts. No desktop migration is enabled by that review.
