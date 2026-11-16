@@ -677,3 +677,14 @@ a component diagnostic and must list all missing High effects before any host
 comparison. Current source, raw hashes, oracle limits, exact checks and the
 bounded pivot decision are in
 [stage11-sab-audible.json](evidence/stage11-sab-audible.json).
+
+## Stage 12: native Godot geometry import proof
+
+The first native Vulkan geometry smoke passed with the complete captured
+516-object scene and5.33million unique vertices, using explicit normal-debug
+materials. It validates import/camera/material ownership and instrumentation,
+not High/full-AI parity or a faster FPS result. Original source masks and
+MultiMesh material errors were corrected with retained failure evidence.
+See [Godot native migration validation](godot-native-validation.md),
+[the runnable component](../../prototypes/godot-render-component/README.md) and
+[stage12-godot-component.json](evidence/stage12-godot-component.json).

@@ -1,0 +1,22 @@
+; Explicit frozen native-scene component diagnostic. No fallback/demo geometry.
+config_version=5
+
+[application]
+config/name="Golden Hour — real scene render component (NO High/AI parity)"
+run/main_scene="res://main.tscn"
+
+[display]
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/vsync/vsync_mode=1
+
+[rendering]
+renderer/rendering_method="forward_plus"
+renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_3d=2
+lights_and_shadows/directional_shadow/size=4096
+
+[debug]
+gdscript/warnings/untyped_declaration=0

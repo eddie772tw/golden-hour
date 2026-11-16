@@ -1,0 +1,599 @@
+{
+  "stage": 12,
+  "classification": "Godot native real-scene import/geometry diagnostic; not full-game performance acceptance",
+  "acceptanceEligible": false,
+  "productCoreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "runtime": {
+    "version": "4.7.2.stable.official.ed1daf0bf",
+    "kind": "Official standard Windows64 development/editor portable; not exported release package",
+    "sourcePage": "https://godotengine.org/download/windows/",
+    "archiveUrl": "https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/Godot_v4.7.2-stable_win64.exe.zip",
+    "checksumUrl": "https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/SHA512-SUMS.txt",
+    "officialSHA512Verified": true,
+    "archiveSHA512": "83DECD58FDF67B9D657958A1AE6BF1929C20785315A81EFFE245874CDC57ACB709BF868E00778A96984338C1B29DAFDB453C6847747694621C6ECF5DA2259993",
+    "executableSHA256": "AB1824F85BFD8E0E4128182C000C4003A3E042245B2967848D089B2A04B22424",
+    "archiveBytes": 86013866,
+    "executableBytes": 180858888,
+    "signatureStatus": "Valid",
+    "signatureSubject": "CN=Prehensile Tales B.V., O=Prehensile Tales B.V., L=Uitgeest, S=Noord Holland, C=NL",
+    "console": "D:\\Golden-Hour\\work\\tools\\godot-4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+    "recordScope": "Acquisition metadata; actual native GPU smoke is recorded separately"
+  },
+  "sourceSHA256": {
+    "prototypes/godot-render-component/.gitignore": "f9bbc8a927dd4f6496373bc306cf23ce53b221ddd3a2b7cf765029dbe30e7fc0",
+    "prototypes/godot-render-component/capture_scene.py": "d951f5b5c25d46630ad5b5d7f044d1dbb75f3bfe32a023a798fa01c3517f0ec1",
+    "prototypes/godot-render-component/README.md": "dc81122dec390e07ffcb6d570d9f07211c3bd6c8f6215a6bb0478f36ea9153f9",
+    "prototypes/godot-render-component/run_render.py": "f86806a28c6361ff853c81da8a1dc6cbc0b47d6f7ac81d30f6c88d88d686ac29",
+    "prototypes/godot-render-component/render/browser-exporter.js": "ca039c8a44461cab5491587138e1772a5d323e8abcba0e3bd3a7c0e1f05821cd",
+    "prototypes/godot-render-component/render/exporter.test.mjs": "bd8bff53e0e97b034e1574c71d831ae68846ff4203b44be16c2224051d1b3898",
+    "prototypes/godot-render-component/render/main.gd": "e343195481112983925ac28e5d11664f5bb7d3f89ee3182796576a94943c8598",
+    "prototypes/godot-render-component/render/main.tscn": "7cfc94c5c8be7f1e9b40720cddae94f10aa51161e125ff56b014520509a26b4f",
+    "prototypes/godot-render-component/render/project.godot": "e5ebd93f6e014b5438ddf2d6e484c2692b12659004d6bea63b7ec275c916949d",
+    "prototypes/godot-render-component/render/SCHEMA.md": "6ce60d61b86388c9c46b62ed7254f7b8b799e91bf06e5ff544f03abf1dec81f9"
+  },
+  "capture": {
+    "rawPath": "work\\godot-native\\evidence\\native-scene-tick240-2.json",
+    "rawSHA256": "8337f8c555a9d8bbda57916b41861cc214f72ed2111087812b772faf36c209dc",
+    "snapshotBytes": 825327988,
+    "snapshotSHA256": "6f5dfb2c07a7d0cc08a985451558f0a271136e82f8bd87b5d4c147b15719e13c",
+    "exporterSHA256AtCapture": "75e0bd46905752884f6c90ca3f45270ad4238fcc516347fdf8b710efb37d347e",
+    "counts": {
+      "objects": 516,
+      "geometries": 252,
+      "materials": 192,
+      "uniqueExportedVertices": 5330835,
+      "objectVertexReferences": 6065089,
+      "surfaces": 516,
+      "instances": 3454,
+      "enumeratedTriangles": 2327336,
+      "bakedSkins": 11,
+      "lights": 15,
+      "omitted": {
+        "hidden": 31,
+        "noPosition": 0,
+        "unsupportedObject": 2
+      }
+    },
+    "source": {
+      "capturedFrom": "GH.debug.gfx.scene",
+      "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+      "pageBundle": "5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3",
+      "quality": "high",
+      "tick": 240,
+      "state": "paused",
+      "capturedAt": 1794855207932.5999,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "camera": {
+        "matrix": [
+          0.9946138926029308,
+          0.0011549869513705936,
+          -0.10364299612799593,
+          0,
+          -0.0033797947109607046,
+          0.9997675651526843,
+          -0.021293018958918403,
+          0,
+          0.10359431272496275,
+          0.02152862452213936,
+          0.9943866132934551,
+          0,
+          -3.876960780589182,
+          1.621687370219873,
+          8.341690006863624,
+          1
+        ],
+        "projection": [
+          0.8386471617325347,
+          0,
+          0,
+          0,
+          0,
+          1.490928287524506,
+          0,
+          0,
+          0,
+          0,
+          -1.0000480011520276,
+          -1,
+          0,
+          0,
+          -0.12000288006912166,
+          0
+        ],
+        "fov": 67.70133805040044,
+        "aspect": 1.7777777777777777,
+        "near": 0.06,
+        "far": 2500,
+        "layers": 3,
+        "zoom": 1
+      },
+      "rendererInfo": {
+        "scope": "last native gfx including all passes; NOT a main-only comparator",
+        "calls": 1380,
+        "triangles": 8471064,
+        "points": 3456,
+        "lines": 0
+      },
+      "background": null,
+      "environmentIntensity": 0.24
+    },
+    "parity": {
+      "renderOnly": true,
+      "frozenScene": true,
+      "fullAI": false,
+      "highParity": false,
+      "additionalBatching": false,
+      "gaps": [
+        "No Three GLSL/custom attributes translation",
+        "Textures/env maps metadata only",
+        "No planar reflection/AO/bloom/FX/VM/postprocess matching",
+        "Frozen skin positions with approximate recomputed normals",
+        "Light energy/shadow/filter/tone-map models differ",
+        "Godot20 vs Three32 render layers",
+        "Transparent ordering/two-sided pass semantics differ",
+        "No gameplay/audio/physics/nav/animation"
+      ],
+      "includeHidden": false
+    },
+    "note": "Large numeric JSON is diagnostic data, not release/package bytes. Current exporter adds stencil metadata after this capture; legacy source proof handles the two known masks."
+  },
+  "retainedFailures": [
+    {
+      "path": "work\\godot-native\\evidence\\native-scene-tick240-1.json",
+      "sha256": "c34a0630b3d0c736e71deb636225ae9c61ad3141f24aa46e674e3cbd66d40cb7",
+      "reason": "V8 monolithic JSON string length exceeded; no reduced replacement scene accepted"
+    },
+    {
+      "path": "work\\godot-native\\evidence\\native-render-smoke-1.run.json",
+      "sha256": "0fbc598da39039122d61ace948fd6dee392b44bfa85a55ca85c3535a8bec7f58",
+      "reason": "14 MultiMesh surface ownership errors and almost-white image; native engine did import scene but validation failed",
+      "errors": 15
+    }
+  ],
+  "successfulGeometrySmoke": {
+    "rawPath": "work\\godot-native\\evidence\\native-render-smoke-2.json",
+    "rawSHA256": "22a14c8b6d16205d3a744b27cc73007537174f11157b14873e3108dc57e66c37",
+    "runSHA256": "18cd3d5a48a241db06ca3fa29a5a2c90ff0ce3be2b3cd5d7e283e4a1fd751892",
+    "screenshotSHA256": "8949980d71e70c3d37597b3e5154f422c41afe75d7f6368ca79773331e500c5c",
+    "engine": {
+      "build": "official",
+      "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "hex": 263938,
+      "major": 4,
+      "minor": 7,
+      "patch": 2,
+      "status": "stable",
+      "string": "4.7.2-stable (official)",
+      "timestamp": 0
+    },
+    "gpu": "AMD Radeon RX 9070 XT",
+    "api": "1.4.359",
+    "renderingMethod": "forward_plus",
+    "renderingDriver": "vulkan",
+    "viewport": [
+      1920.0,
+      1080.0
+    ],
+    "msaaEnum": 2,
+    "directionalShadowSize": 4096,
+    "frames": 120,
+    "loadMS": 9431.195,
+    "importCounts": {
+      "empty_objects": 0,
+      "instances": 3454,
+      "multimat_mesh_variants": 0,
+      "multimeshes": 15,
+      "nodes": 516,
+      "shader_instancing_approximations": 2,
+      "surface_vertex_uploads": 5330835,
+      "surfaces": 516
+    },
+    "mapping": {
+      "diagnostic_only_not_unit_conversion": true,
+      "diagnostics": {
+        "no_output_mappings": [
+          {
+            "action": "shadow_only_preserve_native_cast",
+            "id": "5ec094f1-3192-498e-a84b-6dd533a4fb08",
+            "materials": [
+              "07554f08-c674-4f92-b92b-fe9790c49378"
+            ],
+            "name": "fpbody-rest",
+            "nativeID": 1832.0,
+            "path": "world/315:fpbody/35:fpbody-rest",
+            "proof": "b3b UC source50198/default Material stencilWrite=false2520; native fpbody owner50204/50246/50247",
+            "sourceCastShadow": true,
+            "sourceVisible": true
+          },
+          {
+            "action": "shadow_only_preserve_native_cast",
+            "id": "ff1cdb27-5e6c-4d65-b14e-62ade8d776d8",
+            "materials": [
+              "07554f08-c674-4f92-b92b-fe9790c49378"
+            ],
+            "name": "world",
+            "nativeID": 2845.0,
+            "path": "world/315:fpbody/36:gun_ar/0:world",
+            "proof": "b3b UC source50198/default Material stencilWrite=false2520; native fpbody owner50204/50246/50247",
+            "sourceCastShadow": true,
+            "sourceVisible": true
+          }
+        ],
+        "normal_debug_materials": 192,
+        "source_material_types": {
+          "MeshBasicMaterial": 6,
+          "MeshPhysicalMaterial": 2,
+          "MeshStandardMaterial": 172,
+          "ShaderMaterial": 12
+        },
+        "source_scalar_materials": 0,
+        "suspect_objects": [
+          {
+            "geometry": "8a53c371-6d93-46ff-b443-b056cf046381",
+            "id": "fefd9186-5173-430a-887a-c00d53c26897",
+            "materials": [
+              {
+                "blending": 5.0,
+                "colorWrite": true,
+                "depthTest": true,
+                "depthWrite": false,
+                "id": "9a1633d3-3ddb-4b86-84c9-11ef1f2d9e24",
+                "opacity": 1.0,
+                "shaderMaterial": true,
+                "side": 2.0,
+                "transparent": true,
+                "type": "ShaderMaterial"
+              }
+            ],
+            "name": "",
+            "nativeID": 27.0,
+            "owners": [],
+            "path": "world/0:",
+            "sourceRenderOrder": 30.0
+          },
+          {
+            "geometry": "861d2200-393d-4db8-902b-fa367b6c4eef",
+            "id": "baa8baeb-dd06-470e-a4c0-14b0bf795b42",
+            "materials": [
+              {
+                "blending": 5.0,
+                "colorWrite": true,
+                "depthTest": true,
+                "depthWrite": false,
+                "id": "964f244b-0928-4c4a-a0f7-eae8cb2f1ae4",
+                "opacity": 1.0,
+                "shaderMaterial": true,
+                "side": 2.0,
+                "transparent": true,
+                "type": "ShaderMaterial"
+              }
+            ],
+            "name": "",
+            "nativeID": 28.0,
+            "owners": [],
+            "path": "world/1:",
+            "sourceRenderOrder": 30.0
+          },
+          {
+            "geometry": "2a21b1bd-8dc4-47ae-9482-9247eff273ff",
+            "id": "8ee98d21-a1c9-494a-98bc-365e237d4c3f",
+            "materials": [
+              {
+                "blending": 1.0,
+                "colorWrite": true,
+                "depthTest": true,
+                "depthWrite": false,
+                "id": "0669e825-b912-4404-9002-046efb5d2bb2",
+                "opacity": 1.0,
+                "shaderMaterial": true,
+                "side": 1.0,
+                "transparent": false,
+                "type": "ShaderMaterial"
+              }
+            ],
+            "name": "",
+            "nativeID": 40.0,
+            "owners": [],
+            "path": "world/8:",
+            "sourceRenderOrder": -100.0
+          },
+          {
+            "geometry": "32a6b125-f5b5-4729-9c34-79f197b03bf4",
+            "id": "3acc0a0f-5dd4-4d3f-a430-be103f23e390",
+            "materials": [
+              {
+                "blending": 1.0,
+                "colorWrite": true,
+                "depthTest": true,
+                "depthWrite": true,
+                "id": "167babaa-895d-4e3f-a0af-c8904b81f9ac",
+                "opacity": 1.0,
+                "shaderMaterial": true,
+                "side": 0.0,
+                "transparent": false,
+                "type": "ShaderMaterial"
+              }
+            ],
+            "name": "",
+            "nativeID": 41.0,
+            "owners": [],
+            "path": "world/9:",
+            "sourceRenderOrder": 0.0
+          },
+          {
+            "geometry": "42b3d0cd-c5bf-4f58-ac94-2a62e7ea60ae",
+            "id": "26519ba5-599c-4674-b0bf-8aad9bb87d13",
+            "materials": [
+              {
+                "blending": 1.0,
+                "colorWrite": true,
+                "depthTest": true,
+                "depthWrite": true,
+                "id": "9e3d4389-716e-4d03-a8fb-a0d2730aaf99",
+                "opacity": 1.0,
+                "shaderMaterial": true,
+                "side": 0.0,
+                "transparent": false,
+                "type": "ShaderMaterial"
+              }
+            ],
+            "name": "",
+            "nativeID": 42.0,
+            "owners": [],
+            "path": "world/10:",
+            "sourceRenderOrder": 0.0
+          },
+          {
+            "geometry": "464945ab-f9f5-44b2-900d-eba63b633ca4",
+            "id": "6ae5e553-cd3b-477f-9410-ef142fac1432",
+            "materials": [
+              {
+                "blending": 1.0,
+                "colorWrite": true,
+                "depthTest": true,
+                "depthWrite": false,
+                "id": "625946f3-65ef-4959-8cbf-889b87db7753",
+                "opacity": 1.0,
+                "shaderMaterial": true,
+                "side": 0.0,
+                "transparent": true,
+                "type": "ShaderMaterial"
+              }
+            ],
+            "name": "",
+            "nativeID": 44.0,
+            "owners": [],
+            "path": "world/12:",
+            "sourceRenderOrder": 5.0
+          },
+          {
+            "geometry": "fb61f724-2a55-453f-8d68-f6a894d67834",
+            "id": "2301992f-325a-4cba-b5d9-9a2bdc082a6f",
+            "materials": [
+              {
+                "blending": 1.0,
+                "colorWrite": true,
+                "depthTest": true,
+                "depthWrite": true,
+                "id": "ef369e00-8e5d-4bab-a1ad-002098507816",
+                "opacity": 1.0,
+                "shaderMaterial": true,
+                "side": 0.0,
+                "transparent": false,
+                "type": "ShaderMaterial"
+              }
+            ],
+            "name": "",
+            "nativeID": 1314.0,
+            "owners": [],
+            "path": "world/137:",
+            "sourceRenderOrder": 0.0
+          },
+          {
+            "geometry": "8feb2bc9-ae49-45f4-816b-7655b8b1a03b",
+            "id": "37bd9242-36df-4e8f-a933-6f6280489189",
+            "materials": [
+              {
+                "blending": 2.0,
+                "colorWrite": true,
+                "depthTest": true,
+                "depthWrite": false,
+                "id": "c3af78a5-52f8-4be3-95a1-06f2fcebccf2",
+                "opacity": 1.0,
+                "shaderMaterial": true,
+                "side": 0.0,
+                "transparent": true,
+                "type": "ShaderMaterial"
+              }
+            ],
+            "name": "",
+            "nativeID": 1318.0,
+            "owners": [],
+            "path": "world/141:",
+            "sourceRenderOrder": 6.0
+          },
+          {
+            "geometry": "33a58158-020f-4b84-85e8-a41b2c268a0d",
+            "id": "5bab63fd-0a4f-418c-ad58-d11f744bbdf2",
+            "materials": [
+              {
+                "blending": 5.0,
+                "colorWrite": true,
+                "depthTest": true,
+                "depthWrite": false,
+                "id": "a7d10db2-e688-4342-99f1-87beb08df09e",
+                "opacity": 1.0,
+                "shaderMaterial": true,
+                "side": 2.0,
+                "transparent": true,
+                "type": "ShaderMaterial"
+              }
+            ],
+            "name": "",
+            "nativeID": 1426.0,
+            "owners": [],
+            "path": "world/311:",
+            "sourceRenderOrder": 15.0
+          },
+          {
+            "geometry": "4f66895a-6e05-4d91-8174-49fe78a394be",
+            "id": "f78f5f30-f612-4ed3-a953-63544072c34a",
+            "materials": [
+              {
+                "blending": 2.0,
+                "colorWrite": true,
+                "depthTest": true,
+                "depthWrite": false,
+                "id": "8376ee19-1290-4723-95d6-33e1bc19dd41",
+                "opacity": 1.0,
+                "shaderMaterial": true,
+                "side": 0.0,
+                "transparent": true,
+                "type": "ShaderMaterial"
+              }
+            ],
+            "name": "",
+            "nativeID": 1427.0,
+            "owners": [],
+            "path": "world/312:",
+            "sourceRenderOrder": 16.0
+          },
+          {
+            "geometry": "fa4242ab-1d5c-4fdf-a494-085affc08ec4:pose:5ec094f1-3192-498e-a84b-6dd533a4fb08",
+            "id": "5ec094f1-3192-498e-a84b-6dd533a4fb08",
+            "materials": [
+              {
+                "blending": 1.0,
+                "colorWrite": false,
+                "depthTest": true,
+                "depthWrite": false,
+                "id": "07554f08-c674-4f92-b92b-fe9790c49378",
+                "opacity": 1.0,
+                "shaderMaterial": false,
+                "side": 0.0,
+                "transparent": false,
+                "type": "MeshBasicMaterial"
+              }
+            ],
+            "name": "fpbody-rest",
+            "nativeID": 1832.0,
+            "owners": [],
+            "path": "world/315:fpbody/35:fpbody-rest",
+            "sourceRenderOrder": 0.0
+          },
+          {
+            "geometry": "8999d2b7-60bb-4779-8b1d-b54c3ab8b927",
+            "id": "ff1cdb27-5e6c-4d65-b14e-62ade8d776d8",
+            "materials": [
+              {
+                "blending": 1.0,
+                "colorWrite": false,
+                "depthTest": true,
+                "depthWrite": false,
+                "id": "07554f08-c674-4f92-b92b-fe9790c49378",
+                "opacity": 1.0,
+                "shaderMaterial": false,
+                "side": 0.0,
+                "transparent": false,
+                "type": "MeshBasicMaterial"
+              }
+            ],
+            "name": "world",
+            "nativeID": 2845.0,
+            "owners": [],
+            "path": "world/315:fpbody/36:gun_ar/0:world",
+            "sourceRenderOrder": 0.0
+          },
+          {
+            "geometry": "e62bdd90-1938-4700-b028-a1c05b8a1d34",
+            "id": "6e08fbf4-019b-4185-b89e-58098335e47e",
+            "materials": [
+              {
+                "blending": 1.0,
+                "colorWrite": true,
+                "depthTest": true,
+                "depthWrite": false,
+                "id": "0aa20b2a-ed8f-49d4-b416-a2a64fb50979",
+                "opacity": 1.0,
+                "shaderMaterial": true,
+                "side": 0.0,
+                "transparent": true,
+                "type": "ShaderMaterial"
+              }
+            ],
+            "name": "fpbody-ground",
+            "nativeID": 1833.0,
+            "owners": [],
+            "path": "world/316:fpbody-ground",
+            "sourceRenderOrder": 2.0
+          },
+          {
+            "geometry": "3cb9a0d9-77a9-4b6a-b65e-54b56929fa48",
+            "id": "84403695-1f38-42ba-be8c-685751b6d219",
+            "materials": [
+              {
+                "blending": 2.0,
+                "colorWrite": true,
+                "depthTest": true,
+                "depthWrite": false,
+                "id": "c049fda8-2b98-47f0-9a35-3f563d6e2309",
+                "opacity": 1.0,
+                "shaderMaterial": true,
+                "side": 0.0,
+                "transparent": true,
+                "type": "ShaderMaterial"
+              }
+            ],
+            "name": "",
+            "nativeID": 1913.0,
+            "owners": [],
+            "path": "world/320:",
+            "sourceRenderOrder": 16.0
+          }
+        ],
+        "untranslated_shader_materials": 12
+      },
+      "emission_scale": 1.0,
+      "light_energy_scale": 1.0,
+      "material_mode": "normal-debug",
+      "no_fps_comparison": true,
+      "tonemap": "linear",
+      "unknown_shader_source_scalar_fallback": "untranslated source ShaderMaterial becomes unshaded scalar proxy; unsafe for visual acceptance"
+    },
+    "screenshot": {
+      "error": 0,
+      "outside_measurement": true,
+      "path": "D:\\Golden-Hour\\work\\godot-native\\evidence\\native-render-smoke-2.png"
+    },
+    "engineErrors": [],
+    "parity": {
+      "renderOnly": true,
+      "frozenScene": true,
+      "highParity": false,
+      "fullAI": false,
+      "fpsComparisonPermitted": false
+    }
+  },
+  "validation": {
+    "actualThreeExporterTests": "3/3 pass in relocated repository package",
+    "python": "compile/help pass; capture requires High native-loop before Playwright import",
+    "godot": "4.7.2 check-only pass on relocated source; missing real snapshot fails without demo geometry",
+    "sourceRelocation": "GPU smoke used same GDScript/exporter behavior in work directory. Public wrappers only relocate paths/add explicit engine argument and capture preflight; no second GPU performance claim."
+  },
+  "nextGates": [
+    "Complete original Node AI/physics 3600 ticks and eight export equality; constructors/world initialization alone are insufficient",
+    "Original live rig/geometry/pose and input/state-age protocol",
+    "Audio PCM/DSP/clock/stop/spatial/voice/device fidelity; initial casing native comparison is not passed",
+    "High materials/textures/planar reflection/AO/FX/VM/postprocess parity and matched-pass render tests",
+    "Complete 1080p High workload performance; then whole-tree memory, true cold/entry and actual exported distribution package"
+  ],
+  "limits": [
+    "No FPS ranking of normal-debug or missing passes against Three High",
+    "Native frame_post_draw is not physical present/GPU completion",
+    "JSON resident data and development engine memory are not final program memory/package size",
+    "No live AI/physics/audio bridge, full High or migration acceptance claimed"
+  ]
+}

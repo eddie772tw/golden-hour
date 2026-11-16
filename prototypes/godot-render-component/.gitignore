@@ -1,0 +1,4 @@
+evidence/
+render/.godot/
+render/*.uid
+__pycache__/
