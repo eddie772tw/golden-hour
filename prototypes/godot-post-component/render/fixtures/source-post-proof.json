@@ -1,0 +1,66 @@
+{
+  "schema": "gh-source-post-film-unit-proof-v1",
+  "sourceCaptureSHA256": "fe313438559e03f43396111dc59e4f7e9702593dc78aa975ff1d4020c10cd9bb",
+  "sourceCoreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "sourceFinalFragmentSHA256": "d57a2ec1063369281be2d7a85ccfc95c86a9a40ca239159442fd3c437fdd3b1a",
+  "sourceFinalFragmentBytes": 8362,
+  "currentCompiledFinal": {
+    "id": 123,
+    "current": true,
+    "vertexSHA256": "d7ed1bb8607e3b562b02954918fb2ce3372283ffa6d68fa1c5ea79a225507739",
+    "vertexBytes": 1614,
+    "fragmentSHA256": "010b92601d5dffe17c397cab6d2dce30b51667fcf376b1775ef4d560d0a6209b",
+    "fragmentBytes": 10342
+  },
+  "sourceRead": {
+    "words": [
+      15173,
+      12511,
+      0,
+      15360
+    ],
+    "independentlyDecoded": [
+      0.90869140625,
+      0.1522216796875,
+      0,
+      1
+    ],
+    "nativeDecoded": {
+      "exposure": 0.90869140625,
+      "avg": 0.1522216796875
+    },
+    "effectiveExposure": 0.90869140625,
+    "initializedTargetBeforeRead": true
+  },
+  "sourceParameters": {
+    "auto": 1,
+    "key": 0.15,
+    "comp": 0.46,
+    "min": 0.5,
+    "max": 1.6,
+    "up": 1.1,
+    "down": 3.2,
+    "clamp": 6
+  },
+  "sourceTimes": {
+    "tick": 240,
+    "gfxTime": 8.61377777825461,
+    "gameTime": 3.9999999999999907
+  },
+  "selection": {
+    "definitions": "    vec3 film(vec3 x) { return clamp(x * (2.36 * x + 0.035) / (x * (2.18 * x + 0.66) + 0.16), 0.0, 1.0); }\n    float film1(float x) { return clamp(x * (2.36 * x + 0.035) / (x * (2.18 * x + 0.66) + 0.16), 0.0, 1.0); }\n",
+    "exposureLine": "      col *= uExposure * mix(1.0, meter.r, uAuto) * (1.0 - 0.06 * uSuppress - 0.16 * uHurt);\n",
+    "filmBlock": "      float pk = max(col.r, max(col.g, col.b));\n      vec3 perCh = film(col * 1.05), keep = col * (film1(pk * 1.05) / max(pk, 1e-5));\n      col = mix(perCh, keep, uHueKeep);\n      // the last stop before white bleaches gently instead of clipping one channel at a time\n      float lo = dot(col, vec3(0.2126, 0.7152, 0.0722));\n      col = mix(col, vec3(lo), smoothstep(0.8, 1.0, max(col.r, max(col.g, col.b))) * 0.3);\n",
+    "toSRGB": "    vec3 toSRGB(vec3 c) { return mix(c * 12.92, 1.055 * pow(c, vec3(1.0 / 2.4)) - 0.055, step(0.0031308, c)); }\n"
+  },
+  "selectionSHA256": "201868f12aeb8978da697956216c292f63b210525afecabeb673298369e90422",
+  "actualUniforms": {
+    "uExposure": 1,
+    "uAuto": 1,
+    "uHueKeep": 0.3,
+    "uSuppress": 0,
+    "uHurt": 0
+  },
+  "scope": "Isolated composition of original exposure operator and film/hue/highlight operators. Full grade/optics/bloom/adaptation history intentionally absent. Not a full original final-post replay.",
+  "nativeIncludeSHA256": "44b77b5421bedc0d2821b66454f10f7a2ddcfc3c19e7cb46bcc9505907dc30c2"
+}

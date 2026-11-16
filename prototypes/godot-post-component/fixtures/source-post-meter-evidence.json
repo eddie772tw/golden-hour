@@ -1,0 +1,346 @@
+{
+  "schema": "gh-post-meter-evidence-v1",
+  "ok": true,
+  "errors": [],
+  "gaps": [],
+  "caps": {
+    "jsonBytes": 262144,
+    "codeChars": 131072,
+    "stringChars": 65536,
+    "programs": 8,
+    "uniforms": 64,
+    "glErrors": 16
+  },
+  "source": {
+    "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+    "sessionId": "source-post-meter-1",
+    "tick": 240,
+    "state": "paused",
+    "quality": "high",
+    "gfxTime": 8.61377777825461,
+    "gameTime": 3.9999999999999907,
+    "cameraWorld": [
+      0.9946138926029308,
+      0.0011549869513705936,
+      -0.10364299612799593,
+      0,
+      -0.0033797947109607046,
+      0.9997675651526843,
+      -0.021293018958918403,
+      0,
+      0.10359431272496275,
+      0.02152862452213936,
+      0.9943866132934551,
+      0,
+      -3.876960780589182,
+      1.621687370219873,
+      8.341690006863624,
+      1
+    ]
+  },
+  "operations": {
+    "nativeMeterReads": 1,
+    "render": 0,
+    "compile": 0,
+    "snapExposure": 0
+  },
+  "scope": "Existing paused native High post state; one original 1x1 half-float read, no image/performance/High parity claim",
+  "glErrorsBefore": [],
+  "renderer": {
+    "toneMapping": 0,
+    "outputColorSpace": "srgb",
+    "width": 1920,
+    "height": 1080,
+    "callsBefore": 1380
+  },
+  "identity": {
+    "gfxFinalUniforms": true,
+    "materialUniforms": true,
+    "meterGfx": true,
+    "e0IsAdapt": true,
+    "e0": {
+      "id": "b6f1aa43-a923-4b63-807f-0fb36bccebe7",
+      "name": "",
+      "type": 1016,
+      "format": 1023,
+      "colorSpace": "",
+      "minFilter": 1003,
+      "magFilter": 1003,
+      "renderTarget": true
+    },
+    "e1": {
+      "id": "c6ef92db-796a-4d58-90f7-035ebb4b6fc4",
+      "name": "",
+      "type": 1016,
+      "format": 1023,
+      "colorSpace": "",
+      "minFilter": 1003,
+      "magFilter": 1003,
+      "renderTarget": true
+    },
+    "currentTargetIsNull": true,
+    "initializedFramebuffer": true
+  },
+  "exposureParameters": {
+    "auto": 1,
+    "key": 0.15,
+    "comp": 0.46,
+    "min": 0.5,
+    "max": 1.6,
+    "up": 1.1,
+    "down": 3.2,
+    "clamp": 6
+  },
+  "finalUniforms": {
+    "tDiffuse": {
+      "texture": {
+        "id": "0e7d340a-2147-44e1-981c-3095a35683b9",
+        "name": "",
+        "type": 1016,
+        "format": 1023,
+        "colorSpace": "",
+        "minFilter": 1006,
+        "magFilter": 1006,
+        "renderTarget": true
+      }
+    },
+    "uTime": 8.61377777825461,
+    "uExposure": 1,
+    "uVignette": 0.46,
+    "uGrain": 0.03,
+    "uCA": 0.00224,
+    "uSaturation": 1.1,
+    "uContrast": 1.13,
+    "uDamage": 0.0005037684578732013,
+    "uLowHealth": 0,
+    "uFlash": 0,
+    "uFade": 0,
+    "uSharpen": 0.22,
+    "uRes": {
+      "vector": [
+        1920,
+        1080
+      ]
+    },
+    "uShadowTint": {
+      "vector": [
+        0.78,
+        0.99,
+        1.17
+      ]
+    },
+    "uHighTint": {
+      "vector": [
+        1.06,
+        1,
+        0.91
+      ]
+    },
+    "tAdapt": {
+      "texture": {
+        "id": "b6f1aa43-a923-4b63-807f-0fb36bccebe7",
+        "name": "",
+        "type": 1016,
+        "format": 1023,
+        "colorSpace": "",
+        "minFilter": 1003,
+        "magFilter": 1003,
+        "renderTarget": true
+      }
+    },
+    "uAuto": 1,
+    "uHueKeep": 0.3,
+    "uNeon": 0.42,
+    "uLift": {
+      "vector": [
+        0.0012,
+        0.0036,
+        0.0056
+      ]
+    },
+    "uBalance": {
+      "vector": [
+        0.955,
+        1,
+        1.075
+      ]
+    },
+    "uGlare": 1,
+    "uAds": 0,
+    "uDof": 1,
+    "uSuppress": 0,
+    "uHurt": 0,
+    "uHurtSeed": 5.050136772915721,
+    "uPeriphery": 0,
+    "uDirt": 0.34,
+    "uStreak": 0.3,
+    "tBloom": {
+      "texture": {
+        "id": "e6b4a1d3-192d-4814-b099-9b6d5b47dbce",
+        "name": "UnrealBloomPass.h0",
+        "type": 1016,
+        "format": 1023,
+        "colorSpace": "",
+        "minFilter": 1006,
+        "magFilter": 1006,
+        "renderTarget": true
+      }
+    },
+    "tDirt": {
+      "texture": {
+        "id": "ba64a72c-dd92-4409-a4dc-ecbfbfe57ce7",
+        "name": "",
+        "type": 1009,
+        "format": 1023,
+        "colorSpace": "",
+        "minFilter": 1008,
+        "magFilter": 1006,
+        "renderTarget": false
+      }
+    },
+    "tStreak": {
+      "texture": {
+        "id": "fe2fc1aa-51fd-4491-887c-e0d653dcd4c0",
+        "name": "",
+        "type": 1016,
+        "format": 1023,
+        "colorSpace": "",
+        "minFilter": 1006,
+        "magFilter": 1006,
+        "renderTarget": true
+      }
+    }
+  },
+  "meter": {
+    "resetPending": false,
+    "width": 1920,
+    "height": 1080,
+    "downsampleA": [
+      240,
+      135
+    ],
+    "downsampleB": [
+      30,
+      16
+    ],
+    "lastAdaptUniforms": {
+      "tSrc": {
+        "texture": {
+          "id": "a6b7195e-d9d0-4832-b06a-d2d11b61901f",
+          "name": "",
+          "type": 1016,
+          "format": 1023,
+          "colorSpace": "",
+          "minFilter": 1006,
+          "magFilter": 1006,
+          "renderTarget": true
+        }
+      },
+      "tPrev": {
+        "texture": {
+          "id": "c6ef92db-796a-4d58-90f7-035ebb4b6fc4",
+          "name": "",
+          "type": 1016,
+          "format": 1023,
+          "colorSpace": "",
+          "minFilter": 1003,
+          "magFilter": 1003,
+          "renderTarget": true
+        }
+      },
+      "uDt": 0.05059999990463257,
+      "uReset": 0,
+      "uKey": 0.15,
+      "uComp": 0.46,
+      "uMinE": 0.5,
+      "uMaxE": 1.6,
+      "uUp": 1.1,
+      "uDown": 3.2
+    },
+    "lastDownUniforms": {
+      "tSrc": {
+        "texture": {
+          "id": "96415e96-0972-49d5-a0b9-2355cb0948f2",
+          "name": "",
+          "type": 1016,
+          "format": 1023,
+          "colorSpace": "",
+          "minFilter": 1006,
+          "magFilter": 1006,
+          "renderTarget": true
+        }
+      },
+      "uPx": {
+        "vector": [
+          0.004166666666666667,
+          0.007407407407407408
+        ]
+      },
+      "uClamp": 10000
+    }
+  },
+  "finalSource": {
+    "vertex": "varying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }",
+    "fragment": "\n    precision highp float;\n    uniform sampler2D tDiffuse, tBloom, tDirt, tStreak, tAdapt;\n    uniform float uAuto, uHueKeep, uNeon, uGlare; uniform vec3 uLift, uBalance;\n    uniform float uTime, uExposure, uVignette, uGrain, uCA, uSaturation, uContrast, uDamage, uLowHealth, uFlash, uFade, uSharpen;\n    uniform float uAds, uDof, uSuppress, uHurt, uHurtSeed, uPeriphery, uDirt, uStreak;\n    uniform vec2 uRes;\n    uniform vec3 uShadowTint, uHighTint;\n    varying vec2 vUv;\n\n    const mat3 ACESIn = mat3(vec3(0.59719, 0.07600, 0.02840), vec3(0.35458, 0.90834, 0.13383), vec3(0.04823, 0.01566, 0.83777));\n    const mat3 ACESOut = mat3(vec3(1.60475, -0.10208, -0.00327), vec3(-0.53108, 1.10813, -0.07276), vec3(-0.07367, -0.00605, 1.07602));\n    vec3 rrt(vec3 v) { vec3 a = v * (v + 0.0245786) - 0.000090537; vec3 b = v * (0.983729 * v + 0.4329510) + 0.238081; return a / b; }\n    vec3 aces(vec3 c) { return clamp(ACESOut * rrt(ACESIn * c), 0.0, 1.0); }\n    // film curve: firm toe, long linear middle, soft shoulder that reaches white late\n    vec3 film(vec3 x) { return clamp(x * (2.36 * x + 0.035) / (x * (2.18 * x + 0.66) + 0.16), 0.0, 1.0); }\n    float film1(float x) { return clamp(x * (2.36 * x + 0.035) / (x * (2.18 * x + 0.66) + 0.16), 0.0, 1.0); }\n    vec3 toSRGB(vec3 c) { return mix(c * 12.92, 1.055 * pow(c, vec3(1.0 / 2.4)) - 0.055, step(0.0031308, c)); }\n    float hash(vec2 p) { vec3 p3 = fract(vec3(p.xyx) * 0.1031); p3 += dot(p3, p3.yzx + 33.33); return fract((p3.x + p3.y) * p3.z); }\n    float ign(vec2 p) { return fract(52.9829189 * fract(dot(p, vec2(0.06711056, 0.00583715)))); }\n    float vnoise(vec2 p) { vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f); return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x), mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y); }\n\n    void main() {\n      vec2 uv = vUv;\n      vec2 c = uv - 0.5;\n      float r2 = dot(c, c);\n      float asp = uRes.x / uRes.y;\n      float rr = length(vec2(c.x * asp, c.y));          // 0 centre, 0.5 top/bottom edge, ~1 in the corners\n      // chromatic aberration grows toward the corners (and with damage)\n      float ca = uCA * (1.0 + uDamage * 3.0 + uHurt * 2.5) * r2 * 4.0;\n      vec3 col;\n      col.r = texture2D(tDiffuse, uv + c * ca).r;\n      col.g = texture2D(tDiffuse, uv).g;\n      col.b = texture2D(tDiffuse, uv - c * ca).b;\n      // periphery blur: ADS depth of field, suppression, low health, impact. The centre (sight picture) is untouched.\n      float edge = smoothstep(0.26, 0.8, rr);\n      float pb = edge * (uAds * uDof * 0.85 + uSuppress * 0.55 + uLowHealth * 0.4 + uHurt * 0.9) + uPeriphery;\n      if (pb > 0.03) {\n        vec2 px = min(pb, 1.5) * 3.6 * (uRes.y / 900.0) / uRes;\n        // two fixed rings (4 + 8 taps) with only a slight per-pixel twist: smooth, no visible dither\n        float a0 = ign(gl_FragCoord.xy) * 0.5;\n        vec3 acc = col;\n        for (int i = 0; i < 12; i++) {\n          float a = a0 + (i < 4 ? float(i) * 1.5708 + 0.4 : float(i) * 0.7854), rd = i < 4 ? 0.45 : 1.0;\n          acc += texture2D(tDiffuse, uv + vec2(cos(a), sin(a)) * rd * px).rgb;\n        }\n        col = acc / 13.0;\n      } else if (uSharpen > 0.0) {\n        vec2 px = 1.0 / uRes;\n        vec3 n = texture2D(tDiffuse, uv + vec2(px.x, 0.0)).rgb + texture2D(tDiffuse, uv - vec2(px.x, 0.0)).rgb\n               + texture2D(tDiffuse, uv + vec2(0.0, px.y)).rgb + texture2D(tDiffuse, uv - vec2(0.0, px.y)).rgb;\n        vec3 d = col - n * 0.25;\n        col += clamp(d, -0.25, 0.25) * uSharpen;\n      }\n      col = max(col, 0.0);\n      // lens: dirt and smudges catch the bloom, hot sources throw a thin anamorphic streak\n      vec4 meter = texture2D(tAdapt, vec2(0.5));\n      float glare = uGlare * mix(1.0, clamp(meter.r * 1.15, 0.35, 1.0), uAuto);\n      if (uDirt > 0.0) col += texture2D(tBloom, uv).rgb * texture2D(tDirt, uv).rgb * (uDirt * glare);\n      if (uStreak > 0.0) col += texture2D(tStreak, uv).rgb * (uStreak * glare);\n      col *= uExposure * mix(1.0, meter.r, uAuto) * (1.0 - 0.06 * uSuppress - 0.16 * uHurt);\n      col *= uBalance;            // white balance: the sun is already orange; the frame as a whole stays a touch cooler\n\n      // ---- the grade (scene-linear) ----\n      float l = dot(col, vec3(0.2126, 0.7152, 0.0722));\n      // neon limiter: bright AND fully saturated light (back-lit onyx, orange upholstery in the sun) keeps its hue\n      // but gives up part of its chroma instead of clipping to a flat poster colour\n      float mx = max(col.r, max(col.g, col.b)), mn = min(col.r, min(col.g, col.b));\n      float chroma = (mx - mn) / max(mx, 1e-4);\n      col = mix(col, vec3(l), smoothstep(0.62, 1.0, chroma) * smoothstep(0.25, 2.2, mx) * uNeon * 0.55);\n      // split tone: teal shadows, orange highlights\n      float sh = 1.0 - smoothstep(0.0, 0.3, l);\n      float hi = smoothstep(0.22, 1.3, l);\n      col *= mix(vec3(1.0), uShadowTint, sh) * mix(vec3(1.0), uHighTint, hi);\n      // contrast around mid grey + saturation (a little extra in the mid-tones only: no neon highlights)\n      col = pow(col / 0.18, vec3(uContrast + 0.08 * uHurt)) * 0.18;\n      l = dot(col, vec3(0.2126, 0.7152, 0.0722));\n      float satK = uSaturation * (1.0 - 0.75 * uLowHealth) * (1.0 - 0.18 * uSuppress) * (1.0 - 0.25 * uHurt);\n      col = max(mix(vec3(l), col, satK * (1.0 - 0.16 * smoothstep(0.6, 2.4, l))), 0.0);\n      col += uLift * (1.0 - smoothstep(0.0, 0.08, l));\n\n      // vignette, optical part: lens falloff in linear light, so shadows and mid-tones deepen toward the corners\n      // while bright windows and lamps near the edge keep their glow\n      float v = smoothstep(0.12, 0.85, r2 * 1.9);\n      col *= 1.0 - v * uVignette * 0.62;\n\n      // film curve: part per channel (natural path to white), part on the peak (hue kept in hot orange light)\n      float pk = max(col.r, max(col.g, col.b));\n      vec3 perCh = film(col * 1.05), keep = col * (film1(pk * 1.05) / max(pk, 1e-5));\n      col = mix(perCh, keep, uHueKeep);\n      // the last stop before white bleaches gently instead of clipping one channel at a time\n      float lo = dot(col, vec3(0.2126, 0.7152, 0.0722));\n      col = mix(col, vec3(lo), smoothstep(0.8, 1.0, max(col.r, max(col.g, col.b))) * 0.3);\n      col = toSRGB(col);\n\n      // vignette, print part: the frame closes in a little more when aiming, hurt or suppressed\n      col *= 1.0 - v * min(0.95, uVignette * 0.5 + 0.09 * uAds + 0.4 * uLowHealth + 0.2 * uSuppress + 0.3 * uHurt);\n      // damage / low health: a dark, veined red creeps in from the edges and throbs with the pulse\n      float hurt = uDamage + uLowHealth + uHurt;\n      if (hurt > 0.003) {\n        vec2 q = vec2(c.x * asp, c.y) * 3.1;\n        float n = vnoise(q + 7.3) * 0.6 + vnoise(q * 2.3 + uHurtSeed) * 0.3 + vnoise(q * 5.3 - uHurtSeed) * 0.15;\n        float veins = pow(1.0 - abs(vnoise(q * 1.9 + 3.1 + uHurtSeed * 0.2) - 0.5) * 2.0, 7.0);\n        float ph = fract(uTime * 1.3);\n        float beat = exp(-ph * 9.0) + 0.6 * exp(-fract(ph + 0.72) * 11.0);\n        float lowK = uLowHealth * (0.72 + 0.4 * beat);\n        float reach = clamp(uDamage * 0.9 + lowK * 0.7 + uHurt * 0.6, 0.0, 1.2);\n        float m = smoothstep(0.92 - 0.5 * reach, 1.12 - 0.2 * reach, rr + (n - 0.5) * 0.42 + veins * 0.07);\n        float k = m * clamp(uDamage * 0.95 + lowK * 0.8 + uHurt * 0.55, 0.0, 1.0);\n        float lum = dot(col, vec3(0.299, 0.587, 0.114));\n        vec3 blood = mix(vec3(0.34, 0.02, 0.015), vec3(0.10, 0.0, 0.0), clamp(veins * 0.8 + n * 0.5, 0.0, 1.0));\n        col = mix(col, blood * (0.55 + 0.9 * lum) + col * vec3(0.5, 0.08, 0.06), k);\n        col *= 1.0 - veins * k * 0.3;\n      }\n      // filmic grain: 24 fps cadence, fine + clumped, strongest in the mid shadows, a touch of chroma\n      float gt = floor(uTime * 24.0);\n      vec2 gp = gl_FragCoord.xy * max(1.0, 900.0 / uRes.y) / max(1.0, uRes.y / 1080.0);\n      float g1 = hash(gp + gt * 17.13) - 0.5, g2 = hash(floor(gp * 0.5) + gt * 31.7 + 5.0) - 0.5, g3 = hash(gp.yx + gt * 7.9 + 11.0) - 0.5;\n      float lum = dot(col, vec3(0.299, 0.587, 0.114));\n      float resp = uGrain * mix(1.35, 0.3, smoothstep(0.05, 0.85, lum)) * smoothstep(-0.02, 0.06, lum);\n      col += (g1 * 0.75 + g2 * 0.5) * resp + vec3(g3, -g3 * 0.5, g1 - g3) * resp * 0.22;\n      col = mix(col, vec3(1.0, 0.97, 0.9), uFlash);\n      col *= 1.0 - uFade;\n      gl_FragColor = vec4(col, 1.0);\n    }\n  ",
+    "readMeterMethod": "readMeter() {\r\n      let t = this._mb || (this._mb = new Uint16Array(4));\r\n      return this.renderer.readRenderTargetPixels(this.meter.e0, 0, 0, 1, 1, t), { exposure: qh.fromHalfFloat(t[0]), avg: qh.fromHalfFloat(t[1]) };\r\n    }",
+    "vertexSHA256": "7e9d9a3da40af1d792701eaeb1b82233c10a75ec2244788222c9fc9d87a63ce4",
+    "vertexBytes": 86,
+    "fragmentSHA256": "d57a2ec1063369281be2d7a85ccfc95c86a9a40ca239159442fd3c437fdd3b1a",
+    "fragmentBytes": 8362,
+    "readMeterMethodSHA256": "4546a498dd8c06ce31007ace1a257dbae77ff0f54f3934b8ffceab534eed2155",
+    "readMeterMethodBytes": 229
+  },
+  "compiledCurrentProgram": 123,
+  "compiled": [
+    {
+      "id": 121,
+      "current": false,
+      "vertex": "#version 300 es\n\n#define attribute in\n#define varying out\n#define texture2D texture\nprecision highp float;\n\tprecision highp int;\n\tprecision highp sampler2D;\n\tprecision highp samplerCube;\n\tprecision highp sampler3D;\n\tprecision highp sampler2DArray;\n\tprecision highp sampler2DShadow;\n\tprecision highp samplerCubeShadow;\n\tprecision highp sampler2DArrayShadow;\n\tprecision highp isampler2D;\n\tprecision highp isampler3D;\n\tprecision highp isamplerCube;\n\tprecision highp isampler2DArray;\n\tprecision highp usampler2D;\n\tprecision highp usampler3D;\n\tprecision highp usamplerCube;\n\tprecision highp usampler2DArray;\n\t\n#define HIGH_PRECISION\n#define SHADER_TYPE ShaderMaterial\n#define SHADER_NAME unspecified\nuniform mat4 modelMatrix;\nuniform mat4 modelViewMatrix;\nuniform mat4 projectionMatrix;\nuniform mat4 viewMatrix;\nuniform mat3 normalMatrix;\nuniform vec3 cameraPosition;\nuniform bool isOrthographic;\n#ifdef USE_INSTANCING\n\tattribute mat4 instanceMatrix;\n#endif\n#ifdef USE_INSTANCING_COLOR\n\tattribute vec3 instanceColor;\n#endif\n#ifdef USE_INSTANCING_MORPH\n\tuniform sampler2D morphTexture;\n#endif\nattribute vec3 position;\nattribute vec3 normal;\nattribute vec2 uv;\n#ifdef USE_UV1\n\tattribute vec2 uv1;\n#endif\n#ifdef USE_UV2\n\tattribute vec2 uv2;\n#endif\n#ifdef USE_UV3\n\tattribute vec2 uv3;\n#endif\n#ifdef USE_TANGENT\n\tattribute vec4 tangent;\n#endif\n#if defined( USE_COLOR_ALPHA )\n\tattribute vec4 color;\n#elif defined( USE_COLOR )\n\tattribute vec3 color;\n#endif\n#ifdef USE_SKINNING\n\tattribute vec4 skinIndex;\n\tattribute vec4 skinWeight;\n#endif\n\nvarying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }",
+      "fragment": "#version 300 es\n#define varying in\nlayout(location = 0) out highp vec4 pc_fragColor;\n#define gl_FragColor pc_fragColor\n#define gl_FragDepthEXT gl_FragDepth\n#define texture2D texture\n#define textureCube texture\n#define texture2DProj textureProj\n#define texture2DLodEXT textureLod\n#define texture2DProjLodEXT textureProjLod\n#define textureCubeLodEXT textureLod\n#define texture2DGradEXT textureGrad\n#define texture2DProjGradEXT textureProjGrad\n#define textureCubeGradEXT textureGrad\nprecision highp float;\n\tprecision highp int;\n\tprecision highp sampler2D;\n\tprecision highp samplerCube;\n\tprecision highp sampler3D;\n\tprecision highp sampler2DArray;\n\tprecision highp sampler2DShadow;\n\tprecision highp samplerCubeShadow;\n\tprecision highp sampler2DArrayShadow;\n\tprecision highp isampler2D;\n\tprecision highp isampler3D;\n\tprecision highp isamplerCube;\n\tprecision highp isampler2DArray;\n\tprecision highp usampler2D;\n\tprecision highp usampler3D;\n\tprecision highp usamplerCube;\n\tprecision highp usampler2DArray;\n\t\n#define HIGH_PRECISION\n#define SHADER_TYPE ShaderMaterial\n#define SHADER_NAME unspecified\nuniform mat4 viewMatrix;\nuniform vec3 cameraPosition;\nuniform bool isOrthographic;\n#define OPAQUE\nvec4 LinearTransferOETF( in vec4 value ) {\n\treturn value;\n}\nvec4 sRGBTransferEOTF( in vec4 value ) {\n\treturn vec4( mix( pow( value.rgb * 0.9478672986 + vec3( 0.0521327014 ), vec3( 2.4 ) ), value.rgb * 0.0773993808, vec3( lessThanEqual( value.rgb, vec3( 0.04045 ) ) ) ), value.a );\n}\nvec4 sRGBTransferOETF( in vec4 value ) {\n\treturn vec4( mix( pow( value.rgb, vec3( 0.41666 ) ) * 1.055 - vec3( 0.055 ), value.rgb * 12.92, vec3( lessThanEqual( value.rgb, vec3( 0.0031308 ) ) ) ), value.a );\n}\nvec4 linearToOutputTexel( vec4 value ) {\n\treturn LinearTransferOETF( vec4( value.rgb * mat3( 1.0000,-0.0000,-0.0000,-0.0000,1.0000,0.0000,0.0000,0.0000,1.0000 ), value.a ) );\n}\nfloat luminance( const in vec3 rgb ) {\n\tconst vec3 weights = vec3( 0.2126, 0.7152, 0.0722 );\n\treturn dot( weights, rgb );\n}\n\n\n    precision highp float;\n    uniform sampler2D tDiffuse, tBloom, tDirt, tStreak, tAdapt;\n    uniform float uAuto, uHueKeep, uNeon, uGlare; uniform vec3 uLift, uBalance;\n    uniform float uTime, uExposure, uVignette, uGrain, uCA, uSaturation, uContrast, uDamage, uLowHealth, uFlash, uFade, uSharpen;\n    uniform float uAds, uDof, uSuppress, uHurt, uHurtSeed, uPeriphery, uDirt, uStreak;\n    uniform vec2 uRes;\n    uniform vec3 uShadowTint, uHighTint;\n    varying vec2 vUv;\n\n    const mat3 ACESIn = mat3(vec3(0.59719, 0.07600, 0.02840), vec3(0.35458, 0.90834, 0.13383), vec3(0.04823, 0.01566, 0.83777));\n    const mat3 ACESOut = mat3(vec3(1.60475, -0.10208, -0.00327), vec3(-0.53108, 1.10813, -0.07276), vec3(-0.07367, -0.00605, 1.07602));\n    vec3 rrt(vec3 v) { vec3 a = v * (v + 0.0245786) - 0.000090537; vec3 b = v * (0.983729 * v + 0.4329510) + 0.238081; return a / b; }\n    vec3 aces(vec3 c) { return clamp(ACESOut * rrt(ACESIn * c), 0.0, 1.0); }\n    // film curve: firm toe, long linear middle, soft shoulder that reaches white late\n    vec3 film(vec3 x) { return clamp(x * (2.36 * x + 0.035) / (x * (2.18 * x + 0.66) + 0.16), 0.0, 1.0); }\n    float film1(float x) { return clamp(x * (2.36 * x + 0.035) / (x * (2.18 * x + 0.66) + 0.16), 0.0, 1.0); }\n    vec3 toSRGB(vec3 c) { return mix(c * 12.92, 1.055 * pow(c, vec3(1.0 / 2.4)) - 0.055, step(0.0031308, c)); }\n    float hash(vec2 p) { vec3 p3 = fract(vec3(p.xyx) * 0.1031); p3 += dot(p3, p3.yzx + 33.33); return fract((p3.x + p3.y) * p3.z); }\n    float ign(vec2 p) { return fract(52.9829189 * fract(dot(p, vec2(0.06711056, 0.00583715)))); }\n    float vnoise(vec2 p) { vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f); return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x), mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y); }\n\n    void main() {\n      vec2 uv = vUv;\n      vec2 c = uv - 0.5;\n      float r2 = dot(c, c);\n      float asp = uRes.x / uRes.y;\n      float rr = length(vec2(c.x * asp, c.y));          // 0 centre, 0.5 top/bottom edge, ~1 in the corners\n      // chromatic aberration grows toward the corners (and with damage)\n      float ca = uCA * (1.0 + uDamage * 3.0 + uHurt * 2.5) * r2 * 4.0;\n      vec3 col;\n      col.r = texture2D(tDiffuse, uv + c * ca).r;\n      col.g = texture2D(tDiffuse, uv).g;\n      col.b = texture2D(tDiffuse, uv - c * ca).b;\n      // periphery blur: ADS depth of field, suppression, low health, impact. The centre (sight picture) is untouched.\n      float edge = smoothstep(0.26, 0.8, rr);\n      float pb = edge * (uAds * uDof * 0.85 + uSuppress * 0.55 + uLowHealth * 0.4 + uHurt * 0.9) + uPeriphery;\n      if (pb > 0.03) {\n        vec2 px = min(pb, 1.5) * 3.6 * (uRes.y / 900.0) / uRes;\n        // two fixed rings (4 + 8 taps) with only a slight per-pixel twist: smooth, no visible dither\n        float a0 = ign(gl_FragCoord.xy) * 0.5;\n        vec3 acc = col;\n        for (int i = 0; i < 12; i++) {\n          float a = a0 + (i < 4 ? float(i) * 1.5708 + 0.4 : float(i) * 0.7854), rd = i < 4 ? 0.45 : 1.0;\n          acc += texture2D(tDiffuse, uv + vec2(cos(a), sin(a)) * rd * px).rgb;\n        }\n        col = acc / 13.0;\n      } else if (uSharpen > 0.0) {\n        vec2 px = 1.0 / uRes;\n        vec3 n = texture2D(tDiffuse, uv + vec2(px.x, 0.0)).rgb + texture2D(tDiffuse, uv - vec2(px.x, 0.0)).rgb\n               + texture2D(tDiffuse, uv + vec2(0.0, px.y)).rgb + texture2D(tDiffuse, uv - vec2(0.0, px.y)).rgb;\n        vec3 d = col - n * 0.25;\n        col += clamp(d, -0.25, 0.25) * uSharpen;\n      }\n      col = max(col, 0.0);\n      // lens: dirt and smudges catch the bloom, hot sources throw a thin anamorphic streak\n      vec4 meter = texture2D(tAdapt, vec2(0.5));\n      float glare = uGlare * mix(1.0, clamp(meter.r * 1.15, 0.35, 1.0), uAuto);\n      if (uDirt > 0.0) col += texture2D(tBloom, uv).rgb * texture2D(tDirt, uv).rgb * (uDirt * glare);\n      if (uStreak > 0.0) col += texture2D(tStreak, uv).rgb * (uStreak * glare);\n      col *= uExposure * mix(1.0, meter.r, uAuto) * (1.0 - 0.06 * uSuppress - 0.16 * uHurt);\n      col *= uBalance;            // white balance: the sun is already orange; the frame as a whole stays a touch cooler\n\n      // ---- the grade (scene-linear) ----\n      float l = dot(col, vec3(0.2126, 0.7152, 0.0722));\n      // neon limiter: bright AND fully saturated light (back-lit onyx, orange upholstery in the sun) keeps its hue\n      // but gives up part of its chroma instead of clipping to a flat poster colour\n      float mx = max(col.r, max(col.g, col.b)), mn = min(col.r, min(col.g, col.b));\n      float chroma = (mx - mn) / max(mx, 1e-4);\n      col = mix(col, vec3(l), smoothstep(0.62, 1.0, chroma) * smoothstep(0.25, 2.2, mx) * uNeon * 0.55);\n      // split tone: teal shadows, orange highlights\n      float sh = 1.0 - smoothstep(0.0, 0.3, l);\n      float hi = smoothstep(0.22, 1.3, l);\n      col *= mix(vec3(1.0), uShadowTint, sh) * mix(vec3(1.0), uHighTint, hi);\n      // contrast around mid grey + saturation (a little extra in the mid-tones only: no neon highlights)\n      col = pow(col / 0.18, vec3(uContrast + 0.08 * uHurt)) * 0.18;\n      l = dot(col, vec3(0.2126, 0.7152, 0.0722));\n      float satK = uSaturation * (1.0 - 0.75 * uLowHealth) * (1.0 - 0.18 * uSuppress) * (1.0 - 0.25 * uHurt);\n      col = max(mix(vec3(l), col, satK * (1.0 - 0.16 * smoothstep(0.6, 2.4, l))), 0.0);\n      col += uLift * (1.0 - smoothstep(0.0, 0.08, l));\n\n      // vignette, optical part: lens falloff in linear light, so shadows and mid-tones deepen toward the corners\n      // while bright windows and lamps near the edge keep their glow\n      float v = smoothstep(0.12, 0.85, r2 * 1.9);\n      col *= 1.0 - v * uVignette * 0.62;\n\n      // film curve: part per channel (natural path to white), part on the peak (hue kept in hot orange light)\n      float pk = max(col.r, max(col.g, col.b));\n      vec3 perCh = film(col * 1.05), keep = col * (film1(pk * 1.05) / max(pk, 1e-5));\n      col = mix(perCh, keep, uHueKeep);\n      // the last stop before white bleaches gently instead of clipping one channel at a time\n      float lo = dot(col, vec3(0.2126, 0.7152, 0.0722));\n      col = mix(col, vec3(lo), smoothstep(0.8, 1.0, max(col.r, max(col.g, col.b))) * 0.3);\n      col = toSRGB(col);\n\n      // vignette, print part: the frame closes in a little more when aiming, hurt or suppressed\n      col *= 1.0 - v * min(0.95, uVignette * 0.5 + 0.09 * uAds + 0.4 * uLowHealth + 0.2 * uSuppress + 0.3 * uHurt);\n      // damage / low health: a dark, veined red creeps in from the edges and throbs with the pulse\n      float hurt = uDamage + uLowHealth + uHurt;\n      if (hurt > 0.003) {\n        vec2 q = vec2(c.x * asp, c.y) * 3.1;\n        float n = vnoise(q + 7.3) * 0.6 + vnoise(q * 2.3 + uHurtSeed) * 0.3 + vnoise(q * 5.3 - uHurtSeed) * 0.15;\n        float veins = pow(1.0 - abs(vnoise(q * 1.9 + 3.1 + uHurtSeed * 0.2) - 0.5) * 2.0, 7.0);\n        float ph = fract(uTime * 1.3);\n        float beat = exp(-ph * 9.0) + 0.6 * exp(-fract(ph + 0.72) * 11.0);\n        float lowK = uLowHealth * (0.72 + 0.4 * beat);\n        float reach = clamp(uDamage * 0.9 + lowK * 0.7 + uHurt * 0.6, 0.0, 1.2);\n        float m = smoothstep(0.92 - 0.5 * reach, 1.12 - 0.2 * reach, rr + (n - 0.5) * 0.42 + veins * 0.07);\n        float k = m * clamp(uDamage * 0.95 + lowK * 0.8 + uHurt * 0.55, 0.0, 1.0);\n        float lum = dot(col, vec3(0.299, 0.587, 0.114));\n        vec3 blood = mix(vec3(0.34, 0.02, 0.015), vec3(0.10, 0.0, 0.0), clamp(veins * 0.8 + n * 0.5, 0.0, 1.0));\n        col = mix(col, blood * (0.55 + 0.9 * lum) + col * vec3(0.5, 0.08, 0.06), k);\n        col *= 1.0 - veins * k * 0.3;\n      }\n      // filmic grain: 24 fps cadence, fine + clumped, strongest in the mid shadows, a touch of chroma\n      float gt = floor(uTime * 24.0);\n      vec2 gp = gl_FragCoord.xy * max(1.0, 900.0 / uRes.y) / max(1.0, uRes.y / 1080.0);\n      float g1 = hash(gp + gt * 17.13) - 0.5, g2 = hash(floor(gp * 0.5) + gt * 31.7 + 5.0) - 0.5, g3 = hash(gp.yx + gt * 7.9 + 11.0) - 0.5;\n      float lum = dot(col, vec3(0.299, 0.587, 0.114));\n      float resp = uGrain * mix(1.35, 0.3, smoothstep(0.05, 0.85, lum)) * smoothstep(-0.02, 0.06, lum);\n      col += (g1 * 0.75 + g2 * 0.5) * resp + vec3(g3, -g3 * 0.5, g1 - g3) * resp * 0.22;\n      col = mix(col, vec3(1.0, 0.97, 0.9), uFlash);\n      col *= 1.0 - uFade;\n      gl_FragColor = vec4(col, 1.0);\n    }\n  ",
+      "vertexSHA256": "d7ed1bb8607e3b562b02954918fb2ce3372283ffa6d68fa1c5ea79a225507739",
+      "vertexBytes": 1614,
+      "fragmentSHA256": "0ab9f821e1f4dfd81bd2364b61b3296bb4d8ab63a6261db469107a820b756f0c",
+      "fragmentBytes": 10344
+    },
+    {
+      "id": 123,
+      "current": true,
+      "vertex": "#version 300 es\n\n#define attribute in\n#define varying out\n#define texture2D texture\nprecision highp float;\n\tprecision highp int;\n\tprecision highp sampler2D;\n\tprecision highp samplerCube;\n\tprecision highp sampler3D;\n\tprecision highp sampler2DArray;\n\tprecision highp sampler2DShadow;\n\tprecision highp samplerCubeShadow;\n\tprecision highp sampler2DArrayShadow;\n\tprecision highp isampler2D;\n\tprecision highp isampler3D;\n\tprecision highp isamplerCube;\n\tprecision highp isampler2DArray;\n\tprecision highp usampler2D;\n\tprecision highp usampler3D;\n\tprecision highp usamplerCube;\n\tprecision highp usampler2DArray;\n\t\n#define HIGH_PRECISION\n#define SHADER_TYPE ShaderMaterial\n#define SHADER_NAME unspecified\nuniform mat4 modelMatrix;\nuniform mat4 modelViewMatrix;\nuniform mat4 projectionMatrix;\nuniform mat4 viewMatrix;\nuniform mat3 normalMatrix;\nuniform vec3 cameraPosition;\nuniform bool isOrthographic;\n#ifdef USE_INSTANCING\n\tattribute mat4 instanceMatrix;\n#endif\n#ifdef USE_INSTANCING_COLOR\n\tattribute vec3 instanceColor;\n#endif\n#ifdef USE_INSTANCING_MORPH\n\tuniform sampler2D morphTexture;\n#endif\nattribute vec3 position;\nattribute vec3 normal;\nattribute vec2 uv;\n#ifdef USE_UV1\n\tattribute vec2 uv1;\n#endif\n#ifdef USE_UV2\n\tattribute vec2 uv2;\n#endif\n#ifdef USE_UV3\n\tattribute vec2 uv3;\n#endif\n#ifdef USE_TANGENT\n\tattribute vec4 tangent;\n#endif\n#if defined( USE_COLOR_ALPHA )\n\tattribute vec4 color;\n#elif defined( USE_COLOR )\n\tattribute vec3 color;\n#endif\n#ifdef USE_SKINNING\n\tattribute vec4 skinIndex;\n\tattribute vec4 skinWeight;\n#endif\n\nvarying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }",
+      "fragment": "#version 300 es\n#define varying in\nlayout(location = 0) out highp vec4 pc_fragColor;\n#define gl_FragColor pc_fragColor\n#define gl_FragDepthEXT gl_FragDepth\n#define texture2D texture\n#define textureCube texture\n#define texture2DProj textureProj\n#define texture2DLodEXT textureLod\n#define texture2DProjLodEXT textureProjLod\n#define textureCubeLodEXT textureLod\n#define texture2DGradEXT textureGrad\n#define texture2DProjGradEXT textureProjGrad\n#define textureCubeGradEXT textureGrad\nprecision highp float;\n\tprecision highp int;\n\tprecision highp sampler2D;\n\tprecision highp samplerCube;\n\tprecision highp sampler3D;\n\tprecision highp sampler2DArray;\n\tprecision highp sampler2DShadow;\n\tprecision highp samplerCubeShadow;\n\tprecision highp sampler2DArrayShadow;\n\tprecision highp isampler2D;\n\tprecision highp isampler3D;\n\tprecision highp isamplerCube;\n\tprecision highp isampler2DArray;\n\tprecision highp usampler2D;\n\tprecision highp usampler3D;\n\tprecision highp usamplerCube;\n\tprecision highp usampler2DArray;\n\t\n#define HIGH_PRECISION\n#define SHADER_TYPE ShaderMaterial\n#define SHADER_NAME unspecified\nuniform mat4 viewMatrix;\nuniform vec3 cameraPosition;\nuniform bool isOrthographic;\n#define OPAQUE\nvec4 LinearTransferOETF( in vec4 value ) {\n\treturn value;\n}\nvec4 sRGBTransferEOTF( in vec4 value ) {\n\treturn vec4( mix( pow( value.rgb * 0.9478672986 + vec3( 0.0521327014 ), vec3( 2.4 ) ), value.rgb * 0.0773993808, vec3( lessThanEqual( value.rgb, vec3( 0.04045 ) ) ) ), value.a );\n}\nvec4 sRGBTransferOETF( in vec4 value ) {\n\treturn vec4( mix( pow( value.rgb, vec3( 0.41666 ) ) * 1.055 - vec3( 0.055 ), value.rgb * 12.92, vec3( lessThanEqual( value.rgb, vec3( 0.0031308 ) ) ) ), value.a );\n}\nvec4 linearToOutputTexel( vec4 value ) {\n\treturn sRGBTransferOETF( vec4( value.rgb * mat3( 1.0000,-0.0000,-0.0000,-0.0000,1.0000,0.0000,0.0000,0.0000,1.0000 ), value.a ) );\n}\nfloat luminance( const in vec3 rgb ) {\n\tconst vec3 weights = vec3( 0.2126, 0.7152, 0.0722 );\n\treturn dot( weights, rgb );\n}\n\n\n    precision highp float;\n    uniform sampler2D tDiffuse, tBloom, tDirt, tStreak, tAdapt;\n    uniform float uAuto, uHueKeep, uNeon, uGlare; uniform vec3 uLift, uBalance;\n    uniform float uTime, uExposure, uVignette, uGrain, uCA, uSaturation, uContrast, uDamage, uLowHealth, uFlash, uFade, uSharpen;\n    uniform float uAds, uDof, uSuppress, uHurt, uHurtSeed, uPeriphery, uDirt, uStreak;\n    uniform vec2 uRes;\n    uniform vec3 uShadowTint, uHighTint;\n    varying vec2 vUv;\n\n    const mat3 ACESIn = mat3(vec3(0.59719, 0.07600, 0.02840), vec3(0.35458, 0.90834, 0.13383), vec3(0.04823, 0.01566, 0.83777));\n    const mat3 ACESOut = mat3(vec3(1.60475, -0.10208, -0.00327), vec3(-0.53108, 1.10813, -0.07276), vec3(-0.07367, -0.00605, 1.07602));\n    vec3 rrt(vec3 v) { vec3 a = v * (v + 0.0245786) - 0.000090537; vec3 b = v * (0.983729 * v + 0.4329510) + 0.238081; return a / b; }\n    vec3 aces(vec3 c) { return clamp(ACESOut * rrt(ACESIn * c), 0.0, 1.0); }\n    // film curve: firm toe, long linear middle, soft shoulder that reaches white late\n    vec3 film(vec3 x) { return clamp(x * (2.36 * x + 0.035) / (x * (2.18 * x + 0.66) + 0.16), 0.0, 1.0); }\n    float film1(float x) { return clamp(x * (2.36 * x + 0.035) / (x * (2.18 * x + 0.66) + 0.16), 0.0, 1.0); }\n    vec3 toSRGB(vec3 c) { return mix(c * 12.92, 1.055 * pow(c, vec3(1.0 / 2.4)) - 0.055, step(0.0031308, c)); }\n    float hash(vec2 p) { vec3 p3 = fract(vec3(p.xyx) * 0.1031); p3 += dot(p3, p3.yzx + 33.33); return fract((p3.x + p3.y) * p3.z); }\n    float ign(vec2 p) { return fract(52.9829189 * fract(dot(p, vec2(0.06711056, 0.00583715)))); }\n    float vnoise(vec2 p) { vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f); return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x), mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y); }\n\n    void main() {\n      vec2 uv = vUv;\n      vec2 c = uv - 0.5;\n      float r2 = dot(c, c);\n      float asp = uRes.x / uRes.y;\n      float rr = length(vec2(c.x * asp, c.y));          // 0 centre, 0.5 top/bottom edge, ~1 in the corners\n      // chromatic aberration grows toward the corners (and with damage)\n      float ca = uCA * (1.0 + uDamage * 3.0 + uHurt * 2.5) * r2 * 4.0;\n      vec3 col;\n      col.r = texture2D(tDiffuse, uv + c * ca).r;\n      col.g = texture2D(tDiffuse, uv).g;\n      col.b = texture2D(tDiffuse, uv - c * ca).b;\n      // periphery blur: ADS depth of field, suppression, low health, impact. The centre (sight picture) is untouched.\n      float edge = smoothstep(0.26, 0.8, rr);\n      float pb = edge * (uAds * uDof * 0.85 + uSuppress * 0.55 + uLowHealth * 0.4 + uHurt * 0.9) + uPeriphery;\n      if (pb > 0.03) {\n        vec2 px = min(pb, 1.5) * 3.6 * (uRes.y / 900.0) / uRes;\n        // two fixed rings (4 + 8 taps) with only a slight per-pixel twist: smooth, no visible dither\n        float a0 = ign(gl_FragCoord.xy) * 0.5;\n        vec3 acc = col;\n        for (int i = 0; i < 12; i++) {\n          float a = a0 + (i < 4 ? float(i) * 1.5708 + 0.4 : float(i) * 0.7854), rd = i < 4 ? 0.45 : 1.0;\n          acc += texture2D(tDiffuse, uv + vec2(cos(a), sin(a)) * rd * px).rgb;\n        }\n        col = acc / 13.0;\n      } else if (uSharpen > 0.0) {\n        vec2 px = 1.0 / uRes;\n        vec3 n = texture2D(tDiffuse, uv + vec2(px.x, 0.0)).rgb + texture2D(tDiffuse, uv - vec2(px.x, 0.0)).rgb\n               + texture2D(tDiffuse, uv + vec2(0.0, px.y)).rgb + texture2D(tDiffuse, uv - vec2(0.0, px.y)).rgb;\n        vec3 d = col - n * 0.25;\n        col += clamp(d, -0.25, 0.25) * uSharpen;\n      }\n      col = max(col, 0.0);\n      // lens: dirt and smudges catch the bloom, hot sources throw a thin anamorphic streak\n      vec4 meter = texture2D(tAdapt, vec2(0.5));\n      float glare = uGlare * mix(1.0, clamp(meter.r * 1.15, 0.35, 1.0), uAuto);\n      if (uDirt > 0.0) col += texture2D(tBloom, uv).rgb * texture2D(tDirt, uv).rgb * (uDirt * glare);\n      if (uStreak > 0.0) col += texture2D(tStreak, uv).rgb * (uStreak * glare);\n      col *= uExposure * mix(1.0, meter.r, uAuto) * (1.0 - 0.06 * uSuppress - 0.16 * uHurt);\n      col *= uBalance;            // white balance: the sun is already orange; the frame as a whole stays a touch cooler\n\n      // ---- the grade (scene-linear) ----\n      float l = dot(col, vec3(0.2126, 0.7152, 0.0722));\n      // neon limiter: bright AND fully saturated light (back-lit onyx, orange upholstery in the sun) keeps its hue\n      // but gives up part of its chroma instead of clipping to a flat poster colour\n      float mx = max(col.r, max(col.g, col.b)), mn = min(col.r, min(col.g, col.b));\n      float chroma = (mx - mn) / max(mx, 1e-4);\n      col = mix(col, vec3(l), smoothstep(0.62, 1.0, chroma) * smoothstep(0.25, 2.2, mx) * uNeon * 0.55);\n      // split tone: teal shadows, orange highlights\n      float sh = 1.0 - smoothstep(0.0, 0.3, l);\n      float hi = smoothstep(0.22, 1.3, l);\n      col *= mix(vec3(1.0), uShadowTint, sh) * mix(vec3(1.0), uHighTint, hi);\n      // contrast around mid grey + saturation (a little extra in the mid-tones only: no neon highlights)\n      col = pow(col / 0.18, vec3(uContrast + 0.08 * uHurt)) * 0.18;\n      l = dot(col, vec3(0.2126, 0.7152, 0.0722));\n      float satK = uSaturation * (1.0 - 0.75 * uLowHealth) * (1.0 - 0.18 * uSuppress) * (1.0 - 0.25 * uHurt);\n      col = max(mix(vec3(l), col, satK * (1.0 - 0.16 * smoothstep(0.6, 2.4, l))), 0.0);\n      col += uLift * (1.0 - smoothstep(0.0, 0.08, l));\n\n      // vignette, optical part: lens falloff in linear light, so shadows and mid-tones deepen toward the corners\n      // while bright windows and lamps near the edge keep their glow\n      float v = smoothstep(0.12, 0.85, r2 * 1.9);\n      col *= 1.0 - v * uVignette * 0.62;\n\n      // film curve: part per channel (natural path to white), part on the peak (hue kept in hot orange light)\n      float pk = max(col.r, max(col.g, col.b));\n      vec3 perCh = film(col * 1.05), keep = col * (film1(pk * 1.05) / max(pk, 1e-5));\n      col = mix(perCh, keep, uHueKeep);\n      // the last stop before white bleaches gently instead of clipping one channel at a time\n      float lo = dot(col, vec3(0.2126, 0.7152, 0.0722));\n      col = mix(col, vec3(lo), smoothstep(0.8, 1.0, max(col.r, max(col.g, col.b))) * 0.3);\n      col = toSRGB(col);\n\n      // vignette, print part: the frame closes in a little more when aiming, hurt or suppressed\n      col *= 1.0 - v * min(0.95, uVignette * 0.5 + 0.09 * uAds + 0.4 * uLowHealth + 0.2 * uSuppress + 0.3 * uHurt);\n      // damage / low health: a dark, veined red creeps in from the edges and throbs with the pulse\n      float hurt = uDamage + uLowHealth + uHurt;\n      if (hurt > 0.003) {\n        vec2 q = vec2(c.x * asp, c.y) * 3.1;\n        float n = vnoise(q + 7.3) * 0.6 + vnoise(q * 2.3 + uHurtSeed) * 0.3 + vnoise(q * 5.3 - uHurtSeed) * 0.15;\n        float veins = pow(1.0 - abs(vnoise(q * 1.9 + 3.1 + uHurtSeed * 0.2) - 0.5) * 2.0, 7.0);\n        float ph = fract(uTime * 1.3);\n        float beat = exp(-ph * 9.0) + 0.6 * exp(-fract(ph + 0.72) * 11.0);\n        float lowK = uLowHealth * (0.72 + 0.4 * beat);\n        float reach = clamp(uDamage * 0.9 + lowK * 0.7 + uHurt * 0.6, 0.0, 1.2);\n        float m = smoothstep(0.92 - 0.5 * reach, 1.12 - 0.2 * reach, rr + (n - 0.5) * 0.42 + veins * 0.07);\n        float k = m * clamp(uDamage * 0.95 + lowK * 0.8 + uHurt * 0.55, 0.0, 1.0);\n        float lum = dot(col, vec3(0.299, 0.587, 0.114));\n        vec3 blood = mix(vec3(0.34, 0.02, 0.015), vec3(0.10, 0.0, 0.0), clamp(veins * 0.8 + n * 0.5, 0.0, 1.0));\n        col = mix(col, blood * (0.55 + 0.9 * lum) + col * vec3(0.5, 0.08, 0.06), k);\n        col *= 1.0 - veins * k * 0.3;\n      }\n      // filmic grain: 24 fps cadence, fine + clumped, strongest in the mid shadows, a touch of chroma\n      float gt = floor(uTime * 24.0);\n      vec2 gp = gl_FragCoord.xy * max(1.0, 900.0 / uRes.y) / max(1.0, uRes.y / 1080.0);\n      float g1 = hash(gp + gt * 17.13) - 0.5, g2 = hash(floor(gp * 0.5) + gt * 31.7 + 5.0) - 0.5, g3 = hash(gp.yx + gt * 7.9 + 11.0) - 0.5;\n      float lum = dot(col, vec3(0.299, 0.587, 0.114));\n      float resp = uGrain * mix(1.35, 0.3, smoothstep(0.05, 0.85, lum)) * smoothstep(-0.02, 0.06, lum);\n      col += (g1 * 0.75 + g2 * 0.5) * resp + vec3(g3, -g3 * 0.5, g1 - g3) * resp * 0.22;\n      col = mix(col, vec3(1.0, 0.97, 0.9), uFlash);\n      col *= 1.0 - uFade;\n      gl_FragColor = vec4(col, 1.0);\n    }\n  ",
+      "vertexSHA256": "d7ed1bb8607e3b562b02954918fb2ce3372283ffa6d68fa1c5ea79a225507739",
+      "vertexBytes": 1614,
+      "fragmentSHA256": "010b92601d5dffe17c397cab6d2dce30b51667fcf376b1775ef4d560d0a6209b",
+      "fragmentBytes": 10342
+    }
+  ],
+  "glErrorsAfterMetadata": [],
+  "read": {
+    "words": [
+      15173,
+      12511,
+      0,
+      15360
+    ],
+    "independentlyDecoded": [
+      0.90869140625,
+      0.1522216796875,
+      0,
+      1
+    ],
+    "nativeDecoded": {
+      "exposure": 0.90869140625,
+      "avg": 0.1522216796875
+    },
+    "effectiveExposure": 0.90869140625,
+    "initializedTargetBeforeRead": true
+  },
+  "glErrorsAfter": [],
+  "nativeStateAfter": {
+    "targetIsNull": true,
+    "drawFramebufferUnchanged": true,
+    "readFramebufferUnchanged": true,
+    "callsUnchanged": true
+  },
+  "outputBytesBeforeLengthField": 37798,
+  "collectorSHA256": "8268638705c4bd0f07a0de105c5d30e0c73c6a4ed302f1f2e8782bce3fdf6ed4"
+}

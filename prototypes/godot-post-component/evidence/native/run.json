@@ -1,0 +1,36 @@
+{
+  "command": [
+    "D:\\Golden-Hour\\work\\tools\\godot-4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+    "--path",
+    "D:\\Golden-Hour\\work\\godot-native\\materials-post-film",
+    "--rendering-method",
+    "forward_plus",
+    "--rendering-driver",
+    "vulkan",
+    "--resolution",
+    "1920x1080",
+    "--quit-after",
+    "1200",
+    "--",
+    "--report=D:\\Golden-Hour\\work\\godot-native\\materials-post-film\\native-post-film-1.json"
+  ],
+  "engineSHA256": "c8f0a6bc45a19b33541501e57f6f7cd972ab18453743266339d495cbbe846643",
+  "sourceSHA256": {
+    "fixture.gd": "25476a03c38774aef67ee8f34b78f8dbe3a92c1c04f9eaf6d770e0fc83828d58",
+    "main.gd": "113fd874ee0746b20cd8cfcc965494932f1a8112e64a8de82a29695d2b41efaf",
+    "main.tscn": "364f8633a8dbd111975da35ee6d74e1d1abd11da22411ac3265b7e2bc09dfdc8",
+    "post_film.gdshaderinc": "44b77b5421bedc0d2821b66454f10f7a2ddcfc3c19e7cb46bcc9505907dc30c2",
+    "project.godot": "92eb07129d202187311fbf465a2b9958e9b76adfa7df3d3eca8defbddb2f7ba2",
+    "unit_cpu_test.gd": "aa2a640f3c1fae47c351971a674ed1026bf4a28c6b1d7973e13fd486a11b1e9c"
+  },
+  "acceptanceEligible": false,
+  "startedUnixSeconds": 1794869773.7297356,
+  "ownedPID": 540436,
+  "exitCode": 0,
+  "elapsedSeconds": 3.978180170059204,
+  "sourceHashMismatches": [],
+  "engineErrors": [],
+  "reportExists": true,
+  "reportSHA256": "7bb7dece23d9a66919223afb3f73b8c7cb1ee5a64ce305e46417a596c9cbc7a3",
+  "launchValid": true
+}

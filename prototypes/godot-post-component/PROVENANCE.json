@@ -1,0 +1,123 @@
+{
+  "schema": "gh-godot-post-component-provenance-v1",
+  "sourceCoreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "origins": [
+    {
+      "path": "render/main.gd",
+      "source": "work/godot-native/materials-post-film/main.gd",
+      "sourceSHA256": "113fd874ee0746b20cd8cfcc965494932f1a8112e64a8de82a29695d2b41efaf",
+      "packageSHA256": "113fd874ee0746b20cd8cfcc965494932f1a8112e64a8de82a29695d2b41efaf",
+      "adaptation": "Byte-identical actual root GPU-verified native source/proof"
+    },
+    {
+      "path": "render/main.tscn",
+      "source": "work/godot-native/materials-post-film/main.tscn",
+      "sourceSHA256": "364f8633a8dbd111975da35ee6d74e1d1abd11da22411ac3265b7e2bc09dfdc8",
+      "packageSHA256": "364f8633a8dbd111975da35ee6d74e1d1abd11da22411ac3265b7e2bc09dfdc8",
+      "adaptation": "Byte-identical actual root GPU-verified native source/proof"
+    },
+    {
+      "path": "render/project.godot",
+      "source": "work/godot-native/materials-post-film/project.godot",
+      "sourceSHA256": "92eb07129d202187311fbf465a2b9958e9b76adfa7df3d3eca8defbddb2f7ba2",
+      "packageSHA256": "92eb07129d202187311fbf465a2b9958e9b76adfa7df3d3eca8defbddb2f7ba2",
+      "adaptation": "Byte-identical actual root GPU-verified native source/proof"
+    },
+    {
+      "path": "render/fixture.gd",
+      "source": "work/godot-native/materials-post-film/fixture.gd",
+      "sourceSHA256": "25476a03c38774aef67ee8f34b78f8dbe3a92c1c04f9eaf6d770e0fc83828d58",
+      "packageSHA256": "25476a03c38774aef67ee8f34b78f8dbe3a92c1c04f9eaf6d770e0fc83828d58",
+      "adaptation": "Byte-identical actual root GPU-verified native source/proof"
+    },
+    {
+      "path": "render/post_film.gdshaderinc",
+      "source": "work/godot-native/materials-post-film/post_film.gdshaderinc",
+      "sourceSHA256": "44b77b5421bedc0d2821b66454f10f7a2ddcfc3c19e7cb46bcc9505907dc30c2",
+      "packageSHA256": "44b77b5421bedc0d2821b66454f10f7a2ddcfc3c19e7cb46bcc9505907dc30c2",
+      "adaptation": "Byte-identical actual root GPU-verified native source/proof"
+    },
+    {
+      "path": "render/unit_cpu_test.gd",
+      "source": "work/godot-native/materials-post-film/unit_cpu_test.gd",
+      "sourceSHA256": "aa2a640f3c1fae47c351971a674ed1026bf4a28c6b1d7973e13fd486a11b1e9c",
+      "packageSHA256": "aa2a640f3c1fae47c351971a674ed1026bf4a28c6b1d7973e13fd486a11b1e9c",
+      "adaptation": "Byte-identical actual root GPU-verified native source/proof"
+    },
+    {
+      "path": "render/fixtures/source-post-proof.json",
+      "source": "work/godot-native/materials-post-film/fixtures/source-post-proof.json",
+      "sourceSHA256": "1aa0aab81b3ec8458aaf4d549d917e327e9f3937445b6b469d3daab081de8a54",
+      "packageSHA256": "1aa0aab81b3ec8458aaf4d549d917e327e9f3937445b6b469d3daab081de8a54",
+      "adaptation": "Byte-identical actual root GPU-verified native source/proof"
+    },
+    {
+      "path": "render/fixtures/post-cases.json",
+      "source": "work/godot-native/materials-post-film/fixtures/post-cases.json",
+      "sourceSHA256": "6db440ac7224472c9a5dc6bc8780d66d161b2e5f25c76bf11711ce63fa9a5543",
+      "packageSHA256": "6db440ac7224472c9a5dc6bc8780d66d161b2e5f25c76bf11711ce63fa9a5543",
+      "adaptation": "Byte-identical actual root GPU-verified native source/proof"
+    },
+    {
+      "path": "browser-film-oracle.js",
+      "source": "work/godot-native/materials-post-film/browser-film-oracle.js",
+      "sourceSHA256": "c6d690ad31a326d4b317c0401f94cc9db69e3c87c9e1249c28842878a7a15a7f",
+      "packageSHA256": "c6d690ad31a326d4b317c0401f94cc9db69e3c87c9e1249c28842878a7a15a7f",
+      "adaptation": "Byte-identical verified collector/unit/reference/projection source"
+    },
+    {
+      "path": "browser-post-meter.js",
+      "source": "work/godot-native/post-audit/browser-post-meter.js",
+      "sourceSHA256": "8268638705c4bd0f07a0de105c5d30e0c73c6a4ed302f1f2e8782bce3fdf6ed4",
+      "packageSHA256": "8268638705c4bd0f07a0de105c5d30e0c73c6a4ed302f1f2e8782bce3fdf6ed4",
+      "adaptation": "Byte-identical verified collector/unit/reference/projection source"
+    },
+    {
+      "path": "post-reference.mjs",
+      "source": "work/godot-native/materials-post-film/post-reference.mjs",
+      "sourceSHA256": "ed548dcdb39d24e51753ae85160d4ee28a05658e84576deda697ed2c49ff2a86",
+      "packageSHA256": "ed548dcdb39d24e51753ae85160d4ee28a05658e84576deda697ed2c49ff2a86",
+      "adaptation": "Byte-identical verified collector/unit/reference/projection source"
+    },
+    {
+      "path": "project_source.py",
+      "source": "work/godot-native/materials-post-film/project_source.py",
+      "sourceSHA256": "615a8806f3fd028987ca6bc184820974e571d48c42663e74bd8a932cdd05ba54",
+      "packageSHA256": "615a8806f3fd028987ca6bc184820974e571d48c42663e74bd8a932cdd05ba54",
+      "adaptation": "Byte-identical verified collector/unit/reference/projection source"
+    },
+    {
+      "path": "capture_post_meter.py",
+      "source": "work/godot-native/capture_post_meter.py",
+      "sourceSHA256": "6421932623aa610e68abdef66b1922b8ae192b769e02e665f7448092459f2fc0",
+      "packageSHA256": "9d9739591464474d32c4c06057d731d92bc4511051b990a8450dd9c1f10d990d",
+      "adaptation": "Only repo runner/sibling-helper/collector/native-fixture paths relocated; private dependency-directory default removed"
+    },
+    {
+      "path": "capture_three_post_film.py",
+      "source": "work/godot-native/capture_three_post_film.py",
+      "sourceSHA256": "cb3c5b2f30f37741cab9ac8be18c44407f8c6f85623290b410e048674d83007e",
+      "packageSHA256": "902ea62a93a3922c516d20a314d0641a4ef54d0f1d003a21a2dd525c9f82ac92",
+      "adaptation": "Only repo runner/sibling-helper/collector/native-fixture paths relocated; private dependency-directory default removed"
+    }
+  ],
+  "requiredOwningFiles": {
+    "game/core/game.js": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+    "server/fixtures/bundle-probe.mjs": "f718d0ee97191a7086e7c27174baeda826305ca2c4456315c6e3d821b8759eac",
+    "scripts/performance/run_browser.py": "432c881dda4fa2df8e897a1665fcc9eebf726dcd7e0655c165352d11d9282b4c",
+    "prototypes/godot-render-component/capture_scene.py": "d951f5b5c25d46630ad5b5d7f044d1dbb75f3bfe32a023a798fa01c3517f0ec1"
+  },
+  "runtimeInstalledIntoGame": false,
+  "sourceMeterCaptureSHA256": "fe313438559e03f43396111dc59e4f7e9702593dc78aa975ff1d4020c10cd9bb",
+  "crossSessionHistoriesAligned": false,
+  "fixedExposureUsedForProduct": false,
+  "nativeCopiesAreGPUSourceExact": true,
+  "portableValidation": {
+    "canonicalRepoLikeLayoutNoOverrides": true,
+    "nodePass": 8,
+    "pythonASTProjectionPass": 4,
+    "nativeHeadlessBindingExit": 0,
+    "nativeHeadlessMainParseExit": 0,
+    "GPUByPackager": false
+  }
+}

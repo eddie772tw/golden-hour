@@ -1,0 +1,134 @@
+{
+  "schema": "gh-godot-post-source-package-v1",
+  "sourceOnly": true,
+  "acceptanceEligible": false,
+  "sourceFiles": 23,
+  "encoding": "UTF-8 LF",
+  "scope": "Isolated source meter/film operator tools and proof; no game/full-post/high/FPS acceptance",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 44,
+      "sha256": "0247ef78e76f4326f87d70f1f2003b6989b3bf77fdab0107a3012e89e5063835"
+    },
+    {
+      "path": "browser-film-oracle.js",
+      "bytes": 7534,
+      "sha256": "c6d690ad31a326d4b317c0401f94cc9db69e3c87c9e1249c28842878a7a15a7f"
+    },
+    {
+      "path": "browser-post-meter.js",
+      "bytes": 9711,
+      "sha256": "8268638705c4bd0f07a0de105c5d30e0c73c6a4ed302f1f2e8782bce3fdf6ed4"
+    },
+    {
+      "path": "capture_post_meter.py",
+      "bytes": 3698,
+      "sha256": "9d9739591464474d32c4c06057d731d92bc4511051b990a8450dd9c1f10d990d"
+    },
+    {
+      "path": "capture_three_post_film.py",
+      "bytes": 3746,
+      "sha256": "902ea62a93a3922c516d20a314d0641a4ef54d0f1d003a21a2dd525c9f82ac92"
+    },
+    {
+      "path": "fixtures/source-post-meter-evidence.json",
+      "bytes": 41155,
+      "sha256": "fe313438559e03f43396111dc59e4f7e9702593dc78aa975ff1d4020c10cd9bb"
+    },
+    {
+      "path": "post-film.test.mjs",
+      "bytes": 6008,
+      "sha256": "2e9d154f9cd35dd254dcdc14a27bce9c14a0e02d6f357b1d8f5645adf9fa2ddf"
+    },
+    {
+      "path": "post-meter.test.mjs",
+      "bytes": 6866,
+      "sha256": "cd6b1f563a52b97d2ec1930e6a5506aca852ac163934f98d5fd821cc405ecec4"
+    },
+    {
+      "path": "post-reference.mjs",
+      "bytes": 1795,
+      "sha256": "ed548dcdb39d24e51753ae85160d4ee28a05658e84576deda697ed2c49ff2a86"
+    },
+    {
+      "path": "post_meter_capture_test.py",
+      "bytes": 1488,
+      "sha256": "54db09c341e674dd3e5cbedf27b2a7077a2987f1669ea339e69ea4d033215164"
+    },
+    {
+      "path": "project_source.py",
+      "bytes": 3133,
+      "sha256": "615a8806f3fd028987ca6bc184820974e571d48c42663e74bd8a932cdd05ba54"
+    },
+    {
+      "path": "projection_test.py",
+      "bytes": 1566,
+      "sha256": "ff838577bcaafaf94a8fb94fbfc5d6cc1ad6cedb895ffcf7b5c30224f1580fff"
+    },
+    {
+      "path": "PROVENANCE.json",
+      "bytes": 6716,
+      "sha256": "0bdc5b6e32083b3a3f95b9007f6ecb948aad64f35af061a58a89944c8fba4d94"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6981,
+      "sha256": "c1d5ad65fa31d6a2021c857afe85671aae039907c91f26f08370b15c82bbb284"
+    },
+    {
+      "path": "render/fixture.gd",
+      "bytes": 2630,
+      "sha256": "25476a03c38774aef67ee8f34b78f8dbe3a92c1c04f9eaf6d770e0fc83828d58"
+    },
+    {
+      "path": "render/fixtures/post-cases.json",
+      "bytes": 3701,
+      "sha256": "6db440ac7224472c9a5dc6bc8780d66d161b2e5f25c76bf11711ce63fa9a5543"
+    },
+    {
+      "path": "render/fixtures/source-post-proof.json",
+      "bytes": 2757,
+      "sha256": "1aa0aab81b3ec8458aaf4d549d917e327e9f3937445b6b469d3daab081de8a54"
+    },
+    {
+      "path": "render/main.gd",
+      "bytes": 4843,
+      "sha256": "113fd874ee0746b20cd8cfcc965494932f1a8112e64a8de82a29695d2b41efaf"
+    },
+    {
+      "path": "render/main.tscn",
+      "bytes": 161,
+      "sha256": "364f8633a8dbd111975da35ee6d74e1d1abd11da22411ac3265b7e2bc09dfdc8"
+    },
+    {
+      "path": "render/post_film.gdshaderinc",
+      "bytes": 1050,
+      "sha256": "44b77b5421bedc0d2821b66454f10f7a2ddcfc3c19e7cb46bcc9505907dc30c2"
+    },
+    {
+      "path": "render/project.godot",
+      "bytes": 323,
+      "sha256": "92eb07129d202187311fbf465a2b9958e9b76adfa7df3d3eca8defbddb2f7ba2"
+    },
+    {
+      "path": "render/unit_cpu_test.gd",
+      "bytes": 994,
+      "sha256": "aa2a640f3c1fae47c351971a674ed1026bf4a28c6b1d7973e13fd486a11b1e9c"
+    },
+    {
+      "path": "VALIDATION.json",
+      "bytes": 5870,
+      "sha256": "f7cafd1260efdefa757bbc04a23e517edca8be408e0a7240c16156d1a62b3d9c"
+    }
+  ],
+  "validation": {
+    "canonicalRepoLikeLayoutNoOverrides": true,
+    "nodePass": 8,
+    "pythonASTProjectionPass": 4,
+    "nativeHeadlessBindingExit": 0,
+    "nativeHeadlessMainParseExit": 0,
+    "GPUByPackager": false
+  },
+  "separateEvidenceManifest": "evidence/MANIFEST.json"
+}

@@ -6,4 +6,5 @@ prototypes/godot-live-world/receiver/capture_importer.gd whitespace=cr-at-eol,-b
 prototypes/godot-render-component/evidence/* -text whitespace=cr-at-eol
 prototypes/godot-planar-reflection/** -text whitespace=cr-at-eol
 prototypes/godot-planar-reflection/*/*.log -text -whitespace
+prototypes/godot-post-component/** -text whitespace=cr-at-eol
 

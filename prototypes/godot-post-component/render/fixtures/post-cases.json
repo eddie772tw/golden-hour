@@ -1,0 +1,199 @@
+{
+  "schema": "gh-post-film-unit-cases-v1",
+  "sourceCaptureSHA256": "fe313438559e03f43396111dc59e4f7e9702593dc78aa975ff1d4020c10cd9bb",
+  "sourceFinalFragmentSHA256": "d57a2ec1063369281be2d7a85ccfc95c86a9a40ca239159442fd3c437fdd3b1a",
+  "fixedExposure": 0.90869140625,
+  "cases": [
+    {
+      "name": "black",
+      "input": [
+        0,
+        0,
+        0
+      ],
+      "auto": 1,
+      "hueKeep": 0.3,
+      "expectedLinear": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "gray-auto0",
+      "input": [
+        0.18,
+        0.18,
+        0.18
+      ],
+      "auto": 0,
+      "hueKeep": 0.3,
+      "expectedLinear": [
+        0.25072698961958706,
+        0.25072698961958706,
+        0.25072698961958706
+      ]
+    },
+    {
+      "name": "gray-auto1",
+      "input": [
+        0.18,
+        0.18,
+        0.18
+      ],
+      "auto": 1,
+      "hueKeep": 0.3,
+      "expectedLinear": [
+        0.22396085088469528,
+        0.22396085088469528,
+        0.22396085088469528
+      ]
+    },
+    {
+      "name": "toe",
+      "input": [
+        0.001,
+        0.002,
+        0.004
+      ],
+      "auto": 1,
+      "hueKeep": 0.3,
+      "expectedLinear": [
+        0.00023238091936905088,
+        0.00048219189429684657,
+        0.0010332330133787028
+      ]
+    },
+    {
+      "name": "warm",
+      "input": [
+        0.6,
+        0.25,
+        0.05
+      ],
+      "auto": 1,
+      "hueKeep": 0.3,
+      "expectedLinear": [
+        0.6336238129618952,
+        0.3053543159198447,
+        0.04092909821186866
+      ]
+    },
+    {
+      "name": "orange",
+      "input": [
+        4,
+        1,
+        0.1
+      ],
+      "auto": 1,
+      "hueKeep": 0.3,
+      "expectedLinear": [
+        0.8997023009933094,
+        0.6375605382654528,
+        0.2550461286112919
+      ]
+    },
+    {
+      "name": "HDR-window",
+      "input": [
+        16,
+        8,
+        2
+      ],
+      "auto": 1,
+      "hueKeep": 0.3,
+      "expectedLinear": [
+        0.961000602885572,
+        0.856000602885572,
+        0.7407430784119104
+      ]
+    },
+    {
+      "name": "blue",
+      "input": [
+        0.03,
+        0.2,
+        3
+      ],
+      "auto": 1,
+      "hueKeep": 0.3,
+      "expectedLinear": [
+        0.07198104668089723,
+        0.2020062306403645,
+        0.7566002531953891
+      ]
+    },
+    {
+      "name": "white",
+      "input": [
+        1,
+        1,
+        1
+      ],
+      "auto": 1,
+      "hueKeep": 0.3,
+      "expectedLinear": [
+        0.7864453821880479,
+        0.7864453821880479,
+        0.7864453821880479
+      ]
+    },
+    {
+      "name": "orange-per-channel-control",
+      "input": [
+        4,
+        1,
+        0.1
+      ],
+      "auto": 1,
+      "hueKeep": 0,
+      "expectedLinear": [
+        0.9347340728475848,
+        0.7852458403792184,
+        0.30629668373041696
+      ]
+    },
+    {
+      "name": "orange-hue-control",
+      "input": [
+        4,
+        1,
+        0.1
+      ],
+      "auto": 1,
+      "hueKeep": 1,
+      "expectedLinear": [
+        0.8179614999999999,
+        0.2929615,
+        0.13546149999999998
+      ]
+    },
+    {
+      "name": "HDR-cool",
+      "input": [
+        0.25,
+        2,
+        8
+      ],
+      "auto": 1,
+      "hueKeep": 0.3,
+      "expectedLinear": [
+        0.35664422964301323,
+        0.6977682676596262,
+        0.8917757921332878
+      ]
+    }
+  ],
+  "witnessPairs": [
+    [
+      "gray-auto0",
+      "gray-auto1"
+    ],
+    [
+      "orange-per-channel-control",
+      "orange-hue-control"
+    ]
+  ],
+  "scope": "Isolated composition of original exposure operator and film/hue/highlight operators. Full grade/optics/bloom/adaptation history intentionally absent. Not a full original final-post replay."
+}

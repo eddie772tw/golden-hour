@@ -1,0 +1,48 @@
+{
+  "schema": "gh-post-unit-validation-artifacts-v1",
+  "sourceOnly": false,
+  "acceptanceEligible": false,
+  "files": [
+    {
+      "path": "evidence/meter/run.json",
+      "bytes": 57345,
+      "sha256": "dab5f8cc508ce1970f268116cd2a25c40a624e5061ce7a8ec47dea9d6cf500ba"
+    },
+    {
+      "path": "evidence/native/godot.log",
+      "bytes": 250,
+      "sha256": "efb6a5414720355dd9aaec7b3eafe1d1d9d7736476d4a878d848ba71c14f99ca"
+    },
+    {
+      "path": "evidence/native/report.json",
+      "bytes": 11501,
+      "sha256": "7bb7dece23d9a66919223afb3f73b8c7cb1ee5a64ce305e46417a596c9cbc7a3"
+    },
+    {
+      "path": "evidence/native/run.json",
+      "bytes": 1431,
+      "sha256": "e1e1603bb77c1e7d09b098c70ba87b856d75776519ba2c3524cc58e21aedf1b9"
+    },
+    {
+      "path": "evidence/three/report.json",
+      "bytes": 25208,
+      "sha256": "07a66245d2e978028073facadcbe18d1e53e709aefe1fd17cc0d8b8643dea8ce"
+    },
+    {
+      "path": "evidence/three/run.json",
+      "bytes": 51931,
+      "sha256": "b7eb63dfa4a589a4906f2a035265a8464f4f1b46fb39418b40082c5ae1b1e824"
+    },
+    {
+      "path": "evidence/three/server.log",
+      "bytes": 101,
+      "sha256": "0bb9dd34e6fe6992f782e14c19ae9dcd39fa1c3270bffb040f60645131b9d69b"
+    }
+  ],
+  "pathsRelativeTo": "godot-post-component/",
+  "originalMeterRawProof": {
+    "path": "fixtures/source-post-meter-evidence.json",
+    "bytes": 41155,
+    "sha256": "fe313438559e03f43396111dc59e4f7e9702593dc78aa975ff1d4020c10cd9bb"
+  }
+}

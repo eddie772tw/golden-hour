@@ -1,0 +1,558 @@
+{
+  "adapter": "AMD Radeon RX 9070 XT",
+  "allReferenceChannelsExact": true,
+  "cases": [
+    {
+      "AAmaxDiff": 0.0,
+      "case": {
+        "auto": 1.0,
+        "expectedLinear": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hueKeep": 0.3,
+        "input": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "name": "black"
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference": {
+        "imageFormat": 4,
+        "pixel": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "sample": {
+        "imageFormat": 4,
+        "pixel": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "case": {
+        "auto": 0.0,
+        "expectedLinear": [
+          0.250726989619587,
+          0.250726989619587,
+          0.250726989619587
+        ],
+        "hueKeep": 0.3,
+        "input": [
+          0.18,
+          0.18,
+          0.18
+        ],
+        "name": "gray-auto0"
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference": {
+        "imageFormat": 4,
+        "pixel": [
+          0.537254929542542,
+          0.537254929542542,
+          0.537254929542542,
+          1.0
+        ]
+      },
+      "sample": {
+        "imageFormat": 4,
+        "pixel": [
+          0.537254929542542,
+          0.537254929542542,
+          0.537254929542542,
+          1.0
+        ]
+      }
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "case": {
+        "auto": 1.0,
+        "expectedLinear": [
+          0.223960850884695,
+          0.223960850884695,
+          0.223960850884695
+        ],
+        "hueKeep": 0.3,
+        "input": [
+          0.18,
+          0.18,
+          0.18
+        ],
+        "name": "gray-auto1"
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference": {
+        "imageFormat": 4,
+        "pixel": [
+          0.509803950786591,
+          0.509803950786591,
+          0.509803950786591,
+          1.0
+        ]
+      },
+      "sample": {
+        "imageFormat": 4,
+        "pixel": [
+          0.509803950786591,
+          0.509803950786591,
+          0.509803950786591,
+          1.0
+        ]
+      }
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "case": {
+        "auto": 1.0,
+        "expectedLinear": [
+          0.00023238091936905,
+          0.00048219189429684,
+          0.0010332330133787
+        ],
+        "hueKeep": 0.3,
+        "input": [
+          0.001,
+          0.002,
+          0.004
+        ],
+        "name": "toe"
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference": {
+        "imageFormat": 4,
+        "pixel": [
+          0.00392156885936856,
+          0.00784313771873713,
+          0.0117647061124444,
+          1.0
+        ]
+      },
+      "sample": {
+        "imageFormat": 4,
+        "pixel": [
+          0.00392156885936856,
+          0.00784313771873713,
+          0.0117647061124444,
+          1.0
+        ]
+      }
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "case": {
+        "auto": 1.0,
+        "expectedLinear": [
+          0.633623812961895,
+          0.305354315919845,
+          0.0409290982118687
+        ],
+        "hueKeep": 0.3,
+        "input": [
+          0.6,
+          0.25,
+          0.05
+        ],
+        "name": "warm"
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference": {
+        "imageFormat": 4,
+        "pixel": [
+          0.815686285495758,
+          0.588235318660736,
+          0.223529413342476,
+          1.0
+        ]
+      },
+      "sample": {
+        "imageFormat": 4,
+        "pixel": [
+          0.815686285495758,
+          0.588235318660736,
+          0.223529413342476,
+          1.0
+        ]
+      }
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "case": {
+        "auto": 1.0,
+        "expectedLinear": [
+          0.899702300993309,
+          0.637560538265453,
+          0.255046128611292
+        ],
+        "hueKeep": 0.3,
+        "input": [
+          4.0,
+          1.0,
+          0.1
+        ],
+        "name": "orange"
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference": {
+        "imageFormat": 4,
+        "pixel": [
+          0.952941179275513,
+          0.819607853889465,
+          0.541176497936249,
+          1.0
+        ]
+      },
+      "sample": {
+        "imageFormat": 4,
+        "pixel": [
+          0.952941179275513,
+          0.819607853889465,
+          0.541176497936249,
+          1.0
+        ]
+      }
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "case": {
+        "auto": 1.0,
+        "expectedLinear": [
+          0.961000602885572,
+          0.856000602885572,
+          0.74074307841191
+        ],
+        "hueKeep": 0.3,
+        "input": [
+          16.0,
+          8.0,
+          2.0
+        ],
+        "name": "HDR-window"
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference": {
+        "imageFormat": 4,
+        "pixel": [
+          0.984313726425171,
+          0.933333337306976,
+          0.874509811401367,
+          1.0
+        ]
+      },
+      "sample": {
+        "imageFormat": 4,
+        "pixel": [
+          0.984313726425171,
+          0.933333337306976,
+          0.874509811401367,
+          1.0
+        ]
+      }
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "case": {
+        "auto": 1.0,
+        "expectedLinear": [
+          0.0719810466808972,
+          0.202006230640364,
+          0.756600253195389
+        ],
+        "hueKeep": 0.3,
+        "input": [
+          0.03,
+          0.2,
+          3.0
+        ],
+        "name": "blue"
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference": {
+        "imageFormat": 4,
+        "pixel": [
+          0.298039227724075,
+          0.486274510622025,
+          0.882352948188782,
+          1.0
+        ]
+      },
+      "sample": {
+        "imageFormat": 4,
+        "pixel": [
+          0.298039227724075,
+          0.486274510622025,
+          0.882352948188782,
+          1.0
+        ]
+      }
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "case": {
+        "auto": 1.0,
+        "expectedLinear": [
+          0.786445382188048,
+          0.786445382188048,
+          0.786445382188048
+        ],
+        "hueKeep": 0.3,
+        "input": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "name": "white"
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference": {
+        "imageFormat": 4,
+        "pixel": [
+          0.898039221763611,
+          0.898039221763611,
+          0.898039221763611,
+          1.0
+        ]
+      },
+      "sample": {
+        "imageFormat": 4,
+        "pixel": [
+          0.898039221763611,
+          0.898039221763611,
+          0.898039221763611,
+          1.0
+        ]
+      }
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "case": {
+        "auto": 1.0,
+        "expectedLinear": [
+          0.934734072847585,
+          0.785245840379218,
+          0.306296683730417
+        ],
+        "hueKeep": 0.0,
+        "input": [
+          4.0,
+          1.0,
+          0.1
+        ],
+        "name": "orange-per-channel-control"
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference": {
+        "imageFormat": 4,
+        "pixel": [
+          0.968627452850342,
+          0.898039221763611,
+          0.588235318660736,
+          1.0
+        ]
+      },
+      "sample": {
+        "imageFormat": 4,
+        "pixel": [
+          0.968627452850342,
+          0.898039221763611,
+          0.588235318660736,
+          1.0
+        ]
+      }
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "case": {
+        "auto": 1.0,
+        "expectedLinear": [
+          0.8179615,
+          0.2929615,
+          0.1354615
+        ],
+        "hueKeep": 1.0,
+        "input": [
+          4.0,
+          1.0,
+          0.1
+        ],
+        "name": "orange-hue-control"
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference": {
+        "imageFormat": 4,
+        "pixel": [
+          0.91372549533844,
+          0.576470613479614,
+          0.403921574354172,
+          1.0
+        ]
+      },
+      "sample": {
+        "imageFormat": 4,
+        "pixel": [
+          0.91372549533844,
+          0.576470613479614,
+          0.403921574354172,
+          1.0
+        ]
+      }
+    },
+    {
+      "AAmaxDiff": 0.0,
+      "case": {
+        "auto": 1.0,
+        "expectedLinear": [
+          0.356644229643013,
+          0.697768267659626,
+          0.891775792133288
+        ],
+        "hueKeep": 0.3,
+        "input": [
+          0.25,
+          2.0,
+          8.0
+        ],
+        "name": "HDR-cool"
+      },
+      "differencePerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference": {
+        "imageFormat": 4,
+        "pixel": [
+          0.631372570991516,
+          0.854901969432831,
+          0.949019610881805,
+          1.0
+        ]
+      },
+      "sample": {
+        "imageFormat": 4,
+        "pixel": [
+          0.631372570991516,
+          0.854901969432831,
+          0.949019610881805,
+          1.0
+        ]
+      }
+    }
+  ],
+  "driver": "vulkan",
+  "engine": {
+    "build": "official",
+    "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "hex": 263938,
+    "major": 4,
+    "minor": 7,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.7.2-stable (official)",
+    "timestamp": 0
+  },
+  "fixedExposure": 0.90869140625,
+  "invalidCases": 0,
+  "limits": [
+    "No adaptation history or native autoexposure: actual captured source E is a fixed input",
+    "No full grade/optics/bloom/grain/scene compositor; this isolates two selected source operators",
+    "No High/material/full-game/FPS claim; exact differences recorded without tolerance"
+  ],
+  "method": "forward_plus",
+  "nativeTonemapExposure": 1.0,
+  "nativeTonemapMode": 0,
+  "ok": true,
+  "outputContract": "Source operators stop before source toSRGB; native common linear-tonemap/display OETF is applied once to both sample/reference. Returned pixel components are not assumed linear. No cross-engine literal RGB assumption.",
+  "proofSHA256": "1aa0aab81b3ec8458aaf4d549d917e327e9f3937445b6b469d3daab081de8a54",
+  "schema": "gh-native-post-film-unit-v1",
+  "scope": "Isolated composition of original exposure operator and film/hue/highlight operators. Full grade/optics/bloom/adaptation history intentionally absent. Not a full original final-post replay.",
+  "sourceCaptureSHA256": "fe313438559e03f43396111dc59e4f7e9702593dc78aa975ff1d4020c10cd9bb",
+  "sourceCompiledFinal": {
+    "current": true,
+    "fragmentBytes": 10342.0,
+    "fragmentSHA256": "010b92601d5dffe17c397cab6d2dce30b51667fcf376b1775ef4d560d0a6209b",
+    "id": 123.0,
+    "vertexBytes": 1614.0,
+    "vertexSHA256": "d7ed1bb8607e3b562b02954918fb2ce3372283ffa6d68fa1c5ea79a225507739"
+  },
+  "witnesses": [
+    {
+      "differencePerChannel": [
+        0.0274509787559509,
+        0.0274509787559509,
+        0.0274509787559509
+      ],
+      "pair": [
+        "gray-auto0",
+        "gray-auto1"
+      ]
+    },
+    {
+      "differencePerChannel": [
+        0.0549019575119019,
+        0.321568608283997,
+        0.184313744306564
+      ],
+      "pair": [
+        "orange-per-channel-control",
+        "orange-hue-control"
+      ]
+    }
+  ]
+}

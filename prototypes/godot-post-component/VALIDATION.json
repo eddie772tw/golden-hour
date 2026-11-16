@@ -1,0 +1,204 @@
+{
+  "stage": 22,
+  "kind": "Actual-source-meter-and-isolated-exposure-film-unit",
+  "acceptanceEligible": false,
+  "fullPostParity": false,
+  "highParity": false,
+  "sourceCoreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "sourceMeterProof": {
+    "path": "fixtures/source-post-meter-evidence.json",
+    "bytes": 41155,
+    "sha256": "fe313438559e03f43396111dc59e4f7e9702593dc78aa975ff1d4020c10cd9bb"
+  },
+  "sourceFinalFragmentSHA256": "d57a2ec1063369281be2d7a85ccfc95c86a9a40ca239159442fd3c437fdd3b1a",
+  "sourceCompiledFinal": {
+    "current": true,
+    "fragmentBytes": 10342.0,
+    "fragmentSHA256": "010b92601d5dffe17c397cab6d2dce30b51667fcf376b1775ef4d560d0a6209b",
+    "id": 123.0,
+    "vertexBytes": 1614.0,
+    "vertexSHA256": "d7ed1bb8607e3b562b02954918fb2ce3372283ffa6d68fa1c5ea79a225507739"
+  },
+  "actualExposure": {
+    "words": [
+      15173,
+      12511,
+      0,
+      15360
+    ],
+    "independentlyDecoded": [
+      0.90869140625,
+      0.1522216796875,
+      0,
+      1
+    ],
+    "nativeDecoded": {
+      "exposure": 0.90869140625,
+      "avg": 0.1522216796875
+    },
+    "effectiveExposure": 0.90869140625,
+    "initializedTargetBeforeRead": true
+  },
+  "exposureParameters": {
+    "auto": 1,
+    "key": 0.15,
+    "comp": 0.46,
+    "min": 0.5,
+    "max": 1.6,
+    "up": 1.1,
+    "down": 3.2,
+    "clamp": 6
+  },
+  "crossSession": {
+    "postSession": {
+      "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+      "sessionId": "source-post-meter-1",
+      "tick": 240,
+      "state": "paused",
+      "quality": "high",
+      "gfxTime": 8.61377777825461,
+      "gameTime": 3.9999999999999907,
+      "cameraWorld": [
+        0.9946138926029308,
+        0.0011549869513705936,
+        -0.10364299612799593,
+        0,
+        -0.0033797947109607046,
+        0.9997675651526843,
+        -0.021293018958918403,
+        0,
+        0.10359431272496275,
+        0.02152862452213936,
+        0.9943866132934551,
+        0,
+        -3.876960780589182,
+        1.621687370219873,
+        8.341690006863624,
+        1
+      ]
+    },
+    "HMSeparateBootFixedLightingTime": 8.479888889365725,
+    "geometryCapture3SameSession": false,
+    "historiesAligned": false,
+    "fixedEIsOperatorInputOnly": true,
+    "fullSceneMustDeriveOwnSameStateMeterAndHistory": true
+  },
+  "native": {
+    "raw": {
+      "path": "evidence/native/report.json",
+      "bytes": 11501,
+      "sha256": "7bb7dece23d9a66919223afb3f73b8c7cb1ee5a64ce305e46417a596c9cbc7a3"
+    },
+    "launch": {
+      "path": "evidence/native/run.json",
+      "bytes": 1431,
+      "sha256": "e1e1603bb77c1e7d09b098c70ba87b856d75776519ba2c3524cc58e21aedf1b9"
+    },
+    "log": {
+      "path": "evidence/native/godot.log",
+      "bytes": 250,
+      "sha256": "efb6a5414720355dd9aaec7b3eafe1d1d9d7736476d4a878d848ba71c14f99ca"
+    },
+    "ok": true,
+    "cases": 12,
+    "invalidCases": 0,
+    "allReferenceChannelsExact": true,
+    "allAAExact": true,
+    "witnesses": [
+      {
+        "differencePerChannel": [
+          0.0274509787559509,
+          0.0274509787559509,
+          0.0274509787559509
+        ],
+        "pair": [
+          "gray-auto0",
+          "gray-auto1"
+        ]
+      },
+      {
+        "differencePerChannel": [
+          0.0549019575119019,
+          0.321568608283997,
+          0.184313744306564
+        ],
+        "pair": [
+          "orange-per-channel-control",
+          "orange-hue-control"
+        ]
+      }
+    ],
+    "engine": {
+      "build": "official",
+      "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "hex": 263938,
+      "major": 4,
+      "minor": 7,
+      "patch": 2,
+      "status": "stable",
+      "string": "4.7.2-stable (official)",
+      "timestamp": 0
+    },
+    "driver": "vulkan",
+    "method": "forward_plus",
+    "adapter": "AMD Radeon RX 9070 XT",
+    "nativeTonemapMode": 0,
+    "nativeTonemapExposure": 1.0,
+    "launcherExit": 0,
+    "launcherErrors": [],
+    "nativeCodeByteIdenticalToVerifiedLaunch": true
+  },
+  "three": {
+    "raw": {
+      "path": "evidence/three/report.json",
+      "bytes": 25208,
+      "sha256": "07a66245d2e978028073facadcbe18d1e53e709aefe1fd17cc0d8b8643dea8ce"
+    },
+    "run": {
+      "path": "evidence/three/run.json",
+      "bytes": 51931,
+      "sha256": "b7eb63dfa4a589a4906f2a035265a8464f4f1b46fb39418b40082c5ae1b1e824"
+    },
+    "ok": true,
+    "cases": 12,
+    "invalidCases": 0,
+    "allReferenceChannelsExact": true,
+    "allAAExact": true,
+    "witnesses": [
+      {
+        "pair": [
+          "gray-auto0",
+          "gray-auto1"
+        ],
+        "differencePerChannel": [
+          0.027450980392156876,
+          0.027450980392156876,
+          0.027450980392156876
+        ]
+      },
+      {
+        "pair": [
+          "orange-per-channel-control",
+          "orange-hue-control"
+        ],
+        "differencePerChannel": [
+          0.05882352941176472,
+          0.32156862745098047,
+          0.1843137254901961
+        ]
+      }
+    ],
+    "initialGLErrors": [],
+    "restoreErrors": [],
+    "finalGLErrors": []
+  },
+  "scope": "Isolated composition of original exposure operator and film/hue/highlight operators. Full grade/optics/bloom/adaptation history intentionally absent. Not a full original final-post replay.",
+  "limits": [
+    "No adaptation history or native autoexposure: actual captured source E is a fixed input",
+    "No full grade/optics/bloom/grain/scene compositor; this isolates two selected source operators",
+    "No High/material/full-game/FPS claim; exact differences recorded without tolerance",
+    "Separate engine same-pipeline references, not cross-engine literal pixel parity",
+    "Captured meter/HM/geometry sessions not aligned; no frozen E promoted to full-scene/native product exposure",
+    "No adaptation history, complete source grade/compositor or full High/FPS claim"
+  ]
+}

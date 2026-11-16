@@ -1,0 +1,13 @@
+config_version=5
+
+[application]
+config/name="Golden Hour source exposure/film UNIT — not High or performance"
+run/main_scene="res://main.tscn"
+
+[display]
+window/size/viewport_width=320
+window/size/viewport_height=160
+
+[rendering]
+renderer/rendering_method="forward_plus"
+lights_and_shadows/use_physical_light_units=false
