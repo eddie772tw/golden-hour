@@ -391,3 +391,65 @@ can include post-completion JSON serialization, diagnostics and restoration;
 it is not interchangeable with controller time. Source hash, callback scope,
 request delays, duplicate-tick counts and replay limits are retained in
 [stage7-native-loop.json](evidence/stage7-native-loop.json).
+
+## Stage 8: test audio ownership with actual native graph load
+
+### Representative audio-owner screen
+
+A new isolated host screen replaced the earlier synthetic busy loop with the
+unchanged native eZ audio factory. One same-then-cross pair on Edge157.0.4341.60
+ran60 seconds of footstep/impact/casing calls plus2 seconds of natural drain.
+Both arms used the same cue quotas, private RNG, fixed decision timeline,
+original100ms voice sweep, common native graph and nonzero master volume.
+There was no forced GC, silent dry-layer omission or replacement DSP.
+
+Trace boot marks confirmed a shared main thread in same and separate renderer
+PID/TID in cross. All3720 batches completed. Both arms created73,707 transient
+nodes and21,188 native source starts with identical final RNG/voice signatures;
+active/transient voices reached zero, live equaled116 persistent nodes, and
+wrappers were restored without page/engine errors. Live is JS accounting, not
+proof all native handlers or native memory have been reclaimed.
+
+| Actual-graph diagnostic | Same renderer | Cross renderer |
+|---|---:|---:|
+| Largest canonical handler deletion, wall/thread CPU |106.649/105.289ms|116.624/115.587ms|
+| MajorGC count/total wall |4/30.381ms|4/49.386ms|
+| Parent maximum issue/heartbeat delay |106.633/104.300ms|8.100/3.400ms|
+| Maximum message delay / pending ACKs |1.200ms /1|112.800ms /7|
+| Late native source starts / all starts |8124/21188|214/21188|
+| Worst source scheduling lateness |113.733ms|110.400ms|
+
+Cross protected the issuing parent while the blocked audio child accumulated
+messages. Same's short measured message delay starts only after its stalled
+parent finally issues the message; it does not contradict the106.6ms issue
+delay. Cross still had116.6/80.1/77.4ms natural deletion tasks, so this screen
+does not support claiming that a smaller audio heap automatically eliminates
+large cleanup batches. The prior artificial200ms stall is no longer the only
+owner evidence, and its duration is not assumed to predict natural cleanup.
+
+The late counts are individual component source.start calls, not distinct
+voices, measured PCM onsets or audible missing sounds. Additional lead was0ms;
+the factory retained its own approximately3ms lead. A single wall/audio clock
+anchor and audio quantum/phase can affect small threshold crossings, so the
+8124-to214 difference cannot all be assigned to GC or converted into a sound
+quality acceptance rate. Excluding the first second still leaves7976 versus
+202 late starts; cross's worst source remains about110ms late.
+
+Actual node rate was73,707/min:84.8% of the three cues' audited86,902 nodes and
+65.5% of the full game's112,529. Call quotas matched, but surface mix and timing
+were representative rather than a captured full-game replay. Other cue classes,
+Three/DOM world heap, complete AI/render work and real input-driven commands
+were absent; both arms already had small non-game heaps. This single ordered
+pair cannot establish intrinsic GC differences, full-game FPS, sound fidelity
+or desktop resource/package acceptance. Owner isolation remains conditional,
+not a promoted migration or a sufficient sound-deadline solution.
+
+Canonical cleanup selection follows ThreadControllerImpl::RunTask with
+args.src_func=RequestToDeleteHandlersOnMainThread, not the event name alone.
+Only complete child-main X events inside the marked window enter totals;
+Edge_RunTask mirrors are excluded and source file/function/tdur are retained.
+No boundary partials were included. Source hashes, raw-result hashes, exact
+signatures and limitations are preserved in
+[browser-stage8-audio-owner.json](evidence/browser-stage8-audio-owner.json).
+The product runtime and existing60FPS/full1%low>45 acceptance remain unchanged;
+this audio-only diagnostic does not measure game frames.

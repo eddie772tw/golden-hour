@@ -1,0 +1,457 @@
+{
+  "stage": 8,
+  "screen": "representative-native-audio-owner-load",
+  "date": "2026-11-17",
+  "timezone": "Asia/Taipei",
+  "decision": "Keep owner isolation conditional. Actual native graph load protects the issuing parent but retains >100ms child deletion and source-scheduling tails. No desktop, audio-quality or full-game FPS acceptance.",
+  "classification": "Diagnostic single ordered same-then-cross pair; not a full native-AI game run.",
+  "browserVersion": "157.0.4341.60",
+  "productRuntimeChanged": false,
+  "rawDirectory": "work/browser-render-next/audio-owner-load/results-root-1",
+  "probeSource": {
+    "directory": "work/browser-render-next/audio-owner-load",
+    "frozenSetSHA256": "cc471d5c0f7af93f67e973210a9e5dbb4df18852c61e08943ccd9c689dc2e2e6",
+    "sha256": {
+      "native-audio.js": "861403d1110aaf8836cd89002e7a15f3235f04c4b9cad77145ebd69c14c0cb14",
+      "engine.js": "8c1c2ba7af1e884066306d1b23fe3d47febdc4388e2d99879ffae177bfb90365",
+      "probe.js": "775dd2a55c8a727d190c013b1ff3aace51ab7e7fe3d84d97560bb83854303f7a",
+      "probe.py": "3be6a8ed1b4b9f4d561bbd202cd654ee759058ba6d162f279e22ead2a7139c87",
+      "engine.test.cjs": "800dce01f721ead319686f0b3a311d911db71691a656c31c5f90600b4f37728b",
+      "trace_check.py": "38242d0c5e5174b463fbd08dfc841d08380793822e1926861dee5cef98c86773",
+      "README.md": "6265e04100542bc986562d65ecf2ffeca7b43f0f13c37789f3702afb92f40742"
+    },
+    "nativeFactoryOriginCoreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+    "runtimeFactory": "Byte-identical copy of existing host-probe/casing-baseline.js, actual full eZ factory; no replacement DSP."
+  },
+  "rawSHA256": {
+    "same.json": "ac9c0f376fb200037ddcfe92a6f974a4890adcf192df989561fc1022bceb6589",
+    "cross.json": "d6a9a686bc60d40c452a9834c807a0b023067c8d2fc28e16aeb76eb295718840",
+    "pair.json": "8f9b12bf91b296e497e91aa0e1644c18e8cbcad8861b9fa7c6ad4db3bc45f154"
+  },
+  "protocol": {
+    "order": [
+      "same",
+      "cross"
+    ],
+    "cueSeconds": 60,
+    "drainSeconds": 2,
+    "logicalHz": 60,
+    "sweepSeconds": 0.1,
+    "batchesPerArm": 3720,
+    "quota": {
+      "footstep": 1172,
+      "impact": 874,
+      "casing": 929
+    },
+    "privateLCGSeed": 5281,
+    "additionalLeadMs": 0,
+    "factoryOnsetLeadMsApprox": 3,
+    "masterVolume": 0.05,
+    "initCommonGraph": true,
+    "explicitGC": false,
+    "syntheticBusyLoop": false,
+    "replacementDSP": false,
+    "timeline": "Factory ctx.currentTime reads fixed audioOrigin + logical batch time. Other context methods bind to real native AudioContext. Late messages preserve RNG/voice decisions; native start/stop/automation execute at original targets, with actual lateness observed.",
+    "transport": "Same indexed postMessage batches; parent deadlines independent of ACK. Same origin=127.0.0.1; cross child=localhost. Fresh browser contexts/pages, expected PID relation required.",
+    "nodeRetention": "Original factory voice arrays/sweep only. No diagnostic node map or per-source listener. One start wrapper per native prototype, context scoped, restored after each arm."
+  },
+  "traceContract": {
+    "phase": "X",
+    "owner": "Child main PID/TID from exact boot marks",
+    "window": "start <= ts <= ts+dur <= end",
+    "gcName": "MajorGC",
+    "deletionName": "ThreadControllerImpl::RunTask",
+    "deletionArgsSrcFunc": "RequestToDeleteHandlersOnMainThread",
+    "deletionArgsSrcFile": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+    "mirrorPolicy": "Exclude Edge_RunTask and deduplicate exact canonical duplicates",
+    "partialPolicy": "Report boundary partials separately; exclude from totals",
+    "cpuField": "tdur / 1000 when provided; not GPU time"
+  },
+  "validity": {
+    "pairVerified": true,
+    "finalSignaturesEqual": true,
+    "sourceHashesMatchFrozen": true
+  },
+  "arms": {
+    "same": {
+      "verified": true,
+      "rendererPidTid": {
+        "parent": [
+          584716,
+          543184
+        ],
+        "child": [
+          584716,
+          543184
+        ]
+      },
+      "separateRenderer": false,
+      "audioInit": {
+        "id": 1,
+        "status": {
+          "state": "running",
+          "sampleRate": 48000,
+          "baseLatency": 0.01,
+          "outputLatency": 0
+        },
+        "activation": {
+          "active": true,
+          "ever": true
+        },
+        "receivedMs": 1794851956107.2998,
+        "sentMs": 1794851956102.1,
+        "parentReceivedMs": 1794851956356.5
+      },
+      "directChildClick": null,
+      "initial": {
+        "created": 116,
+        "persistent": 116,
+        "rng": {
+          "seed": 3435730586,
+          "draws": 15
+        }
+      },
+      "finalSignature": {
+        "rng": {
+          "seed": 3637073206,
+          "draws": 44283
+        },
+        "created": 73707,
+        "stolen": 1,
+        "voicePeak": 18,
+        "active": 0,
+        "voices": 0,
+        "live": 116,
+        "persistent": 116,
+        "cats": {
+          "ownstep": 0,
+          "casing": 0,
+          "impact": 0,
+          "step": 0
+        },
+        "foot": false
+      },
+      "restored": true,
+      "batchCount": 3720,
+      "errors": [],
+      "pageErrors": [],
+      "engineErrors": [],
+      "transientNodeRatePerLoadMinute": 73707.0,
+      "nodeTypes": {
+        "createGain": 31916,
+        "createBufferSource": 12639,
+        "createBiquadFilter": 16621,
+        "createOscillator": 8549,
+        "createChannelMerger": 2389,
+        "createDelay": 1593
+      },
+      "sourceStarts": 21188,
+      "lateSourceStarts": 8124,
+      "lateSourceStartFraction": 0.3834245799509156,
+      "batchesWithLateSources": 1751,
+      "lateSourceStartsAfterFirstSecond": 7976,
+      "sourceStartsAfterFirstSecond": 20832,
+      "worstSourceStartLatenessMs": 113.73323567708482,
+      "parentIssueDelayMs": {
+        "p50": 0.300048828125,
+        "p95": 1.566650390625,
+        "p99": 1.86669921875,
+        "max": 106.63330078125
+      },
+      "parentHeartbeatMaxDelayMs": 104.300048828125,
+      "maxPendingACKs": 1,
+      "oneWayMessageMs": {
+        "p50": 0.099853515625,
+        "p95": 0.199951171875,
+        "p99": 0.300048828125,
+        "max": 1.19970703125
+      },
+      "batchApplyMs": {
+        "p50": 0.3000001907348633,
+        "p95": 1.0999999046325684,
+        "p99": 1.5,
+        "max": 2.9000000953674316
+      },
+      "canonicalNativeDeletion": {
+        "count": 7622,
+        "totalWallMs": 268.0629999999917,
+        "maxWallMs": 106.649,
+        "maxThreadMs": 105.289
+      },
+      "MajorGC": {
+        "count": 4,
+        "totalWallMs": 30.381,
+        "maxWallMs": 13.201,
+        "maxThreadMs": 12.78
+      },
+      "largestNativeDeletionEvents": [
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "kind": "nativeHandlerDeletion",
+          "src_file": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "src_func": "RequestToDeleteHandlersOnMainThread",
+          "atMs": 29714.997,
+          "wallMs": 106.649,
+          "threadMs": 105.289
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "kind": "nativeHandlerDeletion",
+          "src_file": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "src_func": "RequestToDeleteHandlersOnMainThread",
+          "atMs": 40850.316,
+          "wallMs": 43.05,
+          "threadMs": 42.89
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "kind": "nativeHandlerDeletion",
+          "src_file": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "src_func": "RequestToDeleteHandlersOnMainThread",
+          "atMs": 51842.715,
+          "wallMs": 31.546,
+          "threadMs": 31.393
+        }
+      ],
+      "MajorGCEvents": [
+        {
+          "name": "MajorGC",
+          "kind": "MajorGC",
+          "src_file": null,
+          "src_func": null,
+          "atMs": 29693.609,
+          "wallMs": 13.201,
+          "threadMs": 12.78
+        },
+        {
+          "name": "MajorGC",
+          "kind": "MajorGC",
+          "src_file": null,
+          "src_func": null,
+          "atMs": 51835.769,
+          "wallMs": 6.782,
+          "threadMs": 6.35
+        },
+        {
+          "name": "MajorGC",
+          "kind": "MajorGC",
+          "src_file": null,
+          "src_func": null,
+          "atMs": 40836.535,
+          "wallMs": 5.537,
+          "threadMs": 5.347
+        },
+        {
+          "name": "MajorGC",
+          "kind": "MajorGC",
+          "src_file": null,
+          "src_func": null,
+          "atMs": 30324.98,
+          "wallMs": 4.861,
+          "threadMs": 4.257
+        }
+      ],
+      "partialBoundaryCount": 0,
+      "ignoredEdgeRunTaskMirrors": 0
+    },
+    "cross": {
+      "verified": true,
+      "rendererPidTid": {
+        "parent": [
+          558824,
+          563260
+        ],
+        "child": [
+          560456,
+          597880
+        ]
+      },
+      "separateRenderer": true,
+      "audioInit": {
+        "id": 1,
+        "status": {
+          "state": "running",
+          "sampleRate": 48000,
+          "baseLatency": 0.01,
+          "outputLatency": 0.04
+        },
+        "activation": {
+          "active": false,
+          "ever": false
+        },
+        "receivedMs": 1794852026546.5999,
+        "sentMs": 1794852026544.9,
+        "parentReceivedMs": 1794852026703.4
+      },
+      "directChildClick": null,
+      "initial": {
+        "created": 116,
+        "persistent": 116,
+        "rng": {
+          "seed": 3435730586,
+          "draws": 15
+        }
+      },
+      "finalSignature": {
+        "rng": {
+          "seed": 3637073206,
+          "draws": 44283
+        },
+        "created": 73707,
+        "stolen": 1,
+        "voicePeak": 18,
+        "active": 0,
+        "voices": 0,
+        "live": 116,
+        "persistent": 116,
+        "cats": {
+          "ownstep": 0,
+          "casing": 0,
+          "impact": 0,
+          "step": 0
+        },
+        "foot": false
+      },
+      "restored": true,
+      "batchCount": 3720,
+      "errors": [],
+      "pageErrors": [],
+      "engineErrors": [],
+      "transientNodeRatePerLoadMinute": 73707.0,
+      "nodeTypes": {
+        "createGain": 31916,
+        "createBufferSource": 12639,
+        "createBiquadFilter": 16621,
+        "createOscillator": 8549,
+        "createChannelMerger": 2389,
+        "createDelay": 1593
+      },
+      "sourceStarts": 21188,
+      "lateSourceStarts": 214,
+      "lateSourceStartFraction": 0.010100056635831602,
+      "batchesWithLateSources": 54,
+      "lateSourceStartsAfterFirstSecond": 202,
+      "sourceStartsAfterFirstSecond": 20832,
+      "worstSourceStartLatenessMs": 110.39990234375097,
+      "parentIssueDelayMs": {
+        "p50": 0.43310546875,
+        "p95": 1.300048828125,
+        "p99": 1.800048828125,
+        "max": 8.099853515625
+      },
+      "parentHeartbeatMaxDelayMs": 3.39990234375,
+      "maxPendingACKs": 7,
+      "oneWayMessageMs": {
+        "p50": 0.39990234375,
+        "p95": 0.800048828125,
+        "p99": 2.800048828125,
+        "max": 112.800048828125
+      },
+      "batchApplyMs": {
+        "p50": 0.3000001907348633,
+        "p95": 1.0999999046325684,
+        "p99": 1.5,
+        "max": 2
+      },
+      "canonicalNativeDeletion": {
+        "count": 7722,
+        "totalWallMs": 354.2159999999935,
+        "maxWallMs": 116.624,
+        "maxThreadMs": 115.587
+      },
+      "MajorGC": {
+        "count": 4,
+        "totalWallMs": 49.386,
+        "maxWallMs": 17.315,
+        "maxThreadMs": 18.285
+      },
+      "largestNativeDeletionEvents": [
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "kind": "nativeHandlerDeletion",
+          "src_file": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "src_func": "RequestToDeleteHandlersOnMainThread",
+          "atMs": 30123.03,
+          "wallMs": 116.624,
+          "threadMs": 115.587
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "kind": "nativeHandlerDeletion",
+          "src_file": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "src_func": "RequestToDeleteHandlersOnMainThread",
+          "atMs": 44015.647,
+          "wallMs": 80.056,
+          "threadMs": 78.747
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "kind": "nativeHandlerDeletion",
+          "src_file": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "src_func": "RequestToDeleteHandlersOnMainThread",
+          "atMs": 57731.679,
+          "wallMs": 77.417,
+          "threadMs": 76.995
+        }
+      ],
+      "MajorGCEvents": [
+        {
+          "name": "MajorGC",
+          "kind": "MajorGC",
+          "src_file": null,
+          "src_func": null,
+          "atMs": 30103.314,
+          "wallMs": 17.315,
+          "threadMs": 18.285
+        },
+        {
+          "name": "MajorGC",
+          "kind": "MajorGC",
+          "src_file": null,
+          "src_func": null,
+          "atMs": 43998.437,
+          "wallMs": 16.846,
+          "threadMs": 14.809
+        },
+        {
+          "name": "MajorGC",
+          "kind": "MajorGC",
+          "src_file": null,
+          "src_func": null,
+          "atMs": 57712.423,
+          "wallMs": 10.143,
+          "threadMs": 9.861
+        },
+        {
+          "name": "MajorGC",
+          "kind": "MajorGC",
+          "src_file": null,
+          "src_func": null,
+          "atMs": 30722.076,
+          "wallMs": 5.082,
+          "threadMs": 4.627
+        }
+      ],
+      "partialBoundaryCount": 0,
+      "ignoredEdgeRunTaskMirrors": 0
+    }
+  },
+  "representativeness": {
+    "actualTransientNodesPerLoadMinute": 73707,
+    "gameAuditThreeCueNodes": 86902,
+    "gameAuditTotalNodes": 112529,
+    "actualVersusThreeCueAuditFraction": 0.848162297760696,
+    "actualVersusWholeGameAuditFraction": 0.6550044877320513,
+    "threeCueGameAuditFraction": 0.7722631499435701,
+    "auditSource": "work/browser-render-next/evidence/cue-audit-native-high-1.json",
+    "limitations": [
+      "One ordered pair, without reverse-order replication.",
+      "Cue call quotas match the audit; exact argument mix and timing are representative, not a captured full-game command replay.",
+      "Missing other cue classes, quota interactions, Three/DOM world heap, rendering, full native AI, and input-driven messages. Both arms already have small non-game heaps.",
+      "No FPS, physical-present, PCM onset/speaker latency, sound fidelity, or full-process/resource/package measurement.",
+      "Late native source.start counts are component-source calls, not distinct voices or measured missing sounds.",
+      "One wall/audio clock anchor, audio quantum/phase and the very short native ~3ms lead can affect the fraction of slightly late starts.",
+      "Final live===persistent is JS accounting, not proof that native handlers or memory have all been reclaimed."
+    ]
+  }
+}
