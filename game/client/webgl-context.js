@@ -148,7 +148,7 @@ export function installWebGLRecovery(gh, suspend) {
       : "正在恢复显卡画面，请稍候再继续";
   };
   const guardedRender = function (dt) {
-    if (available()) return render.call(gfx, dt);
+    if (gfx._warming || available()) return render.call(gfx, dt);
     if (gh.G.state === "playing") suspend("webgl-unavailable");
   };
   const guardedResume = function (...args) {
@@ -162,6 +162,7 @@ export function installWebGLRecovery(gh, suspend) {
   callbacks.onResume = guardedResume;
   const lost = () => {
     revision++;
+    gfx.preparation?.invalidate(Error("WebGL context lost"));
     suspend("webgl-context-lost");
     explain();
   };
@@ -176,27 +177,28 @@ export function installWebGLRecovery(gh, suspend) {
         await Promise.resolve();
         if (disposed || record.context.isContextLost()) break;
         if (generation !== revision) continue;
-        gfx.renderer.setRenderTarget(null);
-        resetShadows(gfx.scene);
-        resetShadows(gfx.vmScene);
-        const atlas = gfx.fx?.atlas;
-        if (atlas) {
-          atlas.rt.dispose();
-          atlas.ready = false;
-        }
-        gfx._build();
-        gfx.resize();
-        gfx._shadowAt = 0;
-        gfx._reflectAt = 0;
-        gfx.renderer.shadowMap.needsUpdate = true;
-        gfx.snapExposure();
-        // These captures contain GPU-produced pixels, not CPU images Three
-        // can re-upload. The prototype patch reuses its real capture routine.
-        await gfx.restoreEnvironment();
+        await gfx.prepare("context-restore", async () => {
+          gfx.renderer.setRenderTarget(null);
+          resetShadows(gfx.scene);
+          resetShadows(gfx.vmScene);
+          const atlas = gfx.fx?.atlas;
+          if (atlas) {
+            atlas.rt.dispose();
+            atlas.ready = false;
+          }
+          gfx._build();
+          gfx._resize();
+          gfx._shadowAt = 0;
+          gfx._reflectAt = 0;
+          gfx.renderer.shadowMap.needsUpdate = true;
+          gfx.snapExposure();
+          // These captures contain GPU-produced pixels, not CPU images Three
+          // can re-upload. The prototype patch reuses its real capture routine.
+          await gfx.restoreEnvironment();
+        });
         if (disposed || record.context.isContextLost()) break;
         if (generation !== revision) continue;
         suspend("webgl-context-restored");
-        render.call(gfx, 0);
         record.status = "restored";
         record.error = null;
         describe(record);

@@ -49,12 +49,14 @@ async function install() {
   const originalQuality = gfx.setQuality.bind(gfx);
   const originalScale = gfx.setRenderScale.bind(gfx);
   function apply({ quality, scale }) {
+    let result;
     if (quality !== undefined) {
-      if (quality !== gfx.quality) originalQuality(quality);
+      if (quality !== gfx.quality || gfx.preparation?.pending) result = originalQuality(quality);
     } else if (scale !== undefined) {
-      originalScale(scale);
+      result = originalScale(scale);
     }
     reset();
+    return result;
   }
   gfx.setQuality = (value) => {
     const thin =
@@ -63,13 +65,15 @@ async function install() {
       navigator.hardwareConcurrency <= 4 ||
       navigator.deviceMemory <= 4;
     const target = value === "auto" ? (thin ? "low" : "medium") : value;
-    apply({ quality: target });
+    const result = apply({ quality: target });
     policy.reset(performance.now());
+    return result;
   };
   gfx.setRenderScale = (value) => {
-    originalScale(value);
+    const result = originalScale(value);
     reset();
     policy.reset(performance.now());
+    return result;
   };
   // An old desktop/high preset must not rebuild large targets just after the
   // bounded mobile boot. Explicit graphics changes during this visit still work.
@@ -78,7 +82,7 @@ async function install() {
 
   const render = gfx.render;
   gfx.render = function (dt) {
-    if (gl.isContextLost()) {
+    if (gl.isContextLost() || (!gfx._warming && (gfx.preparation?.pending || gfx.preparation?.error))) {
       renderMs = 0;
       reset();
       return;
@@ -158,6 +162,8 @@ async function install() {
       physicsBodies: physics.bodies.length,
       actors: d.ctx.match.actors.length,
       mode: GH.G.state,
+      preparing: gfx.preparation?.pending || false,
+      preparationError: gfx.preparation?.error?.message || null,
       network: d.network,
     };
     report.textContent = JSON.stringify(state);
@@ -200,7 +206,7 @@ async function install() {
     const next = policy.observe({
       now: performance.now(),
       automatic: state.automatic,
-      playing: state.mode === "playing",
+      playing: state.mode === "playing" && !state.preparing && !state.preparationError,
       hidden: document.hidden,
       count: used,
       mean,

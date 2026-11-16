@@ -86,6 +86,8 @@ export class Engine extends EventTarget {
   }
   async enter(primary = "ar") {
     await this.ready();
+    await globalThis.GHBoot?.runtimeReady;
+    await this.debug.gfx?.whenReady?.();
     if (this.active) return;
     this.active = true;
     this.lastUpdateAt = null;
@@ -142,6 +144,9 @@ export class Engine extends EventTarget {
     p.damage = () => {};
     ctx.settings.primary = primary;
     ctx.arsenal.reset(primary);
+    ctx.audio.init();
+    await ctx.audio.prepareCurrent?.([primary, "pistol"]);
+    await d.gfx?.whenReady?.();
     ctx.arsenal.grenades = 0;
     p.update = (dt, ars) => this.update(dt, ars);
     ctx.combat.fire = (actor, eye, dir) => {
@@ -256,6 +261,12 @@ export class Engine extends EventTarget {
   }
   deploy() {
     if (!this.active) return;
+    const gfx = this.debug.gfx;
+    if (gfx?.preparation?.pending || gfx?.preparation?.error) {
+      this.pause();
+      this.ctx.hud.hint("正在准备画面，完成后请点击继续", 6);
+      return;
+    }
     this.lastUpdateAt = null;
     this.ctx.audio.init();
     this.ctx.audio.music.menu(false);
@@ -267,6 +278,10 @@ export class Engine extends EventTarget {
   }
   async lock() {
     if (!this.active || this.gh.G.state !== "playing") return;
+    if (this.debug.gfx?.preparation?.pending || this.debug.gfx?.preparation?.error) {
+      this.ctx.hud.hint("正在准备画面，完成后请再次点击继续", 5);
+      return;
+    }
     this.ctx.audio.init();
     if (globalThis.GHInput?.effective === "gamepad") {
       this.releaseDrag();
@@ -696,6 +711,12 @@ export class Engine extends EventTarget {
       if (now - item.received <= INITIAL_EVENT_MAX_AGE)
         this.applyEvent(item.event);
   }
+  warmEquipment(root) {
+    const gfx = this.debug.gfx;
+    if (!gfx?.prepare) return;
+    (gfx.warmRoots ||= new Set()).add(root);
+    gfx.prepare("remote-equipment");
+  }
   createRemote(p) {
     // Native palette 0 is blue and palette 1 is red. Keep the authoritative
     // team on actors; choose model colours relative to the local player.
@@ -709,6 +730,7 @@ export class Engine extends EventTarget {
     rig.setWeapon(familyOf(p.weapon), p.weapon);
     rig.root.visible = p.alive;
     ctx.scene.add(rig.root);
+    this.warmEquipment(rig.root);
     rig.root.traverse((n) => {
       if (n.isMesh) {
         // Remote rigs are cosmetic. Let Three.js cull off-screen meshes and
@@ -774,6 +796,7 @@ export class Engine extends EventTarget {
       if (r.weapon !== p.weapon) {
         r.rig.setWeapon(familyOf(p.weapon), p.weapon);
         r.weapon = p.weapon;
+        this.warmEquipment(r.rig.root);
       }
       const state = r.state;
       state.pos.set(

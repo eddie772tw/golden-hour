@@ -16830,14 +16830,12 @@ void main() {
           else d0(gt, K0, ft), it.add(gt);
         }), g = v.pop(), it;
       }, this.compileAsync = function(g0, G0, K0 = null) {
-        let ghProperties = H0, it = M ? null : this.compile(g0, G0, K0);
+        let ghProperties = H0, ghDeadline = performance.now() + 120000, it = M ? null : this.compile(g0, G0, K0);
         return new Promise((ft, ghReject) => {
           function gt() {
             try {
-              if (M) {
-                setTimeout(gt, 50);
-                return;
-              }
+              if (M) throw Error("WebGL context lost during shader preparation");
+              if (performance.now() > ghDeadline) throw Error("Shader preparation timed out");
               if (it === null || ghProperties !== H0) {
                 ghProperties = H0;
                 it = y.compile(g0, G0, K0);
@@ -17379,6 +17377,7 @@ void main() {
       for (let t = 0; t < this.renderTargetsHorizontal.length; t++) this.renderTargetsHorizontal[t].dispose();
       for (let t = 0; t < this.renderTargetsVertical.length; t++) this.renderTargetsVertical[t].dispose();
       this.renderTargetBright.dispose();
+      this.materialHighPassFilter.dispose();
       for (let t = 0; t < this.separableBlurMaterials.length; t++) this.separableBlurMaterials[t].dispose();
       this.compositeMaterial.dispose(), this.blendMaterial.dispose(), this._basic.dispose(), this._fsQuad.dispose();
     }
@@ -18729,7 +18728,7 @@ void main() {`).replace("#include <lights_fragment_begin>", `#include <lights_fr
     let a = new Es(e);
     return a.colorSpace = hi, a.minFilter = Ln, a.generateMipmaps = true, l9 = a;
   }
-  var c9 = { low: { scale: 0.7, samples: 0, shadow: 512, shadowHz: 5, reflectionHz: 0, bloom: false, sharpen: 0.35, maxDpr: 1, ao: false, refl: 0, rays: 0, soft: false, vol: 0, distort: false, mblur: 0, dirt: 0, streak: 0, dof: 0, atlas: globalThis.GHBoot?.policy.mobile ? 1024 : 2048, fxK: 0.55, vmblur: 0 }, medium: { scale: 0.85, samples: 0, shadow: 1024, shadowHz: 10, reflectionHz: 0, bloom: false, sharpen: 0.3, maxDpr: 1, ao: false, refl: 0, rays: 0, soft: false, vol: 0, distort: false, mblur: 0, dirt: 0, streak: 0, dof: 0, atlas: 2048, fxK: 0.7, vmblur: 0 }, high: { scale: 1, samples: 4, shadow: 4096, bloom: true, sharpen: 0.22, maxDpr: 1.25, ao: true, refl: 0.5, rays: 40, soft: true, vol: 20, distort: true, mblur: 8, dirt: 0.34, streak: 0.3, dof: 1, atlas: 4096, fxK: 1, vmblur: 9 }, ultra: { scale: 1, samples: 4, shadow: 4096, bloom: true, sharpen: 0.15, maxDpr: 2, ao: true, refl: 0.75, rays: 56, soft: true, vol: 28, distort: true, mblur: 12, dirt: 0.34, streak: 0.3, dof: 1, atlas: 4096, fxK: 1, vmblur: 13 } }, OM = new Ft(), kL = new Lt(), CL = new Lt(), NM = new Dt(), f9 = class extends Dr {
+  var c9 = { low: { scale: 0.7, samples: 0, shadow: 512, shadowHz: 5, reflectionHz: 0, bloom: false, sharpen: 0.35, maxDpr: 1, ao: false, refl: 0, rays: 0, soft: false, vol: 0, distort: false, mblur: 0, dirt: 0, streak: 0, dof: 0, atlas: globalThis.GHBoot?.policy.mobile ? 1024 : 2048, fxK: 0.55, vmblur: 0 }, medium: { scale: 0.85, samples: 0, shadow: 1024, shadowHz: 10, reflectionHz: 0, bloom: false, sharpen: 0.3, maxDpr: 1, ao: false, refl: 0, rays: 0, soft: false, vol: 0, distort: false, mblur: 0, dirt: 0, streak: 0, dof: 0, atlas: 2048, fxK: 0.7, vmblur: 0 }, high: { scale: 1, samples: 4, shadow: 4096, reflectionHz: 30, bloom: true, sharpen: 0.22, maxDpr: 1.25, ao: true, refl: 0.5, rays: 40, soft: true, vol: 20, distort: true, mblur: 8, dirt: 0.34, streak: 0.3, dof: 1, atlas: 4096, fxK: 1, vmblur: 9 }, ultra: { scale: 1, samples: 4, shadow: 4096, reflectionHz: 30, bloom: true, sharpen: 0.15, maxDpr: 2, ao: true, refl: 0.75, rays: 56, soft: true, vol: 28, distort: true, mblur: 12, dirt: 0.34, streak: 0.3, dof: 1, atlas: 4096, fxK: 1, vmblur: 13 } }, OM = new Ft(), kL = new Lt(), CL = new Lt(), NM = new Dt(), f9 = class extends Dr {
     constructor(t) {
       super(), this.gfx = t, this.needsSwap = true, this.uniforms = { tDiffuse: { value: null }, tVol: { value: null }, tDist: { value: null }, uVolK: { value: 0 }, uDistK: { value: 0 }, uBlur: { value: 0 }, uReproj: { value: new Lt() } }, this.mat = new We({ uniforms: this.uniforms, defines: { MB_TAPS: t.q.mblur | 0 }, vertexShader: iu, fragmentShader: AY, depthTest: false, depthWrite: false, blending: Xn }), this.quad = new ic(this.mat), this.distRT = new Vs(2, 2, { type: Yn, depthBuffer: false, minFilter: ls, magFilter: ls }), this.w = 2, this.h = 2;
     }
@@ -18924,9 +18923,13 @@ void main() {`).replace("#include <lights_fragment_begin>", `#include <lights_fr
       }
       this.fxPass = null, this.fx && (this.fxPass = a(new f9(this)), this.fxPass.setSize(s.x, s.y)), a(this.vmPass), this.vmBlurPass = null, t.vmblur > 0 && (this.vmBlurPass = a(new d9(this)), this.vmBlurPass.setSize(s.x, s.y)), this.rays = null, this.streak = null, t.bloom ? (a(new Cd(RY)), t.rays && (this.rays = new Cd({ ...AL, uniforms: Pl.clone(AL.uniforms), defines: { RAY_SAMPLES: t.rays } }), a(this.rays)), a(this.bloom), t.streak > 0 && (this.streak = a(new u9(this)), this.streak.setSize(s.x, s.y))) : this._passes.push(this.bloom), this.meter = a(new p9(this)), this.meter.setSize(s.x, s.y), a(this.final);
       let h = this.uniforms;
-      h.tDirt.value = t.dirt > 0 && t.bloom ? HY() : null, h.uDirt.value = t.bloom ? t.dirt : 0, h.tBloom.value = t.bloom ? this.bloom.renderTargetsHorizontal[0].texture : null, h.tStreak.value = this.streak ? this.streak.rt.texture : null, h.uStreak.value = this.streak ? t.streak : 0, h.uDof.value = t.dof, h.tAdapt.value = this.meter.texture, h.uAuto.value = this.exposure.auto, this.camera.aspect = this.vmCamera.aspect = innerWidth / innerHeight, this.camera.updateProjectionMatrix(), this.vmCamera.updateProjectionMatrix(), this._hasPrev = false, this.fx && this.fx.onQuality(t);
+      h.tDirt.value = t.dirt > 0 && t.bloom ? HY() : null, h.uDirt.value = t.bloom ? t.dirt : 0, h.tBloom.value = t.bloom ? this.bloom.renderTargetsHorizontal[0].texture : null, h.tStreak.value = this.streak ? this.streak.rt.texture : null, h.uStreak.value = this.streak ? t.streak : 0, h.uDof.value = t.dof, h.tAdapt.value = this.meter.texture, h.uAuto.value = this.exposure.auto, this.camera.aspect = this.vmCamera.aspect = innerWidth / innerHeight, this.camera.updateProjectionMatrix(), this.vmCamera.updateProjectionMatrix(), this._hasPrev = false, this._reflectAt = null, this.fx && this.fx.onQuality(t);
     }
     setMotionBlur(t) {
+      if (this.preparation) return this.prepare("motion-blur", () => this._setMotionBlur(t));
+      return this._setMotionBlur(t);
+    }
+    _setMotionBlur(t) {
       let e = t === "off" ? 0 : t === "low" ? 0.55 : 1;
       this.motionBlur = e, this.vmBlur = e;
     }
@@ -18941,19 +18944,31 @@ void main() {`).replace("#include <lights_fragment_begin>", `#include <lights_fr
       this.fx = t, this._build(), this.onQuality && this.onQuality(this.q);
     }
     setQuality(t) {
+      if (this.preparation) return this.prepare("quality", () => this._setQuality(t));
+      return this._setQuality(t);
+    }
+    _setQuality(t) {
       t === "auto" && (t = globalThis.GHBoot?.policy.mobile ? "low" : "medium");
       if (t === this.quality && this.q === c9[t] && this.composer) return;
       c9[t] && (this.quality = t, this.q = c9[t], this.q.scale = this._renderScale, this.renderer.shadowMap.type = this.q.soft ? gx : sz, this._build(), this.onQuality && this.onQuality(this.q));
     }
     setRenderScale(t) {
+      if (this.preparation) return this.prepare("scale", () => this._setRenderScale(t));
+      return this._setRenderScale(t);
+    }
+    _setRenderScale(t) {
       t = Number.isFinite(Number(t)) ? Math.max(0.5, Math.min(1, Number(t))) : 1;
       if (t === this._renderScale) return false;
-      this._renderScale = t, this.q.scale = t, this.resize();
+      this._renderScale = t, this.q.scale = t, this._resize();
       return true;
     }
     resize() {
+      if (this.preparation) return this.prepare("resize", () => this._resize());
+      return this._resize();
+    }
+    _resize() {
       let t = this._measure();
-      this.fx && this.fx.releaseTargets(), this.composer.setSize(t.x, t.y), this.uniforms.uRes.value.set(t.x, t.y), this.camera.aspect = this.vmCamera.aspect = innerWidth / innerHeight, this.camera.updateProjectionMatrix(), this.vmCamera.updateProjectionMatrix(), this._hasPrev = false, this.onQuality && this.onQuality(this.q);
+      this.fx && this.fx.releaseTargets(), this.composer.setSize(t.x, t.y), this.uniforms.uRes.value.set(t.x, t.y), this.camera.aspect = this.vmCamera.aspect = innerWidth / innerHeight, this.camera.updateProjectionMatrix(), this.vmCamera.updateProjectionMatrix(), this._hasPrev = false, this._reflectAt = null, this.onQuality && this.onQuality(this.q);
     }
     _motion(t) {
       let e = this.camera, s = this.q;
@@ -18971,19 +18986,38 @@ void main() {`).replace("#include <lights_fragment_begin>", `#include <lights_fr
       this._blurK = n, this._prevQ.copy(OM), this._hasPrev = true;
     }
     render(t) {
-      this.time += t, this.uniforms.uTime.value = this.time;
-      let e = this.renderer, s = this.fx;
-      e.info.reset(), e.shadowMap.needsUpdate = e.shadowMap.needsUpdate || !this._shadowAt || this.time - this._shadowAt >= 1 / (this.q.shadowHz || 60), e.shadowMap.needsUpdate && (this._shadowAt = this.time), this.preRender && this.q.refl > 0 && (this.quality !== "medium" || !this._reflectAt || this.time - this._reflectAt >= 1 / 30) && (this._reflectAt = this.time, true) && (s && s.mirror(true), this.preRender(e), s && s.mirror(false)), this._motion(t);
-      {
-        let i = this.camera.position;
-        i.distanceToSquared(this._lastCam) > 9 && this.snapExposure(), this._lastCam.copy(i), this.uniforms.uAuto.value = this.exposure.auto;
+      if (!this._warming && (this.preparation?.pending || this.preparation?.error)) return;
+      let ghScene = this.scene, ghAuto = ghScene.matrixWorldAutoUpdate;
+      try {
+        // Simulation has finished; all world passes can share this matrix snapshot.
+        if (ghAuto === true) ghScene.updateMatrixWorld(), ghScene.matrixWorldAutoUpdate = false;
+        this.time += t, this.uniforms.uTime.value = this.time;
+        let e = this.renderer, s = this.fx;
+        e.info.reset(), e.shadowMap.needsUpdate = e.shadowMap.needsUpdate || !this._shadowAt || this.time - this._shadowAt >= 1 / (this.q.shadowHz || 60), e.shadowMap.needsUpdate && (this._shadowAt = this.time);
+        // Avoid dropping an extra frame through rounding of accumulated seconds.
+        if (this.preRender && this.q.refl > 0 && this.q.reflectionHz > 0 && (this._reflectAt == null || this.time - this._reflectAt + 1e-9 >= 1 / this.q.reflectionHz)) {
+          try {
+            s && s.mirror(true);
+            this.preRender(e);
+            this._reflectAt = this.time;
+          } finally {
+            s && s.mirror(false);
+          }
+        }
+        this._motion(t);
+        {
+          let i = this.camera.position;
+          i.distanceToSquared(this._lastCam) > 9 && this.snapExposure(), this._lastCam.copy(i), this.uniforms.uAuto.value = this.exposure.auto;
+        }
+        let n = Math.min(1, this.rayK / 0.3);
+        if (this.bloom.strength = 0.3 * (1 - 0.42 * n), this.rays) {
+          let i = this.rays.uniforms;
+          i.uSun.value.copy(this.sunUv), i.uK.value = this.rayK * 0.7, i.uAspect.value = this.camera.aspect;
+        }
+        this.composer.render(t);
+      } finally {
+        ghScene.matrixWorldAutoUpdate = ghAuto;
       }
-      let n = Math.min(1, this.rayK / 0.3);
-      if (this.bloom.strength = 0.3 * (1 - 0.42 * n), this.rays) {
-        let i = this.rays.uniforms;
-        i.uSun.value.copy(this.sunUv), i.uK.value = this.rayK * 0.7, i.uAspect.value = this.camera.aspect;
-      }
-      this.composer.render(t);
     }
   };
   var Ii = new a0(-0.4, 0.285, 0.87).normalize(), pb = new Dt(16753242), Pd = -180, m9 = `
@@ -21032,10 +21066,14 @@ varying vec2 vReflG;`).replace("#include <opaque_fragment>", `
       yg.set(0, this.planeY, 0), QL.subVectors(yg, e.position).reflect(ZM).negate().add(yg), M9.extractRotation(e.matrixWorld), JL.set(0, 0, -1).applyMatrix4(M9).add(e.position), tD.subVectors(yg, JL).reflect(ZM).negate().add(yg), s.position.copy(QL), s.up.set(0, 1, 0).applyMatrix4(M9).reflect(ZM), s.lookAt(tD), s.near = e.near, s.far = e.far, s.updateMatrixWorld(), s.projectionMatrix.copy(e.projectionMatrix), this.uni.uReflMat.value.set(0.5, 0, 0, 0.5, 0, 0.5, 0, 0.5, 0, 0, 0.5, 0.5, 0, 0, 0, 1).multiply(s.projectionMatrix).multiply(s.matrixWorldInverse), bb.setFromNormalAndCoplanarPoint(ZM, yg).applyMatrix4(s.matrixWorldInverse), ru.set(bb.normal.x, bb.normal.y, bb.normal.z, bb.constant);
       let n = s.projectionMatrix.elements;
       xb.x = (Math.sign(ru.x) + n[8]) / n[0], xb.y = (Math.sign(ru.y) + n[9]) / n[5], xb.z = -1, xb.w = (1 + n[10]) / n[14], ru.multiplyScalar(2 / ru.dot(xb)), n[2] = ru.x, n[6] = ru.y, n[10] = ru.z + 1 - 3e-3, n[14] = ru.w, s.projectionMatrixInverse.copy(s.projectionMatrix).invert();
-      for (let r of this.hide) r._rv = r.visible, r.visible = false;
-      let i = t.getRenderTarget(), a = this.uni.tRefl.value;
-      this.uni.tRefl.value = null, t.setRenderTarget(this.rt), t.clear(), t.render(this.scene, s), t.setRenderTarget(i), this.uni.tRefl.value = a;
-      for (let r of this.hide) r.visible = r._rv;
+      let i = t.getRenderTarget(), a = this.uni.tRefl.value, r = t.getActiveCubeFace(), l = t.getActiveMipmapLevel(), c = this.hide.map((h) => [h, h.visible]);
+      try {
+        for (let [h] of c) h.visible = false;
+        this.uni.tRefl.value = null, t.setRenderTarget(this.rt), t.clear(), t.render(this.scene, s);
+      } finally {
+        t.setRenderTarget(i, r, l), this.uni.tRefl.value = a;
+        for (let [h, f] of c) h.visible = f;
+      }
     }
   };
   var Hr = 256, Vm = Hr - 1, Wo = Math.PI * 2;
@@ -24845,11 +24883,11 @@ void RE_Direct_Leaf( const in IncidentLight directLight, const in vec3 geometryP
     }
   }, Mw = class {
     constructor() {
-      this.cols = [], this.grid = /* @__PURE__ */ new Map(), this.batches = /* @__PURE__ */ new Map(), this.meshes = [], this.surfOf = /* @__PURE__ */ new Map(), this._stamp = 0, this._q = [], this._ao = { pos: [], col: [] }, this.loose = [];
+      this.cols = [], this.grid = /* @__PURE__ */ new Map(), this.batches = /* @__PURE__ */ new Map(), this.meshes = [], this.surfOf = /* @__PURE__ */ new Map(), this._stamp = 0, this._q = [], this._rayQ = [], this._ao = { pos: [], col: [] }, this.loose = [];
     }
     addCollider(t, e, s, n, i, a, r = "concrete", l = null) {
       let c = { x0: Math.min(t, n), y0: Math.min(e, i), z0: Math.min(s, a), x1: Math.max(t, n), y1: Math.max(e, i), z1: Math.max(s, a), surf: r, pane: null, off: false, noRay: false, noMove: false, onShot: null, stamp: 0 };
-      l && Object.assign(c, l), this.cols.push(c);
+      l && Object.assign(c, l), c._rayOrder = this.cols.length, this.cols.push(c);
       let h = Math.floor(c.x0 / Gd), f = Math.floor(c.x1 / Gd), u = Math.floor(c.z0 / Gd), d = Math.floor(c.z1 / Gd);
       for (let m = h; m <= f; m++) for (let p = u; p <= d; p++) {
         let x = (m + 512) * 1024 + (p + 512), g = this.grid.get(x);
@@ -24937,13 +24975,28 @@ void RE_Direct_Leaf( const in IncidentLight directLight, const in vec3 geometryP
     raycast(t, e, s, n, i, a, r, l, c = false) {
       Math.abs(n) < 1e-9 && (n = 1e-9), Math.abs(i) < 1e-9 && (i = 1e-9), Math.abs(a) < 1e-9 && (a = 1e-9);
       let h = 1 / n, f = 1 / i, u = 1 / a, d = this.cols, m = r, p = null, x = 0;
+      if (r > 0 && Number.isFinite(t) && Number.isFinite(e) && Number.isFinite(s) && Number.isFinite(n) && Number.isFinite(i) && Number.isFinite(a) && Number.isFinite(r)) {
+        let endX = t + n * r, endZ = s + a * r,
+          x0 = Math.min(t, endX) - Nr, z0 = Math.min(s, endZ) - Nr,
+          x1 = Math.max(t, endX) + Nr, z1 = Math.max(s, endZ) + Nr,
+          cx0 = Math.floor(x0 / Gd), cz0 = Math.floor(z0 / Gd), cx1 = Math.floor(x1 / Gd), cz1 = Math.floor(z1 / Gd),
+          cellCap = Math.max(1, Math.min(64, Math.floor(d.length / 4)));
+        // ponytail: bound rectangle visits; long rays keep the linear scan.
+        if (Number.isSafeInteger(cx0) && Number.isSafeInteger(cz0) && Number.isSafeInteger(cx1) && Number.isSafeInteger(cz1) && (cx1 - cx0 + 1) * (cz1 - cz0 + 1) <= cellCap)
+          d = this.query(x0, z0, x1, z1, this._rayQ);
+      }
       for (let g = 0, b = d.length; g < b; g++) {
         let v = d[g];
         if (v.off || v.noRay || v.pane || c && v.water) continue;
         let y = (v.x0 - t) * h, M = (v.x1 - t) * h, w = y < M ? y : M, T = y < M ? M : y, S = 0;
         y = (v.y0 - e) * f, M = (v.y1 - e) * f;
         let E = y < M ? y : M, _ = y < M ? M : y;
-        E > w && (w = E, S = 1), _ < T && (T = _), !(w > T) && (y = (v.z0 - s) * u, M = (v.z1 - s) * u, E = y < M ? y : M, _ = y < M ? M : y, E > w && (w = E, S = 2), _ < T && (T = _), !(w > T || w < 0 || w >= m) && (m = w, p = v, x = S));
+        E > w && (w = E, S = 1), _ < T && (T = _);
+        if (w > T) continue;
+        y = (v.z0 - s) * u, M = (v.z1 - s) * u, E = y < M ? y : M, _ = y < M ? M : y, E > w && (w = E, S = 2), _ < T && (T = _);
+        if (w > T || w < 0 || w > m || w === m && (!p || v._rayOrder >= p._rayOrder)) continue;
+        if (!l) return true;
+        m = w, p = v, x = S;
       }
       return p ? (l && (l.t = m, l.col = p, l.nx = x === 0 ? n > 0 ? -1 : 1 : 0, l.ny = x === 1 ? i > 0 ? -1 : 1 : 0, l.nz = x === 2 ? a > 0 ? -1 : 1 : 0), true) : false;
     }
@@ -25341,29 +25394,29 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
     }
     debris(t, e, s, n, i, a, r, l, c = 5) {
       let h = this.chunks, f = h.i;
-      h.i = (f + 1) % h.N;
+      h.i = (f + 1) % h.N, h.st[f] === 0 && h.live++;
       let u = f * 3;
-      h.x[u] = t, h.x[u + 1] = e, h.x[u + 2] = s, h.v[u] = n, h.v[u + 1] = i, h.v[u + 2] = a, h.s[u] = r * at(0.6, 1.4), h.s[u + 1] = r * at(0.3, 0.9), h.s[u + 2] = r * at(0.6, 1.3), Wd.set(at(-1, 1), at(-1, 1), at(-1, 1)).normalize(), h.ax[u] = Wd.x, h.ax[u + 1] = Wd.y, h.ax[u + 2] = Wd.z, h.ang[f] = at(0, 6), h.w[f] = at(-14, 14), h.life[f] = c * at(0.7, 1.2), h.st[f] = 1, h.b[f] = 0, this.chunkMesh.setColorAt(f, l.isColor ? l : Tw.set(l)), this.chunkMesh.instanceColor.needsUpdate = true, h.live++;
+      h.x[u] = t, h.x[u + 1] = e, h.x[u + 2] = s, h.v[u] = n, h.v[u + 1] = i, h.v[u + 2] = a, h.s[u] = r * at(0.6, 1.4), h.s[u + 1] = r * at(0.3, 0.9), h.s[u + 2] = r * at(0.6, 1.3), Wd.set(at(-1, 1), at(-1, 1), at(-1, 1)).normalize(), h.ax[u] = Wd.x, h.ax[u + 1] = Wd.y, h.ax[u + 2] = Wd.z, h.ang[f] = at(0, 6), h.w[f] = at(-14, 14), h.life[f] = c * at(0.7, 1.2), h.st[f] = 1, h.b[f] = 0, this.chunkMesh.setColorAt(f, l.isColor ? l : Tw.set(l)), this.chunkMesh.instanceColor.needsUpdate = true;
     }
     burst(t, e, s, n, i, a = 2) {
       for (let r = 0; r < e; r++) this.debris(t.x + at(-0.1, 0.1), t.y + at(-0.1, 0.1), t.z + at(-0.1, 0.1), at(-1, 1) * i, at(0, 1) * i + a, at(-1, 1) * i, n, s);
     }
     casing(t, e, s) {
       let n = this.cases, i = n.i;
-      n.i = (i + 1) % n.N;
+      n.i = (i + 1) % n.N, n.st[i] === 0 && n.live++;
       let a = i * 3;
       n.x[a] = t.x, n.x[a + 1] = t.y, n.x[a + 2] = t.z, n.v[a] = e.x, n.v[a + 1] = e.y, n.v[a + 2] = e.z;
       let r = s === 2 ? 0.06 : s === 1 ? 0.019 : 0.042, l = s === 2 ? 0.02 : s === 1 ? 98e-4 : 96e-4;
-      n.s[a] = l, n.s[a + 1] = l, n.s[a + 2] = r, Wd.set(at(-1, 1), at(-1, 1), at(-1, 1)).normalize(), n.ax[a] = Wd.x, n.ax[a + 1] = Wd.y, n.ax[a + 2] = Wd.z, n.ang[i] = at(0, 6), n.w[i] = at(-30, 30), n.life[i] = 9, n.st[i] = 1, n.b[i] = 0, n.kind[i] = s, this.caseMesh.setColorAt(i, s === 2 ? Tw.setRGB(0.55, 0.06, 0.04) : Tw.setRGB(0.95, 0.72, 0.32)), this.caseMesh.instanceColor.needsUpdate = true, n.live++;
+      n.s[a] = l, n.s[a + 1] = l, n.s[a + 2] = r, Wd.set(at(-1, 1), at(-1, 1), at(-1, 1)).normalize(), n.ax[a] = Wd.x, n.ax[a + 1] = Wd.y, n.ax[a + 2] = Wd.z, n.ang[i] = at(0, 6), n.w[i] = at(-30, 30), n.life[i] = 9, n.st[i] = 1, n.b[i] = 0, n.kind[i] = s, this.caseMesh.setColorAt(i, s === 2 ? Tw.setRGB(0.55, 0.06, 0.04) : Tw.setRGB(0.95, 0.72, 0.32)), this.caseMesh.instanceColor.needsUpdate = true;
     }
     _simSingles(t, e, s, n) {
       if (!t.live) return;
-      let i = this.world;
+      let i = this.world, changed = false;
       for (let a = 0; a < t.N; a++) {
         if (!t.st[a]) continue;
         let r = a * 3;
         if ((t.life[a] -= s) <= 0) {
-          t.st[a] = 0, t.live--, e.setMatrixAt(a, Sw);
+          t.st[a] = 0, t.live--, e.setMatrixAt(a, Sw), changed = true;
           continue;
         }
         if (t.st[a] === 1) {
@@ -25375,15 +25428,15 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
             m > 1.2 && t.b[a] < 3 ? (t.v[r + 1] = m * (n ? 0.38 : 0.28), t.v[r] = t.v[r] * 0.6 + at(-0.5, 0.5), t.v[r + 2] = t.v[r + 2] * 0.6 + at(-0.5, 0.5), t.w[a] *= 0.7, t.b[a]++, n && t.b[a] <= 2 && this.hooks.audio.casing(xr.set(c, h, f), d.surf, t.kind[a] === 2 ? "shell" : "brass")) : (t.st[a] = 2, t.v[r] = t.v[r + 1] = t.v[r + 2] = 0, n && (t.ang[a] = 0));
           } else t.v[r] *= -0.3, t.v[r + 2] *= -0.3, c = t.x[r], f = t.x[r + 2];
           else if (h < -40) {
-            t.st[a] = 0, t.live--, e.setMatrixAt(a, Sw);
+            t.st[a] = 0, t.live--, e.setMatrixAt(a, Sw), changed = true;
             continue;
           }
           t.x[r] = c, t.x[r + 1] = h, t.x[r + 2] = f, t.ang[a] += t.w[a] * s;
         } else if (t.life[a] > 1) continue;
         let l = t.st[a] === 2 ? Math.min(1, t.life[a]) : 1;
-        xr.set(t.ax[r], t.ax[r + 1], t.ax[r + 2]), t.st[a] === 2 && n ? Sg.setFromAxisAngle(pu.set(0, 1, 0), t.w[a]) : Sg.setFromAxisAngle(xr, t.ang[a]), Vc.set(t.x[r], t.x[r + 1] + (t.st[a] === 2 ? t.s[r + 1] * (n ? 1 : 0.5) : 0), t.x[r + 2]), n ? X9.set(t.s[r] * 2 * l, t.s[r + 1] * 2 * l, t.s[r + 2] * l) : X9.set(t.s[r] * l, t.s[r + 1] * l, t.s[r + 2] * l), e.setMatrixAt(a, K9.compose(Vc, Sg, X9));
+        xr.set(t.ax[r], t.ax[r + 1], t.ax[r + 2]), t.st[a] === 2 && n ? Sg.setFromAxisAngle(pu.set(0, 1, 0), t.w[a]) : Sg.setFromAxisAngle(xr, t.ang[a]), Vc.set(t.x[r], t.x[r + 1] + (t.st[a] === 2 ? t.s[r + 1] * (n ? 1 : 0.5) : 0), t.x[r + 2]), n ? X9.set(t.s[r] * 2 * l, t.s[r + 1] * 2 * l, t.s[r + 2] * l) : X9.set(t.s[r] * l, t.s[r + 1] * l, t.s[r + 2] * l), e.setMatrixAt(a, K9.compose(Vc, Sg, X9)), changed = true;
       }
-      e.instanceMatrix.needsUpdate = true;
+      changed && (e.instanceMatrix.needsUpdate = true);
     }
     wake(t) {
       t.sleeping && (t.pvx = t.pvy = t.pvz = 0), t.sleeping = false, t.still = 0;
@@ -32073,11 +32126,34 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
     function wt(J) {
       J && (typeof J.indoor == "number" && isFinite(J.indoor) && (o.indoorT = Ai(J.indoor)), "space" in J && (o.space = typeof J.space == "string" ? J.space : null));
     }
+    function currentSoundKeys(weapons) {
+      const families = new Set(weapons.map(id => globalThis.GHBoot?.familyOf(id) || id));
+      return B$().filter(key => key.startsWith("gun:") ? families.has(key.split(":")[1]) : /^(glass:.*:0|exp:0)$/.test(key));
+    }
+    function soundsReady(weapons) {
+      return !o.ctx || currentSoundKeys(weapons).every(key => Dw(o.ctx.sampleRate).d[key]);
+    }
+    async function prepareCurrent(weapons) {
+      if (!o.ctx) return;
+      const keys = currentSoundKeys(weapons);
+      o.preparing = (o.preparing || 0) + 1;
+      try {
+        for (const key of keys) {
+          if (!Dw(o.ctx.sampleRate).d[key]) {
+            await new Promise(resolve => setTimeout(resolve, 0));
+            const started = performance.now();
+            Nb(o.ctx.sampleRate, key);
+            const elapsed = performance.now() - started;
+            o.stats.bakeMs += elapsed, o.stats.bakeMax = Math.max(o.stats.bakeMax, elapsed);
+          }
+        }
+      } finally { o.preparing--; }
+    }
     function _t(J) {
       if (!o.ctx) return;
       let Q = o.ctx.currentTime;
       if (J = J > 0 && J < 1 ? J : 0.016, o.clock += J, o.indoor += (o.indoorT - o.indoor) * (1 - Math.exp(-3 * J)), o.acc += J, o.acc >= 0.1 && (o.acc = 0, A(Q), v(), o.occCache.size > 200)) for (let [i0, A0] of o.occCache) o.clock - A0.t > 2 && o.occCache.delete(i0);
-      if (o.bakeQ && o.bakeQ.length && ++o.bakeTick & 1) {
+      if (globalThis.GH?.G.state !== "playing" && !o.preparing && o.bakeQ && o.bakeQ.length && ++o.bakeTick & 1) {
         let i0 = typeof performance < "u" ? performance.now() : 0;
         if (Nb(o.ctx.sampleRate, o.bakeQ.shift()), typeof performance < "u") {
           let A0 = performance.now() - i0;
@@ -32100,7 +32176,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
         e(J, A0);
         return;
       }
-    }, Et = { gunshot: t0, dryFire: M0, reload: f0, foley: _0, attachment: F0, laser: m0, casing: S0, impact: j0, ricochet: lt, whiz: H0, explosion: Y0, tinnitus: et, grenadeBounce: ct, footstep: D0, jump: u0, land: w0, slideStart: st, slideStop: P0, dive: J0, diveLand: q0, mantle: v0, glassCrack: x0, glassShatter: C0, glassDebris: k0, propHit: O0, breakProp: B0, sparks: ot, extinguisher: Q0, chandelierCrash: nt, bodyFall: L0, pianoNote: ht, bell: pt, hitmarker: V0, hurt: c0, death: r0, ui: b0, k9: gt, k9Loop: X0 }, zt = { init: bt("init", z0), setVolumes: bt("setVolumes", I0), setListener: bt("setListener", vt), setEnvironment: bt("setEnvironment", wt), setOcclusionTester: bt("setOcclusionTester", (J) => {
+    }, Et = { gunshot: t0, dryFire: M0, reload: f0, foley: _0, attachment: F0, laser: m0, casing: S0, impact: j0, ricochet: lt, whiz: H0, explosion: Y0, tinnitus: et, grenadeBounce: ct, footstep: D0, jump: u0, land: w0, slideStart: st, slideStop: P0, dive: J0, diveLand: q0, mantle: v0, glassCrack: x0, glassShatter: C0, glassDebris: k0, propHit: O0, breakProp: B0, sparks: ot, extinguisher: Q0, chandelierCrash: nt, bodyFall: L0, pianoNote: ht, bell: pt, hitmarker: V0, hurt: c0, death: r0, ui: b0, k9: gt, k9Loop: X0 }, zt = { init: bt("init", z0), prepareCurrent, soundsReady, setVolumes: bt("setVolumes", I0), setListener: bt("setListener", vt), setEnvironment: bt("setEnvironment", wt), setOcclusionTester: bt("setOcclusionTester", (J) => {
       o.occl = typeof J == "function" ? J : null, o.occCache.clear();
     }), setTimeScale: bt("setTimeScale", (J) => {
       o.ts = fl(typeof J == "number" && isFinite(J) ? J : 1, 0.35, 1.5);
@@ -33201,6 +33277,11 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
       }
     }
     _precompile(t) {
+      const gfx = this.ctx.gfx;
+      if (gfx?.preparation) return gfx.prepare("equipment", () => this._precompileNow(t));
+      return this._precompileNow(t);
+    }
+    _precompileNow(t) {
       let e = this.ctx.gfx, s = e && e.renderer;
       if (!s || !s.compile) return;
       let n = s.getRenderTarget();
@@ -33216,11 +33297,20 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
             }
           }), s.compileAsync && globalThis.GHBoot ? globalThis.GHBoot.trackShader(s.compileAsync(a, e.camera, e.scene)) : s.compile(a, e.camera, e.scene);
         }
-      } catch {
+      } finally {
+        s.setRenderTarget(n);
       }
-      s.setRenderTarget(n);
     }
     show(t, e = null) {
+      const gfx = this.ctx.gfx;
+      if (gfx?.preparation?.pending && !gfx._changingEquipment)
+        return gfx.prepare("equipment", () => {
+          gfx._changingEquipment = true;
+          try { this._showNow(t, e); } finally { gfx._changingEquipment = false; }
+        });
+      return this._showNow(t, e);
+    }
+    _showNow(t, e = null) {
       let s = e || Zi(t), n = e5(t, s);
       this.build([t], { [t]: s }), this.gun && (this.gun.root.visible = false, this.gun.resetPose && this.gun.resetPose()), this.gun = this.guns[n], this.id = t, this.gun.root.visible = true, this.gun.root.position.set(0, 0, 0), this.gun.root.quaternion.identity(), this.gun.root.add(this.flashGroup), this.flashGroup.position.copy(this.gun.anchors.muzzle), this.gun.root.add(this.laserBeam), this.laserBeam.position.copy(this.gun.anchors.laser || pR.copy(this.gun.anchors.muzzle).add(AZ.set(0, -0.03, 0.12))), this.fireT = -1, this.hold = false, this.gun.kickK = 0, this.gun.arms && this.gun.arms.snap && this.gun.arms.snap();
       let i = this.swy.set(t), a = this.wt = i.m, r = this.mv, l = Math.sqrt(a);
@@ -44768,6 +44858,15 @@ totalEmissiveRadiance += vColor.rgb * vAux.x;`).replace("#include <aomap_fragmen
     getHead(t) {
       return Wr(this.joints, ba.head, t);
     }
+    _prepareFade() {
+      // Corpses drop their gun before fading. Warm only their retained body material.
+      const material = this.body.material, visible = this.root.visible;
+      const fade = this._fadeMat || (this._fadeMat = WN(this._mat)), opacity = fade.opacity;
+      this.body.material = fade, fade.opacity = 0.5, this.root.visible = true;
+      return () => {
+        this.body.material = material, fade.opacity = opacity, this.root.visible = visible;
+      };
+    }
     setOpacity(t) {
       if (t = Zt(t, 0, 1), this._opacity = t, t >= 1) {
         this.body.material = this._mat, this._restoreGunMaterials();
@@ -50585,11 +50684,10 @@ vec4 mv = modelViewMatrix * vec4(transformed, 1.0); vZ = -mv.z; vB = skinIndex.x
     let a = o.getRenderTarget();
     try {
       o.setRenderTarget(s), o.render(t, i);
-    } catch (r) {
-      console.warn("[boot] upload warm-up skipped", r);
+    } finally {
+      o.setRenderTarget(a);
+      for (let r of n) r.frustumCulled = true;
     }
-    o.setRenderTarget(a);
-    for (let r of n) r.frustumCulled = true;
   }
   async function VC(o, t, e, s) {
     let n = o.getRenderTarget();
@@ -50704,6 +50802,107 @@ ${o.filename || ""}:${o.lineno || ""}`;
       Je.timeScale = f0, fo.setTimeScale(f0);
     }, L.botCtx = { scene: i, world: f, physics: p, glass: d, hotel: g, audio: fo, fx: u, nav: w, combat: m, time: T, createCharacter: n7, buildGrenade: R, worldGun: (f0, _0 = null, modelId = f0) => Ky(f0, { detail: "world", build: _0, modelId }) }, b = new A7(L), L.match = b, L.botCtx.match = b, t.loading(0.47, "PREPARING THE ARMOURY"), await q1(), u.attach && u.attach({ gfx: n, world: f, physics: p, glass: d, hotel: g, player: S, match: b, audio: fo, time: T }), t.attach && t.attach({ world: f, nav: w, hotel: g, match: b, player: S, arsenal: A, gfx: n, physics: p, glass: d, fx: u, buildGun: Ky, buildGrenade: Nk, settings: _s, audio: fo, input: l, time: T }), t.loading(0.8, "BRIEFING OPERATORS"), await q1(), b.createBots(5);
     for (let f0 of b.bots) for (let _0 of f0.rigs) _0.root.visible = false;
+    function ghPreparationError(error) {
+      console.error("Renderer preparation:", error);
+      globalThis.GHBoot.stats.preparationError = String(error?.message || error);
+      let message = document.getElementById("err");
+      if (!message) message = document.body.appendChild(document.createElement("div")), message.id = "err";
+      message.textContent = "画面准备失败，请刷新页面重试：" + String(error?.message || error);
+    }
+    n.preparation = globalThis.GHBoot.createRenderPreparation(async (reason, current) => {
+      let target = new Vs(4, 4, { type: Yn }), visible = [], vmEnabled = n.vmPass.enabled, shown = C.shown;
+      let position = a.position.clone(), quaternion = a.quaternion.clone(), oldTarget = r.getRenderTarget(), oldTime = n.time;
+      const roots = [...(n.warmRoots || [])], shaderError = r.debug.onShaderError;
+      const layers = a.layers.mask, vmLayers = n.vmCamera.layers.mask;
+      const override = i.overrideMaterial, vmOverride = n.vmScene.overrideMaterial;
+      const background = i.background, vmBackground = n.vmScene.background;
+      const autoClear = r.autoClear, clearColor = r.getClearColor(new Dt()).clone(), clearAlpha = r.getClearAlpha();
+      const toScreen = n.composer.renderToScreen;
+      let shaderFailed = false;
+      r.debug.onShaderError = (...args) => { shaderFailed = true; shaderError?.(...args); };
+      const started = performance.now();
+      try {
+        if (r.getContext().isContextLost()) throw Error("WebGL context is unavailable");
+        await globalThis.GHBoot.finishShaders();
+        if (!current()) return;
+        for (let bot of b.bots) for (let rig of bot.rigs) visible.push([rig.root, rig.root.visible]), rig.root.visible = true;
+        for (let rig of b.k9.rigs()) visible.push([rig.root, rig.root.visible]), rig.root.visible = true;
+        for (let gun of Object.values(E.guns)) visible.push([gun.root, gun.root.visible]), gun.root.visible = true;
+        for (let root of roots) visible.push([root, root.visible]), root.visible = true;
+        C._weapon(A), C._show(1);
+        if (a.position.y <= 0.02) a.position.y = 1.7;
+        a.updateMatrixWorld(true);
+        await VC(r, i, a, target);
+        await VC(r, n.vmScene, n.vmCamera, target);
+        if (!current()) return;
+        Rs0(r, i, a, target), Rs0(r, n.vmScene, n.vmCamera, target);
+        n.vmPass.enabled = true;
+        n._reflectAt = null, r.shadowMap.needsUpdate = true;
+        n._warming = true;
+        try {
+          // Upload hidden variants offscreen, then warm the real screen output
+          // with only the actual view visible (no alternate-gun flash).
+          n.composer.renderToScreen = false;
+          n.render(1 / 60);
+          n._warming = false;
+          const fadeMaterials = new Set(), restoreFades = [];
+          try {
+            // One existing rig per shared body material; keep its _fadeMat alive
+            // so the warmed program is still retained when the first corpse fades.
+            for (let bot of b.bots) for (let rig of bot.rigs) if (!fadeMaterials.has(rig._mat)) {
+              fadeMaterials.add(rig._mat), restoreFades.push(rig._prepareFade());
+            }
+            if (restoreFades.length) {
+              await VC(r, i, a, target);
+              if (!current()) return;
+              Rs0(r, i, a, target);
+              n._reflectAt = null, r.shadowMap.needsUpdate = true;
+              n._warming = true;
+              n.render(1 / 60);
+            }
+          } finally {
+            n._warming = false;
+            for (let restore of restoreFades) restore();
+          }
+          n._warming = true;
+          for (let [root, value] of visible) root.visible = value;
+          C._show(shown), n.vmPass.enabled = vmEnabled;
+          a.position.copy(position), a.quaternion.copy(quaternion), a.updateMatrixWorld(true);
+          n.composer.renderToScreen = toScreen;
+          n._reflectAt = null, r.shadowMap.needsUpdate = true;
+          n.render(1 / 60);
+        } finally { n._warming = false; }
+        if (shaderFailed) throw Error("Shader linking failed during renderer preparation");
+        await globalThis.GHBoot.waitForDraw(r);
+        if (current()) {
+          n._hasPrev = false, n.snapExposure();
+          globalThis.GHBoot.stats.preparation = { reason, ms: Math.round(performance.now() - started) };
+          globalThis.GHBoot.stats.preparationError = null;
+          for (let root of roots) n.warmRoots.delete(root);
+        }
+      } finally {
+        for (let [root, value] of visible) root.visible = value;
+        C._show(shown), n.vmPass.enabled = vmEnabled;
+        a.position.copy(position), a.quaternion.copy(quaternion), a.updateMatrixWorld(true);
+        n.time = oldTime, n.uniforms.uTime.value = oldTime, n._hasPrev = false;
+        r.debug.onShaderError = shaderError;
+        n.composer.renderToScreen = toScreen;
+        a.layers.mask = layers, n.vmCamera.layers.mask = vmLayers;
+        i.overrideMaterial = override, n.vmScene.overrideMaterial = vmOverride;
+        i.background = background, n.vmScene.background = vmBackground;
+        r.autoClear = autoClear, r.setClearColor(clearColor, clearAlpha);
+        n._reflectAt = null, n._shadowAt = 0, r.shadowMap.needsUpdate = true;
+        r.setRenderTarget(oldTarget), target.dispose();
+        G.getDelta(), ghNextFrame = 0, e0 = p0 = 0;
+      }
+    });
+    n.prepare = (reason, change) => {
+      n.preparation.request(reason, change);
+      const ready = n.preparation.wait();
+      ready.catch(error => { if (n.preparation.error === error) ghPreparationError(error); });
+      return ready;
+    };
+    n.whenReady = () => n.preparation.wait();
     function O(f0, _0) {
       let F0 = _0 && _0.team !== void 0 ? _0 : S;
       for (let m0 of b.actors) !m0.alive || Math.hypot(m0.pos.x - f0.x, m0.pos.z - f0.z) > 2.7 || Math.abs(m0.pos.y - f0.y) > 2.5 || b.damage(m0, 160, m0.team === F0.team ? m0 : F0, { weapon: "chandelier", dir: i3.set(0, -1, 0), point: f0, blast: true });
@@ -50713,10 +50912,35 @@ ${o.filename || ""}:${o.lineno || ""}`;
       f0 === "quality" && n.setQuality(_s.quality), f0 === "renderScale" && n.setRenderScale(_s.renderScale), f0 === "motionBlur" && n.setMotionBlur(_s.motionBlur), f0 === "fov" && Je.state === "paused" && (a.fov = kg(_s.fov, a.aspect), a.updateProjectionMatrix(), E.setFov(S.adsK)), (f0 === "master" || f0 === "music" || f0 === "sfx") && fo.setVolumes({ master: _s.master, sfx: _s.sfx, music: _s.music });
     }
     fo.setOcclusionTester((f0, _0) => !f.clear(f0, _0));
-    function F() {
-      fo.init(), H("master"), fo.music.menu(false), fo.ui("deploy"), Je.timeScale = 1, fo.setTimeScale(1), t.show(null), u.reset && u.reset(), b.start(), Je.state = "playing", Y7 || l.lock();
+    function F(autostart = false) {
+      fo.init();
+      E.build([_s.primary, "pistol"]);
+      const sounds = [_s.primary, "pistol"];
+      if (!globalThis.GHBoot.stats.runtimeReadyMs || n.preparation.pending || n.preparation.error || !fo.soundsReady(sounds)) {
+        if (n._deploying) return n._deploying;
+        t.hint("正在准备画面与声音，请稍候…", 8);
+        n._deploying = (async () => {
+          await globalThis.GHBoot.runtimeReady;
+          await n.whenReady();
+          await fo.prepareCurrent(sounds);
+          t.hint("准备完成，请再次点击部署", 5);
+        })().then(() => { if (autostart) F(true); }).catch(ghPreparationError).finally(() => { n._deploying = null; });
+        return n._deploying;
+      }
+      H("master"), fo.music.menu(false), fo.ui("deploy"), Je.timeScale = 1, fo.setTimeScale(1), u.reset && u.reset(), b.start();
+      if (n.preparation.pending) {
+        t.hint("正在准备装备，请稍候后再次点击部署", 6);
+        return;
+      }
+      t.show(null), Je.state = "playing";
+      if (!Y7 && !autostart) l.lock();
     }
     function P() {
+      if (n.preparation.pending || n.preparation.error) {
+        t.hint("正在准备画面，完成后请再次点击继续", 5);
+        n.whenReady().catch(ghPreparationError);
+        return;
+      }
       if (globalThis.GHTouch?.enabled) {
         l.lock();
         return;
@@ -50749,15 +50973,57 @@ ${o.filename || ""}:${o.lineno || ""}`;
       let _0 = k[Je.shot], F0 = Je.shotT / _0.d, m0 = db(F0) * 0.6 + F0 * 0.4;
       a.position.set(Ht(_0.p0[0], _0.p1[0], m0), Ht(_0.p0[1], _0.p1[1], m0), Ht(_0.p0[2], _0.p1[2], m0)), i3.set(Ht(_0.l0[0], _0.l1[0], m0), Ht(_0.l0[1], _0.l1[1], m0), Ht(_0.l0[2], _0.l1[2], m0)), a.up.set(0, 1, 0), a.lookAt(i3), a.fov = 46, a.updateProjectionMatrix(), n.uniforms.uFade.value = Math.max(ns(1 - Je.shotT / 0.8), ns((Je.shotT - (_0.d - 0.8)) / 0.8));
     }
+    function ghCreateLoopClock() {
+      const step = 1 / 60, maximum = 3;
+      let last = null, mode = "", debt = 0, lastRenderTick = 0;
+      const stats = {
+        logicalTicks: 0, renderFrames: 0, playingRenders: 0, logicalSeconds: 0,
+        activeSeconds: 0, wallSeconds: 0, dropped: 0, discardedOnTransition: 0, stepsPerRender: 0, maxStepsPerRender: 0, maxTicksPerCallback: 0,
+        get logicHz() { return this.activeSeconds > 0 ? this.logicalTicks / this.activeSeconds : 0; },
+        get renderHz() { return this.activeSeconds > 0 ? this.playingRenders / this.activeSeconds : 0; },
+        reset() {
+          for (const key of ["logicalTicks", "renderFrames", "playingRenders", "logicalSeconds", "activeSeconds", "wallSeconds", "dropped", "discardedOnTransition", "stepsPerRender", "maxStepsPerRender", "maxTicksPerCallback"]) this[key] = 0;
+          clock.reset(), lastRenderTick = 0;
+        }
+      };
+      const clock = { stats, step,
+        reset() { last = null; mode = ""; debt = 0; },
+        plan(now, key, fixed, playing) {
+          const changed = key !== mode || last === null;
+          const elapsed = changed ? 0 : Math.max(0, (now - last) / 1000);
+          stats.wallSeconds += elapsed;
+          if (playing) stats.activeSeconds += elapsed;
+          last = now; mode = key; stats.mode = key;
+          if (!fixed) { debt = 0; return 0; }
+          // An entry tick initializes the newly spawned camera before its first draw.
+          debt = changed ? step : debt + elapsed;
+          if (debt > step * maximum) stats.dropped += debt - step * maximum, debt = step * maximum;
+          const count = Math.min(maximum, Math.floor((debt + 1e-9) / step));
+          debt = Math.max(0, debt - count * step);
+          return count;
+        },
+        logical(dt) { stats.logicalTicks++; stats.logicalSeconds += dt; },
+        unused(count) { stats.discardedOnTransition += count * step; },
+        submitted(playing) {
+          stats.renderFrames++;
+          if (playing) stats.playingRenders++;
+          stats.stepsPerRender = stats.logicalTicks - lastRenderTick;
+          stats.maxStepsPerRender = Math.max(stats.maxStepsPerRender, stats.stepsPerRender);
+          lastRenderTick = stats.logicalTicks;
+        }
+      };
+      return clock;
+    }
     let G = new Jf(), K = 0, $ = 1, n0 = 1, e0 = 0, p0 = 0, t0 = { head: S.hit[0].a, a: S.hit[1].a, b: S.hit[1].b };
-    let ghNextFrame = 0;
-    function M0(ghNow) {
-      ghNow = ghNow ?? performance.now();
-      let ghInterval = 1e3 / (document.hidden ? 5 : Je.state === "playing" ? 60 : Je.state === "paused" || Je.state === "over" ? 20 : 30);
-      if (ghNow + 0.5 < ghNextFrame) return;
-      ghNextFrame = Math.max(ghNextFrame + ghInterval, ghNow + ghInterval * 0.2);
-      let f0 = Math.min(G.getDelta(), 0.05555555555555555);
-      e0 += f0, p0++, e0 > 0.5 && (Je.fps = p0 / e0, e0 = 0, p0 = 0);
+    let ghNextFrame = 0, ghLastMode = "", ghClock = ghCreateLoopClock();
+    let ghPrepared = globalThis.GHBoot?.stats?.preparation;
+    let ghBenchmarkOwner = globalThis.GH?.benchmark;
+    window.GH.loopStats = ghClock.stats;
+    function ghPresent(f0) {
+      fo.update(f0);
+      Je.state !== "menu" && Je.state !== "loading" && t.update(f0, { player: S, ars: A, match: b, camera: a, world: f, showBoard: (l.keys.has("Tab") || l.touchKeys.has("Tab")) && Je.state === "playing", physics: p });
+    }
+    function ghSimulate(f0, ghDeferPresentation) {
       let _0 = Je.state === "playing", F0 = _0 ? f0 * Je.timeScale : 0;
       if (Je.time += F0, _0) {
         if (l.enabled = b.state !== "countdown" && b.state !== "over", S.update(F0, A), S.getHit(t0), S.hit[0].b.copy(S.hit[0].a), A.update(F0), m.frame(), b.state === "countdown") for (let Y0 of b.bots) Y0.idle(F0);
@@ -50791,9 +51057,65 @@ ${o.filename || ""}:${o.lineno || ""}`;
       let lt = n.uniforms;
       lt.uDamage.value = Ee(lt.uDamage.value, 0, 2.6, f0);
       let H0 = _0 && S.alive ? ns((45 - S.health) / 45) : !S.alive && _0 ? 0.8 : 0;
-      lt.uLowHealth.value = Ee(lt.uLowHealth.value, H0, 5, f0), Je.state !== "menu" && Je.state !== "loading" && !Je.freeCam && (lt.uFade.value = Ee(lt.uFade.value, 0, 6, f0)), lt.uCA.value = 18e-4 + (S.mode === "slide" && _0 ? 22e-4 : 0) + S.shake * 4e-3, lt.uAds && (lt.uAds.value = _0 && S.alive ? S.adsK : 0), a3.set(0, 1, 0).applyQuaternion(a.quaternion), fo.setListener(S0, i3, a3), fo.setEnvironment({ indoor: n0 }), fo.setLowHealth(_0 ? H0 : 0), fo.update(f0), Je.state !== "menu" && Je.state !== "loading" && t.update(f0, { player: S, ars: A, match: b, camera: a, world: f, showBoard: (l.keys.has("Tab") || l.touchKeys.has("Tab")) && _0, physics: p }), n.render(f0), l.endFrame();
+      // HUD presentation may be deferred past another tick that resets the streak.
+      if (_0 && ghDeferPresentation && t.stat && S.streak > t.stat.streak) t.stat.streak = S.streak;
+      lt.uLowHealth.value = Ee(lt.uLowHealth.value, H0, 5, f0), Je.state !== "menu" && Je.state !== "loading" && !Je.freeCam && (lt.uFade.value = Ee(lt.uFade.value, 0, 6, f0)), lt.uCA.value = 18e-4 + (S.mode === "slide" && _0 ? 22e-4 : 0) + S.shake * 4e-3, lt.uAds && (lt.uAds.value = _0 && S.alive ? S.adsK : 0), a3.set(0, 1, 0).applyQuaternion(a.quaternion), fo.setListener(S0, i3, a3), fo.setEnvironment({ indoor: n0 }), fo.setLowHealth(_0 ? H0 : 0), ghDeferPresentation || ghPresent(f0);
+      return _0;
     }
-    r.setAnimationLoop(M0), window.GH.debug = { stats: () => ({ state: Je.state, fps: Math.round(Je.fps), calls: r.info.render.calls, tris: r.info.render.triangles, cols: f.cols.length, panes: d.panes.length, nodes: w.nodes.length, islands: w.islands, links: w.nodes.reduce((f0, _0) => f0 + _0.links.length, 0) / 2, match: b.state, scores: b.scores, pos: [S.pos.x, S.pos.y, S.pos.z].map((f0) => +f0.toFixed(2)), hp: S.health, props: p.props.length }), start: () => F(), view: (f0, _0, F0, m0 = 0, S0 = 0, T0 = 65) => {
+    function M0(ghNow) {
+      if (n.preparation.pending || n.preparation.error) {
+        ghClock.reset(), G.getDelta(), l.endFrame();
+        return;
+      }
+      ghNow = ghNow ?? performance.now();
+      if (ghPrepared !== globalThis.GHBoot?.stats?.preparation) {
+        ghPrepared = globalThis.GHBoot?.stats?.preparation;
+        ghClock.reset(), ghLastMode = "";
+      }
+      const ghBenchmark = globalThis.GH?.benchmark;
+      if (ghBenchmark !== ghBenchmarkOwner) {
+        ghBenchmarkOwner = ghBenchmark;
+        ghClock.reset(), ghLastMode = "";
+      }
+      const ghOnline = document.body.classList.contains("online-session");
+      const ghMode = document.hidden ? "hidden" : Je.state;
+      const ghPlaying = ghMode === "playing";
+      const ghFixed = ghPlaying && !ghOnline && (!ghBenchmark?.fixedDelta || ghBenchmark.followNativeLoop === true);
+      const ghOwner = ghOnline ? "online" : ghBenchmark?.fixedDelta && !ghBenchmark.followNativeLoop ? "benchmark-compat" : "native";
+      const ghKey = ghMode + ":" + ghOwner;
+      const ghInterval = 1e3 / (ghMode === "hidden" ? 5 : ghPlaying ? 60 : ghMode === "paused" || ghMode === "over" ? 20 : 30);
+      if (ghKey !== ghLastMode) ghLastMode = ghKey, ghNextFrame = ghNow;
+      const ghSteps = ghClock.plan(ghNow, ghKey, ghFixed, ghPlaying);
+      if (ghFixed) {
+        let ghRan = 0;
+        for (; ghRan < ghSteps; ghRan++) {
+          if (Je.state !== "playing" || n.preparation.pending || n.preparation.error) break;
+          if (ghSimulate(ghClock.step, true)) ghClock.logical(ghClock.step);
+          l.endFrame();
+        }
+        ghClock.stats.maxTicksPerCallback = Math.max(ghClock.stats.maxTicksPerCallback, ghRan);
+        if (ghRan < ghSteps) ghClock.unused(ghSteps - ghRan), ghClock.reset();
+        if (n.preparation.pending || n.preparation.error) return;
+      }
+      if (ghNow + 0.5 < ghNextFrame) return;
+      const ghFollowing = ghNextFrame + ghInterval;
+      ghNextFrame = ghFollowing - ghNow < ghInterval / 2 ? ghNow + ghInterval : ghFollowing;
+      const ghDelta = G.getDelta(), ghWallDelta = Math.min(ghDelta, 0.05555555555555555);
+      const f0 = ghBenchmark?.fixedDelta ?? ghWallDelta;
+      if (ghFixed) ghPresent(ghWallDelta);
+      else if (ghSimulate(f0, false)) ghClock.logical(f0);
+      if (n.preparation.pending || n.preparation.error) {
+        ghClock.reset();
+        if (!ghFixed) l.endFrame();
+        return;
+      }
+      n.render(ghFixed || ghBenchmark?.renderWallClock ? ghWallDelta : f0);
+      ghClock.submitted(ghPlaying);
+      ghDelta > 0 && (e0 += ghDelta, p0++), e0 > 0.5 && (Je.fps = p0 / e0, e0 = 0, p0 = 0);
+      // Native ticks consume edges separately; compatibility mode keeps the old frame boundary.
+      if (!ghFixed) l.endFrame();
+    }
+    window.GH.debug = { stats: () => ({ state: Je.state, fps: Math.round(Je.fps), calls: r.info.render.calls, tris: r.info.render.triangles, cols: f.cols.length, panes: d.panes.length, nodes: w.nodes.length, islands: w.islands, links: w.nodes.reduce((f0, _0) => f0 + _0.links.length, 0) / 2, match: b.state, scores: b.scores, pos: [S.pos.x, S.pos.y, S.pos.z].map((f0) => +f0.toFixed(2)), hp: S.health, props: p.props.length }), start: () => F(), view: (f0, _0, F0, m0 = 0, S0 = 0, T0 = 65) => {
       Je.freeCam = f0 === null ? null : { x: f0, y: _0, z: F0, yaw: m0, pitch: S0, fov: T0 };
     }, tp: (f0, _0, F0, m0 = 0, S0 = 0) => {
       S.e.x = f0, S.e.y = _0, S.e.z = F0, S.yaw = m0 * jn, S.pitch = S0 * jn, S.vel.set(0, 0, 0);
@@ -50808,18 +51130,10 @@ ${o.filename || ""}:${o.lineno || ""}`;
       for (let _0 of w.nodes) f.overlap(_0.x - 0.3, _0.y + 0.45, _0.z - 0.3, _0.x + 0.3, _0.y + 1.7, _0.z + 0.3, true) ? f0.push("blocked node " + _0.i + " @" + [_0.x, _0.y, _0.z]) : _0.links.length < 1 && f0.push("orphan node " + _0.i + " @" + [_0.x, _0.y, _0.z]);
       return { links: w.nodes.reduce((_0, F0) => _0 + F0.links.length, 0) / 2, islands: w.islands.length, bad: f0, calls: r.info.render.calls, tris: r.info.render.triangles, fps: Math.round(Je.fps) };
     }, ctx: L, hotel: g, nav: w, gfx: n, match: b, player: S, arsenal: A, physics: p, glass: d, fx: u, vm: E, input: l, world: f, boot: s, swatches: FU, k9: b.k9.debug }, window.GH.debug.fpbody = C, t.loading(0.93, "FINAL CHECKS"), await q1();
-    {
-      let f0 = new Vs(4, 4, { type: Yn });
-      await globalThis.GHBoot?.finishShaders();
-      await VC(r, i, a, f0), await VC(r, n.vmScene, n.vmCamera, f0);
-      let _0 = [];
-      for (let F0 of b.bots) for (let m0 of F0.rigs) m0.root.visible || (m0.root.visible = true, _0.push(m0.root));
-      for (let F0 of b.k9.rigs()) F0.root.visible || (F0.root.visible = true, _0.push(F0.root));
-      Rs0(r, i, a, f0);
-      for (let F0 of _0) F0.visible = false;
-      f0.dispose();
-    }
-    t.loading(1, "READY"), await q1(), Je.state = "menu", t.show("menu"), window.GH.ready = true, ZU.has("autostart") && F();
+    await n.prepare("startup");
+    t.loading(1, "READY"), await q1(), Je.state = "menu", t.show("menu"), window.GH.ready = true;
+    G.getDelta(), r.setAnimationLoop(M0);
+    if (ZU.has("autostart")) globalThis.GHBoot.runtimeReady.then(() => F(true)).catch(ghPreparationError);
   }
   As0().catch((o) => {
     console.error(o);
