@@ -15285,8 +15285,9 @@ Program Info Log: ` + O + `
     return { setup: r, setupView: l, state: s };
   }
   function pL(o) {
-    let t = new aY(o), e = [], s = [];
-    function n(h) {
+    let t = new aY(o), fxLights, e = [], s = [];
+    function n(h, fxOnly) {
+      c.lights = fxOnly ? (fxLights ??= new aY(o)) : t;
       c.camera = h, e.length = 0, s.length = 0;
     }
     function i(h) {
@@ -15296,10 +15297,10 @@ Program Info Log: ` + O + `
       s.push(h);
     }
     function r() {
-      t.setup(e);
+      c.lights.setup(e);
     }
     function l(h) {
-      t.setupView(e, h);
+      c.lights.setupView(e, h);
     }
     let c = { lightsArray: e, shadowsArray: s, camera: null, lights: t, transmissionRenderTarget: {} };
     return { init: n, state: c, setupLights: r, setupLightsView: l, pushLight: i, pushShadow: a };
@@ -15352,6 +15353,16 @@ void main() {
     let p = new ae(m, u), x = this;
     this.enabled = false, this.autoUpdate = true, this.needsUpdate = false, this.type = dM;
     let g = this.type;
+    // Fixed feature bits bound these caches to 16 materials per depth kind.
+    // Cutout/clipping/custom/morph paths retain the original material contract.
+    const ghDepthVariants = [new Map(), new Map()];
+    let ghShadowCallbacksSeen = false;
+    this.dispose = function() {
+      for (const variants of ghDepthVariants) {
+        for (const material of variants.values()) material.dispose();
+        variants.clear();
+      }
+    };
     this.render = function(w, T, S) {
       if (x.enabled === false || x.autoUpdate === false && x.needsUpdate === false || w.length === 0) return;
       let E = o.getRenderTarget(), _ = o.getActiveCubeFace(), R = o.getActiveMipmapLevel(), C = o.state;
@@ -15385,6 +15396,9 @@ void main() {
       u.defines.VSM_SAMPLES !== w.blurSamples && (u.defines.VSM_SAMPLES = w.blurSamples, d.defines.VSM_SAMPLES = w.blurSamples, u.needsUpdate = true, d.needsUpdate = true), w.mapPass === null && (w.mapPass = new Vs(n.x, n.y)), u.uniforms.shadow_pass.value = w.map.texture, u.uniforms.resolution.value = w.mapSize, u.uniforms.radius.value = w.radius, o.setRenderTarget(w.mapPass), o.clear(), o.renderBufferDirect(T, null, S, u, p, null), d.uniforms.shadow_pass.value = w.mapPass.texture, d.uniforms.resolution.value = w.mapSize, d.uniforms.radius.value = w.radius, o.setRenderTarget(w.map), o.clear(), o.renderBufferDirect(T, null, S, d, p, null);
     }
     function v(w, T, S, E) {
+      // Callbacks can mutate the shared depth material for later objects.
+      if (w.onBeforeShadow !== je.prototype.onBeforeShadow || w.onAfterShadow !== je.prototype.onAfterShadow)
+        ghShadowCallbacksSeen = true;
       let _ = null, R = S.isPointLight === true ? w.customDistanceMaterial : w.customDepthMaterial;
       if (R !== void 0) _ = R;
       else if (_ = S.isPointLight === true ? l : r, o.localClippingEnabled && T.clipShadows === true && Array.isArray(T.clippingPlanes) && T.clippingPlanes.length !== 0 || T.displacementMap && T.displacementScale !== 0 || T.alphaMap && T.alphaTest > 0 || T.map && T.alphaTest > 0 || T.alphaToCoverage === true) {
@@ -15392,6 +15406,24 @@ void main() {
         A === void 0 && (A = {}, c[C] = A);
         let O = A[L];
         O === void 0 && (O = _.clone(), A[L] = O, T.addEventListener("dispose", M)), _ = O;
+      }
+      const ghMorph = w.geometry.morphAttributes;
+      if (!ghShadowCallbacksSeen && R === void 0 && !(T.alphaTest > 0 || T.alphaToCoverage || T.alphaHash || T.displacementMap) &&
+          !(o.localClippingEnabled && T.clipShadows && T.clippingPlanes?.length) && !w.isBatchedMesh &&
+          ghMorph.position === void 0 && ghMorph.normal === void 0 && ghMorph.color === void 0 &&
+          w.onBeforeShadow === je.prototype.onBeforeShadow && w.onAfterShadow === je.prototype.onAfterShadow &&
+          _.onBeforeCompile === Ta.prototype.onBeforeCompile && !_.alphaHash &&
+          (_.isMeshDistanceMaterial || _.isMeshDepthMaterial && _.depthPacking === S_)) {
+        const ghKey = (w.isInstancedMesh ? 1 : 0) | (w.isSkinnedMesh ? 2 : 0) |
+          (w.isInstancedMesh && w.instanceColor !== null ? 4 : 0) |
+          (w.isInstancedMesh && w.morphTexture !== null ? 8 : 0);
+        const ghVariants = ghDepthVariants[S.isPointLight === true ? 1 : 0];
+        let ghMaterial = ghVariants.get(ghKey);
+        if (!ghMaterial) {
+          ghMaterial = S.isPointLight === true ? new X3() : new K3({ depthPacking: S_ });
+          ghVariants.set(ghKey, ghMaterial);
+        }
+        _ = ghMaterial;
       }
       if (_.visible = T.visible, _.wireframe = T.wireframe, E === Zh ? _.side = T.shadowSide !== null ? T.shadowSide : T.side : _.side = T.shadowSide !== null ? T.shadowSide : f[T.side], _.alphaMap = T.alphaMap, _.alphaTest = T.alphaToCoverage === true ? 0.5 : T.alphaTest, _.map = T.map, _.clipShadows = T.clipShadows, _.clippingPlanes = T.clippingPlanes, _.clipIntersection = T.clipIntersection, _.displacementMap = T.displacementMap, _.displacementScale = T.displacementScale, _.displacementBias = T.displacementBias, _.wireframeLinewidth = T.wireframeLinewidth, _.linewidth = T.linewidth, S.isPointLight === true && _.isMeshDistanceMaterial === true) {
         let C = o.properties.get(_);
@@ -16752,10 +16784,10 @@ void main() {
       }, this.clearStencil = function() {
         this.clear(false, false, true);
       }, this.dispose = function() {
-        e.removeEventListener("webglcontextlost", pt, false), e.removeEventListener("webglcontextrestored", V0, false), e.removeEventListener("webglcontextcreationerror", c0, false), C0.dispose(), J0.dispose(), q0.dispose(), H0.dispose(), et.dispose(), ct.dispose(), w0.dispose(), Q0.dispose(), nt.dispose(), P0.dispose(), ht.dispose(), ht.removeEventListener("sessionstart", j), ht.removeEventListener("sessionend", s0), l0.stop();
+        e.removeEventListener("webglcontextlost", pt, false), e.removeEventListener("webglcontextrestored", V0, false), e.removeEventListener("webglcontextcreationerror", c0, false), C0.dispose(), J0.dispose(), q0.dispose(), x0.dispose(), H0.dispose(), et.dispose(), ct.dispose(), w0.dispose(), Q0.dispose(), nt.dispose(), P0.dispose(), ht.dispose(), ht.removeEventListener("sessionstart", j), ht.removeEventListener("sessionend", s0), l0.stop();
       };
       function pt(g0) {
-        g0.preventDefault(), console.log("THREE.WebGLRenderer: Context Lost."), M = true;
+        g0.preventDefault(), console.log("THREE.WebGLRenderer: Context Lost."), M = true, x0.dispose();
       }
       function V0() {
         console.log("THREE.WebGLRenderer: Context Restored."), M = false;
@@ -16874,7 +16906,7 @@ void main() {
           return;
         }
         if (M === true) return;
-        if (g0.matrixWorldAutoUpdate === true && g0.updateMatrixWorld(), G0.parent === null && G0.matrixWorldAutoUpdate === true && G0.updateMatrixWorld(), ht.enabled === true && ht.isPresenting === true && (ht.cameraAutoUpdate === true && ht.updateCamera(G0), G0 = ht.getCamera()), g0.isScene === true && g0.onBeforeRender(y, g0, G0, S), g = q0.get(g0, v.length), g.init(G0), v.push(g), p0.multiplyMatrices(G0.projectionMatrix, G0.matrixWorldInverse), $.setFromProjectionMatrix(p0, Ic, G0.reversedDepth), e0 = this.localClippingEnabled, n0 = v0.init(this.clippingPlanes, e0), x = J0.get(g0, b.length), x.init(), b.push(x), ht.enabled === true && ht.isPresenting === true) {
+        if (g0.matrixWorldAutoUpdate === true && g0.updateMatrixWorld(), G0.parent === null && G0.matrixWorldAutoUpdate === true && G0.updateMatrixWorld(), ht.enabled === true && ht.isPresenting === true && (ht.cameraAutoUpdate === true && ht.updateCamera(G0), G0 = ht.getCamera()), g0.isScene === true && g0.onBeforeRender(y, g0, G0, S), g = q0.get(g0, v.length), g.init(G0, g0.ghSeparateFxLights === true && (G0.layers.mask === 4 || G0.layers.mask === 8)), v.push(g), p0.multiplyMatrices(G0.projectionMatrix, G0.matrixWorldInverse), $.setFromProjectionMatrix(p0, Ic, G0.reversedDepth), e0 = this.localClippingEnabled, n0 = v0.init(this.clippingPlanes, e0), x = J0.get(g0, b.length), x.init(), b.push(x), ht.enabled === true && ht.isPresenting === true) {
           let gt = y.xr.getDepthSensingMesh();
           gt !== null && E0(gt, G0, -1 / 0, y.sortObjects);
         }
@@ -18870,7 +18902,7 @@ void main() {`).replace("#include <lights_fragment_begin>", `#include <lights_fr
   }, BM = class {
     constructor(t) {
       let e = this.renderer = new Hm({ canvas: t, antialias: false, powerPreference: "high-performance", stencil: false, alpha: false });
-      e.toneMapping = Q1, e.shadowMap.enabled = true, e.shadowMap.type = gx, e.shadowMap.autoUpdate = false, e.info.autoReset = false, this.scene = new zr(), this.camera = new Eo(90, 1, 0.06, 2500), this.camera.rotation.order = "YXZ", this.camera.layers.enable(1), this.vmScene = new zr(), this.vmCamera = new Eo(55, 1, 0.01, 10), this.quality = globalThis.GHBoot?.policy.mobile ? "low" : "medium", this._renderScale = 1, this.q = c9[this.quality], this.q.scale = this._renderScale, this.renderer.shadowMap.type = this.q.soft ? gx : sz, this.composer = null, this.uniforms = null, this.time = 0, this.preRender = null, this.sunUv = new It(0.5, 0.5), this.rayK = 0, this.fx = null, this.motionBlur = 1, this.vmBlur = 1, this.shutter = 0.38, this.exposure = { auto: 1, key: 0.15, comp: 0.46, min: 0.5, max: 1.6, up: 1.1, down: 3.2, clamp: 6 }, this._lastCam = new a0(1e9, 0, 0), this.size = new It(), this._passes = [], this._prevQ = new Ft(), this._hasPrev = false, this._blurK = 0, this._turn = 0, this._reproj = new Lt(), this._build(), this._resizeTimer = 0, addEventListener("resize", () => {
+      e.toneMapping = Q1, e.shadowMap.enabled = true, e.shadowMap.type = gx, e.shadowMap.autoUpdate = false, e.info.autoReset = false, this.scene = new zr(), this.scene.ghSeparateFxLights = true, this.camera = new Eo(90, 1, 0.06, 2500), this.camera.rotation.order = "YXZ", this.camera.layers.enable(1), this.vmScene = new zr(), this.vmCamera = new Eo(55, 1, 0.01, 10), this.quality = globalThis.GHBoot?.policy.mobile ? "low" : "medium", this._renderScale = 1, this.q = c9[this.quality], this.q.scale = this._renderScale, this.renderer.shadowMap.type = this.q.soft ? gx : sz, this.composer = null, this.uniforms = null, this.time = 0, this.preRender = null, this.sunUv = new It(0.5, 0.5), this.rayK = 0, this.fx = null, this.motionBlur = 1, this.vmBlur = 1, this.shutter = 0.38, this.exposure = { auto: 1, key: 0.15, comp: 0.46, min: 0.5, max: 1.6, up: 1.1, down: 3.2, clamp: 6 }, this._lastCam = new a0(1e9, 0, 0), this.size = new It(), this._passes = [], this._prevQ = new Ft(), this._hasPrev = false, this._blurK = 0, this._turn = 0, this._reproj = new Lt(), this._build(), this._resizeTimer = 0, addEventListener("resize", () => {
         clearTimeout(this._resizeTimer), this._resizeTimer = setTimeout(() => this.resize(), 150);
       });
     }

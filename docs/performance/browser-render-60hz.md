@@ -83,3 +83,49 @@ python scripts/performance/analyze_browser.py $env:GH_BENCH_OUT/unique-primary.j
 
 The raw evidence name must be unique; the runner refuses overwrites. A trace
 can be hundreds of MB. Keep raw profiles/trace/isolated stores outside Git.
+
+## Stage 2: remove repeated light layouts and shadow variants
+
+World, reflection and FX continue their full light collection and view updates.
+Only the main world's FX layer masks 4/8 use a separate light-layout bank, so
+an empty FX pass no longer invalidates the world's lit-material parameters.
+Real light additions/removals still change versions; same-count position/color
+changes still update uniforms. Scene/depth ownership and transmission targets
+remain with the existing render state.
+
+Default shadow depth/distance materials now keep bounded slots for live geometry
+feature combinations. Morph, cutout, clipping, displacement, batched and custom
+material paths retain legacy behavior. Seeing any custom before/after shadow
+callback permanently disables both slot banks for that shadow-map instance,
+preserving mutations of legacy shared depth materials for subsequent casters.
+Disposal releases slots before renderer properties/programs; context restoration
+creates a new instance. High size, filtering, refresh, casters and order remain.
+
+The actual owning renderer tests and complete suite passed **114/114**. Independent
+review checked shared uniform references, dynamic lights, nested ownership and
+the callback side effect (found, reproduced, then fixed). Eight logical exports
+remain exactly equal to the baseline under full native AI.
+
+A fresh uninstrumented AB pair at the frozen source measured:
+
+| Complete active scenario | Baseline | Stage 2 |
+| --- | ---: | ---: |
+| Rendered FPS | 38.18 | 46.05 |
+| 1% low FPS (slowest-tail mean) | 12.92 | 15.61 |
+| P95 / P99 ms | 40.4 / 50.8 | 34.0 / 42.3 |
+| >50 ms intervals / minute | 23.59 | 9.91 |
+| Maximum interval ms | 353.5 | 277.1 |
+
+An earlier baseline/pilot measured 43.54/49.16 FPS. This variation is retained;
+one fresh AB pair plus pilots does not establish statistical target acceptance.
+All long frames remain in the complete window. The 60 FPS / 1% low >45 goal is
+**still unmet**. Detailed source hashes and measurements are in
+[stage2-render.json](evidence/stage2-render.json).
+
+The next isolated candidates are proven-planar individual fractured panes,
+conservative reflected-batch culling and private audio-node reuse. They are not
+included in this stage's runtime change. Geometry proof alone does not establish
+equivalent DoubleSide/FlipSide lighting; use a frozen two-sided GPU pixel oracle
+before accepting single-pass panes. Audio PCM equivalence and cleanup/tail-frame
+measurements are separate gates. Empty-pool draw shortcuts were rejected as a
+low-priority opportunity with callback/ring semantics costs and no measured gain.

@@ -1,0 +1,302 @@
+{
+  "phase": "Stage2 FX light states + shadow geometry variants",
+  "source": {
+    "game/core/game.js": "27540b48a3405b7608f42193a64131fef065a327937ed4f820ead224a96f6630",
+    "game/client/render-diagnostics.js": "64f89a42453efaeb2407f5ea4ff29099ed3924f46c5fc39f8891c94095fc2475",
+    "game/client/benchmark-full-ai.js": "e0338c6617cf6de5abac435958a200d67ed4b9733bad65bc910fbf33d7ad12ce"
+  },
+  "tests": "114/114",
+  "formalPair": [
+    {
+      "name": "stage2-pair-baseline-high-1",
+      "coreSHA256": "9806a7c26dbb7d2bd79d0cd0af81f06d534b73432d535a61f015a817534b3b05",
+      "diagnosticOnly": false,
+      "wallSeconds": 61.077700000047685,
+      "logicalHz": 58.94131573384704,
+      "renderHz": 38.1808745253698,
+      "overflowDroppedMs": 1087.2333333333354,
+      "windows": {
+        "complete": {
+          "frames": 2331,
+          "fps": 38.18413237153959,
+          "onePercentLowFPS": 12.92198352480276,
+          "onePercentTailFrames": 24,
+          "p95Ms": 40.40000009536743,
+          "p99Ms": 50.799999952316284,
+          "reciprocalP99FPS": 19.685039388556216,
+          "maxMs": 353.5,
+          "over50PerMinute": 23.588653202495497,
+          "over100": 4
+        },
+        "warmTick301": {
+          "frames": 2166,
+          "fps": 38.74901159604696,
+          "onePercentLowFPS": 12.737378413823418,
+          "onePercentTailFrames": 22,
+          "p95Ms": 39.60000014305115,
+          "p99Ms": 49.200000047683716,
+          "reciprocalP99FPS": 20.325203232333717,
+          "maxMs": 353.5,
+          "over50PerMinute": 20.394216629498402,
+          "over100": 4
+        }
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+      "onePercentGatePassed": false
+    },
+    {
+      "name": "stage2-pair-candidate-high-1",
+      "coreSHA256": "27540b48a3405b7608f42193a64131fef065a327937ed4f820ead224a96f6630",
+      "diagnosticOnly": false,
+      "wallSeconds": 60.59780000019074,
+      "logicalHz": 59.40809732347822,
+      "renderHz": 46.04127542569562,
+      "overflowDroppedMs": 605.700000000002,
+      "windows": {
+        "complete": {
+          "frames": 2789,
+          "fps": 46.05114335303826,
+          "onePercentLowFPS": 15.605841040873443,
+          "onePercentTailFrames": 28,
+          "p95Ms": 34.0,
+          "p99Ms": 42.299999952316284,
+          "reciprocalP99FPS": 23.640661965183796,
+          "maxMs": 277.10000014305115,
+          "over50PerMinute": 9.907022592980624,
+          "over100": 3
+        },
+        "warmTick301": {
+          "frames": 2553,
+          "fps": 45.97415506954302,
+          "onePercentLowFPS": 15.683435877071192,
+          "onePercentTailFrames": 26,
+          "p95Ms": 34.09999990463257,
+          "p99Ms": 42.0,
+          "reciprocalP99FPS": 23.80952380952381,
+          "maxMs": 277.10000014305115,
+          "over50PerMinute": 8.643789437281885,
+          "over100": 3
+        }
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+      "onePercentGatePassed": false
+    }
+  ],
+  "programAudit": {
+    "runs": [
+      {
+        "name": "audit-baseline-native-high-1",
+        "renders": 2495,
+        "errors": [],
+        "buckets": {
+          "shadow/default/1/MeshDepthMaterial/other": {
+            "calls": 60040,
+            "version": 0,
+            "lights": 0,
+            "other": 60040,
+            "geometryChanged": 60040,
+            "sameProgram": 0,
+            "newProgram": 1
+          },
+          "scene/3/MeshStandardMaterial/other": {
+            "calls": 247846,
+            "version": 77574,
+            "lights": 170155,
+            "other": 2830,
+            "geometryChanged": 5806,
+            "sameProgram": 166687,
+            "newProgram": 10
+          },
+          "scene/3/MeshPhysicalMaterial/other": {
+            "calls": 2600,
+            "version": 0,
+            "lights": 2600,
+            "other": 0,
+            "geometryChanged": 0,
+            "sameProgram": 2600,
+            "newProgram": 0
+          },
+          "scene/3/MeshBasicMaterial/other": {
+            "calls": 2710,
+            "version": 2710,
+            "lights": 0,
+            "other": 0,
+            "geometryChanged": 0,
+            "sameProgram": 0,
+            "newProgram": 0
+          },
+          "scene/3/MeshBasicMaterial/main": {
+            "calls": 9298,
+            "version": 5002,
+            "lights": 0,
+            "other": 4296,
+            "geometryChanged": 4296,
+            "sameProgram": 0,
+            "newProgram": 0
+          },
+          "scene/3/MeshStandardMaterial/main": {
+            "calls": 304865,
+            "version": 144790,
+            "lights": 156351,
+            "other": 6016,
+            "geometryChanged": 13005,
+            "sameProgram": 151689,
+            "newProgram": 8
+          },
+          "override/1/MeshNormalMaterial/main": {
+            "calls": 31183,
+            "version": 0,
+            "lights": 0,
+            "other": 31183,
+            "geometryChanged": 28682,
+            "sameProgram": 0,
+            "newProgram": 0
+          },
+          "scene/3/MeshPhysicalMaterial/main": {
+            "calls": 2349,
+            "version": 0,
+            "lights": 2349,
+            "other": 0,
+            "geometryChanged": 0,
+            "sameProgram": 2349,
+            "newProgram": 0
+          },
+          "scene/1/ShaderMaterial/other": {
+            "calls": 2,
+            "version": 2,
+            "lights": 0,
+            "other": 0,
+            "geometryChanged": 0,
+            "sameProgram": 2,
+            "newProgram": 0
+          },
+          "scene/1/MeshStandardMaterial/other": {
+            "calls": 872,
+            "version": 0,
+            "lights": 872,
+            "other": 0,
+            "geometryChanged": 0,
+            "sameProgram": 0,
+            "newProgram": 0
+          }
+        },
+        "callsPerRender": 265.23647294589176,
+        "lightsPerRender": 133.19719438877755,
+        "sameProgramPerRender": 129.58997995991984
+      },
+      {
+        "name": "audit-fx-native-high-1",
+        "renders": 2831,
+        "errors": [],
+        "buckets": {
+          "shadow/default/1/MeshDepthMaterial/other": {
+            "calls": 58798,
+            "version": 0,
+            "lights": 0,
+            "other": 58798,
+            "geometryChanged": 58798,
+            "sameProgram": 0,
+            "newProgram": 0
+          },
+          "scene/3/MeshBasicMaterial/main": {
+            "calls": 10668,
+            "version": 5676,
+            "lights": 0,
+            "other": 4992,
+            "geometryChanged": 4992,
+            "sameProgram": 0,
+            "newProgram": 0
+          },
+          "scene/3/MeshStandardMaterial/main": {
+            "calls": 169494,
+            "version": 160595,
+            "lights": 600,
+            "other": 8299,
+            "geometryChanged": 13975,
+            "sameProgram": 0,
+            "newProgram": 7
+          },
+          "override/1/MeshNormalMaterial/main": {
+            "calls": 35191,
+            "version": 0,
+            "lights": 0,
+            "other": 35191,
+            "geometryChanged": 32353,
+            "sameProgram": 0,
+            "newProgram": 0
+          },
+          "scene/3/MeshBasicMaterial/other": {
+            "calls": 2896,
+            "version": 2896,
+            "lights": 0,
+            "other": 0,
+            "geometryChanged": 0,
+            "sameProgram": 0,
+            "newProgram": 0
+          },
+          "scene/3/MeshStandardMaterial/other": {
+            "calls": 86222,
+            "version": 82345,
+            "lights": 542,
+            "other": 3338,
+            "geometryChanged": 6234,
+            "sameProgram": 0,
+            "newProgram": 11
+          },
+          "scene/1/ShaderMaterial/other": {
+            "calls": 2,
+            "version": 2,
+            "lights": 0,
+            "other": 0,
+            "geometryChanged": 0,
+            "sameProgram": 2,
+            "newProgram": 0
+          },
+          "scene/1/MeshStandardMaterial/other": {
+            "calls": 1139,
+            "version": 0,
+            "lights": 1139,
+            "other": 0,
+            "geometryChanged": 0,
+            "sameProgram": 0,
+            "newProgram": 0
+          }
+        },
+        "callsPerRender": 128.72129989403038,
+        "lightsPerRender": 0.8057223595902508,
+        "sameProgramPerRender": 0.0007064641469445425
+      }
+    ],
+    "logicalExportsEqual": {
+      "manifest": true,
+      "seed": true,
+      "equipment": true,
+      "decisionTrace": true,
+      "events": true,
+      "checkpoints": true,
+      "state": true,
+      "coverage": true
+    }
+  },
+  "limits": "One fresh AB pair plus earlier pilots, not statistical target acceptance. Keep all long frames. Earlier baseline43.54FPS and this38.18FPS show machine/run variability. No 60FPS/1%low45 claim. FX frozen ABBA pixel oracle and full functional/context restore passed; shadow geometry/callback semantics tested in actual owning renderer code."
+}
