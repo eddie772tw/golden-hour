@@ -1,0 +1,1301 @@
+{
+  "stage": 4,
+  "runtimeChange": "none: chair batching not integrated; audio single-key warmup remains next candidate",
+  "inputs": [
+    {
+      "file": "chairs-native-primary-high-1.json",
+      "sha256": "c0e2dbd2ffa89d057c76348db709d03bd796646b1b9937369f92874434688126",
+      "coreSHA256": "20b55bc92b000b7b59ba138c8bf30aca6041a6338befba9016fda21249565934"
+    },
+    {
+      "file": "chairs-native-oracle-profile-high-1.json",
+      "sha256": "1d5e8f3e26586bae26dd1c8dae818731f26998aff967e1549e2f84ac54d22d0e",
+      "coreSHA256": "20b55bc92b000b7b59ba138c8bf30aca6041a6338befba9016fda21249565934"
+    },
+    {
+      "file": "chairs-focus-fixture-high-1.json",
+      "sha256": "c0800d6c07df01169af4050e2f6b9e9bc5f59b5896a60502d587a3a16dc4f372",
+      "coreSHA256": "6f36bab13aabd7e5dfc2c0189e6deff0c66d2477f0dc4161c37a7295462c32be"
+    },
+    {
+      "file": "cue-audit-native-high-1.json",
+      "sha256": "d98a53045afc5c1d95f34fe9a710f7280ca8c35903463e46108a318679e67e60",
+      "coreSHA256": "b553979defd28fcba6a55d13dc87e31613a6f98322af51cc4682375962787f09"
+    }
+  ],
+  "chairs": {
+    "primary": {
+      "name": "chairs-native-primary-high-1",
+      "coreSHA256": "20b55bc92b000b7b59ba138c8bf30aca6041a6338befba9016fda21249565934",
+      "diagnosticOnly": false,
+      "wallSeconds": 60.6525,
+      "logicalHz": 59.35451959935699,
+      "renderHz": 48.90152920324801,
+      "overflowDroppedMs": 663.2333333333324,
+      "windows": {
+        "complete": {
+          "frames": 2965,
+          "fps": 48.91286416575935,
+          "onePercentLowFPS": 15.30221881986823,
+          "onePercentTailFrames": 30,
+          "p95Ms": 32.799999952316284,
+          "p99Ms": 41.59999990463257,
+          "reciprocalP99FPS": 24.038461593569384,
+          "maxMs": 247.5,
+          "over50PerMinute": 12.867465109373454,
+          "over100": 3
+        },
+        "warmTick301": {
+          "frames": 2772,
+          "fps": 49.941176788565805,
+          "onePercentLowFPS": 16.240357286512847,
+          "onePercentTailFrames": 28,
+          "p95Ms": 30.799999952316284,
+          "p99Ms": 38.299999952316284,
+          "reciprocalP99FPS": 26.109660606919206,
+          "maxMs": 247.5,
+          "over50PerMinute": 7.566844967964515,
+          "over100": 3
+        }
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+      "onePercentGatePassed": false
+    },
+    "eligibility": {
+      "registered": 118,
+      "sources": 118,
+      "batches": 12,
+      "savedSubmissionsPerPass": 106,
+      "matrixWrites": 0,
+      "boundsUpdates": 0,
+      "warming": false,
+      "reasons": {},
+      "enabled": true
+    },
+    "updateDiagnostic": {
+      "calls": 2648,
+      "totalMs": 825.6999981403351,
+      "maxMs": 1.4000000953674316,
+      "histogram": [
+        69,
+        175,
+        1419,
+        407,
+        319,
+        197,
+        32,
+        16,
+        4,
+        4,
+        3,
+        0,
+        0,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "updateMeanMS": 0.3118202409895525,
+    "initialOracle": {
+      "status": "skip",
+      "reason": "Actual submitted chairs were occluded: zero absence contribution, cannot accept equality."
+    },
+    "focusedOracle": {
+      "version": "chair-gpu-oracle-v2",
+      "source": {
+        "coreSHA256": "6f36bab13aabd7e5dfc2c0189e6deff0c66d2477f0dc4161c37a7295462c32be"
+      },
+      "strictExact": true,
+      "paused": true,
+      "fixedCamera": false,
+      "focusChair": true,
+      "framebuffer": [
+        1920,
+        1080
+      ],
+      "initialEnabled": true,
+      "registeredSources": 118,
+      "registeredBatches": 12,
+      "camera": {
+        "position": [
+          -24.35557374856822,
+          1.618663203708592,
+          4.526737437851164
+        ],
+        "quaternion": [
+          6.758984861960737e-05,
+          -0.7068251778788839,
+          6.753604643537005e-05,
+          0.7073882659381473
+        ],
+        "fov": 67.67274797076357,
+        "aspect": 1.7777777777777777
+      },
+      "samples": [
+        {
+          "view": {
+            "kind": "diningChair",
+            "root": 562,
+            "sourceIDs": [
+              563,
+              564,
+              565
+            ],
+            "bounds": [
+              [
+                -21.676839369959207,
+                -0.0009967435616999865,
+                -10.184249827759343
+              ],
+              [
+                -21.015543494632272,
+                0.9188879132270813,
+                -9.523160630040795
+              ]
+            ],
+            "angle": 0,
+            "position": [
+              -20.63908465110919,
+              0.6389455848326906,
+              -10.560812010086615
+            ],
+            "center": [
+              -21.34619143229574,
+              0.45894558483269066,
+              -9.853705228900068
+            ]
+          },
+          "order": "off-on-on-off + off-source-hidden",
+          "captures": [
+            {
+              "width": 1920,
+              "height": 1080,
+              "hash": "21ea6ac6",
+              "nonBlack": 2073600,
+              "sampledColors": 978,
+              "glErrors": [],
+              "mode": "A",
+              "hidden": false,
+              "sourceDraws": 17,
+              "instanceDraws": 0,
+              "stats": {
+                "registered": 118,
+                "sources": 0,
+                "batches": 0,
+                "savedSubmissionsPerPass": 0,
+                "matrixWrites": 0,
+                "boundsUpdates": 0,
+                "warming": false,
+                "reasons": {}
+              }
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "hash": "3adaa38e",
+              "nonBlack": 2073600,
+              "sampledColors": 978,
+              "glErrors": [],
+              "mode": "B",
+              "hidden": false,
+              "sourceDraws": 0,
+              "instanceDraws": 8,
+              "stats": {
+                "registered": 118,
+                "sources": 118,
+                "batches": 12,
+                "savedSubmissionsPerPass": 106,
+                "matrixWrites": 118,
+                "boundsUpdates": 12,
+                "warming": false,
+                "reasons": {}
+              }
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "hash": "3adaa38e",
+              "nonBlack": 2073600,
+              "sampledColors": 978,
+              "glErrors": [],
+              "mode": "B",
+              "hidden": false,
+              "sourceDraws": 0,
+              "instanceDraws": 8,
+              "stats": {
+                "registered": 118,
+                "sources": 118,
+                "batches": 12,
+                "savedSubmissionsPerPass": 106,
+                "matrixWrites": 0,
+                "boundsUpdates": 0,
+                "warming": false,
+                "reasons": {}
+              }
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "hash": "21ea6ac6",
+              "nonBlack": 2073600,
+              "sampledColors": 978,
+              "glErrors": [],
+              "mode": "A",
+              "hidden": false,
+              "sourceDraws": 17,
+              "instanceDraws": 0,
+              "stats": {
+                "registered": 118,
+                "sources": 0,
+                "batches": 0,
+                "savedSubmissionsPerPass": 0,
+                "matrixWrites": 0,
+                "boundsUpdates": 0,
+                "warming": false,
+                "reasons": {}
+              }
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "hash": "84be67a1",
+              "nonBlack": 2073600,
+              "sampledColors": 984,
+              "glErrors": [],
+              "mode": "A",
+              "hidden": true,
+              "sourceDraws": 0,
+              "instanceDraws": 0,
+              "stats": {
+                "registered": 118,
+                "sources": 0,
+                "batches": 0,
+                "savedSubmissionsPerPass": 0,
+                "matrixWrites": 0,
+                "boundsUpdates": 0,
+                "warming": false,
+                "reasons": {}
+              }
+            }
+          ],
+          "aa": {
+            "full": {
+              "pixels": 0,
+              "channels": 0,
+              "maxDelta": 0
+            },
+            "roi": {
+              "pixels": 0,
+              "channels": 0,
+              "maxDelta": 0
+            }
+          },
+          "bb": {
+            "full": {
+              "pixels": 0,
+              "channels": 0,
+              "maxDelta": 0
+            },
+            "roi": {
+              "pixels": 0,
+              "channels": 0,
+              "maxDelta": 0
+            }
+          },
+          "ab": {
+            "full": {
+              "pixels": 1039,
+              "channels": 1104,
+              "maxDelta": 14
+            },
+            "roi": {
+              "pixels": 1039,
+              "channels": 1104,
+              "maxDelta": 14
+            }
+          },
+          "absence": {
+            "full": {
+              "pixels": 415396,
+              "channels": 1047838,
+              "maxDelta": 250
+            },
+            "roi": {
+              "pixels": 415396,
+              "channels": 1047838,
+              "maxDelta": 250
+            }
+          },
+          "visible": true,
+          "stable": true,
+          "status": "fail",
+          "reason": null
+        }
+      ],
+      "limitations": [
+        "Fixed-camera GPU pixel oracle only; no FPS or GPU utilization claim.",
+        "Only registered chair source meshes are hidden for absence control. All other world objects remain present.",
+        "Optional focusChair tests up to three chair views; camera and controls are restored, input/pointerlock are not changed.",
+        "Working framebuffer/reflection/postprocess targets and controller caches/statistics are refreshed.",
+        "GL errors are consumed/reported and cannot be requeued. Raw bindings are not replayed; renderer.resetState invalidates native caches.",
+        "Synchronous controlled QA: no third-party draws may interleave. Initial controller enabled/source/batch visibility are restored."
+      ],
+      "status": "fail",
+      "normalRefresh": {
+        "attempted": true,
+        "errors": [],
+        "exception": null,
+        "complete": true
+      },
+      "restoreErrors": [],
+      "glRestore": {
+        "contract": "native-cache-invalidation; no arbitrary raw-binding restoration",
+        "checkedGroups": 10,
+        "groups": [],
+        "complete": true
+      },
+      "finalGLErrors": [],
+      "refreshRequested": true
+    },
+    "differenceMaxChannelDeltaHistogram": {
+      "1": 1024,
+      "2": 4,
+      "4": 1,
+      "5": 2,
+      "6": 1,
+      "7": 1,
+      "8": 2,
+      "10": 2,
+      "13": 1,
+      "14": 1
+    },
+    "decision": "Keep isolated. No net primary performance improvement established; small focused pixel differences remain. No tolerance was relaxed. Floating-point grouping/rasterization is a hypothesis, not a proven cause."
+  },
+  "audio": {
+    "diagnosticOnly": true,
+    "logicalExportsEqual": {
+      "manifest": true,
+      "seed": true,
+      "equipment": true,
+      "decisionTrace": true,
+      "events": true,
+      "checkpoints": true,
+      "state": true,
+      "coverage": true
+    },
+    "events": [
+      {
+        "cue": "k9",
+        "key": "k9:motif:ready:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 1,
+        "pcmMiss": true,
+        "startMs": 20639.39999985695,
+        "pcmEndMs": 20647,
+        "lookupMs": 7.6000001430511475,
+        "copyStartMs": 20647,
+        "copyMs": 0.09999990463256836,
+        "endMs": 20647.099999904633,
+        "durationMs": 7.700000047683716
+      },
+      {
+        "cue": "glassCrack",
+        "key": "glass:crack:0",
+        "requestedChannel": "stereo",
+        "actualChannels": 2,
+        "tick": 33,
+        "pcmMiss": false,
+        "startMs": 21173.299999952316,
+        "pcmEndMs": 21173.299999952316,
+        "lookupMs": 0,
+        "copyStartMs": 21173.299999952316,
+        "copyMs": 0.09999990463256836,
+        "endMs": 21173.39999985695,
+        "durationMs": 0.09999990463256836
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:near:2",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 33,
+        "pcmMiss": false,
+        "startMs": 21176.5,
+        "pcmEndMs": 21176.5,
+        "lookupMs": 0,
+        "copyStartMs": 21176.5,
+        "copyMs": 0.20000004768371582,
+        "endMs": 21176.700000047684,
+        "durationMs": 0.20000004768371582
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:near:3",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 39,
+        "pcmMiss": false,
+        "startMs": 21277.700000047684,
+        "pcmEndMs": 21277.700000047684,
+        "lookupMs": 0,
+        "copyStartMs": 21277.700000047684,
+        "copyMs": 0,
+        "endMs": 21277.700000047684,
+        "durationMs": 0
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:near:4",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 45,
+        "pcmMiss": false,
+        "startMs": 21371.099999904633,
+        "pcmEndMs": 21371.099999904633,
+        "lookupMs": 0,
+        "copyStartMs": 21371.099999904633,
+        "copyMs": 0.10000014305114746,
+        "endMs": 21371.200000047684,
+        "durationMs": 0.10000014305114746
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:shotgun:near:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 60,
+        "pcmMiss": true,
+        "startMs": 21627.799999952316,
+        "pcmEndMs": 21636.099999904633,
+        "lookupMs": 8.299999952316284,
+        "copyStartMs": 21636.099999904633,
+        "copyMs": 0.10000014305114746,
+        "endMs": 21636.200000047684,
+        "durationMs": 8.400000095367432
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:shotgun:far:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 60,
+        "pcmMiss": true,
+        "startMs": 21636.299999952316,
+        "pcmEndMs": 21642.700000047684,
+        "lookupMs": 6.400000095367432,
+        "copyStartMs": 21642.700000047684,
+        "copyMs": 0.09999990463256836,
+        "endMs": 21642.799999952316,
+        "durationMs": 6.5
+      },
+      {
+        "cue": "glassDebris",
+        "key": "glass:debris:0",
+        "requestedChannel": "stereo",
+        "actualChannels": 2,
+        "tick": 88,
+        "pcmMiss": false,
+        "startMs": 22096,
+        "pcmEndMs": 22096,
+        "lookupMs": 0,
+        "copyStartMs": 22096,
+        "copyMs": 0.20000004768371582,
+        "endMs": 22096.200000047684,
+        "durationMs": 0.20000004768371582
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:far:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 89,
+        "pcmMiss": false,
+        "startMs": 22114.799999952316,
+        "pcmEndMs": 22114.89999985695,
+        "lookupMs": 0.09999990463256836,
+        "copyStartMs": 22114.89999985695,
+        "copyMs": 0,
+        "endMs": 22114.89999985695,
+        "durationMs": 0.09999990463256836
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:near:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 95,
+        "pcmMiss": false,
+        "startMs": 22202.89999985695,
+        "pcmEndMs": 22202.89999985695,
+        "lookupMs": 0,
+        "copyStartMs": 22202.89999985695,
+        "copyMs": 0.20000004768371582,
+        "endMs": 22203.099999904633,
+        "durationMs": 0.20000004768371582
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:far:1",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 95,
+        "pcmMiss": false,
+        "startMs": 22203.099999904633,
+        "pcmEndMs": 22203.099999904633,
+        "lookupMs": 0,
+        "copyStartMs": 22203.099999904633,
+        "copyMs": 0,
+        "endMs": 22203.099999904633,
+        "durationMs": 0
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:smg:sup:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 95,
+        "pcmMiss": true,
+        "startMs": 22204.39999985695,
+        "pcmEndMs": 22207.89999985695,
+        "lookupMs": 3.5,
+        "copyStartMs": 22207.89999985695,
+        "copyMs": 0.10000014305114746,
+        "endMs": 22208,
+        "durationMs": 3.6000001430511475
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:far:2",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 101,
+        "pcmMiss": false,
+        "startMs": 22299.89999985695,
+        "pcmEndMs": 22299.89999985695,
+        "lookupMs": 0,
+        "copyStartMs": 22299.89999985695,
+        "copyMs": 0.10000014305114746,
+        "endMs": 22300,
+        "durationMs": 0.10000014305114746
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:near:1",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 107,
+        "pcmMiss": false,
+        "startMs": 22407.200000047684,
+        "pcmEndMs": 22407.200000047684,
+        "lookupMs": 0,
+        "copyStartMs": 22407.200000047684,
+        "copyMs": 0.09999990463256836,
+        "endMs": 22407.299999952316,
+        "durationMs": 0.09999990463256836
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:sup:3",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 119,
+        "pcmMiss": false,
+        "startMs": 22616.099999904633,
+        "pcmEndMs": 22616.099999904633,
+        "lookupMs": 0,
+        "copyStartMs": 22616.099999904633,
+        "copyMs": 0,
+        "endMs": 22616.099999904633,
+        "durationMs": 0
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:near:1",
+        "requestedChannel": "stereo",
+        "actualChannels": 2,
+        "tick": 120,
+        "pcmMiss": false,
+        "startMs": 22637.200000047684,
+        "pcmEndMs": 22637.200000047684,
+        "lookupMs": 0,
+        "copyStartMs": 22637.200000047684,
+        "copyMs": 0.09999990463256836,
+        "endMs": 22637.299999952316,
+        "durationMs": 0.09999990463256836
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:near:3",
+        "requestedChannel": "stereo",
+        "actualChannels": 2,
+        "tick": 125,
+        "pcmMiss": false,
+        "startMs": 22707.099999904633,
+        "pcmEndMs": 22707.200000047684,
+        "lookupMs": 0.10000014305114746,
+        "copyStartMs": 22707.200000047684,
+        "copyMs": 0.09999990463256836,
+        "endMs": 22707.299999952316,
+        "durationMs": 0.20000004768371582
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:sup:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 125,
+        "pcmMiss": false,
+        "startMs": 22709.200000047684,
+        "pcmEndMs": 22709.200000047684,
+        "lookupMs": 0,
+        "copyStartMs": 22709.200000047684,
+        "copyMs": 0.19999980926513672,
+        "endMs": 22709.39999985695,
+        "durationMs": 0.19999980926513672
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:near:4",
+        "requestedChannel": "stereo",
+        "actualChannels": 2,
+        "tick": 130,
+        "pcmMiss": false,
+        "startMs": 22784.5,
+        "pcmEndMs": 22784.5,
+        "lookupMs": 0,
+        "copyStartMs": 22784.5,
+        "copyMs": 0.20000004768371582,
+        "endMs": 22784.700000047684,
+        "durationMs": 0.20000004768371582
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:sup:1",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 131,
+        "pcmMiss": false,
+        "startMs": 22802.89999985695,
+        "pcmEndMs": 22802.89999985695,
+        "lookupMs": 0,
+        "copyStartMs": 22802.89999985695,
+        "copyMs": 0,
+        "endMs": 22802.89999985695,
+        "durationMs": 0
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:sup:2",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 137,
+        "pcmMiss": false,
+        "startMs": 22907.099999904633,
+        "pcmEndMs": 22907.099999904633,
+        "lookupMs": 0,
+        "copyStartMs": 22907.099999904633,
+        "copyMs": 0.10000014305114746,
+        "endMs": 22907.200000047684,
+        "durationMs": 0.10000014305114746
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:near:0",
+        "requestedChannel": "stereo",
+        "actualChannels": 2,
+        "tick": 173,
+        "pcmMiss": false,
+        "startMs": 23519.099999904633,
+        "pcmEndMs": 23519.099999904633,
+        "lookupMs": 0,
+        "copyStartMs": 23519.099999904633,
+        "copyMs": 0.10000014305114746,
+        "endMs": 23519.200000047684,
+        "durationMs": 0.10000014305114746
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:smg:near:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 177,
+        "pcmMiss": true,
+        "startMs": 23591.200000047684,
+        "pcmEndMs": 23595.799999952316,
+        "lookupMs": 4.599999904632568,
+        "copyStartMs": 23595.799999952316,
+        "copyMs": 0.09999990463256836,
+        "endMs": 23595.89999985695,
+        "durationMs": 4.699999809265137
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:smg:far:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 177,
+        "pcmMiss": true,
+        "startMs": 23596,
+        "pcmEndMs": 23600.099999904633,
+        "lookupMs": 4.099999904632568,
+        "copyStartMs": 23600.099999904633,
+        "copyMs": 0,
+        "endMs": 23600.099999904633,
+        "durationMs": 4.099999904632568
+      },
+      {
+        "cue": "gunshot",
+        "key": "gun:ar:near:2",
+        "requestedChannel": "stereo",
+        "actualChannels": 2,
+        "tick": 240,
+        "pcmMiss": false,
+        "startMs": 24631.099999904633,
+        "pcmEndMs": 24631.099999904633,
+        "lookupMs": 0,
+        "copyStartMs": 24631.099999904633,
+        "copyMs": 0.20000004768371582,
+        "endMs": 24631.299999952316,
+        "durationMs": 0.20000004768371582
+      },
+      {
+        "cue": "k9",
+        "key": "k9:howl:-:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 241,
+        "pcmMiss": true,
+        "startMs": 24656.700000047684,
+        "pcmEndMs": 24701.200000047684,
+        "lookupMs": 44.5,
+        "copyStartMs": 24701.200000047684,
+        "copyMs": 0.19999980926513672,
+        "endMs": 24701.39999985695,
+        "durationMs": 44.69999980926514
+      },
+      {
+        "cue": "glassShatter",
+        "key": "glass:crash:0",
+        "requestedChannel": "stereo",
+        "actualChannels": 2,
+        "tick": 270,
+        "pcmMiss": false,
+        "startMs": 25158.700000047684,
+        "pcmEndMs": 25158.700000047684,
+        "lookupMs": 0,
+        "copyStartMs": 25158.700000047684,
+        "copyMs": 0.2999999523162842,
+        "endMs": 25159,
+        "durationMs": 0.2999999523162842
+      },
+      {
+        "cue": "k9",
+        "key": "k9:step:hard:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 273,
+        "pcmMiss": true,
+        "startMs": 25214.89999985695,
+        "pcmEndMs": 25215.5,
+        "lookupMs": 0.6000001430511475,
+        "copyStartMs": 25215.5,
+        "copyMs": 0,
+        "endMs": 25215.5,
+        "durationMs": 0.6000001430511475
+      },
+      {
+        "cue": "explosion",
+        "key": "exp:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 312,
+        "pcmMiss": false,
+        "startMs": 25863.5,
+        "pcmEndMs": 25863.5,
+        "lookupMs": 0,
+        "copyStartMs": 25863.5,
+        "copyMs": 0.20000004768371582,
+        "endMs": 25863.700000047684,
+        "durationMs": 0.20000004768371582
+      },
+      {
+        "cue": "k9",
+        "key": "k9:motif:boot:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 376,
+        "pcmMiss": true,
+        "startMs": 26955.200000047684,
+        "pcmEndMs": 26957.099999904633,
+        "lookupMs": 1.8999998569488525,
+        "copyStartMs": 26957.099999904633,
+        "copyMs": 0.10000014305114746,
+        "endMs": 26957.200000047684,
+        "durationMs": 2
+      },
+      {
+        "cue": "k9",
+        "key": "k9:bark:h:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 377,
+        "pcmMiss": true,
+        "startMs": 26960.799999952316,
+        "pcmEndMs": 26989,
+        "lookupMs": 28.200000047683716,
+        "copyStartMs": 26989,
+        "copyMs": 0.09999990463256836,
+        "endMs": 26989.099999904633,
+        "durationMs": 28.299999952316284
+      },
+      {
+        "cue": "k9",
+        "key": "k9:zip:-:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 448,
+        "pcmMiss": true,
+        "startMs": 28147.5,
+        "pcmEndMs": 28148.39999985695,
+        "lookupMs": 0.8999998569488525,
+        "copyStartMs": 28148.39999985695,
+        "copyMs": 0,
+        "endMs": 28148.39999985695,
+        "durationMs": 0.8999998569488525
+      },
+      {
+        "cue": "k9",
+        "key": "k9:motif:denied:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 510,
+        "pcmMiss": true,
+        "startMs": 29208.5,
+        "pcmEndMs": 29209.799999952316,
+        "lookupMs": 1.2999999523162842,
+        "copyStartMs": 29209.799999952316,
+        "copyMs": 0.09999990463256836,
+        "endMs": 29209.89999985695,
+        "durationMs": 1.3999998569488525
+      },
+      {
+        "cue": "k9",
+        "key": "k9:arc:-:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 653,
+        "pcmMiss": true,
+        "startMs": 31599.599999904633,
+        "pcmEndMs": 31614.5,
+        "lookupMs": 14.900000095367432,
+        "copyStartMs": 31614.5,
+        "copyMs": 0.20000004768371582,
+        "endMs": 31614.700000047684,
+        "durationMs": 15.100000143051147
+      },
+      {
+        "cue": "k9",
+        "key": "k9:step:soft:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 702,
+        "pcmMiss": true,
+        "startMs": 32507.299999952316,
+        "pcmEndMs": 32507.799999952316,
+        "lookupMs": 0.5,
+        "copyStartMs": 32507.799999952316,
+        "copyMs": 0.09999990463256836,
+        "endMs": 32507.89999985695,
+        "durationMs": 0.5999999046325684
+      },
+      {
+        "cue": "k9",
+        "key": "k9:bark:f:0",
+        "requestedChannel": "mono",
+        "actualChannels": 1,
+        "tick": 848,
+        "pcmMiss": true,
+        "startMs": 34951.59999990463,
+        "pcmEndMs": 34956.59999990463,
+        "lookupMs": 5,
+        "copyStartMs": 34956.59999990463,
+        "copyMs": 0.10000014305114746,
+        "endMs": 34956.700000047684,
+        "durationMs": 5.1000001430511475
+      }
+    ],
+    "eventOverflow": 0,
+    "pcmMissCount": 15,
+    "pcmMissLookupMS": 132.29999995231628,
+    "firstBufferCopyMS": 3.9000000953674316,
+    "createdDelta": 112529,
+    "cues": {
+      "laser": {
+        "calls": 3173,
+        "created": 0
+      },
+      "k9": {
+        "calls": 269,
+        "created": 4547
+      },
+      "reload": {
+        "calls": 52,
+        "created": 986
+      },
+      "footstep": {
+        "calls": 1172,
+        "created": 37984
+      },
+      "glassCrack": {
+        "calls": 85,
+        "created": 496
+      },
+      "impact": {
+        "calls": 874,
+        "created": 24544
+      },
+      "whiz": {
+        "calls": 9,
+        "created": 171
+      },
+      "gunshot": {
+        "calls": 707,
+        "created": 6787
+      },
+      "breakProp": {
+        "calls": 44,
+        "created": 1426
+      },
+      "sparks": {
+        "calls": 12,
+        "created": 824
+      },
+      "ricochet": {
+        "calls": 46,
+        "created": 807
+      },
+      "propHit": {
+        "calls": 119,
+        "created": 2215
+      },
+      "hurt": {
+        "calls": 18,
+        "created": 162
+      },
+      "casing": {
+        "calls": 929,
+        "created": 24374
+      },
+      "glassDebris": {
+        "calls": 146,
+        "created": 742
+      },
+      "grenadeBounce": {
+        "calls": 36,
+        "created": 822
+      },
+      "foley": {
+        "calls": 5,
+        "created": 77
+      },
+      "pianoNote": {
+        "calls": 3,
+        "created": 98
+      },
+      "ui": {
+        "calls": 8,
+        "created": 95
+      },
+      "k9Loop": {
+        "calls": 1444,
+        "created": 46
+      },
+      "glassShatter": {
+        "calls": 34,
+        "created": 390
+      },
+      "explosion": {
+        "calls": 9,
+        "created": 54
+      },
+      "bodyFall": {
+        "calls": 5,
+        "created": 185
+      },
+      "land": {
+        "calls": 1,
+        "created": 39
+      },
+      "death": {
+        "calls": 2,
+        "created": 16
+      },
+      "slideStop": {
+        "calls": 2,
+        "created": 0
+      },
+      "extinguisher": {
+        "calls": 1,
+        "created": 16
+      },
+      "hitmarker": {
+        "calls": 1,
+        "created": 8
+      }
+    },
+    "completeFrames": 2883,
+    "slowestOnePercentFrames": [
+      {
+        "startMS": 68007.59999990463,
+        "endMS": 68229.5,
+        "intervalMS": 221.90000009536743,
+        "tick": 2824,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 46439.5,
+        "endMS": 46642.799999952316,
+        "intervalMS": 203.29999995231628,
+        "tick": 1540,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 31707.700000047684,
+        "endMS": 31865.299999952316,
+        "intervalMS": 157.59999990463257,
+        "tick": 662,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 24634,
+        "endMS": 24711.299999952316,
+        "intervalMS": 77.29999995231628,
+        "tick": 242,
+        "cacheWorkOverlapMS": 44.69999980926514
+      },
+      {
+        "startMS": 29072.099999904633,
+        "endMS": 29136.89999985695,
+        "intervalMS": 64.79999995231628,
+        "tick": 506,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 25943.599999904633,
+        "endMS": 26005.39999985695,
+        "intervalMS": 61.799999952316284,
+        "tick": 319,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 26935.200000047684,
+        "endMS": 26992.799999952316,
+        "intervalMS": 57.59999990463257,
+        "tick": 377,
+        "cacheWorkOverlapMS": 30.299999952316284
+      },
+      {
+        "startMS": 24985.299999952316,
+        "endMS": 25034.5,
+        "intervalMS": 49.200000047683716,
+        "tick": 262,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 36540.200000047684,
+        "endMS": 36588,
+        "intervalMS": 47.799999952316284,
+        "tick": 946,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 21600.5,
+        "endMS": 21646.299999952316,
+        "intervalMS": 45.799999952316284,
+        "tick": 60,
+        "cacheWorkOverlapMS": 14.900000095367432
+      },
+      {
+        "startMS": 29136.89999985695,
+        "endMS": 29182.599999904633,
+        "intervalMS": 45.700000047683716,
+        "tick": 508,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 43599.59999990463,
+        "endMS": 43645.09999990463,
+        "intervalMS": 45.5,
+        "tick": 1369,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 43458,
+        "endMS": 43502,
+        "intervalMS": 44,
+        "tick": 1361,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 24912.39999985695,
+        "endMS": 24956,
+        "intervalMS": 43.60000014305115,
+        "tick": 257,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 67964.59999990463,
+        "endMS": 68007.59999990463,
+        "intervalMS": 43.0,
+        "tick": 2821,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 36384.89999985695,
+        "endMS": 36427.799999952316,
+        "intervalMS": 42.90000009536743,
+        "tick": 937,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 31574.700000047684,
+        "endMS": 31617.5,
+        "intervalMS": 42.799999952316284,
+        "tick": 653,
+        "cacheWorkOverlapMS": 15.100000143051147
+      },
+      {
+        "startMS": 26005.39999985695,
+        "endMS": 26048,
+        "intervalMS": 42.60000014305115,
+        "tick": 322,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 71588.70000004768,
+        "endMS": 71630.70000004768,
+        "intervalMS": 42.0,
+        "tick": 3029,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 25185.200000047684,
+        "endMS": 25226.700000047684,
+        "intervalMS": 41.5,
+        "tick": 273,
+        "cacheWorkOverlapMS": 0.6000001430511475
+      },
+      {
+        "startMS": 45407.299999952316,
+        "endMS": 45448.39999985695,
+        "intervalMS": 41.09999990463257,
+        "tick": 1477,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 43558.799999952316,
+        "endMS": 43599.59999990463,
+        "intervalMS": 40.799999952316284,
+        "tick": 1366,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 25034.5,
+        "endMS": 25075.200000047684,
+        "intervalMS": 40.700000047683716,
+        "tick": 264,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 72100.29999995232,
+        "endMS": 72140.89999985695,
+        "intervalMS": 40.59999990463257,
+        "tick": 3060,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 30453.099999904633,
+        "endMS": 30493.5,
+        "intervalMS": 40.40000009536743,
+        "tick": 587,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 45235.5,
+        "endMS": 45275.59999990463,
+        "intervalMS": 40.09999990463257,
+        "tick": 1467,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 73137,
+        "endMS": 73176.89999985695,
+        "intervalMS": 39.89999985694885,
+        "tick": 3121,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 25903.799999952316,
+        "endMS": 25943.599999904633,
+        "intervalMS": 39.799999952316284,
+        "tick": 316,
+        "cacheWorkOverlapMS": 0
+      },
+      {
+        "startMS": 74007.39999985695,
+        "endMS": 74047.09999990463,
+        "intervalMS": 39.700000047683716,
+        "tick": 3173,
+        "cacheWorkOverlapMS": 0
+      }
+    ],
+    "counterfactual": {
+      "method": "Subtract the measured cache-work intersection from each submission interval and re-sort all positive intervals. This does not model scheduling, GC, asynchronous cleanup or real Worker gains.",
+      "originalOnePercentLowFPS": 16.257427965383613,
+      "hypotheticalOnePercentLowFPS": 16.8918918947069
+    },
+    "decision": "Validate a single k9:howl:-:0 prewarm without changing key selection/RNG; retain node-churn investigation. No cache work overlaps the largest three intervals."
+  },
+  "limits": [
+    "Submission intervals are not physical presents.",
+    "One isolated chair primary is not a statistically established regression.",
+    "Profiler, observer, oracle and cue audit runs are diagnostic only.",
+    "Complete native AI workload remains mandatory.",
+    "60FPS/1%low>45 target still unmet."
+  ]
+}

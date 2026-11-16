@@ -177,3 +177,48 @@ only five submissions with no consistent CPU gain. Those changes were rejected.
 Audio-node reuse passed PCM oracles but has no consistent tail-frame benefit in
 the first primary run and remains isolated. A new candidate investigates only
 opaque physics chairs with shared geometry/materials; it is not in this stage.
+
+## Stage 4: screen chair submissions and audio first use
+
+The startup-only chair instance prototype retained the 42 native physics bodies,
+colliders and interaction objects. Hardware eligibility was 118 source meshes
+into 12 groups; 106 fewer submissions/pass is a structural ceiling. One clean
+complete native-AI pilot measured 48.91 FPS, 1% low 15.30 FPS, P95/P99
+32.8/41.6 ms and 12.87 intervals >50 ms/min. All eight logical exports matched
+stage 3. This isolated run does not establish a statistical regression, and it
+provides no evidence of a net performance improvement. The prototype remains
+isolated and is not enabled in the product.
+
+A separate observer/profile run measured chair maintenance at 0.312 ms/render
+(2,648 calls). Its first fixed-camera oracle had exact AA/BB/AB pixels and
+28 native versus 6 instance submissions, but hiding chairs changed zero pixels:
+they were occluded, so the oracle correctly skipped acceptance. A subsequent
+focused dining-chair view proved 415,396 pixels of chair contribution. AA and BB
+were stable; AB differed at 1,039/2,073,600 pixels: 1,024 had maximum channel delta
+1, and the remaining 15 reached delta14. No GL errors occurred, including the
+normal subsequent render. The strict comparison did not pass; no tolerance was
+relaxed. Floating-point transform grouping/rasterization is a possible cause,
+not an established diagnosis. No broad visual-equivalence claim is made.
+
+Bounded audio cue diagnostics recorded 36 first-buffer events with zero overflow
+in the complete full-AI window. Fifteen were true PCM misses: 132.3 ms total
+lookup/generation, while all first AudioBuffer creation/copies totalled 3.9 ms.
+K9's first howl alone took 44.5 ms lookup/generation and 44.7 ms including copy,
+inside a 77.3 ms interval. However, the largest three intervals (221.9/203.3/
+157.6 ms) had no such cache work. Subtracting measured cache-work intersections
+and re-sorting all intervals changes this diagnostic run's hypothetical 1% low
+from 16.26 to 16.89 FPS. This is a counterfactual estimate, not a measured Worker
+or warmup benefit. Script outputs still matched all eight baseline exports.
+
+Audio created increased by 112,529 in the diagnostic window. Footstep, impact
+and casing cue increments account for 86,902 of those nodes. These procedural
+paths have no existing PCM cache key; emptying bakeQ cannot eliminate them.
+The next isolated candidate will await only the measured K9 howl PCM before
+entry, while checking key selection/RNG/audio equivalence and readiness cost.
+Node creation/cleanup remains a separate main-thread investigation.
+
+The analyzer now explicitly rejects cue-audit and chair-update-observer runs
+from performance acceptance. Current product core remains stage 3, High1080p,
+reflection maximum30Hz. The 60FPS/1%low>45 target is still unmet. Raw-source
+hashes, diagnostic boundaries and derived values are recorded in
+[stage4-screening.json](evidence/stage4-screening.json).
