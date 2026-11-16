@@ -50,5 +50,5 @@ npm start
 另可執行 `python server/check_weapon_models.py`，以已解鎖武器的訓練測試身分驗證三款槍身、雙手、瞄準、射擊與裝填。設定 `GH_WEAPON_CAPTURES` 為現有資料夾即可儲存各動作畫面。
 
 ## 開發者與來源
-
-開發者 **蒙哥汗马利@LankiYang**。原版素材、核心程式及相依套件的來源與授權狀態見[來源說明](docs/provenance.md)。上游完整授權及遊戲素材的公開再散布權仍待確認。
+<img width="743" height="372" alt="image" src="https://github.com/user-attachments/assets/44a7cc57-4f56-40a9-9d06-63b2ac29da3e" />
+本專案的開發已經獲得開發者 **蒙哥汗马利@LankiYang**的授權同意，具體開源授權待定。
