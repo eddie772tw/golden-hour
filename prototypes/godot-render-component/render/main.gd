@@ -14,6 +14,12 @@ var texture_manifest_path: String = ""
 var normal_shaders: Dictionary = {}
 var material_mode: String = "source-scalars"
 var light_energy_scale: float = 1.0
+var source_decay: bool = false
+var light_mapping: Array = []
+var direct_energy: String = "native"
+var energy_mapping: Array = []
+var light_color_mode: String = "native"
+var light_color_mapping: Array = []
 var emission_scale: float = 1.0
 var tonemap_mode: String = "linear"
 var mapping_diagnostics: Dictionary = {"normal_debug_materials":0,"source_scalar_materials":0,"untranslated_shader_materials":0,"source_material_types":{},"suspect_objects":[],"no_output_mappings":[]}
@@ -52,6 +58,18 @@ func _ready() -> void:
 	quit_on_complete = str(args.get("quit-on-complete", "0")) == "1"
 	material_mode = str(args.get("material-mode", "source-scalars"))
 	light_energy_scale = maxf(0.0,float(args.get("light-energy-scale", "1")))
+	source_decay = str(args.get("source-decay","0"))=="1"
+	direct_energy = str(args.get("direct-energy","native"))
+	light_color_mode = str(args.get("light-color","native"))
+	if not light_color_mode in ["native","source-linear"]:
+		_fail("Unknown explicit light-color encoding convention")
+		return
+	if not direct_energy in ["native","source-irradiance"]:
+		_fail("Unknown explicit direct-energy convention")
+		return
+	if direct_energy=="source-irradiance" and bool(ProjectSettings.get_setting("rendering/lights_and_shadows/use_physical_light_units",false)):
+		_fail("Source irradiance conversion is limited to verified native physical-light-units=false")
+		return
 	emission_scale = maxf(0.0,float(args.get("emission-scale", "1")))
 	tonemap_mode = str(args.get("tonemap", "linear"))
 	texture_manifest_path = str(args.get("textures", ""))
@@ -355,11 +373,28 @@ func _import_light(item: Dictionary) -> void:
 		return
 	light.transform = _matrix(item.matrix)
 	light.light_color = _color(item.color)
+	if light_color_mode=="source-linear": light.light_color=light.light_color.linear_to_srgb()
+	var property_color: Color=light.light_color
+	var decoded_color: Color=property_color.srgb_to_linear()
+	light_color_mapping.append({"source":item.id,"type":item.type,"mode":light_color_mode,"source_linear":item.color,"native_property":[property_color.r,property_color.g,property_color.b],"native_decoded_linear":[decoded_color.r,decoded_color.g,decoded_color.b]})
 	light.light_energy = maxf(0.0,float(item.intensity)) * light_energy_scale
+	var irradiance_factor: float=1.0/PI if direct_energy=="source-irradiance" else 1.0
+	light.light_energy *= irradiance_factor
+	energy_mapping.append({"source":item.id,"type":item.type,"source_intensity":item.intensity,"irradiance_factor":irradiance_factor,"native_energy":light.light_energy,"mode":direct_energy})
 	light.light_cull_mask = int(item.layers) & 1048575
 	light.shadow_enabled = bool(item.castShadow)
 	light.visible = bool(item.visible)
-	if light is OmniLight3D: light.omni_range = float(item.distance) if float(item.distance)>0 else 1000.0
+	if light is OmniLight3D:
+		light.omni_range = float(item.distance) if float(item.distance)>0 else 1000.0
+		var mapped: bool=false
+		if source_decay and (item.decay is float or item.decay is int):
+			var decay: float=float(item.decay)
+			if decay>=0.0 and decay<=10.0:
+				light.omni_attenuation=decay
+				mapped=true
+			else: limitations.append("Unsupported source PointLight decay outside native0..10: "+str(item.id))
+		elif source_decay: limitations.append("Missing numeric source PointLight decay: "+str(item.id))
+		light_mapping.append({"source":item.id,"source_decay":item.decay,"native_attenuation":light.omni_attenuation,"source_decay_enabled":source_decay,"mapped":mapped,"native_energy":light.light_energy,"energy_normalization_changed":direct_energy=="source-irradiance","near_field_difference":"Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim"})
 	if light is SpotLight3D:
 		light.spot_range = float(item.distance) if float(item.distance)>0 else 1000.0
 		light.spot_angle = rad_to_deg(float(item.angle))
@@ -425,7 +460,10 @@ func _finish() -> void:
 		"source":snapshot.source,"sourceCounts":snapshot.counts,"importCounts":import_counts,"sourceParity":snapshot.parity,
 		"texture_manifest":texture_manifest_path,"texture_binding":texture_binding.report,
 		"pbr_adaptor":pbr_adaptor.report if material_mode=="pbr-adaptor" else null,"source_shader_ports":source_shaders.report,"viewport_anisotropy":get_viewport().anisotropic_filtering_level,
-		"mapping":{"material_mode":material_mode,"unknown_shader_source_scalar_fallback":"untranslated source ShaderMaterial becomes unshaded scalar proxy; unsafe for visual acceptance", "light_energy_scale":light_energy_scale,"emission_scale":emission_scale,"tonemap":tonemap_mode,"diagnostic_only_not_unit_conversion":true,"no_fps_comparison":true,"diagnostics":mapping_diagnostics},
+		"source_decay_mapping":{"enabled":source_decay,"lights":light_mapping,"energy_normalization_changed":direct_energy=="source-irradiance","highParity":false},
+		"direct_energy_mapping":{"mode":direct_energy,"lights":energy_mapping,"physical_light_units":ProjectSettings.get_setting("rendering/lights_and_shadows/use_physical_light_units",false),"emission_or_exposure_changed":false,"highParity":false},
+		"light_color_mapping":{"mode":light_color_mode,"lights":light_color_mapping,"scope":"Point/Directional/Spot Light3D properties only; raw linear PBR uniforms unchanged","highParity":false},
+		"mapping":{"material_mode":material_mode,"unknown_shader_source_scalar_fallback":"untranslated source ShaderMaterial becomes unshaded scalar proxy; unsafe for visual acceptance", "light_energy_scale":light_energy_scale,"emission_scale":emission_scale,"tonemap":tonemap_mode,"artistic_scale_controls_are_diagnostic":true,"no_fps_comparison":true,"diagnostics":mapping_diagnostics},
 		"unsupported":snapshot.unsupported,"additionalLimitations":limitations,"load_ms":load_ms,"pose_updates":pose_updates,
 		"warmup_frames_requested":warmup_frames,"warmup":warm_frames,"frames":frames,"record_cap":max_records,
 		"timing_model":"Native frame_post_draw intervals are engine callback wall time, not OS present/input-to-photon or GPU completion. pre_to_post includes waits and engine scheduling, not pure GPU/CPU utilization. TIME_PROCESS is native monitor seconds, not isolated submission CPU. frame_setup_cpu_ms is optional native CPU setup metric; no per-viewport GPU query enabled.",

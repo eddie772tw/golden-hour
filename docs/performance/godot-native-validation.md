@@ -65,6 +65,13 @@ object and removes the false white diagonal. Shared compile/AO/lightfield,
 lighting, postprocessing, remaining custom shaders and reflection still prevent
 High parity. [Source and evidence](evidence/stage15-godot-pbr-shaders.json).
 
+[Stage17](evidence/stage17-godot-light-mapping.json) separately validates source
+point exponents, direct intensity I/π and Light3D linear-RGB property encoding.
+Actual Three/Godot reference tests and the relocated native scene pass. The
+[explicit options](../../prototypes/godot-render-component/STAGE17-LIGHT-MAPPING.md)
+retain the native control and do not adjust ambient, environment, emission or
+exposure. Shared material/lightfield, near-field/BRDF and High-effect gaps remain.
+
 ## Original logic and audio gates
 
 The current preferred experiment retains original JavaScript gameplay in Node

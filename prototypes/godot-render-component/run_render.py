@@ -27,6 +27,9 @@ def main():
     parser.add_argument('--material-mode',choices=['source-scalars','normal-debug','pbr-adaptor'],default='source-scalars')
     parser.add_argument('--textures',type=Path,help='Same-session lossless texture manifest')
     parser.add_argument('--shader-audit',type=Path,help='Explicit frozen GL proof JSON; requires pbr-adaptor')
+    parser.add_argument('--source-decay',type=int,choices=[0,1],default=0,help='Map original PointLight decay; native control remains0')
+    parser.add_argument('--direct-energy',choices=['native','source-irradiance'],default='native',help='Explicit direct-light input convention; source mode uses I/PI')
+    parser.add_argument('--light-color',choices=['native','source-linear'],default='native',help='Source mode encodes original linear RGB once at Light3D property boundary')
     parser.add_argument('--light-energy-scale',type=float,default=1)
     parser.add_argument('--emission-scale',type=float,default=1)
     parser.add_argument('--tonemap',choices=['linear','aces'],default='linear')
@@ -52,6 +55,7 @@ def main():
       '--sample-frames='+str(args.frames),'--fps-cap=60','--material-mode='+args.material_mode,
       '--light-energy-scale='+str(args.light_energy_scale),'--emission-scale='+str(args.emission_scale),
       '--tonemap='+args.tonemap]
+    command+=['--source-decay='+str(args.source_decay),'--direct-energy='+args.direct_energy,'--light-color='+args.light_color]
     if args.textures:
         assert args.textures.is_file(),'Missing same-session texture manifest'
         command.append('--textures='+str(args.textures.resolve()))
@@ -61,6 +65,7 @@ def main():
     result={'classification':'Frozen real-scene render-component smoke; not full AI/High acceptance',
       'acceptanceEligible':False,'ok':False,'command':command,'runtime':runtime,
       'snapshot':str(snapshot),'snapshotSHA256':sha(snapshot),'projectSHA256':source_hashes}
+    result['lightMappingOptions']={'sourceDecay':args.source_decay,'directEnergy':args.direct_energy,'lightColor':args.light_color}
     if args.textures: result['textureManifestSHA256']=sha(args.textures)
     if args.shader_audit: result['shaderProofSHA256']=sha(args.shader_audit)
     started=time.perf_counter();proc=None

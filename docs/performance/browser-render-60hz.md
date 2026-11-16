@@ -761,3 +761,14 @@ This is a43.5% source-snapshot increase in one consecutive pair, not a repeatabl
 The [published bridge/receiver/owned Windows runner](../../prototypes/godot-live-bridge/README.md) passes unit/transport checks, headless import, actual public-path interval3600 CPU/full8strict verification, and a relocated120tick visible Vulkan functional smoke. The latter ran alongside CPU work and is not ranked. [Evidence](evidence/stage16-godot-live-bridge.json) includes raw hashes and all scope limits. The included analyzer recomputes P95/P99, long callbacks, distinct/stale counts, state age and whole-tree memory from retained raw runs.
 
 Whole-tree RSS/private peaks are development diagnostics: the pair observed about1.96/1.86GB RSS and2.19/2.17GB private committed bytes, with retained OS/import/GPU caches. Shared RSS can double count pages, process initialization remains roughly70seconds of synchronous original Canvas/asset authoring, and there is no accepted release cold start, entry time or exported package size. Keeping original Node logic deliberately reduces migration verification risk; these values do not establish a final integrated minimum footprint.
+
+
+## Stage 17: source light decay, irradiance units and RGB property encoding
+
+Three concrete input mismatches were isolated from appearance tuning. Source PointLights use exponent2 while the native importer left attenuation at1. Separate actual Three and Godot flat GPU tests then established that the same numeric direct intensity produces source diffuse I/π versus native I. Finally, colored tests verified that native Light3D properties decode sRGB, while the exported source RGB is already linear. The explicit source mappings therefore copy decay, map direct energy I/π, and encode source linear RGB once at the Light3D property boundary. Ambient/environment/emission/exposure and raw-linear PBR uniforms remain unchanged.
+
+Each engine was compared against its own same-pipeline unshaded references, with distinguishable reference colors, exact A-A and actual source uniform/shader hashes. Raw cross-engine pixels were never assumed to share encoding. Real Light3D headless25/25 and the relocated120-frame Vulkan scene smoke pass without errors, retaining516objects/5.33million vertices/154textures. Native-control options remain available for historical replay. [Runnable options and derivation](../../prototypes/godot-render-component/STAGE17-LIGHT-MAPPING.md), [evidence](evidence/stage17-godot-light-mapping.json).
+
+This corrects lighting inputs, not all native BRDF, near-field attenuation, shared material/lightfield, final grade or reflection behavior. There is no full High or FPS acceptance. The new compiled evidence also showed that ceiling/plaster/metal ORM.R is1; merely adding AO cannot explain or solve their broad brightness difference.
+
+![Source decay, direct irradiance and RGB mapping; incomplete High parity](assets/godot-source-light-mapping.png)

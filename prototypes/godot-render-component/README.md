@@ -101,3 +101,8 @@ The three actual-Three fixtures cover sharing/groups/ranges/instances, bounded
 numeric and Unicode serialization, and true single-bone skin baking. Headless
 syntax checks cannot establish GPU/render performance. Generated snapshots,
 reports, import caches and engine binaries stay outside version control.
+
+
+## Source direct-light input contracts
+
+The explicit Stage17 diagnostic options `--source-decay 1 --direct-energy source-irradiance --light-color source-linear` restore source point exponents, direct irradiance units and linear light RGB at the native Light3D property boundary. Defaults preserve the native control for replay. They follow separate real Three/Godot GPU reference measurements; they do not change ambient/environment/emission/exposure or raw-linear PBR uniforms. [Derivation, commands and limits](STAGE17-LIGHT-MAPPING.md), [evidence](../../docs/performance/evidence/stage17-godot-light-mapping.json).

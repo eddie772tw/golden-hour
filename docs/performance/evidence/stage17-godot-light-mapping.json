@@ -1,0 +1,1271 @@
+{
+  "stage": 17,
+  "kind": "Godot-source-light-input-contracts",
+  "productRuntimeChanged": false,
+  "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "acceptanceEligible": false,
+  "highParity": false,
+  "fullAI": false,
+  "sourceSHA256": {
+    "render/main.gd": "08dad12b8af93d2d6f2eae5bedec6a898afd08d32d1ebf288338e6c93edf7304",
+    "render/light_mapping_headless_test.gd": "f907801546e31567d84800c3064b40d1f128ffaf32d60c3534373fb4d32405ed",
+    "run_render.py": "a50bf9f89fecf88107a258126c3fa8003a7dc71f2d93b7e4c25b0fa2fa39219c",
+    "STAGE17-LIGHT-MAPPING.md": "220314d57da9e76da760bdddca3bbfb93552f9e0877be7eed820405edafe9add"
+  },
+  "rawOracles": [
+    {
+      "path": "work\\godot-native\\evidence\\native-irradiance-oracle-1.json",
+      "sha256": "37e89ad861640858a20f6e3416a2a0d66b89dd8ea56f1fdd5260888917176e5b",
+      "caseCount": 4,
+      "scope": "Each engine compared against its own encoded output-pipeline references; raw cross-engine pixels never compared"
+    },
+    {
+      "path": "work\\godot-native\\evidence\\source-three-irradiance-1-three-irradiance.json",
+      "sha256": "9ee0faea05f957a1377b12f046a09ab32ad9c6e38b780f9303d177d7c86afada",
+      "caseCount": 4,
+      "scope": "Each engine compared against its own encoded output-pipeline references; raw cross-engine pixels never compared"
+    },
+    {
+      "path": "work\\godot-native\\evidence\\native-light-color-oracle-1.json",
+      "sha256": "c872e5c583658713027f1cda1756d7012fb7f978adad03e8878eea39fa0d53e6",
+      "caseCount": 4,
+      "scope": "Each engine compared against its own encoded output-pipeline references; raw cross-engine pixels never compared"
+    },
+    {
+      "path": "work\\godot-native\\evidence\\source-three-color-1-three-color.json",
+      "sha256": "c50da57702a1aec3afc531a6a4acb3d40ba63ed58f6e64f0e322537435508488",
+      "caseCount": 4,
+      "scope": "Each engine compared against its own encoded output-pipeline references; raw cross-engine pixels never compared"
+    }
+  ],
+  "energyProof": {
+    "schema": "gh-direct-energy-unit-proof-v1",
+    "status": "Cross-engine source/native unit fixture verified; real-scene candidate validation separate",
+    "equations": {
+      "Three": "LoDiffuse = sourceLinearColor * intensity * attenuation * NdotL * diffuseAlbedo / PI",
+      "GodotVerifiedDiffuse": "LoDiffuse = nativeLinearColor * nativeEnergy * nativeAttenuation * NdotL * diffuseAlbedo (physicalUnits=false)",
+      "mapping": "nativeEnergy=intensity/PI; source decay maps separately; assumes corresponding linear color input and matched diffuse fixture, not complete native PBR parity"
+    },
+    "Godot": {
+      "file": "native-irradiance-oracle-1.json",
+      "sha256": "37e89ad861640858a20f6e3416a2a0d66b89dd8ea56f1fdd5260888917176e5b",
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "renderer": "forward_plus",
+      "driver": "vulkan",
+      "physicalLightUnits": false,
+      "invalidCases": 0,
+      "cases": [
+        {
+          "kind": "directional",
+          "energy": 0.05,
+          "distance": 1,
+          "AA": 0,
+          "toI": 0,
+          "toIoverPI": 0.113725483417511,
+          "referenceSeparation": 0.113725483417511
+        },
+        {
+          "kind": "directional",
+          "energy": 0.2,
+          "distance": 1,
+          "AA": 0,
+          "toI": 0,
+          "toIoverPI": 0.207843124866486,
+          "referenceSeparation": 0.207843124866486
+        },
+        {
+          "kind": "point",
+          "energy": 0.5,
+          "distance": 1,
+          "AA": 0,
+          "toI": 0,
+          "toIoverPI": 0.298039227724075,
+          "referenceSeparation": 0.298039227724075
+        },
+        {
+          "kind": "point",
+          "energy": 0.5,
+          "distance": 5,
+          "AA": 0,
+          "toI": 0,
+          "toIoverPI": 0.0745098069310188,
+          "referenceSeparation": 0.0745098069310188
+        }
+      ]
+    },
+    "Three": {
+      "file": "source-three-irradiance-1-three-irradiance.json",
+      "sha256": "9ee0faea05f957a1377b12f046a09ab32ad9c6e38b780f9303d177d7c86afada",
+      "sourceCoreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+      "fixture": "Real source renderer/classes; independent directional/point scene; output-only directDiffuse tap; no world geometry/FPS/High claim",
+      "lightfieldIsolation": "GLSL main header whitespace changed before global r9 hook. It fails r9 exact-string injection guard while preserving original shader semantics. No varying/chunk/BRDF rewrite.",
+      "ok": true,
+      "restoreErrors": [],
+      "finalGLErrors": [],
+      "codes": {
+        "c0": {
+          "sha256": "4da338115359e3e5e15e0c95e715a893285dd225e590d146d2669ffb8c606c10",
+          "chars": 19021
+        },
+        "c1": {
+          "sha256": "929a28f84cd62749d7173ea6761d7e83dae8a41a0874c8b9fd0cc4358efe91a8",
+          "chars": 70806
+        },
+        "c2": {
+          "sha256": "4a9308f62fae09870407e5b0d9d3241e1686bec515a7d1cee5e5fc985eb81863",
+          "chars": 70750
+        },
+        "c3": {
+          "sha256": "daeae9a184db6484882c6aec3f2c95acd5ae183a75907bb5bc2dd2c3ee1ae06b",
+          "chars": 17776
+        },
+        "c4": {
+          "sha256": "0eb8d53e8a502880a59aaa76562981ee20414a14aafa7fd506bbb1f5480053ba",
+          "chars": 13546
+        },
+        "c5": {
+          "sha256": "f2aadb57a2cccb9dfab73b2e82387b39923bcc3890e786029424e916740f73cf",
+          "chars": 70826
+        },
+        "c6": {
+          "sha256": "09552a45e6b9ef836d664c46721c8be072ce2d352afa32395f7658267ef2ed7a",
+          "chars": 70770
+        }
+      },
+      "cases": [
+        {
+          "kind": "directional",
+          "energy": 0.05,
+          "distance": 1,
+          "attenuation": 1,
+          "AA": 0,
+          "toI": 0.03529411764705882,
+          "toIoverPI": 0,
+          "referenceSeparation": 0.03529411764705882,
+          "directionalUniforms": [
+            {
+              "color": [
+                0.05,
+                0.05,
+                0.05
+              ],
+              "distance": null,
+              "decay": null
+            }
+          ],
+          "pointUniforms": [],
+          "fragmentCode": "c1",
+          "vertexCode": "c0",
+          "lightfieldInjected": false,
+          "GLErrors": []
+        },
+        {
+          "kind": "directional",
+          "energy": 0.2,
+          "distance": 1,
+          "attenuation": 1,
+          "AA": 0,
+          "toI": 0.13725490196078433,
+          "toIoverPI": 0,
+          "referenceSeparation": 0.13725490196078433,
+          "directionalUniforms": [
+            {
+              "color": [
+                0.2,
+                0.2,
+                0.2
+              ],
+              "distance": null,
+              "decay": null
+            }
+          ],
+          "pointUniforms": [],
+          "fragmentCode": "c1",
+          "vertexCode": "c0",
+          "lightfieldInjected": false,
+          "GLErrors": []
+        },
+        {
+          "kind": "point",
+          "energy": 0.5,
+          "distance": 1,
+          "attenuation": 0.9998000100000001,
+          "AA": 0,
+          "toI": 0.33725490196078434,
+          "toIoverPI": 0,
+          "referenceSeparation": 0.33725490196078434,
+          "directionalUniforms": [],
+          "pointUniforms": [
+            {
+              "color": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "distance": 10,
+              "decay": 2
+            }
+          ],
+          "fragmentCode": "c5",
+          "vertexCode": "c0",
+          "lightfieldInjected": false,
+          "GLErrors": []
+        },
+        {
+          "kind": "point",
+          "energy": 0.5,
+          "distance": 5,
+          "attenuation": 0.03515625,
+          "AA": 0,
+          "toI": 0.011764705882352941,
+          "toIoverPI": 0,
+          "referenceSeparation": 0.011764705882352941,
+          "directionalUniforms": [],
+          "pointUniforms": [
+            {
+              "color": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "distance": 10,
+              "decay": 2
+            }
+          ],
+          "fragmentCode": "c5",
+          "vertexCode": "c0",
+          "lightfieldInjected": false,
+          "GLErrors": []
+        }
+      ]
+    },
+    "limits": [
+      "Each engine compared to its own pipeline reference; raw cross-engine sRGB/linear pixels not directly compared",
+      "White/color1 unit fixtures: existing importer light-color encoding issue remains separate and unchanged",
+      "Native PBR BRDF/roughness/Fresnel/env differ; no full High parity",
+      "Source/native point near-field clamps differ; source decay validated separately",
+      "No ambient, environment, emission or exposure conversion included",
+      "Published and decay-only base unchanged; candidate explicit flag default native"
+    ]
+  },
+  "colorProof": {
+    "schema": "gh-light-property-color-proof-v1",
+    "status": "Actual native and source color-input unit fixtures verified; full-scene/High/BRDF acceptance separate",
+    "derivation": {
+      "source": "Three working linear RGB is copied/multiplied into light uniforms without an additional decode",
+      "native": "LightStorage stores property unchanged, then srgb_to_linear at actual render setup",
+      "wrongMapping": "Property=Clinear gives rendererLinear=sRGBdecode(Clinear)",
+      "correctMapping": "Property=sRGBencode(Clinear) gives rendererLinear=sRGBdecode(sRGBencode(Clinear))=Clinear within native precision",
+      "scope": "Only Point/Directional/Spot Light3D properties; raw linear PBR vec3/vec4 uniforms and texture color roles unchanged"
+    },
+    "officialNativeSource": {
+      "engineCommit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "url": "https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/servers/rendering/renderer_rd/storage_rd/light_storage.cpp",
+      "propertyStoreLines": [
+        199,
+        204
+      ],
+      "directionalDecodeLine": 711,
+      "positionalDecodeLine": 929
+    },
+    "native": {
+      "file": "native-light-color-oracle-1.json",
+      "sha256": "c872e5c583658713027f1cda1756d7012fb7f978adad03e8878eea39fa0d53e6",
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "renderer": "forward_plus",
+      "driver": "vulkan",
+      "physicalLightUnits": false,
+      "invalidCases": 0,
+      "referenceShader": "Raw vec3 linear u_ref, NO source_color hint; unshaded same output pipeline",
+      "cases": [
+        {
+          "kind": "directional",
+          "sourceLinearColor": [
+            0.800000011920929,
+            0.300000011920929,
+            0.0799999982118607
+          ],
+          "nativeEnergy": 0.2,
+          "attenuation": 1,
+          "rawAAmaxDiff": 0,
+          "encodedAAmaxDiff": 0,
+          "rawToDecoded": [
+            0,
+            0,
+            0
+          ],
+          "encodedToLinear": [
+            0,
+            0,
+            0
+          ],
+          "rawToLinear": [
+            0.0549019575119019,
+            0.14509804546833,
+            0.113725496456027
+          ],
+          "encodedToDecoded": [
+            0.0549019575119019,
+            0.14509804546833,
+            0.113725496456027
+          ],
+          "referenceSeparationPerChannel": [
+            0.0549019575119019,
+            0.14509804546833,
+            0.113725496456027
+          ],
+          "rawProperty": [
+            0.800000011920929,
+            0.300000011920929,
+            0.0799999982118607
+          ],
+          "encodedProperty": [
+            0.906331777572632,
+            0.583831548690796,
+            0.31330418586731
+          ],
+          "imageFormat": 4
+        },
+        {
+          "kind": "directional",
+          "sourceLinearColor": [
+            0.0700000002980232,
+            0.349999994039536,
+            0.899999976158142
+          ],
+          "nativeEnergy": 0.2,
+          "attenuation": 1,
+          "rawAAmaxDiff": 0,
+          "encodedAAmaxDiff": 0,
+          "rawToDecoded": [
+            0,
+            0,
+            0
+          ],
+          "encodedToLinear": [
+            0,
+            0,
+            0
+          ],
+          "rawToLinear": [
+            0.105882352218032,
+            0.141176477074623,
+            0.0274509787559509
+          ],
+          "encodedToDecoded": [
+            0.105882352218032,
+            0.141176477074623,
+            0.0274509787559509
+          ],
+          "referenceSeparationPerChannel": [
+            0.105882352218032,
+            0.141176477074623,
+            0.0274509787559509
+          ],
+          "rawProperty": [
+            0.0700000002980232,
+            0.349999994039536,
+            0.899999976158142
+          ],
+          "encodedProperty": [
+            0.293372064828873,
+            0.626209676265717,
+            0.954687118530273
+          ],
+          "imageFormat": 4
+        },
+        {
+          "kind": "point",
+          "sourceLinearColor": [
+            0.800000011920929,
+            0.300000011920929,
+            0.0799999982118607
+          ],
+          "nativeEnergy": 0.2,
+          "attenuation": 0.99980001,
+          "rawAAmaxDiff": 0,
+          "encodedAAmaxDiff": 0,
+          "rawToDecoded": [
+            0,
+            0,
+            0
+          ],
+          "encodedToLinear": [
+            0,
+            0,
+            0
+          ],
+          "rawToLinear": [
+            0.0549019575119019,
+            0.14509804546833,
+            0.113725496456027
+          ],
+          "encodedToDecoded": [
+            0.0549019575119019,
+            0.14509804546833,
+            0.113725496456027
+          ],
+          "referenceSeparationPerChannel": [
+            0.0549019575119019,
+            0.14509804546833,
+            0.113725496456027
+          ],
+          "rawProperty": [
+            0.800000011920929,
+            0.300000011920929,
+            0.0799999982118607
+          ],
+          "encodedProperty": [
+            0.906331777572632,
+            0.583831548690796,
+            0.31330418586731
+          ],
+          "imageFormat": 4
+        },
+        {
+          "kind": "point",
+          "sourceLinearColor": [
+            0.0700000002980232,
+            0.349999994039536,
+            0.899999976158142
+          ],
+          "nativeEnergy": 0.2,
+          "attenuation": 0.99980001,
+          "rawAAmaxDiff": 0,
+          "encodedAAmaxDiff": 0,
+          "rawToDecoded": [
+            0,
+            0,
+            0
+          ],
+          "encodedToLinear": [
+            0,
+            0,
+            0
+          ],
+          "rawToLinear": [
+            0.105882352218032,
+            0.141176477074623,
+            0.0313725471496582
+          ],
+          "encodedToDecoded": [
+            0.105882352218032,
+            0.141176477074623,
+            0.0313725471496582
+          ],
+          "referenceSeparationPerChannel": [
+            0.105882352218032,
+            0.141176477074623,
+            0.0313725471496582
+          ],
+          "rawProperty": [
+            0.0700000002980232,
+            0.349999994039536,
+            0.899999976158142
+          ],
+          "encodedProperty": [
+            0.293372064828873,
+            0.626209676265717,
+            0.954687118530273
+          ],
+          "imageFormat": 4
+        }
+      ]
+    },
+    "Three": {
+      "file": "source-three-color-1-three-color.json",
+      "sha256": "c50da57702a1aec3afc531a6a4acb3d40ba63ed58f6e64f0e322537435508488",
+      "sourceCoreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+      "fixture": "Real source renderer/classes; independent directional/point scene; output-only directDiffuse tap; no world geometry/FPS/High claim",
+      "lightfieldIsolation": "GLSL main header whitespace changed before global r9 hook. It fails r9 exact-string injection guard while preserving original shader semantics. No varying/chunk/BRDF rewrite.",
+      "ok": true,
+      "restoreErrors": [],
+      "finalGLErrors": [],
+      "codes": {
+        "c0": {
+          "sha256": "4da338115359e3e5e15e0c95e715a893285dd225e590d146d2669ffb8c606c10",
+          "chars": 19021
+        },
+        "c1": {
+          "sha256": "929a28f84cd62749d7173ea6761d7e83dae8a41a0874c8b9fd0cc4358efe91a8",
+          "chars": 70806
+        },
+        "c2": {
+          "sha256": "4a9308f62fae09870407e5b0d9d3241e1686bec515a7d1cee5e5fc985eb81863",
+          "chars": 70750
+        },
+        "c3": {
+          "sha256": "daeae9a184db6484882c6aec3f2c95acd5ae183a75907bb5bc2dd2c3ee1ae06b",
+          "chars": 17776
+        },
+        "c4": {
+          "sha256": "0eb8d53e8a502880a59aaa76562981ee20414a14aafa7fd506bbb1f5480053ba",
+          "chars": 13546
+        },
+        "c5": {
+          "sha256": "f2aadb57a2cccb9dfab73b2e82387b39923bcc3890e786029424e916740f73cf",
+          "chars": 70826
+        },
+        "c6": {
+          "sha256": "09552a45e6b9ef836d664c46721c8be072ce2d352afa32395f7658267ef2ed7a",
+          "chars": 70770
+        }
+      },
+      "cases": [
+        {
+          "kind": "directional",
+          "sourceLinearColor": [
+            0.8,
+            0.3,
+            0.08
+          ],
+          "intensity": 0.6283185307179586,
+          "distance": 1,
+          "expectedUniformColor": [
+            0.5026548245743669,
+            0.18849555921538758,
+            0.05026548245743669
+          ],
+          "uniformColorError": 0,
+          "AA": 0,
+          "toIoverPI": 0,
+          "toI": 0.3411764705882353,
+          "directionalUniforms": [
+            {
+              "color": [
+                0.5026548245743669,
+                0.18849555921538758,
+                0.05026548245743669
+              ],
+              "distance": null,
+              "decay": null
+            }
+          ],
+          "pointUniforms": [],
+          "lightfieldInjected": false,
+          "fragment": "c1",
+          "vertex": "c0",
+          "GLErrors": []
+        },
+        {
+          "kind": "directional",
+          "sourceLinearColor": [
+            0.07,
+            0.35,
+            0.9
+          ],
+          "intensity": 0.6283185307179586,
+          "distance": 1,
+          "expectedUniformColor": [
+            0.04398229715025711,
+            0.2199114857512855,
+            0.5654866776461628
+          ],
+          "uniformColorError": 0,
+          "AA": 0,
+          "toIoverPI": 0,
+          "toI": 0.38431372549019605,
+          "directionalUniforms": [
+            {
+              "color": [
+                0.04398229715025711,
+                0.2199114857512855,
+                0.5654866776461628
+              ],
+              "distance": null,
+              "decay": null
+            }
+          ],
+          "pointUniforms": [],
+          "lightfieldInjected": false,
+          "fragment": "c1",
+          "vertex": "c0",
+          "GLErrors": []
+        },
+        {
+          "kind": "point",
+          "sourceLinearColor": [
+            0.8,
+            0.3,
+            0.08
+          ],
+          "intensity": 0.6283185307179586,
+          "distance": 1,
+          "expectedUniformColor": [
+            0.5026548245743669,
+            0.18849555921538758,
+            0.05026548245743669
+          ],
+          "uniformColorError": 0,
+          "AA": 0,
+          "toIoverPI": 0,
+          "toI": 0.3411764705882353,
+          "directionalUniforms": [],
+          "pointUniforms": [
+            {
+              "color": [
+                0.5026548245743669,
+                0.18849555921538758,
+                0.05026548245743669
+              ],
+              "distance": 10,
+              "decay": 2
+            }
+          ],
+          "lightfieldInjected": false,
+          "fragment": "c5",
+          "vertex": "c0",
+          "GLErrors": []
+        },
+        {
+          "kind": "point",
+          "sourceLinearColor": [
+            0.07,
+            0.35,
+            0.9
+          ],
+          "intensity": 0.6283185307179586,
+          "distance": 1,
+          "expectedUniformColor": [
+            0.04398229715025711,
+            0.2199114857512855,
+            0.5654866776461628
+          ],
+          "uniformColorError": 0,
+          "AA": 0,
+          "toIoverPI": 0,
+          "toI": 0.38431372549019605,
+          "directionalUniforms": [],
+          "pointUniforms": [
+            {
+              "color": [
+                0.04398229715025711,
+                0.2199114857512855,
+                0.5654866776461628
+              ],
+              "distance": 10,
+              "decay": 2
+            }
+          ],
+          "lightfieldInjected": false,
+          "fragment": "c5",
+          "vertex": "c0",
+          "GLErrors": []
+        }
+      ]
+    },
+    "candidate": {
+      "folder": "materials-color",
+      "mainSHA256": "2474e316fb21db93e4337ccb8bffce5f8efa2d9bd3ddfd539450e20f524e7f14",
+      "flag": "--light-color=source-linear",
+      "default": "native",
+      "energyBaseSHA256": "da3c9c66694093e3cd784881c9cefa6efd067fb2d10a16dc69d6ded127804dc5",
+      "publishedChangedByAuthor": false
+    },
+    "limits": [
+      "No raw cross-engine pixel encoding comparison; each compares with its own native reference pipeline",
+      "Full native PBR/roughness/Fresnel/environment/near-field/postprocess/High parity not established",
+      "Spot shares confirmed property setup; actual source scene/oracle here is Point/Directional",
+      "No artistic energy, exposure, emission or material-uniform recoloring",
+      "Frozen color/energy/decay candidates and four-file portable overlay unchanged while full-scene GPU runs"
+    ]
+  },
+  "portableSmoke": {
+    "rawPath": "public\\golden-hour\\prototypes\\godot-render-component\\evidence\\portable-source-light-mapping-1.json",
+    "rawSHA256": "dfad41665b9126d356b0950a9d5a0eb79c65f8dd76c79eddf4f6d7b4150d3a2e",
+    "runPath": "public\\golden-hour\\prototypes\\godot-render-component\\evidence\\portable-source-light-mapping-1.run.json",
+    "runSHA256": "6208b1b74269794795539025e9b1ac4a599820057b08edd4063b7df7bce226d9",
+    "frames": 120,
+    "engineErrors": [],
+    "counts": {
+      "empty_objects": 0,
+      "instances": 3452,
+      "multimat_mesh_variants": 0,
+      "multimeshes": 15,
+      "nodes": 516,
+      "shader_instancing_approximations": 2,
+      "surface_vertex_uploads": 5330835,
+      "surfaces": 516
+    },
+    "decay": {
+      "enabled": true,
+      "energy_normalization_changed": true,
+      "highParity": false,
+      "lights": [
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 6.49422359466553,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "1ea256f1-f188-44d7-a853-8cfbf3886517",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        },
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 0.0,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "a6459bd8-d906-41e7-b028-61501b0784fa",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        },
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 0.325383454561234,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "2e5a3c7c-c141-4566-b896-d8ee434ada54",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        },
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 5.41126823425293,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "6651eebb-991f-47af-b0ea-6c0cdb5d0f22",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        },
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 3.50140881538391,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "eeddb093-8172-4ee1-b88f-1c5c0379905a",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        },
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 4.13802862167358,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "76fb8ce8-6922-48c6-80ee-c8292bf99cbb",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        },
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 4.13802862167358,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "fec9b4f6-51cf-4f85-8826-0936537ea163",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        },
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 3.18309879302979,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "86699ea0-3919-45d0-9057-58747ba89ede",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        },
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 4.77464818954468,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "0efa8337-21a0-4b0f-98a1-9567a317a9d8",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        },
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 3.50140881538391,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "969be353-0904-4b60-a023-840ecb6b6920",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        },
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 3.18309879302979,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "1e6effbd-f1e4-4e69-a8ff-4a60f3449cf9",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        },
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 4.77464818954468,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "a6915d66-d9e2-46f0-b054-f5581b4392bf",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        },
+        {
+          "energy_normalization_changed": true,
+          "mapped": true,
+          "native_attenuation": 2.0,
+          "native_energy": 6.0478949546814,
+          "near_field_difference": "Three clamps denominator at.01; native distance floor.0001 remains; no near-field parity claim",
+          "source": "2e26486e-c19d-464f-b842-f2954306b0d7",
+          "source_decay": 2.0,
+          "source_decay_enabled": true
+        }
+      ]
+    },
+    "directEnergy": {
+      "emission_or_exposure_changed": false,
+      "highParity": false,
+      "lights": [
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 6.49422359466553,
+          "source": "1ea256f1-f188-44d7-a853-8cfbf3886517",
+          "source_intensity": 20.4022038567493,
+          "type": "PointLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 0.0,
+          "source": "a6459bd8-d906-41e7-b028-61501b0784fa",
+          "source_intensity": 0.0,
+          "type": "PointLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 0.325383454561234,
+          "source": "2e5a3c7c-c141-4566-b896-d8ee434ada54",
+          "source_intensity": 1.02222222222222,
+          "type": "PointLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 2.73746514320374,
+          "source": "ced1c6d4-e114-47bf-980e-3fb0632abec2",
+          "source_intensity": 8.6,
+          "type": "DirectionalLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 5.41126823425293,
+          "source": "6651eebb-991f-47af-b0ea-6c0cdb5d0f22",
+          "source_intensity": 17.0,
+          "type": "PointLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 3.50140881538391,
+          "source": "eeddb093-8172-4ee1-b88f-1c5c0379905a",
+          "source_intensity": 11.0,
+          "type": "PointLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 4.13802862167358,
+          "source": "76fb8ce8-6922-48c6-80ee-c8292bf99cbb",
+          "source_intensity": 13.0,
+          "type": "PointLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 4.13802862167358,
+          "source": "fec9b4f6-51cf-4f85-8826-0936537ea163",
+          "source_intensity": 13.0,
+          "type": "PointLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 3.18309879302979,
+          "source": "86699ea0-3919-45d0-9057-58747ba89ede",
+          "source_intensity": 10.0,
+          "type": "PointLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 4.77464818954468,
+          "source": "0efa8337-21a0-4b0f-98a1-9567a317a9d8",
+          "source_intensity": 15.0,
+          "type": "PointLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 3.50140881538391,
+          "source": "969be353-0904-4b60-a023-840ecb6b6920",
+          "source_intensity": 11.0,
+          "type": "PointLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 3.18309879302979,
+          "source": "1e6effbd-f1e4-4e69-a8ff-4a60f3449cf9",
+          "source_intensity": 10.0,
+          "type": "PointLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 4.77464818954468,
+          "source": "a6915d66-d9e2-46f0-b054-f5581b4392bf",
+          "source_intensity": 15.0,
+          "type": "PointLight"
+        },
+        {
+          "irradiance_factor": 0.318309886183791,
+          "mode": "source-irradiance",
+          "native_energy": 6.0478949546814,
+          "source": "2e26486e-c19d-464f-b842-f2954306b0d7",
+          "source_intensity": 19.0000220836641,
+          "type": "PointLight"
+        }
+      ],
+      "mode": "source-irradiance",
+      "physical_light_units": false
+    },
+    "lightColor": {
+      "highParity": false,
+      "lights": [
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            1.0,
+            0.351532638072968,
+            0.0802198126912117
+          ],
+          "native_property": [
+            1.0,
+            0.627451002597809,
+            0.313725501298904
+          ],
+          "source": "1ea256f1-f188-44d7-a853-8cfbf3886517",
+          "source_linear": [
+            1.0,
+            0.351532599489846,
+            0.0802198203062266
+          ],
+          "type": "PointLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            1.0,
+            0.351532638072968,
+            0.0802198126912117
+          ],
+          "native_property": [
+            1.0,
+            0.627451002597809,
+            0.313725501298904
+          ],
+          "source": "a6459bd8-d906-41e7-b028-61501b0784fa",
+          "source_linear": [
+            1.0,
+            0.351532599489846,
+            0.0802198203062266
+          ],
+          "type": "PointLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            1.0,
+            0.351532638072968,
+            0.0802198126912117
+          ],
+          "native_property": [
+            1.0,
+            0.627451002597809,
+            0.313725501298904
+          ],
+          "source": "2e5a3c7c-c141-4566-b896-d8ee434ada54",
+          "source_linear": [
+            1.0,
+            0.351532599489846,
+            0.0802198203062266
+          ],
+          "type": "PointLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            1.0,
+            0.36130678653717,
+            0.102241724729538
+          ],
+          "native_property": [
+            1.0,
+            0.635294139385223,
+            0.352941185235977
+          ],
+          "source": "ced1c6d4-e114-47bf-980e-3fb0632abec2",
+          "source_linear": [
+            1.0,
+            0.361306779772972,
+            0.102241733079149
+          ],
+          "type": "DirectionalLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            1.0,
+            0.552011430263519,
+            0.254152089357376
+          ],
+          "native_property": [
+            1.0,
+            0.768627464771271,
+            0.541176497936249
+          ],
+          "source": "6651eebb-991f-47af-b0ea-6c0cdb5d0f22",
+          "source_linear": [
+            1.0,
+            0.55201140150344,
+            0.25415209432003
+          ],
+          "type": "PointLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            1.0,
+            0.254152089357376,
+            0.0451862029731274
+          ],
+          "native_property": [
+            1.0,
+            0.541176497936249,
+            0.235294133424759
+          ],
+          "source": "eeddb093-8172-4ee1-b88f-1c5c0379905a",
+          "source_linear": [
+            1.0,
+            0.25415209432003,
+            0.045186204379105
+          ],
+          "type": "PointLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            1.0,
+            0.274677306413651,
+            0.0648032650351524
+          ],
+          "native_property": [
+            1.0,
+            0.560784339904785,
+            0.282352954149246
+          ],
+          "source": "76fb8ce8-6922-48c6-80ee-c8292bf99cbb",
+          "source_linear": [
+            1.0,
+            0.27467731204957,
+            0.0648032666852961
+          ],
+          "type": "PointLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            1.0,
+            0.434153616428375,
+            0.16202937066555
+          ],
+          "native_property": [
+            1.0,
+            0.690196096897125,
+            0.439215689897537
+          ],
+          "source": "fec9b4f6-51cf-4f85-8826-0936537ea163",
+          "source_linear": [
+            1.0,
+            0.434153636164786,
+            0.162029375628962
+          ],
+          "type": "PointLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            0.520995616912842,
+            0.745404243469238,
+            1.0
+          ],
+          "native_property": [
+            0.749019622802734,
+            0.878431379795074,
+            1.0
+          ],
+          "source": "86699ea0-3919-45d0-9057-58747ba89ede",
+          "source_linear": [
+            0.520995573195377,
+            0.745404209535028,
+            1.0
+          ],
+          "type": "PointLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            0.672443091869354,
+            0.806952238082886,
+            1.0
+          ],
+          "native_property": [
+            0.839215636253357,
+            0.909803926944733,
+            1.0
+          ],
+          "source": "0efa8337-21a0-4b0f-98a1-9567a317a9d8",
+          "source_linear": [
+            0.672443156951013,
+            0.806952257665087,
+            1.0
+          ],
+          "type": "PointLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            0.737910449504852,
+            0.814846515655518,
+            1.0
+          ],
+          "native_property": [
+            0.874509811401367,
+            0.91372549533844,
+            1.0
+          ],
+          "source": "969be353-0904-4b60-a023-840ecb6b6920",
+          "source_linear": [
+            0.737910408767232,
+            0.814846572212095,
+            1.0
+          ],
+          "type": "PointLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            1.0,
+            0.39157247543335,
+            0.116970650851727
+          ],
+          "native_property": [
+            1.0,
+            0.658823549747467,
+            0.376470565795898
+          ],
+          "source": "1e6effbd-f1e4-4e69-a8ff-4a60f3449cf9",
+          "source_linear": [
+            1.0,
+            0.391572477739392,
+            0.11697066774918
+          ],
+          "type": "PointLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            0.0395462363958359,
+            0.672443091869354,
+            0.603827297687531
+          ],
+          "native_property": [
+            0.21960785984993,
+            0.839215636253357,
+            0.800000011920929
+          ],
+          "source": "a6915d66-d9e2-46f0-b054-f5581b4392bf",
+          "source_linear": [
+            0.0395462352705292,
+            0.672443156951013,
+            0.603827338847541
+          ],
+          "type": "PointLight"
+        },
+        {
+          "mode": "source-linear",
+          "native_decoded_linear": [
+            1.0,
+            0.194617807865143,
+            0.0159962922334671
+          ],
+          "native_property": [
+            1.0,
+            0.47843137383461,
+            0.133333340287209
+          ],
+          "source": "2e26486e-c19d-464f-b842-f2954306b0d7",
+          "source_linear": [
+            1.0,
+            0.194617830431072,
+            0.0159962933614463
+          ],
+          "type": "PointLight"
+        }
+      ],
+      "mode": "source-linear",
+      "scope": "Point/Directional/Spot Light3D properties only; raw linear PBR uniforms unchanged"
+    }
+  },
+  "checks": {
+    "actualHeadlessLight3D": {
+      "passed": 25,
+      "failed": 0
+    },
+    "publishedNativeGPU": true,
+    "candidateToPublishedRenderEquivalentAfterSingleMetadataKeyRename": true
+  },
+  "limits": [
+    "Native controls remain defaults; source mapping requires explicit three diagnostic flags.",
+    "Source point far-field exponent restored; different near-distance clamp remains.",
+    "Direct irradiance intensity/PI only; environment/ambient/emission/exposure unchanged.",
+    "Only Light3D property linear-to-sRGB encoding changed; raw linear PBR shader uniforms unchanged.",
+    "Spot property headless checks share native path but actual source scene contains13Point+1Directional; spot cone not proven.",
+    "Native BRDF, source material hooks/lightfield, postprocess and full High/reflection/AI/audio remain open."
+  ]
+}
