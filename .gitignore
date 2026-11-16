@@ -9,5 +9,6 @@ __pycache__/
 *.zip
 test-results/
 playwright-report/
+scripts/performance/evidence/
 
 dist/
