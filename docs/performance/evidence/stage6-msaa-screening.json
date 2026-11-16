@@ -1,0 +1,3186 @@
+{
+  "stage": 6,
+  "decision": "Keep the default-off prototype isolated. Two opposite-order clean pairs do not establish consistent net FPS/1%-low improvement. Product core remains Stage3 b3b; do not enable or promote.",
+  "baselineCoreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "candidateCoreSHA256": "07add2a5235808af96adb3b8b973a4ec2a389611d42e654436e915b064a6fa62",
+  "nativeProbe": {
+    "totals": {
+      "calls": 29073,
+      "msaaResolveCalls": 29073,
+      "crossTargetCalls": 0,
+      "otherCalls": 0,
+      "unmappedCalls": 0,
+      "colorPixelUpper": 60285772800,
+      "depthPixelUpper": 60285772800,
+      "stencilPixelUpper": 0,
+      "cpuMS": null
+    },
+    "coverage": {
+      "frames": {
+        "total": 3277,
+        "retained": 1200,
+        "dropped": 2077,
+        "capacity": 1200
+      },
+      "blits": {
+        "total": 29073,
+        "retained": 512,
+        "dropped": 28561,
+        "capacity": 512
+      },
+      "summaryRows": 16,
+      "targetRows": 28,
+      "droppedSummaries": 0,
+      "droppedTargets": 0
+    },
+    "errors": []
+  },
+  "candidateProbe": {
+    "totals": {
+      "calls": 22593,
+      "msaaResolveCalls": 22593,
+      "crossTargetCalls": 0,
+      "otherCalls": 0,
+      "unmappedCalls": 0,
+      "colorPixelUpper": 46848844800,
+      "depthPixelUpper": 46848844800,
+      "stencilPixelUpper": 0,
+      "cpuMS": null
+    },
+    "coverage": {
+      "frames": {
+        "total": 3286,
+        "retained": 1200,
+        "dropped": 2086,
+        "capacity": 1200
+      },
+      "blits": {
+        "total": 22593,
+        "retained": 512,
+        "dropped": 22081,
+        "capacity": 512
+      },
+      "summaryRows": 14,
+      "targetRows": 28,
+      "droppedSummaries": 0,
+      "droppedTargets": 0
+    },
+    "errors": []
+  },
+  "endScenarioOracle": {
+    "version": "msaa-gpu-oracle-v1",
+    "source": {
+      "coreSHA256": "07add2a5235808af96adb3b8b973a4ec2a389611d42e654436e915b064a6fa62"
+    },
+    "strictExact": true,
+    "paused": true,
+    "fixedCamera": true,
+    "framebuffer": [
+      1920,
+      1080
+    ],
+    "quality": "high",
+    "samples": 4,
+    "motionBlur": 0,
+    "vmBlur": 0,
+    "initialEnabled": true,
+    "expectedBlitReduction": 2,
+    "order": "off-on-on-off",
+    "captures": [
+      {
+        "width": 1920,
+        "height": 1080,
+        "hash": "3521a0a8",
+        "nonBlack": 2073600,
+        "sampledColors": 511,
+        "glErrors": [],
+        "mode": "off",
+        "enabled": false,
+        "counts": {
+          "directDraws": 1339,
+          "blits": 8,
+          "color": 8,
+          "depth": 8,
+          "stencil": 0,
+          "masks": {
+            "16640": 8
+          },
+          "blitCalls": [
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            }
+          ],
+          "droppedBlitCalls": 0
+        }
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "hash": "3521a0a8",
+        "nonBlack": 2073600,
+        "sampledColors": 511,
+        "glErrors": [],
+        "mode": "on",
+        "enabled": true,
+        "counts": {
+          "directDraws": 1339,
+          "blits": 6,
+          "color": 6,
+          "depth": 6,
+          "stencil": 0,
+          "masks": {
+            "16640": 6
+          },
+          "blitCalls": [
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            }
+          ],
+          "droppedBlitCalls": 0
+        }
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "hash": "3521a0a8",
+        "nonBlack": 2073600,
+        "sampledColors": 511,
+        "glErrors": [],
+        "mode": "on",
+        "enabled": true,
+        "counts": {
+          "directDraws": 1339,
+          "blits": 6,
+          "color": 6,
+          "depth": 6,
+          "stencil": 0,
+          "masks": {
+            "16640": 6
+          },
+          "blitCalls": [
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            }
+          ],
+          "droppedBlitCalls": 0
+        }
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "hash": "3521a0a8",
+        "nonBlack": 2073600,
+        "sampledColors": 511,
+        "glErrors": [],
+        "mode": "off",
+        "enabled": false,
+        "counts": {
+          "directDraws": 1339,
+          "blits": 8,
+          "color": 8,
+          "depth": 8,
+          "stencil": 0,
+          "masks": {
+            "16640": 8
+          },
+          "blitCalls": [
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            },
+            {
+              "rectangles": [
+                0,
+                0,
+                1920,
+                1080,
+                0,
+                0,
+                1920,
+                1080
+              ],
+              "mask": 16640,
+              "color": true,
+              "depth": true,
+              "stencil": false,
+              "filter": 9728
+            }
+          ],
+          "droppedBlitCalls": 0
+        }
+      }
+    ],
+    "camera": {
+      "position": [
+        -9.321018490473632,
+        1.6183363458605848,
+        -3.759017704433984
+      ],
+      "quaternion": [
+        -0.0016938845171452295,
+        -0.8587171902327342,
+        -0.004271871440063669,
+        0.5124291844425338
+      ],
+      "fov": 67.67274797076357,
+      "aspect": 1.7777777777777777
+    },
+    "limitations": [
+      "Frozen full-frame pixel oracle, not FPS/GPU-time evidence. No geometry/source absence control is needed because candidate changes resolve ownership only.",
+      "Counts are actual gl.blitFramebuffer API calls/masks, not proof of driver allocation, bytes or implicit automatic resolves.",
+      "Working framebuffer/reflection/postprocess targets are overwritten; a normal original-mode native refresh is checked after restoration.",
+      "Exposure histories/controls are restored. Material versions/program dirtiness are not rolled back. GL errors are consumed/reported and cannot be requeued.",
+      "Native renderer.resetState invalidates private caches; raw framebuffer/drawBuffers/buffer bindings are not replayed. Synchronous controlled QA only."
+    ],
+    "aa": {
+      "pixels": 0,
+      "channels": 0,
+      "maxDelta": 0
+    },
+    "bb": {
+      "pixels": 0,
+      "channels": 0,
+      "maxDelta": 0
+    },
+    "ab": {
+      "pixels": 0,
+      "channels": 0,
+      "maxDelta": 0
+    },
+    "nonBlackAndColors": true,
+    "stable": true,
+    "sameDraws": true,
+    "resolveCountsStable": true,
+    "blitReduction": 2,
+    "colorReduction": 2,
+    "depthReduction": 2,
+    "status": "pass",
+    "reason": null,
+    "normalRefresh": {
+      "attempted": true,
+      "errors": [],
+      "exception": null,
+      "complete": true
+    },
+    "restoreErrors": [],
+    "glRestore": {
+      "contract": "native-cache-invalidation; no arbitrary raw-binding restoration",
+      "checkedGroups": 12,
+      "groups": [],
+      "complete": true
+    },
+    "finalGLErrors": [],
+    "refreshRequested": true
+  },
+  "aliveViews": [
+    {
+      "yaw": 0,
+      "playerAlive": true,
+      "report": {
+        "version": "msaa-gpu-oracle-v1",
+        "source": {
+          "coreSHA256": "07add2a5235808af96adb3b8b973a4ec2a389611d42e654436e915b064a6fa62"
+        },
+        "strictExact": true,
+        "paused": true,
+        "fixedCamera": true,
+        "framebuffer": [
+          1920,
+          1080
+        ],
+        "quality": "high",
+        "samples": 4,
+        "motionBlur": 0,
+        "vmBlur": 0,
+        "initialEnabled": true,
+        "expectedBlitReduction": 2,
+        "order": "off-on-on-off",
+        "captures": [
+          {
+            "width": 1920,
+            "height": 1080,
+            "hash": "d9836155",
+            "nonBlack": 2073600,
+            "sampledColors": 969,
+            "glErrors": [],
+            "mode": "off",
+            "enabled": false,
+            "counts": {
+              "directDraws": 1368,
+              "blits": 9,
+              "color": 9,
+              "depth": 9,
+              "stencil": 0,
+              "masks": {
+                "16640": 9
+              },
+              "blitCalls": [
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                }
+              ],
+              "droppedBlitCalls": 0
+            }
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "hash": "d9836155",
+            "nonBlack": 2073600,
+            "sampledColors": 969,
+            "glErrors": [],
+            "mode": "on",
+            "enabled": true,
+            "counts": {
+              "directDraws": 1368,
+              "blits": 7,
+              "color": 7,
+              "depth": 7,
+              "stencil": 0,
+              "masks": {
+                "16640": 7
+              },
+              "blitCalls": [
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                }
+              ],
+              "droppedBlitCalls": 0
+            }
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "hash": "d9836155",
+            "nonBlack": 2073600,
+            "sampledColors": 969,
+            "glErrors": [],
+            "mode": "on",
+            "enabled": true,
+            "counts": {
+              "directDraws": 1368,
+              "blits": 7,
+              "color": 7,
+              "depth": 7,
+              "stencil": 0,
+              "masks": {
+                "16640": 7
+              },
+              "blitCalls": [
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                }
+              ],
+              "droppedBlitCalls": 0
+            }
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "hash": "d9836155",
+            "nonBlack": 2073600,
+            "sampledColors": 969,
+            "glErrors": [],
+            "mode": "off",
+            "enabled": false,
+            "counts": {
+              "directDraws": 1368,
+              "blits": 9,
+              "color": 9,
+              "depth": 9,
+              "stencil": 0,
+              "masks": {
+                "16640": 9
+              },
+              "blitCalls": [
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                }
+              ],
+              "droppedBlitCalls": 0
+            }
+          }
+        ],
+        "camera": {
+          "position": [
+            -10.70480513549804,
+            1.618663203708592,
+            -11.114053055016292
+          ],
+          "quaternion": [
+            6.758984861960737e-05,
+            -0.7068251778788839,
+            6.753604643537005e-05,
+            0.7073882659381473
+          ],
+          "fov": 67.67274797076357,
+          "aspect": 1.7777777777777777
+        },
+        "limitations": [
+          "Frozen full-frame pixel oracle, not FPS/GPU-time evidence. No geometry/source absence control is needed because candidate changes resolve ownership only.",
+          "Counts are actual gl.blitFramebuffer API calls/masks, not proof of driver allocation, bytes or implicit automatic resolves.",
+          "Working framebuffer/reflection/postprocess targets are overwritten; a normal original-mode native refresh is checked after restoration.",
+          "Exposure histories/controls are restored. Material versions/program dirtiness are not rolled back. GL errors are consumed/reported and cannot be requeued.",
+          "Native renderer.resetState invalidates private caches; raw framebuffer/drawBuffers/buffer bindings are not replayed. Synchronous controlled QA only."
+        ],
+        "aa": {
+          "pixels": 0,
+          "channels": 0,
+          "maxDelta": 0
+        },
+        "bb": {
+          "pixels": 0,
+          "channels": 0,
+          "maxDelta": 0
+        },
+        "ab": {
+          "pixels": 0,
+          "channels": 0,
+          "maxDelta": 0
+        },
+        "nonBlackAndColors": true,
+        "stable": true,
+        "sameDraws": true,
+        "resolveCountsStable": true,
+        "blitReduction": 2,
+        "colorReduction": 2,
+        "depthReduction": 2,
+        "status": "pass",
+        "reason": null,
+        "normalRefresh": {
+          "attempted": true,
+          "errors": [],
+          "exception": null,
+          "complete": true
+        },
+        "restoreErrors": [],
+        "glRestore": {
+          "contract": "native-cache-invalidation; no arbitrary raw-binding restoration",
+          "checkedGroups": 12,
+          "groups": [],
+          "complete": true
+        },
+        "finalGLErrors": [],
+        "refreshRequested": true
+      }
+    },
+    {
+      "yaw": 0.7,
+      "playerAlive": true,
+      "report": {
+        "version": "msaa-gpu-oracle-v1",
+        "source": {
+          "coreSHA256": "07add2a5235808af96adb3b8b973a4ec2a389611d42e654436e915b064a6fa62"
+        },
+        "strictExact": true,
+        "paused": true,
+        "fixedCamera": true,
+        "framebuffer": [
+          1920,
+          1080
+        ],
+        "quality": "high",
+        "samples": 4,
+        "motionBlur": 0,
+        "vmBlur": 0,
+        "initialEnabled": true,
+        "expectedBlitReduction": 2,
+        "order": "off-on-on-off",
+        "captures": [
+          {
+            "width": 1920,
+            "height": 1080,
+            "hash": "2c0d9e3b",
+            "nonBlack": 2073600,
+            "sampledColors": 997,
+            "glErrors": [],
+            "mode": "off",
+            "enabled": false,
+            "counts": {
+              "directDraws": 944,
+              "blits": 9,
+              "color": 9,
+              "depth": 9,
+              "stencil": 0,
+              "masks": {
+                "16640": 9
+              },
+              "blitCalls": [
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                }
+              ],
+              "droppedBlitCalls": 0
+            }
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "hash": "2c0d9e3b",
+            "nonBlack": 2073600,
+            "sampledColors": 997,
+            "glErrors": [],
+            "mode": "on",
+            "enabled": true,
+            "counts": {
+              "directDraws": 944,
+              "blits": 7,
+              "color": 7,
+              "depth": 7,
+              "stencil": 0,
+              "masks": {
+                "16640": 7
+              },
+              "blitCalls": [
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                }
+              ],
+              "droppedBlitCalls": 0
+            }
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "hash": "2c0d9e3b",
+            "nonBlack": 2073600,
+            "sampledColors": 997,
+            "glErrors": [],
+            "mode": "on",
+            "enabled": true,
+            "counts": {
+              "directDraws": 944,
+              "blits": 7,
+              "color": 7,
+              "depth": 7,
+              "stencil": 0,
+              "masks": {
+                "16640": 7
+              },
+              "blitCalls": [
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                }
+              ],
+              "droppedBlitCalls": 0
+            }
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "hash": "2c0d9e3b",
+            "nonBlack": 2073600,
+            "sampledColors": 997,
+            "glErrors": [],
+            "mode": "off",
+            "enabled": false,
+            "counts": {
+              "directDraws": 944,
+              "blits": 9,
+              "color": 9,
+              "depth": 9,
+              "stencil": 0,
+              "masks": {
+                "16640": 9
+              },
+              "blitCalls": [
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                }
+              ],
+              "droppedBlitCalls": 0
+            }
+          }
+        ],
+        "camera": {
+          "position": [
+            -10.70480513549804,
+            1.618663203708592,
+            -11.114053055016292
+          ],
+          "quaternion": [
+            4.03340972118463e-05,
+            -0.42141039944301384,
+            8.661793005288935e-05,
+            0.9068700381596992
+          ],
+          "fov": 67.67274797076357,
+          "aspect": 1.7777777777777777
+        },
+        "limitations": [
+          "Frozen full-frame pixel oracle, not FPS/GPU-time evidence. No geometry/source absence control is needed because candidate changes resolve ownership only.",
+          "Counts are actual gl.blitFramebuffer API calls/masks, not proof of driver allocation, bytes or implicit automatic resolves.",
+          "Working framebuffer/reflection/postprocess targets are overwritten; a normal original-mode native refresh is checked after restoration.",
+          "Exposure histories/controls are restored. Material versions/program dirtiness are not rolled back. GL errors are consumed/reported and cannot be requeued.",
+          "Native renderer.resetState invalidates private caches; raw framebuffer/drawBuffers/buffer bindings are not replayed. Synchronous controlled QA only."
+        ],
+        "aa": {
+          "pixels": 0,
+          "channels": 0,
+          "maxDelta": 0
+        },
+        "bb": {
+          "pixels": 0,
+          "channels": 0,
+          "maxDelta": 0
+        },
+        "ab": {
+          "pixels": 0,
+          "channels": 0,
+          "maxDelta": 0
+        },
+        "nonBlackAndColors": true,
+        "stable": true,
+        "sameDraws": true,
+        "resolveCountsStable": true,
+        "blitReduction": 2,
+        "colorReduction": 2,
+        "depthReduction": 2,
+        "status": "pass",
+        "reason": null,
+        "normalRefresh": {
+          "attempted": true,
+          "errors": [],
+          "exception": null,
+          "complete": true
+        },
+        "restoreErrors": [],
+        "glRestore": {
+          "contract": "native-cache-invalidation; no arbitrary raw-binding restoration",
+          "checkedGroups": 12,
+          "groups": [],
+          "complete": true
+        },
+        "finalGLErrors": [],
+        "refreshRequested": true
+      }
+    },
+    {
+      "yaw": -0.7,
+      "playerAlive": true,
+      "report": {
+        "version": "msaa-gpu-oracle-v1",
+        "source": {
+          "coreSHA256": "07add2a5235808af96adb3b8b973a4ec2a389611d42e654436e915b064a6fa62"
+        },
+        "strictExact": true,
+        "paused": true,
+        "fixedCamera": true,
+        "framebuffer": [
+          1920,
+          1080
+        ],
+        "quality": "high",
+        "samples": 4,
+        "motionBlur": 0,
+        "vmBlur": 0,
+        "initialEnabled": true,
+        "expectedBlitReduction": 2,
+        "order": "off-on-on-off",
+        "captures": [
+          {
+            "width": 1920,
+            "height": 1080,
+            "hash": "a2be86ce",
+            "nonBlack": 2073600,
+            "sampledColors": 983,
+            "glErrors": [],
+            "mode": "off",
+            "enabled": false,
+            "counts": {
+              "directDraws": 1370,
+              "blits": 9,
+              "color": 9,
+              "depth": 9,
+              "stencil": 0,
+              "masks": {
+                "16640": 9
+              },
+              "blitCalls": [
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                }
+              ],
+              "droppedBlitCalls": 0
+            }
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "hash": "a2be86ce",
+            "nonBlack": 2073600,
+            "sampledColors": 983,
+            "glErrors": [],
+            "mode": "on",
+            "enabled": true,
+            "counts": {
+              "directDraws": 1370,
+              "blits": 7,
+              "color": 7,
+              "depth": 7,
+              "stencil": 0,
+              "masks": {
+                "16640": 7
+              },
+              "blitCalls": [
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                }
+              ],
+              "droppedBlitCalls": 0
+            }
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "hash": "a2be86ce",
+            "nonBlack": 2073600,
+            "sampledColors": 983,
+            "glErrors": [],
+            "mode": "on",
+            "enabled": true,
+            "counts": {
+              "directDraws": 1370,
+              "blits": 7,
+              "color": 7,
+              "depth": 7,
+              "stencil": 0,
+              "masks": {
+                "16640": 7
+              },
+              "blitCalls": [
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                }
+              ],
+              "droppedBlitCalls": 0
+            }
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "hash": "a2be86ce",
+            "nonBlack": 2073600,
+            "sampledColors": 983,
+            "glErrors": [],
+            "mode": "off",
+            "enabled": false,
+            "counts": {
+              "directDraws": 1370,
+              "blits": 9,
+              "color": 9,
+              "depth": 9,
+              "stencil": 0,
+              "masks": {
+                "16640": 9
+              },
+              "blitCalls": [
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                },
+                {
+                  "rectangles": [
+                    0,
+                    0,
+                    1920,
+                    1080,
+                    0,
+                    0,
+                    1920,
+                    1080
+                  ],
+                  "mask": 16640,
+                  "color": true,
+                  "depth": true,
+                  "stencil": false,
+                  "filter": 9728
+                }
+              ],
+              "droppedBlitCalls": 0
+            }
+          }
+        ],
+        "camera": {
+          "position": [
+            -10.70480513549804,
+            1.618663203708592,
+            -11.114053055016292
+          ],
+          "quaternion": [
+            8.665002170564219e-05,
+            -0.9065341702628227,
+            4.0265108257070885e-05,
+            0.42213243066174183
+          ],
+          "fov": 67.67274797076357,
+          "aspect": 1.7777777777777777
+        },
+        "limitations": [
+          "Frozen full-frame pixel oracle, not FPS/GPU-time evidence. No geometry/source absence control is needed because candidate changes resolve ownership only.",
+          "Counts are actual gl.blitFramebuffer API calls/masks, not proof of driver allocation, bytes or implicit automatic resolves.",
+          "Working framebuffer/reflection/postprocess targets are overwritten; a normal original-mode native refresh is checked after restoration.",
+          "Exposure histories/controls are restored. Material versions/program dirtiness are not rolled back. GL errors are consumed/reported and cannot be requeued.",
+          "Native renderer.resetState invalidates private caches; raw framebuffer/drawBuffers/buffer bindings are not replayed. Synchronous controlled QA only."
+        ],
+        "aa": {
+          "pixels": 0,
+          "channels": 0,
+          "maxDelta": 0
+        },
+        "bb": {
+          "pixels": 0,
+          "channels": 0,
+          "maxDelta": 0
+        },
+        "ab": {
+          "pixels": 0,
+          "channels": 0,
+          "maxDelta": 0
+        },
+        "nonBlackAndColors": true,
+        "stable": true,
+        "sameDraws": true,
+        "resolveCountsStable": true,
+        "blitReduction": 2,
+        "colorReduction": 2,
+        "depthReduction": 2,
+        "status": "pass",
+        "reason": null,
+        "normalRefresh": {
+          "attempted": true,
+          "errors": [],
+          "exception": null,
+          "complete": true
+        },
+        "restoreErrors": [],
+        "glRestore": {
+          "contract": "native-cache-invalidation; no arbitrary raw-binding restoration",
+          "checkedGroups": 12,
+          "groups": [],
+          "complete": true
+        },
+        "finalGLErrors": [],
+        "refreshRequested": true
+      }
+    }
+  ],
+  "functional": {
+    "ok": true,
+    "consoleErrors": [],
+    "reflection": {
+      "count": 51,
+      "ms": 2107.7999999523163
+    },
+    "qualitySwitch": {
+      "quality": "high",
+      "scale": 1,
+      "q": {
+        "scale": 1,
+        "samples": 4,
+        "shadow": 4096,
+        "reflectionHz": 30,
+        "bloom": true,
+        "sharpen": 0.22,
+        "maxDpr": 1.25,
+        "ao": true,
+        "refl": 0.5,
+        "rays": 40,
+        "soft": true,
+        "vol": 20,
+        "distort": true,
+        "mblur": 8,
+        "dirt": 0.34,
+        "streak": 0.3,
+        "dof": 1,
+        "atlas": 4096,
+        "fxK": 1,
+        "vmblur": 9
+      },
+      "pending": false,
+      "error": ""
+    },
+    "restore": {
+      "state": "paused",
+      "buffer": [
+        1920,
+        1080
+      ],
+      "quality": "high",
+      "scale": 1,
+      "preparation": {
+        "pending": false,
+        "error": null,
+        "request": null,
+        "invalidate": null,
+        "wait": null
+      }
+    },
+    "equipment": {
+      "slot": 1,
+      "visible": true,
+      "guns": [
+        "ar|reflex.none.none.std.std|factory",
+        "pistol|irons.none.none.std.-|factory"
+      ]
+    },
+    "coldReady": {
+      "pending": false,
+      "error": null,
+      "request": null,
+      "invalidate": null,
+      "wait": null
+    },
+    "reloadReady": {
+      "pending": false,
+      "error": null,
+      "request": null,
+      "invalidate": null,
+      "wait": null
+    }
+  },
+  "pairs": [
+    {
+      "name": "msaa-pair-baseline-high-1",
+      "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+      "diagnosticOnly": false,
+      "wallSeconds": 60.38489999985695,
+      "logicalHz": 59.617553395112495,
+      "renderHz": 54.102929706064586,
+      "overflowDroppedMs": 397.50000000000455,
+      "windows": {
+        "complete": {
+          "frames": 3266,
+          "fps": 54.10984663349973,
+          "onePercentLowFPS": 18.310953276418374,
+          "onePercentTailFrames": 33,
+          "p95Ms": 29.799999952316284,
+          "p99Ms": 37.0,
+          "reciprocalP99FPS": 27.027027027027028,
+          "maxMs": 199.80000019073486,
+          "over50PerMinute": 6.9584003631567315,
+          "over100": 3
+        },
+        "warmTick301": {
+          "frames": 3057,
+          "fps": 55.301489902143985,
+          "onePercentLowFPS": 19.233155473226223,
+          "onePercentTailFrames": 31,
+          "p95Ms": 26.90000009536743,
+          "p99Ms": 35.39999985694885,
+          "reciprocalP99FPS": 28.24858768477381,
+          "maxMs": 199.80000019073486,
+          "over50PerMinute": 5.427035319150538,
+          "over100": 3
+        }
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+      "onePercentGatePassed": false,
+      "inputSHA256": "edc6c213661aebc9fb58a45d65fe9117af1029bec5f146105341774b6e14eecc",
+      "performanceEventsObserver": false,
+      "completionPolling": "legacy RAF (identical across all four)"
+    },
+    {
+      "name": "msaa-pair-candidate-high-1",
+      "coreSHA256": "07add2a5235808af96adb3b8b973a4ec2a389611d42e654436e915b064a6fa62",
+      "diagnosticOnly": false,
+      "wallSeconds": 60.3225,
+      "logicalHz": 59.67922417008579,
+      "renderHz": 54.623067677897964,
+      "overflowDroppedMs": 339.23333333332863,
+      "windows": {
+        "complete": {
+          "frames": 3294,
+          "fps": 54.63574511276119,
+          "onePercentLowFPS": 19.215092588745318,
+          "onePercentTailFrames": 33,
+          "p95Ms": 26.799999952316284,
+          "p99Ms": 35.40000009536743,
+          "reciprocalP99FPS": 28.24858749451991,
+          "maxMs": 155.39999985694885,
+          "over50PerMinute": 7.961492912606366,
+          "over100": 3
+        },
+        "warmTick301": {
+          "frames": 3075,
+          "fps": 55.69501950674477,
+          "onePercentLowFPS": 21.09848227457723,
+          "onePercentTailFrames": 31,
+          "p95Ms": 25.5,
+          "p99Ms": 32.90000009536743,
+          "reciprocalP99FPS": 30.395136690008933,
+          "maxMs": 155.39999985694885,
+          "over50PerMinute": 6.520392527618901,
+          "over100": 3
+        }
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+      "onePercentGatePassed": false,
+      "inputSHA256": "9f1dfa9e474ad8f1a4d079c34164f2b17ef05140bb8f1649fb688e09e3f64415",
+      "performanceEventsObserver": false,
+      "completionPolling": "legacy RAF (identical across all four)"
+    },
+    {
+      "name": "msaa-pair-candidate-high-2",
+      "coreSHA256": "07add2a5235808af96adb3b8b973a4ec2a389611d42e654436e915b064a6fa62",
+      "diagnosticOnly": false,
+      "wallSeconds": 60.409599999904636,
+      "logicalHz": 59.59317724344613,
+      "renderHz": 54.14702298980897,
+      "overflowDroppedMs": 414.1333333333371,
+      "windows": {
+        "complete": {
+          "frames": 3270,
+          "fps": 54.161042144578516,
+          "onePercentLowFPS": 17.64894641183098,
+          "onePercentTailFrames": 33,
+          "p95Ms": 28.40000009536743,
+          "p99Ms": 36.60000014305115,
+          "reciprocalP99FPS": 27.322404264795047,
+          "maxMs": 181.89999985694885,
+          "over50PerMinute": 6.956464128661461,
+          "over100": 4
+        },
+        "warmTick301": {
+          "frames": 3043,
+          "fps": 55.05121590284763,
+          "onePercentLowFPS": 19.875617102207823,
+          "onePercentTailFrames": 31,
+          "p95Ms": 26.700000047683716,
+          "p99Ms": 33.60000014305115,
+          "reciprocalP99FPS": 29.76190463519421,
+          "maxMs": 181.89999985694885,
+          "over50PerMinute": 5.42732986225905,
+          "over100": 3
+        }
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+      "onePercentGatePassed": false,
+      "inputSHA256": "80705d3ec790d84c0d6b3f77dde47e5d58ddc510a71fdbdf78b01df4b0cc41b3",
+      "performanceEventsObserver": false,
+      "completionPolling": "legacy RAF (identical across all four)"
+    },
+    {
+      "name": "msaa-pair-baseline-high-2",
+      "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+      "diagnosticOnly": false,
+      "wallSeconds": 60.38490000009537,
+      "logicalHz": 59.6175533948771,
+      "renderHz": 54.897830417782664,
+      "overflowDroppedMs": 401.6666666666676,
+      "windows": {
+        "complete": {
+          "frames": 3314,
+          "fps": 54.911278683982694,
+          "onePercentLowFPS": 18.29530779305702,
+          "onePercentTailFrames": 34,
+          "p95Ms": 27.399999856948853,
+          "p99Ms": 37.89999985694885,
+          "reciprocalP99FPS": 26.38522437399569,
+          "maxMs": 146.70000004768372,
+          "over50PerMinute": 9.941691976581055,
+          "over100": 4
+        },
+        "warmTick301": {
+          "frames": 3074,
+          "fps": 55.60328844431984,
+          "onePercentLowFPS": 18.9706872323188,
+          "onePercentTailFrames": 31,
+          "p95Ms": 25.90000009536743,
+          "p99Ms": 36.799999952316284,
+          "reciprocalP99FPS": 27.173913078688944,
+          "maxMs": 146.70000004768372,
+          "over50PerMinute": 7.597066085430817,
+          "over100": 4
+        }
+      },
+      "logicalExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+      "onePercentGatePassed": false,
+      "inputSHA256": "96613ad4e1f7c7b1be5c95447b157a9db2635d5ef75904a46db71fe3e9d7c10d",
+      "performanceEventsObserver": false,
+      "completionPolling": "legacy RAF (identical across all four)"
+    }
+  ],
+  "logicalExportsEqual": {
+    "manifest": true,
+    "seed": true,
+    "equipment": true,
+    "decisionTrace": true,
+    "events": true,
+    "checkpoints": true,
+    "state": true,
+    "coverage": true
+  },
+  "limits": [
+    "Explicit full-frame color/depth blit counts are not GPU time or bandwidth measurements.",
+    "Same draw count and strict four-view pixel equality establish the controlled tested cases, not arbitrary custom callbacks, added layer2 objects or all future shaders.",
+    "All four paired runs disable common passive longtask/long-animation-frame observers and per-pass diagnostics. Earlier isolated readings may retain those common observers; do not attribute cross-harness changes to the candidate.",
+    "Paired comparisons still use the same legacy RAF completion polling; a separate loop-observation experiment uses interval polling and is not mixed into these pairs.",
+    "The second pair reversed candidate/baseline order. Complete 1% lows include all long frames; warm windows are supplemental.",
+    "Render-submission intervals are not physical presents. The target remains unmet."
+  ]
+}

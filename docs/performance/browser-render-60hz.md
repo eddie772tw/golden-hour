@@ -288,3 +288,50 @@ The renewed desktop-host feasibility review is recorded in
 runtime version differences from ownership/DSP changes, preserves full process
 and shipping-package comparison requirements, and reports the failed controlled
 GC/isolated-owner shortcuts. No desktop migration is enabled by that review.
+
+## Stage 6: redundant MSAA resolves, correct pixels but no consistent FPS win
+
+Passive native High observation counted29,073 explicit composer resolves over
+3,277 gfx calls(8.872/call). All were1920x1080,4x MSAA-to-single color+depth;
+no cross-target/unmapped/probe errors or aggregate summary drops occurred.
+The default-off isolated candidate deferred only the AO copy before AO blend
+and FX composite before layer2 geometry. Both final draws still resolved,
+with unchanged allocations,4x samples, depth textures, shaders and draw order.
+
+FX particles do consume world depth. Safety depends on the intermediate quad
+not writing/clearing depth; that world depth was already resolved. The sampler
+need not belong to a different target. The proof is limited to owned native
+paths and their guarded callbacks, not arbitrary added layer2 objects/shaders.
+
+Hardware ABBA passed exact AA/BB/AB pixels in the final scenario view and three
+alive-player views. Draws stayed1339 in the first view and1368/944/1370 in the
+alive views; explicit resolves fell8-to-6 and9-to-7 respectively. All captures
+and the normal restoration render had GL0. Complete native AI retained all
+eight logical exports. Functional High/scale/motion settings, real context
+loss/restore, readiness, pointer lock and weapon switching passed. These prove
+the controlled correctness/count cases, not a net performance improvement.
+
+Two complete clean pairs then gave inconsistent performance directions:
+
+| Pair / order | Original FPS /1%low | Candidate FPS /1%low | Original P95/P99 | Candidate P95/P99 |
+|---|---:|---:|---:|---:|
+| Original then candidate |54.11 /18.31|54.64 /19.22|29.8 /37.0ms|26.8 /35.4ms|
+| Candidate then original |54.91 /18.30|54.16 /17.65|27.4 /37.9ms|28.4 /36.6ms|
+
+All four runs retained the full3600-tick workload and eight logical exports.
+The candidate reduces explicit operations, but neither full FPS nor full1%low
+has an established consistent advantage. It remains isolated/default-off;
+product code is not promoted. Small parameter-cache, sort and receiver-gate
+changes also remain deferred while the main effort follows audio churn and
+actual native loop request/callback timing.
+
+This matched series disabled the common passive longtask/long-animation-frame
+PerformanceObservers as well as per-pass profilers/timers. The portable runner
+now follows that policy: performance-event observers are opt-in through its
+diagnostic modes, and the raw result records the choice. Earlier isolated
+readings may include the common observers, so their numerical differences are
+not assigned to MSAA. All four runs used identical legacy RAF completion
+polling; a separate diagnostic is checking actual request chains with interval
+polling, to avoid adding an automation RAF chain. Submission capture still
+requires the existing lightweight render wrapper; no physical-present claim
+is made. See [stage6-msaa-screening.json](evidence/stage6-msaa-screening.json).

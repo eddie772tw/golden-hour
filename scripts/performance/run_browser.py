@@ -61,7 +61,7 @@ proc = subprocess.Popen([os.environ['ComSpec'], '/d', '/c', 'Play.cmd', 'solo'],
 INIT = r"""(() => {
   const p = window.__frames = {frames: [], events: [], errors: [], phase: 'loading', marks: []};
   p.mark = s => {p.phase=s; p.marks.push([performance.now(),s]);};
-  for (const type of ['longtask','long-animation-frame']) try {
+  if (globalThis.__ghObservePerformanceEvents === true) for (const type of ['longtask','long-animation-frame']) try {
     new PerformanceObserver(list => {for(const e of list.getEntries()) p.events.push({type,...e.toJSON()});}).observe({type,buffered:true});
   } catch {}
   addEventListener('error', e => p.errors.push(e.message));
@@ -164,7 +164,9 @@ try:
         browser = pw.chromium.launch(channel='msedge', headless=False,
             args=['--start-fullscreen','--disable-background-networking'], ignore_default_args=['--enable-unsafe-swiftshader'])
         context = browser.new_context(viewport={'width':args.width,'height':args.height},device_scale_factor=1,locale='en-US')
-        context.add_init_script(INIT)
+        performance_events=bool(args.diagnostic or args.profile or args.trace_threads or args.program_audit or args.render_dev)
+        result['performanceEventsObserver']=performance_events
+        context.add_init_script('window.__ghObservePerformanceEvents='+json.dumps(performance_events)+';'+INIT)
         if args.full_ai:
             context.add_init_script('window.__fullAI=true;')
         if args.scripted:
