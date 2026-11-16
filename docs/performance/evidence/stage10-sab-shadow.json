@@ -1,0 +1,643 @@
+{
+  "stage": 10,
+  "screen": "SAB-versus-MessagePort native-audible shadow transport",
+  "date": "2026-11-17",
+  "decision": "Paired diagnostic supports investigating lower transport latency through SAB for the observed eligible layers. Do not promote audio DSP, sound quality, node savings, desktop migration or FPS acceptance; production worklet gate remains false.",
+  "productRuntimeChanged": false,
+  "baseline": {
+    "path": "work/browser-render-next/evidence/worklet-off-high-1.json",
+    "rawSHA256": "eddf0c2e514002f5e9bc3174ce51563b662dcc0293bdc3332fe1f664b7f95696",
+    "coreSHA256": "cb074460da468c9a4d2bea5f34c12ef4aca845a11a007df1da35b8113b27cde6",
+    "moduleSHA256": {
+      "game/core/game.js": "cb074460da468c9a4d2bea5f34c12ef4aca845a11a007df1da35b8113b27cde6",
+      "game/client/stage3-adapter.js": "5a2bb0f996a512c52d7e81d312e85f6cafa2f0d6e1e38c9398f32894ad75c31b",
+      "game/client/worklet-noise.js": "1f643a718c08efa70329e455a7e1a2c0f0504322e619d423dc0a15b0968446e2"
+    },
+    "gate": "off",
+    "workletGateValid": true,
+    "scenarioDone": true,
+    "scenarioTick": 3600,
+    "logicalExportSHA256": {
+      "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+      "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+      "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+      "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+      "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+      "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+      "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+      "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+    },
+    "additionalCheckSHA256": {
+      "botCalls": "fcfad30dac46b00d631d93c5193f73e6eadd32591387664b9b09aeb153ad7eda"
+    }
+  },
+  "protocol": {
+    "quality": "high",
+    "browserVersion": "157.0.4341.60",
+    "nativeLoop": true,
+    "logicalTicks": 3600,
+    "sampleRate": 48000,
+    "adapterSlots": 32,
+    "workletNoiseGate": "paired",
+    "minLeadFrames": 0,
+    "ringCapacity": 256,
+    "pairLimit": 32768,
+    "nativePlayback": "All original native layers still play. Adapter returns false for replacement while mirroring eligible fixed-filter white/brown noise descriptors.",
+    "shadowDSP": "MessagePort executes silent shadow DSP; SAB ring records reception/process timing only, not a second audible source or full SAB DSP implementation.",
+    "identity": "Each path independently records command ID, target startFrame and first-process frame. Only matching IDs and targets enter matched timing categories.",
+    "lateCriterion": "firstProcessFrame > original startFrame; neither path is silently retimed to now. Not measured speaker/PCM onset.",
+    "publication": "Single producer writes Float64 descriptor then Atomics.store publishes write index; Worklet publishes currentFrame and drains ring each process quantum.",
+    "sendOrder": "Alternate ring-before-port versus port-before-ring by pairIndex parity.",
+    "snapshot": "Host freezes new adapter layers, Port FIFO fence plus process-boundary ring drain, then final paired report.",
+    "sharedMemoryRequirement": "Actual secure context, crossOriginIsolated and SharedArrayBuffer availability required; atomic Worklet quanta acknowledgement before scenario.",
+    "serverOptIn": "GH_DIAG_ISOLATE=1 only in isolated portable-paired server; recorded server module hash. No product header change.",
+    "leadBinsFrames": [
+      "<256",
+      "256<=lead<512",
+      "512<=lead<1024",
+      "1024<=lead<2048",
+      ">=2048"
+    ],
+    "leadDefinition": "original target startFrame - host sentFrame",
+    "scopeCaveat": "Transport snapshot includes prelude commands before benchmark tick 0 (bounded examples tick=-1); totals cannot all be assigned exclusively to the 3600-tick scenario.",
+    "ownerEightLogicalExports": [
+      "manifest",
+      "seed",
+      "equipment",
+      "decisionTrace",
+      "events",
+      "checkpoints",
+      "state",
+      "coverage"
+    ],
+    "additionalLogicalCheck": "botCalls (ninth check, not substituted for owner seed)"
+  },
+  "runs": {
+    "worklet-paired-native-high-1": {
+      "rawPath": "work/browser-render-next/evidence/worklet-paired-native-high-1.json",
+      "rawSHA256": "14d037e85f5bcd537b9091702d91485b2730d9ff8126bedb38364730322600be",
+      "coreSHA256": "cb074460da468c9a4d2bea5f34c12ef4aca845a11a007df1da35b8113b27cde6",
+      "moduleSHA256": {
+        "game/core/game.js": "cb074460da468c9a4d2bea5f34c12ef4aca845a11a007df1da35b8113b27cde6",
+        "game/client/stage3-adapter.js": "ef390f335b1ce1fcbad5b756683b936326243a39302ecd7885bd225622fe2dcf",
+        "game/client/worklet-noise.js": "7284be0196c20d02a2cbe88be7025502fea8dd7fd66ee0d5b9a8b8009752c3de",
+        "game/client/stage3-ring.js": "f485a237c26fef024d7e6883e92dd91a3be6b6c39a6fd7598f0dfd472a581431",
+        "server/server.mjs": "8b62cdd9b3e7061dcd7a84f0b6f4d444f174c1d3457cb4a455ce54b69b71c31c"
+      },
+      "browserVersion": "157.0.4341.60",
+      "quality": "high",
+      "nativeLoop": true,
+      "sharedMemory": {
+        "isolated": true,
+        "available": true,
+        "secure": true,
+        "origin": "http://127.0.0.1:48910"
+      },
+      "atomicWorkletAcknowledgement": {
+        "capacity": 256,
+        "overflow": 0,
+        "quanta": 11,
+        "publishedFrame": 200064
+      },
+      "scenario": {
+        "done": true,
+        "tick": 3600,
+        "botTicks": [
+          3600,
+          3600,
+          3600,
+          3600,
+          3600,
+          3600,
+          3600,
+          3600,
+          3600
+        ],
+        "eightExportsExactAgainst": "worklet-off-high-1",
+        "exportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "additionalChecksEqual": {
+          "botCalls": true
+        }
+      },
+      "harnessOK": true,
+      "consoleErrors": [],
+      "measurementErrors": [],
+      "observerFlags": {
+        "profiler": false,
+        "trace": false,
+        "gpuTimer": false,
+        "osSampler": false,
+        "deepRender": false,
+        "performanceEventsObserver": false,
+        "benchmarkCompletionPolling": "raf"
+      },
+      "workletGateValid": false,
+      "gateMeaning": "Intentionally false for native-audible shadow/paired diagnostic in full_ai.py; not promoted even when transport capture is complete.",
+      "pairedComplete": false,
+      "shadowComplete": false,
+      "nativeCreated": {
+        "start": 731,
+        "end": 113143,
+        "delta": 112412
+      },
+      "adapter": {
+        "accepted": 831,
+        "fallback": {
+          "unsupported": 2,
+          "notReady": 14383
+        },
+        "runtimeFailure": "unknown layer or late stop",
+        "firstReject": {
+          "op": "reject",
+          "id": 27,
+          "reason": "late startFrame",
+          "startFrame": 220944,
+          "receiveFrame": 221312,
+          "lateFrames": 368,
+          "checkedFrame": 220799.99999999997,
+          "sentFrame": 220799.99999999997,
+          "postMs": 22099.34500002861,
+          "tick": 17,
+          "sampleRate": 48000,
+          "slot": 0,
+          "hostReplyFrame": 221824,
+          "hostReplyMs": 22115.355000019073
+        }
+      },
+      "paired": {
+        "attempted": 831,
+        "limit": 32768,
+        "tracked": 831,
+        "truncated": 0,
+        "totals": {
+          "total": 831,
+          "matched": 831,
+          "bothOnTime": 625,
+          "bothLate": 6,
+          "ringOnlyLate": 0,
+          "portOnlyLate": 200,
+          "ringMissing": 0,
+          "portMissing": 0,
+          "idMismatch": 0,
+          "targetMismatch": 0
+        },
+        "leadBins": [
+          {
+            "total": 376,
+            "matched": 376,
+            "bothOnTime": 178,
+            "bothLate": 6,
+            "ringOnlyLate": 0,
+            "portOnlyLate": 192,
+            "ringMissing": 0,
+            "portMissing": 0,
+            "idMismatch": 0,
+            "targetMismatch": 0
+          },
+          {
+            "total": 13,
+            "matched": 13,
+            "bothOnTime": 9,
+            "bothLate": 0,
+            "ringOnlyLate": 0,
+            "portOnlyLate": 4,
+            "ringMissing": 0,
+            "portMissing": 0,
+            "idMismatch": 0,
+            "targetMismatch": 0
+          },
+          {
+            "total": 54,
+            "matched": 54,
+            "bothOnTime": 50,
+            "bothLate": 0,
+            "ringOnlyLate": 0,
+            "portOnlyLate": 4,
+            "ringMissing": 0,
+            "portMissing": 0,
+            "idMismatch": 0,
+            "targetMismatch": 0
+          },
+          {
+            "total": 96,
+            "matched": 96,
+            "bothOnTime": 96,
+            "bothLate": 0,
+            "ringOnlyLate": 0,
+            "portOnlyLate": 0,
+            "ringMissing": 0,
+            "portMissing": 0,
+            "idMismatch": 0,
+            "targetMismatch": 0
+          },
+          {
+            "total": 292,
+            "matched": 292,
+            "bothOnTime": 292,
+            "bothLate": 0,
+            "ringOnlyLate": 0,
+            "portOnlyLate": 0,
+            "ringMissing": 0,
+            "portMissing": 0,
+            "idMismatch": 0,
+            "targetMismatch": 0
+          }
+        ],
+        "duplicatePort": 0,
+        "duplicateRing": 0,
+        "ringStops": 28,
+        "ringReleases": 141,
+        "rowFields": [
+          "portId",
+          "ringId",
+          "portTarget",
+          "ringTarget",
+          "sentFrame",
+          "publishedFrame",
+          "portReceive",
+          "portFirstProcess",
+          "ringFirstProcess"
+        ],
+        "capacity": 256,
+        "overflow": 0,
+        "quanta": 22793,
+        "publishedFrame": 3116160,
+        "overflowByOp": {
+          "layer": 0,
+          "stop": 0,
+          "release": 0
+        }
+      },
+      "shadowLeadBins": [
+        {
+          "received": 376,
+          "late": 198,
+          "maxLateFrames": 880,
+          "maxClockDelta": 1024
+        },
+        {
+          "received": 13,
+          "late": 4,
+          "maxLateFrames": 146.19855459034443,
+          "maxClockDelta": 512
+        },
+        {
+          "received": 54,
+          "late": 4,
+          "maxLateFrames": 352.36073898896575,
+          "maxClockDelta": 896
+        },
+        {
+          "received": 96,
+          "late": 0,
+          "maxLateFrames": 0,
+          "maxClockDelta": 1024
+        },
+        {
+          "received": 292,
+          "late": 0,
+          "maxLateFrames": 0,
+          "maxClockDelta": 896
+        }
+      ],
+      "shadowActivity": {
+        "processedLayers": 625,
+        "activeQuanta": 960,
+        "skippedStops": 0,
+        "releases": 141
+      },
+      "independentRowRecount": {
+        "rows": 831,
+        "statusCounts": {
+          "bothOnTime": 625,
+          "bothLate": 6,
+          "portOnlyLate": 200,
+          "ringOnlyLate": 0
+        },
+        "worstPortLateFrames": 880,
+        "worstRingLateFrames": 112
+      },
+      "firstDiscordant": [
+        {
+          "pairIndex": 24,
+          "portId": 27,
+          "ringId": 27,
+          "target": 220944,
+          "checkedFrame": 220799.99999999997,
+          "sentFrame": 220799.99999999997,
+          "publishedFrame": 220672,
+          "postMs": 22099.34500002861,
+          "tick": 17,
+          "portReceiveFrame": 221312,
+          "portProcessFrame": 221312,
+          "ringProcessFrame": 220800,
+          "status": "portOnlyLate"
+        }
+      ],
+      "interpretation": "Transport acceptance stopped after fatal unknown-layer/late-stop ownership failure; 831 observed pairs are a prefix. Full-game logical completion remains separately verified."
+    },
+    "worklet-paired-native-high-2": {
+      "rawPath": "work/browser-render-next/evidence/worklet-paired-native-high-2.json",
+      "rawSHA256": "151e17401776bf4fb8e9abd4628941c520cef974c2f90ba49f776aea39e22d61",
+      "coreSHA256": "cb074460da468c9a4d2bea5f34c12ef4aca845a11a007df1da35b8113b27cde6",
+      "moduleSHA256": {
+        "game/core/game.js": "cb074460da468c9a4d2bea5f34c12ef4aca845a11a007df1da35b8113b27cde6",
+        "game/client/stage3-adapter.js": "df67670e8916f18cf017d67dbfa995580b0a29fd7bde0eb18a2f7e5b4ff222a1",
+        "game/client/worklet-noise.js": "fd3c47edd93f4eafd567193e9dc947cdc07f371a8ce264be7ee6e8969fc152c6",
+        "game/client/stage3-ring.js": "f485a237c26fef024d7e6883e92dd91a3be6b6c39a6fd7598f0dfd472a581431",
+        "server/server.mjs": "8b62cdd9b3e7061dcd7a84f0b6f4d444f174c1d3457cb4a455ce54b69b71c31c"
+      },
+      "browserVersion": "157.0.4341.60",
+      "quality": "high",
+      "nativeLoop": true,
+      "sharedMemory": {
+        "isolated": true,
+        "available": true,
+        "secure": true,
+        "origin": "http://127.0.0.1:48910"
+      },
+      "atomicWorkletAcknowledgement": {
+        "capacity": 256,
+        "overflow": 0,
+        "quanta": 15,
+        "publishedFrame": 198656
+      },
+      "scenario": {
+        "done": true,
+        "tick": 3600,
+        "botTicks": [
+          3600,
+          3600,
+          3600,
+          3600,
+          3600,
+          3600,
+          3600,
+          3600,
+          3600
+        ],
+        "eightExportsExactAgainst": "worklet-off-high-1",
+        "exportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "additionalChecksEqual": {
+          "botCalls": true
+        }
+      },
+      "harnessOK": true,
+      "consoleErrors": [],
+      "measurementErrors": [],
+      "observerFlags": {
+        "profiler": false,
+        "trace": false,
+        "gpuTimer": false,
+        "osSampler": false,
+        "deepRender": false,
+        "performanceEventsObserver": false,
+        "benchmarkCompletionPolling": "raf"
+      },
+      "workletGateValid": false,
+      "gateMeaning": "Intentionally false for native-audible shadow/paired diagnostic in full_ai.py; not promoted even when transport capture is complete.",
+      "pairedComplete": true,
+      "shadowComplete": true,
+      "nativeCreated": {
+        "start": 774,
+        "end": 113108,
+        "delta": 112334
+      },
+      "adapter": {
+        "accepted": 15038,
+        "fallback": {
+          "unsupported": 44,
+          "noSlot": 143
+        },
+        "runtimeFailure": null,
+        "firstReject": {
+          "op": "reject",
+          "id": 1,
+          "reason": "late startFrame",
+          "startFrame": 198928,
+          "receiveFrame": 199168,
+          "lateFrames": 240,
+          "checkedFrame": 198784.00000000003,
+          "sentFrame": 198784.00000000003,
+          "postMs": 21483.835000038147,
+          "tick": null,
+          "sampleRate": 48000,
+          "slot": 0,
+          "hostReplyFrame": 199296,
+          "hostReplyMs": 21488.629999876022
+        }
+      },
+      "paired": {
+        "attempted": 15038,
+        "limit": 32768,
+        "tracked": 15038,
+        "truncated": 0,
+        "totals": {
+          "total": 15038,
+          "matched": 15038,
+          "bothOnTime": 11388,
+          "bothLate": 231,
+          "ringOnlyLate": 0,
+          "portOnlyLate": 3419,
+          "ringMissing": 0,
+          "portMissing": 0,
+          "idMismatch": 0,
+          "targetMismatch": 0
+        },
+        "leadBins": [
+          {
+            "total": 6786,
+            "matched": 6786,
+            "bothOnTime": 3239,
+            "bothLate": 231,
+            "ringOnlyLate": 0,
+            "portOnlyLate": 3316,
+            "ringMissing": 0,
+            "portMissing": 0,
+            "idMismatch": 0,
+            "targetMismatch": 0
+          },
+          {
+            "total": 194,
+            "matched": 194,
+            "bothOnTime": 144,
+            "bothLate": 0,
+            "ringOnlyLate": 0,
+            "portOnlyLate": 50,
+            "ringMissing": 0,
+            "portMissing": 0,
+            "idMismatch": 0,
+            "targetMismatch": 0
+          },
+          {
+            "total": 836,
+            "matched": 836,
+            "bothOnTime": 783,
+            "bothLate": 0,
+            "ringOnlyLate": 0,
+            "portOnlyLate": 53,
+            "ringMissing": 0,
+            "portMissing": 0,
+            "idMismatch": 0,
+            "targetMismatch": 0
+          },
+          {
+            "total": 1625,
+            "matched": 1625,
+            "bothOnTime": 1625,
+            "bothLate": 0,
+            "ringOnlyLate": 0,
+            "portOnlyLate": 0,
+            "ringMissing": 0,
+            "portMissing": 0,
+            "idMismatch": 0,
+            "targetMismatch": 0
+          },
+          {
+            "total": 5597,
+            "matched": 5597,
+            "bothOnTime": 5597,
+            "bothLate": 0,
+            "ringOnlyLate": 0,
+            "portOnlyLate": 0,
+            "ringMissing": 0,
+            "portMissing": 0,
+            "idMismatch": 0,
+            "targetMismatch": 0
+          }
+        ],
+        "duplicatePort": 0,
+        "duplicateRing": 0,
+        "ringStops": 115,
+        "ringReleases": 2934,
+        "rowFields": [
+          "portId",
+          "ringId",
+          "portTarget",
+          "ringTarget",
+          "sentFrame",
+          "publishedFrame",
+          "portReceive",
+          "portFirstProcess",
+          "ringFirstProcess"
+        ],
+        "capacity": 256,
+        "overflow": 0,
+        "quanta": 22655,
+        "publishedFrame": 3096576,
+        "overflowByOp": {
+          "layer": 0,
+          "stop": 0,
+          "release": 0
+        }
+      },
+      "shadowLeadBins": [
+        {
+          "received": 6786,
+          "late": 3547,
+          "maxLateFrames": 1008,
+          "maxClockDelta": 1024.0000000002328
+        },
+        {
+          "received": 194,
+          "late": 50,
+          "maxLateFrames": 666.749563023448,
+          "maxClockDelta": 1024
+        },
+        {
+          "received": 836,
+          "late": 53,
+          "maxLateFrames": 457.17399463045876,
+          "maxClockDelta": 1024.0000000002328
+        },
+        {
+          "received": 1625,
+          "late": 0,
+          "maxLateFrames": 0,
+          "maxClockDelta": 1024.0000000002328
+        },
+        {
+          "received": 5597,
+          "late": 0,
+          "maxLateFrames": 0,
+          "maxClockDelta": 1024.0000000002328
+        }
+      ],
+      "shadowActivity": {
+        "processedLayers": 11376,
+        "activeQuanta": 22405,
+        "skippedStops": 15,
+        "rejectedStartStops": 7,
+        "endedStops": 8,
+        "lateStops": 0,
+        "maxStopLateFrames": 0,
+        "firstStopMiss": {
+          "id": 249,
+          "slot": 16,
+          "state": "rejectedStart",
+          "frame": 246785,
+          "receiveFrame": 244352,
+          "lateFrames": 0
+        },
+        "releases": 2934
+      },
+      "independentRowRecount": {
+        "rows": 15038,
+        "statusCounts": {
+          "bothOnTime": 11388,
+          "bothLate": 231,
+          "portOnlyLate": 3419,
+          "ringOnlyLate": 0
+        },
+        "worstPortLateFrames": 1008,
+        "worstRingLateFrames": 112
+      },
+      "firstDiscordant": [
+        {
+          "pairIndex": 0,
+          "portId": 1,
+          "ringId": 1,
+          "target": 198928,
+          "checkedFrame": 198784.00000000003,
+          "sentFrame": 198784.00000000003,
+          "publishedFrame": 198656,
+          "postMs": 21483.835000038147,
+          "tick": -1,
+          "portReceiveFrame": 199168,
+          "portProcessFrame": 199168,
+          "ringProcessFrame": 198784,
+          "status": "portOnlyLate"
+        }
+      ],
+      "interpretation": "Complete matched capture with 3419 Port-only late, 231 both late, zero ring-only late and no missing/identity/target mismatches. Supports transport research only, not production audio or FPS acceptance."
+    }
+  },
+  "limitations": [
+    "Two diagnostics used different adapter/worklet revisions; they are not repeated samples of one unchanged implementation.",
+    "First full game completed, but its transport mirror stopped accepting after fatal shadow stop ownership failure. Its 831-pair prefix is not a full-workload transport rate, despite record-cap truncated=0.",
+    "Second pairedComplete/shadowComplete validate this diagnostic capture, not production audio correctness; workletGateValid is intentionally false.",
+    "Only supported fixed-filter noise layers are mirrored. Unsupported/noSlot fallbacks retain native sound and are outside the matched denominator.",
+    "SAB first-process timing advantage is not proof of full SAB DSP, sample-exact/native-equivalent output, listener quality or speaker latency.",
+    "Original native graph remains constructed and audible alongside added silent Worklet work, so no native node/deletion savings or clean FPS gain is measured.",
+    "Zero ring overflow/missing in these captures does not establish capacity, stop/lease, context recovery or deadline safety for all future workloads.",
+    "Both-late commands remain, so bypassing MessagePort alone is not a sufficient sound deadline solution."
+  ]
+}

@@ -577,3 +577,44 @@ opportunities. There is no evidence here for a wall-clock-gate product prototype
 No simulation clock, deadline, frame count or product behavior was changed.
 Source hashes, clock estimates and replay limits are retained in
 [stage9-render-gate-clock.json](evidence/stage9-render-gate-clock.json).
+
+## Stage 10: full-workload SAB shadow transport
+
+An isolated High1080p native full-AI run now compares MessagePort and a shared
+ring in the same secure, cross-origin-isolated page. Actual browser checks
+confirmed SharedArrayBuffer availability and an Atomics-published Worklet clock
+before the scenario. Only the isolated solo server enabled diagnostic headers;
+product HTTP policy and runtime remain unchanged. Both paths retain the same
+command ID and original target frame. Late means first process quantum starts
+after that target; it does not measure audible speaker or PCM onset.
+
+The first attempt completed the game but its mirror stopped after831 paired
+layers because of stop/layer ownership handling. That prefix is retained as an
+incomplete transport result. After the ownership fix, the new run completed
+all15038 attempted/matched pairs with zero missing IDs, target mismatch,
+duplicates, overflow or record truncation. pairedComplete and shadowComplete
+were both true; all nine bots completed3600ticks and the eight owning logical
+exports, plus an additional botCalls check, exactly matched the adapter-off native-audio baseline.
+
+| Full second capture | Matched layers |
+|---|---:|
+| Both routes meet original deadline |11388|
+| Only MessagePort misses |3419|
+| Both routes miss |231|
+| Only SAB misses |0|
+
+All231 both-late layers were in the below256-frame host-lead bin. Unsupported44
+and no-slot143 attempts kept native behavior and were outside the matched
+layer denominator. These counts support further transport work, including
+producer-side deadline checks and native fallback; SAB alone is not yet a
+sound-deadline solution. The two attempts used different adapter/processor
+revisions and are not repeated samples of one frozen implementation.
+
+All original layers remained constructed and audible. MessagePort executed
+silent shadow DSP while SAB recorded command reception/first-process timing;
+the ring was not an audible DSP source. workletGateValid intentionally stayed
+false. There is no native-node saving, clean FPS benefit, full SAB PCM oracle
+or audio-quality acceptance from this diagnostic. The product's High/full-AI
+performance target remains unmet. Source/module/raw hashes, first-attempt
+failure and complete second-capture checks are in
+[stage10-sab-shadow.json](evidence/stage10-sab-shadow.json).
