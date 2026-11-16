@@ -1,0 +1,413 @@
+{
+  "stage": 15,
+  "kind": "Godot-PBR-texture-and-guarded-GL-component",
+  "productRuntimeChanged": false,
+  "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "acceptanceEligible": false,
+  "highParity": false,
+  "fullAI": false,
+  "sourcePackage": "prototypes/godot-render-component/",
+  "sourceManifest": {
+    "rawPath": "work\\godot-native\\materials\\repo-ready\\MANIFEST.json",
+    "sha256": "85c4889808fcef0dfa00f1f313b599d6a9bf6c066181b518896e8ef721a32579",
+    "files": [
+      {
+        "path": "capture_scene.py",
+        "bytes": 3894,
+        "sha256": "d951f5b5c25d46630ad5b5d7f044d1dbb75f3bfe32a023a798fa01c3517f0ec1",
+        "baseSHA256": "d951f5b5c25d46630ad5b5d7f044d1dbb75f3bfe32a023a798fa01c3517f0ec1"
+      },
+      {
+        "path": "capture_materials.py",
+        "bytes": 3090,
+        "sha256": "2b1cf0a48ecf25dacb30a3530fb46c1eeee9d0de29f7ce3d9dce37da3b5893d5",
+        "baseSHA256": null
+      },
+      {
+        "path": "run_render.py",
+        "bytes": 6119,
+        "sha256": "e3f752d1924b93f94ba9a2a05181bacb3a7bb0795eecb1450f61de41b70f7de7",
+        "baseSHA256": "f86806a28c6361ff853c81da8a1dc6cbc0b47d6f7ac81d30f6c88d88d686ac29"
+      },
+      {
+        "path": "render/browser-exporter.js",
+        "bytes": 16174,
+        "sha256": "b8a17c1bcd6fefa78dda70f0a579aa395009b3e6ee728111f893577fc64b0175",
+        "baseSHA256": "ca039c8a44461cab5491587138e1772a5d323e8abcba0e3bd3a7c0e1f05821cd"
+      },
+      {
+        "path": "render/browser-textures.js",
+        "bytes": 7742,
+        "sha256": "9e94b7271e88ae633138ebe068da6dd5dc3b7c83f800d95fa531e60d85cfc064",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/browser-textures.test.mjs",
+        "bytes": 3756,
+        "sha256": "2a5b5d48f4110a4b8bfdbe6a16e282805da7a021797adbbb1c95edbe42213f1d",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/exporter.test.mjs",
+        "bytes": 4639,
+        "sha256": "f2d200f16dddf3634de48fe4e495574462c5af04a26287c6d4571ba8c526ce08",
+        "baseSHA256": "bd8bff53e0e97b034e1574c71d831ae68846ff4203b44be16c2224051d1b3898"
+      },
+      {
+        "path": "render/fixtures/gl-audit-proof.json",
+        "bytes": 8302,
+        "sha256": "c2aa2a04e395a6f5590467ecc6db4976d8f478b27d3a7159e6dc6463b593c4d0",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/fixtures/shaft-capture3-fixture.json",
+        "bytes": 88950,
+        "sha256": "529bd4c13b196041908c1ca4f02bcb3f33bed5a63f7d35aad920a9a6086b3763",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/main.gd",
+        "bytes": 26387,
+        "sha256": "f20d3907f543f1569adbcae6cb74e203dcbab14875d9096a859a607574397730",
+        "baseSHA256": "e343195481112983925ac28e5d11664f5bb7d3f89ee3182796576a94943c8598"
+      },
+      {
+        "path": "render/main.tscn",
+        "bytes": 172,
+        "sha256": "7cfc94c5c8be7f1e9b40720cddae94f10aa51161e125ff56b014520509a26b4f",
+        "baseSHA256": "7cfc94c5c8be7f1e9b40720cddae94f10aa51161e125ff56b014520509a26b4f"
+      },
+      {
+        "path": "render/pbr_adaptor.gd",
+        "bytes": 11487,
+        "sha256": "b1ad272722b954b87268798d3b7d175c0320b5eb3fff80332d9c9639fe37d821",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/project.godot",
+        "bytes": 639,
+        "sha256": "e5ebd93f6e014b5438ddf2d6e484c2692b12659004d6bea63b7ec275c916949d",
+        "baseSHA256": "e5ebd93f6e014b5438ddf2d6e484c2692b12659004d6bea63b7ec275c916949d"
+      },
+      {
+        "path": "render/proof.test.mjs",
+        "bytes": 1421,
+        "sha256": "2fc6c6a9c8a39cb58f131f71241029f6402a89a1fa0c6cd45cf516e385365db6",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/README.md",
+        "bytes": 7196,
+        "sha256": "2740c154dadb0c044586a9f450a75af0cc15f12acb7e0a8a6ac3fedf06657813",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/sampler_math.test.mjs",
+        "bytes": 3369,
+        "sha256": "931562ccc48c95a8dfb5c97322b798d6b1d66055c4bb4ecdd92fc0784e0a15de",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/SCHEMA.md",
+        "bytes": 6466,
+        "sha256": "23170bbb9dbc6c6564b04df3a72031ea121b3b8cabe703b90251a68076ed72d5",
+        "baseSHA256": "6ce60d61b86388c9c46b62ed7254f7b8b799e91bf06e5ff544f03abf1dec81f9"
+      },
+      {
+        "path": "render/shaft.gdshader",
+        "bytes": 1270,
+        "sha256": "a592ccabc24ddc49fc9fa11a057ee3f8d61f6c5d86ef899f04cf53aac2bc6554",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/shaft.test.mjs",
+        "bytes": 3333,
+        "sha256": "8d5a58cd2f84666749ade727e306749b8d6eb044e6693e17aa3eba1d78cf5e5f",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/shaft_headless_test.gd",
+        "bytes": 2435,
+        "sha256": "d3c8daa36381d562d74726ad7be34649aec6c4ae527b87448fab78e9e55e0039",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/source_shaders.gd",
+        "bytes": 7287,
+        "sha256": "f2470c506aad7c89cb8d0dae0398619ba19f88a0f01e86b4ef58f82301949918",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/texture_binding.gd",
+        "bytes": 8248,
+        "sha256": "2849fb5db86d98db8d9c84b81ee1ee2b11c26778d0e8e5312d3a3748342d4334",
+        "baseSHA256": null
+      },
+      {
+        "path": "render/tools/project_gl_proof.mjs",
+        "bytes": 2306,
+        "sha256": "c5de7c0ca4999eb85c020986870aec80827ee781128e8efbfd73379556e10481",
+        "baseSHA256": null
+      }
+    ]
+  },
+  "sourceSHA256": {
+    "capture_scene.py": "d951f5b5c25d46630ad5b5d7f044d1dbb75f3bfe32a023a798fa01c3517f0ec1",
+    "capture_materials.py": "2b1cf0a48ecf25dacb30a3530fb46c1eeee9d0de29f7ce3d9dce37da3b5893d5",
+    "run_render.py": "e3f752d1924b93f94ba9a2a05181bacb3a7bb0795eecb1450f61de41b70f7de7",
+    "render/browser-exporter.js": "b8a17c1bcd6fefa78dda70f0a579aa395009b3e6ee728111f893577fc64b0175",
+    "render/browser-textures.js": "9e94b7271e88ae633138ebe068da6dd5dc3b7c83f800d95fa531e60d85cfc064",
+    "render/browser-textures.test.mjs": "2a5b5d48f4110a4b8bfdbe6a16e282805da7a021797adbbb1c95edbe42213f1d",
+    "render/exporter.test.mjs": "f2d200f16dddf3634de48fe4e495574462c5af04a26287c6d4571ba8c526ce08",
+    "render/fixtures/gl-audit-proof.json": "c2aa2a04e395a6f5590467ecc6db4976d8f478b27d3a7159e6dc6463b593c4d0",
+    "render/fixtures/shaft-capture3-fixture.json": "529bd4c13b196041908c1ca4f02bcb3f33bed5a63f7d35aad920a9a6086b3763",
+    "render/main.gd": "f20d3907f543f1569adbcae6cb74e203dcbab14875d9096a859a607574397730",
+    "render/main.tscn": "7cfc94c5c8be7f1e9b40720cddae94f10aa51161e125ff56b014520509a26b4f",
+    "render/pbr_adaptor.gd": "b1ad272722b954b87268798d3b7d175c0320b5eb3fff80332d9c9639fe37d821",
+    "render/project.godot": "e5ebd93f6e014b5438ddf2d6e484c2692b12659004d6bea63b7ec275c916949d",
+    "render/proof.test.mjs": "2fc6c6a9c8a39cb58f131f71241029f6402a89a1fa0c6cd45cf516e385365db6",
+    "render/README.md": "2740c154dadb0c044586a9f450a75af0cc15f12acb7e0a8a6ac3fedf06657813",
+    "render/sampler_math.test.mjs": "931562ccc48c95a8dfb5c97322b798d6b1d66055c4bb4ecdd92fc0784e0a15de",
+    "render/SCHEMA.md": "23170bbb9dbc6c6564b04df3a72031ea121b3b8cabe703b90251a68076ed72d5",
+    "render/shaft.gdshader": "a592ccabc24ddc49fc9fa11a057ee3f8d61f6c5d86ef899f04cf53aac2bc6554",
+    "render/shaft.test.mjs": "8d5a58cd2f84666749ade727e306749b8d6eb044e6693e17aa3eba1d78cf5e5f",
+    "render/shaft_headless_test.gd": "d3c8daa36381d562d74726ad7be34649aec6c4ae527b87448fab78e9e55e0039",
+    "render/source_shaders.gd": "f2470c506aad7c89cb8d0dae0398619ba19f88a0f01e86b4ef58f82301949918",
+    "render/texture_binding.gd": "2849fb5db86d98db8d9c84b81ee1ee2b11c26778d0e8e5312d3a3748342d4334",
+    "render/tools/project_gl_proof.mjs": "c5de7c0ca4999eb85c020986870aec80827ee781128e8efbfd73379556e10481"
+  },
+  "rawReport": {
+    "path": "public\\golden-hour\\prototypes\\godot-render-component\\evidence\\portable-pbr-shaft-smoke-1.json",
+    "sha256": "420e4f36c4b9a150c2565a6ac8d96d6304734d8db54bbcc0d68acea1e6fd7054"
+  },
+  "runReport": {
+    "path": "public\\golden-hour\\prototypes\\godot-render-component\\evidence\\portable-pbr-shaft-smoke-1.run.json",
+    "sha256": "e1d74208311d3a0c278863e90440d1f15513506e6aae3af130227742b0b533c8",
+    "result": {
+      "classification": "Frozen real-scene render-component smoke; not full AI/High acceptance",
+      "acceptanceEligible": false,
+      "ok": true,
+      "command": [
+        "D:\\Golden-Hour\\work\\tools\\godot-4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+        "--path",
+        "D:\\Golden-Hour\\public\\golden-hour\\prototypes\\godot-render-component\\render",
+        "--rendering-method",
+        "forward_plus",
+        "--rendering-driver",
+        "vulkan",
+        "--",
+        "--snapshot=D:\\Golden-Hour\\work\\godot-native\\evidence\\native-materials-tick240-3-scene.json",
+        "--report=D:\\Golden-Hour\\public\\golden-hour\\prototypes\\godot-render-component\\evidence\\portable-pbr-shaft-smoke-1.json",
+        "--screenshot=D:\\Golden-Hour\\public\\golden-hour\\prototypes\\godot-render-component\\evidence\\portable-pbr-shaft-smoke-1.png",
+        "--quit-on-complete=1",
+        "--warmup-frames=2",
+        "--sample-frames=120",
+        "--fps-cap=60",
+        "--material-mode=pbr-adaptor",
+        "--light-energy-scale=1",
+        "--emission-scale=1",
+        "--tonemap=aces",
+        "--textures=D:\\Golden-Hour\\work\\godot-native\\evidence\\native-materials-tick240-3-assets\\manifest.json",
+        "--shader-audit=D:\\Golden-Hour\\public\\golden-hour\\prototypes\\godot-render-component\\render\\fixtures\\gl-audit-proof.json"
+      ],
+      "runtime": {
+        "console": "D:\\Golden-Hour\\work\\tools\\godot-4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+        "consoleSHA256": "c8f0a6bc45a19b33541501e57f6f7cd972ab18453743266339d495cbbe846643",
+        "kind": "Caller-selected native Godot executable; acquisition verification is separate evidence"
+      },
+      "snapshot": "D:\\Golden-Hour\\work\\godot-native\\evidence\\native-materials-tick240-3-scene.json",
+      "snapshotSHA256": "303479ee57c16476fdac821dc91dbd8f3017f1088a46730556b46ae571c4346a",
+      "projectSHA256": {
+        "main.gd": "f20d3907f543f1569adbcae6cb74e203dcbab14875d9096a859a607574397730",
+        "main.tscn": "7cfc94c5c8be7f1e9b40720cddae94f10aa51161e125ff56b014520509a26b4f",
+        "project.godot": "e5ebd93f6e014b5438ddf2d6e484c2692b12659004d6bea63b7ec275c916949d",
+        "texture_binding.gd": "2849fb5db86d98db8d9c84b81ee1ee2b11c26778d0e8e5312d3a3748342d4334",
+        "pbr_adaptor.gd": "b1ad272722b954b87268798d3b7d175c0320b5eb3fff80332d9c9639fe37d821",
+        "source_shaders.gd": "f2470c506aad7c89cb8d0dae0398619ba19f88a0f01e86b4ef58f82301949918",
+        "shaft.gdshader": "a592ccabc24ddc49fc9fa11a057ee3f8d61f6c5d86ef899f04cf53aac2bc6554"
+      },
+      "textureManifestSHA256": "4c265b8d317edd1a8c5696ea53a9eb83c41ee7e3a80220e2e1fa880e4e080125",
+      "shaderProofSHA256": "c2aa2a04e395a6f5590467ecc6db4976d8f478b27d3a7159e6dc6463b593c4d0",
+      "ownedRootPID": 566608,
+      "exitCode": 0,
+      "elapsedSeconds": 14.479634300107136,
+      "engineErrors": [],
+      "gpu": "AMD Radeon RX 9070 XT",
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "sourceCounts": {
+        "bakedSkins": 11.0,
+        "enumeratedTriangles": 2327332.0,
+        "geometries": 252.0,
+        "instances": 3452.0,
+        "lights": 15.0,
+        "materials": 192.0,
+        "objectVertexReferences": 6065089.0,
+        "objects": 516.0,
+        "omitted": {
+          "hidden": 31.0,
+          "noPosition": 0.0,
+          "unsupportedObject": 2.0
+        },
+        "surfaces": 516.0,
+        "uniqueExportedVertices": 5330835.0
+      },
+      "importCounts": {
+        "empty_objects": 0,
+        "instances": 3452,
+        "multimat_mesh_variants": 0,
+        "multimeshes": 15,
+        "nodes": 516,
+        "shader_instancing_approximations": 2,
+        "surface_vertex_uploads": 5330835,
+        "surfaces": 516
+      },
+      "loadMS": 10138.665,
+      "frames": 120
+    }
+  },
+  "component": {
+    "importCounts": {
+      "empty_objects": 0,
+      "instances": 3452,
+      "multimat_mesh_variants": 0,
+      "multimeshes": 15,
+      "nodes": 516,
+      "shader_instancing_approximations": 2,
+      "surface_vertex_uploads": 5330835,
+      "surfaces": 516
+    },
+    "sourceCounts": {
+      "bakedSkins": 11.0,
+      "enumeratedTriangles": 2327332.0,
+      "geometries": 252.0,
+      "instances": 3452.0,
+      "lights": 15.0,
+      "materials": 192.0,
+      "objectVertexReferences": 6065089.0,
+      "objects": 516.0,
+      "omitted": {
+        "hidden": 31.0,
+        "noPosition": 0.0,
+        "unsupportedObject": 2.0
+      },
+      "surfaces": 516.0,
+      "uniqueExportedVertices": 5330835.0
+    },
+    "viewport": [
+      1920.0,
+      1080.0
+    ],
+    "viewport_msaa_3d": 2,
+    "directional_shadow_size": 4096,
+    "load_ms": 10138.665,
+    "source_shader_ports": {
+      "cross_session_uniforms_copied": false,
+      "enabled": true,
+      "highParity": false,
+      "ports": [
+        {
+          "audit_material": "a7d10db2-e688-4342-99f1-87beb08df09e",
+          "audit_sha256": "c5a9ecd23a8ccba9ff5d6532ffd599530a5f4781348764a1205ac2c934a0c36b",
+          "fragment_sha256": "3c0210076da24ec761d424727d804c0b6c1e00fc317b924557a7fec0f9186b89",
+          "geometry_retained": true,
+          "projection_sha256": "c2aa2a04e395a6f5590467ecc6db4976d8f478b27d3a7159e6dc6463b593c4d0",
+          "proof": "b3b c9.high soft=true vol=20; FX.setQuality20398 sets uK0; source fragment first statement discards",
+          "relation": "core+High quality+unique nativeID/path/flags+identity matrix+912 sequential quad vertices+aT exact source pattern; UUID not used",
+          "role": "GL window shaft",
+          "shadow_policy_changed": false,
+          "source_k": 0,
+          "source_material": "a7d10db2-e688-4342-99f1-87beb08df09e",
+          "source_owner": "5bab63fd-0a4f-418c-ad58-d11f744bbdf2",
+          "source_path": "world/311:",
+          "vertex_sha256": "ff9ea90420f2abffe746d1d0bcf24bfd8132f8587e174e96933df3d851af3274",
+          "visibility_changed": false
+        }
+      ],
+      "unmatched": [],
+      "unsupported": [
+        {
+          "material": "9a1633d3-3ddb-4b86-84c9-11ef1f2d9e24",
+          "reason": "Source shader role remains untranslated; scalar proxy remains unsafe for visual acceptance"
+        },
+        {
+          "material": "964f244b-0928-4c4a-a0f7-eae8cb2f1ae4",
+          "reason": "Source shader role remains untranslated; scalar proxy remains unsafe for visual acceptance"
+        },
+        {
+          "material": "0669e825-b912-4404-9002-046efb5d2bb2",
+          "reason": "Source shader role remains untranslated; scalar proxy remains unsafe for visual acceptance"
+        },
+        {
+          "material": "167babaa-895d-4e3f-a0af-c8904b81f9ac",
+          "reason": "Source shader role remains untranslated; scalar proxy remains unsafe for visual acceptance"
+        },
+        {
+          "material": "9e3d4389-716e-4d03-a8fb-a0d2730aaf99",
+          "reason": "Source shader role remains untranslated; scalar proxy remains unsafe for visual acceptance"
+        },
+        {
+          "material": "625946f3-65ef-4959-8cbf-889b87db7753",
+          "reason": "Source shader role remains untranslated; scalar proxy remains unsafe for visual acceptance"
+        },
+        {
+          "material": "ef369e00-8e5d-4bab-a1ad-002098507816",
+          "reason": "Source shader role remains untranslated; scalar proxy remains unsafe for visual acceptance"
+        },
+        {
+          "material": "c3af78a5-52f8-4be3-95a1-06f2fcebccf2",
+          "reason": "Source shader role remains untranslated; scalar proxy remains unsafe for visual acceptance"
+        },
+        {
+          "material": "8376ee19-1290-4723-95d6-33e1bc19dd41",
+          "reason": "Source shader role remains untranslated; scalar proxy remains unsafe for visual acceptance"
+        },
+        {
+          "material": "0aa20b2a-ed8f-49d4-b416-a2a64fb50979",
+          "reason": "Source shader role remains untranslated; scalar proxy remains unsafe for visual acceptance"
+        },
+        {
+          "material": "c049fda8-2b98-47f0-9a35-3f563d6e2309",
+          "reason": "Source shader role remains untranslated; scalar proxy remains unsafe for visual acceptance"
+        }
+      ]
+    }
+  },
+  "textures": {
+    "loadedAssets": 154,
+    "globalAF": 8,
+    "sourceAFRaisedCount": 8,
+    "normalBasis": "view-position/normal-map-UV Jacobian cotangent frame; source XY scale; not baked rest tangents"
+  },
+  "checks": {
+    "nodeTests": {
+      "passed": 16,
+      "failed": 0
+    },
+    "portableNativeSmoke": {
+      "frames": 120,
+      "exitCode": 0,
+      "engineErrors": []
+    }
+  },
+  "retainedFailures": [
+    "work/godot-native/evidence/native-shaft-port-smoke-1.run.json",
+    "work/godot-native/materials/shaft-headless-v2.log"
+  ],
+  "decision": "False opaque white GL shaft removed by original High uK0 fragment discard; geometry/visibility/shadow policy unchanged. Hotel recognizable; continue shared AO/lightfield/lighting/High gates, no FPS comparison.",
+  "limits": [
+    "Finite frozen tick240 full-AI source scene, not continuous native full AI.",
+    "11 remaining source ShaderMaterials plus shared compile hooks and original lighting/postprocess/planar reflection/FX not accepted.",
+    "Source4x AF maps use8x globalAF, mip/anisotropic kernel and native BRDF differ.",
+    "Compact proof retains exact selected material/owner/aT values; full original audit source is separately hashed, never guessed by cross-session UUID."
+  ]
+}

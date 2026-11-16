@@ -58,6 +58,13 @@ contains unported shader-instanced/alpha behavior. No FPS ranking is made.
 The metadata, source hashes and retained failures are in
 [stage12-godot-component.json](evidence/stage12-godot-component.json).
 
+The later [Stage15 material path](../../prototypes/godot-render-component/render/README.md)
+loads154 same-session supported textures and restores the original High GL
+light-shaft discard. Its relocated120-frame Vulkan smoke retains every captured
+object and removes the false white diagonal. Shared compile/AO/lightfield,
+lighting, postprocessing, remaining custom shaders and reflection still prevent
+High parity. [Source and evidence](evidence/stage15-godot-pbr-shaders.json).
+
 ## Original logic and audio gates
 
 The current preferred experiment retains original JavaScript gameplay in Node
@@ -90,8 +97,14 @@ finite 48 kHz WASAPI test returned all 93 ordered acknowledgements with no
 missing, duplicate or refused records, but seven commands missed deadlines
 (maximum 512 frames / 10.67 ms) and were rejected, causing missing sound.
 The preserved local result is `work/godot-native/audio/live-wasapi-1/result.json`.
-Clock/producer/ingress timing is under investigation. Full cue coverage,
-spatial/bus routing and full-game/device quality remain unaccepted.
+A later finite v2 WASAPI run preserved factory-call currentTime semantics and
+applied all93 commands on time; cross-run timing variation prevents attributing
+all seven improvements to that correction. Full-AI graph capture reconciled
+858,445 operations and found80.1% named-source dry projection coverage. The
+missing exponential-frequency sine and one-shot PCM paths, full simultaneous
+mixing, spatial/bus routing and full-game/device quality remain unaccepted.
+Local finite v2 and full-AI evidence are under
+`work/godot-native/audio/live-v2/wasapi-1/` and `work/godot-native/audio/full-ai/`.
 
 Migration acceptance still requires the original full AI/perception/navigation,
 physics/death/ragdolls/grenades/K9, live geometry and skin updates, full sound,

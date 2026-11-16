@@ -12,6 +12,17 @@ viewport, 4× MSAA and a 4096 directional-shadow setting. All 516 exported objec
 paused exactly at native full-AI tick 240. Details and retained failures are in
 [the migration journal](../../docs/performance/godot-native-validation.md).
 
+## PBR textures and the original GL shader
+
+Stage15 adds same-session lossless texture capture, a per-map PBR adaptor and a guarded port of the original High GL light-shaft shader. This is still a frozen render-component diagnostic. The default source-scalars path remains available. See [material/texture/proof details](render/README.md) and [Stage15 evidence](../../docs/performance/evidence/stage15-godot-pbr-shaders.json).
+
+```powershell
+python prototypes/godot-render-component/capture_materials.py --client PATH_TO_PORTABLE --name NEW-source-materials --quality high --native-loop --completion-poll-ms 100
+python prototypes/godot-render-component/run_render.py --engine ABSOLUTE_GODOT_CONSOLE --snapshot ABSOLUTE_SCENE_JSON --textures ABSOLUTE_ASSET_MANIFEST_JSON --shader-audit prototypes/godot-render-component/render/fixtures/gl-audit-proof.json --name NEW-pbr-smoke --material-mode pbr-adaptor --tonemap aces
+```
+
+The committed 8,302-byte proof is a byte-pinned, lossless selection of the reviewed material/owner/aT records from the original shader audit. It preserves all role/core/High/geometry guards and avoids distributing the full audit. The native test retains every mesh; the source fragment's `uK<=0` discard removes the false white shaft. Remaining shared shaders, lightfield, lighting, postprocessing and reflection still prevent High parity. Source4x anisotropy uses8x where required by Godot's shared setting; sampler/BRDF differences remain explicit. No FPS comparison applies.
+
 ## Capture source data
 
 Use the normal Python/Playwright prerequisites of
@@ -32,7 +43,7 @@ The exporter retains topology, groups/drawRange, UV/color attributes, existing
 instancing, hierarchy visibility, layers, culling, lights, camera and semantic
 owner metadata. Skinned positions are frozen from actual `getVertexPosition`;
 recomputed normals are an approximation. Shader-instanced transforms, sprites,
-texture pixels and custom shading remain explicit gaps. See
+texture pixels require the material capture path; custom shading remains an explicit gap. See
 [SCHEMA.md](render/SCHEMA.md).
 
 Large real scenes exceed V8's single-string limit. Capture keeps the full data in

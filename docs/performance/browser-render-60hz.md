@@ -726,3 +726,14 @@ Eight original pose checks pass in Node, with a maximum independent CPU position
 The [runnable component](../../prototypes/godot-skin-component/README.md) and [source/evidence hashes](evidence/stage14-godot-affine-skin.json) are committed; generated data and the engine are not. This removes a native asset/animation data-path risk. It does not validate GPU-deformed vertex readback, skin normals, continuous live AI, High shaders, full sound or the performance goal. No native FPS comparison applies.
 
 ![Original team1 rest mesh with affine pose in Godot; diagnostic material and lighting](assets/godot-affine-skin-team1.png)
+
+
+## Stage 15: lossless PBR assets and guarded source GL discard
+
+The native render component now captures same-session supported texture pixels and metadata, and binds separate PBR UV/sampler/channel behavior. The relocated published package passes16 Node tests and a120-frame Vulkan smoke with no engine errors: all516 objects,5,330,835 vertices and3,452 capture3 instances remain, with154 textures loaded. The serialized capture is local diagnostic data, not a release package.
+
+A concrete source mismatch caused the giant opaque white diagonal: original High sets the GL light-shaft uniform uK0, and its fragment immediately discards. The importer had substituted an opaque white material. A guarded source port now preserves the mesh/visibility/shadow policy and executes the original discard. The first failed guard and shader identifier collision are retained. The committed compact proof selects original material/owner/aT values unchanged, with full-audit provenance and exact projection/source hashes; it never links sessions by UUID alone.
+
+The hotel is now recognizable, but the image remains too bright. Shared material AO/compile hooks, baked lightfield, original lighting/exposure/grade,11 other source ShaderMaterials, effects and planar reflection remain unresolved. This is not High parity or a native FPS result. [Runnable source](../../prototypes/godot-render-component/README.md), [evidence](evidence/stage15-godot-pbr-shaders.json).
+
+![Godot PBR and source GL-discard diagnostic; incomplete High parity](assets/godot-pbr-shaft-diagnostic.png)

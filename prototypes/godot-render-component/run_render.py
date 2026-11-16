@@ -24,11 +24,15 @@ def main():
     parser.add_argument('--frames',type=int,default=120)
     parser.add_argument('--warmup',type=int,default=2)
     parser.add_argument('--timeout',type=int,default=180)
-    parser.add_argument('--material-mode',choices=['source-scalars','normal-debug'],default='source-scalars')
+    parser.add_argument('--material-mode',choices=['source-scalars','normal-debug','pbr-adaptor'],default='source-scalars')
+    parser.add_argument('--textures',type=Path,help='Same-session lossless texture manifest')
+    parser.add_argument('--shader-audit',type=Path,help='Explicit frozen GL proof JSON; requires pbr-adaptor')
     parser.add_argument('--light-energy-scale',type=float,default=1)
     parser.add_argument('--emission-scale',type=float,default=1)
     parser.add_argument('--tonemap',choices=['linear','aces'],default='linear')
     args=parser.parse_args()
+    if args.shader_audit and args.material_mode!='pbr-adaptor':
+        parser.error('--shader-audit requires explicit --material-mode=pbr-adaptor')
     assert re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]{0,100}',args.name)
     assert 1<=args.frames<=7200 and 2<=args.warmup<=7200 and 1<=args.timeout<=600
     assert all(math.isfinite(value) and value>=0 for value in [args.light_energy_scale,args.emission_scale])
@@ -39,7 +43,8 @@ def main():
     paths={key:out/(args.name+suffix) for key,suffix in
            [('report','.json'),('run','.run.json'),('log','.log'),('screenshot','.png')]}
     assert not any(path.exists() for path in paths.values()),'Use a fresh name'
-    source_hashes={name:sha(project/name) for name in ['main.gd','main.tscn','project.godot']}
+    source_hashes={name:sha(project/name) for name in ['main.gd','main.tscn','project.godot',
+      'texture_binding.gd','pbr_adaptor.gd','source_shaders.gd','shaft.gdshader']}
     command=[str(engine),'--path',str(project),'--rendering-method','forward_plus',
       '--rendering-driver','vulkan','--','--snapshot='+str(snapshot),
       '--report='+str(paths['report']),'--screenshot='+str(paths['screenshot']),
@@ -47,9 +52,17 @@ def main():
       '--sample-frames='+str(args.frames),'--fps-cap=60','--material-mode='+args.material_mode,
       '--light-energy-scale='+str(args.light_energy_scale),'--emission-scale='+str(args.emission_scale),
       '--tonemap='+args.tonemap]
+    if args.textures:
+        assert args.textures.is_file(),'Missing same-session texture manifest'
+        command.append('--textures='+str(args.textures.resolve()))
+    if args.shader_audit:
+        assert args.shader_audit.is_file(),'Missing explicit shader proof'
+        command.append('--shader-audit='+str(args.shader_audit.resolve()))
     result={'classification':'Frozen real-scene render-component smoke; not full AI/High acceptance',
       'acceptanceEligible':False,'ok':False,'command':command,'runtime':runtime,
       'snapshot':str(snapshot),'snapshotSHA256':sha(snapshot),'projectSHA256':source_hashes}
+    if args.textures: result['textureManifestSHA256']=sha(args.textures)
+    if args.shader_audit: result['shaderProofSHA256']=sha(args.shader_audit)
     started=time.perf_counter();proc=None
     try:
         with paths['log'].open('wb') as log:
@@ -58,7 +71,7 @@ def main():
             result['exitCode']=proc.wait(timeout=args.timeout)
         result['elapsedSeconds']=time.perf_counter()-started
         lines=paths['log'].read_text(encoding='utf-8',errors='replace').splitlines()
-        result['engineErrors']=[line for line in lines if line.startswith('ERROR:') or 'SCRIPT ERROR:' in line]
+        result['engineErrors']=[line for line in lines if line.startswith('ERROR:') or 'SCRIPT ERROR:' in line or 'SHADER ERROR:' in line]
         assert result['exitCode']==0,result['exitCode']
         assert not result['engineErrors'],result['engineErrors'][:10]
         report=json.loads(paths['report'].read_bytes())

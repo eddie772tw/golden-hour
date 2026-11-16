@@ -107,7 +107,7 @@
         gap('frozen_pose_normals_approximate',o.uuid,'CPU native getVertexPosition positions; recomputed normals; no tangent/skin animation equivalence');
       }
       vertices+=p.count;if(vertices>limits.vertices)throw Error('Vertex cap exceeded; no truncated export accepted');
-      geometries[id]={id,sourceID:g.uuid,type:g.type,position:p,normal,uv:attribute(g.attributes.uv),color:attribute(g.attributes.color),
+      geometries[id]={id,sourceID:g.uuid,type:g.type,position:p,normal,uv:attribute(g.attributes.uv),uv1:attribute(g.attributes.uv1),tangent:attribute(g.attributes.tangent),color:attribute(g.attributes.color),
         index:g.index?nums(g.index.array):null,groups:g.groups.map(v=>({...v})),drawRange:{start:g.drawRange.start,count:Number.isFinite(g.drawRange.count)?g.drawRange.count:null},
         extraAttributes:Object.keys(g.attributes).filter(k=>!['position','normal','uv','color'].includes(k)),
         nativeInstanceCount:g.isInstancedBufferGeometry?Math.min(Number.isFinite(g.instanceCount)?g.instanceCount:Infinity,g._maxInstanceCount??Infinity):null,frozenPose:baked,

@@ -3,8 +3,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import { loadBundle } from '../../../server/fixtures/bundle-probe.mjs';
-const { THREE:T }=loadBundle(new URL('../../../game/core/game.js',import.meta.url));
+import { pathToFileURL } from 'node:url';
+// Installed repo layout needs no environment setting. Optional authoring-root
+// override lets the source-only staging copy test the same real owning bundle.
+const root=process.env.GH_GODOT_SOURCE_ROOT ? pathToFileURL(process.env.GH_GODOT_SOURCE_ROOT.replace(/[/\\]?$/,'/')) : new URL('../../../',import.meta.url);
+const { loadBundle }=await import(new URL('server/fixtures/bundle-probe.mjs',root));
+const { THREE:T }=loadBundle(new URL('game/core/game.js',root));
 const source=fs.readFileSync(new URL('./browser-exporter.js',import.meta.url),'utf8');
 function fixture(){
   const scene=new T.Scene(),camera=new T.PerspectiveCamera(70,16/9,.06,2500);camera.position.set(1,2,3);

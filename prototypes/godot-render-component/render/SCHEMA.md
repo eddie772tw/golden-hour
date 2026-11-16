@@ -7,6 +7,14 @@ Top-level fields:
 - `schema`: exact version above.
 - `source`: real `GH.debug.gfx.scene` marker, caller-supplied core SHA256 (nullable if not supplied), separate page bundle ID, source quality/tick/state/time, drawing-buffer size, native camera matrix/projection/fov/aspect/near/far/zoom/layers, background/environment intensity, and last native renderer counters. Those native counters include all gfx passes and are **not** the isolated world-pass comparator.
 - `geometries`: map keyed by native geometry UUID, with object UUID suffix for separately frozen skin/morph poses. Original expanded/normalized position, normal, UV and vertex-color arrays keep `itemSize`, `count`, values. Original index, groups and drawRange are retained. A null drawRange count means native infinity. Extra attribute names and native InstancedBufferGeometry count are retained; arbitrary shader attributes are not evaluated.
+
+The PBR companion exporter additionally retains optional original `uv1` and
+`tangent` arrays in that geometry record. Textures remain out of the large scene
+JSON: `gh-godot-pbr-textures-v1` is a separate small same-session manifest plus
+hash-verified PNG/RGBA8 files. Its source core/capturedAt/material IDs must match
+the geometry snapshot. `gh-godot-gl-audit-proof-v1` is a separate byte-pinned
+lossless selection of one reviewed shader role, not an arbitrary GLSL importer.
+See [README.md](README.md) for supported mappings and remaining limitations.
 - `materials`: map keyed by native material UUID. PBR/base/emissive/opacity/side/blend/depth/color/vertex-color flags and texture metadata are retained. Texture pixels, GLSL and uniform graphs are **not** serialized; this prevents accidental recursive scene/resource export. Unsupported shader and material semantics remain explicit.
 - `objects`: native UUID/id/name/type/path/parent ID; source world matrix, effective ancestor visibility, own visibility, own layers plus ancestor layer chain, frustum/cast/receive/order flags. Parent layers are metadata, not ANDed into a child's own layers (matching Three traversal). Each object references a geometry and its material list. `surfaces` are the actual intersection of native groups/material-array visibility/drawRange, with original index ranges and explicit indices. Single-material objects correctly ignore geometry material groups. `topologyKey` shares equal geometry/topology independently of material overrides.
 - `objects[].instances`: original InstancedMesh count, local instance matrices and optional colors. Zero matrices/counts are retained, not compacted. These map to existing MultiMesh submissions; ordinary meshes are not newly batched. Shader-driven InstancedBufferGeometry keeps its native multiplicity but uses identity transforms because custom GPU vertex logic is unported; this is a prominent approximation, not equivalent FX.

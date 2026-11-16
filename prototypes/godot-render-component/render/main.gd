@@ -4,6 +4,13 @@ var snapshot: Dictionary = {}
 var materials: Dictionary = {}
 var meshes: Dictionary = {}
 var multimat_meshes: Dictionary = {}
+const TextureBinding = preload("res://texture_binding.gd")
+var texture_binding = TextureBinding.new()
+const PBRAdaptor = preload("res://pbr_adaptor.gd")
+var pbr_adaptor = PBRAdaptor.new()
+const SourceShaders = preload("res://source_shaders.gd")
+var source_shaders = SourceShaders.new()
+var texture_manifest_path: String = ""
 var normal_shaders: Dictionary = {}
 var material_mode: String = "source-scalars"
 var light_energy_scale: float = 1.0
@@ -47,7 +54,8 @@ func _ready() -> void:
 	light_energy_scale = maxf(0.0,float(args.get("light-energy-scale", "1")))
 	emission_scale = maxf(0.0,float(args.get("emission-scale", "1")))
 	tonemap_mode = str(args.get("tonemap", "linear"))
-	if not material_mode in ["source-scalars","normal-debug"] or not tonemap_mode in ["linear","aces"]:
+	texture_manifest_path = str(args.get("textures", ""))
+	if not material_mode in ["source-scalars","normal-debug","pbr-adaptor"] or not tonemap_mode in ["linear","aces"]:
 		_fail("Unsupported diagnostic material-mode/tonemap")
 		return
 	var path: String = str(args.get("snapshot", "res://scene.snapshot.json"))
@@ -61,10 +69,23 @@ func _ready() -> void:
 		_fail("Invalid real-scene snapshot schema")
 		return
 	snapshot = data
+	if not texture_manifest_path.is_empty() and not texture_binding.load_manifest(texture_manifest_path,snapshot):
+		_fail("Texture manifest/session/core/material IDs do not match this geometry snapshot")
+		return
+	if material_mode=="pbr-adaptor":
+		if texture_manifest_path.is_empty():
+			_fail("Explicit pbr-adaptor mode requires the same-session texture manifest")
+			return
+		pbr_adaptor.prepare(texture_binding,get_viewport(),emission_scale)
 	if snapshot.get("source", {}).get("capturedFrom", "") != "GH.debug.gfx.scene" or snapshot.get("objects", []).is_empty():
 		_fail("Empty/synthetic scene is not a valid render-component capture")
 		return
 	limitations = snapshot.get("parity", {}).get("gaps", []).duplicate()
+	var shader_audit_path: String=str(args.get("shader-audit",""))
+	if not shader_audit_path.is_empty():
+		if material_mode!="pbr-adaptor" or not source_shaders.prepare(shader_audit_path,snapshot):
+			_fail("Explicit source shader audit/role/geometry/High proof did not match; no silent fallback")
+			return
 	for id in snapshot.get("materials", {}):
 		materials[id] = _material(snapshot.materials[id])
 	for item in snapshot.objects:
@@ -120,10 +141,15 @@ func _color(a: Array, alpha: float = 1.0) -> Color:
 func _material(item: Dictionary) -> Material:
 	var type_name: String = str(item.type)
 	mapping_diagnostics.source_material_types[type_name] = int(mapping_diagnostics.source_material_types.get(type_name,0)) + 1
+	var source_port: Material=source_shaders.material(str(item.id))
+	if source_port!=null: return source_port
 	if bool(item.shaderMaterial): mapping_diagnostics.untranslated_shader_materials += 1
 	if material_mode == "normal-debug":
 		mapping_diagnostics.normal_debug_materials += 1
 		return _normal_material(item)
+	if material_mode=="pbr-adaptor" and not bool(item.shaderMaterial):
+		mapping_diagnostics["pbr_adaptor_materials"] = int(mapping_diagnostics.get("pbr_adaptor_materials",0))+1
+		return pbr_adaptor.make_material(str(item.id))
 	mapping_diagnostics.source_scalar_materials += 1
 	var m: StandardMaterial3D = StandardMaterial3D.new()
 	m.resource_name = str(item.get("name", item.id))
@@ -146,6 +172,12 @@ func _material(item: Dictionary) -> Material:
 	if int(item.blending) == 2: m.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
 	elif int(item.blending) == 3: m.blend_mode = BaseMaterial3D.BLEND_MODE_SUB
 	elif int(item.blending) == 4: m.blend_mode = BaseMaterial3D.BLEND_MODE_MUL
+	# Three stores these factors in linear space; Godot Color/source_color fields
+	# are encoded sRGB and converted by the material shader, exactly once.
+	m.albedo_color = m.albedo_color.linear_to_srgb()
+	m.emission = m.emission.linear_to_srgb()
+	m.vertex_color_is_srgb = false
+	if not texture_manifest_path.is_empty() and not bool(item.shaderMaterial): texture_binding.apply(str(item.id),m)
 	return m
 
 func _normal_material(item: Dictionary) -> ShaderMaterial:
@@ -190,10 +222,15 @@ func _mesh(item: Dictionary) -> ArrayMesh:
 		arrays.resize(Mesh.ARRAY_MAX)
 		arrays[Mesh.ARRAY_VERTEX] = _vec3_attribute(g.position)
 		if g.normal is Dictionary: arrays[Mesh.ARRAY_NORMAL] = _vec3_attribute(g.normal)
+		if g.get("tangent") is Dictionary: arrays[Mesh.ARRAY_TANGENT] = PackedFloat32Array(g.tangent.values)
 		if g.uv is Dictionary:
 			var uv: PackedVector2Array = PackedVector2Array()
 			for i in range(0,g.uv.values.size(),int(g.uv.itemSize)): uv.append(Vector2(g.uv.values[i],g.uv.values[i+1]))
 			arrays[Mesh.ARRAY_TEX_UV] = uv
+		if g.get("uv1") is Dictionary:
+			var uv_secondary: PackedVector2Array = PackedVector2Array()
+			for i in range(0,g.uv1.values.size(),int(g.uv1.itemSize)): uv_secondary.append(Vector2(g.uv1.values[i],g.uv1.values[i+1]))
+			arrays[Mesh.ARRAY_TEX_UV2] = uv_secondary
 		if g.color is Dictionary:
 			var colors: PackedColorArray = PackedColorArray()
 			for i in range(0,g.color.values.size(),int(g.color.itemSize)):
@@ -386,6 +423,8 @@ func _finish() -> void:
 		"viewport_msaa_3d":get_viewport().msaa_3d,"directional_shadow_size":ProjectSettings.get_setting("rendering/lights_and_shadows/directional_shadow/size"),
 		"vsync":DisplayServer.window_get_vsync_mode(),"viewport":[get_viewport().get_visible_rect().size.x,get_viewport().get_visible_rect().size.y],
 		"source":snapshot.source,"sourceCounts":snapshot.counts,"importCounts":import_counts,"sourceParity":snapshot.parity,
+		"texture_manifest":texture_manifest_path,"texture_binding":texture_binding.report,
+		"pbr_adaptor":pbr_adaptor.report if material_mode=="pbr-adaptor" else null,"source_shader_ports":source_shaders.report,"viewport_anisotropy":get_viewport().anisotropic_filtering_level,
 		"mapping":{"material_mode":material_mode,"unknown_shader_source_scalar_fallback":"untranslated source ShaderMaterial becomes unshaded scalar proxy; unsafe for visual acceptance", "light_energy_scale":light_energy_scale,"emission_scale":emission_scale,"tonemap":tonemap_mode,"diagnostic_only_not_unit_conversion":true,"no_fps_comparison":true,"diagnostics":mapping_diagnostics},
 		"unsupported":snapshot.unsupported,"additionalLimitations":limitations,"load_ms":load_ms,"pose_updates":pose_updates,
 		"warmup_frames_requested":warmup_frames,"warmup":warm_frames,"frames":frames,"record_cap":max_records,
