@@ -1,0 +1,934 @@
+{
+  "stage": 11,
+  "screen": "Limited audible SAB noise prototype, two reversed-order native High pairs",
+  "date": "2026-11-17",
+  "decision": "Stop this round of Web audio/micro-optimization investment and proceed to a minimal Godot feasibility validation under the user conditional. Keep the SAB candidate isolated. This does not prove Web can never meet the target or that the candidate has no benefit.",
+  "acceptanceEligible": false,
+  "productRuntimeChanged": false,
+  "positiveSignal": "Approximately 39% fewer native node creations and 12-13% higher complete 1% low in both pairs. FPS gains differ substantially by pair; residual long frames and incomplete audio-quality validation prevent promotion.",
+  "executionOrder": [
+    "worklet-sab-audible-high-1",
+    "worklet-sab-native-off-high-1",
+    "worklet-sab-native-off-high-2",
+    "worklet-sab-audible-high-2"
+  ],
+  "analysis": {
+    "owner": {
+      "path": "D:\\Golden-Hour\\public\\golden-hour\\scripts\\performance\\analyze_browser.py",
+      "sha256": "631586e466403b77cfc8c87199c0f76a4583e2e9e525d512ed131577d50737cb",
+      "exportKeys": [
+        "manifest",
+        "seed",
+        "equipment",
+        "decisionTrace",
+        "events",
+        "checkpoints",
+        "state",
+        "coverage"
+      ],
+      "window": "Owning analyze(): both endpoints inside scenario timing, scripted/playing, visible; first use retained.",
+      "onePercentLow": "1000 / mean(slowest ceil(N*0.01) complete submitted-frame intervals); not reciprocal P99"
+    },
+    "analyzerPath": "work/browser-render-next/audio-owner-load/analyze-sab-performance.py",
+    "analyzerSHA256": "6faa178255367d7cfe8b7c4e1822a8ccd09d34a36f56dab56334e99c9b5b9d5b",
+    "workSummaryPath": "work/browser-render-next/audio-owner-load/sab-performance-summary.json",
+    "workSummarySHA256": "60a0e9aec99f0448282dd4010f8b7c04dd49119e890ba649171c16d22ba2626d",
+    "completeWindow": "Use existing public owner: both frame endpoints inside scenario startWallMs/endWallMs, scripted/playing and visible; retain first use and all long frames. Warm tick301 is supplemental only.",
+    "focusCorrection": "raw frames[6] is player.alive, not focus. No continuous focus stream. Only cold/beforeReload/warm snapshot focus checks are claimed.",
+    "fpsDefinition": "1000 / mean(complete submitted intervals); not physical present",
+    "onePercentLowDefinition": "1000 / mean(slowest ceil(N*.01) complete submitted intervals); not reciprocal P99"
+  },
+  "comparability": {
+    "coreSHA256": "cb074460da468c9a4d2bea5f34c12ef4aca845a11a007df1da35b8113b27cde6",
+    "moduleSHA256": {
+      "game/core/game.js": "cb074460da468c9a4d2bea5f34c12ef4aca845a11a007df1da35b8113b27cde6",
+      "game/client/stage3-adapter.js": "1b68c70ff9c468ef66d3e918204eafd68147837589046e4e2aff05477ad6bc4d",
+      "game/client/worklet-noise.js": "d0ea200df846ffa04a37cf97211f48e4390034737f7488a554beda15f7392083",
+      "game/client/stage3-ring.js": "237ce06784a0a1c4f0d046beab9eba2b2d378b10b7a9faa161830ee62b8dfb32",
+      "server/server.mjs": "8b62cdd9b3e7061dcd7a84f0b6f4d444f174c1d3457cb4a455ce54b69b71c31c"
+    },
+    "allFourCoreAndModuleHashesEqual": true,
+    "browserVersion": "157.0.4341.60",
+    "allFourBrowserVersionsEqual": true,
+    "allFourOriginsEqual": true,
+    "origin": "http://127.0.0.1:48910",
+    "allFourCOIsecureSABAvailable": true,
+    "sampleRate": 48000,
+    "minLeadFrames": 128,
+    "allFourRateAndLeadEqual": true,
+    "observerFlags": {
+      "profiler": false,
+      "trace": false,
+      "gpuTimer": false,
+      "osSampler": false,
+      "deepRender": false,
+      "performanceEventsObserver": false,
+      "benchmarkCompletionPolling": "raf"
+    },
+    "allFourObserverFlagsEqual": true,
+    "nativeLoop": true,
+    "scenarioTicksPerRun": 3600,
+    "nativeBotTicksPerRun": [
+      3600,
+      3600,
+      3600,
+      3600,
+      3600,
+      3600,
+      3600,
+      3600,
+      3600
+    ],
+    "ownerEightLogicalExports": [
+      "manifest",
+      "seed",
+      "equipment",
+      "decisionTrace",
+      "events",
+      "checkpoints",
+      "state",
+      "coverage"
+    ],
+    "allFourEightExportsExactAgainst": "worklet-sab-native-off-high-1",
+    "additionalBotCallsExact": true,
+    "buffer": [
+      1920,
+      1080
+    ],
+    "dpr": 1,
+    "quality": "high",
+    "scale": 1
+  },
+  "runs": [
+    {
+      "name": "worklet-sab-audible-high-1",
+      "gate": "sab-on",
+      "rawPath": "D:/Golden-Hour/work/browser-render-next/evidence/worklet-sab-audible-high-1.json",
+      "rawSHA256": "7db4dd806a04edf42f21975fec4d3a3342bf3fed8a7cf70cd01386c7752d809a",
+      "eightExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "botCallsAdditionalCheckEqual": true,
+      "complete": {
+        "frames": 3232,
+        "fps": 53.61046226748185,
+        "onePercentLowFPS": 19.572199170384117,
+        "onePercentTailFrames": 33,
+        "p95Ms": 28.22499990463257,
+        "p99Ms": 36.15000009536743,
+        "reciprocalP99FPS": 27.66251721609673,
+        "maxMs": 189.375,
+        "over50PerMinute": 5.9714623812789185,
+        "over100": 3
+      },
+      "warmTick301Supplemental": {
+        "frames": 3017,
+        "fps": 54.61803941324824,
+        "onePercentLowFPS": 20.203600155972907,
+        "onePercentTailFrames": 31,
+        "p95Ms": 26.5,
+        "p99Ms": 34.209999799728394,
+        "reciprocalP99FPS": 29.231219112954786,
+        "maxMs": 189.375,
+        "over50PerMinute": 5.4310281153379085,
+        "over100": 3
+      },
+      "controllerWallSeconds": 60.31712999987602,
+      "logicalHz": 59.684537377812894,
+      "renderHz": 53.60003037290808,
+      "overflowDroppedMs": 322.2750000000023,
+      "visibility": {
+        "activeIntervals": 3232,
+        "hiddenIntervals": 0,
+        "perFrameFocus": "unavailable: frame[6] is player.alive, not focus; only snapshot focus is recorded",
+        "snapshotFocusChecks": {
+          "cold": true,
+          "beforeReload": true,
+          "warm": true
+        }
+      },
+      "nodeAccounting": {
+        "start": 646,
+        "end": 69449,
+        "delta": 68803,
+        "scope": "Counter capture window around scenario; not live/native retained-handler memory."
+      },
+      "prototypeGateValid": true,
+      "atomicAck": {
+        "capacity": 256,
+        "overflow": 0,
+        "quanta": 7,
+        "publishedFrame": 195712
+      },
+      "adapter": {
+        "accepted": 14516,
+        "fallback": {
+          "lead": 600,
+          "leadAtSend": 17,
+          "unsupported": 44,
+          "noSlot": 21,
+          "ringAdmission": 1
+        },
+        "runtimeFailure": null
+      },
+      "audibleAudit": {
+        "layers": 14516,
+        "stops": 123,
+        "releases": 2910,
+        "renderedLayers": 14511,
+        "releasedBeforeRender": 0,
+        "stoppedBeforeRender": 5,
+        "endedStops": 0,
+        "quanta": 22595,
+        "capacity": 256,
+        "overflow": 0,
+        "publishedFrame": 3086976,
+        "pendingBeforeRender": 0
+      },
+      "remainingLongFrames": {
+        "over50": 6,
+        "over100": 3,
+        "worst": [
+          {
+            "intervalMs": 189.375,
+            "startWallMs": 36502.204999923706,
+            "endWallMs": 36691.579999923706,
+            "fromTick": 950,
+            "toTick": 953
+          },
+          {
+            "intervalMs": 125.65000009536743,
+            "startWallMs": 71370.76499986649,
+            "endWallMs": 71496.41499996185,
+            "fromTick": 3031,
+            "toTick": 3034
+          },
+          {
+            "intervalMs": 120.45499992370605,
+            "startWallMs": 52718.22499990463,
+            "endWallMs": 52838.67999982834,
+            "fromTick": 1915,
+            "toTick": 1918
+          },
+          {
+            "intervalMs": 74.5550000667572,
+            "startWallMs": 24596.61999988556,
+            "endWallMs": 24671.174999952316,
+            "fromTick": 240,
+            "toTick": 242
+          },
+          {
+            "intervalMs": 50.644999980926514,
+            "startWallMs": 26915.115000009537,
+            "endWallMs": 26965.759999990463,
+            "fromTick": 376,
+            "toTick": 379
+          },
+          {
+            "intervalMs": 50.09500002861023,
+            "startWallMs": 29013.349999904633,
+            "endWallMs": 29063.444999933243,
+            "fromTick": 502,
+            "toTick": 505
+          },
+          {
+            "intervalMs": 48.90499997138977,
+            "startWallMs": 25154.954999923706,
+            "endWallMs": 25203.859999895096,
+            "fromTick": 271,
+            "toTick": 273
+          },
+          {
+            "intervalMs": 45.24000000953674,
+            "startWallMs": 36259.06999993324,
+            "endWallMs": 36304.30999994278,
+            "fromTick": 936,
+            "toTick": 939
+          },
+          {
+            "intervalMs": 45.15999984741211,
+            "startWallMs": 36378.50999999046,
+            "endWallMs": 36423.669999837875,
+            "fromTick": 943,
+            "toTick": 946
+          },
+          {
+            "intervalMs": 43.03500008583069,
+            "startWallMs": 36773.55499982834,
+            "endWallMs": 36816.58999991417,
+            "fromTick": 958,
+            "toTick": 961
+          }
+        ],
+        "attribution": "No GC/native-handler cause attribution without an overlapping trace; do not remove any interval."
+      }
+    },
+    {
+      "name": "worklet-sab-native-off-high-1",
+      "gate": "sab-off",
+      "rawPath": "D:/Golden-Hour/work/browser-render-next/evidence/worklet-sab-native-off-high-1.json",
+      "rawSHA256": "9e85fdfa086ff2b8a3a39e1b33b3b5441fcf592a241e8e4d9c116db808bded83",
+      "eightExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "botCallsAdditionalCheckEqual": true,
+      "complete": {
+        "frames": 3114,
+        "fps": 51.539408821060455,
+        "onePercentLowFPS": 17.345489633877424,
+        "onePercentTailFrames": 32,
+        "p95Ms": 32.18999981880188,
+        "p99Ms": 41.075000047683716,
+        "reciprocalP99FPS": 24.345709040513842,
+        "maxMs": 175.56500005722046,
+        "over50PerMinute": 6.951365351588116,
+        "over100": 3
+      },
+      "warmTick301Supplemental": {
+        "frames": 2874,
+        "fps": 51.89330671137192,
+        "onePercentLowFPS": 17.505998819849083,
+        "onePercentTailFrames": 29,
+        "p95Ms": 31.204999923706055,
+        "p99Ms": 39.269999980926514,
+        "reciprocalP99FPS": 25.46473135945254,
+        "maxMs": 175.56500005722046,
+        "over50PerMinute": 6.500205433574771,
+        "over100": 3
+      },
+      "controllerWallSeconds": 60.44919500017166,
+      "logicalHz": 59.55414294582048,
+      "renderHz": 51.53087646561967,
+      "overflowDroppedMs": 464.053333333328,
+      "visibility": {
+        "activeIntervals": 3114,
+        "hiddenIntervals": 0,
+        "perFrameFocus": "unavailable: frame[6] is player.alive, not focus; only snapshot focus is recorded",
+        "snapshotFocusChecks": {
+          "cold": true,
+          "beforeReload": true,
+          "warm": true
+        }
+      },
+      "nodeAccounting": {
+        "start": 656,
+        "end": 113090,
+        "delta": 112434,
+        "scope": "Counter capture window around scenario; not live/native retained-handler memory."
+      },
+      "prototypeGateValid": true,
+      "atomicAck": null,
+      "adapter": null,
+      "audibleAudit": null,
+      "remainingLongFrames": {
+        "over50": 7,
+        "over100": 3,
+        "worst": [
+          {
+            "intervalMs": 175.56500005722046,
+            "startWallMs": 70597.78499984741,
+            "endWallMs": 70773.34999990463,
+            "fromTick": 2966,
+            "toTick": 2969
+          },
+          {
+            "intervalMs": 160.73999977111816,
+            "startWallMs": 51450.80500006676,
+            "endWallMs": 51611.544999837875,
+            "fromTick": 1824,
+            "toTick": 1827
+          },
+          {
+            "intervalMs": 151.8550000190735,
+            "startWallMs": 35413.40999984741,
+            "endWallMs": 35565.264999866486,
+            "fromTick": 868,
+            "toTick": 871
+          },
+          {
+            "intervalMs": 84.92999982833862,
+            "startWallMs": 24816.825000047684,
+            "endWallMs": 24901.754999876022,
+            "fromTick": 240,
+            "toTick": 242
+          },
+          {
+            "intervalMs": 71.28999996185303,
+            "startWallMs": 29237.740000009537,
+            "endWallMs": 29309.02999997139,
+            "fromTick": 503,
+            "toTick": 506
+          },
+          {
+            "intervalMs": 62.22499990463257,
+            "startWallMs": 31752.615000009537,
+            "endWallMs": 31814.83999991417,
+            "fromTick": 651,
+            "toTick": 653
+          },
+          {
+            "intervalMs": 55.424999952316284,
+            "startWallMs": 32114.599999904633,
+            "endWallMs": 32170.02499985695,
+            "fromTick": 671,
+            "toTick": 674
+          },
+          {
+            "intervalMs": 46.924999952316284,
+            "startWallMs": 32067.674999952316,
+            "endWallMs": 32114.599999904633,
+            "fromTick": 668,
+            "toTick": 671
+          },
+          {
+            "intervalMs": 46.855000019073486,
+            "startWallMs": 29395.289999961853,
+            "endWallMs": 29442.144999980927,
+            "fromTick": 510,
+            "toTick": 513
+          },
+          {
+            "intervalMs": 46.795000076293945,
+            "startWallMs": 29348.49499988556,
+            "endWallMs": 29395.289999961853,
+            "fromTick": 508,
+            "toTick": 510
+          }
+        ],
+        "attribution": "No GC/native-handler cause attribution without an overlapping trace; do not remove any interval."
+      }
+    },
+    {
+      "name": "worklet-sab-native-off-high-2",
+      "gate": "sab-off",
+      "rawPath": "D:/Golden-Hour/work/browser-render-next/evidence/worklet-sab-native-off-high-2.json",
+      "rawSHA256": "4676b174524924365965d247824358eca3050c238756a53e01d5e618d0e87335",
+      "eightExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "botCallsAdditionalCheckEqual": true,
+      "complete": {
+        "frames": 3223,
+        "fps": 53.37209641232203,
+        "onePercentLowFPS": 18.376722825083704,
+        "onePercentTailFrames": 33,
+        "p95Ms": 28.75,
+        "p99Ms": 35.019999980926514,
+        "reciprocalP99FPS": 28.555111380486736,
+        "maxMs": 202.90000009536743,
+        "over50PerMinute": 4.967927062890664,
+        "over100": 4
+      },
+      "warmTick301Supplemental": {
+        "frames": 2946,
+        "fps": 53.17748563455185,
+        "onePercentLowFPS": 18.141302609241347,
+        "onePercentTailFrames": 30,
+        "p95Ms": 29.00499987602234,
+        "p99Ms": 35.28999996185303,
+        "reciprocalP99FPS": 28.336639305212724,
+        "maxMs": 202.90000009536743,
+        "over50PerMinute": 4.332178055767971,
+        "over100": 4
+      },
+      "controllerWallSeconds": 60.41941000008583,
+      "logicalHz": 59.58350139458306,
+      "renderHz": 53.360335693371056,
+      "overflowDroppedMs": 436.4600000000002,
+      "visibility": {
+        "activeIntervals": 3223,
+        "hiddenIntervals": 0,
+        "perFrameFocus": "unavailable: frame[6] is player.alive, not focus; only snapshot focus is recorded",
+        "snapshotFocusChecks": {
+          "cold": true,
+          "beforeReload": true,
+          "warm": true
+        }
+      },
+      "nodeAccounting": {
+        "start": 649,
+        "end": 113065,
+        "delta": 112416,
+        "scope": "Counter capture window around scenario; not live/native retained-handler memory."
+      },
+      "prototypeGateValid": true,
+      "atomicAck": null,
+      "adapter": null,
+      "audibleAudit": null,
+      "remainingLongFrames": {
+        "over50": 5,
+        "over100": 4,
+        "worst": [
+          {
+            "intervalMs": 202.90000009536743,
+            "startWallMs": 44501.59999990463,
+            "endWallMs": 44704.5,
+            "fromTick": 1418,
+            "toTick": 1421
+          },
+          {
+            "intervalMs": 184.59500002861023,
+            "startWallMs": 63750.88499999046,
+            "endWallMs": 63935.48000001907,
+            "fromTick": 2565,
+            "toTick": 2567
+          },
+          {
+            "intervalMs": 160.59500002861023,
+            "startWallMs": 30465.335000038147,
+            "endWallMs": 30625.930000066757,
+            "fromTick": 582,
+            "toTick": 585
+          },
+          {
+            "intervalMs": 111.34999990463257,
+            "startWallMs": 81019.74000000954,
+            "endWallMs": 81131.08999991417,
+            "fromTick": 3593,
+            "toTick": 3595
+          },
+          {
+            "intervalMs": 67.36499977111816,
+            "startWallMs": 24749.920000076294,
+            "endWallMs": 24817.284999847412,
+            "fromTick": 240,
+            "toTick": 244
+          },
+          {
+            "intervalMs": 48.330000162124634,
+            "startWallMs": 29110.52499985695,
+            "endWallMs": 29158.855000019073,
+            "fromTick": 502,
+            "toTick": 504
+          },
+          {
+            "intervalMs": 43.99000000953674,
+            "startWallMs": 31722.05999994278,
+            "endWallMs": 31766.049999952316,
+            "fromTick": 652,
+            "toTick": 653
+          },
+          {
+            "intervalMs": 42.954999923706055,
+            "startWallMs": 60938.27999997139,
+            "endWallMs": 60981.234999895096,
+            "fromTick": 2396,
+            "toTick": 2398
+          },
+          {
+            "intervalMs": 42.200000047683716,
+            "startWallMs": 56596.85500001907,
+            "endWallMs": 56639.05500006676,
+            "fromTick": 2135,
+            "toTick": 2137
+          },
+          {
+            "intervalMs": 41.34499979019165,
+            "startWallMs": 60860.43000006676,
+            "endWallMs": 60901.77499985695,
+            "fromTick": 2391,
+            "toTick": 2393
+          }
+        ],
+        "attribution": "No GC/native-handler cause attribution without an overlapping trace; do not remove any interval."
+      }
+    },
+    {
+      "name": "worklet-sab-audible-high-2",
+      "gate": "sab-on",
+      "rawPath": "D:/Golden-Hour/work/browser-render-next/evidence/worklet-sab-audible-high-2.json",
+      "rawSHA256": "eb848dee0f8be2456c822ce79d0f46fcfed5cc0b206e1962b9ef943dd2c12335",
+      "eightExportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "botCallsAdditionalCheckEqual": true,
+      "complete": {
+        "frames": 3221,
+        "fps": 53.53425826887534,
+        "onePercentLowFPS": 20.659798853989795,
+        "onePercentTailFrames": 33,
+        "p95Ms": 28.444999933242798,
+        "p99Ms": 34.97000002861023,
+        "reciprocalP99FPS": 28.595939353213144,
+        "maxMs": 149.53999996185303,
+        "over50PerMinute": 6.980561463187719,
+        "over100": 2
+      },
+      "warmTick301Supplemental": {
+        "frames": 2947,
+        "fps": 53.414160842608105,
+        "onePercentLowFPS": 20.566469121834857,
+        "onePercentTailFrames": 30,
+        "p95Ms": 28.450000047683716,
+        "p99Ms": 34.924999952316284,
+        "reciprocalP99FPS": 28.63278457738919,
+        "maxMs": 149.53999996185303,
+        "over50PerMinute": 6.524973838934143,
+        "over100": 2
+      },
+      "controllerWallSeconds": 60.19661500000954,
+      "logicalHz": 59.80402718656904,
+      "renderHz": 53.52460433197929,
+      "overflowDroppedMs": 214.2950000000028,
+      "visibility": {
+        "activeIntervals": 3221,
+        "hiddenIntervals": 0,
+        "perFrameFocus": "unavailable: frame[6] is player.alive, not focus; only snapshot focus is recorded",
+        "snapshotFocusChecks": {
+          "cold": true,
+          "beforeReload": true,
+          "warm": true
+        }
+      },
+      "nodeAccounting": {
+        "start": 667,
+        "end": 69164,
+        "delta": 68497,
+        "scope": "Counter capture window around scenario; not live/native retained-handler memory."
+      },
+      "prototypeGateValid": true,
+      "atomicAck": {
+        "capacity": 256,
+        "overflow": 0,
+        "quanta": 8,
+        "publishedFrame": 194816
+      },
+      "adapter": {
+        "accepted": 14602,
+        "fallback": {
+          "lead": 512,
+          "leadAtSend": 16,
+          "unsupported": 44,
+          "noSlot": 25
+        },
+        "runtimeFailure": null
+      },
+      "audibleAudit": {
+        "layers": 14602,
+        "stops": 120,
+        "releases": 2914,
+        "renderedLayers": 14593,
+        "releasedBeforeRender": 0,
+        "stoppedBeforeRender": 9,
+        "endedStops": 0,
+        "quanta": 22565,
+        "capacity": 256,
+        "overflow": 0,
+        "publishedFrame": 3082112,
+        "pendingBeforeRender": 0
+      },
+      "remainingLongFrames": {
+        "over50": 7,
+        "over100": 2,
+        "worst": [
+          {
+            "intervalMs": 149.53999996185303,
+            "startWallMs": 71431.11500000954,
+            "endWallMs": 71580.65499997139,
+            "fromTick": 3007,
+            "toTick": 3010
+          },
+          {
+            "intervalMs": 119.79500007629395,
+            "startWallMs": 35830.39999985695,
+            "endWallMs": 35950.19499993324,
+            "fromTick": 876,
+            "toTick": 879
+          },
+          {
+            "intervalMs": 96.74000000953674,
+            "startWallMs": 50557.08500003815,
+            "endWallMs": 50653.825000047684,
+            "fromTick": 1757,
+            "toTick": 1759
+          },
+          {
+            "intervalMs": 72.55999994277954,
+            "startWallMs": 27445.950000047684,
+            "endWallMs": 27518.509999990463,
+            "fromTick": 375,
+            "toTick": 377
+          },
+          {
+            "intervalMs": 69.3199999332428,
+            "startWallMs": 29613.94000005722,
+            "endWallMs": 29683.259999990463,
+            "fromTick": 504,
+            "toTick": 507
+          },
+          {
+            "intervalMs": 52.670000076293945,
+            "startWallMs": 26402.294999837875,
+            "endWallMs": 26454.96499991417,
+            "fromTick": 312,
+            "toTick": 315
+          },
+          {
+            "intervalMs": 52.230000019073486,
+            "startWallMs": 25176.359999895096,
+            "endWallMs": 25228.58999991417,
+            "fromTick": 240,
+            "toTick": 241
+          },
+          {
+            "intervalMs": 49.10000014305115,
+            "startWallMs": 26454.96499991417,
+            "endWallMs": 26504.06500005722,
+            "fromTick": 315,
+            "toTick": 318
+          },
+          {
+            "intervalMs": 46.3199999332428,
+            "startWallMs": 22169.825000047684,
+            "endWallMs": 22216.144999980927,
+            "fromTick": 59,
+            "toTick": 61
+          },
+          {
+            "intervalMs": 42.96499991416931,
+            "startWallMs": 29778.384999990463,
+            "endWallMs": 29821.349999904633,
+            "fromTick": 512,
+            "toTick": 515
+          }
+        ],
+        "attribution": "No GC/native-handler cause attribution without an overlapping trace; do not remove any interval."
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "executionOrder": [
+        "worklet-sab-audible-high-1",
+        "worklet-sab-native-off-high-1"
+      ],
+      "on": "worklet-sab-audible-high-1",
+      "off": "worklet-sab-native-off-high-1",
+      "completeDeltaOnMinusOff": {
+        "fps": 2.071053446421395,
+        "onePercentLowFPS": 2.226709536506693,
+        "p95Ms": -3.9649999141693115,
+        "p99Ms": -4.924999952316284,
+        "maxMs": 13.809999942779541,
+        "over50PerMinute": -0.9799029703091975,
+        "over100": 0
+      },
+      "nativeNodesReduced": 43631,
+      "nativeNodeReductionFraction": 0.3880587722575022,
+      "fpsPercentChange": 4.018388052551947,
+      "onePercentLowPercentChange": 12.837397983610188
+    },
+    {
+      "executionOrder": [
+        "worklet-sab-native-off-high-2",
+        "worklet-sab-audible-high-2"
+      ],
+      "on": "worklet-sab-audible-high-2",
+      "off": "worklet-sab-native-off-high-2",
+      "completeDeltaOnMinusOff": {
+        "fps": 0.16216185655331117,
+        "onePercentLowFPS": 2.283076028906091,
+        "p95Ms": -0.30500006675720215,
+        "p99Ms": -0.04999995231628418,
+        "maxMs": -53.360000133514404,
+        "over50PerMinute": 2.0126344002970553,
+        "over100": -2
+      },
+      "nativeNodesReduced": 43919,
+      "nativeNodeReductionFraction": 0.39068282095075435,
+      "fpsPercentChange": 0.30383265311624275,
+      "onePercentLowPercentChange": 12.423738719015542
+    }
+  ],
+  "audioOracle": {
+    "rawPath": "work/browser-render-next/evidence/sab-audible-oracle-1.json",
+    "rawSHA256": "feb61127b5d6e0791e97d7018887577e08eac6468e7c6644c2c3912fca1af60b",
+    "browserVersion": "157.0.4341.60",
+    "noiseRows": 24,
+    "noiseRowsPassingExistingCriterion": 24,
+    "noiseMaxAbsoluteError": 2.644956111907959e-07,
+    "noiseMaxRelativeRmsError": 4.230692394469683e-07,
+    "noiseActivityBoundsAllEqual": true,
+    "existingNoiseTolerance": {
+      "maxAbsoluteError": 1e-06,
+      "relativeRmsError": 1e-06,
+      "activityBounds": "exact equality"
+    },
+    "noisePageErrors": [],
+    "phaseRows": 15,
+    "phasePageErrors": [],
+    "casingStrictExact": false,
+    "casingError": "Casing oracle failed; inspect per-rate failures and comparisons",
+    "casingPageErrors": [],
+    "rootReportedOverallExitCode": 1,
+    "overallOraclePassed": false,
+    "overallExitReason": "run_oracle.py rejects a casing result containing error, despite all 24 SAB noise rows satisfying its existing tolerance and activity criteria.",
+    "casingPerRate": [
+      {
+        "rate": 44100,
+        "channels": [
+          {
+            "firstSample": 133,
+            "mismatchBytes": 6211,
+            "firstMismatchByte": 540,
+            "directReplay": {
+              "first": 135,
+              "count": 6156,
+              "peak": 5.960464477539063e-08,
+              "rms": 1.3099830724104069e-09
+            },
+            "directRepeat": {
+              "first": 135,
+              "count": 5009,
+              "peak": 5.960464477539063e-08,
+              "rms": 1.252248310467596e-09
+            }
+          },
+          {
+            "firstSample": 133,
+            "mismatchBytes": 2735,
+            "firstMismatchByte": 552,
+            "directReplay": {
+              "first": 138,
+              "count": 2695,
+              "peak": 1.4901161193847656e-08,
+              "rms": 2.833543934999754e-10
+            },
+            "directRepeat": {
+              "first": 137,
+              "count": 3286,
+              "peak": 1.4901161193847656e-08,
+              "rms": 3.034206958567614e-10
+            }
+          }
+        ],
+        "preStealDifference": {
+          "first": 138,
+          "count": 1989,
+          "peak": 7.450580596923828e-09,
+          "rms": 5.904211013864991e-10
+        },
+        "plateau": 0.10000000149011612,
+        "gainDifference": {
+          "first": -1,
+          "count": 0,
+          "peak": 0,
+          "rms": 0
+        },
+        "victimFadeSample": 7169,
+        "victimLastSample": 9490,
+        "uncutVictimLastSample": 11404,
+        "failures": [
+          "PCM byte mismatch channel 0",
+          "PCM byte mismatch channel 1"
+        ]
+      },
+      {
+        "rate": 48000,
+        "channels": [
+          {
+            "firstSample": 145,
+            "mismatchBytes": 6191,
+            "firstMismatchByte": 584,
+            "directReplay": {
+              "first": 146,
+              "count": 6143,
+              "peak": 5.960464477539063e-08,
+              "rms": 1.320301771096973e-09
+            },
+            "directRepeat": {
+              "first": 145,
+              "count": 5229,
+              "peak": 5.960464477539063e-08,
+              "rms": 1.435573099232394e-09
+            }
+          },
+          {
+            "firstSample": 145,
+            "mismatchBytes": 3909,
+            "firstMismatchByte": 580,
+            "directReplay": {
+              "first": 145,
+              "count": 3871,
+              "peak": 7.450580596923828e-09,
+              "rms": 2.7774773659378936e-10
+            },
+            "directRepeat": {
+              "first": 148,
+              "count": 3866,
+              "peak": 7.450580596923828e-09,
+              "rms": 2.956543897676816e-10
+            }
+          }
+        ],
+        "preStealDifference": {
+          "first": 146,
+          "count": 2496,
+          "peak": 7.450580596923828e-09,
+          "rms": 7.175892849561219e-10
+        },
+        "plateau": 0.10000000149011612,
+        "gainDifference": {
+          "first": -1,
+          "count": 0,
+          "peak": 0,
+          "rms": 0
+        },
+        "victimFadeSample": 7681,
+        "victimLastSample": 10328,
+        "uncutVictimLastSample": 12412,
+        "failures": [
+          "PCM byte mismatch channel 0",
+          "PCM byte mismatch channel 1"
+        ]
+      }
+    ],
+    "scope": "Casing replay has PCM-byte mismatches with residuals comparable to measured native-repeat floor; strict failure is retained without a new passing tolerance. The oracle JSON contains no module/source hashes, so its exact module linkage to four performance runs is not independently established by that record.",
+    "moduleHashesRecordedInOracle": false
+  },
+  "target": {
+    "criterion": "Stable 60FPS or complete 1% low >45 FPS at 1080p High with reflection <=30Hz and full native AI.",
+    "bestCandidateCompleteOnePercentLowFPS": 20.659798853989795,
+    "bestCandidateCompleteFPS": 53.61046226748185,
+    "reached": false,
+    "lowTargetToBestCandidateRatio": 2.178143181258982
+  },
+  "limits": [
+    "Prototype diagnostic, not clean product acceptance; valid accounting gate is not full audio-quality approval.",
+    "All native logical outputs and matched source hashes preserve game comparability but do not establish all in-game PCM, cue timing, spatial routing or listening equivalence.",
+    "Native created-node reduction excludes Worklet internal allocations and is not a total-process memory or CPU reduction.",
+    "Two pairs show a repeatable low-frame signal but different mean-FPS gain. No further Web parameter sweep is claimed or required by this decision.",
+    "Every run retains 2-4 submitted intervals above100ms. No overlapping trace here attributes each remaining interval to GC or native audio deletion.",
+    "SAB fast path has explicit lead/unsupported/slot/admission fallbacks; native playback remains for rejected descriptors. Accepted-layer audit includes intentional stopped-before-render cases, not all commands producing a positive sample.",
+    "No continuous focus stream exists; player deaths are normal native workload and are not mistaken for loss of focus.",
+    "Godot feasibility is next work, not a completed port or accepted replacement."
+  ]
+}

@@ -618,3 +618,62 @@ or audio-quality acceptance from this diagnostic. The product's High/full-AI
 performance target remains unmet. Source/module/raw hashes, first-attempt
 failure and complete second-capture checks are in
 [stage10-sab-shadow.json](evidence/stage10-sab-shadow.json).
+
+## Stage 11: bounded audible SAB trial and Godot pivot
+
+The audible SAB candidate passed its experimental lifecycle gate in two full
+native-AI runs. Each retained the same hook core, adapter, processor, ring and
+server hashes as its native comparison. Both arms used the same secure origin,
+COI headers,48kHz, High1080p and legacy RAF completion polling; the baseline
+constructed native audio without a Worklet. Eight logical exports plus botCalls
+were exact in all four runs. Visible/scripted/playing controller frames were
+retained, including deaths, first use and every long interval. Per-frame focus
+was not recorded; only cold/before-reload/warm focus snapshots were available.
+
+| Execution order | Native nodes created | FPS / full1%low | P95 / P99 | Maximum | >100ms count |
+|---|---:|---:|---:|---:|---:|
+| SAB on1 |68803|53.61 /19.57|28.225 /36.150ms|189.375ms|3|
+| Native off1 |112434|51.54 /17.35|32.190 /41.075ms|175.565ms|3|
+| Native off2 |112416|53.37 /18.38|28.750 /35.020ms|202.900ms|4|
+| SAB on2 |68497|53.53 /20.66|28.445 /34.970ms|149.540ms|2|
+
+The opposite-order pairs show a real limited benefit: full1%low improved12.84%
+and12.42%, while native-node creation fell38.81% and39.07%. Mean FPS improved
+4.02% in the first pair and0.30% in the reverse pair. All runs still had two to
+four intervals over100ms; the best full low20.66 requires about2.18times its
+current throughput to exceed45. These prototypes did not meet the target.
+No overlapping trace in this series attributes a particular remaining long
+frame to GC, WebAudio deletion or another owner.
+
+The audible layer accounting was consistent:14516/14602 admissions,14511/14593
+rendered layers and5/9 stopped before rendering; no released-before-render or
+pending-before-render layer, ring overflow or runtime failure was reported.
+Native fallbacks remained for unsafe lead, unsupported inputs and slot pressure.
+This validates the experimental accounting, not timely physical output from
+every dynamically connected voice or complete audio-quality acceptance.
+
+The native PCM oracle's24 SAB noise cases passed at44.1/48kHz with matching
+active-sample extents, max absolute error2.645e-7 and relative RMS4.231e-7.
+The overall oracle retained exit1: casing's strict byte check was false, with
+a5.96e-8 peak also present in native-repeat comparisons. Gain automation matched.
+No threshold was relaxed and the raw failed result remains intact. The oracle
+raw did not record module hashes; it must not be represented as a complete
+frozen production-audio acceptance. All four game runs remain diagnostic.
+
+Under the user's conditional exit instruction, this completes the current Web
+audio/micro-optimization round. The measured gain is acknowledged; its limited
+mean-throughput improvement, persistent long intervals and large acceptance
+gap do not justify another unbounded sequence of Web tweaks. The next experiment
+is a Godot native-render/audio migration validation at the same1080p/High,
+reflection<=30Hz/full-AI target. Product core stays at Stage3; SAB is not promoted.
+This decision applies to the tested routes and current investment priorities.
+
+The first migration gate is genuine execution of original AI/perception/pathing,
+physics and the fixed scenario, potentially through a Node authoritative logic
+bridge, checked against the eight browser exports. Godot must then consume live
+scene/pose/audio data; recorded pose replay, fake actors or an empty native scene
+cannot satisfy the full-workload goal. A frozen real-scene renderer probe is only
+a component diagnostic and must list all missing High effects before any host
+comparison. Current source, raw hashes, oracle limits, exact checks and the
+bounded pivot decision are in
+[stage11-sab-audible.json](evidence/stage11-sab-audible.json).
