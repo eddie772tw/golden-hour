@@ -19,6 +19,7 @@ P.add_argument('--profile', action='store_true')
 P.add_argument('--trace-threads', action='store_true', help='diagnostic-only browser trace during native ticks 900..2100')
 P.add_argument('--program-audit', action='store_true', help='requires isolated diagnostic core patch; never primary FPS')
 P.add_argument('--fx-pixel-oracle', action='store_true', help='after scenario, compare FX light isolation on/off with frozen scene')
+P.add_argument('--fracture-oracle', action='store_true', help='paused post-scenario strict two-sided glass pixel oracle')
 P.add_argument('--render-dev', action='store_true', help='opt-in CPU/GPU per-pass developer observer, diagnostic-only')
 P.add_argument('--scripted', action='store_true')
 P.add_argument('--full-ai', action='store_true', help='fixed player inputs with all native AI paths enabled')
@@ -242,6 +243,11 @@ try:
                 result['trace']=True
             page.wait_for_function('GH.benchmark.done',timeout=180000)
             result['scenario']=page.evaluate('GH.benchmark.export()')
+            if args.fracture_oracle:
+                page.evaluate((ROOT/'fracture_oracle.js').read_text(encoding='utf8'))
+                result['fractureOracle']=page.evaluate('(source)=>__fractureOracle.run({panes:3,oblique:true,source})',{'coreSHA256':result['coreSHA256']})
+                result['postScenarioDiagnostic']=True
+                assert result['fractureOracle']['status']=='pass',json.dumps(result['fractureOracle'])[:5000]
             if args.render_dev:
                 result['renderDev']=page.evaluate('renderDev.export()')
                 page.evaluate('renderDev.stop()')

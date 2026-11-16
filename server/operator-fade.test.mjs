@@ -128,17 +128,17 @@ test("a non-representative WN clone reuses the program retained by the represent
 
 function warmFixture(failAt, fadeCompilation) {
   const mats = [material(), material()], actors = mats.flatMap(m => [rig(m), rig(m)]);
-  const draws = [], compiles = [], targets = [], previousTarget = {};
+  const draws = [], compiles = [], targets = [], probes = [], previousTarget = {};
   let fail = failAt;
   const vec = () => ({ y: 1.7, clone() { return { ...this }; }, copy(other) { Object.assign(this, other); return this; } });
-  const scene = { overrideMaterial: null, background: {} };
+  const scene = { overrideMaterial: null, background: {}, remove(mesh) { mesh.removed = true; } };
   const camera = { position: vec(), quaternion: vec(), layers: { mask: 3 }, updateMatrixWorld() {} };
   const gfx = { vmPass: { enabled: false }, vmScene: { overrideMaterial: null, background: {} },
     vmCamera: { layers: { mask: 1 } }, time: 7, uniforms: { uTime: { value: 7 } },
     composer: { renderToScreen: true }, snapExposure() {}, warmRoots: new Set(),
     render() {
       const fading = actors.filter(r => r.body.material.transparent);
-      draws.push({ count: fading.length, screen: this.composer.renderToScreen, materials: fading.map(r => r.body.material) });
+      draws.push({ count: fading.length, screen: this.composer.renderToScreen, materials: fading.map(r => r.body.material), probeVisible: probes.at(-1)?.visible });
       if (fading.length && fail === "draw") throw Error("fade draw failed");
       if (fading.length && fail === "shader") renderer.debug.onShaderError();
     },
@@ -149,11 +149,19 @@ function warmFixture(failAt, fadeCompilation) {
     getClearAlpha: () => 1, setClearColor() {},
   };
   const context = { n: gfx, i: scene, a: camera, r: renderer,
+    d: { _preparePaneMaterial() {
+      const probe = { visible: true, geometry: { disposed: 0, dispose() { this.disposed++; } } };
+      probes.push(probe);
+      return probe;
+    } },
     b: { bots: [{ rigs: actors }], k9: { rigs: () => [] } }, E: { guns: {} }, A: {},
     C: { shown: 0, _weapon() {}, _show() {} }, G: { getDelta() {} }, ghNextFrame: 0, e0: 0, p0: 0,
     Vs: class { constructor() { targets.push(this); } dispose() { this.disposed = true; } }, Yn: 1,
     Dt: class { clone() { return this; } }, performance,
-    GHBoot: { createRenderPreparation, stats: {}, finishShaders: async () => {}, waitForDraw: async () => {} },
+    GHBoot: { createRenderPreparation, stats: {}, finishShaders: async () => {}, waitForDraw: async () => {
+      assert.equal(probes.at(-1).visible, false, "pane probe is hidden before the real screen draw");
+      assert.equal(probes.at(-1).geometry.disposed, 0, "GPU fence precedes temporary geometry disposal");
+    } },
     async VC(renderer, targetScene, targetCamera, target) {
       const count = actors.filter(r => r.body.material.transparent).length;
       compiles.push({ count, renderer, scene: targetScene, camera: targetCamera, target });
@@ -166,7 +174,7 @@ function warmFixture(failAt, fadeCompilation) {
   const start = source.indexOf("    n.preparation = globalThis.GHBoot.createRenderPreparation(");
   const end = source.indexOf("    n.prepare =", start);
   vm.runInContext(source.slice(start, end), context);
-  return { gfx, actors, draws, compiles, targets, renderer, previousTarget, scene, camera,
+  return { gfx, actors, draws, compiles, targets, probes, renderer, previousTarget, scene, camera,
     recover() { fail = null; } };
 }
 
@@ -181,6 +189,8 @@ test("actual prepare warms only two body representatives offscreen on every qual
     assert.ok(f.actors.every(r => r.body.material === r._mat && r._opacity === 1 && !r.root.visible));
     assert.ok(f.actors.every(r => r.gunTraversals === 0));
     assert.ok(f.actors.filter(r => r._fadeMat).every(r => r._fadeMat.disposed === 0));
+    assert.equal(f.draws.at(-1).probeVisible, false);
+    assert.ok(f.probes.every(p => p.removed && p.geometry.disposed === 1));
   }
 });
 
@@ -195,6 +205,7 @@ test("actual prepare restores body/material/target/pass state and blocks ready w
     assert.equal(f.gfx._warming, false);
     assert.equal(f.renderer.target, f.previousTarget);
     assert.ok(f.targets.every(t => t.disposed));
+    assert.ok(f.probes.every(p => p.removed && p.geometry.disposed === 1));
     assert.ok(f.actors.filter(r => r._fadeMat).every(r => r._fadeMat.disposed === 0));
     f.recover();
     await f.gfx.preparation.request("retry");
@@ -216,4 +227,5 @@ test("a context loss while fade compilation is pending restores state without re
   assert.equal(f.gfx.composer.renderToScreen, true);
   assert.equal(f.gfx._warming, false);
   assert.equal(f.renderer.target, f.previousTarget);
+  assert.ok(f.probes.every(p => p.removed && p.geometry.disposed === 1));
 });

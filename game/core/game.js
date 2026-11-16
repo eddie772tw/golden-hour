@@ -25133,7 +25133,7 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
   }
   var Ew = class {
     constructor(t, e, s) {
-      this.scene = t, this.world = e, this.hooks = s, this.panes = [], this.material = d$(), this.intact = null, this._lastDebris = 0, this._lastCrack = 0, this.time = 0;
+      this.scene = t, this.world = e, this.hooks = s, this.panes = [], this.material = d$(), this._singlePaneMaterial = null, this.intact = null, this._lastDebris = 0, this._lastCrack = 0, this.time = 0;
       let n = ww;
       this.sp = new Float32Array(n * 3), this.sv = new Float32Array(n * 3), this.sl = new Float32Array(n * 9), this.sax = new Float32Array(n * 3), this.sang = new Float32Array(n), this.sw = new Float32Array(n), this.slife = new Float32Array(n), this.sfloor = new Float32Array(n), this.sstate = new Uint8Array(n), this.sb = new Uint8Array(n), this.cursor = 0, this.active = 0;
       let i = this.sgeo = new ne();
@@ -25161,6 +25161,46 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
       for (let t of this.panes) t.mesh && (this.scene.remove(t.mesh), t.mesh.geometry.dispose(), t.mesh = null), t.alive = null, t.count = t.total, t.gone = false, t.cascade = null, t.col.off = false, this.intact.setMatrixAt(t.id, this._paneMatrix(t));
       this.intact.instanceMatrix.needsUpdate = true, this.sstate.fill(0), this.spos.array.fill(0), this.spos.needsUpdate = true, this.active = 0;
     }
+    _singlePaneProof(positions, axis) {
+      if ((axis !== 0 && axis !== 2) || positions.length % 9 !== 0) return false;
+      let plane = null, facing = 0;
+      for (let i = 0; i < positions.length; i += 9) {
+        for (let j = 0; j < 9; j++) if (!Number.isFinite(positions[i + j])) return false;
+        const ux = positions[i + 3] - positions[i], uy = positions[i + 4] - positions[i + 1], uz = positions[i + 5] - positions[i + 2];
+        const vx = positions[i + 6] - positions[i], vy = positions[i + 7] - positions[i + 1], vz = positions[i + 8] - positions[i + 2];
+        const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
+        if (nx === 0 && ny === 0 && nz === 0) continue;
+        const area = axis === 0 ? nx : nz;
+        if (area === 0 || (axis === 0 ? ny !== 0 || nz !== 0 : nx !== 0 || ny !== 0)) return false;
+        const value = positions[i + axis];
+        if (plane === null) plane = value;
+        if (value !== plane || positions[i + 3 + axis] !== plane || positions[i + 6 + axis] !== plane) return false;
+        const sign = Math.sign(area);
+        if (facing && sign !== facing) return false;
+        facing = sign;
+      }
+      return facing !== 0;
+    }
+    _syncPaneMaterial() {
+      const material = this._singlePaneMaterial, source = this.material;
+      if (!material) return null;
+      material.copy(source), material.onBeforeCompile = source.onBeforeCompile;
+      material.customProgramCacheKey = source.customProgramCacheKey, material.onBeforeRender = source.onBeforeRender;
+      material.forceSinglePass = true, material.needsUpdate = true;
+      return material;
+    }
+    _paneMaterial() {
+      this._singlePaneMaterial || (this._singlePaneMaterial = this.material.clone());
+      return this._syncPaneMaterial();
+    }
+    _preparePaneMaterial() {
+      const geometry = new Ge(1, 1);
+      geometry.setAttribute("crack", new Yt(new Float32Array(4), 1));
+      const probe = new ae(geometry, this._paneMaterial());
+      probe.frustumCulled = false, probe.matrixAutoUpdate = false, probe.layers.set(1);
+      this.scene.add(probe);
+      return probe;
+    }
     _fracture(t) {
       if (t.alive) return;
       let { nx: e, ny: s } = t, n = Re(t.id * 7919 + 13);
@@ -25176,7 +25216,7 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
       let d = new ne();
       d.setAttribute("position", new Yt(c, 3)), d.setAttribute("normal", new Yt(h, 3)), d.setAttribute("uv", new Yt(f, 2)), d.setAttribute("crack", new Yt(u, 1));
       for (let m = 0; m < e * s; m++) this._writeCell(t, m, c, f);
-      t.mesh = new ae(d, this.material), t.mesh.frustumCulled = false, t.mesh.renderOrder = 10, t.mesh.matrixAutoUpdate = false, t.mesh.layers.set(1), this.scene.add(t.mesh), this.intact.setMatrixAt(t.id, f$), this.intact.instanceMatrix.needsUpdate = true;
+      t.mesh = new ae(d, this._singlePaneProof(c, t.axis) ? this._paneMaterial() : this.material), t.mesh.frustumCulled = false, t.mesh.renderOrder = 10, t.mesh.matrixAutoUpdate = false, t.mesh.layers.set(1), this.scene.add(t.mesh), this.intact.setMatrixAt(t.id, f$), this.intact.instanceMatrix.needsUpdate = true;
     }
     _cellTris(t, e, s) {
       let n = e % t.nx, i = e / t.nx | 0, a = t.nx + 1, r = i * a + n, l = r + 1, c = r + a, h = c + 1;
@@ -50785,14 +50825,14 @@ ${o.filename || ""}:${o.lineno || ""}`;
         let _0 = new xm(0.1, 2600, f0);
         for (let j0 of _0.children) j0.layers.enable(1);
         _0.position.set(0, 2.6, 5.2);
-        let F0 = ghPMREM = new ou(r), m0 = (ghEmpty = F0.fromScene(new zr())).texture, S0 = [c.marbleFloor, c.oakFloor, c.kitchenFloor, d.material, c.exterior, c.poolTile];
+        let F0 = ghPMREM = new ou(r), m0 = (ghEmpty = F0.fromScene(new zr())).texture, S0 = [c.marbleFloor, c.oakFloor, c.kitchenFloor, d.material, ...(d._singlePaneMaterial ? [d._singlePaneMaterial] : []), c.exterior, c.poolTile];
         i.environment = m0, i.environmentIntensity = 0, n.vmScene.environment = m0;
         for (let j0 of S0) j0.envMap = m0, j0.needsUpdate = true;
         await VC(r, i, a, f0), r.shadowMap.needsUpdate = true, _0.update(r, i);
         let T0 = (ghEnvIn = F0.fromCubemap(f0.texture)).texture;
         i.environment = T0, i.environmentIntensity = 0.24, n.vmScene.environment = T0, n.vmScene.environmentIntensity = 1.5;
         for (let [j0, Z0] of [[c.marbleFloor, 0.3], [c.oakFloor, 0.5], [c.kitchenFloor, 0.5]]) j0.envMap = T0, j0.envMapIntensity = Z0, j0.needsUpdate = true;
-        _0.position.set(0, 1.9, 12.6), _0.update(r, i), Je.envIn = T0, Je.envOut = (ghEnvOut = F0.fromCubemap(f0.texture)).texture, d.material.envMap = Je.envOut, d.material.envMapIntensity = 1.25, d.material.needsUpdate = true;
+        _0.position.set(0, 1.9, 12.6), _0.update(r, i), Je.envIn = T0, Je.envOut = (ghEnvOut = F0.fromCubemap(f0.texture)).texture, d.material.envMap = Je.envOut, d.material.envMapIntensity = 1.25, d.material.needsUpdate = true, d._syncPaneMaterial();
         for (let j0 of [c.exterior, c.poolTile]) j0.envMap = Je.envOut, j0.needsUpdate = true;
         for (let ghTarget of n._environmentTargets || []) ghTarget.dispose();
         n._environmentTargets = [ghEnvIn, ghEnvOut];
@@ -50842,7 +50882,7 @@ ${o.filename || ""}:${o.lineno || ""}`;
       message.textContent = "画面准备失败，请刷新页面重试：" + String(error?.message || error);
     }
     n.preparation = globalThis.GHBoot.createRenderPreparation(async (reason, current) => {
-      let target = new Vs(4, 4, { type: Yn }), visible = [], vmEnabled = n.vmPass.enabled, shown = C.shown;
+      let target = new Vs(4, 4, { type: Yn }), visible = [], vmEnabled = n.vmPass.enabled, shown = C.shown, paneProbe;
       let position = a.position.clone(), quaternion = a.quaternion.clone(), oldTarget = r.getRenderTarget(), oldTime = n.time;
       const roots = [...(n.warmRoots || [])], shaderError = r.debug.onShaderError;
       const layers = a.layers.mask, vmLayers = n.vmCamera.layers.mask;
@@ -50857,6 +50897,7 @@ ${o.filename || ""}:${o.lineno || ""}`;
         if (r.getContext().isContextLost()) throw Error("WebGL context is unavailable");
         await globalThis.GHBoot.finishShaders();
         if (!current()) return;
+        paneProbe = d._preparePaneMaterial();
         for (let bot of b.bots) for (let rig of bot.rigs) visible.push([rig.root, rig.root.visible]), rig.root.visible = true;
         for (let rig of b.k9.rigs()) visible.push([rig.root, rig.root.visible]), rig.root.visible = true;
         for (let gun of Object.values(E.guns)) visible.push([gun.root, gun.root.visible]), gun.root.visible = true;
@@ -50897,6 +50938,7 @@ ${o.filename || ""}:${o.lineno || ""}`;
             for (let restore of restoreFades) restore();
           }
           n._warming = true;
+          paneProbe.visible = false;
           for (let [root, value] of visible) root.visible = value;
           C._show(shown), n.vmPass.enabled = vmEnabled;
           a.position.copy(position), a.quaternion.copy(quaternion), a.updateMatrixWorld(true);
@@ -50924,6 +50966,7 @@ ${o.filename || ""}:${o.lineno || ""}`;
         i.background = background, n.vmScene.background = vmBackground;
         r.autoClear = autoClear, r.setClearColor(clearColor, clearAlpha);
         n._reflectAt = null, n._shadowAt = 0, r.shadowMap.needsUpdate = true;
+        if (paneProbe) i.remove(paneProbe), paneProbe.geometry.dispose();
         r.setRenderTarget(oldTarget), target.dispose();
         G.getDelta(), ghNextFrame = 0, e0 = p0 = 0;
       }

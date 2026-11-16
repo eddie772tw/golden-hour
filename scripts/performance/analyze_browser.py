@@ -61,7 +61,7 @@ def analyze(raw, baseline=None):
         if a[11] >= 301 and b[11] >= 301:
             windows['warmTick301'].append(b[0] - a[0])
     diagnostic = any(raw.get(k) for k in
-                     ('profiler', 'trace', 'gpuTimer', 'osSampler', 'deepRender', 'renderDev', 'programAuditDiagnostic'))
+                     ('profiler', 'trace', 'gpuTimer', 'osSampler', 'deepRender', 'renderDev', 'programAuditDiagnostic', 'materialInventoryDiagnostic', 'postScenarioDiagnostic', 'skeletonProbeDiagnostic'))
     exports = {k: scenario[k] == baseline['scenario'][k] for k in EXPORT_KEYS} if baseline else None
     if exports is not None:
         assert all(exports.values()), exports

@@ -129,3 +129,51 @@ equivalent DoubleSide/FlipSide lighting; use a frozen two-sided GPU pixel oracle
 before accepting single-pass panes. Audio PCM equivalence and cleanup/tail-frame
 measurements are separate gates. Empty-pool draw shortcuts were rejected as a
 low-priority opportunity with callback/ring semantics costs and no measured gain.
+
+## Stage 3: single-pass proven-planar fractured panes
+
+Only an individual fractured pane whose finite nondegenerate triangles are
+exactly coplanar with consistent winding uses the cached single-pass material.
+Deleting cells cannot invalidate that proof. Intact glass instances, shards,
+thick glass and rejected panes retain their original two-pass behavior. The
+clone shares shader hooks, follows environment rebuilds, and is prepared with
+a temporary non-instanced quad behind the existing readiness/draw fence.
+
+Actual hotel geometry passed the predicate for 113/124 panes; the other 11 keep
+their previous rendering. This is geometry eligibility, not a claim that all
+those panes are fractured or visible in a frame.
+
+The full native-AI scenario retained all eight logical exports. Three standing
+eligible panes were tested from both faces, frontal and oblique: **12 real GPU
+views, exact AA/BB/AB pixel equality**, nonblack images, positive hidden-pane ROI
+contribution, and native selected-pane submissions reduced from two to one.
+The oracle runs synchronously after gameplay and has no FPS claim. Earlier QA
+versions incorrectly replayed raw GL draw-buffer state; those failures were
+retained. The current controlled QA uses native renderer.resetState(), restores
+game/renderer controls and exposure history, and requires a normal subsequent
+render with zero GL errors. It does not claim arbitrary third-party GL bindings
+are restored byte-for-byte. See `scripts/performance/fracture_oracle.js`.
+
+An uninstrumented full run measured **50.72 FPS**, 1% low **17.01 FPS**, P95/P99
+**30.4/38.6 ms**, >50ms **6.95/min**, maximum **261.3 ms**. The complete window
+retains first use and every long interval. Warm-only results are supplemental.
+The prior stage-2 fresh candidate was 46.05 FPS; these are isolated runs with
+known machine/run variation, not a statistical target claim. The **target is
+still unmet**. Functional High quality/scale changes, real context recovery,
+resume and equipment switching passed. Source and raw-derived summaries:
+[stage3-glass.json](evidence/stage3-glass.json).
+
+Reproduce the visual oracle separately from acceptance runs:
+
+```powershell
+python scripts/performance/run_browser.py --client PATH_TO_CURRENT_PORTABLE_CLIENT --name unique-glass-oracle --quality high --native-loop --fracture-oracle
+node --test server/fracture-oracle.test.mjs
+```
+
+Further evidence narrowed priorities: repeated identical skeleton palette work
+was about 0.139 ms/frame; baked geometry has 100 meshes and 87 truly different
+materials, with zero exact duplicate candidates; reflection tightening removed
+only five submissions with no consistent CPU gain. Those changes were rejected.
+Audio-node reuse passed PCM oracles but has no consistent tail-frame benefit in
+the first primary run and remains isolated. A new candidate investigates only
+opaque physics chairs with shared geometry/materials; it is not in this stage.
