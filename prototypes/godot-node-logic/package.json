@@ -1,0 +1,16 @@
+{
+  "name": "golden-hour-node-authoritative-proof",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "1.1.1"
+  },
+  "scripts": {
+    "test": "node --test pixel-canvas.test.mjs native-canvas.test.mjs virtual-audio.test.mjs initial-props.test.mjs",
+    "verify": "node authoritative-probe.mjs"
+  }
+}

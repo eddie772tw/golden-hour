@@ -688,3 +688,30 @@ MultiMesh material errors were corrected with retained failure evidence.
 See [Godot native migration validation](godot-native-validation.md),
 [the runnable component](../../prototypes/godot-render-component/README.md) and
 [stage12-godot-component.json](evidence/stage12-godot-component.json).
+
+## Stage 13: original Node authoritative logic parity
+
+The original nine bots now complete3600 logical ticks in Node with all eight
+exports strict exact against the browser baseline, including full checkpoints,
+coverage and botCalls. Frozen staging repeats and a root-installed portable
+package run passed. AI/physics/gameplay methods are the original owning code;
+no recorded actor trajectory or copied decision output is used.
+
+The initial world configuration is explicit. Browser DOM/GFX UUID allocation
+changes the global RNG position used by original ND dressing. Original prop
+construction still executes, then101 validated immutable homeP/homeQ settings
+from menu/ticknull are adopted through original physics.reset/_placeBox. There
+were19 random initial-position/orientation differences and4 tiny quaternion
+differences; this restores the shared input scene, not a desired final result.
+A missing CPU pane-material warmup was also restored using the original method
+after its lazy UUID creation was shown to consume scoped fracture RNG.
+
+[The standalone Node package](../../prototypes/godot-node-logic/README.md) pins
+the source SHA and its own Canvas dependency/lock, preserves all compared
+fields and initializer provenance, and rejects altered fixtures or source.
+Four Canvas/clock/initializer/boundary checks passed. Root dependencies and
+the product core are unchanged. This is a CPU logic gate: fixed stepping is
+not real-time60Hz, native Godot rendering, accepted audio DSP or live IPC.
+Audio records remain capped at20000 with838445 dropped records in the root
+run; these drops are reported and cannot be treated as delivered audio.
+See [stage13-node-authoritative.json](evidence/stage13-node-authoritative.json).

@@ -1,0 +1,7 @@
+# Isolated native Canvas dependency
+
+The authoritative Node proof uses `@napi-rs/canvas` **1.1.1** (MIT), package repository `https://github.com/Brooooooklyn/canvas`. The source/version/registry tarball integrity are recorded in the local `package-lock.json`, including the Windows x64 MSVC native optional package. Installation was local to this private directory, pinned with `--save-exact`, with package scripts disabled. No public product dependency was installed or changed.
+
+`native-canvas.mjs` selects the system text renderer and registers existing Bahnschrift / Segoe UI / Arial font files from the existing Windows Fonts directory (`GH_NODE_FONT_DIR` can explicitly select an equivalent local directory). Metadata includes each file SHA256, Node/NAPI/platform/architecture and package version. `native-canvas.test.mjs` checks real font metrics, path raster, linear gradient and RGBA readback, and rejects WebGL contexts. This is actual CPU rasterization; the old PixelCanvas diagnostic is not the implementation used by this proof.
+
+Font files remain in Windows, and no font redistributable or texture raster export is accepted by this dependency decision. Chrome/Skia shaping, font fallback, antialiasing, color management and pixel equivalence are separate questions. A successful CPU bootstrap is not High rendering parity, gameplay performance, native audio fidelity or a completed Godot migration.

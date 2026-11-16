@@ -1,0 +1,32 @@
+{
+  "schema": "gh-node-logic-fixtures-v1",
+  "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "seed": 1195920689,
+  "comparedFields": [
+    "manifest",
+    "seed",
+    "equipment",
+    "decisionTrace",
+    "events",
+    "checkpoints",
+    "state",
+    "coverage"
+  ],
+  "additionalObservedField": "botCalls",
+  "fixtures": {
+    "baseline.json": {
+      "sha256": "863f413884feb39c5a7fcc59865a367293667136c691567d38dcd46526c7e91f",
+      "bytes": 220931,
+      "rawSource": "work/browser-render-next/desktop-screen/evidence/edge-desktop-screen-high-1.json",
+      "rawSourceSHA256": "ae7b5898a5412c6e55d6dc29a509861df67f8c4f2ad419be9f2341de4638893b",
+      "selection": "scenario, complete eight compared fields + complete botCalls"
+    },
+    "initial-world.json": {
+      "sha256": "747a6a15b705971144bfd1f855b4835b96e43b4bf6c2bc3997fdbcd86cbdd76e",
+      "bytes": 15289,
+      "rawSource": "work/godot-native/evidence/browser-initial-props-1.json",
+      "rawSourceSHA256": "dd4dab0e2fff8c28fef7674a0754fa2feb6dbc467c5519a4257da8ccf6495e39",
+      "selection": "pre-Deploy menu/ticknull immutable initializer, capture validity/core metadata only; no frames/GPU/system data"
+    }
+  }
+}

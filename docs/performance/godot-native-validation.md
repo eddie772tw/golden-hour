@@ -66,9 +66,14 @@ load real Three math and world classes without WebGL. A real CPU Canvas2D
 backend now permits the original world/character factories to execute rather
 than supplying fake actors, geometry or text metrics. World initialization has
 reproduced 863 colliders, 101 physics props, 124 panes and 119 navigation nodes,
-matching the captured browser's initialization statistics. Nine real bot
-constructors and their 18 rigs have also run. This is constructor/bootstrap
-evidence; the complete 3,600-tick/eight-export gate has not yet passed.
+matching the captured browser's initialization statistics. The full original
+nine-bot/3,600-tick CPU gate has now passed all eight strict exports and botCalls
+in repeated portable runs. Explicit immutable initial homes remove the renderer
+UUID/initial-RNG coupling; original construction and physics reset still run.
+[Stage 13](browser-render-60hz.md#stage-13-original-node-authoritative-logic-parity)
+and the [runnable Node package](../../prototypes/godot-node-logic/README.md)
+retain all fields, source guards and initial-data provenance. Real-time pacing,
+live IPC/state age and accepted audio/rendering remain separate gates.
 
 The audio port keeps original cue/RNG/voice/steal semantics upstream. A fixed
 native C++ mixer is being checked against actual native PCM bytes. Noise cases

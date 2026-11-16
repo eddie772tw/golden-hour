@@ -1,0 +1,442 @@
+{
+  "stage": 13,
+  "kind": "godot-node-authoritative-CPU-GateA",
+  "decision": "CPU logic gate passed with explicit immutable initial world configuration; continue native rendering/audio/live-bridge validation. No performance target or Godot migration acceptance.",
+  "productRuntimeChanged": false,
+  "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "sourcePackage": "prototypes/godot-node-logic/",
+  "sourceScope": "Standalone package, pinned @napi-rs/canvas1.1.1, original factories/setup/ghSimulate, real actors/physics/nativeAI; no public root dependency.",
+  "fixtures": {
+    "schema": "gh-node-logic-fixtures-v1",
+    "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+    "seed": 1195920689,
+    "comparedFields": [
+      "manifest",
+      "seed",
+      "equipment",
+      "decisionTrace",
+      "events",
+      "checkpoints",
+      "state",
+      "coverage"
+    ],
+    "additionalObservedField": "botCalls",
+    "fixtures": {
+      "baseline.json": {
+        "sha256": "863f413884feb39c5a7fcc59865a367293667136c691567d38dcd46526c7e91f",
+        "bytes": 220931,
+        "rawSource": "work/browser-render-next/desktop-screen/evidence/edge-desktop-screen-high-1.json",
+        "rawSourceSHA256": "ae7b5898a5412c6e55d6dc29a509861df67f8c4f2ad419be9f2341de4638893b",
+        "selection": "scenario, complete eight compared fields + complete botCalls"
+      },
+      "initial-world.json": {
+        "sha256": "747a6a15b705971144bfd1f855b4835b96e43b4bf6c2bc3997fdbcd86cbdd76e",
+        "bytes": 15289,
+        "rawSource": "work/godot-native/evidence/browser-initial-props-1.json",
+        "rawSourceSHA256": "dd4dab0e2fff8c28fef7674a0754fa2feb6dbc467c5519a4257da8ccf6495e39",
+        "selection": "pre-Deploy menu/ticknull immutable initializer, capture validity/core metadata only; no frames/GPU/system data"
+      }
+    }
+  },
+  "proof": {
+    "logicalTicks": 3600,
+    "bots": 9,
+    "allNineBots3600": true,
+    "exportsEqual": {
+      "manifest": true,
+      "seed": true,
+      "equipment": true,
+      "decisionTrace": true,
+      "events": true,
+      "checkpoints": true,
+      "state": true,
+      "coverage": true
+    },
+    "botCallsEqual": true,
+    "originalMethods": {
+      "player": true,
+      "viewmodel": true,
+      "firstPerson": true,
+      "arsenal": true,
+      "match": true,
+      "K9": true,
+      "physics": true,
+      "glass": true,
+      "FX": true,
+      "combatFrame": true,
+      "combatFire": true,
+      "inputEndFrame": true
+    },
+    "coverage": {
+      "allNineBots3600": true,
+      "botTicks": [
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600
+      ],
+      "calls": {
+        "_perceive": 2381,
+        "_pickGoal": 57,
+        "_goTo": 188,
+        "nav.path": 188,
+        "k9.enemyTimer": 3600,
+        "_maybeFrag": 129,
+        "die": 29,
+        "addRagdoll": 29,
+        "throwGrenade": 10,
+        "k9.enemyThrow": 1,
+        "k9.unitUpdate": 2640,
+        "grenadeExplode": 9,
+        "respawn": 29,
+        "k9._brain": 1195,
+        "k9._think": 174,
+        "k9._pickTarget": 107,
+        "k9._route": 84,
+        "k9._plan": 13,
+        "k9._attack": 166,
+        "k9.release": 1,
+        "k9._leap": 131,
+        "k9._takedown": 180,
+        "k9._wreck": 1200
+      },
+      "bodySubsteps": {
+        "box": 27645,
+        "rag": 10516,
+        "nade": 2774
+      },
+      "perceptionLOS": {
+        "calls": 12114,
+        "clear": 1996
+      }
+    },
+    "clock": {
+      "kind": "CPU fixed-step semantic proof, not real-time",
+      "fixedDelta": 0.016666666666666666,
+      "simulation": "Exact owning ghSimulate body; no actor update replacement",
+      "RNG": "Original seedBenchmarkRandom and original full-AI per-tick/per-actor/subsystem scopes; VM shares host Math",
+      "sharedMath": true,
+      "audio": "Virtual sample clock advances 1/60 per logic tick; original audio maintenance once per modeled submit",
+      "modeledPresentationHz": 60,
+      "nativeRAFTested": false,
+      "IPCMeasured": false
+    },
+    "initializer": {
+      "kind": "original-pre-deploy-world-configuration",
+      "schema": "gh-browser-initial-world-v1",
+      "seed": 1195920689,
+      "originalCount": 101,
+      "changedCount": 23,
+      "sourceState": "menu",
+      "sourceTick": null,
+      "actorStateLoaded": false,
+      "liveBodyStateLoaded": false,
+      "owner": "Original ND constructs all props; original physics.reset/_placeBox adopts immutable homeP/homeQ."
+    },
+    "initialDifferenceBreakdown": {
+      "randomizedNDStoolYaw": 7,
+      "randomizedNDPotYawOrZ": 12,
+      "smallQuaternionComponents": 4,
+      "maximumSmallComponentDifference": 1.1102230246251565e-16,
+      "noIndividualPropCausationClaim": true
+    }
+  },
+  "repeats": [
+    {
+      "localRaw": "work/godot-native/logic/evidence/authoritative-v8-initial-props.json",
+      "sha256": "0ce33eb52168886e863b0eaf9c5dd5a87986552753b874864922acdb73654d3a",
+      "fullFixturePassed": true,
+      "exportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "allNineBots3600": true
+    },
+    {
+      "localRaw": "work/godot-native/logic/evidence/authoritative-v9-initial-props-repeat.json",
+      "sha256": "a5fa429076ae276f29cb8a5ed02f3993a831b2aef43949708d7b6e91523df875",
+      "fullFixturePassed": true,
+      "exportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "allNineBots3600": true
+    },
+    {
+      "localRaw": "work/godot-native/logic/repo-ready/evidence/repo-ready-portable-1.json",
+      "sha256": "0fa30824e01ce1ce002f210254cec8d904bb50f3191f6e8d57d78a9e6f02aeda",
+      "fullFixturePassed": true,
+      "exportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "allNineBots3600": true
+    },
+    {
+      "localRaw": "work/godot-native/logic/repo-ready/evidence/repo-ready-portable-2.json",
+      "sha256": "fc89ef6139d618bc745c7b2f3e1bca8fa0cc010d5111f9961b0d2d20e1dc0ff3",
+      "fullFixturePassed": true,
+      "exportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "allNineBots3600": true,
+      "sameEightExportsAsPortableRun1": true,
+      "owningSourceHashesMatchFinalPackage": true
+    }
+  ],
+  "audioBoundary": {
+    "kind": "recording-hardware-boundary-no-DSP",
+    "sampleRate": 48000,
+    "retainedCommands": 20000,
+    "droppedRecords": 838445,
+    "originalErrors": [],
+    "voicePeak": 56,
+    "stolen": 1000,
+    "completeCommandDeliveryAccepted": false,
+    "PCMOrDSPParityAccepted": false
+  },
+  "validation": {
+    "packageInstall": "npm ci --ignore-scripts --no-audit --no-fund:PASS (isolated2packages)",
+    "smallTests": "npm test:4/4PASS (all existing checks retained)",
+    "coreSHAFailClosed": "PASS changed-core temporary root rejects before VM evaluation",
+    "fixtureIntegrityFailClosed": "PASS changed baseline byte data rejects",
+    "portablePackageFullRun": "Final frozen source PASS twice:8/8strict + botCalls, repeat8/8exact, implementation hashes match final package.",
+    "portableWorldModuleImport": "PASS standard pathToFileURL main detection; import does not start cold build."
+  },
+  "limits": [
+    "CPU logic proof only; no browser/Godot/GPU/audio hardware.",
+    "Fixed logical steps exercise the owning ghSimulate body; native RAF cadence/IPC/pose age not tested.",
+    "Canvas backend uses Windows fonts with real rasterization; Chrome pixel parity not claimed.",
+    "HUD output is a recorded presentation boundary; original hit/score UI audio is forwarded; full DOM animation not executed.",
+    "Virtual audio records original graph and scheduled ended bookkeeping; no DSP fidelity acceptance.",
+    "Fixed CPU stepping is not a live native accumulator/RAF or real-time60Hz result. The native-loop manifest is retained verbatim for export comparison; its scheduler is not simulated as a browser here.",
+    "No High shader/planar-reflection parity, native audio quality, skin/FX transport, IPC/state age, process memory, cold-start or package-size acceptance.",
+    "Initial browser input contains immutable101home settings from menu/ticknull, never actor/live trajectories or final results.",
+    "v8 changedCount metadata compared arrays across VM/host and incorrectly reported101; v9 fixes count23. Both raw files are preserved."
+  ],
+  "sourceFiles": {
+    "destination": "prototypes/godot-node-logic/",
+    "files": [
+      {
+        "path": ".gitignore",
+        "bytes": 42,
+        "sha256": "917f84c45e178d28122fcb29a0e2768d9cc32826f51b856144c4d8145303e070"
+      },
+      {
+        "path": "asset-boot.mjs",
+        "bytes": 1775,
+        "sha256": "d8b5fe51f527aaedd2849bd48843120f56154cb08b35afc3812bef7ed10a931d"
+      },
+      {
+        "path": "authoritative-probe.mjs",
+        "bytes": 10012,
+        "sha256": "9668f729c2d49bb45a779f9e5e34f8046b8b0d82462682d60ecfd840261a56d8"
+      },
+      {
+        "path": "fixtures/baseline.json",
+        "bytes": 220932,
+        "sha256": "192d11cd87dc87066359badbc89e1eb82802013fa44240f64a30b1e54d60a217"
+      },
+      {
+        "path": "fixtures/initial-world.json",
+        "bytes": 15290,
+        "sha256": "316e80031e31f8cdd617fe8d7edd9383e2d4ed3a479b1ae934a2a5070234d2ca"
+      },
+      {
+        "path": "fixtures/provenance.json",
+        "bytes": 1256,
+        "sha256": "d3d844daac028d966cdb2b90653abfb41974e1b28132bc6dc62482932beeb5c1"
+      },
+      {
+        "path": "fixtures.mjs",
+        "bytes": 929,
+        "sha256": "e6b2c14d540b91479daa6a668e2082227e3398f47cec32928b31f3570e710308"
+      },
+      {
+        "path": "initial-props.mjs",
+        "bytes": 2736,
+        "sha256": "f6fee6e07202dd0eec44f90f7107027dcdcba93332f3ca39a05b3439d3570995"
+      },
+      {
+        "path": "initial-props.test.mjs",
+        "bytes": 2051,
+        "sha256": "84942e09b1959793fc0bef6d85d1c8862e799033b1817933eb75fe1f46ece0f6"
+      },
+      {
+        "path": "load-runtime.mjs",
+        "bytes": 4805,
+        "sha256": "61566ab1ed428e746c35d45f5c1590d945f8dadd6687ac1c52a65aeca10cd099"
+      },
+      {
+        "path": "NATIVE-CANVAS-SOURCE.md",
+        "bytes": 1420,
+        "sha256": "4fcb8c88f73a0808ccb676c8cbf7a630cf58a70c158ecca0afe9bd4ef389e3df"
+      },
+      {
+        "path": "native-canvas.mjs",
+        "bytes": 1735,
+        "sha256": "e46a3c6cfc4b80795c062572b96852dfde19b80f6f2a81fa8a829cc9b793600e"
+      },
+      {
+        "path": "native-canvas.test.mjs",
+        "bytes": 1175,
+        "sha256": "75f0cce817dc16edda6a53bf6dc7a1a7d88cad483c43fac87dc9a4f72da9eeb8"
+      },
+      {
+        "path": "package-lock.json",
+        "bytes": 8157,
+        "sha256": "3e334217ce70f2dc0a2dd8af9315d38bce779587c04e102dab6a8baf505dcf25"
+      },
+      {
+        "path": "package.json",
+        "bytes": 411,
+        "sha256": "ae0c37ea4b4ab9195ca57af5438c20d02acc65bf9b398c1214af2ef08c91a5f4"
+      },
+      {
+        "path": "pixel-canvas.mjs",
+        "bytes": 3425,
+        "sha256": "543ee3cec8258306b37dbb0d36f002383c3a5f5c871d2c8ede5a1cb5ee00e184"
+      },
+      {
+        "path": "pixel-canvas.test.mjs",
+        "bytes": 1237,
+        "sha256": "cebab38228c23d9d8e8c6e64c1d9e0c18ab93a3cd0300a7746b8bd97942d86ba"
+      },
+      {
+        "path": "README.md",
+        "bytes": 6313,
+        "sha256": "fbcf428ea13ea51e9c4daae594e85f3365df65e7a7a18770114c9dde3543dfb4"
+      },
+      {
+        "path": "virtual-audio.mjs",
+        "bytes": 7135,
+        "sha256": "b352dbcc82eecb83cfa1da79177b95b3f2382ed58a4c38cf84e83afe125d5356"
+      },
+      {
+        "path": "virtual-audio.test.mjs",
+        "bytes": 1299,
+        "sha256": "c3702fd526d1fb5fe0cda1ef3f1ad90822109f36fc2d371309c464568f619644"
+      },
+      {
+        "path": "world-probe.mjs",
+        "bytes": 4888,
+        "sha256": "749270530c7b05abebbeab836a3517f3eadbe965530863ccda6cd62f96488af3"
+      }
+    ],
+    "totalBytes": 297023,
+    "exclude": [
+      "node_modules/",
+      ".cache/",
+      "evidence/",
+      "*.log"
+    ],
+    "notes": "Copy only these source/fixture files; no installed dependencies, raw output, font bytes or game core bundle."
+  },
+  "readyForRootCopy": true,
+  "coreUnchanged": true,
+  "rootInstalledPackageValidation": {
+    "path": "prototypes\\godot-node-logic\\evidence\\root-portable-1.json",
+    "sha256": "0a7c89252f6b6bdbd214d003233f7ca6d1074d6aca741c6b6c9e6a4bdb6e4d98",
+    "fullFixturePassed": true,
+    "exportsEqual": {
+      "manifest": true,
+      "seed": true,
+      "equipment": true,
+      "decisionTrace": true,
+      "events": true,
+      "checkpoints": true,
+      "state": true,
+      "coverage": true
+    },
+    "botCallsEqual": true,
+    "logicalTicksExecuted": 3600,
+    "audioDroppedRecords": 838445,
+    "audioDSPAccepted": false,
+    "realTimeOrGodotAcceptance": false,
+    "tests": "4/4 pass after package-local npm ci --ignore-scripts"
+  },
+  "publishedSourceSHA256": {
+    ".gitignore": "e9bf484e624a9903a56b7ac77af2791d905d2f55e73003311ab541c31c76f864",
+    "asset-boot.mjs": "686ebed45c89a1be9bb32f5465b8d78c39fbba677e9951cf34ec97c6c2aca234",
+    "authoritative-probe.mjs": "9668f729c2d49bb45a779f9e5e34f8046b8b0d82462682d60ecfd840261a56d8",
+    "fixtures.mjs": "e6b2c14d540b91479daa6a668e2082227e3398f47cec32928b31f3570e710308",
+    "initial-props.mjs": "f6fee6e07202dd0eec44f90f7107027dcdcba93332f3ca39a05b3439d3570995",
+    "initial-props.test.mjs": "84942e09b1959793fc0bef6d85d1c8862e799033b1817933eb75fe1f46ece0f6",
+    "load-runtime.mjs": "2f0b70559123576e85af355cb50c9a04bb243df005a5c4a1d3e3171eb0a51d26",
+    "NATIVE-CANVAS-SOURCE.md": "759aa42add4cafd480d15313d291ba32c3911b5d83193b9211169255d585536e",
+    "native-canvas.mjs": "626262c0a22e77ecce024a44f69fedc431e756303a417bcd7f8c46d703a69ace",
+    "native-canvas.test.mjs": "75f0cce817dc16edda6a53bf6dc7a1a7d88cad483c43fac87dc9a4f72da9eeb8",
+    "package-lock.json": "3e334217ce70f2dc0a2dd8af9315d38bce779587c04e102dab6a8baf505dcf25",
+    "package.json": "4b39e52b6c8f9cda1bfc3f589311a5791c417eb8c41c2dd0e8ee0a23bd452c4f",
+    "pixel-canvas.mjs": "543ee3cec8258306b37dbb0d36f002383c3a5f5c871d2c8ede5a1cb5ee00e184",
+    "pixel-canvas.test.mjs": "cebab38228c23d9d8e8c6e64c1d9e0c18ab93a3cd0300a7746b8bd97942d86ba",
+    "README.md": "fbcf428ea13ea51e9c4daae594e85f3365df65e7a7a18770114c9dde3543dfb4",
+    "virtual-audio.mjs": "b352dbcc82eecb83cfa1da79177b95b3f2382ed58a4c38cf84e83afe125d5356",
+    "virtual-audio.test.mjs": "c3702fd526d1fb5fe0cda1ef3f1ad90822109f36fc2d371309c464568f619644",
+    "world-probe.mjs": "53fe657d63bbad386c07afeaaa4cf27f55124e152d00a5b12a35ec003d509e3f",
+    "fixtures/baseline.json": "863f413884feb39c5a7fcc59865a367293667136c691567d38dcd46526c7e91f",
+    "fixtures/initial-world.json": "747a6a15b705971144bfd1f855b4835b96e43b4bf6c2bc3997fdbcd86cbdd76e",
+    "fixtures/provenance.json": "cc8180583e6605a5cc9095317de130d55492ee290f1b99a7ddd21561e722ee51"
+  },
+  "publicationLineEndings": "Published text uses LF; staging/raw artifacts retain their recorded byte hashes. Fixture values/fields are unchanged; local fixture byte hashes updated for whitespace-only normalization.",
+  "publishedLFFullVerification": {
+    "path": "prototypes\\godot-node-logic\\evidence\\root-portable-lf-2.json",
+    "sha256": "637095962138c6fb5cac190d2f53574df836f8b411743853f319efcd9439d314",
+    "fullFixturePassed": true,
+    "exportsEqual": {
+      "manifest": true,
+      "seed": true,
+      "equipment": true,
+      "decisionTrace": true,
+      "events": true,
+      "checkpoints": true,
+      "state": true,
+      "coverage": true
+    },
+    "botCallsEqual": true,
+    "logicalTicksExecuted": 3600,
+    "audioDroppedRecords": 838445,
+    "implementationSHA256": {
+      "authoritative-probe.mjs": "9668f729c2d49bb45a779f9e5e34f8046b8b0d82462682d60ecfd840261a56d8",
+      "world-probe.mjs": "53fe657d63bbad386c07afeaaa4cf27f55124e152d00a5b12a35ec003d509e3f",
+      "load-runtime.mjs": "2f0b70559123576e85af355cb50c9a04bb243df005a5c4a1d3e3171eb0a51d26",
+      "asset-boot.mjs": "686ebed45c89a1be9bb32f5465b8d78c39fbba677e9951cf34ec97c6c2aca234",
+      "native-canvas.mjs": "626262c0a22e77ecce024a44f69fedc431e756303a417bcd7f8c46d703a69ace",
+      "virtual-audio.mjs": "b352dbcc82eecb83cfa1da79177b95b3f2382ed58a4c38cf84e83afe125d5356",
+      "initial-props.mjs": "f6fee6e07202dd0eec44f90f7107027dcdcba93332f3ca39a05b3439d3570995",
+      "fixtures.mjs": "e6b2c14d540b91479daa6a668e2082227e3398f47cec32928b31f3570e710308",
+      "package-lock.json": "3e334217ce70f2dc0a2dd8af9315d38bce779587c04e102dab6a8baf505dcf25"
+    },
+    "realTimeOrGodotAcceptance": false
+  }
+}

@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {VirtualAudioContext} from './virtual-audio.mjs';
+const c=new VirtualAudioContext({capacity:40});
+const gain=c.createGain();gain.gain.setValueAtTime(0,0).linearRampToValueAtTime(1,1);
+c.advance(.5);assert.equal(gain.gain.value,.5);
+gain.gain.cancelScheduledValues(.75);c.advance(.75);assert.equal(gain.gain.value,0);
+gain.gain.setTargetAtTime(1,.75,.25);c.advance(1);assert.ok(Math.abs(gain.gain.value-(1-Math.exp(-1)))<1e-12);
+const b=c.createBuffer(1,4800,48000);b.getChannelData(0)[2]=.5;assert.equal(b.getChannelData(0)[2],.5);
+const source=c.createBufferSource();source.buffer=b;const ended=[];source.onended=()=>ended.push(c.currentTime);
+source.start(1);source.stop(2);c.advance(1.05);assert.equal(ended.length,0);c.advance(1.2);assert.deepEqual(ended,[1.1]);
+const a=c.createOscillator(),z=c.createOscillator();a.start();z.start();a.stop(1.4);a.stop(1.5);z.stop(1.3);
+a.onended=()=>ended.push('a');z.onended=()=>ended.push('z');c.advance(2);assert.deepEqual(ended,[1.1,'z','a']);
+assert.throws(()=>source.start());assert.throws(()=>c.advance(1));
+for(let n=0;n<100;n++)c.createGain();assert.equal(c.commands.length,40);assert.ok(c.dropped>0);
+console.log('PASS virtual graph clock/automation/source-end/bounds (no DSP/browser parity claim)');

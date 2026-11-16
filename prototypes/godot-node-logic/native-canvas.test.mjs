@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {canvasFactory,metadata} from './native-canvas.mjs';
+const canvas=canvasFactory(name=>{throw Error(name);})(),ctx=canvas.getContext('2d');
+ctx.font='700 30px Bahnschrift, "Segoe UI", Arial';
+const narrow=ctx.measureText('iiii').width,wide=ctx.measureText('WWWW').width;
+assert.ok(narrow>0&&wide>narrow);
+ctx.fillStyle='#ff0000';ctx.fillRect(0,0,20,20);
+assert.deepEqual([...ctx.getImageData(1,1,1,1).data],[255,0,0,255]);
+const gradient=ctx.createLinearGradient(20,0,40,0);gradient.addColorStop(0,'#000000');gradient.addColorStop(1,'#ffffff');
+ctx.fillStyle=gradient;ctx.fillRect(20,0,20,20);
+assert.ok(ctx.getImageData(38,5,1,1).data[0]>ctx.getImageData(21,5,1,1).data[0]);
+ctx.beginPath();ctx.moveTo(50,0);ctx.lineTo(70,0);ctx.lineTo(50,20);ctx.closePath();ctx.fillStyle='#00ff00';ctx.fill();
+assert.deepEqual([...ctx.getImageData(52,2,1,1).data],[0,255,0,255]);
+assert.deepEqual([...ctx.getImageData(68,18,1,1).data],[0,0,0,0]);
+assert.throws(()=>canvas.getContext('webgl2'),/webgl2/);
+console.log('PASS real raster/gradient/font metrics',JSON.stringify({backend:metadata.version,narrow,wide,fonts:metadata.fonts.length}));
