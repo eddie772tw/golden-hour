@@ -737,3 +737,27 @@ A concrete source mismatch caused the giant opaque white diagonal: original High
 The hotel is now recognizable, but the image remains too bright. Shared material AO/compile hooks, baked lightfield, original lighting/exposure/grade,11 other source ShaderMaterials, effects and planar reflection remain unresolved. This is not High parity or a native FPS result. [Runnable source](../../prototypes/godot-render-component/README.md), [evidence](evidence/stage15-godot-pbr-shaders.json).
 
 ![Godot PBR and source GL-discard diagnostic; incomplete High parity](assets/godot-pbr-shaft-diagnostic.png)
+
+
+## Stage 16: live original AI, native affine poses and timer scheduling
+
+A real-time Node source now sends original camera, affine actor palettes, physics-body transforms and K9 state through bounded local TCP. Godot applies the original rigs and visibility before ACK. A slow peer supersedes unsent states while AI continues; no recorded trajectories or fake replacement actors are used. The real nine-bot/3600tick pressure run preserved all eight exports even with80ms delayed ACKs. Temporary magazine/ceiling-tile model omissions first failed closed, then were explicitly identified from their original factories.
+
+The first visible120tick flow test retained a source-version ambiguity from a concurrent Dummy-only guard edit. It remains ineligible. Frozen complete visible baseline/interval tests then passed all eight exports and source pre/post hashes. Only Node timer scheduling changed; original1/60step/max3catchup/debt/inputend remained authoritative. All measured live callbacks stayed focused and unminimized.
+
+| Skin-only original-AI component, one exploratory pair | Work then timeout | Platform interval |
+|---|---:|---:|
+| Original logical ticks/second |59.760|59.994|
+| Source snapshots/second |38.711|55.544|
+| Distinct state draws / engine callbacks |2331 /3611|3322 /3599|
+| Callbacks using an old state |35.45%|7.70%|
+| Dropped simulation debt |0.24888s|0s|
+| Engine callback interval P95 /P99 |19.363 /19.931ms|18.350 /19.410ms|
+| State age at callback P95 /P99 |36.878 /44.974ms|29.383 /43.142ms|
+| Clock uncertainty |±1.056ms|±0.816ms|
+
+This is a43.5% source-snapshot increase in one consecutive pair, not a repeatable full-High ranking. The candidate still does not produce60fresh poses/second. These timestamps belong to engine draw callbacks, not physical presents, GPU timestamps or input-to-photon. Skin normals/materials, FP subset, true prop/weapon/K9 geometry, effects, reflection and native full audio remain outside this slice. Source eZ still runs on virtual recording hardware; dropped diagnostic audio records are explicit.
+
+The [published bridge/receiver/owned Windows runner](../../prototypes/godot-live-bridge/README.md) passes unit/transport checks, headless import, actual public-path interval3600 CPU/full8strict verification, and a relocated120tick visible Vulkan functional smoke. The latter ran alongside CPU work and is not ranked. [Evidence](evidence/stage16-godot-live-bridge.json) includes raw hashes and all scope limits. The included analyzer recomputes P95/P99, long callbacks, distinct/stale counts, state age and whole-tree memory from retained raw runs.
+
+Whole-tree RSS/private peaks are development diagnostics: the pair observed about1.96/1.86GB RSS and2.19/2.17GB private committed bytes, with retained OS/import/GPU caches. Shared RSS can double count pages, process initialization remains roughly70seconds of synchronous original Canvas/asset authoring, and there is no accepted release cold start, entry time or exported package size. Keeping original Node logic deliberately reduces migration verification risk; these values do not establish a final integrated minimum footprint.

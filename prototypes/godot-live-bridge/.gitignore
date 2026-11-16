@@ -1,0 +1,7 @@
+node_modules/
+.cache/
+evidence/
+*.log
+__pycache__/
+.godot/
+*.uid

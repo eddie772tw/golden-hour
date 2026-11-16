@@ -1,0 +1,12 @@
+import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {runInThisContext} from 'node:vm';
+import assert from 'node:assert/strict';
+import {REPO} from './logic.mjs';
+const source=readFileSync(new URL('game/core/game.js',REPO),'utf8');
+assert.equal(createHash('sha256').update(source).digest('hex'),'b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b');
+const start=source.indexOf('    function ghCreateLoopClock() {');
+const end=source.indexOf('    let G = new Jf()',start);
+assert.ok(start>0&&end>start);
+export const clockSHA256=createHash('sha256').update(source.slice(start,end)).digest('hex');
+export const createClock=runInThisContext('('+source.slice(start,end).trim()+')',{filename:'original-ghCreateLoopClock.js'});

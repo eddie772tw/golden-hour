@@ -1,0 +1,320 @@
+{
+  "stage": 16,
+  "kind": "Godot-live-original-AI-affine-bridge-and-timer",
+  "productRuntimeChanged": false,
+  "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "sourcePackage": "prototypes/godot-live-bridge/",
+  "sourceSHA256": {
+    ".gitignore": "013cae9b3e4a43be1c3abc6ea99c6d8a0466c4a848685512607958ee95dc4fd8",
+    "analyze_live.py": "d1b13b74edc90a25562ca665ffad759de2cd6f7fd894fca1181db0ef936cbb1e",
+    "bridge.test.mjs": "bc65524a82c838951100ce0f87bdff4903f1665a44753b1b8f616c5c95a827e9",
+    "clock.mjs": "f35047d4287dd36b6537c945d509d0ed0b7e9dc2a44d56af4c3f0d571be8d967",
+    "logic.mjs": "c33fab807e31edc63f2325e96c012d94c35f129fcbb3afec8d066289c2def35b",
+    "loopback-client.mjs": "6c125c60f22c888b788831394632baffe1fe8890519c5227dd2983140975cbf6",
+    "package-lock.json": "d4401fce30e5ac8ccbbe48290e7bd92b1d46b7e52de4dacc25c28368e70dc7b5",
+    "package.json": "bfb816a665e44428f4421d37c4148f669352fe1c19bbc39f7b849274713e299e",
+    "poses.mjs": "9a34d73db6a0977d031f4e7fdb5fad41a515ce1a3e787c66abdf1939d45a90cf",
+    "producer-baseline.mjs": "2d3a2a69ac9126bb2938025f9bc4d5ced816048c7dce7bc7b419fa23ec62468a",
+    "producer-interval.mjs": "20eb0cb979fe29b0befb78cd4015d9f9f38ac81297bfac7e8e9b8451f9c0785c",
+    "PROTOCOL.md": "98849ddeecf19b6e87ef7c8783cb04267aca5db1d5a8db0cd8a056a2c3d84510",
+    "protocol.mjs": "713c53b8541fdb132c2af8341d02a47fb072b359996617e1abd6c3d7ccf27bea",
+    "PROVENANCE.json": "7b1a29f7e78dcdda9b7e8ece5cfbed30cd31884479f175db2a56dc1e54ec489a",
+    "README.md": "8365a2d8abbec653ca6d970a9b8726141fc6923fa71844a47b75bc2644242e7f",
+    "requirements.txt": "4e16fc11d4b51521b9e3a1dd16c06f5fc25ea07fd0d58c396f5260755b3de503",
+    "RUNNER-RELOCATION.md": "7d882dfe98ce4e8509086a833a543a87e168a42c4c2ddea47d94431ca646618a",
+    "run_live.py": "a0aa78d24ca9da74392ac3c135f4f449668de7f2c9cff74d99f8caf87442a3f5",
+    "session.mjs": "466086c1c0146bca66cd2547a8574fecc5cc7538e8c59b4438065b5542421c16",
+    "receiver\\main.gd": "c6ffee0d72a92a766251987cb2a80a0e0a0acb4337baadfdac5615b1c038bc39",
+    "receiver\\main.tscn": "b87973242781a62956f3174290bb6c1ae733b4bcb7278a4bcb84980f0cb6b121",
+    "receiver\\native_skin.gd": "da30fbf2b4c8d97512cd1fbc72dbe1ad78b2fa8425ad651b74baf63366140ed2",
+    "receiver\\project.godot": "fb34f78d0e75fd5bdc54c2e1d2c73751d2a7389f1bee895c822b9a59baf23acc",
+    "receiver\\protocol.gd": "bf61cafffa0b4f779523028ddff6bf9b2e4f04ede4bcd283fb19c4ec5e8342c4"
+  },
+  "acceptanceEligible": false,
+  "highParity": false,
+  "fullScene": false,
+  "nativeFullAudio": false,
+  "comparison": {
+    "scope": "One consecutive baseline/candidate exploratory pair, original9AI x3600, skin-only visible Vulkan; fresh processes with retained OS/GPU/import caches, engine callbacks not physical presents. Agent heavy CPU runs stopped during pair.",
+    "rows": [
+      {
+        "name": "live-skin-full-baseline-1",
+        "rawSHA256": {
+          "source.json": "3bc25ffd27e307876f9d64023e6c8aa36c14b262c768fac83002809208bca9d4",
+          "receiver.json": "74a97ab2af836e7618d8665716f011abb0327d66014e5bdc673717d99bd43704",
+          "run.json": "ec9ec1b8acaaf94d2bd8b806840b97c337b19c22dbea76d31bad433a42332fee"
+        },
+        "summary": {
+          "scope": "Live original-AI skin component; engine callbacks, not physical presents or input-to-photon",
+          "acceptanceEligible": false,
+          "quantileMethod": "Sorted lower order statistic at floor((N-1)*q); all live callbacks retained",
+          "fullFixturePassed": true,
+          "logicHz": 59.760212049550816,
+          "sourceSnapshotHz": 38.71133736098681,
+          "droppedDebtSeconds": 0.24887549999999495,
+          "engineDrawCallbacks": 3611,
+          "distinctDrawTicks": 2331,
+          "staleDrawRatio": 0.3544724453060094,
+          "engineCallbackIntervalMs": {
+            "min": 0.637000000002445,
+            "p50": 16.6529999999912,
+            "p95": 19.3629999999976,
+            "p99": 19.9309999999823,
+            "max": 49.7200000000012
+          },
+          "estimatedStateAgeMs": {
+            "min": 4.53059999999823,
+            "p50": 20.4374000000098,
+            "p95": 36.8780000000115,
+            "p99": 44.9744999999966,
+            "max": 71.7140000000072
+          },
+          "clock": {
+            "bestRttMs": 2.11259999999311,
+            "model": "minimum-RTT four-timestamp monotonic alignment; not input-to-photon",
+            "nodeMinusClientMs": 60.385500000004,
+            "uncertaintyMs": 1.05629999999655
+          },
+          "callbackLongCounts": {
+            "33.333333333333336": 3,
+            "50": 0,
+            "100": 0
+          },
+          "focusedCallbacks": 3611,
+          "minimizedCallbacks": 0,
+          "startSentToFirstLiveCallbackMs": 141.34900000000198,
+          "ownedTreePeakRSSBytes": 1962385408,
+          "ownedTreePeakPrivateBytes": 2193379328,
+          "memoryDefinition": "sum of owned root/descendant RSS and Windows private committed bytes; shared RSS may double count",
+          "coldDefinition": "fresh processes; OS, engine import and GPU driver caches retained",
+          "gpuTimeMs": null,
+          "fullHighParity": false,
+          "fullScene": false,
+          "audioOutput": false
+        }
+      },
+      {
+        "name": "live-skin-full-interval-1",
+        "rawSHA256": {
+          "source.json": "40080e72b540189f37cff6f60316657aed94cf38cc0b4366d9e8aae2546dd087",
+          "receiver.json": "3ba8197a0f0eeca703c4cc3fa758c4eacca8e070dc668f68ea5118a6a11a493d",
+          "run.json": "4f4086032419cc0973a3b7585a30a7d5261d11e1c081dbdbddf3a3abea08370d"
+        },
+        "summary": {
+          "scope": "Live original-AI skin component; engine callbacks, not physical presents or input-to-photon",
+          "acceptanceEligible": false,
+          "quantileMethod": "Sorted lower order statistic at floor((N-1)*q); all live callbacks retained",
+          "fullFixturePassed": true,
+          "logicHz": 59.993854529511275,
+          "sourceSnapshotHz": 55.54431031857252,
+          "droppedDebtSeconds": 0,
+          "engineDrawCallbacks": 3599,
+          "distinctDrawTicks": 3322,
+          "staleDrawRatio": 0.07696582383995554,
+          "engineCallbackIntervalMs": {
+            "min": 0.565000000002328,
+            "p50": 16.653999999995,
+            "p95": 18.3499999999913,
+            "p99": 19.4100000000035,
+            "max": 48.7750000000233
+          },
+          "estimatedStateAgeMs": {
+            "min": 4.58800000000338,
+            "p50": 13.2900000000081,
+            "p95": 29.3832000000111,
+            "p99": 43.1416999999929,
+            "max": 69.5720000000001
+          },
+          "clock": {
+            "bestRttMs": 1.63219999999274,
+            "model": "minimum-RTT four-timestamp monotonic alignment; not input-to-photon",
+            "nodeMinusClientMs": 45.0558000000019,
+            "uncertaintyMs": 0.816099999996368
+          },
+          "callbackLongCounts": {
+            "33.333333333333336": 3,
+            "50": 0,
+            "100": 0
+          },
+          "focusedCallbacks": 3599,
+          "minimizedCallbacks": 0,
+          "startSentToFirstLiveCallbackMs": 107.73699999999371,
+          "ownedTreePeakRSSBytes": 1860497408,
+          "ownedTreePeakPrivateBytes": 2174902272,
+          "memoryDefinition": "sum of owned root/descendant RSS and Windows private committed bytes; shared RSS may double count",
+          "coldDefinition": "fresh processes; OS, engine import and GPU driver caches retained",
+          "gpuTimeMs": null,
+          "fullHighParity": false,
+          "fullScene": false,
+          "audioOutput": false
+        }
+      }
+    ],
+    "snapshotHzGainFraction": 0.4348331549648279,
+    "change": "Only platform timer scheduling changes from work-then-setTimeout to setInterval(1000/60); original ghCreateLoopClock owns1/60/max3/debt/logical ticks,0tick does not emit pose."
+  },
+  "portableCPUProof": {
+    "rawPath": "work\\godot-native\\bridge\\evidence\\public-interval-cpu-1-result.json",
+    "sha256": "86ee99e921de529b917e578fb72225e3b89b9450b454a312485801cf12aa51a7",
+    "result": {
+      "kind": "published-portable-live-bridge-functional-proof",
+      "rankingEligible": false,
+      "ok": true,
+      "scope": "One public-path interval3600+CPUloopback functionality/all8exact verification; concurrent other CPU work, no Godot/GPU",
+      "sourceRaw": "public/golden-hour/prototypes/godot-live-bridge/evidence/public-interval-cpu-1-source.json",
+      "sourceRawSHA256": "ffd26972cd92d39978086a7ce01825bc375f09180ad122a30a2bbb0671fe920f",
+      "clientRaw": "public/golden-hour/prototypes/godot-live-bridge/evidence/public-interval-cpu-1-client.json",
+      "clientRawSHA256": "39ce1ac7ff0a01b24353f801aead5c35095dcaf17aa45932e537146b0e1011a3",
+      "launchSHARecord": "work/godot-native/bridge/evidence/public-interval-cpu-1-launch.json",
+      "sourceHashesRechecked": 38,
+      "postRunSourceMismatches": [],
+      "logicalTicks": 3600,
+      "nineBotTicks": [
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600,
+        3600
+      ],
+      "exportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "maxTicksPerCallback": 3,
+      "actualNodeGPUFrames": 0,
+      "sourceSnapshotPackets": 2465,
+      "ACKed": 2465,
+      "CPUClientDistinctTicks": 2465,
+      "sourceSetupPublishedSHA256": "9668f729c2d49bb45a779f9e5e34f8046b8b0d82462682d60ecfd840261a56d8",
+      "sourceImplementationSHA256": "20eb0cb979fe29b0befb78cd4015d9f9f38ac81297bfac7e8e9b8451f9c0785c",
+      "audioRecording": {
+        "commands": 20000,
+        "commandDropped": 839304,
+        "errors": []
+      },
+      "limits": [
+        "Functional public-path/all8exact verification only. Concurrent CPU work; no timing ranking.",
+        "CPU receiver is not Godot/native renderer and reports renderFPS=null.",
+        "No fullHigh/audioDSP/IPC/nativecold/memory/package acceptance."
+      ]
+    }
+  },
+  "portableGPUSmoke": {
+    "scope": "120tick path/functional check with concurrent CPU work; not a performance ranking or full3600GPU proof",
+    "rawSHA256": {
+      "source.json": "af1ff7033add1c69cc19c8485dec891c0811e80ad3e0cb279043caceffbbc4a5",
+      "receiver.json": "088784a1c290911a7b5609632de6096f8e2807205edb0806489beacd95d8e38d",
+      "run.json": "06f27196d7d8dea440d264426487772627e2a942b1feaeb6acb23ef0ea0f40e9"
+    },
+    "result": {
+      "scope": "Live original-AI skin component; engine callbacks, not physical presents or input-to-photon",
+      "acceptanceEligible": false,
+      "quantileMethod": "Sorted lower order statistic at floor((N-1)*q); all live callbacks retained",
+      "fullFixturePassed": false,
+      "logicHz": 59.845837123570064,
+      "sourceSnapshotHz": 56.85354526739156,
+      "droppedDebtSeconds": 0,
+      "engineDrawCallbacks": 119,
+      "distinctDrawTicks": 112,
+      "staleDrawRatio": 0.058823529411764705,
+      "engineCallbackIntervalMs": {
+        "min": 0.989000000001397,
+        "p50": 16.6999999999971,
+        "p95": 18.3920000000071,
+        "p99": 28.8260000000009,
+        "max": 71.3190000000031
+      },
+      "estimatedStateAgeMs": {
+        "min": 5.44719999998051,
+        "p50": 13.3466999999946,
+        "p95": 30.0935999999929,
+        "p99": 58.3687999999966,
+        "max": 91.7473999999929
+      },
+      "clock": {
+        "bestRttMs": 1.86200000000827,
+        "model": "minimum-RTT four-timestamp monotonic alignment; not input-to-photon",
+        "nodeMinusClientMs": 55.4356999999945,
+        "uncertaintyMs": 0.931000000004133
+      },
+      "callbackLongCounts": {
+        "33.333333333333336": 2,
+        "50": 1,
+        "100": 0
+      },
+      "focusedCallbacks": 119,
+      "minimizedCallbacks": 0,
+      "startSentToFirstLiveCallbackMs": 116.17399999999907,
+      "ownedTreePeakRSSBytes": 1964322816,
+      "ownedTreePeakPrivateBytes": 2196254720,
+      "memoryDefinition": "sum of owned root/descendant RSS and Windows private committed bytes; shared RSS may double count",
+      "coldDefinition": "fresh processes; OS, engine import and GPU driver caches retained",
+      "gpuTimeMs": null,
+      "fullHighParity": false,
+      "fullScene": false,
+      "audioOutput": false
+    },
+    "statistics": {
+      "ACKs": 112,
+      "appliedNotDrawn": 0,
+      "cameraAspectMismatchFrames": 0,
+      "distinctDrawTicks": 112,
+      "firstPersonSuppressed": 1,
+      "hiddenBotRigs": 9,
+      "latestBodies": 102,
+      "latestK9": 0,
+      "liveDraws": 119,
+      "maxBufferedBytes": 51384,
+      "nonDefaultProjectionFrames": 0,
+      "posePackets": 112,
+      "rowDrops": 0,
+      "sequenceGaps": 2,
+      "sourceSuperseded": 2,
+      "staleDraws": 7,
+      "unmappedBodyRecords": 11314,
+      "unmappedK9Records": 0,
+      "visibleBotRigs": 9,
+      "wireBytes": 5764056
+    },
+    "paletteReadbackMaxError": 0.0
+  },
+  "checks": {
+    "unit": {
+      "passed": 1,
+      "failed": 0
+    },
+    "publishedHeadlessImport": true,
+    "publishedFullCPU8Strict": true,
+    "publishedPartialNativeGPU": true
+  },
+  "retainedFailures": [
+    "work/godot-native/bridge/evidence/realtime-full-backpressure-1.json",
+    "work/godot-native/live/evidence/live-skin-smoke-1/run.json"
+  ],
+  "limits": [
+    "Skin-only renderer: FP subset suppressed, body/K9 transforms counted but their geometry/High materials/effects/planar reflection unported.",
+    "Audio source remains recording VirtualAudioContext; over800000diagnostic records dropped, no native fullsound claim.",
+    "Candidate55.54source snapshots/second does not show60fresh poses/second.",
+    "One exploratory pair cannot establish a repeatable performance ranking; native physical present/GPU timestamps are not measured.",
+    "Whole-tree RSS may double-count shared pages; private peaks/process initialization are development diagnostics, not release/cold/entry/package acceptance."
+  ],
+  "postSmokeHarnessChecks": {
+    "changes": [
+      "Validate explicit engine/packet before creating output",
+      "Snapshot own runner source in later runs"
+    ],
+    "pythonCompile": true,
+    "invalidEngineFailsBeforeOutputOrLaunch": true,
+    "renderAndProducerSourcesChanged": false
+  }
+}

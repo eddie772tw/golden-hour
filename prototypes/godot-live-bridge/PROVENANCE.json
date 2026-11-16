@@ -1,0 +1,59 @@
+{
+  "schema": "gh-live-bridge-source-provenance-v1",
+  "publishedSetupPath": "prototypes/godot-node-logic/authoritative-probe.mjs",
+  "publishedSetupSHA256": "9668f729c2d49bb45a779f9e5e34f8046b8b0d82462682d60ecfd840261a56d8",
+  "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "publication": "Staged source bytes are LF, with portable sibling module resolution. Original experiments retain their original bytes.",
+  "origins": [
+    {
+      "path": "work/godot-native/bridge/producer.mjs",
+      "sha256": "3ff7a0af690e67514af07c224d1870081f1c09479a221e632632f2dd6edf3081"
+    },
+    {
+      "path": "work/godot-native/bridge-timer/producer-interval.mjs",
+      "sha256": "df836472ef266012eb1616c3aa51d1bae8adc4e4365d6ec10255d6377b5290c1"
+    },
+    {
+      "path": "work/godot-native/bridge/session.mjs",
+      "sha256": "f3802ec8cab5dc700cfe2370ca4070f3db97f0d1083929effe24b9eba902c30f"
+    },
+    {
+      "path": "work/godot-native/bridge/poses.mjs",
+      "sha256": "9a34d73db6a0977d031f4e7fdb5fad41a515ce1a3e787c66abdf1939d45a90cf"
+    },
+    {
+      "path": "work/godot-native/bridge/protocol.mjs",
+      "sha256": "713c53b8541fdb132c2af8341d02a47fb072b359996617e1abd6c3d7ccf27bea"
+    },
+    {
+      "path": "work/godot-native/bridge/clock.mjs",
+      "sha256": "3f82cc47781e56c50b491b49d53f868dd0c36284c3c299edf3362f110941f77d"
+    }
+  ],
+  "historicalObservations": {
+    "pairRaw": "work/godot-native/live/evidence/baseline-interval-pair-1.json",
+    "pairSHA256": "fb9ed03eaf5ab4e4000ed21ada64e1e09b497ee7137d627e17ef993c2ff6347e",
+    "scope": "One consecutive exploratory baseline/interval skin-only Vulkan/full9AI pair, not full High/performance acceptance",
+    "sourceSnapshotHz": [
+      38.71133736098681,
+      55.54431031857252
+    ],
+    "logicHz": [
+      59.760212049550816,
+      59.993854529511275
+    ],
+    "staleDrawRatio": [
+      0.3544724453060094,
+      0.07696582383995554
+    ],
+    "poseAgeP95ms": [
+      36.8780000000115,
+      29.3832000000111
+    ],
+    "clockUncertaintyMs": [
+      1.05629999999655,
+      0.816099999996368
+    ],
+    "both8exportsExact": true
+  }
+}

@@ -106,6 +106,16 @@ mixing, spatial/bus routing and full-game/device quality remain unaccepted.
 Local finite v2 and full-AI evidence are under
 `work/godot-native/audio/live-v2/wasapi-1/` and `work/godot-native/audio/full-ai/`.
 
+The [live bridge and native receiver](../../prototypes/godot-live-bridge/README.md)
+now preserve all eight complete original-AI exports in real-time tests. One
+skin-only Vulkan pair improved source snapshots38.71→55.54Hz and stale engine
+draws35.45%→7.70% after only changing timer scheduling. It still does not show
+60fresh poses/second or full High parity. The published source passes complete
+CPU equality and partial visible native path checks; [Stage16](evidence/stage16-godot-live-bridge.json)
+keeps those distinct from the earlier full native experiment and reports state
+age, callback timing and memory limits. There is no physical-present/GPU-time
+or final-release acceptance.
+
 Migration acceptance still requires the original full AI/perception/navigation,
 physics/death/ragdolls/grenades/K9, live geometry and skin updates, full sound,
 and the High effects including planar reflection at up to 30 Hz. Recordings of

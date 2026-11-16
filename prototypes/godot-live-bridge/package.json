@@ -1,0 +1,15 @@
+{
+  "name": "golden-hour-godot-live-bridge",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "test": "node bridge.test.mjs",
+    "start": "node producer-interval.mjs",
+    "start:baseline": "node producer-baseline.mjs",
+    "loopback": "node loopback-client.mjs"
+  }
+}
