@@ -791,3 +791,24 @@ The corrected native capture returns122samples: one startup empty and121nonempty
 Opaque and shadow intervals account for about70.15% of the average GPU marker envelope. These are render-thread wall intervals and GPU queue elapsed times, not exclusive self time, shader utilization, physical present or full application frame cost. Inclusive nested groups stay separate from disjoint segments to prevent double counting. Actual main/render reads all used Godot logical Thread::ID1 under thread-model setting1; this is not Win32TID and cannot be mapped directly to ETW.
 
 The published package includes raw/command/component evidence, analysis, both failures and source/API pins; its analyzer3checks, actual headless collector and5startup cases pass after relocation. Root reran its archived analysis and reproduced119/120coverage. [Evidence](evidence/stage18-godot-render-observer.json) and [full review](../../prototypes/godot-render-observer/REVIEW-GPU3.md) preserve all gaps. This is a diagnostic frozen PBR slice with profiling overhead, not a clean full-High FPS result.
+
+## Stage 19: live original world scaffold and observed GPU warmup
+
+The [published live-world component](../../prototypes/godot-live-world/README.md) combines the original Node AI, authoritative camera, live affine bot rigs and original movable-prop geometry with an inventoried captured-world scaffold. The public read-only rest exporter preserves101 props/274 children/60 geometries/22 materials, with zero export RNG calls, unchanged source graph and zero error across274 child transforms/8,530 sampled native Three vertices. Exact owner/geometry/surface evidence reuses captured materials for272 children from100 props; the missing vase's two children retain explicit scalar fallback. These are source/extraction checks, not GPU vertex parity.
+
+Of516 captured objects,211 remain **static-or-unowned**,272 prop children receive true live body roots,9 frozen actor skin objects are replaced by live skins, and24 unmapped dynamic records are excluded with reasons. Unowned does not prove static: clocks, glass and other captured behavior can still be frozen. Weapon/temporary/grenade/FP/K9 assets, child animation, full FX/audio and High shading/reflection/AO/post remain incomplete. The native ACES option also differs from the original final shader's active custom film/grade/manual sRGB; the original `aces()` definition is unused.
+
+Before START, the receiver submits real constructor skins/rest props without advancing AI, observes two16-draw windows with at least12 stable counter frames, performs a native1920×1080 readback, restores scene state, then clears clock alignment and obtains five fresh samples. Both visible runs report289 draws/501 objects at the readback and stable first64 live counter samples. The loading overlay makes that readback black; its hash is not geometry/pixel parity. This is an **observed/heuristic GPU barrier**, not a query of pending pipeline jobs or a guarantee for future effects. All cold/warmup rows remain, including long loading intervals.
+
+| Observed component result | Public relocated120 ticks | Private historical3600 ticks |
+|---|---:|---:|
+| Source/receiver exit, engine errors |0/0, none|0/0, none|
+| Complete3600 fixture /all8 strict exports |Not established; raw false retained|Pass /all8 true|
+| Live engine draws /distinct source ticks |119 /111|3598 /3421|
+| Draws using an old source tick |8|177|
+| Dropped simulation debt |0|0|
+| Minimum clock RTT /uncertainty |1.598ms /±0.799ms|1.766ms /±0.883ms|
+
+The public120-tick relocation is a partial functional smoke: only manifest/seed/equipment equal the complete oracle; decisionTrace/events/checkpoints/state/coverage and `fullFixturePassed` remain false. It must not be described as an all8-strict full fixture. The separate private3600 run supplies that complete comparison; [compact evidence](evidence/stage19-godot-live-world.json) preserves exact raw paths/hashes and this distinction. Public runner hashes/dependencies are unchanged before/after; the43-file source manifest stays separate from generated validation evidence.
+
+`frame_post_draw` is an engine callback, not physical present, GPU time or input-to-photon. CPU prop-root/skeleton-palette readback is not GPU-deformed vertex proof. These finite component runs do not establish full High behavior, stable60fresh states/second, release cold-start/entry/package size or an FPS ranking against the original game.

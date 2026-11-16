@@ -1,0 +1,32 @@
+GH_BRIDGE {"event":"listening","port":48921}
+START original-lD-materials
+[materials] 55 materials, textures painted in 26358 ms (total 26361 ms)
+DONE original-lD-materials
+START original-PD-prop-factories
+DONE original-PD-prop-factories
+START original-FX-constructor
+DONE original-FX-constructor
+START original-glass-constructor
+DONE original-glass-constructor
+START original-sky
+DONE original-sky
+START original-FD-hotel
+DONE original-FD-hotel
+START original-KD-loose-props
+DONE original-KD-loose-props
+START original-ND-dressing
+DONE original-ND-dressing
+START original-qD-details
+DONE original-qD-details
+START original-finishDress/finalize/glass
+DONE original-finishDress/finalize/glass
+START original-shafts/glows/finishing
+[lighting] volume 60x9x46, 324 occluders, 532 sun patches, 305 fittings, baked in 910 ms
+DONE original-shafts/glows/finishing
+START original-XD-nav
+DONE original-XD-nav
+START original-player/VM/arsenal/combat/match/9bots
+START original-eZ-init/real-PCM/virtual-hardware
+GH_BRIDGE {"event":"ready","port":48921,"skins":19,"props":101,"tick":0}
+GH_BRIDGE {"event":"started","port":48921,"tickLimit":120}
+GH_BRIDGE {"event":"finished","reason":"complete","ok":true,"fullFixturePassed":false,"output":"D:\\Golden-Hour\\public\\golden-hour\\prototypes\\godot-live-world\\evidence\\portable-world-warmup-smoke-1\\source.json"}

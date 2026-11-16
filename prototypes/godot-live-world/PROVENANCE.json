@@ -1,0 +1,256 @@
+{
+  "schema": "gh-live-world-portable-source-v1",
+  "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "frozenWarmupManifestSHA256": "446a0bc35a5dbc2cbffef0b51a5992f0cbff3edf4a06629c11b16ff7abea10e1",
+  "origins": [
+    {
+      "packagePath": "receiver/capture_importer.gd",
+      "sourcePath": "work/godot-native/live-world-warmup/capture_importer.gd",
+      "sourceSHA256": "07dc5aeb261bdfba5c4567b45083bb71d9a6dcaf4602cab12c69ba66bc7b2744",
+      "packageSHA256": "07dc5aeb261bdfba5c4567b45083bb71d9a6dcaf4602cab12c69ba66bc7b2744",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/main.gd",
+      "sourcePath": "work/godot-native/live-world-warmup/main.gd",
+      "sourceSHA256": "6162a0c88ca1cd362b65337c8889fb72cb58b402c12889f0a70b9ad157da4b18",
+      "packageSHA256": "45a387eaeb9ff59c11ef1b1c996dd4ec771b3cbc708594e1be180ab3e35f51ba",
+      "adaptation": "Portable default packet path only"
+    },
+    {
+      "packagePath": "receiver/main.tscn",
+      "sourcePath": "work/godot-native/live-world-warmup/main.tscn",
+      "sourceSHA256": "b87973242781a62956f3174290bb6c1ae733b4bcb7278a4bcb84980f0cb6b121",
+      "packageSHA256": "b87973242781a62956f3174290bb6c1ae733b4bcb7278a4bcb84980f0cb6b121",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/native_skin.gd",
+      "sourcePath": "work/godot-native/live-world-warmup/native_skin.gd",
+      "sourceSHA256": "da30fbf2b4c8d97512cd1fbc72dbe1ad78b2fa8425ad651b74baf63366140ed2",
+      "packageSHA256": "da30fbf2b4c8d97512cd1fbc72dbe1ad78b2fa8425ad651b74baf63366140ed2",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/ownership.gd",
+      "sourcePath": "work/godot-native/live-world-warmup/ownership.gd",
+      "sourceSHA256": "1f5fdf54b9d41207221b24760189653bd6b58dcaf2eff95fc37c3c6a3ea216da",
+      "packageSHA256": "1f5fdf54b9d41207221b24760189653bd6b58dcaf2eff95fc37c3c6a3ea216da",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/pbr_adaptor.gd",
+      "sourcePath": "work/godot-native/live-world-warmup/pbr_adaptor.gd",
+      "sourceSHA256": "b1ad272722b954b87268798d3b7d175c0320b5eb3fff80332d9c9639fe37d821",
+      "packageSHA256": "b1ad272722b954b87268798d3b7d175c0320b5eb3fff80332d9c9639fe37d821",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/project.godot",
+      "sourcePath": "work/godot-native/live-world-warmup/project.godot",
+      "sourceSHA256": "1324ce0d01ae1d035c99c8357f378b541bf6f2a135e1e618c223cdf723c567bb",
+      "packageSHA256": "1324ce0d01ae1d035c99c8357f378b541bf6f2a135e1e618c223cdf723c567bb",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/prop_library.gd",
+      "sourcePath": "work/godot-native/live-world-warmup/prop_library.gd",
+      "sourceSHA256": "7cb81d0c19bf72eb08dff84438df8bf92ca0710487b45142f453b80088b55a0f",
+      "packageSHA256": "7cb81d0c19bf72eb08dff84438df8bf92ca0710487b45142f453b80088b55a0f",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/protocol.gd",
+      "sourcePath": "work/godot-native/live-world-warmup/protocol.gd",
+      "sourceSHA256": "bf61cafffa0b4f779523028ddff6bf9b2e4f04ede4bcd283fb19c4ec5e8342c4",
+      "packageSHA256": "bf61cafffa0b4f779523028ddff6bf9b2e4f04ede4bcd283fb19c4ec5e8342c4",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/shaft.gdshader",
+      "sourcePath": "work/godot-native/live-world-warmup/shaft.gdshader",
+      "sourceSHA256": "a592ccabc24ddc49fc9fa11a057ee3f8d61f6c5d86ef899f04cf53aac2bc6554",
+      "packageSHA256": "a592ccabc24ddc49fc9fa11a057ee3f8d61f6c5d86ef899f04cf53aac2bc6554",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/source_shaders.gd",
+      "sourcePath": "work/godot-native/live-world-warmup/source_shaders.gd",
+      "sourceSHA256": "f2470c506aad7c89cb8d0dae0398619ba19f88a0f01e86b4ef58f82301949918",
+      "packageSHA256": "f2470c506aad7c89cb8d0dae0398619ba19f88a0f01e86b4ef58f82301949918",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/texture_binding.gd",
+      "sourcePath": "work/godot-native/live-world-warmup/texture_binding.gd",
+      "sourceSHA256": "2849fb5db86d98db8d9c84b81ee1ee2b11c26778d0e8e5312d3a3748342d4334",
+      "packageSHA256": "2849fb5db86d98db8d9c84b81ee1ee2b11c26778d0e8e5312d3a3748342d4334",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/warmup_gate.gd",
+      "sourcePath": "work/godot-native/live-world-warmup/warmup_gate.gd",
+      "sourceSHA256": "e03aacfa54ce98ccd627bda86181ba1e31bb85f7294aa3e14e5fb1eda81e416d",
+      "packageSHA256": "e03aacfa54ce98ccd627bda86181ba1e31bb85f7294aa3e14e5fb1eda81e416d",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/world_scaffold.gd",
+      "sourcePath": "work/godot-native/live-world-warmup/world_scaffold.gd",
+      "sourceSHA256": "72f88dfda6e09ce635f56e80a9cda56189d752907b5a7666cfd070dffb9e9366",
+      "packageSHA256": "72f88dfda6e09ce635f56e80a9cda56189d752907b5a7666cfd070dffb9e9366",
+      "adaptation": "Byte-exact frozen warmup runtime"
+    },
+    {
+      "packagePath": "receiver/warmup_gate_test.gd",
+      "sourcePath": "work/godot-native/live-world-warmup/warmup_gate_test.gd",
+      "sourceSHA256": "9132a272894c88b412107de6f8684174692964dcf7ea804f1ef4356e6c3dc471",
+      "packageSHA256": "9132a272894c88b412107de6f8684174692964dcf7ea804f1ef4356e6c3dc471",
+      "adaptation": "Byte-exact pure CPU gate test"
+    },
+    {
+      "packagePath": "export-prop-assets.mjs",
+      "sourcePath": "work/godot-native/live-world/export-prop-assets.mjs",
+      "sourceSHA256": "07114f78541847df9e8e0a0397dd90e092b79bc5cbae95a66cb161a5305e60db",
+      "packageSHA256": "07114f78541847df9e8e0a0397dd90e092b79bc5cbae95a66cb161a5305e60db",
+      "adaptation": "Byte-exact original read-only exporter/CPU tool"
+    },
+    {
+      "packagePath": "export-prop-assets.test.mjs",
+      "sourcePath": "work/godot-native/live-world/export-prop-assets.test.mjs",
+      "sourceSHA256": "a17bf55fdd7c97f4fe48ed925d1c100f2758b7426366375f9f0d62a32f5a92d5",
+      "packageSHA256": "a17bf55fdd7c97f4fe48ed925d1c100f2758b7426366375f9f0d62a32f5a92d5",
+      "adaptation": "Byte-exact original read-only exporter/CPU tool"
+    },
+    {
+      "packagePath": "coverage.py",
+      "sourcePath": "work/godot-native/live-world/coverage.py",
+      "sourceSHA256": "4fe4a2bbfe7126356fba16256879963d78d1646248813995348dbbcf14c6009f",
+      "packageSHA256": "4fe4a2bbfe7126356fba16256879963d78d1646248813995348dbbcf14c6009f",
+      "adaptation": "Byte-exact original read-only exporter/CPU tool"
+    },
+    {
+      "packagePath": "export-runner.mjs",
+      "sourcePath": "work/godot-native/live-world/export-runner.mjs",
+      "sourceSHA256": "41fa11dbc7b41ac177715235f0857f01ae249856073a9adecbe5c4dd8951769d",
+      "packageSHA256": "62a0094faf30c576c7c383f05ac1d9f71d978e89d233740774572e2c1f869ecd",
+      "adaptation": "Public sibling session import and package-relative default output only"
+    },
+    {
+      "packagePath": "run_live.py",
+      "sourcePath": "work/godot-native/run_live.py",
+      "sourceSHA256": "4b1f1904b4b7ce5328facafd153e8ba7bf391fb5605236396a1089db1b659768",
+      "packageSHA256": "3aae18e14f960935f0582e8c5c5c8a28a56bf026bebc86bb6d912e99bb12bfdc",
+      "adaptation": "Explicit engine/packet, sibling public producers, local evidence path, portable pre/post source hash root; checks real warm/clock gates; exact sibling/asset dependency hashes checked before/after, no binary source copies"
+    },
+    {
+      "packagePath": "fixtures/props.rest.reference.json",
+      "sourcePath": "work/godot-native/live-world/evidence/rest-props-v2/props.rest.json",
+      "sourceSHA256": "60ea19acbaf11f9cf183106665c665148e40e20d224bc19ae926b7441dc501b7",
+      "packageSHA256": "60ea19acbaf11f9cf183106665c665148e40e20d224bc19ae926b7441dc501b7",
+      "adaptation": "Historical metadata only; referenced binary is deliberately not distributed"
+    },
+    {
+      "packagePath": "fixtures/prop-export-reference.json",
+      "sourcePath": "work/godot-native/live-world/evidence/rest-props-v2/export-report.json",
+      "sourceSHA256": "59aaed244186a047f9679bfd51bd7d61d0a8bf3b48c7910cf3325c5cd8a6fa6e",
+      "packageSHA256": "59aaed244186a047f9679bfd51bd7d61d0a8bf3b48c7910cf3325c5cd8a6fa6e",
+      "adaptation": "Historical metadata only; referenced binary is deliberately not distributed"
+    }
+  ],
+  "dependencySHA256": {
+    "prototypes/godot-live-bridge/session.mjs": "466086c1c0146bca66cd2547a8574fecc5cc7538e8c59b4438065b5542421c16",
+    "prototypes/godot-live-bridge/logic.mjs": "c33fab807e31edc63f2325e96c012d94c35f129fcbb3afec8d066289c2def35b",
+    "prototypes/godot-live-bridge/producer-interval.mjs": "20eb0cb979fe29b0befb78cd4015d9f9f38ac81297bfac7e8e9b8451f9c0785c",
+    "prototypes/godot-live-bridge/producer-baseline.mjs": "2d3a2a69ac9126bb2938025f9bc4d5ced816048c7dce7bc7b419fa23ec62468a",
+    "prototypes/godot-live-bridge/poses.mjs": "9a34d73db6a0977d031f4e7fdb5fad41a515ce1a3e787c66abdf1939d45a90cf",
+    "prototypes/godot-live-bridge/protocol.mjs": "713c53b8541fdb132c2af8341d02a47fb072b359996617e1abd6c3d7ccf27bea",
+    "prototypes/godot-live-bridge/clock.mjs": "f35047d4287dd36b6537c945d509d0ed0b7e9dc2a44d56af4c3f0d571be8d967",
+    "prototypes/godot-node-logic/authoritative-probe.mjs": "9668f729c2d49bb45a779f9e5e34f8046b8b0d82462682d60ecfd840261a56d8",
+    "prototypes/godot-node-logic/load-runtime.mjs": "2f0b70559123576e85af355cb50c9a04bb243df005a5c4a1d3e3171eb0a51d26",
+    "prototypes/godot-node-logic/world-probe.mjs": "53fe657d63bbad386c07afeaaa4cf27f55124e152d00a5b12a35ec003d509e3f",
+    "prototypes/godot-node-logic/initial-props.mjs": "f6fee6e07202dd0eec44f90f7107027dcdcba93332f3ca39a05b3439d3570995",
+    "prototypes/godot-node-logic/fixtures.mjs": "e6b2c14d540b91479daa6a668e2082227e3398f47cec32928b31f3570e710308",
+    "prototypes/godot-node-logic/virtual-audio.mjs": "b352dbcc82eecb83cfa1da79177b95b3f2382ed58a4c38cf84e83afe125d5356",
+    "prototypes/godot-node-logic/fixtures/initial-world.json": "747a6a15b705971144bfd1f855b4835b96e43b4bf6c2bc3997fdbcd86cbdd76e",
+    "prototypes/godot-node-logic/fixtures/baseline.json": "863f413884feb39c5a7fcc59865a367293667136c691567d38dcd46526c7e91f",
+    "prototypes/godot-node-logic/fixtures/provenance.json": "cc8180583e6605a5cc9095317de130d55492ee290f1b99a7ddd21561e722ee51",
+    "prototypes/godot-skin-component/export-skin.mjs": "27494f17c1d01e34477db270944e14ddb2efa91214aae8afe94a5b3c5a161267",
+    "prototypes/godot-skin-component/skin-data.mjs": "b0f5ca340416dd543c5fc75bfae4d905d99c8fe31d3dffb5f04572e4959d4f03",
+    "prototypes/godot-render-component/render/main.gd": "08dad12b8af93d2d6f2eae5bedec6a898afd08d32d1ebf288338e6c93edf7304",
+    "prototypes/godot-render-component/render/texture_binding.gd": "2849fb5db86d98db8d9c84b81ee1ee2b11c26778d0e8e5312d3a3748342d4334",
+    "prototypes/godot-render-component/render/pbr_adaptor.gd": "b1ad272722b954b87268798d3b7d175c0320b5eb3fff80332d9c9639fe37d821",
+    "prototypes/godot-render-component/render/source_shaders.gd": "f2470c506aad7c89cb8d0dae0398619ba19f88a0f01e86b4ef58f82301949918",
+    "prototypes/godot-render-component/render/shaft.gdshader": "a592ccabc24ddc49fc9fa11a057ee3f8d61f6c5d86ef899f04cf53aac2bc6554",
+    "prototypes/godot-render-component/render/fixtures/gl-audit-proof.json": "c2aa2a04e395a6f5590467ecc6db4976d8f478b27d3a7159e6dc6463b593c4d0",
+    "game/core/game.js": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+    "prototypes/godot-node-logic/asset-boot.mjs": "686ebed45c89a1be9bb32f5465b8d78c39fbba677e9951cf34ec97c6c2aca234",
+    "prototypes/godot-node-logic/native-canvas.mjs": "626262c0a22e77ecce024a44f69fedc431e756303a417bcd7f8c46d703a69ace",
+    "prototypes/godot-node-logic/pixel-canvas.mjs": "543ee3cec8258306b37dbb0d36f002383c3a5f5c871d2c8ede5a1cb5ee00e184",
+    "prototypes/godot-node-logic/package.json": "4b39e52b6c8f9cda1bfc3f589311a5791c417eb8c41c2dd0e8ee0a23bd452c4f",
+    "prototypes/godot-node-logic/package-lock.json": "3e334217ce70f2dc0a2dd8af9315d38bce779587c04e102dab6a8baf505dcf25",
+    "game/client/startup-geometry.js": "6154093aea3a69e3ddfec8953cfd83891b35c4c1041ee115eecf3e46732b3685",
+    "game/client/startup-cache.js": "7f16c8f487f920de4e989328c771db0d3255580239d588aa9e9a02859d392374",
+    "game/client/weapon-models.js": "15395588555bf04786775d9057f33ea75e4dafdbb5d66c838812ec7f5f1ba888",
+    "game/client/shop-weapon-art.js": "8cf4b2c7c7718b757ad6c55b0654cc0cf06031f6857e3ae6dcc3ae8685c55d76",
+    "game/client/performance-policy.js": "19f6d65bae97bb2b4ec28f2c139f2ee97a5f530ebdf789406285ecfdfef5860f",
+    "game/client/benchmark-full-ai.js": "e0338c6617cf6de5abac435958a200d67ed4b9733bad65bc910fbf33d7ad12ce",
+    "game/client/benchmark-scenario.js": "bd03f823ca89cb0770cfb12871f79a7c85063a762a06b7cdaba4e5b5ab400cd0",
+    "game/index.html": "f823a2e0ce08784b84be4a5bd5a674fd9695bf46873caca37e89a38377dd58a7",
+    "game/assets/operators.bin": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942"
+  },
+  "omitted": [
+    "Godot executable/cache",
+    "825MB scene and texture pixels",
+    "all generated binary files",
+    "fonts/node_modules",
+    "No recorded-pose game replay supplied"
+  ],
+  "fieldCorrection": "propRestAssets.rootsAtFinish is Node3D global transform/visibility state only. There is no propRestAssets.rootReadback field and no measured prop GPU vertex readback.",
+  "dependencyBytes": {
+    "prototypes/godot-live-bridge/session.mjs": 2236,
+    "prototypes/godot-live-bridge/logic.mjs": 465,
+    "prototypes/godot-live-bridge/producer-interval.mjs": 11744,
+    "prototypes/godot-live-bridge/producer-baseline.mjs": 11861,
+    "prototypes/godot-live-bridge/poses.mjs": 6965,
+    "prototypes/godot-live-bridge/protocol.mjs": 1819,
+    "prototypes/godot-live-bridge/clock.mjs": 768,
+    "prototypes/godot-node-logic/authoritative-probe.mjs": 10012,
+    "prototypes/godot-node-logic/load-runtime.mjs": 4738,
+    "prototypes/godot-node-logic/world-probe.mjs": 4820,
+    "prototypes/godot-node-logic/initial-props.mjs": 2736,
+    "prototypes/godot-node-logic/fixtures.mjs": 929,
+    "prototypes/godot-node-logic/virtual-audio.mjs": 7135,
+    "prototypes/godot-node-logic/fixtures/initial-world.json": 15289,
+    "prototypes/godot-node-logic/fixtures/baseline.json": 220931,
+    "prototypes/godot-node-logic/fixtures/provenance.json": 1224,
+    "prototypes/godot-skin-component/export-skin.mjs": 6191,
+    "prototypes/godot-skin-component/skin-data.mjs": 7786,
+    "prototypes/godot-render-component/render/main.gd": 29420,
+    "prototypes/godot-render-component/render/texture_binding.gd": 8248,
+    "prototypes/godot-render-component/render/pbr_adaptor.gd": 11487,
+    "prototypes/godot-render-component/render/source_shaders.gd": 7287,
+    "prototypes/godot-render-component/render/shaft.gdshader": 1270,
+    "prototypes/godot-render-component/render/fixtures/gl-audit-proof.json": 8302,
+    "game/core/game.js": 3806059,
+    "prototypes/godot-node-logic/asset-boot.mjs": 1750,
+    "prototypes/godot-node-logic/native-canvas.mjs": 1704,
+    "prototypes/godot-node-logic/pixel-canvas.mjs": 3425,
+    "prototypes/godot-node-logic/package.json": 395,
+    "prototypes/godot-node-logic/package-lock.json": 8157,
+    "game/client/startup-geometry.js": 8673,
+    "game/client/startup-cache.js": 11717,
+    "game/client/weapon-models.js": 1833,
+    "game/client/shop-weapon-art.js": 6502,
+    "game/client/performance-policy.js": 2702,
+    "game/client/benchmark-full-ai.js": 19312,
+    "game/client/benchmark-scenario.js": 16454,
+    "game/index.html": 91149,
+    "game/assets/operators.bin": 10078584
+  },
+  "limitations": [
+    "211 retained objects are static-or-unowned, not proven static: clock/chandelier/bulbs/chunk/case/glass and other dynamics remain frozen source scaffold.",
+    "FP/weapon/temp/K9/fullFX/bootstrap/normal/aux/shadow/reflection/High/audio parity incomplete.",
+    "rootsAtFinish is CPU Node3D state only; no prop GPU vertex/instance transform readback."
+  ]
+}

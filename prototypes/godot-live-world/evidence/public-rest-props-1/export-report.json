@@ -1,0 +1,822 @@
+{
+  "kind": "original-101-prop-readonly-export-proof",
+  "ok": true,
+  "fullAI": false,
+  "logicalTicksExecuted": 0,
+  "controllerInstalled": false,
+  "GPU": false,
+  "stages": [
+    {
+      "name": "original-lD-materials",
+      "ok": true,
+      "elapsedMs": 25164.29
+    },
+    {
+      "name": "original-PD-prop-factories",
+      "ok": true,
+      "elapsedMs": 16.518099999997503
+    },
+    {
+      "name": "original-FX-constructor",
+      "ok": true,
+      "elapsedMs": 596.8971999999994
+    },
+    {
+      "name": "original-glass-constructor",
+      "ok": true,
+      "elapsedMs": 4.846000000001368
+    },
+    {
+      "name": "original-sky",
+      "ok": true,
+      "elapsedMs": 5.401000000001659
+    },
+    {
+      "name": "original-FD-hotel",
+      "ok": true,
+      "elapsedMs": 7.787099999997736
+    },
+    {
+      "name": "original-KD-loose-props",
+      "ok": true,
+      "elapsedMs": 0.09720000000015716
+    },
+    {
+      "name": "original-ND-dressing",
+      "ok": true,
+      "elapsedMs": 7446.825700000001
+    },
+    {
+      "name": "original-qD-details",
+      "ok": true,
+      "elapsedMs": 4729.7557000000015
+    },
+    {
+      "name": "original-finishDress/finalize/glass",
+      "ok": true,
+      "elapsedMs": 8474.5749
+    },
+    {
+      "name": "original-shafts/glows/finishing",
+      "ok": true,
+      "elapsedMs": 805.6115999999965
+    },
+    {
+      "name": "original-XD-nav",
+      "ok": true,
+      "elapsedMs": 22.66610000000219
+    },
+    {
+      "name": "original-player/VM/arsenal/combat/match/9bots",
+      "ok": true,
+      "elapsedMs": 20883.329400000002
+    },
+    {
+      "name": "original-eZ-init/real-PCM/virtual-hardware",
+      "ok": true,
+      "elapsedMs": 3008.196499999991
+    }
+  ],
+  "platformCalls": [],
+  "setupFrozenSHA256": "9668f729c2d49bb45a779f9e5e34f8046b8b0d82462682d60ecfd840261a56d8",
+  "implementationSHA256": {
+    "export-runner.mjs": "62a0094faf30c576c7c383f05ac1d9f71d978e89d233740774572e2c1f869ecd",
+    "export-prop-assets.mjs": "07114f78541847df9e8e0a0397dd90e092b79bc5cbae95a66cb161a5305e60db"
+  },
+  "fixtureProvenance": {
+    "schema": "gh-node-logic-fixtures-v1",
+    "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+    "seed": 1195920689,
+    "comparedFields": [
+      "manifest",
+      "seed",
+      "equipment",
+      "decisionTrace",
+      "events",
+      "checkpoints",
+      "state",
+      "coverage"
+    ],
+    "additionalObservedField": "botCalls",
+    "fixtures": {
+      "baseline.json": {
+        "sha256": "863f413884feb39c5a7fcc59865a367293667136c691567d38dcd46526c7e91f",
+        "bytes": 220931,
+        "rawSource": "work/browser-render-next/desktop-screen/evidence/edge-desktop-screen-high-1.json",
+        "rawSourceSHA256": "ae7b5898a5412c6e55d6dc29a509861df67f8c4f2ad419be9f2341de4638893b",
+        "selection": "scenario, complete eight compared fields + complete botCalls"
+      },
+      "initial-world.json": {
+        "sha256": "747a6a15b705971144bfd1f855b4835b96e43b4bf6c2bc3997fdbcd86cbdd76e",
+        "bytes": 15289,
+        "rawSource": "work/godot-native/evidence/browser-initial-props-1.json",
+        "rawSourceSHA256": "dd4dab0e2fff8c28fef7674a0754fa2feb6dbc467c5519a4257da8ccf6495e39",
+        "selection": "pre-Deploy menu/ticknull immutable initializer, capture validity/core metadata only; no frames/GPU/system data"
+      }
+    }
+  },
+  "world": {
+    "colliders": 863,
+    "bakedMeshes": 100,
+    "physicsProps": 101,
+    "panes": 124,
+    "navNodes": 119,
+    "navIslands": [],
+    "objects": 594,
+    "meshes": 471
+  },
+  "worldBootstrapPassed": true,
+  "initialWorldConfig": {
+    "kind": "original-pre-deploy-world-configuration",
+    "path": "file:///D:/Golden-Hour/public/golden-hour/prototypes/godot-node-logic/fixtures/initial-world.json",
+    "sha256": "747a6a15b705971144bfd1f855b4835b96e43b4bf6c2bc3997fdbcd86cbdd76e",
+    "schema": "gh-browser-initial-world-v1",
+    "seed": 1195920689,
+    "originalCount": 101,
+    "changedCount": 23,
+    "differences": [
+      {
+        "index": 16,
+        "name": "barStool",
+        "previousP": [
+          -24.1,
+          0,
+          -4.95
+        ],
+        "previousQ": [
+          0,
+          -0.04275325507599332,
+          0,
+          0.999085661582833
+        ],
+        "homeP": [
+          -24.1,
+          0,
+          -4.95
+        ],
+        "homeQ": [
+          0,
+          0.12461592023055929,
+          0,
+          0.9922050556337086
+        ]
+      },
+      {
+        "index": 17,
+        "name": "barStool",
+        "previousP": [
+          -22.900000000000002,
+          0,
+          -4.95
+        ],
+        "previousQ": [
+          0,
+          -0.1302441208415939,
+          0,
+          0.9914819559559318
+        ],
+        "homeP": [
+          -22.900000000000002,
+          0,
+          -4.95
+        ],
+        "homeQ": [
+          0,
+          -0.12422839153185118,
+          0,
+          0.9922536504026624
+        ]
+      },
+      {
+        "index": 18,
+        "name": "barStool",
+        "previousP": [
+          -21.700000000000003,
+          0,
+          -4.95
+        ],
+        "previousQ": [
+          0,
+          -0.13832240840057258,
+          0,
+          0.9903872532167733
+        ],
+        "homeP": [
+          -21.700000000000003,
+          0,
+          -4.95
+        ],
+        "homeQ": [
+          0,
+          -0.08607418561467443,
+          0,
+          0.9962887305248266
+        ]
+      },
+      {
+        "index": 19,
+        "name": "barStool",
+        "previousP": [
+          -20.5,
+          0,
+          -4.95
+        ],
+        "previousQ": [
+          0,
+          -0.09409446102297882,
+          0,
+          0.9955632739333021
+        ],
+        "homeP": [
+          -20.5,
+          0,
+          -4.95
+        ],
+        "homeQ": [
+          0,
+          -0.15868415176281656,
+          0,
+          0.9873293979110089
+        ]
+      },
+      {
+        "index": 20,
+        "name": "barStool",
+        "previousP": [
+          -19.3,
+          0,
+          -4.95
+        ],
+        "previousQ": [
+          0,
+          -0.0030068013213617206,
+          0,
+          0.9999954795626897
+        ],
+        "homeP": [
+          -19.3,
+          0,
+          -4.95
+        ],
+        "homeQ": [
+          0,
+          0.09935244139274821,
+          0,
+          0.995052306358465
+        ]
+      },
+      {
+        "index": 21,
+        "name": "barStool",
+        "previousP": [
+          -18.1,
+          0,
+          -4.95
+        ],
+        "previousQ": [
+          0,
+          0.09351694607322598,
+          0,
+          0.9956176880696412
+        ],
+        "homeP": [
+          -18.1,
+          0,
+          -4.95
+        ],
+        "homeQ": [
+          0,
+          -0.18939638410043652,
+          0,
+          0.9819007127452755
+        ]
+      },
+      {
+        "index": 22,
+        "name": "barStool",
+        "previousP": [
+          -16.900000000000002,
+          0,
+          -4.95
+        ],
+        "previousQ": [
+          0,
+          -0.14135100828353703,
+          0,
+          0.9899595408183243
+        ],
+        "homeP": [
+          -16.900000000000002,
+          0,
+          -4.95
+        ],
+        "homeQ": [
+          0,
+          0.10599796633384907,
+          0,
+          0.9943663465408955
+        ]
+      },
+      {
+        "index": 57,
+        "name": "pot",
+        "previousP": [
+          11.4,
+          0.92,
+          -12.266875845519825
+        ],
+        "previousQ": [
+          0,
+          0.4410296457001108,
+          0,
+          0.8974925356868628
+        ],
+        "homeP": [
+          11.4,
+          0.92,
+          -12.16188766453415
+        ],
+        "homeQ": [
+          0,
+          0.9445013301421444,
+          0,
+          0.32850759102297755
+        ]
+      },
+      {
+        "index": 58,
+        "name": "pot",
+        "previousP": [
+          13.4,
+          0.92,
+          -12.147530288109555
+        ],
+        "previousQ": [
+          0,
+          0.9880384111416083,
+          0,
+          0.15420797031530564
+        ],
+        "homeP": [
+          13.4,
+          0.92,
+          -12.163160212431102
+        ],
+        "homeQ": [
+          0,
+          0.9885389203122384,
+          0,
+          0.15096623141588256
+        ]
+      },
+      {
+        "index": 59,
+        "name": "pot",
+        "previousP": [
+          14.8,
+          0.92,
+          -12.2
+        ],
+        "previousQ": [
+          0,
+          0.5391585199609198,
+          0,
+          -0.8422043044021744
+        ],
+        "homeP": [
+          14.8,
+          0.92,
+          -12.2
+        ],
+        "homeQ": [
+          0,
+          0.9951732461819993,
+          0,
+          -0.09813363380402153
+        ]
+      },
+      {
+        "index": 60,
+        "name": "pot",
+        "previousP": [
+          18.9,
+          0.92,
+          -12.1346191637218
+        ],
+        "previousQ": [
+          0,
+          0.3762996848506335,
+          0,
+          -0.9264980017146901
+        ],
+        "homeP": [
+          18.9,
+          0.92,
+          -12.296745819272473
+        ],
+        "homeQ": [
+          0,
+          0.9933902070146662,
+          0,
+          -0.11478630844904242
+        ]
+      },
+      {
+        "index": 61,
+        "name": "pot",
+        "previousP": [
+          20.9,
+          0.92,
+          -12.11813847431913
+        ],
+        "previousQ": [
+          0,
+          0.999756176914328,
+          0,
+          0.022081365937072262
+        ],
+        "homeP": [
+          20.9,
+          0.92,
+          -12.12873469828628
+        ],
+        "homeQ": [
+          0,
+          0.3459295909575391,
+          0,
+          0.9382604745484857
+        ]
+      },
+      {
+        "index": 62,
+        "name": "pot",
+        "previousP": [
+          22.3,
+          0.92,
+          -12.2
+        ],
+        "previousQ": [
+          0,
+          0.405066604979137,
+          0,
+          0.9142871789162723
+        ],
+        "homeP": [
+          22.3,
+          0.92,
+          -12.2
+        ],
+        "homeQ": [
+          0,
+          0.8908922134099974,
+          0,
+          0.45421477748465616
+        ]
+      },
+      {
+        "index": 63,
+        "name": "pot",
+        "previousP": [
+          11.4,
+          0.92,
+          -16.37393805538304
+        ],
+        "previousQ": [
+          0,
+          0.999917301894936,
+          0,
+          -0.012860379899183467
+        ],
+        "homeP": [
+          11.4,
+          0.92,
+          -16.384539319854227
+        ],
+        "homeQ": [
+          0,
+          0.5119888213917942,
+          0,
+          0.8589921110055909
+        ]
+      },
+      {
+        "index": 64,
+        "name": "pot",
+        "previousP": [
+          13.4,
+          0.92,
+          -16.459484094893558
+        ],
+        "previousQ": [
+          0,
+          0.3701581660916025,
+          0,
+          -0.9289687465548567
+        ],
+        "homeP": [
+          13.4,
+          0.92,
+          -16.396622553840277
+        ],
+        "homeQ": [
+          0,
+          0.27621495242479316,
+          0,
+          -0.9610958849443532
+        ]
+      },
+      {
+        "index": 65,
+        "name": "pot",
+        "previousP": [
+          14.8,
+          0.92,
+          -16.4
+        ],
+        "previousQ": [
+          0,
+          0.8909491339702903,
+          0,
+          0.45410311678911625
+        ],
+        "homeP": [
+          14.8,
+          0.92,
+          -16.4
+        ],
+        "homeQ": [
+          0,
+          0.7712357134347041,
+          0,
+          0.6365496636735134
+        ]
+      },
+      {
+        "index": 66,
+        "name": "pot",
+        "previousP": [
+          18.9,
+          0.92,
+          -16.402958743181077
+        ],
+        "previousQ": [
+          0,
+          0.6274715038745184,
+          0,
+          0.7786395262414118
+        ],
+        "homeP": [
+          18.9,
+          0.92,
+          -16.39391938294284
+        ],
+        "homeQ": [
+          0,
+          0.962156880755376,
+          0,
+          0.2724961225689003
+        ]
+      },
+      {
+        "index": 67,
+        "name": "pot",
+        "previousP": [
+          20.9,
+          0.92,
+          -16.37566475570202
+        ],
+        "previousQ": [
+          0,
+          0.5610570945351995,
+          0,
+          -0.827777105670192
+        ],
+        "homeP": [
+          20.9,
+          0.92,
+          -16.466655982704832
+        ],
+        "homeQ": [
+          0,
+          0.1766335539981369,
+          0,
+          -0.9842766824435024
+        ]
+      },
+      {
+        "index": 68,
+        "name": "pot",
+        "previousP": [
+          22.3,
+          0.92,
+          -16.4
+        ],
+        "previousQ": [
+          0,
+          0.26140841834117406,
+          0,
+          0.9652282832679354
+        ],
+        "homeP": [
+          22.3,
+          0.92,
+          -16.4
+        ],
+        "homeQ": [
+          0,
+          0.5489047481762332,
+          0,
+          -0.8358849068080999
+        ]
+      },
+      {
+        "index": 79,
+        "name": "laptop",
+        "previousP": [
+          21.2,
+          0.76,
+          -4.1
+        ],
+        "previousQ": [
+          0,
+          0.09983341664682815,
+          0,
+          0.9950041652780257
+        ],
+        "homeP": [
+          21.2,
+          0.76,
+          -4.1
+        ],
+        "homeQ": [
+          0,
+          0.09983341664682815,
+          0,
+          0.9950041652780258
+        ]
+      },
+      {
+        "index": 84,
+        "name": "cushion",
+        "previousP": [
+          21.1,
+          0.62,
+          0.7
+        ],
+        "previousQ": [
+          0,
+          0.09983341664682815,
+          0,
+          0.9950041652780257
+        ],
+        "homeP": [
+          21.1,
+          0.62,
+          0.7
+        ],
+        "homeQ": [
+          0,
+          0.09983341664682815,
+          0,
+          0.9950041652780258
+        ]
+      },
+      {
+        "index": 85,
+        "name": "cushion",
+        "previousP": [
+          22,
+          0.62,
+          0.65
+        ],
+        "previousQ": [
+          0,
+          -0.09983341664682815,
+          0,
+          0.9950041652780257
+        ],
+        "homeP": [
+          22,
+          0.62,
+          0.65
+        ],
+        "homeQ": [
+          0,
+          -0.09983341664682815,
+          0,
+          0.9950041652780258
+        ]
+      },
+      {
+        "index": 93,
+        "name": "cushion",
+        "previousP": [
+          -7.05,
+          4.27,
+          -7.69
+        ],
+        "previousQ": [
+          0,
+          0.09983341664682815,
+          0,
+          0.9950041652780257
+        ],
+        "homeP": [
+          -7.05,
+          4.27,
+          -7.69
+        ],
+        "homeQ": [
+          0,
+          0.09983341664682815,
+          0,
+          0.9950041652780258
+        ]
+      }
+    ],
+    "sourceState": "menu",
+    "sourceTick": null,
+    "actorStateLoaded": false,
+    "liveBodyStateLoaded": false,
+    "owner": "Original ND constructs all props; original physics.reset/_placeBox adopts immutable homeP/homeQ."
+  },
+  "actors": {
+    "bots": 9,
+    "rigs": 18,
+    "originalUpdate": true,
+    "originalPhysics": true
+  },
+  "originalMethods": {
+    "player": true,
+    "viewmodel": true,
+    "firstPerson": true,
+    "arsenal": true,
+    "match": true,
+    "K9": true,
+    "physics": true,
+    "glass": true,
+    "FX": true,
+    "combatFrame": true,
+    "combatFire": true,
+    "inputEndFrame": true
+  },
+  "clock": {
+    "kind": "CPU fixed-step semantic proof, not real-time",
+    "fixedDelta": 0.016666666666666666,
+    "simulation": "Exact owning ghSimulate body; no actor update replacement",
+    "RNG": "Original seedBenchmarkRandom and original full-AI per-tick/per-actor/subsystem scopes; VM shares host Math",
+    "sharedMath": true,
+    "audio": "Virtual sample clock advances 1/60 per logic tick; original audio maintenance once per modeled submit",
+    "modeledPresentationHz": 60,
+    "nativeRAFTested": false,
+    "IPCMeasured": false
+  },
+  "sourceSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "initializeMs": 71406.0654,
+  "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "before": {
+    "sha256": "d84982f8551974fffbdc7a8d19b1ae24a2c4fbd611e99a04758ff8d8d6ae08b2",
+    "objectCount": 1672,
+    "arrayCount": 1124,
+    "arrayBytes": 183767884,
+    "materialCount": 231,
+    "props": 101
+  },
+  "exportMs": 36.65460000000894,
+  "childWorldValidation": {
+    "children": 274,
+    "sampledVertices": 8530,
+    "matrixMaxError": 0,
+    "vertexMaxError": 0,
+    "allAttributesByteExact": true,
+    "source": "Original child.matrixWorld and native Three Vector3 attribute/world transform versus independently multiplied bodyWorld*exportedChildRelative"
+  },
+  "validationMs": 7.461999999999534,
+  "exportAndValidationMs": 44.123300000006566,
+  "randomCallsDuringExport": 0,
+  "originalRandomReferenceRestored": true,
+  "after": {
+    "sha256": "d84982f8551974fffbdc7a8d19b1ae24a2c4fbd611e99a04758ff8d8d6ae08b2",
+    "objectCount": 1672,
+    "arrayCount": 1124,
+    "arrayBytes": 183767884,
+    "materialCount": 231,
+    "props": 101
+  },
+  "graphStateUnchanged": true,
+  "assets": {
+    "jsonPath": "D:\\Golden-Hour\\public\\golden-hour\\prototypes\\godot-live-world\\evidence\\public-rest-props-1\\props.rest.json",
+    "binaryPath": "D:\\Golden-Hour\\public\\golden-hour\\prototypes\\godot-live-world\\evidence\\public-rest-props-1\\props.rest.bin",
+    "jsonSHA256": "60ea19acbaf11f9cf183106665c665148e40e20d224bc19ae926b7441dc501b7",
+    "binarySHA256": "5411e1561b3bd0147b98b8c7fd446dee573f58348475140de82c534e80f643a9",
+    "initializerSHA256": "747a6a15b705971144bfd1f855b4835b96e43b4bf6c2bc3997fdbcd86cbdd76e",
+    "counts": {
+      "props": 101,
+      "children": 274,
+      "geometries": 60,
+      "materials": 22
+    },
+    "bytes": 4635264
+  },
+  "audioErrors": []
+}

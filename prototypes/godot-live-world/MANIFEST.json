@@ -1,0 +1,233 @@
+{
+  "schema": "gh-live-world-source-package-manifest-v1",
+  "sourceOnly": true,
+  "acceptanceEligible": false,
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 76,
+      "sha256": "b098f7adb682ba49b6037e41c2efe06b21f9cbeeebd147b99b85655d47858a83"
+    },
+    {
+      "path": "coverage.py",
+      "bytes": 11757,
+      "sha256": "4fe4a2bbfe7126356fba16256879963d78d1646248813995348dbbcf14c6009f"
+    },
+    {
+      "path": "export-prop-assets.mjs",
+      "bytes": 10816,
+      "sha256": "07114f78541847df9e8e0a0397dd90e092b79bc5cbae95a66cb161a5305e60db"
+    },
+    {
+      "path": "export-prop-assets.test.mjs",
+      "bytes": 3482,
+      "sha256": "a17bf55fdd7c97f4fe48ed925d1c100f2758b7426366375f9f0d62a32f5a92d5"
+    },
+    {
+      "path": "export-runner.mjs",
+      "bytes": 8594,
+      "sha256": "62a0094faf30c576c7c383f05ac1d9f71d978e89d233740774572e2c1f869ecd"
+    },
+    {
+      "path": "fixtures/capture3-coverage-summary.json",
+      "bytes": 15241,
+      "sha256": "bfdd91758b38d5eb1b907f47abd7b070b71ed13f1b661201be343f3df2685461"
+    },
+    {
+      "path": "fixtures/live-warmup-reference.json",
+      "bytes": 6116,
+      "sha256": "a40ae5b683c49d0a2ebe88b71a82bb9fab292a141307f85c1aed30a2d72ec9ce"
+    },
+    {
+      "path": "fixtures/prop-export-reference.json",
+      "bytes": 17864,
+      "sha256": "59aaed244186a047f9679bfd51bd7d61d0a8bf3b48c7910cf3325c5cd8a6fa6e"
+    },
+    {
+      "path": "fixtures/props.rest.reference.json",
+      "bytes": 450616,
+      "sha256": "60ea19acbaf11f9cf183106665c665148e40e20d224bc19ae926b7441dc501b7"
+    },
+    {
+      "path": "package.json",
+      "bytes": 264,
+      "sha256": "f7a884d247c32cd99c9c71db1d9821d1ce7dc318afb354a464274d822733dcef"
+    },
+    {
+      "path": "portable.test.mjs",
+      "bytes": 1907,
+      "sha256": "6ab2332244b81609bc97fdc012e3e0678a27abbf88550d5d4eeedafc8eccd98d"
+    },
+    {
+      "path": "PROVENANCE.json",
+      "bytes": 16666,
+      "sha256": "70390f2fa5f2d2a7034cd5a0e7116d95c419dda3864e342a06f047a99174a38c"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8238,
+      "sha256": "81b63da185ffaf78163aaed837838c0ef0cf4f27895651283d18b2e607541132"
+    },
+    {
+      "path": "receiver/capture_importer.gd",
+      "bytes": 17632,
+      "sha256": "07dc5aeb261bdfba5c4567b45083bb71d9a6dcaf4602cab12c69ba66bc7b2744"
+    },
+    {
+      "path": "receiver/capture_importer.gd.uid",
+      "bytes": 20,
+      "sha256": "269c59e49d116f1bccf0f944093c78ae4095d016e09dcbdc5c9ab79d16ca720c"
+    },
+    {
+      "path": "receiver/main.gd",
+      "bytes": 31478,
+      "sha256": "45a387eaeb9ff59c11ef1b1c996dd4ec771b3cbc708594e1be180ab3e35f51ba"
+    },
+    {
+      "path": "receiver/main.gd.uid",
+      "bytes": 20,
+      "sha256": "b1d180e9353b515f0f93544a51d94e79f0b79556d2ca0acc2859abab2f4de17f"
+    },
+    {
+      "path": "receiver/main.tscn",
+      "bytes": 171,
+      "sha256": "b87973242781a62956f3174290bb6c1ae733b4bcb7278a4bcb84980f0cb6b121"
+    },
+    {
+      "path": "receiver/native_skin.gd",
+      "bytes": 7273,
+      "sha256": "da30fbf2b4c8d97512cd1fbc72dbe1ad78b2fa8425ad651b74baf63366140ed2"
+    },
+    {
+      "path": "receiver/native_skin.gd.uid",
+      "bytes": 20,
+      "sha256": "47797c5cf8caba0ca89d828e1a64fd21a4f015a053f5d31361150b7a14164928"
+    },
+    {
+      "path": "receiver/ownership.gd",
+      "bytes": 3501,
+      "sha256": "1f5fdf54b9d41207221b24760189653bd6b58dcaf2eff95fc37c3c6a3ea216da"
+    },
+    {
+      "path": "receiver/ownership.gd.uid",
+      "bytes": 20,
+      "sha256": "5e4b4a674a7e80a85af6ebcd5fa0a3b508d81894cbea803f299370b8ebe7bfd4"
+    },
+    {
+      "path": "receiver/pbr_adaptor.gd",
+      "bytes": 11487,
+      "sha256": "b1ad272722b954b87268798d3b7d175c0320b5eb3fff80332d9c9639fe37d821"
+    },
+    {
+      "path": "receiver/pbr_adaptor.gd.uid",
+      "bytes": 20,
+      "sha256": "463ea354c202c754e4aa4db0dc5f6f45c405ef217879633f6672c0541369574a"
+    },
+    {
+      "path": "receiver/project.godot",
+      "bytes": 667,
+      "sha256": "1324ce0d01ae1d035c99c8357f378b541bf6f2a135e1e618c223cdf723c567bb"
+    },
+    {
+      "path": "receiver/prop_library.gd",
+      "bytes": 12001,
+      "sha256": "7cb81d0c19bf72eb08dff84438df8bf92ca0710487b45142f453b80088b55a0f"
+    },
+    {
+      "path": "receiver/prop_library.gd.uid",
+      "bytes": 20,
+      "sha256": "afc7494434a190f0d1a6e31510083e42a11fdd528ec5d5dbda10d90690f59333"
+    },
+    {
+      "path": "receiver/protocol.gd",
+      "bytes": 4848,
+      "sha256": "bf61cafffa0b4f779523028ddff6bf9b2e4f04ede4bcd283fb19c4ec5e8342c4"
+    },
+    {
+      "path": "receiver/protocol.gd.uid",
+      "bytes": 18,
+      "sha256": "7e9a28fa378e69eb89431a11d3b94bc5f0938a4e2f5061058f538d848fc10ada"
+    },
+    {
+      "path": "receiver/shaft.gdshader",
+      "bytes": 1270,
+      "sha256": "a592ccabc24ddc49fc9fa11a057ee3f8d61f6c5d86ef899f04cf53aac2bc6554"
+    },
+    {
+      "path": "receiver/shaft.gdshader.uid",
+      "bytes": 20,
+      "sha256": "e9749e0a5683c15b31b734640e1f9718551026eba583de8f05caf7b8e4600d4f"
+    },
+    {
+      "path": "receiver/source_shaders.gd",
+      "bytes": 7287,
+      "sha256": "f2470c506aad7c89cb8d0dae0398619ba19f88a0f01e86b4ef58f82301949918"
+    },
+    {
+      "path": "receiver/source_shaders.gd.uid",
+      "bytes": 20,
+      "sha256": "6a2cc76151d7cc3868bd670eeac237804deb0b91abde53a24348a46f3d8b96a3"
+    },
+    {
+      "path": "receiver/texture_binding.gd",
+      "bytes": 8248,
+      "sha256": "2849fb5db86d98db8d9c84b81ee1ee2b11c26778d0e8e5312d3a3748342d4334"
+    },
+    {
+      "path": "receiver/texture_binding.gd.uid",
+      "bytes": 20,
+      "sha256": "98ba523f64127a3b2c32f1dcc1b1ab4180cbb664cc434ec40999a971829e09cc"
+    },
+    {
+      "path": "receiver/warmup_gate.gd",
+      "bytes": 1709,
+      "sha256": "e03aacfa54ce98ccd627bda86181ba1e31bb85f7294aa3e14e5fb1eda81e416d"
+    },
+    {
+      "path": "receiver/warmup_gate.gd.uid",
+      "bytes": 19,
+      "sha256": "c6c7de7a666bb572880cf93d09ec86a3031370b4f9301029dbd6288439d9f64a"
+    },
+    {
+      "path": "receiver/warmup_gate_test.gd",
+      "bytes": 976,
+      "sha256": "9132a272894c88b412107de6f8684174692964dcf7ea804f1ef4356e6c3dc471"
+    },
+    {
+      "path": "receiver/warmup_gate_test.gd.uid",
+      "bytes": 19,
+      "sha256": "f85b94610ce84714a8938cd25e689447c15befdb5408da94cf79390d06135a57"
+    },
+    {
+      "path": "receiver/world_scaffold.gd",
+      "bytes": 7420,
+      "sha256": "72f88dfda6e09ce635f56e80a9cda56189d752907b5a7666cfd070dffb9e9366"
+    },
+    {
+      "path": "receiver/world_scaffold.gd.uid",
+      "bytes": 20,
+      "sha256": "f976fd84359de452bd89c6fd8cce38487986b369c9168f7e143fef1ede9b714e"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 14,
+      "sha256": "4e16fc11d4b51521b9e3a1dd16c06f5fc25ea07fd0d58c396f5260755b3de503"
+    },
+    {
+      "path": "run_live.py",
+      "bytes": 8087,
+      "sha256": "3aae18e14f960935f0582e8c5c5c8a28a56bf026bebc86bb6d912e99bb12bfdc"
+    }
+  ],
+  "validation": {
+    "exporterTinyUnit": true,
+    "siblingHashesChecked": 39,
+    "nodeSyntax": true,
+    "pythonSyntax": true,
+    "godotHeadlessImport": true,
+    "pureWarmupGate": true,
+    "gpuLaunchedByPackager": false,
+    "fullExporterRerunDuringPackaging": false
+  },
+  "cacheHandling": "Fresh whitelist-only staging; original validation cache/evidence preserved."
+}

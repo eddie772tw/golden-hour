@@ -1,0 +1,6 @@
+/evidence/
+/receiver/.godot/
+/__pycache__/
+*.bin
+*.png
+/node_modules/

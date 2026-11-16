@@ -1,0 +1,651 @@
+{
+  "stage": 19,
+  "kind": "Godot-live-world-scaffold-and-observed-GPU-warmup",
+  "sourcePackage": "prototypes/godot-live-world/",
+  "acceptanceEligible": false,
+  "fullSceneParity": false,
+  "highParity": false,
+  "physicalPresentMeasured": false,
+  "sourceManifest": {
+    "path": "prototypes/godot-live-world/MANIFEST.json",
+    "bytes": 7536,
+    "sha256": "7beb3e109e8238b043566d5a224e39c145ec0233eb2c7756d8c1336f0dd7f7a6",
+    "availability": "Public source-only manifest"
+  },
+  "sourceManifestFileCount": 43,
+  "sourceManifestIntegrity": {
+    "all43LengthAndSHA256Match": true,
+    "allNonEvidenceNonCacheSourcePathsExactlyManifest": true,
+    "manifestUnchanged": true,
+    "generatedIgnoredCacheFiles": 6,
+    "generatedIgnoredCacheBytes": 3175,
+    "runtimeEditsByDocumentationTask": false
+  },
+  "publicRelocated120TickSmoke": {
+    "raw": {
+      "run.json": {
+        "path": "prototypes/godot-live-world/evidence/portable-world-warmup-smoke-1/run.json",
+        "bytes": 19951,
+        "sha256": "fae416b75af6124904ac2c5cb549099ef1213a24c4d804fb76814f728b5a2c46",
+        "availability": "Committed public validation evidence; separate from source manifest"
+      },
+      "source.json": {
+        "path": "prototypes/godot-live-world/evidence/portable-world-warmup-smoke-1/source.json",
+        "bytes": 88115,
+        "sha256": "30415597a28d65e45366b4e11d39132ce245a0873766d960b1df2c473b2dd061",
+        "availability": "Committed public validation evidence; separate from source manifest"
+      },
+      "receiver.json": {
+        "path": "prototypes/godot-live-world/evidence/portable-world-warmup-smoke-1/receiver.json",
+        "bytes": 1593052,
+        "sha256": "e6ac42cf811fc92d8ed374972c3507a1fad1868b1f419fef5c4ad7fb88c1e251",
+        "availability": "Committed public validation evidence; separate from source manifest"
+      },
+      "godot.log": {
+        "path": "prototypes/godot-live-world/evidence/portable-world-warmup-smoke-1/godot.log",
+        "bytes": 4667,
+        "sha256": "67ec4c0d5852542f3385fada4c596ce57c03791aad06b5914d633786643d4ce7",
+        "availability": "Committed public validation evidence; separate from source manifest"
+      },
+      "node.log": {
+        "path": "prototypes/godot-live-world/evidence/portable-world-warmup-smoke-1/node.log",
+        "bytes": 1350,
+        "sha256": "45e36a1782aae1eace399cb677c377abfd4675b78edab907b1e950296d1f8ee1",
+        "availability": "Committed public validation evidence; separate from source manifest"
+      },
+      "capture.png": {
+        "path": "prototypes/godot-live-world/evidence/portable-world-warmup-smoke-1/capture.png",
+        "bytes": 2285199,
+        "sha256": "19aa1dc8374890ad2bf3ea24d530bc140f08e7f493f6d70ac1ee46a99d33cd4f",
+        "availability": "Committed public validation evidence; separate from source manifest"
+      }
+    },
+    "run": {
+      "ok": true,
+      "exitCodes": {
+        "node": 0,
+        "godot": 0
+      },
+      "engineErrors": [],
+      "postRunSourceMismatches": [],
+      "postRunDependencyMismatches": []
+    },
+    "source": {
+      "ok": true,
+      "fullFixturePassed": false,
+      "exportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": false,
+        "events": false,
+        "checkpoints": false,
+        "state": false,
+        "coverage": false
+      },
+      "logicalTicks": 120,
+      "logicalSeconds": 1.9999999999999978,
+      "droppedDebtSeconds": 0,
+      "sourceSnapshots": 114,
+      "samplesDropped": 0
+    },
+    "receiver": {
+      "ok": true,
+      "error": "",
+      "statistics": {
+        "ACKs": 111,
+        "appliedNotDrawn": 0,
+        "cameraAspectMismatchFrames": 0,
+        "distinctDrawTicks": 111,
+        "firstPersonSuppressed": 1,
+        "hiddenBotRigs": 9,
+        "latestBodies": 102,
+        "latestK9": 0,
+        "liveDraws": 119,
+        "maxBufferedBytes": 51384,
+        "nonDefaultProjectionFrames": 0,
+        "posePackets": 111,
+        "rowDrops": 0,
+        "sequenceGaps": 3,
+        "sourceSuperseded": 3,
+        "staleDraws": 8,
+        "unmappedBodyRecords": 2,
+        "unmappedK9Records": 0,
+        "visibleBotRigs": 9,
+        "wireBytes": 5713040
+      },
+      "rawFrameRows": 4537,
+      "rawApplicationRows": 111,
+      "clock": {
+        "bestRttMs": 1.59760000000824,
+        "model": "minimum-RTT four-timestamp monotonic alignment; not input-to-photon",
+        "nodeMinusClientMs": 47.1263000000035,
+        "uncertaintyMs": 0.798800000004121
+      },
+      "GPUTimeMs": null,
+      "GPUTimestampQuery": false,
+      "audioOutput": false,
+      "headless": false,
+      "actualRenderSettings": {
+        "directionalShadowSize": 4096,
+        "directionalShadowSizeOwner": "ProjectSettings configured atlas size; not GPU texture readback",
+        "msaa3D": 2,
+        "positionalShadowAtlasSize": 4096,
+        "renderTarget": [
+          1920,
+          1080
+        ],
+        "renderingDriver": "vulkan",
+        "renderingMethod": "forward_plus",
+        "scaling3DScale": 1.0,
+        "tonemapMode": 3,
+        "useOcclusionCulling": false,
+        "viewport": [
+          1920.0,
+          1080.0
+        ],
+        "vsyncMode": 1,
+        "window": [
+          1920,
+          1080
+        ]
+      },
+      "godot": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "paletteReadbackMaxError": 0.0
+    },
+    "observedWarmup": {
+      "schema": "gh-observed-gpu-warmup-v1",
+      "validGPUBarrier": true,
+      "headlessControlBypass": false,
+      "clockGateValid": true,
+      "assetSubmission": {
+        "meshInstances": 485,
+        "propSource": "original rootInitialScale/homeP/homeQ plus original child-local rest matrices; never inferred capture root",
+        "props": 101,
+        "skinSource": "original-constructor-joints; immutable source asset frame0",
+        "skins": 18,
+        "sourceAITicks": 0
+      },
+      "phases": [
+        {
+          "completedAtClientMs": 93129.885,
+          "frames": 16,
+          "phase": "visible-original-assets",
+          "pipelineTotals": [
+            1,
+            0,
+            82,
+            0,
+            72
+          ],
+          "quietFrames": 15
+        },
+        {
+          "completedAtClientMs": 93426.08,
+          "frames": 16,
+          "phase": "restored-scene",
+          "pipelineTotals": [
+            1,
+            0,
+            82,
+            0,
+            72
+          ],
+          "quietFrames": 16
+        }
+      ],
+      "pipelineCounterNames": [
+        "canvas",
+        "mesh",
+        "surface",
+        "draw",
+        "specialization"
+      ],
+      "readback": {
+        "blackLoadingOverlay": true,
+        "bytes": 6220800,
+        "cpuWaitAndReadbackMs": 35.1879999999946,
+        "gpuTimestampQuery": false,
+        "height": 1080,
+        "sha256": "1f56bd4f609fab80a2b9cce7487d5c08de2768476849e1353881ca748d8d3b6a",
+        "visibleDrawCalls": 289,
+        "visibleObjects": 501,
+        "width": 1920
+      },
+      "elapsedMs": 739.104000000007,
+      "maximumRecordedWarmupIntervalMs": 17238.188,
+      "clockSync": {
+        "bestRttMs": 1.59760000000824,
+        "maxAcceptedBestRttMs": 100.0,
+        "samples": 5,
+        "startedAtClientMs": 93458.152,
+        "uncertaintyMs": 0.798800000004121
+      },
+      "limits": [
+        "Cumulative completion counters do not expose pending job counts; stable real draws plus readback are observed evidence, not a universal future-pipeline guarantee.",
+        "Only current original world/props/constructor skins are warmed; unported temp/weapon/FX/K9/FP features remain gaps.",
+        "Warmup uses original immutable asset matrices, never advances source AI/controller or fabricates game ticks."
+      ],
+      "rawWarmupRows": 32,
+      "recordedLivePipelineRows": 64,
+      "livePipelineCountersConstant": true
+    },
+    "propStats": {
+      "appliedBodies": 11211,
+      "mappedChildren": 274,
+      "mappedInitialProps": 101,
+      "missingBodiesHidden": 0,
+      "snapshots": 111,
+      "unmappedDynamicBodyRecords": 2,
+      "unmappedInitialBodyRecords": 0,
+      "unsupportedChildren": []
+    },
+    "coverage": {
+      "categoryCounts": {
+        "excluded-unmapped-dynamic": {
+          "instances": 24,
+          "objects": 24,
+          "surfaceIndexReferences": 235344,
+          "vertexReferences": 195014
+        },
+        "replaced-live-skin": {
+          "instances": 9,
+          "objects": 9,
+          "surfaceIndexReferences": 863298,
+          "vertexReferences": 256212
+        },
+        "replaced-prop-rest-mapped": {
+          "instances": 272,
+          "objects": 272,
+          "surfaceIndexReferences": 778488,
+          "vertexReferences": 778488
+        },
+        "static-or-unowned-source": {
+          "instances": 3147,
+          "objects": 211,
+          "surfaceIndexReferences": 4848924,
+          "vertexReferences": 4835375
+        }
+      },
+      "importCounts": {
+        "empty_objects": 0,
+        "instances": 3147,
+        "multimat_mesh_variants": 0,
+        "multimeshes": 15,
+        "nodes": 211,
+        "shader_instancing_approximations": 2,
+        "surface_vertex_uploads": 4799959,
+        "surfaces": 211
+      },
+      "propRestBound": true,
+      "fullSceneParity": false,
+      "highParity": false,
+      "additionalBatching": false
+    }
+  },
+  "privateHistorical3600TickRun": {
+    "raw": {
+      "run.json": {
+        "path": "work/godot-native/live/evidence/live-world-warmup-full-1/run.json",
+        "bytes": 20145,
+        "sha256": "003028820c654d56037a0b3464ffacf227326f5ab51f23b4c817c146f66523f0",
+        "availability": "Private historical raw retained locally; only compact values/hashes published"
+      },
+      "source.json": {
+        "path": "work/godot-native/live/evidence/live-world-warmup-full-1/source.json",
+        "bytes": 1558653,
+        "sha256": "9a4c39d7c8e91a502e1f65096c0794a63e4d24ccf40f0b9211e19709f8c44888",
+        "availability": "Private historical raw retained locally; only compact values/hashes published"
+      },
+      "receiver.json": {
+        "path": "work/godot-native/live/evidence/live-world-warmup-full-1/receiver.json",
+        "bytes": 5141246,
+        "sha256": "4d6bd33b468549b7fb304cfad180cc358c5e6e399e693c4d174c805682a5998c",
+        "availability": "Private historical raw retained locally; only compact values/hashes published"
+      },
+      "godot.log": {
+        "path": "work/godot-native/live/evidence/live-world-warmup-full-1/godot.log",
+        "bytes": 4633,
+        "sha256": "83046820517d7071bae6494b50fbe3f234fae860c25f135e2f21b4c472039b03",
+        "availability": "Private historical raw retained locally; only compact values/hashes published"
+      },
+      "node.log": {
+        "path": "work/godot-native/live/evidence/live-world-warmup-full-1/node.log",
+        "bytes": 1320,
+        "sha256": "4747c356f4f7a65f85e75ca7fb31428e8a3c63df6b4e853fcd4adceb8d698825",
+        "availability": "Private historical raw retained locally; only compact values/hashes published"
+      },
+      "capture.png": {
+        "path": "work/godot-native/live/evidence/live-world-warmup-full-1/capture.png",
+        "bytes": 286071,
+        "sha256": "8b0020ce49502e265818627738e21431ae665f9a12b98b2dfa843a13ffcbf66c",
+        "availability": "Private historical raw retained locally; only compact values/hashes published"
+      }
+    },
+    "run": {
+      "ok": true,
+      "exitCodes": {
+        "node": 0,
+        "godot": 0
+      },
+      "engineErrors": [],
+      "postRunSourceMismatches": [],
+      "postRunDependencyMismatches": null
+    },
+    "source": {
+      "ok": true,
+      "fullFixturePassed": true,
+      "exportsEqual": {
+        "manifest": true,
+        "seed": true,
+        "equipment": true,
+        "decisionTrace": true,
+        "events": true,
+        "checkpoints": true,
+        "state": true,
+        "coverage": true
+      },
+      "logicalTicks": 3600,
+      "logicalSeconds": 59.999999999997875,
+      "droppedDebtSeconds": 0,
+      "sourceSnapshots": 3432,
+      "samplesDropped": 0
+    },
+    "receiver": {
+      "ok": true,
+      "error": "",
+      "statistics": {
+        "ACKs": 3421,
+        "appliedNotDrawn": 0,
+        "cameraAspectMismatchFrames": 0,
+        "distinctDrawTicks": 3421,
+        "firstPersonSuppressed": 1,
+        "hiddenBotRigs": 7,
+        "latestBodies": 103,
+        "latestK9": 0,
+        "liveDraws": 3598,
+        "maxBufferedBytes": 52000,
+        "nonDefaultProjectionFrames": 0,
+        "posePackets": 3421,
+        "rowDrops": 0,
+        "sequenceGaps": 11,
+        "sourceSuperseded": 11,
+        "staleDraws": 177,
+        "unmappedBodyRecords": 18130,
+        "unmappedK9Records": 1362,
+        "visibleBotRigs": 11,
+        "wireBytes": 176168891
+      },
+      "rawFrameRows": 7926,
+      "rawApplicationRows": 3421,
+      "clock": {
+        "bestRttMs": 1.76640000000771,
+        "model": "minimum-RTT four-timestamp monotonic alignment; not input-to-photon",
+        "nodeMinusClientMs": 45.6572999999989,
+        "uncertaintyMs": 0.883200000003853
+      },
+      "GPUTimeMs": null,
+      "GPUTimestampQuery": false,
+      "audioOutput": false,
+      "headless": false,
+      "actualRenderSettings": {
+        "directionalShadowSize": 4096,
+        "directionalShadowSizeOwner": "ProjectSettings configured atlas size; not GPU texture readback",
+        "msaa3D": 2,
+        "positionalShadowAtlasSize": 4096,
+        "renderTarget": [
+          1920,
+          1080
+        ],
+        "renderingDriver": "vulkan",
+        "renderingMethod": "forward_plus",
+        "scaling3DScale": 1.0,
+        "tonemapMode": 3,
+        "useOcclusionCulling": false,
+        "viewport": [
+          1920.0,
+          1080.0
+        ],
+        "vsyncMode": 1,
+        "window": [
+          1920,
+          1080
+        ]
+      },
+      "godot": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "paletteReadbackMaxError": 0.0
+    },
+    "observedWarmup": {
+      "schema": "gh-observed-gpu-warmup-v1",
+      "validGPUBarrier": true,
+      "headlessControlBypass": false,
+      "clockGateValid": true,
+      "assetSubmission": {
+        "meshInstances": 485,
+        "propSource": "original rootInitialScale/homeP/homeQ plus original child-local rest matrices; never inferred capture root",
+        "props": 101,
+        "skinSource": "original-constructor-joints; immutable source asset frame0",
+        "skins": 18,
+        "sourceAITicks": 0
+      },
+      "phases": [
+        {
+          "completedAtClientMs": 86660.971,
+          "frames": 16,
+          "phase": "visible-original-assets",
+          "pipelineTotals": [
+            1,
+            0,
+            82,
+            0,
+            72
+          ],
+          "quietFrames": 15
+        },
+        {
+          "completedAtClientMs": 86951.039,
+          "frames": 16,
+          "phase": "restored-scene",
+          "pipelineTotals": [
+            1,
+            0,
+            82,
+            0,
+            72
+          ],
+          "quietFrames": 16
+        }
+      ],
+      "pipelineCounterNames": [
+        "canvas",
+        "mesh",
+        "surface",
+        "draw",
+        "specialization"
+      ],
+      "readback": {
+        "blackLoadingOverlay": true,
+        "bytes": 6220800,
+        "cpuWaitAndReadbackMs": 25.6639999999898,
+        "gpuTimestampQuery": false,
+        "height": 1080,
+        "sha256": "1f56bd4f609fab80a2b9cce7487d5c08de2768476849e1353881ca748d8d3b6a",
+        "visibleDrawCalls": 289,
+        "visibleObjects": 501,
+        "width": 1920
+      },
+      "elapsedMs": 576.303,
+      "maximumRecordedWarmupIntervalMs": 12292.756,
+      "clockSync": {
+        "bestRttMs": 1.76640000000771,
+        "maxAcceptedBestRttMs": 100.0,
+        "samples": 5,
+        "startedAtClientMs": 86977.964,
+        "uncertaintyMs": 0.883200000003853
+      },
+      "limits": [
+        "Cumulative completion counters do not expose pending job counts; stable real draws plus readback are observed evidence, not a universal future-pipeline guarantee.",
+        "Only current original world/props/constructor skins are warmed; unported temp/weapon/FX/K9/FP features remain gaps.",
+        "Warmup uses original immutable asset matrices, never advances source AI/controller or fabricates game ticks."
+      ],
+      "rawWarmupRows": 32,
+      "recordedLivePipelineRows": 64,
+      "livePipelineCountersConstant": true
+    },
+    "propStats": {
+      "appliedBodies": 334792,
+      "mappedChildren": 274,
+      "mappedInitialProps": 101,
+      "missingBodiesHidden": 10729,
+      "snapshots": 3421,
+      "unmappedDynamicBodyRecords": 18130,
+      "unmappedInitialBodyRecords": 0,
+      "unsupportedChildren": []
+    },
+    "coverage": {
+      "categoryCounts": {
+        "excluded-unmapped-dynamic": {
+          "instances": 24,
+          "objects": 24,
+          "surfaceIndexReferences": 235344,
+          "vertexReferences": 195014
+        },
+        "replaced-live-skin": {
+          "instances": 9,
+          "objects": 9,
+          "surfaceIndexReferences": 863298,
+          "vertexReferences": 256212
+        },
+        "replaced-prop-rest-mapped": {
+          "instances": 272,
+          "objects": 272,
+          "surfaceIndexReferences": 778488,
+          "vertexReferences": 778488
+        },
+        "static-or-unowned-source": {
+          "instances": 3147,
+          "objects": 211,
+          "surfaceIndexReferences": 4848924,
+          "vertexReferences": 4835375
+        }
+      },
+      "importCounts": {
+        "empty_objects": 0,
+        "instances": 3147,
+        "multimat_mesh_variants": 0,
+        "multimeshes": 15,
+        "nodes": 211,
+        "shader_instancing_approximations": 2,
+        "surface_vertex_uploads": 4799959,
+        "surfaces": 211
+      },
+      "propRestBound": true,
+      "fullSceneParity": false,
+      "highParity": false,
+      "additionalBatching": false
+    }
+  },
+  "partialRunCaveat": "The public120-tick smoke is functional relocation evidence only: fullFixturePassed=false; manifest/seed/equipment true, decisionTrace/events/checkpoints/state/coverage false against the complete3600 fixture. Only the separate private3600 run passes all8 strict exports. Raw false flags are retained, never relabeled.",
+  "publicRestPropExport": {
+    "raw": {
+      "export-report.json": {
+        "path": "prototypes/godot-live-world/evidence/public-rest-props-1/export-report.json",
+        "bytes": 17897,
+        "sha256": "83717955a8f3067f78f1463bb5b0b0531bdfc1af94be82ad9b00f6619d29c4db",
+        "availability": "Public generated validation evidence; not part of43-file source manifest"
+      },
+      "props.rest.json": {
+        "path": "prototypes/godot-live-world/evidence/public-rest-props-1/props.rest.json",
+        "bytes": 450616,
+        "sha256": "60ea19acbaf11f9cf183106665c665148e40e20d224bc19ae926b7441dc501b7",
+        "availability": "Public generated validation evidence; not part of43-file source manifest"
+      },
+      "props.rest.bin": {
+        "path": "prototypes/godot-live-world/evidence/public-rest-props-1/props.rest.bin",
+        "bytes": 4635264,
+        "sha256": "5411e1561b3bd0147b98b8c7fd446dee573f58348475140de82c534e80f643a9",
+        "availability": "Public generated validation evidence; not part of43-file source manifest"
+      }
+    },
+    "validation": {
+      "ok": true,
+      "fullAI": false,
+      "logicalTicksExecuted": 0,
+      "controllerInstalled": false,
+      "GPU": false,
+      "childWorldValidation": {
+        "children": 274,
+        "sampledVertices": 8530,
+        "matrixMaxError": 0,
+        "vertexMaxError": 0,
+        "allAttributesByteExact": true,
+        "source": "Original child.matrixWorld and native Three Vector3 attribute/world transform versus independently multiplied bodyWorld*exportedChildRelative"
+      },
+      "randomCallsDuringExport": 0,
+      "originalRandomReferenceRestored": true,
+      "graphStateUnchanged": true
+    },
+    "counts": {
+      "props": 101,
+      "children": 274,
+      "geometries": 60,
+      "materials": 22
+    }
+  },
+  "coverageEvidence": {
+    "path": "prototypes/godot-live-world/fixtures/capture3-coverage-summary.json",
+    "bytes": 15241,
+    "sha256": "bfdd91758b38d5eb1b907f47abd7b070b71ed13f1b661201be343f3df2685461",
+    "availability": "Public source metadata fixture"
+  },
+  "coverageReasons": {
+    "static-or-unowned-source: Preserve original capture; no owner evidence authorizes removal": 211,
+    "excluded-unmapped-dynamic: unowned frozen skin is not a proven static world object": 2,
+    "excluded-unmapped-dynamic: actor attachment/FPbody lacks accepted live output mapping": 10,
+    "excluded-unmapped-dynamic: temporary/noninitial original physics body needs true asset": 12
+  },
+  "mappedCaptureProps": 100,
+  "mappedCaptureChildren": 272,
+  "materialFallbackChildren": [
+    "prop/6/0:",
+    "prop/6/1:"
+  ],
+  "sourcePostContract": {
+    "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+    "originalFinalFragmentSHA256": "d57a2ec1063369281be2d7a85ccfc95c86a9a40ca239159442fd3c437fdd3b1a",
+    "nativeACESIsOriginalSourceFilm": false,
+    "reason": "Original final defines but never calls aces(); active custom film/film1 plus hue blend/grade/manual sRGB differ from this receiver native ACES."
+  },
+  "limits": [
+    "211 objects are static-or-unowned, not211 proven static; capture-state animation/glass/pools remain frozen",
+    "24 unmapped dynamic capture objects excluded explicitly; no stale actor attachments/temp/FP output used as a substitute",
+    "9 frozen source skin objects replaced by original live affine skins; both team rigs/corpse visibility preserved",
+    "Prop rootsAtFinish is CPU Node3D transform/visibility readback, not GPU vertex/instance oracle; palette readback is skeleton state, not deformed GPU vertex proof",
+    "Observed cumulative counter stability+draws+readback is not a pending-pipeline API or universal future shader guarantee",
+    "Black loading readback hash is not pixel-parity geometry proof; nonzero actual3D objects/draw calls are separately required",
+    "All startup/warmup/live intervals retained; no clean full-High FPS or physical present/input-to-photon ranking",
+    "Full sound/FP/weapon/temp/grenade/K9 deformation/changing glass/child animation/full FX/reflection/AO/shared shading/source final post remain incomplete",
+    "Native live-world light settings still literal/uncalibrated; separately verified source-light mappings/HM are not silently asserted integrated here",
+    "No825MBscene,378MBtexture capture,engine,node_modules included in source; existing4.64MBgeneratedprop binary/2.29MBPNG/1.59MBreceiver JSON are separate explicit validation evidence"
+  ]
+}

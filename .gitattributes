@@ -1,4 +1,6 @@
 * -text
 *.md text eol=lf
 *.cmd text eol=crlf
+prototypes/godot-live-world/** -text whitespace=cr-at-eol
+prototypes/godot-live-world/receiver/capture_importer.gd whitespace=cr-at-eol,-blank-at-eof
 

@@ -1,0 +1,13 @@
+{
+  "name": "golden-hour-godot-live-world",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "test": "node portable.test.mjs",
+    "export:props": "node export-runner.mjs"
+  }
+}
