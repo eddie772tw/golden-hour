@@ -25239,7 +25239,8 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
       let d = new ne();
       d.setAttribute("position", new Yt(c, 3)), d.setAttribute("normal", new Yt(h, 3)), d.setAttribute("uv", new Yt(f, 2)), d.setAttribute("crack", new Yt(u, 1));
       for (let m = 0; m < e * s; m++) this._writeCell(t, m, c, f);
-      t.mesh = new ae(d, this._singlePaneProof(c, t.axis) ? this._paneMaterial() : this.material), t.mesh.frustumCulled = false, t.mesh.renderOrder = 10, t.mesh.matrixAutoUpdate = false, t.mesh.layers.set(1), this.scene.add(t.mesh), this.intact.setMatrixAt(t.id, f$), this.intact.instanceMatrix.needsUpdate = true;
+      d.computeBoundingSphere(); // Remaining pane vertices stay fixed; falling shards use a separate mesh.
+      t.mesh = new ae(d, this._singlePaneProof(c, t.axis) ? this._paneMaterial() : this.material), t.mesh.frustumCulled = true, t.mesh.renderOrder = 10, t.mesh.matrixAutoUpdate = false, t.mesh.layers.set(1), this.scene.add(t.mesh), this.intact.setMatrixAt(t.id, f$), this.intact.instanceMatrix.needsUpdate = true;
     }
     _cellTris(t, e, s) {
       let n = e % t.nx, i = e / t.nx | 0, a = t.nx + 1, r = i * a + n, l = r + 1, c = r + a, h = c + 1;

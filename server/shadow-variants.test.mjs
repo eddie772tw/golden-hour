@@ -97,17 +97,17 @@ function installActualProgramGate(f) {
     P0: {
       getParameters(material, _lights, _shadows, _scene, object) {
         calls.parameters++;
-        return { outputColorSpace: "linear", skinning: object.isSkinnedMesh === true,
+        return { outputColorSpace: ctx.S === null ? ctx.y.outputColorSpace : ctx.xd, skinning: object.isSkinnedMesh === true,
           instancing: object.isInstancedMesh === true, batching: object.isBatchedMesh === true,
           instancingColor: object.isInstancedMesh === true && object.instanceColor !== null,
           instancingMorph: object.isInstancedMesh === true && object.morphTexture !== null,
           vertexAlphas: false, vertexTangents: false, morphTargets: false, morphNormals: false,
           morphColors: false, morphTargetsCount: 0, toneMapping: 0 };
       },
-      getProgramCacheKey: p => JSON.stringify([p.skinning, p.instancing, p.instancingColor, p.instancingMorph]),
+      getProgramCacheKey: p => JSON.stringify([p.skinning, p.instancing, p.instancingColor, p.instancingMorph, p.outputColorSpace]),
       getUniforms: () => ({}),
       acquireProgram(parameters, key) {
-        if (!programs.has(key)) programs.set(key, { program: {}, getUniforms: () => uniforms });
+        if (!programs.has(key)) programs.set(key, { key, program: {}, getUniforms: () => uniforms });
         return programs.get(key);
       },
     },
@@ -121,8 +121,23 @@ function installActualProgramGate(f) {
     ctx.select(camera, { isScene: true, environment: null }, geometry, material, object);
     return draw.call(this, camera, scene, geometry, material, object, group);
   };
-  return calls;
+  return Object.assign(calls, { ctx, records });
 }
+
+test("shared renderer material keeps the correct program after output color space and geometry variants change", () => {
+  const f = fixture(), { ctx, records } = installActualProgramGate(f);
+  const plain = f.node(), skin = f.node({ isSkinnedMesh: true });
+  skin.material = plain.material;
+  ctx.S = null;
+  ctx.y.outputColorSpace = "linear";
+  for (const node of [plain, skin]) f.renderer.renderBufferDirect(f.shadowCamera, {}, node.geometry, node.material, node);
+  ctx.y.outputColorSpace = "srgb";
+  for (const node of [skin, plain]) {
+    f.renderer.renderBufferDirect(f.shadowCamera, {}, node.geometry, node.material, node);
+    const program = records.get(node.material).currentProgram;
+    assert.equal(JSON.parse(program.key).at(-1), "srgb", "cached geometry variant must not restore a program from the old color space");
+  }
+});
 
 test("actual renderer program-change gate stops rebuilding cached parameters when shadow geometry alternates", () => {
   const f = fixture(), calls = installActualProgramGate(f);

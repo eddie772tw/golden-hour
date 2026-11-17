@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
+import { loadBundle } from "./fixtures/bundle-probe.mjs";
 
 const source = readFileSync(new URL("../game/core/game.js", import.meta.url), "utf8");
 let materials = 0;
@@ -49,9 +50,10 @@ class Instances extends Mesh {
   constructor(...args) { super(...args); this.instanceMatrix = {}; }
   setMatrixAt() {}
 }
-function fixture() {
+function fixture(three = null) {
   const ctx = { $e: Material, nn: 2, ne: Geometry, Ge: Plane, Yt: Attribute, ae: Mesh, ia: Instances,
     ww: 16, Uc: 1, LD: new Int32Array(6), f$: {}, Math, Number };
+  if (three) Object.assign(ctx, { ne: three.BufferGeometry, Yt: three.BufferAttribute });
   vm.createContext(ctx);
   const rngStart = source.indexOf("  function Re(o = 1) {");
   const rngEnd = source.indexOf("  var at =", rngStart);
@@ -72,6 +74,30 @@ function fixture() {
   };
   return { ctx, glass, scene, pane };
 }
+
+test("fractured static panes keep every surviving triangle inside their initial Three bounding sphere", () => {
+  const three = loadBundle(new URL("../game/core/game.js", import.meta.url)).THREE;
+  const { glass, pane } = fixture(three), v = new three.Vector3();
+  glass._spawnShard = () => {}; // Falling shards have a separate mesh and do not deform this pane.
+  for (const axis of ["x", "z"]) {
+    const p = pane(glass.panes.length, axis, 6, 4);
+    p.a0 = 100; p.a1 = 106; p.y0 = 20; p.y1 = 24;
+    glass._fracture(p);
+    const sphere = p.mesh.geometry.boundingSphere;
+    assert.equal(p.mesh.frustumCulled, true);
+    assert.ok(sphere && Number.isFinite(sphere.radius));
+    const positions = p.mesh.geometry.attributes.position.array;
+    const check = () => {
+      for (let j = 0; j < positions.length; j += 9) {
+        if (positions.slice(j, j + 9).every(x => x === 0)) continue; // Deleted zero-area triangles cannot rasterize.
+        for (let k = j; k < j + 9; k += 3)
+          assert.ok(v.fromArray(positions, k).distanceTo(sphere.center) <= sphere.radius + 1e-5);
+      }
+    };
+    check();
+    for (let cell = 0; cell < p.alive.length - 1; cell++) { glass._breakCell(p, cell, 0, 0, 0, 0); check(); }
+  }
+});
 
 test("actual pane proof rejects mixed winding/nonplanar/nonfinite triangles and tolerates deleted cells", () => {
   const { glass } = fixture();

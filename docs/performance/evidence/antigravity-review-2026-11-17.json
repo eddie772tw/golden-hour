@@ -1,0 +1,455 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "baseCommit": "9d99a3be7d3a26d67012b09512764335679ca5e0",
+  "incomingCoreSHA256": "6e03df491757c8b492615ce307470eeb7a49b2dc4abb34bcc4ae5d57d0f9b9bc",
+  "finalCoreSHA256": "1a3f0d7eb26a97c6516dca88d2696d7774dd096fe2991e1eb22dabd1b208ee34",
+  "inputBackup": "outputs/antigravity-review/20261117-072650Z/antigravity-original.zip",
+  "sourceNote": {
+    "candidate1SHA256": "903867057a417783647e28ddc4d27253ba7121f60d59beec71b6f7c317121a1c",
+    "finalSHA256": "1a3f0d7eb26a97c6516dca88d2696d7774dd096fe2991e1eb22dabd1b208ee34",
+    "difference": "Only inserted computeBoundingSphere comment line changes CRLF to LF; all other bytes equal. Normalized sources exactly equal."
+  },
+  "target": "Original Edge, 1920x1080 High, reflection <=30 Hz, full native 9-bot AI, fixed 3600 ticks",
+  "order": "baseline1-candidate1-candidate2-baseline2",
+  "measurementBoundary": "Rendered submission intervals, not physical display presents. Fresh browser context/storage/cache; OS and driver caches retained. Only two runs per arm; no reliable sustained FPS gain established. Audio endpoint not remeasured.",
+  "performanceTargetAchieved": false,
+  "performanceGainEstablished": false,
+  "runs": [
+    {
+      "name": "review-base-1",
+      "rawPath": "outputs/antigravity-review/20261117-072650Z/evidence/review-base-1.json",
+      "rawSHA256": "1eaabdb1a4cb44bcbfe772a4413c958fb59ba3cc53853c6173347db67d0195d2",
+      "rawBytes": 778595,
+      "coreSHA256": "dd22efd9310800df67d4511e99314aae78b37355b36d914b62cccd5eb4f4116a",
+      "browser": "157.0.4341.60",
+      "warningCount": 0,
+      "errors": [],
+      "analysis": {
+        "name": "review-base-1",
+        "coreSHA256": "dd22efd9310800df67d4511e99314aae78b37355b36d914b62cccd5eb4f4116a",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.326,
+        "logicalHz": 59.67576169479163,
+        "renderHz": 55.43215197427312,
+        "overflowDroppedMs": 339.6333333333369,
+        "windows": {
+          "complete": {
+            "frames": 3343,
+            "fps": 55.44471036238324,
+            "onePercentLowFPS": 20.857616089240295,
+            "onePercentTailFrames": 34,
+            "p95Ms": 24.59999990463257,
+            "p99Ms": 31.09999990463257,
+            "reciprocalP99FPS": 32.15434093461341,
+            "maxMs": 180.0,
+            "over50PerMinute": 6.965832591145965,
+            "over100": 3
+          },
+          "warmTick301": {
+            "frames": 3099,
+            "fps": 56.08582814834148,
+            "onePercentLowFPS": 21.448834145710343,
+            "onePercentTailFrames": 31,
+            "p95Ms": 23.90000009536743,
+            "p99Ms": 29.799999952316284,
+            "reciprocalP99FPS": 33.55704703356123,
+            "maxMs": 180.0,
+            "over50PerMinute": 5.429412211843318,
+            "over100": 3
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      }
+    },
+    {
+      "name": "review-candidate-1",
+      "rawPath": "outputs/antigravity-review/20261117-072650Z/evidence/review-candidate-1.json",
+      "rawSHA256": "e1063d2a41dccb719907c38e47d383933ab13c2f9b969ca2e29516c148d804fb",
+      "rawBytes": 789219,
+      "coreSHA256": "903867057a417783647e28ddc4d27253ba7121f60d59beec71b6f7c317121a1c",
+      "browser": "157.0.4341.60",
+      "warningCount": 0,
+      "errors": [],
+      "analysis": {
+        "name": "review-candidate-1",
+        "coreSHA256": "903867057a417783647e28ddc4d27253ba7121f60d59beec71b6f7c317121a1c",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.34620000004768,
+        "logicalHz": 59.65578611407438,
+        "renderHz": 56.85527837705256,
+        "overflowDroppedMs": 361.7666666666661,
+        "windows": {
+          "complete": {
+            "frames": 3430,
+            "fps": 56.87027773582162,
+            "onePercentLowFPS": 21.914720435360856,
+            "onePercentTailFrames": 35,
+            "p95Ms": 22.90000009536743,
+            "p99Ms": 28.100000143051147,
+            "reciprocalP99FPS": 35.587188430932805,
+            "maxMs": 193.39999985694885,
+            "over50PerMinute": 5.968892123876321,
+            "over100": 3
+          },
+          "warmTick301": {
+            "frames": 3154,
+            "fps": 57.03765859849251,
+            "onePercentLowFPS": 22.51935257617035,
+            "onePercentTailFrames": 32,
+            "p95Ms": 22.699999809265137,
+            "p99Ms": 27.100000143051147,
+            "reciprocalP99FPS": 36.90036880890627,
+            "maxMs": 193.39999985694885,
+            "over50PerMinute": 5.425268731625794,
+            "over100": 3
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      }
+    },
+    {
+      "name": "review-candidate-2",
+      "rawPath": "outputs/antigravity-review/20261117-072650Z/evidence/review-candidate-2.json",
+      "rawSHA256": "86b82290cbf7a86cfa98e230b046361aa54cf1e8b13f6d912b620e5956005a8c",
+      "rawBytes": 789286,
+      "coreSHA256": "1a3f0d7eb26a97c6516dca88d2696d7774dd096fe2991e1eb22dabd1b208ee34",
+      "browser": "157.0.4341.60",
+      "warningCount": 0,
+      "errors": [],
+      "analysis": {
+        "name": "review-candidate-2",
+        "coreSHA256": "1a3f0d7eb26a97c6516dca88d2696d7774dd096fe2991e1eb22dabd1b208ee34",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.31670000004768,
+        "logicalHz": 59.68496287093217,
+        "renderHz": 56.86650629091592,
+        "overflowDroppedMs": 335.53333333333836,
+        "windows": {
+          "complete": {
+            "frames": 3429,
+            "fps": 56.88293462190495,
+            "onePercentLowFPS": 21.929824561403507,
+            "onePercentTailFrames": 35,
+            "p95Ms": 23.09999990463257,
+            "p99Ms": 29.0,
+            "reciprocalP99FPS": 34.48275862068966,
+            "maxMs": 159.0,
+            "over50PerMinute": 5.9719616400950075,
+            "over100": 3
+          },
+          "warmTick301": {
+            "frames": 3166,
+            "fps": 57.28802886462229,
+            "onePercentLowFPS": 22.614840985588835,
+            "onePercentTailFrames": 32,
+            "p95Ms": 22.799999952316284,
+            "p99Ms": 26.600000143051147,
+            "reciprocalP99FPS": 37.593984760230725,
+            "maxMs": 159.0,
+            "over50PerMinute": 5.4284297723899835,
+            "over100": 3
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      }
+    },
+    {
+      "name": "review-base-2",
+      "rawPath": "outputs/antigravity-review/20261117-072650Z/evidence/review-base-2.json",
+      "rawSHA256": "2f631c0d581446df46058c1f9f852cfce686b7b443b6858db27d143f41d21569",
+      "rawBytes": 787692,
+      "coreSHA256": "dd22efd9310800df67d4511e99314aae78b37355b36d914b62cccd5eb4f4116a",
+      "browser": "157.0.4341.60",
+      "warningCount": 0,
+      "errors": [],
+      "analysis": {
+        "name": "review-base-2",
+        "coreSHA256": "dd22efd9310800df67d4511e99314aae78b37355b36d914b62cccd5eb4f4116a",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.31070000004768,
+        "logicalHz": 59.69090061957752,
+        "renderHz": 56.93848686878589,
+        "overflowDroppedMs": 326.63333333332946,
+        "windows": {
+          "complete": {
+            "frames": 3433,
+            "fps": 56.953730278547376,
+            "onePercentLowFPS": 22.35564638529126,
+            "onePercentTailFrames": 35,
+            "p95Ms": 23.100000143051147,
+            "p99Ms": 29.100000143051147,
+            "reciprocalP99FPS": 34.36426099945543,
+            "maxMs": 142.40000009536743,
+            "over50PerMinute": 6.967831842991522,
+            "over100": 2
+          },
+          "warmTick301": {
+            "frames": 3177,
+            "fps": 57.54590359008493,
+            "onePercentLowFPS": 24.53423291380131,
+            "onePercentTailFrames": 32,
+            "p95Ms": 22.5,
+            "p99Ms": 26.700000047683716,
+            "reciprocalP99FPS": 37.45318345371135,
+            "maxMs": 142.40000009536743,
+            "over50PerMinute": 5.433985230414064,
+            "over100": 2
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      }
+    }
+  ],
+  "pixelOracle": {
+    "rawPath": "outputs/antigravity-review/20261117-072650Z/evidence/review-pane-pixels-1.json",
+    "rawSHA256": "b12c09707a96f8b37d89a7791e3babcd816d0b9f2c21cebb580c9902cfcf832d",
+    "coreSHA256": "1a3f0d7eb26a97c6516dca88d2696d7774dd096fe2991e1eb22dabd1b208ee34",
+    "status": "pass",
+    "samples": [
+      {
+        "pane": 79,
+        "direction": 1,
+        "angle": 0,
+        "status": "pass",
+        "changedRGBAChannels": 0,
+        "visibleContributionPixels": 377454,
+        "referenceDrawCalls": 1577,
+        "candidateDrawCalls": 1530,
+        "drawCallsRemoved": 47,
+        "referenceTriangles": 8836946,
+        "candidateTriangles": 8827622,
+        "trianglesRemoved": 9324
+      },
+      {
+        "pane": 79,
+        "direction": 1,
+        "angle": 0.3,
+        "status": "pass",
+        "changedRGBAChannels": 0,
+        "visibleContributionPixels": 355168,
+        "referenceDrawCalls": 1594,
+        "candidateDrawCalls": 1547,
+        "drawCallsRemoved": 47,
+        "referenceTriangles": 8863280,
+        "candidateTriangles": 8854192,
+        "trianglesRemoved": 9088
+      },
+      {
+        "pane": 79,
+        "direction": -1,
+        "angle": 0,
+        "status": "pass",
+        "changedRGBAChannels": 0,
+        "visibleContributionPixels": 374555,
+        "referenceDrawCalls": 829,
+        "candidateDrawCalls": 769,
+        "drawCallsRemoved": 60,
+        "referenceTriangles": 8033208,
+        "candidateTriangles": 8020460,
+        "trianglesRemoved": 12748
+      },
+      {
+        "pane": 79,
+        "direction": -1,
+        "angle": 0.3,
+        "status": "pass",
+        "changedRGBAChannels": 0,
+        "visibleContributionPixels": 353342,
+        "referenceDrawCalls": 832,
+        "candidateDrawCalls": 775,
+        "drawCallsRemoved": 57,
+        "referenceTriangles": 8034528,
+        "candidateTriangles": 8022788,
+        "trianglesRemoved": 11740
+      },
+      {
+        "pane": 64,
+        "direction": 1,
+        "angle": 0,
+        "status": "pass",
+        "changedRGBAChannels": 0,
+        "visibleContributionPixels": 514759,
+        "referenceDrawCalls": 1510,
+        "candidateDrawCalls": 1464,
+        "drawCallsRemoved": 46,
+        "referenceTriangles": 8829010,
+        "candidateTriangles": 8820186,
+        "trianglesRemoved": 8824
+      },
+      {
+        "pane": 64,
+        "direction": 1,
+        "angle": 0.3,
+        "status": "pass",
+        "changedRGBAChannels": 0,
+        "visibleContributionPixels": 503589,
+        "referenceDrawCalls": 1449,
+        "candidateDrawCalls": 1397,
+        "drawCallsRemoved": 52,
+        "referenceTriangles": 8738844,
+        "candidateTriangles": 8728352,
+        "trianglesRemoved": 10492
+      },
+      {
+        "pane": 64,
+        "direction": -1,
+        "angle": 0,
+        "status": "pass",
+        "changedRGBAChannels": 0,
+        "visibleContributionPixels": 411629,
+        "referenceDrawCalls": 829,
+        "candidateDrawCalls": 773,
+        "drawCallsRemoved": 56,
+        "referenceTriangles": 7817738,
+        "candidateTriangles": 7806430,
+        "trianglesRemoved": 11308
+      },
+      {
+        "pane": 64,
+        "direction": -1,
+        "angle": 0.3,
+        "status": "pass",
+        "changedRGBAChannels": 0,
+        "visibleContributionPixels": 488125,
+        "referenceDrawCalls": 823,
+        "candidateDrawCalls": 759,
+        "drawCallsRemoved": 64,
+        "referenceTriangles": 7807784,
+        "candidateTriangles": 7794508,
+        "trianglesRemoved": 13276
+      },
+      {
+        "pane": 74,
+        "direction": 1,
+        "angle": 0,
+        "status": "pass",
+        "changedRGBAChannels": 0,
+        "visibleContributionPixels": 514910,
+        "referenceDrawCalls": 1606,
+        "candidateDrawCalls": 1565,
+        "drawCallsRemoved": 41,
+        "referenceTriangles": 8871912,
+        "candidateTriangles": 8864732,
+        "trianglesRemoved": 7180
+      },
+      {
+        "pane": 74,
+        "direction": 1,
+        "angle": 0.3,
+        "status": "pass",
+        "changedRGBAChannels": 0,
+        "visibleContributionPixels": 503225,
+        "referenceDrawCalls": 1550,
+        "candidateDrawCalls": 1510,
+        "drawCallsRemoved": 40,
+        "referenceTriangles": 8849978,
+        "candidateTriangles": 8842882,
+        "trianglesRemoved": 7096
+      },
+      {
+        "pane": 74,
+        "direction": -1,
+        "angle": 0,
+        "status": "pass",
+        "changedRGBAChannels": 0,
+        "visibleContributionPixels": 506808,
+        "referenceDrawCalls": 833,
+        "candidateDrawCalls": 782,
+        "drawCallsRemoved": 51,
+        "referenceTriangles": 8066802,
+        "candidateTriangles": 8056934,
+        "trianglesRemoved": 9868
+      },
+      {
+        "pane": 74,
+        "direction": -1,
+        "angle": 0.3,
+        "status": "pass",
+        "changedRGBAChannels": 0,
+        "visibleContributionPixels": 493222,
+        "referenceDrawCalls": 840,
+        "candidateDrawCalls": 790,
+        "drawCallsRemoved": 50,
+        "referenceTriangles": 8075252,
+        "candidateTriangles": 8065672,
+        "trianglesRemoved": 9580
+      }
+    ],
+    "logicalExportsEqual": {
+      "manifest": true,
+      "seed": true,
+      "equipment": true,
+      "decisionTrace": true,
+      "events": true,
+      "checkpoints": true,
+      "state": true,
+      "coverage": true
+    },
+    "consoleErrors": [],
+    "warningCount": 0,
+    "finalGLErrors": [],
+    "restoreErrors": [],
+    "restoreComplete": true,
+    "limits": "Frozen High scene, 3 standing panes, both sides, frontal/oblique. Draw/triangle counters cover all passes in each forced complete render, not a full population average or GPU duration. Diagnostic run excluded from primary FPS."
+  },
+  "regressions": {
+    "inputFailures": [
+      "biquad returned as gain",
+      "GTAO misses late-added Line2",
+      "stale linear program after sRGB output switch"
+    ],
+    "beforeLog": "outputs/antigravity-review/20261117-072650Z/regression-before.txt",
+    "afterLog": "outputs/antigravity-review/20261117-072650Z/tests-after.txt",
+    "testsPassed": 153,
+    "testsFailed": 0
+  },
+  "diagnosticHarness": {
+    "run_culling_oracle.py": "7d0134f7e588ac6df591cd1395a4c18859e651d33234d3a5c7ac792c74e0e368",
+    "fracture_oracle.js": "22e3fbb0300f4ded25c646fb4162d3c45947c656f8464824c114b4ea9447eaae"
+  }
+}
