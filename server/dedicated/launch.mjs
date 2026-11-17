@@ -11,6 +11,7 @@ import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 
 import { openGame, portableOptions } from "./portable.mjs";
+import { originalGateway } from "../original-gateway.mjs";
 
 const [entry, ...args] = process.argv.slice(2);
 const localPort = Number(process.env.GH_CLIENT_PORT || 48722),
@@ -175,6 +176,10 @@ if (mode === "host" || mode === "join") {
           return;
         }
         const path = new URL(req.url, local).pathname;
+        if (path.startsWith("/api/original/")) {
+          await originalGateway(req, res, new URL(req.url, local), local);
+          return;
+        }
         if (path === "/api/invite") {
           res
             .writeHead(200, { "Content-Type": "application/json" })

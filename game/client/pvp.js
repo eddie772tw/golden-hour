@@ -3,7 +3,7 @@ import { selectedModel, weaponName, factoryNames } from "./weapon-models.js";
 import { installModelSelector } from "./gunsmith-models.js";
 import { Connection } from "./net.js";
 import { CompetitiveEngine } from "./competitive-engine.js";
-import { loadApiConfig } from "./api-config.js";
+import { loadApiConfig, ORIGINAL_ORIGIN } from "./api-config.js";
 import { RoomDirectory, joinHello } from "./lobby.js";
 import { ToyAccount } from "./toy-account.js";
 import { OnlineKills } from "./online-kills.js";
@@ -111,6 +111,7 @@ const page = menus._page(
 );
 const directory = new RoomDirectory({
   origin: serverTarget.origin,
+  gateway: serverTarget.original,
   pageURL: location.href,
   onChange: renderDirectory,
 });
@@ -247,7 +248,7 @@ bind(targetForm.querySelector("#server-policy"),serverTarget.original ? "server.
 targetMode.value=serverTarget.original ? "original" : "local";
 // This is the API origin declared by the archived original HTML. Selection is
 // explicit; merely opening the client never contacts this endpoint.
-targetOrigin.value=serverTarget.original ? serverTarget.origin : "https://cod.apikeygame.top:8008";
+targetOrigin.value=serverTarget.original ? serverTarget.origin : ORIGINAL_ORIGIN;
 targetOrigin.disabled=!serverTarget.original;
 targetMode.onchange=()=>{targetOrigin.disabled=targetMode.value!=="original";};
 targetForm.onsubmit=event=>{
@@ -391,7 +392,7 @@ async function join(mode, roomID) {
   try {
     net.checkSupport();
     if (generation !== joinGeneration) return;
-    const config = await loadApiConfig(serverTarget.origin, location.href);
+    const config = await loadApiConfig(serverTarget.origin, location.href, globalThis.fetch, { gateway: serverTarget.original });
     if (generation !== joinGeneration) return;
     if (query.get("transport") === "webrtc") config.preferredTransport = "webrtc";
     await engine.enter(ctx.settings.primary);

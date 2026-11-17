@@ -1,4 +1,4 @@
-import { apiOrigin } from "./api-config.js";
+import { apiOrigin, originalApiURL, ORIGINAL_ORIGIN } from "./api-config.js";
 
 // Room identifiers stay inside the lobby/transport protocol; players select a room.
 export function joinHello(mode, name, room) {
@@ -10,10 +10,11 @@ export function joinHello(mode, name, room) {
 }
 
 export class RoomDirectory {
-  constructor({ origin, pageURL, onChange, EventSource = globalThis.EventSource }) {
+  constructor({ origin, pageURL, onChange, gateway = false, EventSource = globalThis.EventSource }) {
     this.origin = origin;
     this.pageURL = pageURL;
     this.onChange = onChange;
+    this.gateway = gateway;
     this.EventSource = EventSource;
     this.active = false;
     this.generation = 0;
@@ -46,7 +47,9 @@ export class RoomDirectory {
     try {
       approved = apiOrigin(this.origin, this.pageURL);
       if (typeof this.EventSource !== "function") throw Error("当前浏览器不支持实时房间列表。");
-      const source = new this.EventSource(new URL("/api/rooms/events", approved).href, { withCredentials: false });
+      const url = this.gateway && approved === ORIGINAL_ORIGIN
+        ? originalApiURL("/api/rooms/events", this.pageURL) : new URL("/api/rooms/events", approved);
+      const source = new this.EventSource(url.href, { withCredentials: false });
       this.source = source;
       const current = () => this.active && generation === this.generation && source === this.source;
       source.addEventListener("rooms", (event) => {

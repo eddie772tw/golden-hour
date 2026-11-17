@@ -10,6 +10,7 @@ import { fileURLToPath } from "node:url";
 import { resolve, sep, extname } from "node:path";
 import rtc from "node-datachannel";
 import { Room, readInput } from "./room.mjs";
+import { originalGateway } from "./original-gateway.mjs";
 
 const port=Number(process.env.GH_DEV_PORT || 48722), host=process.env.GH_BIND_IP || "127.0.0.1";
 const tls=process.env.GH_TLS_KEY ? {key:await readFile(process.env.GH_TLS_KEY),cert:await readFile(process.env.GH_TLS_CERT)} : null;
@@ -122,6 +123,7 @@ const listener=async(req,res)=>{
   try {
     if (req.headers.host!==host+":"+port || (req.headers.origin && req.headers.origin!==origin)) return reply(403,"text/plain","local origin only");
     const url=new URL(req.url,origin), path=decodeURIComponent(url.pathname);
+    if (path.startsWith("/api/original/")) return await originalGateway(req,res,url,origin);
     if(req.method==="POST" && ["/api/auth/challenge","/api/auth/prove","/api/auth/migrate"].includes(path)) {
       if(req.headers.origin!==origin || req.headers["content-type"]!=="application/json") return reply(403,"text/plain","origin");
       const chunks=[];let size=0;

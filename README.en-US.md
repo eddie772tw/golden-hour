@@ -27,6 +27,8 @@ Install dependencies on each computer before going offline. On the host run `nod
 
 In the multiplayer lobby, open **Choose a match server**, select **Original-compatible server**, enter its full HTTPS origin and switch to reload. This mode uses the original anonymous handshake without a local account. Shop weapons are always disabled: G-Bull falls back to STRIX 9, Chin-Gi to VESPER 9 and Lin-Bei to M12. Returning to local mode restores the saved model choices. [Protocol requirements and validation scope](docs/original-compatible.md)
 
+The default original server uses a fixed-origin local gateway for config, room SSE and WebRTC signaling because it rejects localhost origins. Game data connects directly to the original server. Restart `Start.cmd` or the local server after updating, then reload the client.
+
 In local mode, open Gunsmith's pistol, SMG or shotgun tab and choose a weapon model. G-Bull trades fire rate for a 20-round magazine. Chin-Gi fires at 667 RPM with lower recoil and retains more damage at range than the VESPER. Lin-Bei fires six pellets per shell in a tighter pattern than the M12. A full close-range hit deals 72 damage before hit-location modifiers. Each model uses Golden Hour's hands and handling animations. Other players see the matching world model. The original competitive unlock requirements apply to each family, and only VESPER eliminations count towards unlocking the M12.
 
 ## Development

@@ -25,6 +25,8 @@ npm start
 
 連線大廳的「選擇對戰伺服器」可切換到原版相容伺服器，輸入完整 HTTPS origin 後重新載入。此模式沿用原版匿名握手，不要求本地帳號；Shop 武器始終停用，G-Bull、Chin-Gi、Lin-Bei 分別回退為 STRIX 9、VESPER 9、M12。切回本地模式會恢復原有型號偏好。[相容模式、協定與驗證範圍](docs/original-compatible.md)
 
+預設原服透過本機固定 API 轉送入口取得設定、房間列表與 WebRTC 訊令，處理原服不接受 localhost Origin 的差異；遊戲資料直接連原服。更新後請先重啟 `Start.cmd`／本機服務，再重新載入客戶端。
+
 本機 Node 伺服器管理房間，經由 WebRTC DataChannel 接收輸入，以 60 Hz 模擬、30 Hz 送出逐玩家快照。預設只監聽 IPv4 loopback。原版客戶端另有 WebTransport 路徑。此版透過本機加密帳號驗證身分。公網 NAT 穿透與 TURN 尚待驗證。[原版與同作者遊戲的技術對照](docs/network-research.md)
 
 使用 KR-7 累計 10 次伺服器確認的對人擊殺解鎖 VESPER；再以 VESPER 取得 10 次對人擊殺解鎖 M12。排行榜與解鎖共同讀取 SQLite 的擊殺紀錄。訓練、電腦對手和匯入的個人進度均不計入。重新連線或重送同一擊殺事件只計一次。帳號以 UUID 與持鑰簽章識別。玩家可以匯出加密的 .ghsave，在另一個瀏覽器設定檔或電腦以口令匯入；本服的戰績由 SQLite 與簽章紀錄保留。

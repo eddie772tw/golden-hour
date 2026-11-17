@@ -1,0 +1,74 @@
+{
+  "atUTC": "2026-11-17T11:49:41.847125+00:00",
+  "clientOrigin": "http://127.0.0.1:48724",
+  "backend": "https://cod.apikeygame.top:8008",
+  "freshAnonymousProfile": true,
+  "listedRooms": 3,
+  "joined": true,
+  "network": {
+    "inputPackets": 0,
+    "inputBytes": 0,
+    "inputDropped": 0,
+    "snapshots": 7,
+    "snapshotBytes": 4648,
+    "ack": 0,
+    "rttMs": 0,
+    "queuedCommands": 0,
+    "queuedBytes": 0,
+    "snapshotAgeMs": 0,
+    "snapshotGaps": 0,
+    "transport": "webrtc"
+  },
+  "movementAcknowledged": true,
+  "primaryProfile": "ar",
+  "secondaryProfile": "pistol",
+  "secondaryAmmo": 15,
+  "finalNetwork": {
+    "inputPackets": 15,
+    "inputBytes": 375,
+    "inputDropped": 0,
+    "snapshots": 112,
+    "snapshotBytes": 74368,
+    "ack": 30,
+    "rttMs": 66,
+    "queuedCommands": 0,
+    "queuedBytes": 0,
+    "snapshotAgeMs": 0,
+    "snapshotGaps": 97,
+    "transport": "webrtc"
+  },
+  "leftMatch": true,
+  "responses": [
+    {
+      "url": "http://127.0.0.1:48724/api/original/rooms/events",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:48724/api/original/config",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:48724/api/original/rtc/offer",
+      "status": 200
+    }
+  ],
+  "externalRequests": [],
+  "pageErrors": [],
+  "observedDifferences": {
+    "localhostOriginConfigStatus": 403,
+    "localhostOriginConfigMessage": "origin not allowed",
+    "toyOriginConfigStatus": 200,
+    "browserLocalhostSSEError": "MissingAllowOriginHeader",
+    "standardNodeSNIResult": "ECONNRESET",
+    "noSNIResult": "TLS 1.3 / h2; trusted chain and exact upstream hostname verified"
+  },
+  "localValidation": {
+    "nodeTestsPassed": 170,
+    "originalFixtureAndLocalAccountShopRoundTrip": true,
+    "dedicatedServerGatewayDependencies": true
+  },
+  "limits": [
+    "This is a short anonymous match against the real original server, not a long-duration or broad NAT/TURN acceptance run.",
+    "Original Toy account/cloud-save integration is not used or claimed by this client."
+  ]
+}
