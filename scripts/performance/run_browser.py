@@ -24,6 +24,9 @@ P.add_argument('--program-audit', action='store_true', help='requires isolated d
 P.add_argument('--fx-pixel-oracle', action='store_true', help='after scenario, compare FX light isolation on/off with frozen scene')
 P.add_argument('--fracture-oracle', action='store_true', help='paused post-scenario strict two-sided glass pixel oracle')
 P.add_argument('--render-dev', action='store_true', help='opt-in CPU/GPU per-pass developer observer, diagnostic-only')
+P.add_argument('--owner-census', action='store_true', help='diagnostic pass/owner draws, metadata and upload census; requires isolated prepared client')
+P.add_argument('--body-bounds', choices=['observe','clip'], help='isolated body bounds candidate, supplied at initial navigation')
+P.add_argument('--glass-ranges', action='store_true', help='isolated glass-shard upload ranges candidate')
 P.add_argument('--scripted', action='store_true')
 P.add_argument('--full-ai', action='store_true', help='fixed player inputs with all native AI paths enabled')
 P.add_argument('--native-loop', action='store_true', help='exercise native decoupled loop with controlled full AI')
@@ -42,6 +45,8 @@ if args.native_loop:
     args.full_ai = True
 if args.full_ai:
     args.scripted = True
+if args.owner_census and not args.native_loop:
+    P.error('--owner-census requires the full-AI native loop')
 if args.deep_render:
     args.diagnostic = True
 if args.loop_observe and not args.scripted:
@@ -73,6 +78,9 @@ result = {'name': name, 'quality': args.quality, 'seconds': args.seconds,
           'nativeLoop': args.native_loop,
           'candidateFeatures': {'shaderWarmup': args.shader_warmup, 'casingWorklet': args.casing_worklet},
           'workletSourceExperimentDiagnostic': args.casing_worklet,
+          'ownerCensusDiagnostic': args.owner_census,
+          'bodyBoundsCandidate': args.body_bounds,
+          'glassRangesCandidate': args.glass_ranges,
           'developerProbeDiagnostic': bool(args.loop_cost or args.casing_pcm_oracle or args.shader_pixel_oracle or args.gl_delete_audit),
           'coldDefinition': 'fresh browser context/storage/HTTP cache; OS and driver caches retained'}
 client_manifest = args.client.parent / (args.client.name + '-manifest.json')
@@ -228,9 +236,16 @@ try:
         query = {'solo': ''}
         if args.shader_warmup: query['shaderWarmup'] = '1'
         if args.casing_worklet: query['casingAudio'] = 'worklet'
+        if args.body_bounds: query['bodyBounds'] = args.body_bounds
         result['query'] = query
         page.goto('http://127.0.0.1:48910/?'+urlencode(query),wait_until='domcontentloaded')
         ready(page)
+        if args.glass_ranges:
+            page.evaluate('GH.debug.glass.ghShardDirtyRanges=true')
+            assert page.evaluate('GH.debug.glass.ghShardDirtyRanges===true'),'Glass ranges flag not enabled'
+        if args.body_bounds:
+            result['bodyBoundsStartup']=page.evaluate('GH.debug.gfx.bodyBoundsObserver?.report()')
+            assert result['bodyBoundsStartup'],'Body observer not installed'
         if args.shader_warmup:
             assert page.evaluate('GHBoot.shaderWarmupCandidate===true'), 'Shader candidate flag was not enabled'
         if args.casing_pcm_oracle:
@@ -277,6 +292,12 @@ try:
             if args.diagnostic:
                 page.evaluate((ROOT/'diagnostic.js').read_text(encoding='utf8'))
                 page.evaluate("(deep)=>{__diag.install({deep});__diag.mark('scripted');}",args.deep_render)
+            if args.owner_census:
+                page.evaluate('''async(source)=>{
+                  const {installPassOwnerCensus}=await import('/client/pass-owner-census.js');
+                  window.ownerCensus=installPassOwnerCensus(GH,{source});
+                }''',{'coreSHA256':result['coreSHA256'],'name':name})
+                result['developerProbeDiagnostic']=True
             if args.program_audit:
                 page.evaluate('window.ghProgramAudit=Object.create(null)')
             if args.render_dev:
@@ -316,6 +337,16 @@ try:
                 result['trace']=True
             page.wait_for_function('GH.benchmark.done',polling=args.completion_poll_ms or 'raf',timeout=180000)
             result['scenario']=page.evaluate('GH.benchmark.export()')
+            if args.body_bounds:
+                result['bodyBounds']=page.evaluate('GH.debug.gfx.bodyBoundsObserver.report()')
+            if args.owner_census:
+                result['ownerCensus']=page.evaluate('ownerCensus.export()')
+                # A client without the isolated private hooks is not a valid metadata census.
+                assert sum(row['Dcalls'] for row in result['ownerCensus']['table'])>0,'Missing isolated renderer hooks'
+                if not args.render_dev: page.evaluate('ownerCensus.stop()')
+                if not args.render_dev:
+                    result['ownerCensus']=page.evaluate('ownerCensus.export()')
+                    assert result['ownerCensus']['conflicts']==0,'Census wrapper restore conflict'
             if args.loop_cost:
                 result['loopCost']=page.evaluate('loopCost.export()')
                 page.evaluate('loopCost.stop()')
@@ -330,6 +361,10 @@ try:
             if args.render_dev:
                 result['renderDev']=page.evaluate('renderDev.export()')
                 page.evaluate('renderDev.stop()')
+                if args.owner_census: page.evaluate('ownerCensus.stop()')
+                if args.owner_census:
+                    result['ownerCensus']=page.evaluate('ownerCensus.export()')
+                    assert result['ownerCensus']['conflicts']==0,'Census wrapper restore conflict'
             if args.fx_pixel_oracle:
                 result['fxPixelOracle']=page.evaluate('''async()=>{
                   const g=GH.debug.gfx,r=g.renderer,gl=r.getContext(),prior=g.scene.ghSeparateFxLights;
