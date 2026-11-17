@@ -33,6 +33,9 @@ const policy = startupPolicy({
   platform: navigator.platform,
   maxTouchPoints: navigator.maxTouchPoints,
 });
+// Normal startup does not fetch or initialize the casing experiment.
+const createCasingAudio = params.get("casingAudio") === "worklet"
+  ? (await import("./casing-audio.js")).createCasingAudio : null;
 globalThis.GHDiagnostics = installRuntimeDiagnostics({ version, profile: policy.mobile ? "mobile" : "desktop" });
 // Mobile textures have their own key and a smaller read/write budget; never
 // deserialize the desktop's 154 MiB pixel pack into a phone's memory.
@@ -56,6 +59,7 @@ const stats = {
 };
 const start = performance.now();
 const boot = (globalThis.GHBoot = {
+  createCasingAudio,
   weaponDefinition, selectedModel, familyOf, weaponName, mountShopWeapon,
   stats,
   runtimeReady,

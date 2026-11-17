@@ -30990,6 +30990,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
       return mt ? (mt.v = yt, mt.t = N0, mt.lx = o.lx, mt.lz = o.lz) : o.occCache.set(A0, { v: yt, t: N0, lx: o.lx, lz: o.lz }), yt;
     }
     function b(J) {
+      J.casingLease?.release();
       for (let Q of J.srcs) n(Q);
       for (let Q of J.nodes) n(Q);
       J.dying || (o.active--, o.cats[J.cat]--);
@@ -31013,6 +31014,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
       if (J.dying) return;
       let i0 = o.ctx.currentTime;
       y(J, Q, 0);
+      J.casingLease?.stop(i0 + Q * 7);
       for (let A0 of J.srcs) try {
         A0.stop(i0 + Q * 7);
       } catch {
@@ -31063,6 +31065,42 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
           St.connect(Rt), Rt.connect(o.revIn), this.nodes.push(Rt);
         }
         this.nodes.push(Mt), this.t = mt, this.end = mt + 0.1, this.sum = Mt, o.voices.push(this), o.active++, o.cats[N0] = (o.cats[N0] || 0) + 1, o.active > o.stats.voicePeak && (o.stats.voicePeak = o.active);
+        if (N0 === "casing") {
+          this.casingLease = o.casingAudio?.lease(this.sum);
+          if (this.casingLease) { this.casingCommands = []; this.casingOriginals = []; }
+        }
+      }
+      casingCommand(kind, Q) {
+        const gain = Q.g ?? 1;
+        if (!(gain > 1e-5)) return null;
+        const start = this.t + (Q.t || 0) * this.st, attack = Q.a ?? 1e-3,
+          hold = (Q.hold || 0) * this.st, decay = (Q.d ?? 0.1) * this.st,
+          end = start + attack + hold + decay;
+        const command = { kind, start, issuedAt: o.ctx.currentTime, attack, hold, decay, gain,
+          frequency: t(Q.f * this.rate), frequency1: Q.f1 ? t(Q.f1 * this.rate) : 0,
+          frequencyTime: Q.ft != null ? Q.ft * this.st : decay,
+          type: Q.type || "sine", q: Q.q ?? 0.7 };
+        if (kind === "noise") {
+          const buffer = o.buf[Q.buf || "white"];
+          command.offset = Math.random() * Math.max(0, buffer.duration - 0.1);
+          command.noiseRate = fl((Q.rate ?? 1) * this.rate, 0.05, 8);
+        }
+        this.casingCommands.push(command);
+        this.casingOriginals.push({ kind, options: Q, offset: command.offset });
+        if (end + 0.08 > this.end) this.end = end + 0.08;
+        return null;
+      }
+      casingFlush() {
+        if (!this.casingLease || this.casingLease.submit(this.casingCommands, this.casingOriginals) !== false) return;
+        // Whole-voice fallback before publication. Replay saved noise offsets;
+        // unsupported descriptors must not consume another random draw.
+        this.casingLease.release(); this.casingLease = null;
+        try {
+          for (const source of this.casingOriginals) {
+            this.casingOffset = source.offset;
+            this[source.kind](source.options);
+          }
+        } finally { delete this.casingOffset; }
       }
       shaper(Q) {
         let i0 = i(1), A0 = s(o.ctx.createWaveShaper());
@@ -31094,6 +31132,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
         return St.connect(Rt), Rt.connect(Q.dest || this.sum), St.start(mt), St.stop(Ot + 0.02), this.nodes.push(Rt), this.srcs.push(St), Ot + 0.08 > this.end && (this.end = Ot + 0.08), Rt;
       }
       noise(Q) {
+        if (this.casingLease) return this.casingCommand("noise", Q);
         let i0 = Q.g ?? 1;
         if (!(i0 > 1e-5)) return null;
         let A0 = this.st, N0 = this.rate, mt = this.t + (Q.t || 0) * A0, xt = Q.a ?? 1e-3, yt = (Q.hold || 0) * A0, Mt = (Q.d ?? 0.1) * A0, St = o.buf[Q.buf || "white"], Rt = l(St, true);
@@ -31112,9 +31151,10 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
           Ot.connect(Nt), Ot = Nt, this.nodes.push(Nt);
         }
         let Jt = i(0), ee = u(Jt.gain, mt, xt, yt, Mt, i0);
-        return Ot.connect(Jt), Jt.connect(Q.dest || this.sum), Rt.start(mt, Math.random() * Math.max(0, St.duration - 0.1)), Rt.stop(ee + 0.03), this.nodes.push(Jt), this.srcs.push(Rt), ee + 0.08 > this.end && (this.end = ee + 0.08), Jt;
+        return Ot.connect(Jt), Jt.connect(Q.dest || this.sum), Rt.start(mt, this.casingOffset ?? Math.random() * Math.max(0, St.duration - 0.1)), Rt.stop(ee + 0.03), this.nodes.push(Jt), this.srcs.push(Rt), ee + 0.08 > this.end && (this.end = ee + 0.08), Jt;
       }
       tone(Q) {
+        if (this.casingLease) return this.casingCommand("tone", Q);
         let i0 = Q.g ?? 1;
         if (!(i0 > 1e-5)) return null;
         let A0 = this.st, N0 = this.rate, mt = this.t + (Q.t || 0) * A0, xt = Q.a ?? 1e-3, yt = (Q.hold || 0) * A0, Mt = (Q.d ?? 0.1) * A0, St = r(Q.type, Q.f * N0);
@@ -31446,6 +31486,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
     }
     function S0(J, Q, i0) {
       let A0 = Q === "carpet" || Q === "fabric" || Q === "foliage", N0 = Q === "wood", mt = Q === "metal", xt = new T(J, { cat: "casing", prio: 1, rev: A0 ? 0.1 : 0.3, ref: 2, roll: 1.4, maxDist: 16, noOcc: true, pitch: qt(0.9, 1.12), gain: A0 ? 0.045 : 0.1 });
+      try {
       if (Q === "water") {
         xt.tone({ f: 600, f1: 240, ft: 0.05, d: 0.06, g: 0.6 }), xt.noise({ type: "bandpass", f: 2200, q: 1, a: 3e-3, d: 0.05, g: 0.5 });
         return;
@@ -31460,6 +31501,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
         }
         Mt += qt(0.045, 0.1), St *= qt(0.35, 0.55);
       }
+      } finally { xt.casingFlush(); }
     }
     let T0 = { metal: 0.75, glass: 1.6, wood: 2.4, carpet: 1.6, fabric: 1.6, foliage: 1.5, plastic: 2.6, flesh: 1.3 };
     function j0(J, Q) {
@@ -32154,6 +32196,12 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
         let Q = globalThis.AudioContext || globalThis.webkitAudioContext;
         if (!J.context && !Q) return false;
         o.ctx = J.context || new Q({ latencyHint: "interactive" }), E(J);
+        if (globalThis.GHBoot?.createCasingAudio) {
+          o.casingAudio = globalThis.GHBoot.createCasingAudio(o.ctx, o.buf.white, {
+            register: node => (o.stats.persistent++, s(node)),
+            unregister: node => (o.stats.persistent--, n(node))
+          });
+        }
         let i0 = Dw(o.ctx.sampleRate).d, A0 = B$().filter((N0) => !i0[N0]);
         if (J.context) {
           for (let N0 of A0) Nb(o.ctx.sampleRate, N0);
@@ -32203,13 +32251,14 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
       return B$().filter(key => key.startsWith("gun:") ? families.has(key.split(":")[1]) : /^(glass:.*:0|exp:0)$/.test(key));
     }
     function soundsReady(weapons) {
-      return !o.ctx || currentSoundKeys(weapons).every(key => Dw(o.ctx.sampleRate).d[key]);
+      return !o.ctx || o.casingAudio?.stats.status !== "preparing" && currentSoundKeys(weapons).every(key => Dw(o.ctx.sampleRate).d[key]);
     }
     async function prepareCurrent(weapons) {
       if (!o.ctx) return;
       const keys = currentSoundKeys(weapons);
       o.preparing = (o.preparing || 0) + 1;
       try {
+        if (o.casingAudio) await o.casingAudio.ready;
         for (const key of keys) {
           if (!Dw(o.ctx.sampleRate).d[key]) {
             await new Promise(resolve => setTimeout(resolve, 0));
