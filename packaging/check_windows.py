@@ -52,6 +52,28 @@ def menu(folder, temp, port):
             proc.stdin.close()
 
 
+def deploy_solo(page):
+    page.wait_for_function("window.GH?.ready && GH.debug", timeout=180000)
+    page.evaluate("async()=>{await GHBoot.runtimeReady;await GH.debug.gfx.whenReady();}")
+    page.bring_to_front()
+    # The first gesture can prepare sounds/equipment. The game then explicitly
+    # asks for another Deploy gesture; do not bypass its preparation/input gate.
+    for _ in range(3):
+        page.locator('#pg-main [data-act="deploy"]').click(timeout=60000)
+        page.evaluate("""async()=>{const g=GH.debug.gfx;
+          if(g._deploying)await g._deploying;await g.whenReady();}""")
+        status=page.evaluate("""({state:GH.G.state,
+          error:String(GH.debug.gfx.preparation.error||GHBoot.stats.preparationError||''),
+          message:document.getElementById('err')?.textContent})""")
+        if status['error'] or status['message']:
+            raise RuntimeError(f"Solo preparation failed: {status}")
+        if status['state']=='playing':
+            return
+        if status['state']!='menu':
+            raise RuntimeError(f"Unexpected state after Deploy: {status}")
+    raise RuntimeError(f"Solo did not enter play after preparation: {status}")
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output",type=Path)
@@ -78,8 +100,7 @@ def main():
                                            args=["--enable-unsafe-swiftshader","--disable-background-networking"])
                 page=browser.new_page()
                 page.goto(url)
-                page.locator('#pg-main [data-act="deploy"]').click(timeout=150000)
-                page.wait_for_function("GH.G.state === 'playing'",timeout=60000)
+                deploy_solo(page)
                 browser.close()
         selection=os.environ.get("GH_LAN_IP","1")
         with menu(client,temp,48851) as (choose,log,proc):
