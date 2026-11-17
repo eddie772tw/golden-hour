@@ -1,6 +1,7 @@
 """Original Edge only. Normal Play.cmd + Deploy, isolated storage, raw submitted-frame intervals."""
 import argparse, hashlib, json, os, re, subprocess, sys, time, urllib.request
 from pathlib import Path
+from urllib.parse import urlencode
 
 ROOT = Path(__file__).resolve().parent
 if os.environ.get('GH_BENCH_DEPS'):
@@ -26,6 +27,11 @@ P.add_argument('--render-dev', action='store_true', help='opt-in CPU/GPU per-pas
 P.add_argument('--scripted', action='store_true')
 P.add_argument('--full-ai', action='store_true', help='fixed player inputs with all native AI paths enabled')
 P.add_argument('--native-loop', action='store_true', help='exercise native decoupled loop with controlled full AI')
+P.add_argument('--shader-warmup', action='store_true', help='opt-in real first-draw coverage and all retained program waits')
+P.add_argument('--casing-worklet', action='store_true', help='opt-in casing source pool; original voice routing remains')
+P.add_argument('--casing-pcm-oracle', action='store_true', help='diagnostic original WebAudio vs candidate DSP at 44.1/48 kHz')
+P.add_argument('--loop-cost', action='store_true', help='diagnostic catch-up tick phase costs; separate from clean FPS')
+P.add_argument('--loop-upload-bytes', action='store_true', help='also count buffer upload payload bytes; requires --loop-cost')
 P.add_argument('--seed', type=int, default=0x47484d31)
 P.add_argument('--width', type=int, default=1920)
 P.add_argument('--height', type=int, default=1080)
@@ -40,6 +46,10 @@ if args.loop_observe and not args.scripted:
     P.error('--loop-observe requires --scripted, --full-ai or --native-loop')
 if args.completion_poll_ms < 0:
     P.error('--completion-poll-ms must be zero or a positive interval')
+if args.loop_upload_bytes and not args.loop_cost:
+    P.error('--loop-upload-bytes requires --loop-cost')
+if args.loop_cost and not args.native_loop:
+    P.error('--loop-cost requires --native-loop')
 from playwright.sync_api import sync_playwright
 OUT = Path(os.environ.get('GH_BENCH_OUT', str(ROOT / 'evidence'))).resolve()
 OUT.mkdir(parents=True, exist_ok=True)
@@ -59,7 +69,17 @@ result = {'name': name, 'quality': args.quality, 'seconds': args.seconds,
           'profiler': args.profile, 'trace': False, 'gpuTimer': args.diagnostic, 'osSampler': False,
           'deepRender': args.deep_render,
           'nativeLoop': args.native_loop,
+          'candidateFeatures': {'shaderWarmup': args.shader_warmup, 'casingWorklet': args.casing_worklet},
+          'developerProbeDiagnostic': bool(args.loop_cost or args.casing_pcm_oracle),
           'coldDefinition': 'fresh browser context/storage/HTTP cache; OS and driver caches retained'}
+client_manifest = args.client.parent / (args.client.name + '-manifest.json')
+if client_manifest.is_file():
+    manifest_bytes = client_manifest.read_bytes()
+    manifest = json.loads(manifest_bytes)
+    assert manifest['files']['game/core/game.js'] == result['coreSHA256'], 'Stale client manifest'
+    result['clientSource'] = {'commit': manifest['commit'],
+                             'manifestSHA256': hashlib.sha256(manifest_bytes).hexdigest(),
+                             'vendor': manifest['vendor'], 'definition': manifest['definition']}
 log = (OUT / (name + '-server.log')).open('w', encoding='utf8')
 proc = subprocess.Popen([os.environ['ComSpec'], '/d', '/c', 'Play.cmd', 'solo'], cwd=args.client,
                         env=env, stdout=log, stderr=subprocess.STDOUT)
@@ -95,7 +115,8 @@ INIT = r"""(() => {
       runtimeReady:GH.runtimeReady ?? null,boot:GHBoot.stats,
       startup:document.querySelector('#gh-startup')?.textContent,
       diagnostics:document.querySelector('#gh-performance')?.textContent,
-      audio:{queue:d.ctx.audio._engine.bakeQ?.length,...d.ctx.audio._engine.stats},
+      audio:{queue:d.ctx.audio._engine.bakeQ?.length,...d.ctx.audio._engine.stats,
+        casing:d.ctx.audio._engine.casingAudio?.stats??null},
       preparation:g.preparation ?? null,loopStats:JSON.parse(JSON.stringify(d.loopStats??GH.loopStats??null))};
   };
 })();"""
@@ -190,8 +211,21 @@ try:
         page.on('pageerror', lambda error: result['consoleErrors'].append(str(error)[:2000]))
         result['browserVersion'] = browser.version
         result['system'] = browser.new_browser_cdp_session().send('SystemInfo.getInfo')
-        page.goto('http://127.0.0.1:48910/?solo',wait_until='domcontentloaded')
+        query = {'solo': ''}
+        if args.shader_warmup: query['shaderWarmup'] = '1'
+        if args.casing_worklet: query['casingAudio'] = 'worklet'
+        result['query'] = query
+        page.goto('http://127.0.0.1:48910/?'+urlencode(query),wait_until='domcontentloaded')
         ready(page)
+        if args.shader_warmup:
+            assert page.evaluate('GHBoot.shaderWarmupCandidate===true'), 'Shader candidate flag was not enabled'
+        if args.casing_pcm_oracle:
+            result['casingPCMOracle'] = page.evaluate('''async()=>{
+              const {runCasingPCMOracle}=await import('/client/casing-pcm-oracle.js');
+              const results=[];
+              for(const sampleRate of [44100,48000]) results.push(await runCasingPCMOracle({sampleRate}));
+              return results;
+            }''')
         page.evaluate('__frames.install()')
         if args.render_dev and not args.scripted:
             assert not args.diagnostic, 'Do not mix old and new GPU observers'
@@ -213,7 +247,15 @@ try:
         page.evaluate('''()=>{document.querySelector('#pg-main [data-act="deploy"]').addEventListener('click',e=>{__frames.entryAt=performance.now();__frames.mark('first-entry')},{once:true,capture:true})}''')
         deploy(page)
         result['deployToLiveMs']=page.evaluate('performance.now()-__frames.entryAt')
+        if args.casing_worklet:
+            status=page.evaluate('GH.debug.ctx.audio._engine.casingAudio?.stats')
+            assert status and status['status']=='ready' and status['warmed']==status['slots'], status
         if args.scripted:
+            if args.loop_cost:
+                page.evaluate('''async(uploads)=>{
+                  const {installLoopCostObserver}=await import('/client/loop-cost-observer.js');
+                  window.loopCost=installLoopCostObserver(GH,{uploads});
+                }''', args.loop_upload_bytes)
             if args.loop_observe:
                 page.evaluate("__loopPhase.reset('scenario')")
             result['scenarioStart']=page.evaluate('''async(options)=>{
@@ -257,6 +299,8 @@ try:
                 result['trace']=True
             page.wait_for_function('GH.benchmark.done',polling=args.completion_poll_ms or 'raf',timeout=180000)
             result['scenario']=page.evaluate('GH.benchmark.export()')
+            if args.loop_cost:
+                result['loopCost']=page.evaluate('loopCost.export()')
             if args.loop_observe:
                 result['loopPhase']=page.evaluate('__loopPhase.export()')
                 page.evaluate('__loopPhase.restore()')
