@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
-import { createCasingAudio, supportsCasingSources, casingSourceRejection } from "../game/client/casing-audio.js";
+import { createCasingAudio, supportsCasingSources, casingSourceRejection, casingTimingRejection } from "../game/client/casing-audio.js";
 import { CasingMixer } from "../game/client/casing-worklet.js";
 
 // CPU hardware boundary, not a browser AudioNode benchmark or a PCM oracle.
@@ -34,8 +34,9 @@ function context() {
 const core = readFileSync(new URL("../game/core/game.js", import.meta.url), "utf8");
 const audio = core.slice(core.indexOf("  var qc = Math.PI"), core.indexOf("  var fo = eZ();"));
 assert.ok(audio.includes("function eZ()"));
-function run(enabled, { fallback = false, reject = false, interaction, timeScale = 1 } = {}) {
-  const actions = [], cues = [], cueOriginals = [], draws = [], descriptors = [];
+function run(enabled, { fallback = false, reject = false, interaction, timeScale = 1, timing } = {}) {
+  const actions = [], cues = [], cueOriginals = [], draws = [], descriptors = [], timingReasons = [];
+  const advancedVoices = new Set();
   let voiceOrdinal = 0, randomState = 8171, voice;
   const math = Object.create(Math);
   math.random = () => {
@@ -43,6 +44,7 @@ function run(enabled, { fallback = false, reject = false, interaction, timeScale
     const value = randomState/4294967296; draws.push(value); return value;
   };
   let source = audio;
+  if (timing==="api-past-start") source=source.replace("let mt = A0.currentTime + 3e-3","let mt = A0.currentTime - 1e-3");
   const swap = (a, b) => { assert.equal(source.split(a).length, 2, a); source = source.replace(a, b); };
   swap("    function b(J) {", '    function b(J) { observe("release",J,o);');
   swap("      let A0 = o.ctx.currentTime, N0 = J.out.gain;", '      observe("target",J,o,{constant:Q,target:J.level*i0}); let A0 = o.ctx.currentTime, N0 = J.out.gain;');
@@ -56,11 +58,15 @@ function run(enabled, { fallback = false, reject = false, interaction, timeScale
     zt.open=options=>new T(null,options); zt.sweep=v; zt.fade=y;
     return zt;`);
   const ctx = context();
+  if(timing==="api-past-start")ctx.currentTime=.03;
   const globals = { Math: math, console, performance, observe(op,v,o,extra={}) {
     if (op === "create") { v.ordinal = ++voiceOrdinal; voice = v; }
     actions.push({ op, ordinal:v.ordinal, cat:v.cat, t:v.t, end:v.end, level:v.level,
       dying:v.dying, active:o.active, ...extra });
-  }, capture(kind,Q,v) { descriptors.push({kind,Q:{...Q},start:v.t,rate:v.rate,st:v.st}); } };
+  }, capture(kind,Q,v) {
+    if(timing==="past-at-submit"&&!enabled&&!advancedVoices.has(v.ordinal)) {ctx.currentTime+=.004;advancedVoices.add(v.ordinal);}
+    descriptors.push({kind,Q:{...Q},start:v.t,rate:v.rate,st:v.st});
+  } };
   const api = vm.runInNewContext(source+"\neZ();", globals), state = api._engine;
   state.ctx = ctx; state.ts = timeScale; state.nyq = 21600;
   state.buf.white = ctx.createBuffer(1,144000,48000);
@@ -69,7 +75,12 @@ function run(enabled, { fallback = false, reject = false, interaction, timeScale
   if (enabled) state.casingAudio = { lease(destination) {
     if (fallback) return null;
     assert.equal(destination,voice.sum);
-    const lease = { stopAt: [], releases: 0, submit(commands,originals) { if(reject)return false; cues.push(commands);cueOriginals.push(originals); },
+    const lease = { stopAt: [], releases: 0, submit(commands,originals) {
+      if(reject)return false;
+      if(timing==="past-at-submit")ctx.currentTime+=.004;
+      if(timing){const reason=casingTimingRejection(commands,ctx.currentTime);if(reason){timingReasons.push(reason);return false;}}
+      cues.push(commands);cueOriginals.push(originals);
+    },
       stop(at) { this.stopAt.push(at); }, release() { this.releases++; } };
     leases.push(lease); return lease;
   } };
@@ -120,7 +131,7 @@ function run(enabled, { fallback = false, reject = false, interaction, timeScale
   // Check real own keys BEFORE JSON erases dest:undefined from T.partials.
   assert.ok(cueOriginals.every(supportsCasingSources),"raw actual source descriptors must pass the production guard");
   assert.ok(!cueOriginals.length || cueOriginals.flat().some(s=>s.kind==="tone" && Object.hasOwn(s.options,"dest")) || interaction,"normal brass exercised own dest key");
-  return JSON.parse(JSON.stringify({ actions, draws, cues, cueOriginals, descriptors, summaries, sharedDisconnects, graph:ctx.commands }));
+  return JSON.parse(JSON.stringify({ actions, draws, cues, cueOriginals, descriptors, summaries, sharedDisconnects, timingReasons, graph:ctx.commands }));
 }
 
 test("actual casing preserves RNG, logical starts/end, spatial level and mixed-family allocation/release", () => {
@@ -168,7 +179,7 @@ test("bounded pool warms before lease; exhaustion, timeout, unsupported and proc
     disconnect() { this.disconnects++; }
   }
   const white={sampleRate:48000,getChannelData:()=>new Float32Array([1,0])};
-  const pool=createCasingAudio({sampleRate:48000,audioWorklet:{async addModule(url){assert.ok(url.pathname.endsWith("casing-worklet.js"));}}},white,{Node,slots:2});
+  const pool=createCasingAudio({sampleRate:48000,currentTime:0,audioWorklet:{async addModule(url){assert.ok(url.pathname.endsWith("casing-worklet.js"));}}},white,{Node,slots:2});
   assert.equal(pool.lease({}),null);
   await pool.ready; assert.equal(pool.stats.status,"ready");
   const a=pool.lease("first"), b=pool.lease("second");
@@ -305,4 +316,70 @@ test("Blink automated oscillator starts at zero phase and first partial quantum 
   mixer.cue([{kind:"noise",type:"lowpass",start:.003,issuedAt:0,attack:.001,hold:0,decay:.02,gain:.1,frequency:900,q:.7,offset:.03700001,noiseRate:1+1e-9}],0);
   assert.equal(mixer.sources[0].noiseRate,1,"AudioParam float conversion precedes unity offset rounding");
   assert.equal(mixer.sources[0].noise,Math.round(.03700001*48000));
+});
+
+
+test("whole-voice timing rejection retains actual original graph, saved offsets/RNG, voice and release", () => {
+  for(const timing of ["api-past-start","past-at-submit"])for(const timeScale of [.35,1,1.5]) {
+    const original=run(false,{timing,timeScale}),fallback=run(true,{timing,timeScale});
+    assert.deepEqual(fallback.graph,original.graph,"actual source API calls and saved noise offsets unchanged");
+    assert.deepEqual(fallback.draws,original.draws,"whole S0 random stream unchanged");
+    assert.deepEqual(fallback.actions,original.actions,"original allocator/voice timeline/release unchanged");
+    assert.deepEqual(fallback.summaries,original.summaries);
+    assert.equal(fallback.cues.length,0,"no pooled source was published");
+    assert.equal(fallback.timingReasons.length,20);
+    assert.ok(fallback.timingReasons.every(reason=>reason===timing));
+  }
+});
+
+test("timing gate rejects before publication; accepted command delivery misses never replay a second voice", async () => {
+  const command={kind:"tone",start:.003,issuedAt:0};
+  assert.equal(casingTimingRejection([command],.003),null,"exact boundary is not already past");
+  assert.equal(casingTimingRejection([command],.003001),"past-at-submit");
+  assert.equal(casingTimingRejection([{...command,issuedAt:.004}],.004),"api-past-start");
+  assert.equal(casingTimingRejection([{...command,issuedAt:NaN}],0),"invalid-timing");
+  const nodes=[];
+  class Node {
+    constructor(){this.messages=[];nodes.push(this);this.port={postMessage:value=>this.messages.push(value)};queueMicrotask(()=>this.port.onmessage({data:{type:"ready"}}));}
+    connect(){}disconnect(){}
+  }
+  const ctx={sampleRate:48000,currentTime:.004,audioWorklet:{async addModule(){}}};
+  const pool=createCasingAudio(ctx,{sampleRate:48000,getChannelData:()=>new Float32Array(144000)},{Node,slots:1});
+  await pool.ready;const lease=pool.lease({}),originals=[{kind:"tone",options:{f:440}}];
+  assert.equal(lease.submit([command],originals),false);
+  assert.equal(nodes[0].messages.length,0,"reject before cue is ever posted");
+  assert.equal(pool.stats.submitted,0);assert.equal(pool.stats.timingFallback,1);
+  assert.deepEqual(pool.stats.timingReasons,{"past-at-submit":1});
+  assert.equal(pool.stats.descriptorFallback,0);
+  ctx.currentTime=0;assert.equal(lease.submit([command],originals),true);
+  const fallback=pool.stats.fallback;
+  nodes[0].port.onmessage({data:{type:"accepted",cueId:1,token:1,arrivalFrame:1024,deliveryMissFrames:880,leadFrames:-880}});
+  assert.equal(pool.stats.deliveryMissCues,1);assert.equal(pool.stats.fallback,fallback);
+  assert.equal(nodes[0].messages.length,1,"late receipt sends no native/double-sounding substitute");
+  lease.release();
+});
+
+
+test("oracle owns separate native channels and audits real whole-voice fallback source trace rather than unsupported JS DSP", () => {
+  const text=readFileSync(new URL("../game/client/casing-pcm-oracle.js",import.meta.url),"utf8");
+  const body=text.slice(text.indexOf("function makeAudio("),text.indexOf("\nfunction metrics"));
+  const makeAudio=new Function("supportsCasingSources","casingTimingRejection",body+"\nreturn makeAudio;")(supportsCasingSources,casingTimingRejection);
+  const source=audio.replace("let mt = A0.currentTime + 3e-3","let mt = oracleStart");
+  for(const surface of ["carpet","wood","metal","water"])for(const rate of [44100,48000]) {
+    const ctx=context();ctx.sampleRate=rate;ctx.currentTime=1024/rate;
+    const node=ctx.node.bind(ctx);ctx.node=kind=>{const value=node(kind);value.connect=(to,...ports)=>ctx.commands.push(["nativeConnect",value.id,to.id,...ports]);return value;};
+    const destination=ctx.createChannelMerger(2),white=ctx.createBuffer(1,rate*3,rate);
+    const original=makeAudio(source,ctx,white,.003,false,8171,destination);
+    const fallback=makeAudio(source,ctx,white,.003,true,8171,destination);
+    original.state.ts=fallback.state.ts=1.5;
+    original.api.casing(null,surface,"brass");fallback.api.casing(null,surface,"brass");
+    assert.equal(original.api._errors.length,0);assert.equal(fallback.api._errors.length,0);
+    assert.equal(fallback.rejection,"api-past-start");
+    assert.equal(fallback.state.voices[0].casingLease,null,"actual original fallback branch ran");
+    assert.equal(supportsCasingSources(fallback.originals),true);
+    assert.deepEqual(fallback.draws,original.draws);
+    assert.deepEqual(fallback.trace,original.trace,"real source calls are not substituted with JS waveform output");
+    const ports=ctx.commands.filter(c=>c[0]==="nativeConnect"&&c[2]===destination.id).map(c=>c.slice(3));
+    assert.deepEqual(ports,[[0,0],[0,1]],"original and fallback render to separate mono channels");
+  }
 });

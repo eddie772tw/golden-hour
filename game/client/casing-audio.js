@@ -21,13 +21,23 @@ export function casingSourceRejection(sources) {
   return null;
 }
 export function supportsCasingSources(sources) { return casingSourceRejection(sources) === null; }
+// Decide before publication. Reconstructing browser past AudioParam automation
+// is outside the supported source lane; the existing whole voice replays natively.
+export function casingTimingRejection(commands, now) {
+  if (!Number.isFinite(now) || now < 0 || !commands.length
+    || commands.some(c=>!Number.isFinite(c.start) || !Number.isFinite(c.issuedAt) || c.start<0 || c.issuedAt<0)) return "invalid-timing";
+  if (commands.some(c=>c.issuedAt>c.start)) return "api-past-start";
+  if (commands.some(c=>now>c.start)) return "past-at-submit";
+  return null;
+}
 export function createCasingAudio(context, white, { register = node => node,
   unregister = node => node.disconnect(), Node = globalThis.AudioWorkletNode,
   slots = 12, timeoutMs = 5000 } = {}) {
   const stats = { status: "preparing", slots, leased: 0, peak: 0, submitted: 0,
     fallback: 0, processorErrors: 0, lateCues: 0, lateFrames: 0, maxLateFrames: 0,
     firstSamples: 0, maxSourceOnsetDelayFrames: 0, warmed: 0, expiredSources: 0,
-    descriptorFallback: 0, descriptorReasons: {}, apiPastStartSources: 0, deliveryMissCues: 0, maxDeliveryMissFrames: 0,
+    descriptorFallback: 0, descriptorReasons: {}, timingFallback: 0, timingReasons: {},
+    apiPastStartSources: 0, pastAtSubmitSources: 0, deliveryMissCues: 0, maxDeliveryMissFrames: 0,
     timings: [], timingDropped: 0,
     maxCommandLeadFrames: 0, minCommandLeadFrames: null };
   const pool = [], api = { stats, ready: null, lease };
@@ -113,10 +123,18 @@ export function createCasingAudio(context, white, { register = node => node,
           stats.descriptorReasons[rejection] = (stats.descriptorReasons[rejection] || 0)+1;
           return false;
         }
+        const now = context.currentTime;
+        stats.apiPastStartSources += commands.filter(c=>c.issuedAt>c.start).length;
+        stats.pastAtSubmitSources += commands.filter(c=>now>c.start).length;
+        const timingRejection = casingTimingRejection(commands, now);
+        if (timingRejection) {
+          stats.fallback++; stats.timingFallback++;
+          stats.timingReasons[timingRejection] = (stats.timingReasons[timingRejection] || 0)+1;
+          return false; // No cue message has been published; native whole-voice fallback owns output.
+        }
         const cueId = ++stats.submitted;
         const requestedFrame = Math.ceil(Math.min(...commands.map(c=>c.start))*context.sampleRate);
         const effectiveMainFrame = Math.ceil(Math.min(...commands.map(c=>Math.max(c.start,c.issuedAt)))*context.sampleRate);
-        stats.apiPastStartSources += commands.filter(c=>c.issuedAt>c.start).length;
         if (stats.timings.length < 2048) stats.timings.push({cueId,token,requestedFrame,effectiveMainFrame,
           arrivalFrame:null,firstNonzeroFrame:null}); else stats.timingDropped++;
         slot.node.port.postMessage({ type: "cue", token, cueId, commands });

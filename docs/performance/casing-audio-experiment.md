@@ -10,6 +10,12 @@ and global victims, applies gains and fade targets, and releases them. Its
 distance, head shadow, stereo delay/filter/merger, sfx bus, reverb send and
 downstream master processing are retained. The original `S0` runs its existing
 surface, shell, bounce and partials branches and consumes the same random draws.
+Before publication, a cue also rejects the pooled lane if any source was already
+past its requested start at API issue or at submission. The whole voice then
+uses the original graph with saved noise offsets. Accepted commands that arrive
+late on MessagePort never trigger a second native voice. `timingFallback` and
+`timingReasons` are separate from descriptor/pool failures;
+`apiPastStartSources` counts attempted sources, including rejected voices.
 Only the casing oscillator/noise/filter/envelope source subgraph is represented
 by commands and rendered into one mono source for that voice.
 
@@ -72,8 +78,10 @@ const result = await runCasingPCMOracle();
 This developer module is never imported by normal startup. It fetches the
 actual core, extracts `S0` and `T`, and changes only the diagnostic requested
 start clock. Actual original WebAudio source nodes render in an
-`OfflineAudioContext`. Their PCM is compared with the JS `CasingMixer` fed by the
-same actual casing branches, random stream and white PCM. The output is a dry
+`OfflineAudioContext`. Accepted-lane PCM is compared with the JS `CasingMixer` fed by the
+same actual casing branches, random stream and white PCM. Unsupported timing
+now executes the actual whole-voice fallback graph in a separate native mono
+channel; it is not counted as supported JS DSP. The output is a dry
 source component comparison. It does not test Worklet transport, downstream
 spatial/reverb output, or a physical audio device.
 
@@ -190,3 +198,37 @@ no performance run is justified until onTime/pastApi/stealTail pass the unchange
 retain all errors and measure remaining original graph cost. Casing is only
 one graph family; reducing it does not establish that the roughly113k nodes/min
 baseline or main-thread cleanup spikes are resolved.
+
+
+## Timing fallback after the complete second screen
+
+Root's `casing-pcm-2.json` covered480 rows across the two rates. At44.1 kHz,
+four remaining failures were pastApi/timeScale1.5: carpet/fabric/foliage brass
+NRMSE.131 and wood brass.039. At48 kHz, three carpet/fabric/foliage brass cases
+remained at.063. All tested onTime/stealTail combinations passed. A short live
+screen submitted255 cues, fallback49, descriptorFallback0 and processorErrors0;
+that establishes the admission correction, not a frame-time improvement.
+
+The supported lane is now deliberately narrower: if any source's API issue or
+current main AudioContext time is greater than its requested start, publication
+returns false for the entire voice. Existing `casingFlush` replays every actual
+source using its saved noise offset, without a second random draw. This does
+not attempt to reproduce browser past-automation corner cases. The core and
+allocator/spatial routing remain unchanged.
+
+The oracle uses the **same formal descriptor and timing predicates**. Original
+and actual fallback native graphs render into separate mono channels of one
+OfflineAudioContext. A `native-whole-voice-fallback` row needs exact PCM,
+identical source create/connect/AudioParam/start/stop trace, identical voice
+configuration and identical RNG stream. Trace hashes, event counts, lane and
+rejection reason are retained; `includeTrace:true` exposes the bounded events.
+It cannot claim a native fallback as JS DSP equivalence. `deliveryMiss` is still
+published on time then delivered late; it is reported as deadline failure and
+never switches to a second native graph after publication.
+
+Nine focused CPU tests cover both issue-past and past-at-submit whole-voice
+fallback, exact actual source API commands/offsets/RNG/voice/release, no cue
+message on rejection and no late-message double playback. The oracle hardware
+boundary also has a CPU test; that test does not simulate or certify native PCM.
+Root must rerun the actual browser PCM matrix before fullAI/benefit measurement.
+The2% threshold and one-sample gate are unchanged.
