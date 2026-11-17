@@ -6,6 +6,7 @@ import "./touch-controls.js";
 import { installDesktopInput } from "./desktop-input.js";
 import { installRuntimeDiagnostics } from "./runtime-diagnostics.js";
 import { createRenderPreparation, finishShaderJobs, waitForDraw } from "./render-preparation.js";
+import { prepareWarmDrawCoverage, preparedProgramsReady, retainedProgramCompletion } from "./shader-warmup.js";
 import {
   createWebGLContext,
   installWebGLRecovery,
@@ -24,6 +25,7 @@ const base = new URL("../", import.meta.url);
 const version = document.documentElement.dataset.bundle || "development";
 const params = new URLSearchParams(location.search);
 const baking = params.has("bake");
+const shaderWarmupCandidate = params.get("shaderWarmup") === "1" || globalThis.__GH_SHADER_WARMUP_CANDIDATE === true;
 const workerDecode = !baking && params.get("operatorDecode") === "worker";
 const operatorAbort = workerDecode ? new AbortController() : null;
 const policy = startupPolicy({
@@ -53,6 +55,7 @@ const stats = {
   cacheReadMs: 0,
   shaderJobs: 0,
   shaderErrors: 0,
+  shaderWarmupCandidate,
 };
 const start = performance.now();
 const boot = (globalThis.GHBoot = {
@@ -61,6 +64,19 @@ const boot = (globalThis.GHBoot = {
   runtimeReady,
   createRenderPreparation,
   waitForDraw,
+  shaderWarmupCandidate, prepareWarmDrawCoverage, preparedProgramsReady, retainedProgramCompletion,
+  shaderWarmupStatus() {
+    const preparation = globalThis.GH?.debug?.gfx?.preparation;
+    return {
+      enabled: shaderWarmupCandidate,
+      rendererReady: !!globalThis.GH?.ready && !!preparation && !preparation.pending && !preparation.error,
+      pending: preparation?.pending ?? true,
+      error: preparation?.error?.message || null,
+      shaderJobs: stats.shaderJobs, shaderErrors: stats.shaderErrors,
+      lastPreparation: stats.preparation || null,
+      history: stats.shaderWarmupHistory || [],
+    };
+  },
   createWebGLContext,
   policy,
   limitTextureData(data, width, height) {

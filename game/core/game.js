@@ -16873,7 +16873,8 @@ void main() {
                 it = y.compile(g0, G0, K0);
               }
               it.forEach(function(rt) {
-                H0.get(rt).currentProgram.isReady() && it.delete(rt);
+                const ghPrograms = H0.get(rt);
+                (globalThis.GHBoot?.shaderWarmupCandidate ? globalThis.GHBoot.preparedProgramsReady(ghPrograms) : ghPrograms.currentProgram.isReady()) && it.delete(rt);
               });
               if (it.size === 0) {
                 ft(g0);
@@ -50882,7 +50883,7 @@ ${o.filename || ""}:${o.lineno || ""}`;
       message.textContent = "画面准备失败，请刷新页面重试：" + String(error?.message || error);
     }
     n.preparation = globalThis.GHBoot.createRenderPreparation(async (reason, current) => {
-      let target = new Vs(4, 4, { type: Yn }), visible = [], vmEnabled = n.vmPass.enabled, shown = C.shown, paneProbe;
+      let target = new Vs(4, 4, { type: Yn }), visible = [], vmEnabled = n.vmPass.enabled, shown = C.shown, paneProbe, warmCoverage;
       let position = a.position.clone(), quaternion = a.quaternion.clone(), oldTarget = r.getRenderTarget(), oldTime = n.time;
       const roots = [...(n.warmRoots || [])], shaderError = r.debug.onShaderError;
       const layers = a.layers.mask, vmLayers = n.vmCamera.layers.mask;
@@ -50893,9 +50894,11 @@ ${o.filename || ""}:${o.lineno || ""}`;
       let shaderFailed = false;
       r.debug.onShaderError = (...args) => { shaderFailed = true; shaderError?.(...args); };
       const started = performance.now();
+      const warmTiming = globalThis.GHBoot.shaderWarmupCandidate ? { programsBefore: r.info.programs.length } : null;
       try {
         if (r.getContext().isContextLost()) throw Error("WebGL context is unavailable");
         await globalThis.GHBoot.finishShaders();
+        if (warmTiming) warmTiming.existingJobsMs = performance.now() - started;
         if (!current()) return;
         paneProbe = d._preparePaneMaterial();
         for (let bot of b.bots) for (let rig of bot.rigs) visible.push([rig.root, rig.root.visible]), rig.root.visible = true;
@@ -50905,8 +50908,14 @@ ${o.filename || ""}:${o.lineno || ""}`;
         C._weapon(A), C._show(1);
         if (a.position.y <= 0.02) a.position.y = 1.7;
         a.updateMatrixWorld(true);
+        if (globalThis.GHBoot.shaderWarmupCandidate) warmCoverage = globalThis.GHBoot.prepareWarmDrawCoverage([
+            { label: "world-particles", mesh: u.p.mesh, scene: i },
+            { label: "world-distortion", mesh: u.distort.mesh, scene: i },
+            { label: "view-muzzle", mesh: E.fl.mesh, scene: n.vmScene }
+          ]);
         await VC(r, i, a, target);
         await VC(r, n.vmScene, n.vmCamera, target);
+        if (warmTiming) warmTiming.compileMs = performance.now() - started - warmTiming.existingJobsMs;
         if (!current()) return;
         Rs0(r, i, a, target), Rs0(r, n.vmScene, n.vmCamera, target);
         n.vmPass.enabled = true;
@@ -50938,6 +50947,7 @@ ${o.filename || ""}:${o.lineno || ""}`;
             for (let restore of restoreFades) restore();
           }
           n._warming = true;
+          warmCoverage?.restore();
           paneProbe.visible = false;
           for (let [root, value] of visible) root.visible = value;
           C._show(shown), n.vmPass.enabled = vmEnabled;
@@ -50947,14 +50957,26 @@ ${o.filename || ""}:${o.lineno || ""}`;
           n.render(1 / 60);
         } finally { n._warming = false; }
         if (shaderFailed) throw Error("Shader linking failed during renderer preparation");
+        const fenceStarted = warmTiming ? performance.now() : 0;
+        if (warmTiming) warmTiming.resourcePassesMs = fenceStarted - started - warmTiming.existingJobsMs - warmTiming.compileMs;
         await globalThis.GHBoot.waitForDraw(r);
+        if (warmTiming) warmTiming.fenceWaitMs = performance.now() - fenceStarted;
         if (current()) {
           n._hasPrev = false, n.snapExposure();
           globalThis.GHBoot.stats.preparation = { reason, ms: Math.round(performance.now() - started) };
+          if (warmCoverage) {
+            const coverage = { pools: warmCoverage.rows, buffersWritten: false, ...warmTiming, programsAfter: r.info.programs.length,
+              retainedPrograms: globalThis.GHBoot.retainedProgramCompletion(r) };
+            globalThis.GHBoot.stats.preparation.coverage = coverage;
+            const history = globalThis.GHBoot.stats.shaderWarmupHistory || (globalThis.GHBoot.stats.shaderWarmupHistory = []);
+            if (history.length === 32) history.shift();
+            history.push({ reason, totalMs: performance.now() - started, ...coverage });
+          }
           globalThis.GHBoot.stats.preparationError = null;
           for (let root of roots) n.warmRoots.delete(root);
         }
       } finally {
+        warmCoverage?.restore();
         for (let [root, value] of visible) root.visible = value;
         C._show(shown), n.vmPass.enabled = vmEnabled;
         a.position.copy(position), a.quaternion.copy(quaternion), a.updateMatrixWorld(true);
