@@ -2,6 +2,8 @@
 
 GH_ORIGINAL_LIVE=1 enables one short public room as an anonymous test client.
 GH_DEV_PORT selects the client (default 48722); GH_LIVE_CAPTURES saves evidence.
+GH_LIVE_SECONDS observes a live match (default 60, range 1..300).
+GH_LIVE_HEADED=1 shows the independent test browser.
 No Bilibili login, account import, kills or cloud-save writes are performed.
 """
 from datetime import datetime, timezone
@@ -15,11 +17,15 @@ if os.environ.get("GH_ORIGINAL_LIVE") != "1":
 origin = "http://127.0.0.1:" + os.environ.get("GH_DEV_PORT", "48722")
 out = Path(os.environ.get("GH_LIVE_CAPTURES", "test-results/original-live"))
 out.mkdir(parents=True, exist_ok=True)
+duration = int(os.environ.get("GH_LIVE_SECONDS", "60"))
+assert 1 <= duration <= 300, "GH_LIVE_SECONDS must be 1..300"
 result = {"atUTC": datetime.now(timezone.utc).isoformat(), "clientOrigin": origin,
-          "backend": "https://cod.apikeygame.top:8008", "freshAnonymousProfile": True}
+          "backend": "https://cod.apikeygame.top:8008", "freshAnonymousProfile": True,
+          "observationSeconds": duration, "networkSamples": []}
 with sync_playwright() as pw:
     exe = os.environ.get("GH_BROWSER")
     browser = pw.chromium.launch(channel=None if exe else "msedge", executable_path=exe,
+        headless=os.environ.get("GH_LIVE_HEADED") != "1",
         args=["--disable-background-networking", "--enable-unsafe-swiftshader"])
     ctx = browser.new_context(locale="zh-TW", viewport={"width":1280,"height":800}, service_workers="block")
     ctx.add_init_script("localStorage.setItem('gh_weapon_models_v1', JSON.stringify({pistol:'gbull',smg:'chingi',shotgun:'linbei'}))")
@@ -64,12 +70,26 @@ with sync_playwright() as pw:
         page.evaluate("GH.debug.arsenal.swap(1)")
         page.wait_for_function("GH.debug.arsenal.slot.def.profileId==='pistol' && GH.debug.arsenal.slot.ammo===15")
         result["secondaryAmmo"] = page.evaluate("GH.debug.arsenal.slot.ammo")
+        print("PASS real WebRTC join, movement ACK and factory loadout; observing live state", flush=True)
+        for _ in range(duration):
+            result["networkSamples"].append(page.evaluate("({...GH.debug.network})"))
+            page.wait_for_timeout(1000)
+        # Require new authoritative updates at the end; a frozen page with an
+        # old 'connected' label must not count as a successful live acceptance.
+        snapshots = page.evaluate("GH.debug.network.snapshots")
+        page.wait_for_function("n=>GH.debug.network.snapshots>n+5", arg=snapshots, timeout=25000)
+        result["freshStateAtEnd"] = True
+        result["deathsAtEnd"] = page.evaluate("GH.debug.player.deaths")
+        result["observedNetwork"] = page.evaluate("({...GH.debug.network})")
+        result["noReconnects"] = result["observedNetwork"].get("connections") == 1
         page.evaluate("GH.debug.ctx.hud.menus._act('online')")
         page.evaluate("""async()=>{await Promise.all(Object.values(GH.debug.ctx.hud.menus.pages)
             .flatMap(p=>p.getAnimations().map(a=>a.finished.catch(()=>{}))));}""")
         page.screenshot(path=str(out/"repo-original-server-joined.png"))
         assert not external and not errors, (external, errors)
+        result["passed"] = True
     except Exception as error:
+        result["passed"] = False
         result["failure"] = str(error)
         result["uiError"] = page.locator("#online-error").text_content() if page.locator("#online-error").count() else None
         page.screenshot(path=str(out/"failure.png"))

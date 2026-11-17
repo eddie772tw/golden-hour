@@ -20,7 +20,7 @@ export class RTCTransport {
     this.reliable.addEventListener("message", ({ data }) => {
       if (this.abort.signal.aborted) return;
       const bytes = typeof data === "string" ? encoder.encode(data) : new Uint8Array(data);
-      if (bytes.byteLength > 16384 || events.desiredSize <= 0) { this.close(); return; }
+      if (bytes.byteLength > 16384 || events.desiredSize <= 0) { this.close("event-overflow"); return; }
       events.enqueue(bytes);
     });
     this.state.addEventListener("message", ({ data }) => {
@@ -41,21 +41,21 @@ export class RTCTransport {
     this.stream.writable = { getWriter: () => writer(this.reliable, true) };
     this.datagrams.writable = { getWriter: () => writer(this.state, false) };
     for (const channel of [this.reliable, this.state]) {
-      channel.addEventListener("close", () => this.close());
-      channel.addEventListener("error", () => this.close());
+      channel.addEventListener("close", () => this.close(channel.label + "-closed"));
+      channel.addEventListener("error", () => this.close(channel.label + "-error"));
     }
     this.pc.addEventListener("connectionstatechange", () => {
-      if (["failed", "closed"].includes(this.pc.connectionState)) this.close();
+      if (["failed", "closed"].includes(this.pc.connectionState)) this.close("peer-" + this.pc.connectionState);
     });
     this.pc.addEventListener("iceconnectionstatechange", () => {
       if (this.pc.iceConnectionState === "disconnected") {
         clearTimeout(this.disconnectTimer);
         this.disconnectTimer = setTimeout(() => {
-          if (this.pc.iceConnectionState === "disconnected") this.close();
+          if (this.pc.iceConnectionState === "disconnected") this.close("ice-disconnected");
         }, 3000);
       }
     });
-    this.ready = this.connect(config,ticket).catch(error => { this.close(); throw error; });
+    this.ready = this.connect(config,ticket).catch(error => { this.close("signaling-failed"); throw error; });
     this.ready.catch(() => {});
   }
   async until(target, event, test) {
@@ -90,8 +90,9 @@ export class RTCTransport {
     await Promise.all([this.reliable, this.state].map(channel => this.until(channel, "open", () => channel.readyState === "open")));
   }
   createBidirectionalStream() { return Promise.resolve(this.stream); }
-  close() {
+  close(reason = "local-close") {
     if (this.abort.signal.aborted) return;
+    this.closeReason = reason;
     this.abort.abort();
     clearTimeout(this.disconnectTimer);
     for (const controller of this.controllers) { try { controller.close(); } catch {} }

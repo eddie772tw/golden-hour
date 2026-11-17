@@ -120,6 +120,9 @@ export class Connection extends EventTarget {
     this.snapshotTimeoutMs = snapshotTimeoutMs;
     this.generation = 0;
     this.intentional = true;
+    this.stale = false;
+    this.staleAt = null;
+    this.healthySince = null;
     this.sendChain = Promise.resolve();
     this.sendQueue = { count: 0, bytes: 0, abort: new AbortController() };
     this.inputFlight = null;
@@ -138,6 +141,12 @@ export class Connection extends EventTarget {
       queuedBytes: 0,
       snapshotAgeMs: 0,
       snapshotGaps: 0,
+      connections: 0,
+      disconnects: 0,
+      lastDisconnectReason: null,
+      snapshotStalls: 0,
+      snapshotRecoveries: 0,
+      maxSnapshotAgeMs: 0,
     };
   }
   emit(type, detail) {
@@ -152,6 +161,7 @@ export class Connection extends EventTarget {
       throw Error("联机需要 HTTPS。开发时请使用本机 localhost 地址。");
   }
   async connect(hello, config) {
+    if (this.intentional) this.retry = 0;
     this.checkSupport();
     const rtc = config.rtc && typeof globalThis.RTCPeerConnection === "function";
     const kind = config.preferredTransport === "webrtc" || typeof globalThis.WebTransport !== "function" ? "webrtc" : "webtransport";
@@ -171,6 +181,10 @@ export class Connection extends EventTarget {
     clearInterval(this.watchdog);
     this.sendQueue.abort.abort();
     this.intentional = false;
+    this.stale = false;
+    this.staleAt = null;
+    this.lastSnapshotAt = performance.now();
+    this.healthySince = null;
     this.hello = { ...hello };
     this.config = config;
     const generation = ++this.generation;
@@ -229,19 +243,18 @@ export class Connection extends EventTarget {
         current();
       }, this.connectTimeoutMs, "连接超时：请重试，并检查服务器 UDP 端口与证书配置。");
       this.handshake = null;
-      this.retry = 0;
       this.metrics.transport = kind;
+      this.metrics.connections++;
       this.lastSnapshotAt = performance.now();
       this.watchdog = setInterval(() => {
         if (generation !== this.generation || this.intentional) return;
-        this.metrics.snapshotAgeMs = Math.round(performance.now() - this.lastSnapshotAt);
-        if (this.metrics.snapshotAgeMs > this.snapshotTimeoutMs) this.fail(generation);
+        this.checkHealth();
       }, Math.min(1000, this.snapshotTimeoutMs));
       this.watchdog.unref?.();
       this.emit("status", "已连接");
       wt.closed.then(
-        () => this.closed(generation),
-        () => this.closed(generation),
+        () => this.closed(generation, wt.closeReason || "transport-closed"),
+        () => this.closed(generation, wt.closeReason || "transport-error"),
       );
     } catch (error) {
       if (generation === this.generation) {
@@ -259,6 +272,28 @@ export class Connection extends EventTarget {
       throw error;
     }
   }
+  checkHealth(now = performance.now()) {
+    if (this.intentional || this.failedGeneration === this.generation) return;
+    this.metrics.snapshotAgeMs = Math.round(now - this.lastSnapshotAt);
+    this.metrics.maxSnapshotAgeMs = Math.max(this.metrics.maxSnapshotAgeMs, this.metrics.snapshotAgeMs);
+    if (this.metrics.snapshotAgeMs <= this.snapshotTimeoutMs) return;
+    // ICE can stay connected while SCTP recovers a burst of lost/delayed data.
+    // Give that association one bounded probe window instead of immediately
+    // destroying it (and paying for another SDP/DTLS handshake). The same
+    // window lets queued message tasks run after a stalled browser resumes.
+    if (this.transport?.pc?.connectionState === "connected") {
+      if (this.staleAt === null) {
+        this.staleAt = now;
+        this.stale = true;
+        this.metrics.snapshotStalls++;
+        this.emit("stale", true);
+        this.send({ type: "ping", nonce: performance.now() }).catch(() => {});
+        return;
+      }
+      if (now - this.staleAt < this.writeTimeoutMs) return;
+    }
+    this.fail(this.generation, "snapshot-timeout");
+  }
   send(message) {
     if (!this.writer) return Promise.reject(Error("尚未连接服务器"));
     if (this.original) {
@@ -275,12 +310,12 @@ export class Connection extends EventTarget {
     // Check command count before serializing: a stalled reliable stream must
     // not retain an unbounded promise chain and command payloads while firing.
     if (queue.count >= MAX_RELIABLE_COMMANDS) {
-      this.fail(generation);
+      this.fail(generation, "command-overflow");
       return Promise.reject(Error("发送队列已满，正在恢复连接。"));
     }
     const data = new TextEncoder().encode(JSON.stringify(message) + "\n");
     if (data.byteLength > 16384 || queue.bytes + data.byteLength > MAX_RELIABLE_BYTES) {
-      this.fail(generation);
+      this.fail(generation, "command-overflow");
       return Promise.reject(Error("发送队列已满，正在恢复连接。"));
     }
     queue.count++;
@@ -302,7 +337,7 @@ export class Connection extends EventTarget {
     next.then(release, () => {
       release();
       if (generation === this.generation && writer === this.writer)
-        this.fail(generation);
+        this.fail(generation, "command-write-failed");
     });
     this.sendChain = next.catch(() => {});
     return next;
@@ -329,7 +364,7 @@ export class Connection extends EventTarget {
       }
     } catch {
       if (flight.generation === this.generation && flight.writer === this.datagrams)
-        this.fail(flight.generation);
+        this.fail(flight.generation, "input-write-failed");
     } finally {
       if (this.inputFlight === flight) this.inputFlight = null;
     }
@@ -384,7 +419,7 @@ export class Connection extends EventTarget {
         this.handshake.reject(Error("服务器在加入房间前关闭了连接。"));
       reader.releaseLock();
       if (generation === this.generation && !this.intentional)
-        this.fail(generation);
+        this.fail(generation, "event-stream-closed");
     }
   }
   async readSnapshots(readable, generation) {
@@ -396,8 +431,21 @@ export class Connection extends EventTarget {
         const snapshot = decodeSnapshot(value, this.original);
         if (snapshot && snapshot.tick > this.latestTick) {
           if (this.latestTick) this.metrics.snapshotGaps += Math.max(0, Math.floor((snapshot.tick - this.latestTick) / 2) - 1);
-          this.lastSnapshotAt = performance.now();
+          const now = performance.now();
+          const gap = now - (this.lastSnapshotAt ?? now);
+          // A welcome followed by another stalled lane is not a recovery.
+          // Reset backoff only after a full timeout window of healthy state.
+          if (this.healthySince === null || gap > this.snapshotTimeoutMs) this.healthySince = now;
+          else if (now - this.healthySince >= this.snapshotTimeoutMs) this.retry = 0;
+          this.metrics.maxSnapshotAgeMs = Math.max(this.metrics.maxSnapshotAgeMs, Math.round(gap));
+          this.lastSnapshotAt = now;
           this.metrics.snapshotAgeMs = 0;
+          if (this.stale) {
+            this.stale = false;
+            this.staleAt = null;
+            this.metrics.snapshotRecoveries++;
+            this.emit("stale", false);
+          }
           this.metrics.snapshots++;
           this.metrics.snapshotBytes += value.byteLength;
           this.metrics.ack =
@@ -410,20 +458,22 @@ export class Connection extends EventTarget {
     } finally {
       reader.releaseLock();
       if (generation === this.generation && !this.intentional)
-        this.fail(generation);
+        this.fail(generation, "snapshot-stream-closed");
     }
   }
-  fail(generation) {
+  fail(generation, reason = "channel-interrupted") {
     if (generation !== this.generation || this.intentional || this.failedGeneration === generation) return;
     const transport = this.transport;
     if (this.handshake?.generation === generation)
       this.handshake.reject(Error("连接通道已中断。"));
-    else this.closed(generation);
+    else this.closed(generation, this.transport?.closeReason || reason);
     try { transport?.close(); } catch {}
   }
-  closed(generation) {
+  closed(generation, reason = "transport-closed") {
     if (generation !== this.generation || this.intentional || this.failedGeneration === generation) return;
     this.failedGeneration = generation;
+    this.metrics.disconnects++;
+    this.metrics.lastDisconnectReason = reason;
     clearInterval(this.watchdog);
     this.sendQueue.abort.abort();
     this.writer = null;
@@ -453,6 +503,8 @@ export class Connection extends EventTarget {
   }
   async leave() {
     this.intentional = true;
+    this.stale = false;
+    this.staleAt = null;
     clearInterval(this.watchdog);
     if (this.writer) {
       const accepted = new Promise((resolve) => {

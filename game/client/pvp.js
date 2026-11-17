@@ -566,6 +566,10 @@ net.addEventListener("status", ({ detail }) => {
   if (detail.includes("中断") && inMatch()) engine.pause();
 });
 net.addEventListener("error", ({ detail }) => error(detail));
+net.addEventListener("stale", ({ detail }) => {
+  if (detail) engine.stopInput();
+  ctx.hud.hint(detail ? "网络状态更新延迟，正在等待恢复…" : "网络状态更新已恢复。", detail ? 6 : 2);
+});
 net.addEventListener("event", ({ detail: e }) => {
   if (!serverTarget.original) {
     if ((e.type === "career" || e.type === "welcome") && e.career) access.apply(e.career);

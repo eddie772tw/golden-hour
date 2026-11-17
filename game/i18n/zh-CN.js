@@ -467,6 +467,8 @@ export default {
   "client.joining_room": "正在加入房间…",
   "client.connection_timed_out_check_the_server_udp_port": "连接超时：请重试，并检查服务器 UDP 端口与证书配置。",
   "client.connected_alt": "已连接",
+  "client.snapshot_stalled": "网络状态更新延迟，正在等待恢复…",
+  "client.snapshot_recovered": "网络状态更新已恢复。",
   "client.disconnected": "尚未连接服务器",
   "client.send_queue_full_reconnecting": "发送队列已满，正在恢复连接。",
   "client.send_timed_out_reconnecting": "发送超时，正在恢复连接。",

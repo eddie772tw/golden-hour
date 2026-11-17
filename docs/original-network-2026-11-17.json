@@ -1,0 +1,388 @@
+{
+  "atUTC": "2026-11-17T12:36:51.838928+00:00",
+  "clientOrigin": "http://127.0.0.1:48722",
+  "backend": "https://cod.apikeygame.top:8008",
+  "baseCommit": "1b4be73a48633722b25fa43c38afbbe6309b85bf",
+  "upstreamSourceSha256": {
+    "api-config.js": "3d07a91fb6e79a7ba14c3ff1db3962c404140a0948efb6e5d1767325580cbd01",
+    "net.js": "1f0021a6f9f0609b0dc3963e8677a7cf9a449a61aaf03a6028901aa5358fed7c",
+    "webrtc.js": "ba074826576a848514faacf7cc412d3abc25ece823422f62d4b4767a08701ee4"
+  },
+  "upstreamFilesMatchArchive": true,
+  "controlScope": "Upstream net/webrtc with observational diagnostics and localhost signaling gateway, not a Toy platform acceptance. Separate-time public-server samples, not controlled performance A/B.",
+  "runs": {
+    "beforeGame": {
+      "samples": 45,
+      "durationMs": 44605,
+      "maxPeerConnections": 5,
+      "iceRttRangeMs": [
+        64,
+        80
+      ],
+      "maxApplicationRttMs": 1072,
+      "maxEventLoopDelayMs": 1858,
+      "watchdogFailures": [
+        {
+          "atMs": 26934,
+          "snapshotAgeMs": 5478
+        },
+        {
+          "atMs": 35801,
+          "snapshotAgeMs": 5010
+        },
+        {
+          "atMs": 44211,
+          "snapshotAgeMs": 5125
+        },
+        {
+          "atMs": 55311,
+          "snapshotAgeMs": 5914
+        }
+      ],
+      "finalNetwork": {
+        "inputPackets": 404,
+        "inputBytes": 10100,
+        "inputDropped": 0,
+        "snapshots": 310,
+        "snapshotBytes": 205840,
+        "ack": 808,
+        "rttMs": 355,
+        "queuedCommands": 0,
+        "queuedBytes": 0,
+        "snapshotAgeMs": 3814,
+        "snapshotGaps": 475,
+        "transport": "webrtc"
+      },
+      "leftMatch": true,
+      "pageErrors": []
+    },
+    "upstreamConnectionModules": {
+      "samples": 40,
+      "durationMs": 39402,
+      "maxPeerConnections": 3,
+      "iceRttRangeMs": [
+        73,
+        86
+      ],
+      "maxApplicationRttMs": 3305,
+      "maxEventLoopDelayMs": 877,
+      "watchdogFailures": [
+        {
+          "atMs": 35434,
+          "snapshotAgeMs": 5687
+        },
+        {
+          "atMs": 44316,
+          "snapshotAgeMs": 5441
+        }
+      ],
+      "finalNetwork": {
+        "inputPackets": 1093,
+        "inputBytes": 27325,
+        "inputDropped": 0,
+        "snapshots": 443,
+        "snapshotBytes": 294152,
+        "ack": 1011,
+        "rttMs": 75,
+        "queuedCommands": 0,
+        "queuedBytes": 0,
+        "snapshotAgeMs": 5441,
+        "snapshotGaps": 305,
+        "transport": "webrtc"
+      },
+      "leftMatch": true,
+      "pageErrors": []
+    },
+    "afterProtocol": {
+      "samples": 40,
+      "durationMs": 39370,
+      "maxPeerConnections": 1,
+      "iceRttRangeMs": [
+        67,
+        83
+      ],
+      "maxApplicationRttMs": 1619,
+      "maxEventLoopDelayMs": 980,
+      "watchdogFailures": [],
+      "finalNetwork": {
+        "inputPackets": 1193,
+        "inputBytes": 29825,
+        "inputDropped": 0,
+        "snapshots": 316,
+        "snapshotBytes": 209824,
+        "ack": 1107,
+        "rttMs": 1619,
+        "queuedCommands": 0,
+        "queuedBytes": 0,
+        "snapshotAgeMs": 2380,
+        "snapshotGaps": 783,
+        "connections": 1,
+        "disconnects": 0,
+        "lastDisconnectReason": null,
+        "snapshotStalls": 3,
+        "snapshotRecoveries": 3,
+        "maxSnapshotAgeMs": 7184,
+        "transport": "webrtc"
+      },
+      "leftMatch": true,
+      "pageErrors": []
+    },
+    "afterFullGame": {
+      "samples": 60,
+      "durationMs": 59782,
+      "maxPeerConnections": 3,
+      "iceRttRangeMs": [
+        68,
+        87
+      ],
+      "maxApplicationRttMs": 2838,
+      "maxEventLoopDelayMs": 1675,
+      "watchdogFailures": [
+        {
+          "atMs": 42232,
+          "snapshotAgeMs": 11464
+        },
+        {
+          "atMs": 82695,
+          "snapshotAgeMs": 10402
+        }
+      ],
+      "finalNetwork": {
+        "inputPackets": 1812,
+        "inputBytes": 45300,
+        "inputDropped": 0,
+        "snapshots": 922,
+        "snapshotBytes": 612208,
+        "ack": 3684,
+        "rttMs": 76,
+        "queuedCommands": 0,
+        "queuedBytes": 0,
+        "snapshotAgeMs": 0,
+        "snapshotGaps": 714,
+        "connections": 3,
+        "disconnects": 2,
+        "lastDisconnectReason": "snapshot-timeout",
+        "snapshotStalls": 3,
+        "snapshotRecoveries": 1,
+        "maxSnapshotAgeMs": 11464,
+        "transport": "webrtc"
+      },
+      "leftMatch": true,
+      "pageErrors": []
+    }
+  },
+  "strictAcceptanceFailures": [
+    {
+      "atUTC": "2026-11-17T12:26:34.069859+00:00",
+      "clientOrigin": "http://127.0.0.1:48722",
+      "backend": "https://cod.apikeygame.top:8008",
+      "freshAnonymousProfile": true,
+      "observationSeconds": 60,
+      "listedRooms": 3,
+      "failure": "Page.wait_for_function: Timeout 30000ms exceeded.",
+      "uiError": "連線超時：請重試，並檢查伺服器 UDP 埠與證書配置。",
+      "finalNetwork": {
+        "inputPackets": 0,
+        "inputBytes": 0,
+        "inputDropped": 0,
+        "snapshots": 0,
+        "snapshotBytes": 0,
+        "ack": 0,
+        "rttMs": 0,
+        "queuedCommands": 0,
+        "queuedBytes": 0,
+        "snapshotAgeMs": 0,
+        "snapshotGaps": 0,
+        "connections": 0,
+        "disconnects": 0,
+        "lastDisconnectReason": null,
+        "snapshotStalls": 0,
+        "snapshotRecoveries": 0,
+        "maxSnapshotAgeMs": 0,
+        "transport": null
+      },
+      "externalRequests": [],
+      "pageErrors": [],
+      "passed": false,
+      "apiResponses": [
+        {
+          "path": "rooms/events",
+          "status": 200
+        },
+        {
+          "path": "config",
+          "status": 200
+        },
+        {
+          "path": "rtc/offer",
+          "status": 200
+        },
+        {
+          "path": "rooms/events",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "atUTC": "2026-11-17T12:28:19.143847+00:00",
+      "clientOrigin": "http://127.0.0.1:48722",
+      "backend": "https://cod.apikeygame.top:8008",
+      "freshAnonymousProfile": true,
+      "observationSeconds": 60,
+      "listedRooms": 3,
+      "failure": "Page.wait_for_function: Timeout 30000ms exceeded.",
+      "uiError": "連線超時：請重試，並檢查伺服器 UDP 埠與證書配置。",
+      "finalNetwork": {
+        "inputPackets": 0,
+        "inputBytes": 0,
+        "inputDropped": 0,
+        "snapshots": 0,
+        "snapshotBytes": 0,
+        "ack": 0,
+        "rttMs": 0,
+        "queuedCommands": 0,
+        "queuedBytes": 0,
+        "snapshotAgeMs": 0,
+        "snapshotGaps": 0,
+        "connections": 0,
+        "disconnects": 0,
+        "lastDisconnectReason": null,
+        "snapshotStalls": 0,
+        "snapshotRecoveries": 0,
+        "maxSnapshotAgeMs": 0,
+        "transport": null
+      },
+      "externalRequests": [],
+      "pageErrors": [],
+      "passed": false,
+      "apiResponses": [
+        {
+          "path": "rooms/events",
+          "status": 200
+        },
+        {
+          "path": "config",
+          "status": 200
+        },
+        {
+          "path": "rtc/offer",
+          "status": 200
+        },
+        {
+          "path": "rooms/events",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "atUTC": "2026-11-17T12:32:29.141940+00:00",
+      "clientOrigin": "http://127.0.0.1:48722",
+      "backend": "https://cod.apikeygame.top:8008",
+      "freshAnonymousProfile": true,
+      "observationSeconds": 60,
+      "listedRooms": 3,
+      "joined": true,
+      "network": {
+        "inputPackets": 0,
+        "inputBytes": 0,
+        "inputDropped": 0,
+        "snapshots": 6,
+        "snapshotBytes": 3984,
+        "ack": 0,
+        "rttMs": 0,
+        "queuedCommands": 0,
+        "queuedBytes": 0,
+        "snapshotAgeMs": 0,
+        "snapshotGaps": 9,
+        "connections": 1,
+        "disconnects": 0,
+        "lastDisconnectReason": null,
+        "snapshotStalls": 0,
+        "snapshotRecoveries": 0,
+        "maxSnapshotAgeMs": 266,
+        "transport": "webrtc"
+      },
+      "movementAcknowledged": true,
+      "primaryProfile": "ar",
+      "secondaryProfile": "pistol",
+      "secondaryAmmo": 15,
+      "failure": "Page.wait_for_function: Timeout 25000ms exceeded.",
+      "uiError": "",
+      "finalNetwork": {
+        "inputPackets": 328,
+        "inputBytes": 8200,
+        "inputDropped": 0,
+        "snapshots": 592,
+        "snapshotBytes": 393088,
+        "ack": 652,
+        "rttMs": 62,
+        "queuedCommands": 0,
+        "queuedBytes": 0,
+        "snapshotAgeMs": 11395,
+        "snapshotGaps": 761,
+        "connections": 3,
+        "disconnects": 3,
+        "lastDisconnectReason": "snapshot-timeout",
+        "snapshotStalls": 4,
+        "snapshotRecoveries": 1,
+        "maxSnapshotAgeMs": 11395,
+        "transport": "webrtc"
+      },
+      "leftMatch": true,
+      "externalRequests": [],
+      "pageErrors": [],
+      "passed": false,
+      "apiResponses": [
+        {
+          "path": "rooms/events",
+          "status": 200
+        },
+        {
+          "path": "config",
+          "status": 200
+        },
+        {
+          "path": "rtc/offer",
+          "status": 200
+        },
+        {
+          "path": "rtc/offer",
+          "status": 200
+        },
+        {
+          "path": "rtc/offer",
+          "status": 200
+        },
+        {
+          "path": "rtc/offer",
+          "status": 200
+        },
+        {
+          "path": "rtc/offer",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "nodeTestsPassed": 176,
+    "localCompatibleBrowser": "passed on final implementation: anonymous RTC, movement ACK 12, shot/reload, same-seat resume (2 welcomes), three equip fallbacks, original/local account round trip",
+    "realServerJoined": true,
+    "zeroReconnectsDemonstrated": "40-second protocol-only run, three stalls recovered",
+    "longTermStabilityPassed": false,
+    "strict60SecondSmokePassed": false
+  },
+  "remainingLimitations": [
+    "Some initial RTC handshakes time out after successful HTTP config/SDP",
+    "Long data stalls can still require a reconnect or exhaust retries",
+    "No original-server code, telemetry, or decrypted SCTP trace; specific backend/network cause unproven"
+  ],
+  "relatedHypothesisOnly": "https://github.com/pion/sctp/issues/505",
+  "implementationSourceSha256": {
+    "game/client/net.js": "22461070a71b36393d87e31f82220d4d12418256f5e3f3660ae79791aa8ceca9",
+    "game/client/webrtc.js": "5e3ffb6de59eb49dcb0b3a9c12f48423faafb0e8f0350959908c05557a900288",
+    "game/client/engine.js": "69d2ff3dc4e15879e26f82b34097727a07fe4bc444a559e620a9d94c8dad929a",
+    "game/client/pvp.js": "e73bdbe70aadc8b5e4b21ec40ad2047fe2c1fb793c4ceebd67f3c1fabfc49ddf",
+    "server/check_original_live.py": "6c2b38d754dfb73097283651bb21d94a6a0f66d79ef4696c21e71b7f549dd779"
+  }
+}

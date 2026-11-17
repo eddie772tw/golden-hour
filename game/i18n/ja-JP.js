@@ -467,6 +467,8 @@ export default {
   "client.joining_room": "部屋に参加中…",
   "client.connection_timed_out_check_the_server_udp_port": "接続がタイムアウトしました。サーバーのUDPポートと証明書を確認してください。",
   "client.connected_alt": "接続済み",
+  "client.snapshot_stalled": "ゲーム状態の更新が遅れています。復旧を待っています…",
+  "client.snapshot_recovered": "ゲーム状態の更新が再開しました。",
   "client.disconnected": "未接続",
   "client.send_queue_full_reconnecting": "送信待ちが上限に達しました。再接続中です。",
   "client.send_timed_out_reconnecting": "送信がタイムアウトしました。再接続中です。",

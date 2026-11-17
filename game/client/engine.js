@@ -150,7 +150,7 @@ export class Engine extends EventTarget {
     ctx.arsenal.grenades = 0;
     p.update = (dt, ars) => this.update(dt, ars);
     ctx.combat.fire = (actor, eye, dir) => {
-      if (this.phase === "live" && p.alive)
+      if (this.phase === "live" && p.alive && !this.net.stale)
         this.net
           .send({
             type: "shot",
@@ -359,6 +359,7 @@ export class Engine extends EventTarget {
       has = (...codes) => codes.some((c) => k.has(c) || this.input.touchKeys.has(c));
     const enabled =
       !!this.net.writer &&
+      !this.net.stale &&
       (this.input.locked || this.input.touchActive || this.dragActive) &&
       this.phase === "live" &&
       this.player.alive;
@@ -490,6 +491,7 @@ export class Engine extends EventTarget {
     p._camera(dt, ars);
     this.input.enabled =
       !!this.net.writer &&
+      !this.net.stale &&
       this.phase === "live" &&
       p.alive &&
       (this.input.locked || this.input.touchActive || this.dragActive);
@@ -651,7 +653,7 @@ export class Engine extends EventTarget {
     }
   }
   melee(actor, dir) {
-    if (actor !== this.player || !this.active || !this.net.writer ||
+    if (actor !== this.player || !this.active || !this.net.writer || this.net.stale ||
         this.phase !== "live" || !actor.alive || this.gh.G.state !== "playing")
       return null;
     // Called at the native swing's contact frame. Only aim/tick go over the

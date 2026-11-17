@@ -64,6 +64,8 @@ python server/check_original_live.py
 
 這個檢查會以匿名測試呼號建立一間短暫公開房間，檢查實際 WebRTC 握手、移動 ACK、原版副武器及離房。`GH_DEV_PORT` 可選擇測試客戶端埠，`GH_LIVE_CAPTURES` 指定證據目錄。它不需要 B 站帳號或 `.ghsave`，不射擊其他玩家，結束時會離房。公網的其他 NAT／TURN 環境、實體雙機、WebTransport 成功路徑及原站 Toy 雲檔仍未涵蓋。
 
+預設另觀察 60 秒並保存逐秒網路數值，結束前要求收到新的權威快照。`GH_LIVE_SECONDS` 可設為 1–300 秒，`GH_LIVE_HEADED=1` 顯示獨立的測試瀏覽器。是否曾重連以 `noReconnects` 及連線次數另外報告；加入／離房成功不等於整段沒有停頓。[後續延遲調查與恢復策略](original-network-recovery.md)
+
 2026-11-17 19:49–19:50（Asia/Taipei）原服實測通過：本分支在 `http://127.0.0.1:48724` 的全新匿名 Edge 設定檔中列出 3 間公開房間，完成 WebRTC 加入，收到 112 個快照、移動 ACK 30，並以 STRIX 9／15 發回退副武器後正常離房。瀏覽器的跨站 HTTP 請求與頁面錯誤皆為 0。這是短時連線與操作檢查，沒有宣稱長時間穩定性或遊戲效能。[完整去識別實測紀錄](original-server-2026-11-17.json)
 
 ![本分支透過 WebRTC 加入原服，匿名測試房間中有一名真人與九名電腦玩家](assets/original-server-joined.png)
@@ -77,3 +79,5 @@ The default original server rejects localhost origins. A fixed-origin local gate
 The Toy SDK provides the original platform's nickname and cloud saves. The original config/SDP requests omit credentials; this fork was also tested against the real server using a fresh anonymous browser profile. Local fixture checks and the opt-in `GH_ORIGINAL_LIVE=1` production smoke test remain separate; the latter creates and leaves a short anonymous public room.
 
 The November 17 live run passed: real WebRTC join, 112 snapshots, movement ACK 30, original STRIX 9 with 15 rounds, and normal leave. There were no browser cross-origin HTTP requests or page errors. This establishes a short real-server smoke test, not long-term stability, performance or broad NAT/TURN acceptance.
+
+The opt-in live check now observes 60 seconds by default (`GH_LIVE_SECONDS`, 1–300), requires fresh snapshots at the end, and separately reports reconnects. `GH_LIVE_HEADED=1` shows its independent browser. See the [subsequent recovery investigation](original-network-recovery.md) for bounded stall recovery and unresolved original-server latency.

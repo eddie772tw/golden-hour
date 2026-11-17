@@ -29,6 +29,8 @@ In the multiplayer lobby, open **Choose a match server**, select **Original-comp
 
 The default original server uses a fixed-origin local gateway for config, room SSE and WebRTC signaling because it rejects localhost origins. Game data connects directly to the original server. Restart `Start.cmd` or the local server after updating, then reload the client.
 
+When RTC snapshots stall, the client suspends movement/combat and allows one bounded recovery probe before recreating the connection. Retry backoff resets only after sustained snapshots. Initial handshake timeouts and longer data stalls can still occur on the original server. [Latency investigation, recovery changes and live evidence](docs/original-network-recovery.md)
+
 In local mode, open Gunsmith's pistol, SMG or shotgun tab and choose a weapon model. G-Bull trades fire rate for a 20-round magazine. Chin-Gi fires at 667 RPM with lower recoil and retains more damage at range than the VESPER. Lin-Bei fires six pellets per shell in a tighter pattern than the M12. A full close-range hit deals 72 damage before hit-location modifiers. Each model uses Golden Hour's hands and handling animations. Other players see the matching world model. The original competitive unlock requirements apply to each family, and only VESPER eliminations count towards unlocking the M12.
 
 ## Development

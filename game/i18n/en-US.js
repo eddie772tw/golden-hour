@@ -467,6 +467,8 @@ export default {
   "client.joining_room": "Joining room…",
   "client.connection_timed_out_check_the_server_udp_port": "Connection timed out. Check the server UDP port and certificate, then retry.",
   "client.connected_alt": "Connected",
+  "client.snapshot_stalled": "Game state updates are delayed. Waiting for recovery…",
+  "client.snapshot_recovered": "Game state updates have resumed.",
   "client.disconnected": "Disconnected",
   "client.send_queue_full_reconnecting": "Send queue full. Reconnecting.",
   "client.send_timed_out_reconnecting": "Send timed out. Reconnecting.",
