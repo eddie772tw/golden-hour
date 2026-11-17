@@ -51116,24 +51116,40 @@ ${o.filename || ""}:${o.lineno || ""}`;
     let ghPrepared = globalThis.GHBoot?.stats?.preparation;
     let ghBenchmarkOwner = globalThis.GH?.benchmark;
     window.GH.loopStats = ghClock.stats;
-    function ghPresent(f0) {
+    function ghPresent(f0, ghObs) {
+      ghObs?.enter(12);
       fo.update(f0);
+      ghObs?.enter(13);
       Je.state !== "menu" && Je.state !== "loading" && t.update(f0, { player: S, ars: A, match: b, camera: a, world: f, showBoard: (l.keys.has("Tab") || l.touchKeys.has("Tab")) && Je.state === "playing", physics: p });
     }
-    function ghSimulate(f0, ghDeferPresentation) {
+    function ghSimulate(f0, ghDeferPresentation, ghObs) {
       let _0 = Je.state === "playing", F0 = _0 ? f0 * Je.timeScale : 0;
       if (Je.time += F0, _0) {
-        if (l.enabled = b.state !== "countdown" && b.state !== "over", S.update(F0, A), S.getHit(t0), S.hit[0].b.copy(S.hit[0].a), A.update(F0), m.frame(), b.state === "countdown") for (let Y0 of b.bots) Y0.idle(F0);
+        ghObs?.enter(0);
+        l.enabled = b.state !== "countdown" && b.state !== "over", S.update(F0, A), S.getHit(t0), S.hit[0].b.copy(S.hit[0].a), A.update(F0);
+        ghObs?.enter(1, b.bots.length);
+        m.frame();
+        if (b.state === "countdown") for (let Y0 of b.bots) Y0.idle(F0);
         else for (let Y0 of b.bots) Y0.update(F0);
-        b.update(F0, f0), p.update(F0), d.update(F0), E.update(F0, S, A), n.vmPass.enabled = S.alive && !Je.freeCam;
+        ghObs?.enter(2); b.update(F0, f0);
+        ghObs?.enter(3); p.update(F0);
+        ghObs?.enter(4); d.update(F0);
+        ghObs?.enter(5); E.update(F0, S, A), n.vmPass.enabled = S.alive && !Je.freeCam;
       } else n.vmPass.enabled = false, (Je.state === "menu" || Je.state === "loading") && (Je.freeCam || I(f0), p.update(f0), d.update(f0));
       let m0 = _0 ? F0 : Je.state === "paused" || Je.state === "over" ? 0 : f0;
+      ghObs?.enter(6, g.update.length);
       for (let Y0 of g.update) Y0(m0);
-      if (u.update(m0, Je.time + performance.now() * 1e-4, r.domElement.height), Je.freeCam) {
+      ghObs?.enter(7);
+      u.update(m0, Je.time + performance.now() * 1e-4, r.domElement.height);
+      ghObs?.enter(8);
+      if (Je.freeCam) {
         let Y0 = Je.freeCam;
         a.position.set(Y0.x, Y0.y, Y0.z), a.rotation.set(Y0.pitch * jn, Y0.yaw * jn, 0, "YXZ"), a.fov = Y0.fov || 65, a.updateProjectionMatrix(), n.uniforms.uFade.value = 0;
       }
-      a.updateMatrixWorld(true), C.update(F0, { state: Je.state, freeCam: !!Je.freeCam, arsenal: A });
+      a.updateMatrixWorld(true);
+      ghObs?.enter(9);
+      C.update(F0, { state: Je.state, freeCam: !!Je.freeCam, arsenal: A });
+      ghObs?.enter(10);
       let S0 = a.position, T0 = f.raycast(S0.x, S0.y, S0.z, Ii.x, Ii.y, Ii.z, 300, null) ? 0 : 1;
       K = Ee(K, T0, 10, f0);
       let j0 = g.indoor(S0.x, S0.z);
@@ -51151,12 +51167,13 @@ ${o.filename || ""}:${o.lineno || ""}`;
         let et = Math.max(Math.abs(a3.x), Math.abs(a3.y));
         n.sunUv.set(a3.x * 0.5 + 0.5, a3.y * 0.5 + 0.5), n.rayK = Y0 > 0.05 ? 0.3 * ns((2 - et) / 0.9) * ns(Y0 * 3) : 0;
       }
+      ghObs?.enter(11);
       let lt = n.uniforms;
       lt.uDamage.value = Ee(lt.uDamage.value, 0, 2.6, f0);
       let H0 = _0 && S.alive ? ns((45 - S.health) / 45) : !S.alive && _0 ? 0.8 : 0;
       // HUD presentation may be deferred past another tick that resets the streak.
       if (_0 && ghDeferPresentation && t.stat && S.streak > t.stat.streak) t.stat.streak = S.streak;
-      lt.uLowHealth.value = Ee(lt.uLowHealth.value, H0, 5, f0), Je.state !== "menu" && Je.state !== "loading" && !Je.freeCam && (lt.uFade.value = Ee(lt.uFade.value, 0, 6, f0)), lt.uCA.value = 18e-4 + (S.mode === "slide" && _0 ? 22e-4 : 0) + S.shake * 4e-3, lt.uAds && (lt.uAds.value = _0 && S.alive ? S.adsK : 0), a3.set(0, 1, 0).applyQuaternion(a.quaternion), fo.setListener(S0, i3, a3), fo.setEnvironment({ indoor: n0 }), fo.setLowHealth(_0 ? H0 : 0), ghDeferPresentation || ghPresent(f0);
+      lt.uLowHealth.value = Ee(lt.uLowHealth.value, H0, 5, f0), Je.state !== "menu" && Je.state !== "loading" && !Je.freeCam && (lt.uFade.value = Ee(lt.uFade.value, 0, 6, f0)), lt.uCA.value = 18e-4 + (S.mode === "slide" && _0 ? 22e-4 : 0) + S.shake * 4e-3, lt.uAds && (lt.uAds.value = _0 && S.alive ? S.adsK : 0), a3.set(0, 1, 0).applyQuaternion(a.quaternion), fo.setListener(S0, i3, a3), fo.setEnvironment({ indoor: n0 }), fo.setLowHealth(_0 ? H0 : 0), ghDeferPresentation || ghPresent(f0, ghObs);
       return _0;
     }
     function M0(ghNow) {
@@ -51183,12 +51200,21 @@ ${o.filename || ""}:${o.lineno || ""}`;
       const ghInterval = 1e3 / (ghMode === "hidden" ? 5 : ghPlaying ? 60 : ghMode === "paused" || ghMode === "over" ? 20 : 30);
       if (ghKey !== ghLastMode) ghLastMode = ghKey, ghNextFrame = ghNow;
       const ghSteps = ghClock.plan(ghNow, ghKey, ghFixed, ghPlaying);
+      // Explicit diagnostic owner; default-off path reads no observer clock.
+      const ghObs = window.GH.loopObserver?.active ? window.GH.loopObserver : null;
+      const ghRenderDue = !(ghNow + 0.5 < ghNextFrame);
+      ghObs?.beginCallback(ghFixed ? ghSteps : ghRenderDue ? 1 : 0, ghRenderDue, ghFixed, ghPlaying);
+      let ghObserverCompleted = true;
+      try {
       if (ghFixed) {
         let ghRan = 0;
         for (; ghRan < ghSteps; ghRan++) {
           if (Je.state !== "playing" || n.preparation.pending || n.preparation.error) break;
-          if (ghSimulate(ghClock.step, true)) ghClock.logical(ghClock.step);
-          l.endFrame();
+          ghObs?.beginTick(ghRan);
+          if (ghSimulate(ghClock.step, true, ghObs)) ghClock.logical(ghClock.step);
+          ghObs?.endTick();
+          ghObs?.enter(15); l.endFrame();
+          ghObs?.enter(16);
         }
         ghClock.stats.maxTicksPerCallback = Math.max(ghClock.stats.maxTicksPerCallback, ghRan);
         if (ghRan < ghSteps) ghClock.unused(ghSteps - ghRan), ghClock.reset();
@@ -51199,18 +51225,30 @@ ${o.filename || ""}:${o.lineno || ""}`;
       ghNextFrame = ghFollowing - ghNow < ghInterval / 2 ? ghNow + ghInterval : ghFollowing;
       const ghDelta = G.getDelta(), ghWallDelta = Math.min(ghDelta, 0.05555555555555555);
       const f0 = ghBenchmark?.fixedDelta ?? ghWallDelta;
-      if (ghFixed) ghPresent(ghWallDelta);
-      else if (ghSimulate(f0, false)) ghClock.logical(f0);
+      if (ghFixed) ghPresent(ghWallDelta, ghObs);
+      else {
+        ghObs?.beginTick(0);
+        if (ghSimulate(f0, false, ghObs)) ghClock.logical(f0);
+        ghObs?.endTick();
+      }
       if (n.preparation.pending || n.preparation.error) {
         ghClock.reset();
-        if (!ghFixed) l.endFrame();
+        if (!ghFixed) { ghObs?.enter(15); l.endFrame(); }
         return;
       }
+      ghObs?.enter(14);
       n.render(ghFixed || ghBenchmark?.renderWallClock ? ghWallDelta : f0);
+      ghObs?.enter(16);
       ghClock.submitted(ghPlaying);
       ghDelta > 0 && (e0 += ghDelta, p0++), e0 > 0.5 && (Je.fps = p0 / e0, e0 = 0, p0 = 0);
       // Native ticks consume edges separately; compatibility mode keeps the old frame boundary.
-      if (!ghFixed) l.endFrame();
+      if (!ghFixed) { ghObs?.enter(15); l.endFrame(); }
+      } catch (ghObserverError) {
+        ghObserverCompleted = false;
+        throw ghObserverError;
+      } finally {
+        ghObs?.endCallback(ghObserverCompleted);
+      }
     }
     window.GH.debug = { stats: () => ({ state: Je.state, fps: Math.round(Je.fps), calls: r.info.render.calls, tris: r.info.render.triangles, cols: f.cols.length, panes: d.panes.length, nodes: w.nodes.length, islands: w.islands, links: w.nodes.reduce((f0, _0) => f0 + _0.links.length, 0) / 2, match: b.state, scores: b.scores, pos: [S.pos.x, S.pos.y, S.pos.z].map((f0) => +f0.toFixed(2)), hp: S.health, props: p.props.length }), start: () => F(), view: (f0, _0, F0, m0 = 0, S0 = 0, T0 = 65) => {
       Je.freeCam = f0 === null ? null : { x: f0, y: _0, z: F0, yaw: m0, pitch: S0, fov: T0 };

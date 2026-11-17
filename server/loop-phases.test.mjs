@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
+import { installLoopCostObserver } from "../game/client/loop-cost-observer.js";
 
 const source = readFileSync(new URL("../game/core/game.js", import.meta.url), "utf8");
 const start = source.indexOf("    function ghCreateLoopClock() {");
@@ -211,4 +212,70 @@ test("native-follow benchmark ownership drops setup debt even when no RAF observ
   c.run(1000);
   assert.equal(c.count("player"), 2, "installing a controller must not replay normal-play/setup elapsed time");
   assert.equal(c.GH.loopStats.dropped, 0);
+});
+
+test("cost observer preserves native calls/input/state on zero through three tick callbacks", () => {
+  const plain = fixture(), observed = fixture();
+  observed.GH.ready = true; observed.GH.debug = { gfx: observed.n };
+  const observer = installLoopCostObserver(observed.GH, { performance: { now: () => observed.now } });
+  for (const c of [plain, observed]) {
+    let seed = 17;
+    c.beforePlayer = () => { seed = Math.imul(seed, 1664525) + 1013904223 | 0; c.S.health = seed >>> 24; };
+    for (const now of [0, 4, 17, 34, 70, 200]) {
+      c.l.down.add("KeyR"); c.l.mx = 7; c.run(now);
+    }
+  }
+  assert.deepEqual(JSON.parse(JSON.stringify(observed.calls)), JSON.parse(JSON.stringify(plain.calls)));
+  assert.deepEqual(observed.inputSamples, plain.inputSamples);
+  assert.equal(observed.S.health, plain.S.health);
+  assert.equal(observed.Je.time, plain.Je.time);
+  assert.deepEqual(observed.frames, plain.frames);
+  const result = observer.export();
+  assert.ok(result.groups.some(g => g.plannedTicks === 0 && !g.renderDue));
+  assert.ok(result.groups.some(g => g.plannedTicks === 2));
+  assert.ok(result.groups.some(g => g.plannedTicks === 3));
+  const g = result.groups.find(g => g.plannedTicks === 3);
+  assert.deepEqual(g.scopes.filter(s => s.tickIndex !== null).map(s => s.tickIndex), [0, 1, 2]);
+  for (const s of g.scopes.filter(s => s.tickIndex !== null)) {
+    assert.equal(s.phases.find(p => p.name === "combat.bots").calls, 9);
+    assert.equal(s.phases.find(p => p.name === "FPbody").entries, 1);
+  }
+  observer.stop();
+  const before = observer.export().coverage.total;
+  observed.run(220);
+  assert.equal(observer.export().coverage.total, before, "stopped observer is ignored by native core");
+});
+
+test("actual core attributes synthetic stage cost to each catch-up tick and callback-only presentation", () => {
+  const c = fixture(); let cpu = 0;
+  c.GH.ready = true; c.GH.debug = { gfx: c.n };
+  const charge = (owner, key, ms) => {
+    const original = owner[key]; owner[key] = function (...args) { cpu += ms; return original.apply(this, args); };
+  };
+  charge(c.p, "update", 2); charge(c.C, "update", 3); charge(c.fo, "update", 5); charge(c.n, "render", 7);
+  const observer = installLoopCostObserver(c.GH, { performance: { now: () => cpu } });
+  c.run(0); observer.reset(); c.run(1000);
+  const g = observer.export().groups[0];
+  assert.equal(g.plannedTicks, 3); assert.equal(g.inclusiveCallbackMS, 27);
+  for (const s of g.scopes.filter(s => s.tickIndex !== null)) {
+    assert.equal(s.inclusiveTickMS, 5);
+    assert.equal(s.phases.find(p => p.name === "physics").cpuMS, 2);
+    assert.equal(s.phases.find(p => p.name === "FPbody").cpuMS, 3);
+  }
+  const outsideTicks = g.scopes.find(s => s.tickIndex === null);
+  assert.equal(outsideTicks.phases.find(p => p.name === "audio.present").cpuMS, 5);
+  assert.equal(outsideTicks.phases.find(p => p.name === "render").cpuMS, 7);
+  assert.equal(g.scopes.reduce((a, s) => a + s.phases.reduce((b, p) => b + p.cpuMS, 0), 0), 27,
+    "nonoverlapping child phase sum equals callback; inclusive tick parents must not be added again");
+});
+
+test("observer closes aborted native callback and records partial tick without swallowing native error", () => {
+  const c = fixture(); c.GH.ready = true; c.GH.debug = { gfx: c.n };
+  const observer = installLoopCostObserver(c.GH, { performance: { now: () => c.now } });
+  const failure = Error("native physics failure"); c.p.update = () => { throw failure; };
+  assert.throws(() => c.run(0), error => error === failure);
+  const result = observer.export();
+  assert.equal(result.coverage.abortedCallbacks, 1); assert.equal(result.coverage.incompleteTicks, 1);
+  assert.equal(result.callbacks[0][7], 0);
+  observer.reset(); assert.equal(observer.export().coverage.total, 0);
 });
