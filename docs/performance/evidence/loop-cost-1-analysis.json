@@ -1,0 +1,290 @@
+{
+  "schema": "gh-loop-cost-analysis-v1",
+  "diagnosticOnly": true,
+  "source": {
+    "file": "loop-cost-1.json",
+    "sha256": "e51eb6074d44b43a060c17d39650ff438c7ea2412bda90ba2f85a172907c2f00",
+    "coreSHA256": "68f80228e8df0f8d43417d48646bd16bbad5ab62bede3200c6eba2ec78d75805",
+    "clientCommit": "f4c76297efcc5e9207379f98aeba18ed820da648",
+    "features": {
+      "shaderWarmup": true,
+      "casingWorklet": false
+    },
+    "quality": "high"
+  },
+  "window": {
+    "logicalTicks": 3600,
+    "scenarioElapsedMS": 60223.200000047684,
+    "runnerPollingElapsedMS": 60904,
+    "nativeRenderCallbacks": 3562,
+    "benchmarkRenderDeltaAtLogicalBoundary": 3561,
+    "boundaryNote": "The last native callback can render after the benchmark records its final logical-tick boundary. Subsequent paused callbacks contaminate group1/renderDue=true, not the validated clean multi-tick/no-render groups."
+  },
+  "catchup": {
+    "groups": [
+      {
+        "plannedTicks": 2,
+        "renderDue": true,
+        "callbacks": 21,
+        "extraTicks": 21,
+        "mixedPhaseUpperMS": 16.40000009536743,
+        "meanUpperMSPerCallback": 0.7809523854936872,
+        "inclusiveCallbackMS": 331.90000009536743,
+        "maxCallbackMS": 42.299999952316284,
+        "phaseUpperMS": {
+          "VM": 5.700000047683716,
+          "FX": 6.200000524520874,
+          "FPbody": 2.299999952316284,
+          "world.callbacks": 0.8999998569488525,
+          "lighting.sun": 0.9999995231628418,
+          "post.listener": 0.3000001907348633,
+          "camera": 0.0
+        }
+      },
+      {
+        "plannedTicks": 3,
+        "renderDue": true,
+        "callbacks": 8,
+        "extraTicks": 16,
+        "mixedPhaseUpperMS": 8.700000286102295,
+        "meanUpperMSPerCallback": 1.0875000357627869,
+        "inclusiveCallbackMS": 112.10000014305115,
+        "maxCallbackMS": 17.59999990463257,
+        "phaseUpperMS": {
+          "VM": 3.9000000953674316,
+          "FX": 2.5000007152557373,
+          "FPbody": 1.1999993324279785,
+          "world.callbacks": 0.5999999046325684,
+          "lighting.sun": 0.40000009536743164,
+          "post.listener": 0.10000014305114746,
+          "camera": 0.0
+        }
+      }
+    ],
+    "extraTicks": 37,
+    "mixedPhaseUpperMS": 25.100000381469727,
+    "phaseUpperMS": {
+      "VM": 9.600000143051147,
+      "FX": 8.700001239776611,
+      "FPbody": 3.4999992847442627,
+      "world.callbacks": 1.499999761581421,
+      "lighting.sun": 1.3999996185302734,
+      "post.listener": 0.40000033378601074,
+      "camera": 0.0
+    },
+    "upperMSPerLogicalTick": 0.006972222328186035,
+    "percentOfScenarioWallUpper": 0.041678290727576506,
+    "interpretation": "Inclusive mixed-stage ceiling for earlier ticks in multi-tick callbacks, not proven removable work or a predicted FPS/P99 change."
+  },
+  "singleTickNoRender": {
+    "callbacks": 1453,
+    "inclusiveTickMS": 2715.99999499321,
+    "inclusiveCallbackMS": 2735.199995994568,
+    "mixedPhaseUpperMS": 666.1000010967255,
+    "phaseUpperMS": {
+      "VM": 250.39999628067017,
+      "FX": 203.59999871253967,
+      "FPbody": 98.90000343322754,
+      "world.callbacks": 48.60000419616699,
+      "lighting.sun": 37.39999771118164,
+      "post.listener": 25.00000023841858,
+      "camera": 2.200000524520874
+    },
+    "meanMixedPhaseMSPerCallback": 0.458430833514608,
+    "zeroTickRenderCallbacks": 1452,
+    "globalTickMinusRenderInvocationDifference": 38,
+    "interpretation": "Do not add 666ms to catch-up savings: almost one-for-one zero-tick render callbacks need the latest presentation. Deferral mostly relocates work and can load the render callback. Tick-minus-render count is only an invocation-count screen, not measured removable milliseconds."
+  },
+  "diagnosticFrameTimes": {
+    "filter": "scripted/playing/visible/0<tick<manifest.totalTicks; first cross-phase interval excluded",
+    "percentileMethod": "linear interpolation on sorted observed values",
+    "submittedIntervals": {
+      "samples": 3560,
+      "totalMS": 60193.59999990463,
+      "meanMS": 16.908314606714786,
+      "p95MS": 19.899999856948853,
+      "p99MS": 24.640999865531906,
+      "maxMS": 148.80000019073486
+    },
+    "renderCPU": {
+      "samples": 3561,
+      "totalMS": 30072.3999979496,
+      "meanMS": 8.444931198525582,
+      "p95MS": 12.300000190734863,
+      "p99MS": 14.640000104904184,
+      "maxMS": 23.600000143051147
+    },
+    "thresholds": [
+      {
+        "thresholdMS": 16.666666666666668,
+        "countAbove": 2423,
+        "excessAboveThresholdMS": 3618.7666711012494
+      },
+      {
+        "thresholdMS": 22.22222222222222,
+        "countAbove": 68,
+        "excessAboveThresholdMS": 637.4888899856144
+      },
+      {
+        "thresholdMS": 25,
+        "countAbove": 27,
+        "excessAboveThresholdMS": 500.400000333786
+      },
+      {
+        "thresholdMS": 33.333333333333336,
+        "countAbove": 13,
+        "excessAboveThresholdMS": 349.9666668574015
+      },
+      {
+        "thresholdMS": 50,
+        "countAbove": 6,
+        "excessAboveThresholdMS": 212.30000019073486
+      },
+      {
+        "thresholdMS": 100,
+        "countAbove": 1,
+        "excessAboveThresholdMS": 48.80000019073486
+      }
+    ],
+    "longIntervalWitnesses": [
+      {
+        "renderEntryMS": 60354.40000009537,
+        "submittedIntervalMS": 148.80000019073486,
+        "renderCPUMS": 10.399999856948853,
+        "logicalTick": 2508,
+        "callbackRetained": true,
+        "callback": [
+          4892,
+          60353.09999990463,
+          11.700000047683716,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "gapSincePreviousObservedSpanMS": 136.09999990463257,
+        "previousCallback": [
+          4891,
+          60217,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "renderEntryMS": 42696.90000009537,
+        "submittedIntervalMS": 90.90000009536743,
+        "renderCPUMS": 10.799999952316284,
+        "logicalTick": 1455,
+        "callbackRetained": false
+      },
+      {
+        "renderEntryMS": 76006.59999990463,
+        "submittedIntervalMS": 90.69999980926514,
+        "renderCPUMS": 7.1000001430511475,
+        "logicalTick": 3444,
+        "callbackRetained": true,
+        "callback": [
+          6957,
+          76004.79999995232,
+          8.900000095367432,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "gapSincePreviousObservedSpanMS": 76.70000004768372,
+        "previousCallback": [
+          6956,
+          75915.79999995232,
+          12.299999952316284,
+          0,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "renderEntryMS": 30453.5,
+        "submittedIntervalMS": 76.5,
+        "renderCPUMS": 8.200000047683716,
+        "logicalTick": 723,
+        "callbackRetained": false
+      },
+      {
+        "renderEntryMS": 22383.200000047684,
+        "submittedIntervalMS": 53.10000014305115,
+        "renderCPUMS": 10.799999952316284,
+        "logicalTick": 241,
+        "callbackRetained": false
+      },
+      {
+        "renderEntryMS": 26763,
+        "submittedIntervalMS": 52.299999952316284,
+        "renderCPUMS": 12.299999952316284,
+        "logicalTick": 505,
+        "callbackRetained": false
+      },
+      {
+        "renderEntryMS": 42606,
+        "submittedIntervalMS": 48.40000009536743,
+        "renderCPUMS": 12.799999952316284,
+        "logicalTick": 1453,
+        "callbackRetained": false
+      },
+      {
+        "renderEntryMS": 21743.200000047684,
+        "submittedIntervalMS": 42.700000047683716,
+        "renderCPUMS": 10.299999952316284,
+        "logicalTick": 203,
+        "callbackRetained": false
+      }
+    ],
+    "interpretation": "Submission and main-thread wall spans, not physical present/GPU elapsed/primary FPS. Gaps are outside observed spans, not attribution to any browser/audio/GPU thread."
+  },
+  "uploads": {
+    "simulationScopes": {
+      "calls": 0,
+      "payloadBytes": 0,
+      "allocationBytes": 0
+    },
+    "renderScopes": {
+      "calls": 33061,
+      "payloadBytes": 932529192,
+      "allocationBytes": 0
+    },
+    "otherScopes": {
+      "calls": 0,
+      "payloadBytes": 0,
+      "allocationBytes": 0
+    },
+    "interpretation": "Actual GL argument payloads; repeated CPU dirty writes do not establish repeated uploads."
+  },
+  "coverage": {
+    "total": 7385,
+    "retained": 4096,
+    "dropped": 3289,
+    "capacity": 4096,
+    "incompleteTicks": 0,
+    "abortedCallbacks": 0
+  },
+  "overhead": {
+    "clockReads": 86709,
+    "phaseTransitions": 64725,
+    "uploadsEnabled": true,
+    "note": "No automatic overhead subtraction; compare observer-off primary FPS separately. Export/reset allocate outside measurement; hot paths use preallocated numeric arrays."
+  },
+  "limitations": [
+    "All phase aggregates retained; raw callback prefix dropped, so global phase-tail attribution unavailable",
+    "Candidate phases contain native logic, timers, RNG, events and dependencies; real removable work is smaller",
+    "0/1-tick mixed paused group cannot be exactly demixed from its aggregate",
+    "Per-callback phase samples are not recorded; mean candidate cost cannot be subtracted from max/P99 callback",
+    "Single instrumented shader-warmup-on diagnostic, no unobserved paired FPS inference"
+  ]
+}
