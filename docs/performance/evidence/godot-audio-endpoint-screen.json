@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "scope": "One isolated original marble casing, native/Godot default WASAPI, no full High scene",
+  "rawPath": "work/godot-native/audio/simultaneous/casing-endpoint/endpoint-default-1",
+  "analysis": {
+    "endpointId": "{0.0.0.00000000}.{e89b1c4d-5aa7-489b-ad66-8a09b9650ce0}",
+    "event": "Node invoke before original casing factory",
+    "endpoint": "shared-mode loopback, first identifiable sample",
+    "eventQpcMs": [
+      1943204422.5010002,
+      1943204422.5944002
+    ],
+    "onsetQpcMs": 1943204522.1100333,
+    "latencyMs": [
+      99.49479977289836,
+      99.6298664410909
+    ],
+    "upperAtMost20Ms": false,
+    "captureChannels": 8,
+    "channelMask": 1599,
+    "matchedChannels": [
+      "FL",
+      "FR"
+    ],
+    "threshold": 4.232090077493922e-06,
+    "correlation": 0.9999996839977406,
+    "alternativeCorrelation": 0.8071112091979925,
+    "onsetOffsetInReference": 0,
+    "onsetOffsetInCapture": 0,
+    "physicalSpeakerMeasured": false
+  },
+  "ownedProcesses": {
+    "nodePid": 537792,
+    "godotPid": 579072,
+    "driver": "WASAPI",
+    "contract": "untimed",
+    "port": 58770
+  },
+  "sessions": [
+    "QPC\t19432043929350\t10000000",
+    "default\tconsole\t{0.0.0.00000000}.{e89b1c4d-5aa7-489b-ad66-8a09b9650ce0}",
+    "default\tmultimedia\t{0.0.0.00000000}.{e89b1c4d-5aa7-489b-ad66-8a09b9650ce0}",
+    "active\t560284\tGodot_v4.7.2-stable_win64.exe\t{0.0.0.00000000}.{e89b1c4d-5aa7-489b-ad66-8a09b9650ce0}"
+  ],
+  "ownershipStatus": "Console launcher PID and active Godot executable PID differ; ancestry proof/audit pending. Do not infer identity from basename.",
+  "files": {
+    "config.json": {
+      "sha256": "dfd61634a4ead6aff85d4b2ddda093c6afe72675c1a49ca0cd8b6e62d85adb9d",
+      "bytes": 325
+    },
+    "isolated.mjs": {
+      "sha256": "ca13e2e6465d05bcf2cc02a419289ba5d1478c89f7cddb842018811dd32b9765",
+      "bytes": 7094
+    },
+    "run/endpoint-result.json": {
+      "sha256": "38731785fffac848aa238b93458099ec764b728a3a6cc02e8c2fd10375b49a7e",
+      "bytes": 738
+    },
+    "run/owned-processes.json": {
+      "sha256": "ddef442fffc4c9b3d2e02c16e0fbdc333e2440daaacbeeeeb68ecf6aff20d89f",
+      "bytes": 88
+    },
+    "run/sessions.tsv": {
+      "sha256": "8fa596d8bb86a49be0c206612e4cbd58d36a66fb373b1953524a3325bd388572",
+      "bytes": 279
+    },
+    "run/device-trace.json": {
+      "sha256": "cac3a690481e4e5087ff3560e5a9af9adc494e21a16a4e9bf54fdf3f6a40870e",
+      "bytes": 4447
+    },
+    "run/source.json": {
+      "sha256": "5f76d06cab78bde925c505c0d0470f2463644ee68a742c0287fdae0d2825df51",
+      "bytes": 43100
+    },
+    "run/packets.csv": {
+      "sha256": "8386f794f9c25fb05f0271726c1f89d763900cbcbe28d9b8b1c4a74fb29cab76",
+      "bytes": 3724
+    },
+    "run/mix-format.txt": {
+      "sha256": "01690569a24641f843e28aef6372b566f11873a08ddf2488c1cb7b4c3883e4c0",
+      "bytes": 17
+    },
+    "run/endpoint.f32": {
+      "sha256": "61be2e2a630da535e901284187602f10668ed5a5bba61089678e6d742951239a",
+      "bytes": 2042880
+    },
+    "run/live-stereo.f32": {
+      "sha256": "482feb21b80ab2f8cddcc9d778010fbbc53948ac7f10441b998187d8849292c9",
+      "bytes": 364544
+    },
+    "run/godot.log": {
+      "sha256": "6e33e11a7194375f6f2267278d6cd2652c13bd451906e40636f0df7641a823c0",
+      "bytes": 1541
+    }
+  },
+  "acceptedUnder20ms": false,
+  "physicalSpeakerMeasured": false,
+  "fullEngineAcceptance": false,
+  "status": "Provisional captured candidate; clock, buffering and process-route audit ongoing"
+}
