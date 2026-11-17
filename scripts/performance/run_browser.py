@@ -442,6 +442,7 @@ try:
         if args.functional:
             checks={}
             result['functional']=checks
+            checks['glassShardRanges']=page.evaluate('GH.debug.glass.ghShardDirtyRanges ?? null')
             page.evaluate('''()=>{const p=__frames,d=GH.debug;p.inputEvents=[];
               const event=type=>p.inputEvents.push({t:performance.now(),type,locked:d.input.locked,element:document.pointerLockElement?.id,allow:d.input.allowLock,state:GH.G.state,focus:document.hasFocus(),active:navigator.userActivation.isActive,pending:d.gfx.preparation.pending,error:String(d.gfx.preparation.error||'')});
               for(const type of ['pointerlockchange','pointerlockerror'])document.addEventListener(type,()=>event(type));

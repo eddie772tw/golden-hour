@@ -25164,6 +25164,38 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
       let a = new Float32Array(n * 6), r = new Float32Array(n * 3);
       for (let l = 0; l < n; l++) a.set([Math.random(), Math.random(), Math.random() + 0.2, Math.random(), Math.random(), Math.random() + 0.2], l * 6), r.fill(0.22, l * 3, l * 3 + 3);
       i.setAttribute("position", this.spos), i.setAttribute("normal", this.snrm), i.setAttribute("uv", new Yt(a, 2)), i.setAttribute("crack", new Yt(r, 1)), this.shards = new ae(i, this.material), this.shards.frustumCulled = false, this.shards.renderOrder = 11, t.add(this.shards);
+      // These two attributes are owned by Ew; ranges survive until real upload.
+      this._ghShardDirtyRanges = true;
+      this._ghShardPositionRange = { start: 0, count: 0 };
+      this._ghShardNormalRange = { start: 0, count: 0 };
+      const ghPositionUploaded = this.spos.onUploadCallback, ghNormalUploaded = this.snrm.onUploadCallback;
+      this.spos.onUpload(function () { this.clearUpdateRanges(); ghPositionUploaded.call(this); });
+      this.snrm.onUpload(function () { this.clearUpdateRanges(); ghNormalUploaded.call(this); });
+    }
+    get ghShardDirtyRanges() { return this._ghShardDirtyRanges; }
+    set ghShardDirtyRanges(value) {
+      const enabled = value === true;
+      if (enabled === this._ghShardDirtyRanges) return;
+      this._ghShardDirtyRanges = enabled;
+      // A mode change can follow an unuploaded native full update. Full sync
+      // prevents a newly narrowed range from acknowledging only part of it.
+      if (enabled) {
+        this._markShardRange(this.spos, this._ghShardPositionRange, 0, this.spos.array.length);
+        this._markShardRange(this.snrm, this._ghShardNormalRange, 0, this.snrm.array.length);
+      } else {
+        this.spos.clearUpdateRanges(), this.snrm.clearUpdateRanges();
+        this.spos.needsUpdate = true, this.snrm.needsUpdate = true;
+      }
+    }
+    _markShardRange(attribute, range, first, last) {
+      const pending = attribute.updateRanges;
+      // Union every still-pending range; never clear at a simulation boundary.
+      for (let i = 0; i < pending.length; i++) {
+        const old = pending[i];
+        first = Math.min(first, old.start), last = Math.max(last, old.start + old.count);
+      }
+      range.start = first, range.count = last - first;
+      pending.length = 1, pending[0] = range, attribute.needsUpdate = true;
     }
     addPane({ axis: t, pos: e, a0: s, a1: n, y0: i, y1: a, support: r = "frame", cell: l = 0.2 }) {
       let c = n - s, h = a - i, f = Math.max(2, Math.round(c / l)), u = Math.max(2, Math.round(h / l)), d = { id: this.panes.length, axis: t === "x" ? 0 : 2, pos: e, a0: s, a1: n, y0: i, y1: a, w: c, h, nx: f, ny: u, support: r, alive: null, crack: null, verts: null, diag: null, count: f * u, total: f * u, mesh: null, gone: false, cascade: null, col: null }, m = 0.035;
@@ -25182,7 +25214,7 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
     }
     reset() {
       for (let t of this.panes) t.mesh && (this.scene.remove(t.mesh), t.mesh.geometry.dispose(), t.mesh = null), t.alive = null, t.count = t.total, t.gone = false, t.cascade = null, t.col.off = false, this.intact.setMatrixAt(t.id, this._paneMatrix(t));
-      this.intact.instanceMatrix.needsUpdate = true, this.sstate.fill(0), this.spos.array.fill(0), this.spos.needsUpdate = true, this.active = 0;
+      this.intact.instanceMatrix.needsUpdate = true, this.sstate.fill(0), this.spos.array.fill(0), (this._ghShardDirtyRanges ? this._markShardRange(this.spos, this._ghShardPositionRange, 0, this.spos.array.length) : this.spos.needsUpdate = true), this.active = 0;
     }
     _singlePaneProof(positions, axis) {
       if ((axis !== 0 && axis !== 2) || positions.length % 9 !== 0) return false;
@@ -25392,14 +25424,20 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
     _simulate(t) {
       if (!this.active) return;
       let e = this.sp, s = this.sv, n = this.sl, i = this.sax, a = this.sstate, r = this.spos.array, l = this.snrm.array, c = 0, h = 0, f = 0, u = 0, d = false;
+      const ghRanges = this._ghShardDirtyRanges;
+      let ghPositionMin = r.length, ghPositionMax = 0, ghNormalMin = l.length, ghNormalMax = 0;
       for (let m = 0; m < ww; m++) {
         let p = a[m];
         if (p === 0) continue;
         if (p === 2) {
-          (this.slife[m] += t) > 14 && (a[m] = 0, r.fill(0, m * 9, m * 9 + 9), d = true, this.active--);
+          if ((this.slife[m] += t) > 14) {
+            a[m] = 0, r.fill(0, m * 9, m * 9 + 9), d = true, this.active--;
+            if (ghRanges) ghPositionMin = Math.min(ghPositionMin, m * 9), ghPositionMax = Math.max(ghPositionMax, m * 9 + 9);
+          }
           continue;
         }
         d = true;
+        if (ghRanges) ghPositionMin = Math.min(ghPositionMin, m * 9), ghPositionMax = Math.max(ghPositionMax, m * 9 + 9);
         let x = m * 3;
         s[x + 1] -= 9.81 * t;
         let g = 1 - 0.35 * t;
@@ -25417,9 +25455,14 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
         }
         let R = r[_ + 3] - r[_], C = r[_ + 4] - r[_ + 1], L = r[_ + 5] - r[_ + 2], A = r[_ + 6] - r[_], O = r[_ + 7] - r[_ + 1], H = r[_ + 8] - r[_ + 2], F = C * H - L * O, P = L * A - R * H, z = R * O - C * A, k = Math.hypot(F, P, z) || 1;
         F /= k, P /= k, z /= k;
+        if (ghRanges) ghNormalMin = Math.min(ghNormalMin, _), ghNormalMax = Math.max(ghNormalMax, _ + 9);
         for (let I = 0; I < 9; I += 3) l[_ + I] = F, l[_ + I + 1] = P, l[_ + I + 2] = z;
       }
-      d && (this.spos.needsUpdate = true, this.snrm.needsUpdate = true), c > 2 && this.time - this._lastDebris > 0.09 && (this._lastDebris = this.time, this.hooks.audio.glassDebris(Fi.set(h, f, u)));
+      if (ghRanges) {
+        ghPositionMax > ghPositionMin && this._markShardRange(this.spos, this._ghShardPositionRange, ghPositionMin, ghPositionMax);
+        ghNormalMax > ghNormalMin && this._markShardRange(this.snrm, this._ghShardNormalRange, ghNormalMin, ghNormalMax);
+      } else d && (this.spos.needsUpdate = true, this.snrm.needsUpdate = true);
+      c > 2 && this.time - this._lastDebris > 0.09 && (this._lastDebris = this.time, this.hooks.audio.glassDebris(Fi.set(h, f, u)));
     }
   }, LD = new Int32Array(6), W9 = new Uint8Array(1024), q9 = new Int32Array(1024), $m = new a0();
   var DD = 9.81, K9 = new Lt(), Sg = new Ft(), Vc = new a0(), X9 = new a0(), du = new a0(), pu = new a0(), _g = new a0(), xr = new a0(), Rg = new a0(), Tw = new Dt(), Wd = new a0(), X2 = { t: 0, nx: 0, ny: 0, nz: 0, col: null }, Sw = new Lt().makeScale(0, 0, 0), ID = 320, HD = 90, _w = class {

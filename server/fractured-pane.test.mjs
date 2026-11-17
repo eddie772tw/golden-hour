@@ -23,8 +23,11 @@ class Material {
   dispose() { this.disposed++; }
 }
 class Attribute {
-  constructor(array, itemSize) { this.array = array; this.itemSize = itemSize; this.count = array.length / itemSize; }
+  constructor(array, itemSize) { this.array = array; this.itemSize = itemSize; this.count = array.length / itemSize; this.updateRanges = []; }
   setUsage() { return this; }
+  onUploadCallback() {}
+  onUpload(callback) { this.onUploadCallback = callback; return this; }
+  clearUpdateRanges() { this.updateRanges.length = 0; }
 }
 class Geometry {
   constructor() { this.attributes = {}; this.disposed = 0; }
