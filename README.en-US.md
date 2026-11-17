@@ -2,7 +2,7 @@
 
 [繁體中文（台灣）](README.md)
 
-Play a 5v5 team deathmatch in the Solstice Hotel or train against nine bots. This independent community fork recovers the browser client from a playable distribution and pairs it with a reconstructed local match server. The historical upstream is [LankiYang/golden-hour](https://github.com/LankiYang/golden-hour). Its public GitHub API returned 404 on November 16, 2026. Its visibility and original Git history could not be verified.
+Play a 5v5 team deathmatch in the Solstice Hotel or train against nine bots. This independent community fork recovers the browser client from a playable distribution and pairs it with a reconstructed local match server. The historical upstream is [LankiYang/golden-hour](https://github.com/LankiYang/golden-hour). On November 17, 2026, the [original website](https://www.bilibili.com/toy/golden-hour/index.html) was accessible again; the public GitHub repository API still returned 404. The fork retains its independent Git history. [Fresh resource archive and verification record](docs/upstream/2026-11-17/README.md)
 
 ## Play
 
@@ -35,4 +35,4 @@ Development focuses on stronger anti-cheat, connection stability and new game co
 
 ## Credits and distribution
 
-Developer **蒙哥汗马利@LankiYang**. The original distribution license and redistribution rights for the recovered game assets remain unconfirmed. [Source inventory and third-party notices](docs/provenance.md)
+Developer **蒙哥汗马利@LankiYang** has consented to this fork and its development, as confirmed by the maintainer and the archived conversation image. Formal open-source license terms remain unspecified. [Source inventory, permission record and third-party notices](docs/provenance.md)

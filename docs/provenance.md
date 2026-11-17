@@ -1,13 +1,17 @@
 # 來源、署名與第三方授權
 
-歷史上游路徑為 [LankiYang/golden-hour](https://github.com/LankiYang/golden-hour)。2026-11-16 以未登入的 GitHub API 查詢回傳 404。維護者提供的開發者署名為 **蒙哥汗马利@LankiYang**。這份獨立社群分支保存可編輯的網頁交付版本，以及重新開發的本機服務。原始碼的開發歷史、完整原始工具鏈與正式後端尚未取得。
+歷史上游路徑為 [LankiYang/golden-hour](https://github.com/LankiYang/golden-hour)。2026-11-17 重新以未登入的 GitHub API 查詢仍回傳 404；這只能確認公開 API 無法取得，不能判定私人化或刪除。維護者提供的開發者署名為 **蒙哥汗马利@LankiYang**。這份獨立社群分支保存可編輯的網頁交付版本，以及重新開發的本機服務。原始碼的開發歷史、完整原始工具鏈與正式後端尚未取得。
+
+維護者已確認取得原作者對 fork 與繼續開發的同意。README 所附對話圖片已隨 [2026-11-17 原站封存](upstream/2026-11-17/README.md) 保存於資源包的 `reference/fork-permission.png`，含原始連結與 SHA-256。這項同意與尚待確定的正式開源授權分別記錄；本分支沒有代原作者選定授權條款。
 
 ## 發行版資源
 
 [來源清單](sources.json) 的每列對應一個已封存的公開資源。`upstreamSha256` 與 `upstreamBytes` 是取得時的位元組指紋；`candidatePath` 與 `candidateSha256` 指向本次整理的快照。標為 `unchanged` 的資源可逐位元組比對，`adapted` 表示已修改，`replaced` 表示以本地重建檔承接功能。曾用於定位遊戲的外層頁面標為 `omitted`。日後開發可用 `git log -- <path>` 追蹤變更。
 
+2026-11-17 原站恢復可取得後，已重新下載上述 42 個資源，全部與既有 `upstreamSha256` 相同；另存平台 PWA 檔、公開 GitHub 回應及授權對話圖片。新的 [manifest](upstream/2026-11-17/manifest.json) 與 [原件 ZIP](upstream/2026-11-17/resources.zip) 是獨立的取得紀錄，既有來源清單仍保留歷史快照意義。
+
 - 場景核心 `game/core/game.js` 來自展開的瀏覽器交付檔，保留原有執行邏輯和大型函式庫。部分符號仍為縮短名稱。啟動頁來自遊戲入口，移除了平台外殼與遠端設定。
-- `game/assets/` 與 `game/icon.png` 保留取得版本。核心中的圖形庫與遊戲模型、圖示、文字及其他遊戲內容分別看待。尚未取得原專案及上述遊戲素材的完整授權文件，公開推送與再散布範圍需由維護者確認。
+- `game/assets/` 與 `game/icon.png` 保留取得版本。核心中的圖形庫與遊戲模型、圖示、文字及其他遊戲內容分別看待。fork 與開發已有原作者同意，原專案及上述素材的正式開源授權文件仍待取得。
 - 客戶端整合了本機房間、競技武器授權、排行榜與逐收件者快照；`game/client/competitive-engine.js` 是本地可見性適配，`toy-fixture.js` 提供測試替身。SQLite 資料庫、玩家身分、實際雲檔與本機依賴不在候選內容內。
 - `server/` 是依照客戶端協定重建的伺服器、測試與資料擷取工具。`world.json` 取樣自執行中的封存客戶端，含地圖碰撞、門窗、導航點與武器數值。多語系框架、文件與發布整理也由本分支加入。AimArena 僅作技術對照，程式碼與素材均未匯入。
 

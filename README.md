@@ -2,7 +2,7 @@
 
 [English (US)](README.en-US.md)
 
-在瀏覽器中進入暮色酒店，進行 5 對 5 團隊死鬥或單人訓練。本分支從可執行的 Golden Hour 網頁版本恢復客戶端，另行實作本機對戰服務。歷史上游為 [LankiYang/golden-hour](https://github.com/LankiYang/golden-hour)。2026-11-16 查核時，GitHub 的公開 API 回傳 404，私人化或移除皆有可能。本分支從獨立的 Git 歷史開始。
+在瀏覽器中進入暮色酒店，進行 5 對 5 團隊死鬥或單人訓練。本分支從可執行的 Golden Hour 網頁版本恢復客戶端，另行實作本機對戰服務。歷史上游為 [LankiYang/golden-hour](https://github.com/LankiYang/golden-hour)。2026-11-17 重新查核時，[原版網站](https://www.bilibili.com/toy/golden-hour/index.html) 已可取得，GitHub 的公開 API 仍回傳 404。本分支從獨立的 Git 歷史開始。[原站資源重新封存與查核紀錄](docs/upstream/2026-11-17/README.md)
 
 ## 開始遊玩
 
@@ -51,4 +51,4 @@ npm start
 
 ## 開發者與來源
 <img width="743" height="372" alt="image" src="https://github.com/user-attachments/assets/44a7cc57-4f56-40a9-9d06-63b2ac29da3e" />
-本專案的開發已經獲得開發者 **蒙哥汗马利@LankiYang**的授權同意，具體開源授權待定。
+本專案的 fork 與開發已經獲得開發者 **蒙哥汗马利@LankiYang** 的同意，具體開源授權待定。[來源、署名與授權紀錄](docs/provenance.md)

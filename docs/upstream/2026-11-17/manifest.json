@@ -1,0 +1,888 @@
+{
+  "entryURL": "https://www.bilibili.com/toy/golden-hour/index.html",
+  "gameURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/index.html",
+  "bundleVersion": "54263300497408-v49221",
+  "completedAtUTC": "2026-11-17T10:25:40.429027+00:00",
+  "bodyEncoding": "HTTP content-decoded bytes; no newline or character normalization",
+  "scope": "Known 42-file distribution plus platform PWA files, public GitHub metadata and maintainer-linked permission image. No accounts, saves, analytics SDKs or backend session requests.",
+  "permission": "Maintainer confirms author consent for fork/development; formal open-source license remains unspecified. See reference/fork-permission.png.",
+  "archive": {
+    "file": "resources.zip",
+    "bytes": 5715181,
+    "sha256": "9af358f637fcb041c972de67b08f217e34cb66dbe2c39a2f8ebcd0f07bfae06d"
+  },
+  "resources": [
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/assets/armoury.json",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/assets/armoury.json",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.155436+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 18:10:23 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "489835",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 749191,
+      "sha256": "f5ad4a180f1c3fd80bccba7395b89652ede9ab3ccdba2bd3a80fb1e1749f68a5",
+      "file": "game/assets/armoury.json",
+      "previousSha256": "f5ad4a180f1c3fd80bccba7395b89652ede9ab3ccdba2bd3a80fb1e1749f68a5",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/assets/grips.json",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/assets/grips.json",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.095760+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 18:10:23 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "5776",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 25088,
+      "sha256": "5efbf3e21f9931f5f3dee57f63d0a3a23d71acd2ad24ff705da0e751494ac07d",
+      "file": "game/assets/grips.json",
+      "previousSha256": "5efbf3e21f9931f5f3dee57f63d0a3a23d71acd2ad24ff705da0e751494ac07d",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/assets/operators.bin",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/assets/operators.bin",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.602373+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 18:10:23 GMT",
+        "Content-Type": "application/octet-stream",
+        "Content-Length": "10078584",
+        "ETag": "a52e887c0174792b93967ca07b466f66",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 10078584,
+      "sha256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
+      "file": "game/assets/operators.bin",
+      "previousSha256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/api-config.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/api-config.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.157916+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "1190",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 2356,
+      "sha256": "3d07a91fb6e79a7ba14c3ff1db3962c404140a0948efb6e5d1767325580cbd01",
+      "file": "game/client/api-config.js",
+      "previousSha256": "3d07a91fb6e79a7ba14c3ff1db3962c404140a0948efb6e5d1767325580cbd01",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/bootstrap.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/bootstrap.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.164259+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:46 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "3150",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 8939,
+      "sha256": "9aeafe886be49ba53e5ff471b0716530adea537ccdfc7211c2974e49a1f60fb5",
+      "file": "game/client/bootstrap.js",
+      "previousSha256": "9aeafe886be49ba53e5ff471b0716530adea537ccdfc7211c2974e49a1f60fb5",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/desktop-input.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/desktop-input.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.171114+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:47 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "1430",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 3477,
+      "sha256": "dde2f4ed08071bdb128dcef5579c38089b911673ca8be47449bb406ccb92af00",
+      "file": "game/client/desktop-input.js",
+      "previousSha256": "dde2f4ed08071bdb128dcef5579c38089b911673ca8be47449bb406ccb92af00",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/engine.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/engine.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.224476+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:49 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "9740",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 33078,
+      "sha256": "9982e25ce1dde29bdd8077ca1e1dca98d39dae6594c29cd030d9a03ad8a27c2c",
+      "file": "game/client/engine.js",
+      "previousSha256": "9982e25ce1dde29bdd8077ca1e1dca98d39dae6594c29cd030d9a03ad8a27c2c",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/gamepad-controls.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/gamepad-controls.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.315622+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:48 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "3066",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 8568,
+      "sha256": "ef455ec404e20af301f41700a078ee23b2e93941e18404ee6a3d114096a7b68a",
+      "file": "game/client/gamepad-controls.js",
+      "previousSha256": "ef455ec404e20af301f41700a078ee23b2e93941e18404ee6a3d114096a7b68a",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/input-devices.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/input-devices.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.282155+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:48 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "2006",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 5350,
+      "sha256": "58ac3a1f89603460c74a2a1cd0695e9d3706756d37fa2a4724b34ae8152127ad",
+      "file": "game/client/input-devices.js",
+      "previousSha256": "58ac3a1f89603460c74a2a1cd0695e9d3706756d37fa2a4724b34ae8152127ad",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/input-settings.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/input-settings.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.328587+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "1692",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 3770,
+      "sha256": "9f1cf92d22a410d5592fd379ef652e52c0155938e5cda763e1d817eee165629a",
+      "file": "game/client/input-settings.js",
+      "previousSha256": "9f1cf92d22a410d5592fd379ef652e52c0155938e5cda763e1d817eee165629a",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/lobby.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/lobby.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.327178+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "1335",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 3049,
+      "sha256": "03b7e65b8d350017590d3f628797925c0c20c05f83973fadc551d3377f6a175b",
+      "file": "game/client/lobby.js",
+      "previousSha256": "03b7e65b8d350017590d3f628797925c0c20c05f83973fadc551d3377f6a175b",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/locomotion.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/locomotion.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.311655+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "933",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 2105,
+      "sha256": "170876d2e369ae8cb0e988f3b46eadf7441e18b5c2b08c1caafd0990aaf7d263",
+      "file": "game/client/locomotion.js",
+      "previousSha256": "170876d2e369ae8cb0e988f3b46eadf7441e18b5c2b08c1caafd0990aaf7d263",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/native-progress.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/native-progress.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.433490+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "1793",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 5139,
+      "sha256": "2119e65c50c25567869b206115971f345e7cb5917d335ecd5d318aa10aa6ef18",
+      "file": "game/client/native-progress.js",
+      "previousSha256": "2119e65c50c25567869b206115971f345e7cb5917d335ecd5d318aa10aa6ef18",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/net.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/net.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.397709+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:49 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "5368",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 17702,
+      "sha256": "1f0021a6f9f0609b0dc3963e8677a7cf9a449a61aaf03a6028901aa5358fed7c",
+      "file": "game/client/net.js",
+      "previousSha256": "1f0021a6f9f0609b0dc3963e8677a7cf9a449a61aaf03a6028901aa5358fed7c",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/online-kills.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/online-kills.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.453831+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "864",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 2678,
+      "sha256": "9707e4e42a2beef667c3ba3304463369e252f65ab77a25f3378752068a170db8",
+      "file": "game/client/online-kills.js",
+      "previousSha256": "9707e4e42a2beef667c3ba3304463369e252f65ab77a25f3378752068a170db8",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/online-results.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/online-results.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.456413+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "463",
+        "ETag": "66f6819859eb914a37feb0ca147421d5",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 463,
+      "sha256": "4f5182fd8d672adde7b415c347c4e690c624961e2d40cc6262c6e5919c0d328b",
+      "file": "game/client/online-results.js",
+      "previousSha256": "4f5182fd8d672adde7b415c347c4e690c624961e2d40cc6262c6e5919c0d328b",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/performance-policy.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/performance-policy.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.458136+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:47 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "2702",
+        "ETag": "ddedfe3fa65abe2c7beb59fed59b14ea",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 2702,
+      "sha256": "19f6d65bae97bb2b4ec28f2c139f2ee97a5f530ebdf789406285ecfdfef5860f",
+      "file": "game/client/performance-policy.js",
+      "previousSha256": "19f6d65bae97bb2b4ec28f2c139f2ee97a5f530ebdf789406285ecfdfef5860f",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/pointer-lock.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/pointer-lock.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.542407+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "697",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 1485,
+      "sha256": "a70f76eb6aff2cc6604bade700fb44d87f09768707dc783d04d1f76257ed01af",
+      "file": "game/client/pointer-lock.js",
+      "previousSha256": "a70f76eb6aff2cc6604bade700fb44d87f09768707dc783d04d1f76257ed01af",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/progress-ledger.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/progress-ledger.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.530998+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:54 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "2975",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 9118,
+      "sha256": "c0d07cf1b3e18c395dfcfc558f6ed46a73ae6f28417b768c6e687d69a3bf82cd",
+      "file": "game/client/progress-ledger.js",
+      "previousSha256": "c0d07cf1b3e18c395dfcfc558f6ed46a73ae6f28417b768c6e687d69a3bf82cd",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/pvp.css",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/pvp.css",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.752899+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 18:10:18 GMT",
+        "Content-Type": "text/css; charset=utf-8",
+        "Content-Length": "2056",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 7297,
+      "sha256": "7a3bbea490ead00748cf64c62691a54b046f15210a6e47dd71f8739ffae28cb0",
+      "file": "game/client/pvp.css",
+      "previousSha256": "7a3bbea490ead00748cf64c62691a54b046f15210a6e47dd71f8739ffae28cb0",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/pvp.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/pvp.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.587451+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:49 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "7470",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 22679,
+      "sha256": "67707fa2e45e03806670cb1a1b5484af39550849a7479dd9dbbea366301820ed",
+      "file": "game/client/pvp.js",
+      "previousSha256": "67707fa2e45e03806670cb1a1b5484af39550849a7479dd9dbbea366301820ed",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/runtime-diagnostics.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/runtime-diagnostics.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.673264+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:47 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "1479",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 3625,
+      "sha256": "bb949ec8f9676e94f3a695a7cdad79f17a928e64ed786f9dab8c1def1ed1c900",
+      "file": "game/client/runtime-diagnostics.js",
+      "previousSha256": "bb949ec8f9676e94f3a695a7cdad79f17a928e64ed786f9dab8c1def1ed1c900",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/simulation.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/simulation.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.691034+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "2097",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 6473,
+      "sha256": "a703a3437140aa5df985d8ca6d3c3574f5fc20a03df81f85361698d2bbab8a48",
+      "file": "game/client/simulation.js",
+      "previousSha256": "a703a3437140aa5df985d8ca6d3c3574f5fc20a03df81f85361698d2bbab8a48",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/startup-cache.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/startup-cache.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.764129+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:47 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "11717",
+        "ETag": "bbb31984951652672e93e063358e5d9e",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 11717,
+      "sha256": "7f16c8f487f920de4e989328c771db0d3255580239d588aa9e9a02859d392374",
+      "file": "game/client/startup-cache.js",
+      "previousSha256": "7f16c8f487f920de4e989328c771db0d3255580239d588aa9e9a02859d392374",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/startup-geometry.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/startup-geometry.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.776325+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:47 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "8673",
+        "ETag": "560aaf2c06166057e3cbf559b0ee1536",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 8673,
+      "sha256": "6154093aea3a69e3ddfec8953cfd83891b35c4c1041ee115eecf3e46732b3685",
+      "file": "game/client/startup-geometry.js",
+      "previousSha256": "6154093aea3a69e3ddfec8953cfd83891b35c4c1041ee115eecf3e46732b3685",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/telemetry.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/telemetry.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.725868+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:49 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "3284",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 8046,
+      "sha256": "296feb476f2e88cd199659ab55e3fe65e54d7ab9c095e96c4330d53572bb9fe6",
+      "file": "game/client/telemetry.js",
+      "previousSha256": "296feb476f2e88cd199659ab55e3fe65e54d7ab9c095e96c4330d53572bb9fe6",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-controls.css",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-controls.css",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.756786+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 18:10:18 GMT",
+        "Content-Type": "text/css; charset=utf-8",
+        "Content-Length": "8956",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 43602,
+      "sha256": "32be49bccf348c7fabf864759d363f5be9faf792c58bc5de76298c76f9872bb2",
+      "file": "game/client/touch-controls.css",
+      "previousSha256": "32be49bccf348c7fabf864759d363f5be9faf792c58bc5de76298c76f9872bb2",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-controls.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-controls.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.791996+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:47 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "18740",
+        "ETag": "5454a3f75bd6cd0a946e41e03e1b1029",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 18740,
+      "sha256": "2a7d96ed016c36e0012d478d29f7f5f1a44697df38896ce697a9a8f039706216",
+      "file": "game/client/touch-controls.js",
+      "previousSha256": "2a7d96ed016c36e0012d478d29f7f5f1a44697df38896ce697a9a8f039706216",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-input.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-input.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.831704+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:48 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "1633",
+        "ETag": "055441f9813b2fb840a4695515f498c2",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 1633,
+      "sha256": "dd9407c85d4ed30f5e0188caa42191625112ab04de88fbaf5668eec7cf796d5a",
+      "file": "game/client/touch-input.js",
+      "previousSha256": "dd9407c85d4ed30f5e0188caa42191625112ab04de88fbaf5668eec7cf796d5a",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-layout.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-layout.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.839219+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:48 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "1807",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 4309,
+      "sha256": "66f9299ebeba844aa4b542b203623b18002fe66af801858493cd914ebdec7b9c",
+      "file": "game/client/touch-layout.js",
+      "previousSha256": "66f9299ebeba844aa4b542b203623b18002fe66af801858493cd914ebdec7b9c",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-settings.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/touch-settings.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.857936+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "10278",
+        "ETag": "50309911a306a5e731eeb609bda392ef",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 10278,
+      "sha256": "0cca063242fba99a44f10e6ded333105261791394f8569bc13dd5f3f96d843d0",
+      "file": "game/client/touch-settings.js",
+      "previousSha256": "0cca063242fba99a44f10e6ded333105261791394f8569bc13dd5f3f96d843d0",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/toy-account.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/toy-account.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.861595+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "6231",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 21562,
+      "sha256": "6b26b17e33817a1a264f816a34288368bc82fc398dbf357aa62e08e255096692",
+      "file": "game/client/toy-account.js",
+      "previousSha256": "6b26b17e33817a1a264f816a34288368bc82fc398dbf357aa62e08e255096692",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/toy-menu.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/toy-menu.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.853748+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "9096",
+        "ETag": "6d86912acce158945c6e6ef288637f15",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 9096,
+      "sha256": "e7be1905f259b446bbb5163f60a4d09217df37eb0906c537cbc44715cf8aed84",
+      "file": "game/client/toy-menu.js",
+      "previousSha256": "e7be1905f259b446bbb5163f60a4d09217df37eb0906c537cbc44715cf8aed84",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/toy-weapons.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/toy-weapons.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.890670+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "3781",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 9867,
+      "sha256": "30cfa973492876c2a604cb37d3afd9ba50062496399ef2a6c6ac3bd7bc7c7e24",
+      "file": "game/client/toy-weapons.js",
+      "previousSha256": "30cfa973492876c2a604cb37d3afd9ba50062496399ef2a6c6ac3bd7bc7c7e24",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/training-kills.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/training-kills.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.925322+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "1081",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 2559,
+      "sha256": "5d94898e52263d231a992b6fb6d7f4277bb481e7950b3b5daed1efbad3162220",
+      "file": "game/client/training-kills.js",
+      "previousSha256": "5d94898e52263d231a992b6fb6d7f4277bb481e7950b3b5daed1efbad3162220",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/webgl-context.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/webgl-context.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:35.001931+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:47 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "9299",
+        "ETag": "b566c4a8327180cef101382f6aa33f97",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 9299,
+      "sha256": "62241925a316d4c38f99e00a232953206fcee68563cc8656ad5b3aa9fdea357a",
+      "file": "game/client/webgl-context.js",
+      "previousSha256": "62241925a316d4c38f99e00a232953206fcee68563cc8656ad5b3aa9fdea357a",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/webrtc.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/client/webrtc.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.974294+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 20:11:50 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "5029",
+        "ETag": "7be24037f6e5eaae6c9b0c2b05b5352e",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 5029,
+      "sha256": "ba074826576a848514faacf7cc412d3abc25ece823422f62d4b4767a08701ee4",
+      "file": "game/client/webrtc.js",
+      "previousSha256": "ba074826576a848514faacf7cc412d3abc25ece823422f62d4b4767a08701ee4",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/dist/game.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/dist/game.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.997549+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 18:10:23 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "1002355",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 2810154,
+      "sha256": "5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3",
+      "file": "game/dist/game.js",
+      "previousSha256": "5c5c112f76f1017784126e6912e239ad779110ce9c2b0c3a91c54f8f386d2af3",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/i18n-zh.js",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/i18n-zh.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:34.942017+00:00",
+      "headers": {
+        "Date": "Sat, 14 Nov 2026 18:10:19 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "11636",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Sat, 14 Nov 2026 17:48:11 GMT",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "bytes": 28582,
+      "sha256": "44aa9627f4e510c45b8ca1369006d7f5d3b1f7f939e4d6b477122f0fdfb442dc",
+      "file": "game/i18n-zh.js",
+      "previousSha256": "44aa9627f4e510c45b8ca1369006d7f5d3b1f7f939e4d6b477122f0fdfb442dc",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://i0.hdslb.com/bfs/static/toy/app/golden-hour/icon_46289_upload.png",
+      "finalURL": "https://i0.hdslb.com/bfs/static/toy/app/golden-hour/icon_46289_upload.png",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:37.147624+00:00",
+      "headers": {
+        "Date": "Tue, 17 Nov 2026 10:25:36 GMT",
+        "Content-Type": "image/png",
+        "Content-Length": "116904",
+        "ETag": "d5c6fbaa1b8367789489405c3b554388",
+        "Last-Modified": "Thu, 12 Nov 2026 03:53:35 GMT",
+        "Cache-Control": "max-age=31536000"
+      },
+      "bytes": 116904,
+      "sha256": "681a72331e92c05b91e2623d660a8950092514811af88461a3a4b4feef887909",
+      "file": "game/icon.png",
+      "previousSha256": "681a72331e92c05b91e2623d660a8950092514811af88461a3a4b4feef887909",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibili.com/toy/golden-hour/index.html",
+      "finalURL": "https://www.bilibili.com/toy/golden-hour/index.html",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:32.416599+00:00",
+      "headers": {
+        "Date": "Tue, 17 Nov 2026 10:25:32 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Encoding": "gzip",
+        "Cache-Control": "no-cache"
+      },
+      "bytes": 8775,
+      "sha256": "ac0d870369102bafa1093ffaac47469576a30136e31351c165ac31c94858781c",
+      "file": "original/bilibili.html",
+      "previousSha256": "ac0d870369102bafa1093ffaac47469576a30136e31351c165ac31c94858781c",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/index.html",
+      "finalURL": "https://www.bilibilitoy.com/toy/golden-hour/54263300497408-v49221/index.html",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:35.267616+00:00",
+      "headers": {
+        "Date": "Tue, 17 Nov 2026 10:25:35 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "ETag": "\"2e600744\"",
+        "Cache-Control": "private, no-cache"
+      },
+      "bytes": 100186,
+      "sha256": "d736f67aa6c6d6f63aba9ef5876c52fc62f94efb79eca6f1eab89ff8ef85301a",
+      "file": "original/entry.html",
+      "previousSha256": "d736f67aa6c6d6f63aba9ef5876c52fc62f94efb79eca6f1eab89ff8ef85301a",
+      "matchesPrevious": true
+    },
+    {
+      "url": "https://www.bilibili.com/toy/golden-hour/manifest.webmanifest",
+      "finalURL": "https://www.bilibili.com/toy/golden-hour/manifest.webmanifest",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:35.109893+00:00",
+      "headers": {
+        "Date": "Tue, 17 Nov 2026 10:25:35 GMT",
+        "Content-Type": "application/manifest+json; charset=utf-8",
+        "Content-Length": "248",
+        "Cache-Control": "no-cache"
+      },
+      "bytes": 248,
+      "sha256": "487759dcd7ccaf2ac63d86938430e1162d5d28ae07067d094250f2d984acbd22",
+      "file": "platform/manifest.webmanifest"
+    },
+    {
+      "url": "https://www.bilibili.com/toy/golden-hour/sw.js",
+      "finalURL": "https://www.bilibili.com/toy/golden-hour/sw.js",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:35.118856+00:00",
+      "headers": {
+        "Date": "Tue, 17 Nov 2026 10:25:35 GMT",
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "593",
+        "Cache-Control": "no-cache"
+      },
+      "bytes": 593,
+      "sha256": "1ded505b00bee1942587cb37686a04063adfa40578a7b397eb5bc24f019721ae",
+      "file": "platform/sw.js"
+    },
+    {
+      "url": "https://api.github.com/users/LankiYang",
+      "finalURL": "https://api.github.com/users/LankiYang",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:37.080255+00:00",
+      "headers": {
+        "Date": "Tue, 17 Nov 2026 10:25:37 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "1197",
+        "ETag": "W/\"cbf120207f28a888c8b436d14604cf4e9c8d47bafc45ec245a06a9677432d9bb\"",
+        "Last-Modified": "Mon, 09 Nov 2026 13:19:26 GMT",
+        "Cache-Control": "public, max-age=60, s-maxage=60"
+      },
+      "bytes": 1197,
+      "sha256": "cbf120207f28a888c8b436d14604cf4e9c8d47bafc45ec245a06a9677432d9bb",
+      "file": "reference/author.json"
+    },
+    {
+      "url": "https://github.com/user-attachments/assets/44a7cc57-4f56-40a9-9d06-63b2ac29da3e",
+      "finalURL": "https://github-production-user-asset-6210df.s3.amazonaws.com/124030741/707725327-44a7cc57-4f56-40a9-9d06-63b2ac29da3e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20261117%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261117T102536Z&X-Amz-Expires=300&X-Amz-Signature=a9d23a91fbd9492095be9fab3f66ad0eab3dfcec2c7a1e21bfe7ea0e73261954&X-Amz-SignedHeaders=host&response-content-type=image%2Fpng",
+      "httpStatus": 200,
+      "retrievedAtUTC": "2026-11-17T10:25:39.929563+00:00",
+      "headers": {
+        "Date": "Tue, 17 Nov 2026 10:25:39 GMT",
+        "Content-Type": "image/png",
+        "Content-Length": "38483",
+        "ETag": "\"db7b4a8906e047acc033cc41e5d4c693\"",
+        "Last-Modified": "Mon, 16 Nov 2026 13:34:06 GMT",
+        "Cache-Control": "max-age=2592000"
+      },
+      "bytes": 38483,
+      "sha256": "0fd5d6110c2e0aec789571d2a175c3bffd33524ab682160c7250384c1b277d04",
+      "file": "reference/fork-permission.png"
+    },
+    {
+      "url": "https://api.github.com/repos/LankiYang/golden-hour",
+      "finalURL": "https://api.github.com/repos/LankiYang/golden-hour",
+      "httpStatus": 404,
+      "retrievedAtUTC": "2026-11-17T10:25:37.042921+00:00",
+      "headers": {
+        "Date": "Tue, 17 Nov 2026 10:25:36 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "118"
+      },
+      "bytes": 118,
+      "sha256": "4f50e254a719a6b1b06b529bdaa08980e4acf0878aad0090cba7771f6ebdf0b9",
+      "file": "reference/upstream-repository.json"
+    }
+  ]
+}
