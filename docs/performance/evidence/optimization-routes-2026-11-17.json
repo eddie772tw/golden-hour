@@ -1,0 +1,198 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "researchBaseCommit": "f6258e3020a7e3a2b979aaf1f8eb2a3dfbe2aa4e",
+  "coreSHA256": "1a3f0d7eb26a97c6516dca88d2696d7774dd096fe2991e1eb22dabd1b208ee34",
+  "runtimeChanged": false,
+  "newBrowserGPUAudioHardwareRuns": false,
+  "researchers": [
+    "industry_render_audio",
+    "loop_reflection_plan",
+    "warmup_plan"
+  ],
+  "files": [
+    {
+      "path": "outputs/optimization-routes/audio.md",
+      "bytes": 19113,
+      "sha256": "45f924b092fafdb5442083bcdf242f742380fea8f1f3bc70ccdb5620462f345d"
+    },
+    {
+      "path": "outputs/optimization-routes/audio-stale-reference-probe.mjs",
+      "bytes": 5348,
+      "sha256": "5be27c8ceee41b08159d03cd9d8386338783f809c72b5801326b6f0993a51921"
+    },
+    {
+      "path": "outputs/optimization-routes/audio-stale-reference-result.json",
+      "bytes": 1883,
+      "sha256": "70f2abc59c79b666c97f7e60bf88fb78c21fe73a2d6b284aeed447b24cff840a"
+    },
+    {
+      "path": "outputs/optimization-routes/render-cache.md",
+      "bytes": 21435,
+      "sha256": "66a47cce7fc5ee15439389f1456c01db86a320c55c4803cd16784e4857cc4b8d"
+    },
+    {
+      "path": "outputs/optimization-routes/render-cache-check.mjs",
+      "bytes": 4712,
+      "sha256": "6d1bdbf07ba24d6b2911fc688fa165a83d2e391efc2c69aed8b648ca8ee82bc8"
+    },
+    {
+      "path": "outputs/optimization-routes/render-cache-check.json",
+      "bytes": 841,
+      "sha256": "a980e5f44fe664b3322b0b626d14482e553b91d5c5fe75eeb7bb9867362e7cb4"
+    },
+    {
+      "path": "outputs/optimization-routes/culling-pipeline.md",
+      "bytes": 21171,
+      "sha256": "8515b776d172e4ffc17b06752ee6c5e30f72a6c25d8963a090dadacf42a5c913"
+    },
+    {
+      "path": "outputs/optimization-routes/bone-envelope-probe-v2.mjs",
+      "bytes": 9365,
+      "sha256": "a7767a71dbb918d3cf66f99661b6d298a5bc687f488024988a1ae05c0448d0b8"
+    },
+    {
+      "path": "outputs/optimization-routes/bone-envelope-v2.json",
+      "bytes": 29719,
+      "sha256": "cbbdaed8a263c049dbff6cf6ff854bf1f5dfd2bfafdf89675c290d648eab95f7"
+    },
+    {
+      "path": "outputs/optimization-routes/source-manifest.json",
+      "bytes": 3081,
+      "sha256": "3116f5ba65e361c258d9426d543455697cfdd5584e67a558703abd6572dee3ac"
+    },
+    {
+      "path": "outputs/optimization-routes/budget-evidence.json",
+      "bytes": 2253,
+      "sha256": "4de95bafbb85ae09bd7e3eb8363d42c27e79c8740ac83ea7373234277526db3a"
+    }
+  ],
+  "audio": {
+    "staleReferenceSequence": [
+      "slideStart(carpet)",
+      "currentTime=voice.end+0.001",
+      "original v() sweep",
+      "slideStop()"
+    ],
+    "writesAfterDisconnect": [
+      [
+        4,
+        "gain",
+        "cancel",
+        1.274
+      ],
+      [
+        4,
+        "gain",
+        "target",
+        0,
+        1.274,
+        0.035
+      ]
+    ],
+    "casingCensus": {
+      "corpus": "D:/Golden-Hour/work/godot-native/audio/simultaneous/casing-source-bypass/control-1/events.ndjson",
+      "corpusSHA256": "49c587621a39da3d594bb4c20a2276c68c254e49d864eea28be4ead154e1ca8d",
+      "calls": 929,
+      "rngDraws": 14854,
+      "sourceStarts": 7673,
+      "factoryCreates": {
+        "Gain": 11389,
+        "BiquadFilter": 3485,
+        "ChannelMerger": 929,
+        "Delay": 898,
+        "Oscillator": 5283,
+        "BufferSource": 2390
+      },
+      "roles": {
+        "tone-envelope": 5283,
+        "noise-envelope": 2390
+      },
+      "allCasingFactoryCreates": 24374,
+      "eligibleLeafEnvelopeGains": 7673,
+      "envelopeShareOfCasingCreates": 0.314802658570608,
+      "boundary": "Current actual S0/T on historical captured cue inputs; virtual node factories, not native handlers or browser FPS",
+      "browserFullWorkloadMeasured": false,
+      "nativeDestructorCountMeasured": false
+    },
+    "limits": "Actual-owner code with virtual factories, not native handlers, PCM or browser FPS."
+  },
+  "render": {
+    "schema": "render-cache-cpu-check-v1",
+    "sourceSHA256": "1a3f0d7eb26a97c6516dca88d2696d7774dd096fe2991e1eb22dabd1b208ee34",
+    "gpu": false,
+    "benchmark": false,
+    "checks": 5,
+    "simplifiedActualRendererGate": {
+      "draws": 12,
+      "sharedMaterialGetParameters": 12,
+      "perKindMaterialGetParameters": 3,
+      "limitation": "Actual D/o0/y0/h0 with existing mock parameter/program/uniform backend; not real NormalMaterial pixels or a complete specialization implementation."
+    },
+    "crossColorSpaceRegression": "PASS",
+    "actualSceneNestedEvents": "do not bubble",
+    "hiddenAncestorCandidate": "current traversal hides and restores; traverseVisible omits",
+    "traverseVisibleCallbackHidesPoints": "visible children still visited",
+    "notEvidenceOf": "milliseconds, real GPU shader correctness, full scene speedup or gameplay parity"
+  },
+  "bounds": {
+    "schema": "gh-current-owner-offline-bone-envelope-v2",
+    "operatorsSHA256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
+    "scriptSHA256": "a7767a71dbb918d3cf66f99661b6d298a5bc687f488024988a1ae05c0448d0b8",
+    "totals": {
+      "poses": 26,
+      "verticesChecked": 740168,
+      "misses": 0,
+      "fixed145Misses": 0,
+      "maxVolumeRatio": 1.4158987863681283
+    },
+    "gpu": false,
+    "AI": false,
+    "renderedPixels": false,
+    "boundsEnabledInProduct": false,
+    "cpuAndIdealShaderTranslationUnion": true,
+    "toyTranslationContract": {
+      "weightSum": 0.5,
+      "bindInverseTranslation": 10,
+      "idealShaderX": 5,
+      "cpuHelperX": 10,
+      "bound": [
+        5,
+        10
+      ]
+    },
+    "limits": [
+      "Actual current original rig.update/Physics methods on a small flat-floor fixture, not full gameAI reachable-pose coverage.",
+      "CPU helper and ideal homogeneous shader differ under nonunit weight sum plus bindInv translation; corrected union explicitly includes (1-sum)*translation. No Float32 GPU arithmetic envelope proved.",
+      "Convex nonnegative-weight envelope proof is conditional on source geometry/skin weights/bind/world matrices, finite affine palette, no additional vertex displacement/morph.",
+      "CPU original getVertexPosition only; Float32 GPU palette/roundoff needs an explicit conservative numeric pad/proof before product culling.",
+      "Body only; weapon/FP/K9/FX/custom shader vertex expansions are separate owners.",
+      "Offline allocation-heavy proof is not a proposed hot-loop implementation or CPU savings benchmark."
+    ]
+  },
+  "tailBudget": {
+    "sourceTrace": "D:\\Golden-Hour\\work\\browser-feedback\\evidence\\main-thread-light-1.trace.json",
+    "sourceTraceSHA256": "4c581da0a5afed1877334df10dff01a7336cbcc114752bc1a128213721185f9e",
+    "sourceCoreSHA256": "dd22efd9310800df67d4511e99314aae78b37355b36d914b62cccd5eb4f4116a",
+    "windowMS": 19955.816,
+    "owner": {
+      "pid": 577400,
+      "tid": 546948,
+      "thread": "CrRendererMain"
+    },
+    "nativeAudioDeletion": {
+      "count": 5153,
+      "wallMS": 125.392,
+      "maxWallMS": 91.338,
+      "maxThreadMS": 90.916
+    },
+    "audioDeletionFractionOfWindow": 0.006283481467257465,
+    "largestDeletionFractionOfDeletionTotal": 0.7284196758963889
+  },
+  "limits": [
+    "Research plus CPU-only mechanism/containment checks; not a new performance acceptance.",
+    "Historical profile proportions and source operation counts are not projected FPS savings.",
+    "CPU and GPU inclusive spans overlap; do not add.",
+    "The audio <=20ms endpoint gate remains open and independent."
+  ]
+}
