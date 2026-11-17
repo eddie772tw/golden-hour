@@ -280,10 +280,13 @@ test("private slots dispose once and can be recreated; lifecycle hooks release b
   assert.ok(calls.indexOf("x0") < calls.indexOf("P0"));
   const lostStart = source.indexOf("      function pt(g0) {", end);
   const lostEnd = source.indexOf("      function V0()", lostStart);
-  const lost = { x0: stub("lost-slots"), M: false, console: { log() {} } };
+  const context = {};
+  const lost = { x0: stub("lost-slots"), M: false, console: { log() {} }, m0: context,
+    ghRetireGLResourceGeneration(gl) { assert.equal(gl, context); calls.push("retired-generation"); } };
   vm.runInNewContext(source.slice(lostStart, lostEnd) + ";this.lost=pt", lost);
   lost.lost({ preventDefault() {} });
   assert.equal(lost.M, true);
+  assert.equal(calls.at(-2), "retired-generation");
   assert.equal(calls.at(-1), "lost-slots");
 });
 

@@ -9875,7 +9875,25 @@
       o = i;
     } };
   }
+  // CPU resources keep old backend dispose listeners across context restoration.
+  // Retire only their GPU ownership; those callbacks must still clear CPU state.
+  var ghGLResourceGenerations = new WeakMap();
+  function ghGLResourceDisposer(gl) {
+    let generation = ghGLResourceGenerations.get(gl);
+    if (!generation || !generation.active) {
+      generation = { active: !gl.isContextLost() };
+      ghGLResourceGenerations.set(gl, generation);
+    }
+    return (method, handle) => {
+      if (generation.active && !gl.isContextLost()) gl[method](handle);
+    };
+  }
+  function ghRetireGLResourceGeneration(gl) {
+    const generation = ghGLResourceGenerations.get(gl);
+    if (generation) generation.active = false;
+  }
   function KG(o) {
+    const ghDelete = ghGLResourceDisposer(o);
     let t = /* @__PURE__ */ new WeakMap();
     function e(r, l) {
       let c = r.array, h = r.usage, f = c.byteLength, u = o.createBuffer();
@@ -9918,7 +9936,7 @@
     function i(r) {
       r.isInterleavedBufferAttribute && (r = r.data);
       let l = t.get(r);
-      l && (o.deleteBuffer(l.buffer), t.delete(r));
+      l && (ghDelete("deleteBuffer", l.buffer), t.delete(r));
     }
     function a(r, l) {
       if (r.isInterleavedBufferAttribute && (r = r.data), r.isGLBufferAttribute) {
@@ -13516,6 +13534,7 @@ void main() {
     }, render: p, addToRenderList: x, dispose: b };
   }
   function AK(o, t) {
+    const ghDelete = ghGLResourceDisposer(o);
     let e = o.getParameter(o.MAX_VERTEX_ATTRIBS), s = {}, n = u(null), i = n, a = false;
     function r(_, R, C, L, A) {
       let O = false, H = f(L, C, R);
@@ -13528,7 +13547,7 @@ void main() {
       return o.bindVertexArray(_);
     }
     function h(_) {
-      return o.deleteVertexArray(_);
+      return ghDelete("deleteVertexArray", _);
     }
     function f(_, R, C) {
       let L = C.wireframe === true, A = s[_.id];
@@ -14944,6 +14963,7 @@ void main() {
     return { texelWidth: 1 / (3 * Math.max(Math.pow(2, e), 7 * 16)), texelHeight: s, maxMip: e };
   }
   function $X(o, t, e, s) {
+    const ghDelete = ghGLResourceDisposer(o.getContext());
     let n = o.getContext(), i = e.defines, a = e.vertexShader, r = e.fragmentShader, l = qX(e), c = KX(e), h = XX(e), f = YX(e), u = jX(e), d = FX(e), m = OX(i), p = n.createProgram(), x, g, b = e.glslVersion ? "#version " + e.glslVersion + `
 ` : "";
     e.isRawShaderMaterial ? (x = ["#define SHADER_TYPE " + e.shaderType, "#define SHADER_NAME " + e.shaderName, m].filter(rb).join(`
@@ -14980,7 +15000,7 @@ Program Info Log: ` + O + `
         else O !== "" ? console.warn("THREE.WebGLProgram: Program Info Log:", O) : (H === "" || F === "") && (z = false);
         z && (R.diagnostics = { runnable: P, programLog: O, vertexShader: { log: H, prefix: x }, fragmentShader: { log: F, prefix: g } });
       }
-      n.deleteShader(M), n.deleteShader(w), S = new dg(n, p), E = NX(n, p);
+      ghDelete("deleteShader", M), ghDelete("deleteShader", w), S = new dg(n, p), E = NX(n, p);
     }
     let S;
     this.getUniforms = function() {
@@ -14994,7 +15014,7 @@ Program Info Log: ` + O + `
     return this.isReady = function() {
       return _ === false && (_ = n.getProgramParameter(p, CX)), _;
     }, this.destroy = function() {
-      s.releaseStatesOfProgram(this), n.deleteProgram(p), this.program = void 0;
+      s.releaseStatesOfProgram(this), ghDelete("deleteProgram", p), this.program = void 0;
     }, this.type = e.shaderType, this.name = e.shaderName, this.id = PX++, this.cacheKey = t, this.usedTimes = 1, this.program = p, this.vertexShader = M, this.fragmentShader = w, this;
   }
   var ZX = 0, J_ = class {
@@ -15759,6 +15779,7 @@ void main() {
     return { buffers: { color: i, depth: a, stencil: r }, enable: p0, disable: t0, bindFramebuffer: M0, drawBuffers: f0, useProgram: _0, setBlending: S0, setMaterial: T0, setFlipSided: j0, setCullFace: Z0, setLineWidth: lt, setPolygonOffset: H0, setScissorTest: Y0, activeTexture: et, bindTexture: ct, unbindTexture: D0, compressedTexImage2D: u0, compressedTexImage3D: w0, texImage2D: C0, texImage3D: k0, updateUBOMapping: ot, uniformBlockBinding: Q0, texStorage2D: v0, texStorage3D: x0, texSubImage2D: P0, texSubImage3D: st, compressedTexSubImage2D: J0, compressedTexSubImage3D: q0, scissor: O0, viewport: B0, reset: nt };
   }
   function dY(o, t, e, s, n, i, a) {
+    const ghDelete = ghGLResourceDisposer(o);
     let r = t.has("WEBGL_multisampled_render_to_texture") ? t.get("WEBGL_multisampled_render_to_texture") : null, l = typeof navigator > "u" ? false : /OculusBrowser/g.test(navigator.userAgent), c = new It(), h = /* @__PURE__ */ new WeakMap(), f, u = /* @__PURE__ */ new WeakMap(), d = false;
     try {
       d = typeof OffscreenCanvas < "u" && new OffscreenCanvas(1, 1).getContext("2d") !== null;
@@ -15825,27 +15846,27 @@ void main() {
     }
     function E(D0) {
       let u0 = s.get(D0);
-      o.deleteTexture(u0.__webglTexture);
+      ghDelete("deleteTexture", u0.__webglTexture);
       let w0 = D0.source, P0 = u.get(w0);
       delete P0[u0.__cacheKey], a.memory.textures--;
     }
     function _(D0) {
       let u0 = s.get(D0);
       if (D0.depthTexture && (D0.depthTexture.dispose(), s.remove(D0.depthTexture)), D0.isWebGLCubeRenderTarget) for (let P0 = 0; P0 < 6; P0++) {
-        if (Array.isArray(u0.__webglFramebuffer[P0])) for (let st = 0; st < u0.__webglFramebuffer[P0].length; st++) o.deleteFramebuffer(u0.__webglFramebuffer[P0][st]);
-        else o.deleteFramebuffer(u0.__webglFramebuffer[P0]);
-        u0.__webglDepthbuffer && o.deleteRenderbuffer(u0.__webglDepthbuffer[P0]);
+        if (Array.isArray(u0.__webglFramebuffer[P0])) for (let st = 0; st < u0.__webglFramebuffer[P0].length; st++) ghDelete("deleteFramebuffer", u0.__webglFramebuffer[P0][st]);
+        else ghDelete("deleteFramebuffer", u0.__webglFramebuffer[P0]);
+        u0.__webglDepthbuffer && ghDelete("deleteRenderbuffer", u0.__webglDepthbuffer[P0]);
       }
       else {
-        if (Array.isArray(u0.__webglFramebuffer)) for (let P0 = 0; P0 < u0.__webglFramebuffer.length; P0++) o.deleteFramebuffer(u0.__webglFramebuffer[P0]);
-        else o.deleteFramebuffer(u0.__webglFramebuffer);
-        if (u0.__webglDepthbuffer && o.deleteRenderbuffer(u0.__webglDepthbuffer), u0.__webglMultisampledFramebuffer && o.deleteFramebuffer(u0.__webglMultisampledFramebuffer), u0.__webglColorRenderbuffer) for (let P0 = 0; P0 < u0.__webglColorRenderbuffer.length; P0++) u0.__webglColorRenderbuffer[P0] && o.deleteRenderbuffer(u0.__webglColorRenderbuffer[P0]);
-        u0.__webglDepthRenderbuffer && o.deleteRenderbuffer(u0.__webglDepthRenderbuffer);
+        if (Array.isArray(u0.__webglFramebuffer)) for (let P0 = 0; P0 < u0.__webglFramebuffer.length; P0++) ghDelete("deleteFramebuffer", u0.__webglFramebuffer[P0]);
+        else ghDelete("deleteFramebuffer", u0.__webglFramebuffer);
+        if (u0.__webglDepthbuffer && ghDelete("deleteRenderbuffer", u0.__webglDepthbuffer), u0.__webglMultisampledFramebuffer && ghDelete("deleteFramebuffer", u0.__webglMultisampledFramebuffer), u0.__webglColorRenderbuffer) for (let P0 = 0; P0 < u0.__webglColorRenderbuffer.length; P0++) u0.__webglColorRenderbuffer[P0] && ghDelete("deleteRenderbuffer", u0.__webglColorRenderbuffer[P0]);
+        u0.__webglDepthRenderbuffer && ghDelete("deleteRenderbuffer", u0.__webglDepthRenderbuffer);
       }
       let w0 = D0.textures;
       for (let P0 = 0, st = w0.length; P0 < st; P0++) {
         let J0 = s.get(w0[P0]);
-        J0.__webglTexture && (o.deleteTexture(J0.__webglTexture), a.memory.textures--), s.remove(w0[P0]);
+        J0.__webglTexture && (ghDelete("deleteTexture", J0.__webglTexture), a.memory.textures--), s.remove(w0[P0]);
       }
       s.remove(D0);
     }
@@ -16591,6 +16612,7 @@ void main() {
     return { refreshFogUniforms: s, refreshMaterialUniforms: n };
   }
   function bY(o, t, e, s) {
+    const ghDelete = ghGLResourceDisposer(o);
     let n = {}, i = {}, a = [], r = o.getParameter(o.MAX_UNIFORM_BUFFER_BINDINGS);
     function l(b, v) {
       let y = v.program;
@@ -16667,10 +16689,10 @@ void main() {
       let v = b.target;
       v.removeEventListener("dispose", x);
       let y = a.indexOf(v.__bindingPointIndex);
-      a.splice(y, 1), o.deleteBuffer(n[v.id]), delete n[v.id], delete i[v.id];
+      a.splice(y, 1), ghDelete("deleteBuffer", n[v.id]), delete n[v.id], delete i[v.id];
     }
     function g() {
-      for (let b in n) o.deleteBuffer(n[b]);
+      for (let b in n) ghDelete("deleteBuffer", n[b]);
       a = [], n = {}, i = {};
     }
     return { bind: l, update: c, dispose: g };
@@ -16787,7 +16809,7 @@ void main() {
         e.removeEventListener("webglcontextlost", pt, false), e.removeEventListener("webglcontextrestored", V0, false), e.removeEventListener("webglcontextcreationerror", c0, false), C0.dispose(), J0.dispose(), q0.dispose(), x0.dispose(), H0.dispose(), et.dispose(), ct.dispose(), w0.dispose(), Q0.dispose(), nt.dispose(), P0.dispose(), ht.dispose(), ht.removeEventListener("sessionstart", j), ht.removeEventListener("sessionend", s0), l0.stop();
       };
       function pt(g0) {
-        g0.preventDefault(), console.log("THREE.WebGLRenderer: Context Lost."), M = true, x0.dispose();
+        g0.preventDefault(), console.log("THREE.WebGLRenderer: Context Lost."), M = true, ghRetireGLResourceGeneration(m0), x0.dispose();
       }
       function V0() {
         console.log("THREE.WebGLRenderer: Context Restored."), M = false;
