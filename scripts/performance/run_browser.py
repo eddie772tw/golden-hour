@@ -135,11 +135,11 @@ def ready(page):
     page.evaluate('async()=>{if(GHBoot.runtimeReady)await GHBoot.runtimeReady;if(GH.debug.gfx.whenReady)await GH.debug.gfx.whenReady();}')
 
 def install_render_dev(page):
-    page.evaluate('''async(source)=>{
+    page.evaluate('''async(options)=>{
       const {installRenderDiagnostics}=await import('/client/render-diagnostics.js');
-      window.renderDev=installRenderDiagnostics(GH,{source,gpu:true,counters:true});
+      window.renderDev=installRenderDiagnostics(GH,{source:options.source,gpu:true,counters:true,trace:options.trace});
       renderDev.phaseMark(__frames.phase);
-    }''',{'coreSHA256':result['coreSHA256'],'name':name})
+    }''',{'source':{'coreSHA256':result['coreSHA256'],'name':name},'trace':args.trace_threads})
 
 def phase(page, label, seconds, moving=False, shooting=False):
     if page.evaluate('GH.G.state') != 'playing':
@@ -288,7 +288,13 @@ try:
                 tracer=browser.new_browser_cdp_session()
                 complete=[]
                 tracer.on('Tracing.tracingComplete',lambda event:complete.append(event))
-                tracer.send('Tracing.start',{'categories':'toplevel,devtools.timeline,blink.user_timing,gpu,cc,viz,renderer.scheduler','transferMode':'ReturnAsStream'})
+                available=set(tracer.send('Tracing.getCategories')['categories'])
+                desired=['toplevel','devtools.timeline','blink.user_timing',
+                         'renderer.scheduler','audio','webaudio','v8','disabled-by-default-v8.gc']
+                if args.render_dev: desired+=['gpu','cc','viz']
+                result['traceCategories']=[category for category in desired if category in available] if available else desired
+                result['traceCategoryDiscoveryEmpty']=not available
+                tracer.send('Tracing.start',{'categories':','.join(result['traceCategories']),'transferMode':'ReturnAsStream'})
                 result['traceWindowStart']=page.evaluate('({now:performance.now(),tick:GH.benchmark.tick,timeOrigin:performance.timeOrigin})')
                 page.evaluate("performance.mark('gh-thread-window-start')")
                 page.wait_for_function('GH.benchmark.tick>=2100',polling=args.completion_poll_ms or 'raf',timeout=90000)

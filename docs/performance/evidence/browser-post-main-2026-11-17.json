@@ -1,0 +1,1475 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "gameTree": "764e890df4124bf0a6e01982eec818203dea5434",
+  "testedCoreSHA256": "dd22efd9310800df67d4511e99314aae78b37355b36d914b62cccd5eb4f4116a",
+  "browserAudio": {
+    "raw": {
+      "path": "work\\browser-feedback\\evidence\\audio-latency-hint-3.json",
+      "sha256": "de540c3b10e53adf1466cf71f00eee152786bfea75d58319374884b052b15abf",
+      "bytes": 316773
+    },
+    "ok": true,
+    "physicalLatencyAccepted": false,
+    "arms": [
+      {
+        "index": 0,
+        "hint": "interactive",
+        "gate": "fail",
+        "cues": 6,
+        "rangeMS": [
+          55.6126665713,
+          57.52500000000009
+        ],
+        "baseLatencySeconds": [
+          0.01
+        ],
+        "outputLatencySeconds": [
+          0,
+          0.048
+        ]
+      },
+      {
+        "index": 1,
+        "hint": 0.001,
+        "gate": "fail",
+        "cues": 6,
+        "rangeMS": [
+          71.25699990463272,
+          80.79000019073465
+        ],
+        "baseLatencySeconds": [
+          0.01
+        ],
+        "outputLatencySeconds": [
+          0,
+          0.064
+        ]
+      },
+      {
+        "index": 2,
+        "hint": 0.001,
+        "gate": "fail",
+        "cues": 6,
+        "rangeMS": [
+          69.96866647593015,
+          73.51133323796603
+        ],
+        "baseLatencySeconds": [
+          0.01
+        ],
+        "outputLatencySeconds": [
+          0,
+          0.048,
+          0.056,
+          0.064
+        ]
+      },
+      {
+        "index": 3,
+        "hint": "interactive",
+        "gate": "fail",
+        "cues": 6,
+        "rangeMS": [
+          66.71599995231736,
+          73.53933323796446
+        ],
+        "baseLatencySeconds": [
+          0.01
+        ],
+        "outputLatencySeconds": [
+          0,
+          0.064
+        ]
+      },
+      {
+        "index": 4,
+        "hint": "interactive",
+        "gate": "fail",
+        "cues": 6,
+        "rangeMS": [
+          73.87166680971859,
+          81.02300004768404
+        ],
+        "baseLatencySeconds": [
+          0.01
+        ],
+        "outputLatencySeconds": [
+          0,
+          0.07200000000000001
+        ]
+      },
+      {
+        "index": 5,
+        "hint": 0.001,
+        "gate": "fail",
+        "cues": 6,
+        "rangeMS": [
+          61.468333381017146,
+          66.74599990463321
+        ],
+        "baseLatencySeconds": [
+          0.01
+        ],
+        "outputLatencySeconds": [
+          0,
+          0.048,
+          0.056,
+          0.064
+        ]
+      },
+      {
+        "index": 6,
+        "hint": 0.001,
+        "gate": "fail",
+        "cues": 6,
+        "rangeMS": [
+          63.22566671435197,
+          73.18566666666447
+        ],
+        "baseLatencySeconds": [
+          0.01
+        ],
+        "outputLatencySeconds": [
+          0,
+          0.056,
+          0.064
+        ]
+      },
+      {
+        "index": 7,
+        "hint": "interactive",
+        "gate": "fail",
+        "cues": 6,
+        "rangeMS": [
+          67.90400000000227,
+          71.30899995231448
+        ],
+        "baseLatencySeconds": [
+          0.01
+        ],
+        "outputLatencySeconds": [
+          0,
+          0.064
+        ]
+      }
+    ],
+    "sameRNG": true,
+    "sameGraphShape": true,
+    "sameSinkMetadata": true,
+    "deviceChanges": [],
+    "endpointLimit": "Default browser sink/device metadata only; unchanged IDs do not prove the OS endpoint was never rerouted. No permissions or setSinkId override.",
+    "decision": "Stop this browser output configuration; numeric hint did not approach the 20ms necessary-condition screen. No further 15-10ms work."
+  },
+  "lightTrace": {
+    "raw": {
+      "path": "work\\browser-feedback\\evidence\\main-thread-light-1.json",
+      "sha256": "1abe8cd655632a36ab6c4dd773eb8019076584276c6f131dbe85a229ea2e30d2",
+      "bytes": 830162
+    },
+    "analysis": {
+      "schema": 1,
+      "name": "main-thread-light-1",
+      "diagnosticOnly": true,
+      "coreSHA256": "dd22efd9310800df67d4511e99314aae78b37355b36d914b62cccd5eb4f4116a",
+      "traceSHA256": "4c581da0a5afed1877334df10dff01a7336cbcc114752bc1a128213721185f9e",
+      "traceBytes": 156307258,
+      "events": 668200,
+      "categories": [
+        "toplevel",
+        "devtools.timeline",
+        "blink.user_timing",
+        "renderer.scheduler",
+        "audio",
+        "webaudio",
+        "v8",
+        "disabled-by-default-v8.gc"
+      ],
+      "windowMS": 19955.816,
+      "pageMain": {
+        "pid": 577400,
+        "tid": 546948,
+        "thread": "CrRendererMain"
+      },
+      "nativeAudioDeletion": {
+        "count": 5153,
+        "wallMS": 125.392,
+        "maxWallMS": 91.338,
+        "maxThreadMS": 90.916
+      },
+      "exactMajorGC": {
+        "count": 1,
+        "wallMS": 16.074,
+        "maxWallMS": 16.074,
+        "maxThreadMS": 14.235
+      },
+      "largestNativeAudioDeletion": [
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 11806.843,
+          "wallMS": 91.338,
+          "threadMS": 90.916,
+          "sourceFile": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "sourceFunction": "RequestToDeleteHandlersOnMainThread"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 18216.7,
+          "wallMS": 0.087,
+          "threadMS": 0.035,
+          "sourceFile": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "sourceFunction": "RequestToDeleteHandlersOnMainThread"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 15997.158,
+          "wallMS": 0.067,
+          "threadMS": 0.017,
+          "sourceFile": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "sourceFunction": "RequestToDeleteHandlersOnMainThread"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 758.0,
+          "wallMS": 0.061,
+          "threadMS": 0.026,
+          "sourceFile": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "sourceFunction": "RequestToDeleteHandlersOnMainThread"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 12006.449,
+          "wallMS": 0.06,
+          "threadMS": 0.013,
+          "sourceFile": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "sourceFunction": "RequestToDeleteHandlersOnMainThread"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 997.634,
+          "wallMS": 0.056,
+          "threadMS": 0.019,
+          "sourceFile": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "sourceFunction": "RequestToDeleteHandlersOnMainThread"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 10281.046,
+          "wallMS": 0.055,
+          "threadMS": 0.025,
+          "sourceFile": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "sourceFunction": "RequestToDeleteHandlersOnMainThread"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 1159.825,
+          "wallMS": 0.052,
+          "threadMS": 0.037,
+          "sourceFile": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "sourceFunction": "RequestToDeleteHandlersOnMainThread"
+        }
+      ],
+      "majorGCEvents": [
+        {
+          "name": "MajorGC",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 11771.374,
+          "wallMS": 16.074,
+          "threadMS": 14.235,
+          "sourceFile": null,
+          "sourceFunction": null
+        }
+      ],
+      "largestMainTasks": [
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 11806.843,
+          "wallMS": 91.338,
+          "threadMS": 90.916,
+          "sourceFile": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "sourceFunction": "RequestToDeleteHandlersOnMainThread"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 350.219,
+          "wallMS": 26.084,
+          "threadMS": 25.847,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 404.315,
+          "wallMS": 25.637,
+          "threadMS": 25.275,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 5374.319,
+          "wallMS": 22.552,
+          "threadMS": 22.298,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 1118.257,
+          "wallMS": 21.993,
+          "threadMS": 21.43,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 14370.099,
+          "wallMS": 21.782,
+          "threadMS": 21.501,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 555.123,
+          "wallMS": 21.763,
+          "threadMS": 19.682,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 13384.859,
+          "wallMS": 21.474,
+          "threadMS": 21.354,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 5351.166,
+          "wallMS": 20.667,
+          "threadMS": 19.012,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 13792.763,
+          "wallMS": 20.508,
+          "threadMS": 20.287,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 485.213,
+          "wallMS": 20.202,
+          "threadMS": 19.774,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 1160.186,
+          "wallMS": 20.096,
+          "threadMS": 19.68,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 1919.759,
+          "wallMS": 19.931,
+          "threadMS": 19.76,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 792.052,
+          "wallMS": 19.795,
+          "threadMS": 19.626,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 5397.246,
+          "wallMS": 19.749,
+          "threadMS": 19.631,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 153.166,
+          "wallMS": 19.658,
+          "threadMS": 19.582,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        }
+      ],
+      "largestPageMainEvents": [
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 11806.843,
+          "wallMS": 91.338,
+          "threadMS": 90.916,
+          "sourceFile": "third_party/blink/renderer/modules/webaudio/deferred_task_handler.cc",
+          "sourceFunction": "RequestToDeleteHandlersOnMainThread"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 350.219,
+          "wallMS": 26.084,
+          "threadMS": 25.847,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 404.315,
+          "wallMS": 25.637,
+          "threadMS": 25.275,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "FireAnimationFrame",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 404.476,
+          "wallMS": 22.729,
+          "threadMS": 22.392,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "v8.callFunction",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 404.49,
+          "wallMS": 22.708,
+          "threadMS": 22.373,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "FunctionCall",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 404.491,
+          "wallMS": 22.613,
+          "threadMS": 22.282,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 5374.319,
+          "wallMS": 22.552,
+          "threadMS": 22.298,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 1118.257,
+          "wallMS": 21.993,
+          "threadMS": 21.43,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 14370.099,
+          "wallMS": 21.782,
+          "threadMS": 21.501,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 555.123,
+          "wallMS": 21.763,
+          "threadMS": 19.682,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 13384.859,
+          "wallMS": 21.474,
+          "threadMS": 21.354,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "FireAnimationFrame",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 350.277,
+          "wallMS": 21.292,
+          "threadMS": 21.084,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "v8.callFunction",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 350.283,
+          "wallMS": 21.28,
+          "threadMS": 21.074,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "FunctionCall",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 350.284,
+          "wallMS": 21.115,
+          "threadMS": 20.914,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 5351.166,
+          "wallMS": 20.667,
+          "threadMS": 19.012,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 13792.763,
+          "wallMS": 20.508,
+          "threadMS": 20.287,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "FireAnimationFrame",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 1118.337,
+          "wallMS": 20.502,
+          "threadMS": 19.955,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "v8.callFunction",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 1118.347,
+          "wallMS": 20.484,
+          "threadMS": 19.938,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "FunctionCall",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 1118.349,
+          "wallMS": 20.478,
+          "threadMS": 19.933,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "FireAnimationFrame",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 14370.185,
+          "wallMS": 20.294,
+          "threadMS": 20.045,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "v8.callFunction",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 14370.199,
+          "wallMS": 20.274,
+          "threadMS": 20.026,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "FunctionCall",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 14370.2,
+          "wallMS": 20.27,
+          "threadMS": 20.023,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 485.213,
+          "wallMS": 20.202,
+          "threadMS": 19.774,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 1160.186,
+          "wallMS": 20.096,
+          "threadMS": 19.68,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 1919.759,
+          "wallMS": 19.931,
+          "threadMS": 19.76,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "FireAnimationFrame",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 13384.923,
+          "wallMS": 19.859,
+          "threadMS": 19.765,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "v8.callFunction",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 13384.929,
+          "wallMS": 19.846,
+          "threadMS": 19.754,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "FunctionCall",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 13384.93,
+          "wallMS": 19.843,
+          "threadMS": 19.751,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "FireAnimationFrame",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 555.277,
+          "wallMS": 19.822,
+          "threadMS": 17.765,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "v8.callFunction",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 555.286,
+          "wallMS": 19.808,
+          "threadMS": 17.752,
+          "sourceFile": null,
+          "sourceFunction": null
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 792.052,
+          "wallMS": 19.795,
+          "threadMS": 19.626,
+          "sourceFile": "cc/trees/proxy_impl.cc",
+          "sourceFunction": "ScheduledActionSendBeginMainFrame"
+        },
+        {
+          "name": "FunctionCall",
+          "pid": 577400,
+          "tid": 546948,
+          "thread": "CrRendererMain",
+          "process": "Renderer",
+          "atMS": 555.288,
+          "wallMS": 19.75,
+          "threadMS": 17.7,
+          "sourceFile": null,
+          "sourceFunction": null
+        }
+      ],
+      "largestOtherThreadEvents": [
+        {
+          "name": "ThreadPool_RunTask",
+          "pid": 549768,
+          "tid": 542488,
+          "thread": "ThreadPoolForegroundWorker",
+          "process": "Browser",
+          "atMS": 6146.724,
+          "wallMS": 111.105,
+          "threadMS": 5.9,
+          "sourceFile": "base/files/important_file_writer.cc",
+          "sourceFunction": "operator()"
+        },
+        {
+          "name": "ThreadPool_RunTask",
+          "pid": 577400,
+          "tid": 362884,
+          "thread": "ThreadPoolForegroundWorker",
+          "process": "Renderer",
+          "atMS": 1088.739,
+          "wallMS": 39.602,
+          "threadMS": 39.606,
+          "sourceFile": "v8/src/compiler-dispatcher/optimizing-compile-dispatcher.cc",
+          "sourceFunction": "void v8::internal::OptimizingCompileTaskExecutor::EnsureStarted()"
+        },
+        {
+          "name": "ThreadPool_RunTask",
+          "pid": 577400,
+          "tid": 532380,
+          "thread": "ThreadPoolForegroundWorker",
+          "process": "Renderer",
+          "atMS": 10173.653,
+          "wallMS": 28.0,
+          "threadMS": 27.902,
+          "sourceFile": "v8/src/compiler-dispatcher/optimizing-compile-dispatcher.cc",
+          "sourceFunction": "void v8::internal::OptimizingCompileTaskExecutor::EnsureStarted()"
+        },
+        {
+          "name": "ThreadPool_RunTask",
+          "pid": 577400,
+          "tid": 362884,
+          "thread": "ThreadPoolForegroundWorker",
+          "process": "Renderer",
+          "atMS": 15236.705,
+          "wallMS": 27.549,
+          "threadMS": 27.308,
+          "sourceFile": "v8/src/compiler-dispatcher/optimizing-compile-dispatcher.cc",
+          "sourceFunction": "void v8::internal::OptimizingCompileTaskExecutor::EnsureStarted()"
+        },
+        {
+          "name": "ThreadPool_RunTask",
+          "pid": 577400,
+          "tid": 362884,
+          "thread": "ThreadPoolForegroundWorker",
+          "process": "Renderer",
+          "atMS": 538.072,
+          "wallMS": 25.987,
+          "threadMS": 25.848,
+          "sourceFile": "v8/src/maglev/maglev-concurrent-dispatcher.cc",
+          "sourceFunction": "void v8::internal::maglev::MaglevConcurrentDispatcher::AwaitCompileJobs()"
+        },
+        {
+          "name": "ThreadPool_RunTask",
+          "pid": 577400,
+          "tid": 362884,
+          "thread": "ThreadPoolForegroundWorker",
+          "process": "Renderer",
+          "atMS": 14820.171,
+          "wallMS": 25.358,
+          "threadMS": 25.219,
+          "sourceFile": "v8/src/maglev/maglev-concurrent-dispatcher.cc",
+          "sourceFunction": "void v8::internal::maglev::MaglevConcurrentDispatcher::AwaitCompileJobs()"
+        },
+        {
+          "name": "ThreadPool_RunTask",
+          "pid": 577400,
+          "tid": 362884,
+          "thread": "ThreadPoolForegroundWorker",
+          "process": "Renderer",
+          "atMS": 12588.413,
+          "wallMS": 24.761,
+          "threadMS": 24.706,
+          "sourceFile": "v8/src/maglev/maglev-concurrent-dispatcher.cc",
+          "sourceFunction": "void v8::internal::maglev::MaglevConcurrentDispatcher::AwaitCompileJobs()"
+        },
+        {
+          "name": "ThreadPool_RunTask",
+          "pid": 577400,
+          "tid": 362884,
+          "thread": "ThreadPoolForegroundWorker",
+          "process": "Renderer",
+          "atMS": 12623.766,
+          "wallMS": 23.38,
+          "threadMS": 23.234,
+          "sourceFile": "v8/src/compiler-dispatcher/optimizing-compile-dispatcher.cc",
+          "sourceFunction": "void v8::internal::OptimizingCompileTaskExecutor::EnsureStarted()"
+        },
+        {
+          "name": "ThreadPool_RunTask",
+          "pid": 577400,
+          "tid": 362884,
+          "thread": "ThreadPoolForegroundWorker",
+          "process": "Renderer",
+          "atMS": 8335.465,
+          "wallMS": 22.56,
+          "threadMS": 22.478,
+          "sourceFile": "v8/src/maglev/maglev-concurrent-dispatcher.cc",
+          "sourceFunction": "void v8::internal::maglev::MaglevConcurrentDispatcher::AwaitCompileJobs()"
+        },
+        {
+          "name": "ThreadPool_RunTask",
+          "pid": 577400,
+          "tid": 362884,
+          "thread": "ThreadPoolForegroundWorker",
+          "process": "Renderer",
+          "atMS": 8509.102,
+          "wallMS": 22.236,
+          "threadMS": 22.06,
+          "sourceFile": "v8/src/compiler-dispatcher/optimizing-compile-dispatcher.cc",
+          "sourceFunction": "void v8::internal::OptimizingCompileTaskExecutor::EnsureStarted()"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 554424,
+          "tid": 540656,
+          "thread": "CrGpuMain",
+          "process": "GPU Process",
+          "atMS": 9015.253,
+          "wallMS": 18.494,
+          "threadMS": 2.136,
+          "sourceFile": "gpu/command_buffer/service/scheduler.cc",
+          "sourceFunction": "RunNextTask"
+        },
+        {
+          "name": "ThreadPool_RunTask",
+          "pid": 577400,
+          "tid": 362884,
+          "thread": "ThreadPoolForegroundWorker",
+          "process": "Renderer",
+          "atMS": 3774.176,
+          "wallMS": 16.052,
+          "threadMS": 15.963,
+          "sourceFile": "v8/src/compiler-dispatcher/optimizing-compile-dispatcher.cc",
+          "sourceFunction": "void v8::internal::OptimizingCompileTaskExecutor::EnsureStarted()"
+        },
+        {
+          "name": "ThreadPool_RunTask",
+          "pid": 577400,
+          "tid": 362884,
+          "thread": "ThreadPoolForegroundWorker",
+          "process": "Renderer",
+          "atMS": 11787.306,
+          "wallMS": 13.743,
+          "threadMS": 13.638,
+          "sourceFile": "v8/src/heap/cppgc-js/cpp-heap.cc",
+          "sourceFunction": "virtual std::unique_ptr<JobHandle> v8::internal::(anonymous namespace)::CppgcPlatformAdapter::PostJob(TaskPriority, std::unique_ptr<JobTask>)"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 554424,
+          "tid": 540656,
+          "thread": "CrGpuMain",
+          "process": "GPU Process",
+          "atMS": 8998.328,
+          "wallMS": 11.743,
+          "threadMS": 2.789,
+          "sourceFile": "gpu/command_buffer/service/scheduler.cc",
+          "sourceFunction": "TryScheduleSequence"
+        },
+        {
+          "name": "ThreadControllerImpl::RunTask",
+          "pid": 554424,
+          "tid": 540656,
+          "thread": "CrGpuMain",
+          "process": "GPU Process",
+          "atMS": 703.192,
+          "wallMS": 11.394,
+          "threadMS": 1.725,
+          "sourceFile": "gpu/command_buffer/service/scheduler.cc",
+          "sourceFunction": "RunNextTask"
+        },
+        {
+          "name": "AudioOutputDevice::FireRenderCallback",
+          "pid": 577400,
+          "tid": 607208,
+          "thread": "AudioOutputDevice",
+          "process": "Renderer",
+          "atMS": 406.391,
+          "wallMS": 11.279,
+          "threadMS": 11.217,
+          "sourceFile": null,
+          "sourceFunction": null
+        }
+      ],
+      "partialBoundaryCount": 0,
+      "ignoredEdgeTaskMirrors": 829,
+      "commonEventNames": [
+        [
+          "Edge_RunTask",
+          152742
+        ],
+        [
+          "ThreadControllerImpl::RunTask",
+          149551
+        ],
+        [
+          "IOHandler::OnIOCompleted",
+          73540
+        ],
+        [
+          "SimpleWatcher::OnHandleReady",
+          35270
+        ],
+        [
+          "Receive mojo message",
+          33593
+        ],
+        [
+          "BlinkScheduler_OnTaskCompleted",
+          29259
+        ],
+        [
+          "BlinkScheduler_PerformMicrotaskCheckpoint",
+          29259
+        ],
+        [
+          "cc::TaskGraphWorkQueue::ScheduleTasks",
+          25187
+        ],
+        [
+          "TaskGraphRunner::RunTask",
+          10076
+        ],
+        [
+          "PushPullFIFO frames",
+          9498
+        ],
+        [
+          "AnimationFrame",
+          8964
+        ],
+        [
+          "PushPullFIFO::Push",
+          7498
+        ],
+        [
+          "PushPullFIFO::Push under lock",
+          7498
+        ],
+        [
+          "RealtimeAudioDestinationHandler::Render",
+          7497
+        ],
+        [
+          "Paint",
+          6975
+        ],
+        [
+          "v8.callFunction",
+          5860
+        ]
+      ],
+      "limits": "Complete X events in the explicit trace window; parent/child events overlap and must not be added. Audio deletion uses canonical RunTask sourceFunction, GC uses exact MajorGC only. Wall durations can include waits; tdur is separately recorded. Trace and render observers add uncalibrated overhead. No physical display/audio proof."
+    },
+    "eightExportsEqual": {
+      "manifest": true,
+      "seed": true,
+      "equipment": true,
+      "decisionTrace": true,
+      "events": true,
+      "checkpoints": true,
+      "state": true,
+      "coverage": true
+    }
+  },
+  "gpuDiagnostic": {
+    "raw": {
+      "path": "work\\browser-feedback\\evidence\\main-render-thread-1.json",
+      "sha256": "f7f6ae10d25c4ef493d3d1490be94e501f43edfcb5895de8c5571657bf4f1704",
+      "bytes": 7310221
+    },
+    "activeTickRange": "0 < tick < 3600, scripted only; 40 completion/paused samples excluded",
+    "statistics": {
+      "gfx.render": {
+        "samples": 53,
+        "meanMS": 11.23674320754717,
+        "p95MS": 15.3454,
+        "maxMS": 16.04781
+      },
+      "render.world": {
+        "samples": 53,
+        "meanMS": 3.537658867924528,
+        "p95MS": 5.70133,
+        "maxMS": 6.36362
+      },
+      "shadow.render": {
+        "samples": 53,
+        "meanMS": 0.7214690566037736,
+        "p95MS": 1.63962,
+        "maxMS": 2.65975
+      },
+      "render.VM": {
+        "samples": 46,
+        "meanMS": 0.2444773913043478,
+        "p95MS": 0.3126,
+        "maxMS": 0.37924
+      },
+      "render.postprocess": {
+        "samples": 52,
+        "meanMS": 1.3135323076923078,
+        "p95MS": 1.6628,
+        "maxMS": 1.68904
+      },
+      "render.reflection": {
+        "samples": 21,
+        "meanMS": 3.341763333333333,
+        "p95MS": 4.98404,
+        "maxMS": 5.02127
+      }
+    },
+    "gpuState": {
+      "supported": true,
+      "enabled": true,
+      "pending": 0,
+      "contextEpoch": 0,
+      "jitterFrames": 2,
+      "sampleStrata": {
+        "gfx.render|reflection=false|draws=nonzero": 30,
+        "render.world|reflection=true|draws=nonzero": 28,
+        "shadow.render|reflection=false|draws=nonzero": 24,
+        "render.VM|reflection=false|draws=nonzero": 26,
+        "render.postprocess|reflection=false|draws=nonzero": 25,
+        "gfx.render|reflection=true|draws=nonzero": 31,
+        "render.reflection|reflection=true|draws=nonzero": 29,
+        "shadow.render|reflection=true|draws=nonzero": 22,
+        "render.postprocess|reflection=true|draws=nonzero": 35,
+        "render.world|reflection=false|draws=nonzero": 33,
+        "render.VM|reflection=true|draws=nonzero": 20,
+        "shadow.render|reflection=true|draws=zero": 9,
+        "shadow.render|reflection=false|draws=zero": 6
+      },
+      "scheduled": 365,
+      "submitted": 318,
+      "completed": 318,
+      "unavailablePolls": 49,
+      "skipped": 47,
+      "invalidated": 0,
+      "disjointEvents": 0,
+      "contextLosses": 0,
+      "contextRestores": 0,
+      "queryErrors": 0
+    },
+    "limits": "Sparse GPU-clock intervals under developer counters and a heavy default-category trace. Parents and children overlap; not physical presents or primary FPS. Aggregate CPU summaries also include paused completion work and are not an active-frame budget."
+  },
+  "nativePeriodScreen": {
+    "path": "work\\godot-native\\audio\\simultaneous\\casing-period\\wasapi-after-browser-1\\comparison.json",
+    "sha256": "924aa4465b9be297bc19c088a46a5512042cb0f5dabb001a0a499b427c709c57",
+    "rows": [
+      {
+        "run": "1-default/1-absolute",
+        "period": "default",
+        "total": 7,
+        "rendered": 1,
+        "late": 5,
+        "invalid": 1,
+        "mixFrames": [
+          512
+        ],
+        "callbackGapMedianMs": 10.099,
+        "callbackGapMaxMs": 21.2655,
+        "softwareMaxMs": 15.85269985008199,
+        "softwareAbove10": 1,
+        "softwareAbove15": 1,
+        "softwareAbove20": 0,
+        "deviceOutputMeasured": false,
+        "driverLog": [
+          "WASAPI: Activated output_device using IAudioClient3 interface",
+          "WASAPI: wFormatTag = 65534",
+          "WASAPI: nChannels = 8",
+          "WASAPI: nSamplesPerSec = 48000",
+          "WASAPI: nAvgBytesPerSec = 1536000",
+          "WASAPI: nBlockAlign = 32",
+          "WASAPI: wBitsPerSample = 32",
+          "WASAPI: cbSize = 22",
+          "WASAPI: mix_rate = 48000",
+          "WASAPI: fundamental_period_frames = 480",
+          "WASAPI: min_period_frames = 480",
+          "WASAPI: max_period_frames = 480",
+          "WASAPI: selected a period frame size of 480",
+          "WASAPI: detected 8 channels",
+          "WASAPI: audio buffer frames: 480 calculated latency: 10ms"
+        ]
+      },
+      {
+        "run": "1-default/1-untimed",
+        "period": "default",
+        "total": 7,
+        "rendered": 7,
+        "late": 0,
+        "invalid": 0,
+        "mixFrames": [
+          512
+        ],
+        "callbackGapMedianMs": 10.1158,
+        "callbackGapMaxMs": 21.2125,
+        "softwareMaxMs": 10.561799923324543,
+        "softwareAbove10": 1,
+        "softwareAbove15": 0,
+        "softwareAbove20": 0,
+        "deviceOutputMeasured": false,
+        "driverLog": [
+          "WASAPI: Activated output_device using IAudioClient3 interface",
+          "WASAPI: wFormatTag = 65534",
+          "WASAPI: nChannels = 8",
+          "WASAPI: nSamplesPerSec = 48000",
+          "WASAPI: nAvgBytesPerSec = 1536000",
+          "WASAPI: nBlockAlign = 32",
+          "WASAPI: wBitsPerSample = 32",
+          "WASAPI: cbSize = 22",
+          "WASAPI: mix_rate = 48000",
+          "WASAPI: fundamental_period_frames = 480",
+          "WASAPI: min_period_frames = 480",
+          "WASAPI: max_period_frames = 480",
+          "WASAPI: selected a period frame size of 480",
+          "WASAPI: detected 8 channels",
+          "WASAPI: audio buffer frames: 480 calculated latency: 10ms"
+        ]
+      },
+      {
+        "run": "1-5/1-absolute",
+        "period": "5",
+        "total": 7,
+        "rendered": 5,
+        "late": 2,
+        "invalid": 0,
+        "mixFrames": [
+          512
+        ],
+        "callbackGapMedianMs": 10.1651,
+        "callbackGapMaxMs": 21.4982,
+        "softwareMaxMs": 8.283399736023057,
+        "softwareAbove10": 0,
+        "softwareAbove15": 0,
+        "softwareAbove20": 0,
+        "deviceOutputMeasured": false,
+        "driverLog": [
+          "WASAPI: Activated output_device using IAudioClient3 interface",
+          "WASAPI: wFormatTag = 65534",
+          "WASAPI: nChannels = 8",
+          "WASAPI: nSamplesPerSec = 48000",
+          "WASAPI: nAvgBytesPerSec = 1536000",
+          "WASAPI: nBlockAlign = 32",
+          "WASAPI: wBitsPerSample = 32",
+          "WASAPI: cbSize = 22",
+          "WASAPI: mix_rate = 48000",
+          "WASAPI: fundamental_period_frames = 480",
+          "WASAPI: min_period_frames = 480",
+          "WASAPI: max_period_frames = 480",
+          "WASAPI: selected a period frame size of 480",
+          "WASAPI: detected 8 channels",
+          "WASAPI: audio buffer frames: 480 calculated latency: 10ms"
+        ]
+      },
+      {
+        "run": "1-5/1-untimed",
+        "period": "5",
+        "total": 7,
+        "rendered": 7,
+        "late": 0,
+        "invalid": 0,
+        "mixFrames": [
+          512
+        ],
+        "callbackGapMedianMs": 10.12355,
+        "callbackGapMaxMs": 21.1231,
+        "softwareMaxMs": 10.500499742126522,
+        "softwareAbove10": 1,
+        "softwareAbove15": 0,
+        "softwareAbove20": 0,
+        "deviceOutputMeasured": false,
+        "driverLog": [
+          "WASAPI: Activated output_device using IAudioClient3 interface",
+          "WASAPI: wFormatTag = 65534",
+          "WASAPI: nChannels = 8",
+          "WASAPI: nSamplesPerSec = 48000",
+          "WASAPI: nAvgBytesPerSec = 1536000",
+          "WASAPI: nBlockAlign = 32",
+          "WASAPI: wBitsPerSample = 32",
+          "WASAPI: cbSize = 22",
+          "WASAPI: mix_rate = 48000",
+          "WASAPI: fundamental_period_frames = 480",
+          "WASAPI: min_period_frames = 480",
+          "WASAPI: max_period_frames = 480",
+          "WASAPI: selected a period frame size of 480",
+          "WASAPI: detected 8 channels",
+          "WASAPI: audio buffer frames: 480 calculated latency: 10ms"
+        ]
+      },
+      {
+        "run": "1-3/1-absolute",
+        "period": "3",
+        "total": 7,
+        "rendered": 1,
+        "late": 5,
+        "invalid": 1,
+        "mixFrames": [
+          512
+        ],
+        "callbackGapMedianMs": 10.1537,
+        "callbackGapMaxMs": 21.6875,
+        "softwareMaxMs": 5.6508999149323245,
+        "softwareAbove10": 0,
+        "softwareAbove15": 0,
+        "softwareAbove20": 0,
+        "deviceOutputMeasured": false,
+        "driverLog": [
+          "WASAPI: Activated output_device using IAudioClient3 interface",
+          "WASAPI: wFormatTag = 65534",
+          "WASAPI: nChannels = 8",
+          "WASAPI: nSamplesPerSec = 48000",
+          "WASAPI: nAvgBytesPerSec = 1536000",
+          "WASAPI: nBlockAlign = 32",
+          "WASAPI: wBitsPerSample = 32",
+          "WASAPI: cbSize = 22",
+          "WASAPI: mix_rate = 48000",
+          "WASAPI: fundamental_period_frames = 480",
+          "WASAPI: min_period_frames = 480",
+          "WASAPI: max_period_frames = 480",
+          "WASAPI: selected a period frame size of 480",
+          "WASAPI: detected 8 channels",
+          "WASAPI: audio buffer frames: 480 calculated latency: 10ms"
+        ]
+      },
+      {
+        "run": "1-3/1-untimed",
+        "period": "3",
+        "total": 7,
+        "rendered": 7,
+        "late": 0,
+        "invalid": 0,
+        "mixFrames": [
+          512
+        ],
+        "callbackGapMedianMs": 10.112,
+        "callbackGapMaxMs": 20.1687,
+        "softwareMaxMs": 13.027899658584374,
+        "softwareAbove10": 6,
+        "softwareAbove15": 0,
+        "softwareAbove20": 0,
+        "deviceOutputMeasured": false,
+        "driverLog": [
+          "WASAPI: Activated output_device using IAudioClient3 interface",
+          "WASAPI: wFormatTag = 65534",
+          "WASAPI: nChannels = 8",
+          "WASAPI: nSamplesPerSec = 48000",
+          "WASAPI: nAvgBytesPerSec = 1536000",
+          "WASAPI: nBlockAlign = 32",
+          "WASAPI: wBitsPerSample = 32",
+          "WASAPI: cbSize = 22",
+          "WASAPI: mix_rate = 48000",
+          "WASAPI: fundamental_period_frames = 480",
+          "WASAPI: min_period_frames = 480",
+          "WASAPI: max_period_frames = 480",
+          "WASAPI: selected a period frame size of 480",
+          "WASAPI: detected 8 channels",
+          "WASAPI: audio buffer frames: 480 calculated latency: 10ms"
+        ]
+      }
+    ],
+    "decision": "One round, no endpoint capture. All requested periods selected the same 480-frame/10ms driver period and 512-frame mixer. No causal period improvement or endpoint acceptance."
+  },
+  "toolSetupFailuresPreserved": [
+    "audio-latency-hint-1.json: CDP command-line inspection lacked explicit enable-automation",
+    "audio-latency-hint-2.json: incidental favicon 404s; not accepted as valid overall evidence"
+  ],
+  "localTests": 149,
+  "targetAchieved": false
+}

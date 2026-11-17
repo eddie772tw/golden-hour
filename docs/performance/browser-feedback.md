@@ -101,8 +101,9 @@ occur. Quality, motion blur, equipment, pointer lock and restoration pass.
 
 `perf/browser-audio-backport` retains original T admission, gain, spatial/bus/
 reverb paths and changes only casing source subgraphs. It is not merged into
-browser main. The latest480-case oracle passes all admitted JS source cases
-at the original one-sample/2% gate. Past-API sources fall back before publication.
+browser main. In the latest480-case oracle, on-time and steal-tail JS source
+cases pass the original one-sample/2% gate; delivery-miss cases remain missed
+deadlines. Past-API sources fall back before publication.
 Native fallback traces, voice state and RNG are exact, but36 cases per rate
 still fail the stricter PCM byte check, at roughly1e-9 absolute differences.
 These failures remain recorded; they are not reported as an overall pass.

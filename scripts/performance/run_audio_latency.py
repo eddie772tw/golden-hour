@@ -74,7 +74,7 @@ def main():
     result = {"schema": "gh-audio-latency-run-v1", "name": args.name, "diagnosticOnly": True,
               "source": metadata, "endpointNote": args.endpoint_note, "ok": False,
               "probeSHA256": digest(HERE / "audio_latency_probe.js"), "runnerSHA256": digest(Path(__file__)),
-              "system": platform.platform(), "physicalLatencyAccepted": False, "consoleErrors": []}
+              "system": platform.platform(), "physicalLatencyAccepted": False, "consoleErrors": [], "responseErrors": []}
     proc = browser = context = None
     log = log_path.open("w", encoding="utf8")
     try:
@@ -91,7 +91,7 @@ def main():
         else: raise RuntimeError("Owned portable server health timeout")
         with sync_playwright() as pw:
             browser = pw.chromium.launch(channel="msedge", headless=False,
-                args=["--disable-background-networking"],
+                args=["--disable-background-networking", "--enable-automation"],
                 ignore_default_args=["--mute-audio", "--autoplay-policy=no-user-gesture-required", "--enable-unsafe-swiftshader"])
             result["browserVersion"] = browser.version
             cmd = browser.new_browser_cdp_session().send("Browser.getBrowserCommandLine")["arguments"]
@@ -100,10 +100,12 @@ def main():
                 raise RuntimeError("Unexpected autoplay/fake/muted audio browser flag")
             context = browser.new_context(viewport={"width": 760, "height": 400}, locale="en-US")
             page = context.new_page()
+            page.route('**/favicon.ico', lambda route: route.fulfill(status=204, body=''))
             page.on("pageerror", lambda e: result["consoleErrors"].append(str(e)))
             page.on("console", lambda m: result["consoleErrors"].append(m.text) if m.type == "error" else None)
+            page.on("response", lambda r: result["responseErrors"].append({"url":r.url,"status":r.status}) if r.status>=400 else None)
             page.goto(origin + "/api/health", wait_until="domcontentloaded")
-            page.set_content('<!doctype html><meta charset="utf-8"><title>Native audio latency diagnostic</title>'
+            page.set_content('<!doctype html><meta charset="utf-8"><link rel="icon" href="data:,"><title>Native audio latency diagnostic</title>'
                 '<h1>Native S0 output-timestamp screen</h1><p>ABBA × 2; fresh 48k contexts; six dry metal/brass cues each.</p>'
                 '<button id="probe-arm" disabled>Preparing original source before user gesture</button>')
             page.add_script_tag(path=str(HERE / "audio_latency_probe.js"), type="module")
@@ -128,7 +130,7 @@ def main():
             result["probe"] = page.evaluate("__audioLatencyProbe")
             p = result["probe"]
             result["latencyGate"] = "fail" if any(a["gate"] == "fail" for a in p["arms"]) else "pass" if all(a["gate"] == "pass" for a in p["arms"]) else "invalid"
-            result["ok"] = p["done"] and p.get("comparable", False) and not p["errors"] and not result["consoleErrors"] and all(not a["errors"] and a["gate"] != "invalid" for a in p["arms"])
+            result["ok"] = p["done"] and p.get("comparable", False) and not p["errors"] and not result["consoleErrors"] and not result["responseErrors"] and all(not a["errors"] and a["gate"] != "invalid" for a in p["arms"])
             result["physicalLatencyAccepted"] = False
             context.close(); context = None; browser.close(); browser = None
     except Exception as error:
