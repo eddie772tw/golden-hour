@@ -251,18 +251,15 @@ try:
             status=page.evaluate('GH.debug.ctx.audio._engine.casingAudio?.stats')
             assert status and status['status']=='ready' and status['warmed']==status['slots'], status
         if args.scripted:
-            if args.loop_cost:
-                page.evaluate('''async(uploads)=>{
-                  const {installLoopCostObserver}=await import('/client/loop-cost-observer.js');
-                  window.loopCost=installLoopCostObserver(GH,{uploads});
-                }''', args.loop_upload_bytes)
             if args.loop_observe:
                 page.evaluate("__loopPhase.reset('scenario')")
             result['scenarioStart']=page.evaluate('''async(options)=>{
               const {installBenchmarkScenario}=await import('/client/'+(window.__fullAI?'benchmark-full-ai.js':'benchmark-scenario.js'));
+              const loopModule=options.loopCost?await import('/client/loop-cost-observer.js'):null;
               await installBenchmarkScenario(GH,{seed:options.seed,followNativeLoop:options.nativeLoop});
+              if(loopModule)window.loopCost=loopModule.installLoopCostObserver(GH,{uploads:options.uploads});
               __frames.mark('scripted');__frames.scenarioAt=performance.now();window.__diag?.mark('scripted');return GH.benchmark.export();
-            }''',{'seed':args.seed,'nativeLoop':args.native_loop})
+            }''',{'seed':args.seed,'nativeLoop':args.native_loop,'loopCost':args.loop_cost,'uploads':args.loop_upload_bytes})
             if args.diagnostic:
                 page.evaluate((ROOT/'diagnostic.js').read_text(encoding='utf8'))
                 page.evaluate("(deep)=>{__diag.install({deep});__diag.mark('scripted');}",args.deep_render)
