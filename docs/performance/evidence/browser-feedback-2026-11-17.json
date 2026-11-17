@@ -1,0 +1,2270 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "target": "1920x1080 High, reflection <=30Hz, full native 9-bot 3600-tick fixture",
+  "cachePolicy": "Fresh browser context/storage/HTTP cache; OS/driver caches retained. Startup cost and active frames are separate.",
+  "boundary": "Render submission intervals and browser audio-clock estimates, not physical presents or loopback output measurements.",
+  "targetAchieved": false,
+  "runs": [
+    {
+      "name": "browser-base-1",
+      "raw": "work\\browser-feedback\\evidence\\browser-base-1.json",
+      "rawSHA256": "799643e6a7dfb9a74bfcdc0a00cc99ac99dc6a363200b1767006dde94021aa54",
+      "rawBytes": 773494,
+      "ok": true,
+      "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+      "browser": "157.0.4341.60",
+      "query": null,
+      "source": null,
+      "clientManifestSHA256": null,
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "browser-base-1",
+        "coreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.34370000004768,
+        "logicalHz": 59.65825761425228,
+        "renderHz": 55.87990129868297,
+        "overflowDroppedMs": 355.00000000000426,
+        "windows": {
+          "complete": {
+            "frames": 3371,
+            "fps": 55.88833606608675,
+            "onePercentLowFPS": 20.404488985241645,
+            "onePercentTailFrames": 34,
+            "p95Ms": 24.200000047683716,
+            "p99Ms": 30.200000047683716,
+            "reciprocalP99FPS": 33.11258272917447,
+            "maxMs": 183.0,
+            "over50PerMinute": 6.963245668275419,
+            "over100": 3
+          },
+          "warmTick301": {
+            "frames": 3122,
+            "fps": 56.45692130756349,
+            "onePercentLowFPS": 21.721422756002603,
+            "onePercentTailFrames": 32,
+            "p95Ms": 23.700000047683716,
+            "p99Ms": 28.600000143051147,
+            "reciprocalP99FPS": 34.96503479014726,
+            "maxMs": 183.0,
+            "over50PerMinute": 5.425072515140631,
+            "over100": 3
+          }
+        },
+        "logicalExportsEqual": null,
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 15622,
+        "entryMS": 3941.2000000476837,
+        "warmReloadReadyMS": 9853.200000047684,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2542
+        }
+      },
+      "audio": {
+        "queue": 80,
+        "created": 112963,
+        "live": 159,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 944,
+        "bakeMs": 327.20000076293945,
+        "bakeMax": 21.40000009536743,
+        "k9Steps": 149,
+        "k9StepCalls": 210
+      }
+    },
+    {
+      "name": "shader-on-1",
+      "raw": "work\\browser-feedback\\evidence\\shader-on-1.json",
+      "rawSHA256": "825558d6671e0a12b24de64a098e1f37745230dd6509f4bfb6a5a0732eeea823",
+      "rawBytes": 808062,
+      "ok": true,
+      "coreSHA256": "a1c651380e5217ae35a740f06527662cb07ffa4298ad9563022c920b30648ecd",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "shaderWarmup": "1"
+      },
+      "source": "4ffb454dbf3465c31d05e92ece20f95513096c5c",
+      "clientManifestSHA256": "0cd9066dca699abf4d05e4abb2b1aae8971de36d3a849adabbfd365d11cca5d7",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "shader-on-1",
+        "coreSHA256": "a1c651380e5217ae35a740f06527662cb07ffa4298ad9563022c920b30648ecd",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.20290000009537,
+        "logicalHz": 59.797783827594635,
+        "renderHz": 58.76793310611939,
+        "overflowDroppedMs": 221.23333333332747,
+        "windows": {
+          "complete": {
+            "frames": 3537,
+            "fps": 58.781786122000824,
+            "onePercentLowFPS": 25.42911633306821,
+            "onePercentTailFrames": 36,
+            "p95Ms": 20.5,
+            "p99Ms": 26.200000047683716,
+            "reciprocalP99FPS": 38.167938861832475,
+            "maxMs": 135.09999990463257,
+            "over50PerMinute": 4.985732495504735,
+            "over100": 2
+          },
+          "warmTick301": {
+            "frames": 3249,
+            "fps": 58.90447467309872,
+            "onePercentLowFPS": 26.0272892115407,
+            "onePercentTailFrames": 33,
+            "p95Ms": 20.200000047683716,
+            "p99Ms": 25.699999809265137,
+            "reciprocalP99FPS": 38.9105061253537,
+            "maxMs": 135.09999990463257,
+            "over50PerMinute": 4.351207732084855,
+            "over100": 2
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 13981.199999809265,
+        "entryMS": 3886.9000000953674,
+        "warmReloadReadyMS": 8253.300000190735,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2265,
+          "coverage": {
+            "pools": [
+              {
+                "label": "world-particles",
+                "before": 0,
+                "warm": 1,
+                "capacity": 4096
+              },
+              {
+                "label": "world-distortion",
+                "before": 0,
+                "warm": 1,
+                "capacity": 192
+              },
+              {
+                "label": "view-muzzle",
+                "before": 0,
+                "warm": 1,
+                "capacity": 44
+              }
+            ],
+            "buffersWritten": false,
+            "programsBefore": 68,
+            "existingJobsMs": 0.09999990463256836,
+            "compileMs": 697.4000000953674,
+            "resourcePassesMs": 1557.2999999523163,
+            "fenceWaitMs": 10.400000095367432,
+            "programsAfter": 110,
+            "retainedPrograms": {
+              "retained": 110,
+              "complete": 110,
+              "allComplete": true,
+              "completionOnly": true
+            }
+          }
+        }
+      },
+      "audio": {
+        "queue": 84,
+        "created": 113039,
+        "live": 210,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 931,
+        "bakeMs": 279.2000005245209,
+        "bakeMax": 17.700000047683716,
+        "k9Steps": 151,
+        "k9StepCalls": 210,
+        "casing": null
+      }
+    },
+    {
+      "name": "shader-off-1",
+      "raw": "work\\browser-feedback\\evidence\\shader-off-1.json",
+      "rawSHA256": "1215cb5696d28ff9cafca3cc26490f5a3575a9654c28ea990ee30a80f78b54d3",
+      "rawBytes": 802721,
+      "ok": true,
+      "coreSHA256": "a1c651380e5217ae35a740f06527662cb07ffa4298ad9563022c920b30648ecd",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": ""
+      },
+      "source": "4ffb454dbf3465c31d05e92ece20f95513096c5c",
+      "clientManifestSHA256": "0cd9066dca699abf4d05e4abb2b1aae8971de36d3a849adabbfd365d11cca5d7",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "shader-off-1",
+        "coreSHA256": "a1c651380e5217ae35a740f06527662cb07ffa4298ad9563022c920b30648ecd",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.16839999985695,
+        "logicalHz": 59.83207131997126,
+        "renderHz": 58.934590250171695,
+        "overflowDroppedMs": 185.7666666666652,
+        "windows": {
+          "complete": {
+            "frames": 3545,
+            "fps": 58.947851521160175,
+            "onePercentLowFPS": 27.027027031864677,
+            "onePercentTailFrames": 36,
+            "p95Ms": 20.299999952316284,
+            "p99Ms": 25.299999952316284,
+            "reciprocalP99FPS": 39.525691774100075,
+            "maxMs": 124.70000004768372,
+            "over50PerMinute": 3.9908277475538623,
+            "over100": 1
+          },
+          "warmTick301": {
+            "frames": 3255,
+            "fps": 59.032840758283,
+            "onePercentLowFPS": 27.966101694915253,
+            "onePercentTailFrames": 33,
+            "p95Ms": 20.200000047683716,
+            "p99Ms": 24.5,
+            "reciprocalP99FPS": 40.816326530612244,
+            "maxMs": 124.70000004768372,
+            "over50PerMinute": 3.264488889858968,
+            "over100": 1
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 14075.400000095367,
+        "entryMS": 3913.7000000476837,
+        "warmReloadReadyMS": 7962.899999856949,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2363
+        }
+      },
+      "audio": {
+        "queue": 84,
+        "created": 113115,
+        "live": 210,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 941,
+        "bakeMs": 266.300000667572,
+        "bakeMax": 16.5,
+        "k9Steps": 151,
+        "k9StepCalls": 210,
+        "casing": null
+      }
+    },
+    {
+      "name": "shader-on-2",
+      "raw": "work\\browser-feedback\\evidence\\shader-on-2.json",
+      "rawSHA256": "c68e1a3d166f95a8dc062b1936b8e82fb1a89e991e510ea25e5efcffbde3f5c3",
+      "rawBytes": 810907,
+      "ok": true,
+      "coreSHA256": "a1c651380e5217ae35a740f06527662cb07ffa4298ad9563022c920b30648ecd",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "shaderWarmup": "1"
+      },
+      "source": "4ffb454dbf3465c31d05e92ece20f95513096c5c",
+      "clientManifestSHA256": "0cd9066dca699abf4d05e4abb2b1aae8971de36d3a849adabbfd365d11cca5d7",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "shader-on-2",
+        "coreSHA256": "a1c651380e5217ae35a740f06527662cb07ffa4298ad9563022c920b30648ecd",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.21569999980927,
+        "logicalHz": 59.7850726639631,
+        "renderHz": 59.13740104343684,
+        "overflowDroppedMs": 229.5333333333376,
+        "windows": {
+          "complete": {
+            "frames": 3560,
+            "fps": 59.15016498913066,
+            "onePercentLowFPS": 25.91046494712033,
+            "onePercentTailFrames": 36,
+            "p95Ms": 19.799999952316284,
+            "p99Ms": 24.59999990463257,
+            "reciprocalP99FPS": 40.65040666165548,
+            "maxMs": 170.19999980926514,
+            "over50PerMinute": 4.98456446537618,
+            "over100": 1
+          },
+          "warmTick301": {
+            "frames": 3271,
+            "fps": 59.269164632640766,
+            "onePercentLowFPS": 26.550808585676815,
+            "onePercentTailFrames": 33,
+            "p95Ms": 19.600000143051147,
+            "p99Ms": 24.0,
+            "reciprocalP99FPS": 41.666666666666664,
+            "maxMs": 170.19999980926514,
+            "over50PerMinute": 5.435875692385273,
+            "over100": 1
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 13700.400000095367,
+        "entryMS": 3871.7999999523163,
+        "warmReloadReadyMS": 8002.399999856949,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2405,
+          "coverage": {
+            "pools": [
+              {
+                "label": "world-particles",
+                "before": 0,
+                "warm": 1,
+                "capacity": 4096
+              },
+              {
+                "label": "world-distortion",
+                "before": 0,
+                "warm": 1,
+                "capacity": 192
+              },
+              {
+                "label": "view-muzzle",
+                "before": 0,
+                "warm": 1,
+                "capacity": 44
+              }
+            ],
+            "buffersWritten": false,
+            "programsBefore": 68,
+            "existingJobsMs": 0.09999990463256836,
+            "compileMs": 778.5999999046326,
+            "resourcePassesMs": 1616.4000000953674,
+            "fenceWaitMs": 10.200000047683716,
+            "programsAfter": 110,
+            "retainedPrograms": {
+              "retained": 110,
+              "complete": 110,
+              "allComplete": true,
+              "completionOnly": true
+            }
+          }
+        }
+      },
+      "audio": {
+        "queue": 85,
+        "created": 112934,
+        "live": 220,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 947,
+        "bakeMs": 256.80000019073486,
+        "bakeMax": 16.90000009536743,
+        "k9Steps": 153,
+        "k9StepCalls": 210,
+        "casing": null
+      }
+    },
+    {
+      "name": "shader-off-2",
+      "raw": "work\\browser-feedback\\evidence\\shader-off-2.json",
+      "rawSHA256": "f88a7f8becc4aa5f0aa81e2576b88529efe96cba5eb4a49b8f8959e98c39f1d1",
+      "rawBytes": 802952,
+      "ok": true,
+      "coreSHA256": "a1c651380e5217ae35a740f06527662cb07ffa4298ad9563022c920b30648ecd",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": ""
+      },
+      "source": "4ffb454dbf3465c31d05e92ece20f95513096c5c",
+      "clientManifestSHA256": "0cd9066dca699abf4d05e4abb2b1aae8971de36d3a849adabbfd365d11cca5d7",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "shader-off-2",
+        "coreSHA256": "a1c651380e5217ae35a740f06527662cb07ffa4298ad9563022c920b30648ecd",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.236,
+        "logicalHz": 59.7649246297895,
+        "renderHz": 59.03446443986985,
+        "overflowDroppedMs": 253.16666666665932,
+        "windows": {
+          "complete": {
+            "frames": 3555,
+            "fps": 59.04236767368089,
+            "onePercentLowFPS": 26.244805714623133,
+            "onePercentTailFrames": 36,
+            "p95Ms": 19.899999856948853,
+            "p99Ms": 24.799999952316284,
+            "reciprocalP99FPS": 40.322580722690745,
+            "maxMs": 118.10000014305115,
+            "over50PerMinute": 4.982478284698809,
+            "over100": 2
+          },
+          "warmTick301": {
+            "frames": 3269,
+            "fps": 59.22594998873951,
+            "onePercentLowFPS": 26.936576592361714,
+            "onePercentTailFrames": 33,
+            "p95Ms": 19.59999990463257,
+            "p99Ms": 24.200000047683716,
+            "reciprocalP99FPS": 41.322313968165226,
+            "maxMs": 118.10000014305115,
+            "over50PerMinute": 4.348188436004124,
+            "over100": 2
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 13753.800000190735,
+        "entryMS": 3885.7000000476837,
+        "warmReloadReadyMS": 7826.100000143051,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2339
+        }
+      },
+      "audio": {
+        "queue": 86,
+        "created": 113132,
+        "live": 196,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 918,
+        "bakeMs": 262.900000333786,
+        "bakeMax": 16.899999856948853,
+        "k9Steps": 151,
+        "k9StepCalls": 210,
+        "casing": null
+      }
+    },
+    {
+      "name": "shader-off-3",
+      "raw": "work\\browser-feedback\\evidence\\shader-off-3.json",
+      "rawSHA256": "05e868de12b59bf2baab79bd521fa1a1f4f02c2691f33e0682d40ab1fab9db86",
+      "rawBytes": 800127,
+      "ok": true,
+      "coreSHA256": "a1c651380e5217ae35a740f06527662cb07ffa4298ad9563022c920b30648ecd",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": ""
+      },
+      "source": "4ffb454dbf3465c31d05e92ece20f95513096c5c",
+      "clientManifestSHA256": "0cd9066dca699abf4d05e4abb2b1aae8971de36d3a849adabbfd365d11cca5d7",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "shader-off-3",
+        "coreSHA256": "a1c651380e5217ae35a740f06527662cb07ffa4298ad9563022c920b30648ecd",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.19669999980926,
+        "logicalHz": 59.80394274123676,
+        "renderHz": 58.55802726746099,
+        "overflowDroppedMs": 209.4666666666624,
+        "windows": {
+          "complete": {
+            "frames": 3524,
+            "fps": 58.56456976493368,
+            "onePercentLowFPS": 25.78427158464089,
+            "onePercentTailFrames": 36,
+            "p95Ms": 20.5,
+            "p99Ms": 25.800000190734863,
+            "reciprocalP99FPS": 38.75968963593705,
+            "maxMs": 131.70000004768372,
+            "over50PerMinute": 4.98563306738936,
+            "over100": 2
+          },
+          "warmTick301": {
+            "frames": 3246,
+            "fps": 58.84709725739928,
+            "onePercentLowFPS": 26.818366512479482,
+            "onePercentTailFrames": 33,
+            "p95Ms": 20.0,
+            "p99Ms": 24.899999856948853,
+            "reciprocalP99FPS": 40.16064280100506,
+            "maxMs": 131.70000004768372,
+            "over50PerMinute": 4.350986858218061,
+            "over100": 2
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 13815.200000047684,
+        "entryMS": 4039.5999999046326,
+        "warmReloadReadyMS": 8021,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2525
+        }
+      },
+      "audio": {
+        "queue": 85,
+        "created": 113122,
+        "live": 222,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 942,
+        "bakeMs": 295.1999988555908,
+        "bakeMax": 25.09999990463257,
+        "k9Steps": 152,
+        "k9StepCalls": 210,
+        "casing": null
+      }
+    },
+    {
+      "name": "integrated-clean-1",
+      "raw": "work\\browser-feedback\\evidence\\integrated-clean-1.json",
+      "rawSHA256": "aee392177ec019a44eb6fe5dcc67f0f83cfb999fa82b401592a89f70bbc55d6d",
+      "rawBytes": 785650,
+      "ok": true,
+      "coreSHA256": "68f80228e8df0f8d43417d48646bd16bbad5ab62bede3200c6eba2ec78d75805",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": ""
+      },
+      "source": "f4c76297efcc5e9207379f98aeba18ed820da648",
+      "clientManifestSHA256": "4fac37b72ceafe0b3b8dc3d6a30d88ec120d92e05eadd071723af902cf27043b",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "integrated-clean-1",
+        "coreSHA256": "68f80228e8df0f8d43417d48646bd16bbad5ab62bede3200c6eba2ec78d75805",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.327,
+        "logicalHz": 59.674772489929886,
+        "renderHz": 56.60815223697515,
+        "overflowDroppedMs": 340.3000000000035,
+        "windows": {
+          "complete": {
+            "frames": 3414,
+            "fps": 56.614568218564735,
+            "onePercentLowFPS": 22.188411298347635,
+            "onePercentTailFrames": 35,
+            "p95Ms": 23.200000047683716,
+            "p99Ms": 28.0,
+            "reciprocalP99FPS": 35.714285714285715,
+            "maxMs": 168.09999990463257,
+            "over50PerMinute": 5.969901745367108,
+            "over100": 3
+          },
+          "warmTick301": {
+            "frames": 3153,
+            "fps": 57.034839549943925,
+            "onePercentLowFPS": 23.31851634400178,
+            "onePercentTailFrames": 32,
+            "p95Ms": 22.700000047683716,
+            "p99Ms": 27.0,
+            "reciprocalP99FPS": 37.03703703703704,
+            "maxMs": 168.09999990463257,
+            "over50PerMinute": 4.34137694005282,
+            "over100": 3
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 15597.700000047684,
+        "entryMS": 3993.0999999046326,
+        "warmReloadReadyMS": 9913.700000047684,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2596
+        }
+      },
+      "audio": {
+        "queue": 85,
+        "created": 112973,
+        "live": 186,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 926,
+        "bakeMs": 342.50000047683716,
+        "bakeMax": 40.700000047683716,
+        "k9Steps": 151,
+        "k9StepCalls": 210,
+        "casing": null
+      }
+    },
+    {
+      "name": "integrated-clean-2",
+      "raw": "work\\browser-feedback\\evidence\\integrated-clean-2.json",
+      "rawSHA256": "cc8d6925437cc0fd1ad3ec6827609960ef579a35035ee4f1e78f0006628c6a8c",
+      "rawBytes": 803432,
+      "ok": true,
+      "coreSHA256": "68f80228e8df0f8d43417d48646bd16bbad5ab62bede3200c6eba2ec78d75805",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": ""
+      },
+      "source": "f4c76297efcc5e9207379f98aeba18ed820da648",
+      "clientManifestSHA256": "4fac37b72ceafe0b3b8dc3d6a30d88ec120d92e05eadd071723af902cf27043b",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "integrated-clean-2",
+        "coreSHA256": "68f80228e8df0f8d43417d48646bd16bbad5ab62bede3200c6eba2ec78d75805",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.182,
+        "logicalHz": 59.81855039712871,
+        "renderHz": 59.17051610115981,
+        "overflowDroppedMs": 192.4666666666694,
+        "windows": {
+          "complete": {
+            "frames": 3560,
+            "fps": 59.17454829540733,
+            "onePercentLowFPS": 27.239709410666322,
+            "onePercentTailFrames": 36,
+            "p95Ms": 19.600000143051147,
+            "p99Ms": 24.700000047683716,
+            "reciprocalP99FPS": 40.48582988135568,
+            "maxMs": 102.29999995231628,
+            "over50PerMinute": 5.983943086052426,
+            "over100": 1
+          },
+          "warmTick301": {
+            "frames": 3269,
+            "fps": 59.26406683131183,
+            "onePercentLowFPS": 28.42132457329553,
+            "onePercentTailFrames": 33,
+            "p95Ms": 19.59999990463257,
+            "p99Ms": 24.40000009536743,
+            "reciprocalP99FPS": 40.983606397192574,
+            "maxMs": 102.29999995231628,
+            "over50PerMinute": 4.350986858218061,
+            "over100": 1
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 13573.400000095367,
+        "entryMS": 3880,
+        "warmReloadReadyMS": 7836.200000047684,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2361
+        }
+      },
+      "audio": {
+        "queue": 85,
+        "created": 112930,
+        "live": 213,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 932,
+        "bakeMs": 262.1000008583069,
+        "bakeMax": 17.40000009536743,
+        "k9Steps": 152,
+        "k9StepCalls": 210,
+        "casing": null
+      }
+    },
+    {
+      "name": "loop-cost-1",
+      "raw": "work\\browser-feedback\\evidence\\loop-cost-1.json",
+      "rawSHA256": "e51eb6074d44b43a060c17d39650ff438c7ea2412bda90ba2f85a172907c2f00",
+      "rawBytes": 1049138,
+      "ok": true,
+      "coreSHA256": "68f80228e8df0f8d43417d48646bd16bbad5ab62bede3200c6eba2ec78d75805",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "shaderWarmup": "1"
+      },
+      "source": "f4c76297efcc5e9207379f98aeba18ed820da648",
+      "clientManifestSHA256": "4fac37b72ceafe0b3b8dc3d6a30d88ec120d92e05eadd071723af902cf27043b",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "loop-cost-1",
+        "coreSHA256": "68f80228e8df0f8d43417d48646bd16bbad5ab62bede3200c6eba2ec78d75805",
+        "diagnosticOnly": true,
+        "wallSeconds": 60.22320000004768,
+        "logicalHz": 59.77762722666928,
+        "renderHz": 59.13003626504703,
+        "overflowDroppedMs": 239.06666666666067,
+        "windows": {
+          "complete": {
+            "frames": 3560,
+            "fps": 59.14250019945044,
+            "onePercentLowFPS": 25.72714927665638,
+            "onePercentTailFrames": 36,
+            "p95Ms": 19.899999856948853,
+            "p99Ms": 24.699999809265137,
+            "reciprocalP99FPS": 40.48583027214815,
+            "maxMs": 148.80000019073486,
+            "over50PerMinute": 5.980702267360157,
+            "over100": 1
+          },
+          "warmTick301": {
+            "frames": 3272,
+            "fps": 59.28975512181678,
+            "onePercentLowFPS": 27.013752447360076,
+            "onePercentTailFrames": 33,
+            "p95Ms": 19.699999809265137,
+            "p99Ms": 24.0,
+            "reciprocalP99FPS": 41.666666666666664,
+            "maxMs": 148.80000019073486,
+            "over50PerMinute": 5.4361022422203655,
+            "over100": 1
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 13806.700000047684,
+        "entryMS": 3896.100000143051,
+        "warmReloadReadyMS": 7902.900000095367,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2327,
+          "coverage": {
+            "pools": [
+              {
+                "label": "world-particles",
+                "before": 0,
+                "warm": 1,
+                "capacity": 4096
+              },
+              {
+                "label": "world-distortion",
+                "before": 0,
+                "warm": 1,
+                "capacity": 192
+              },
+              {
+                "label": "view-muzzle",
+                "before": 0,
+                "warm": 1,
+                "capacity": 44
+              }
+            ],
+            "buffersWritten": false,
+            "programsBefore": 68,
+            "existingJobsMs": 0.09999990463256836,
+            "compileMs": 694.7000000476837,
+            "resourcePassesMs": 1622.2000000476837,
+            "fenceWaitMs": 10.399999856948853,
+            "programsAfter": 110,
+            "retainedPrograms": {
+              "retained": 110,
+              "complete": 110,
+              "allComplete": true,
+              "completionOnly": true
+            }
+          }
+        }
+      },
+      "audio": {
+        "queue": 81,
+        "created": 112982,
+        "live": 175,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 940,
+        "bakeMs": 269.0000014305115,
+        "bakeMax": 17.09999990463257,
+        "k9Steps": 150,
+        "k9StepCalls": 210,
+        "casing": null
+      },
+      "shaderPixelOracle": {
+        "frames": [
+          {
+            "enabled": false,
+            "error": 0,
+            "hash": "20d2635252332e248a2f6454f479c3e8766f6e820c9e0b71cef1e73dbdaca4d6",
+            "nonzero": true
+          },
+          {
+            "enabled": true,
+            "error": 0,
+            "hash": "20d2635252332e248a2f6454f479c3e8766f6e820c9e0b71cef1e73dbdaca4d6",
+            "nonzero": true
+          },
+          {
+            "enabled": true,
+            "error": 0,
+            "hash": "20d2635252332e248a2f6454f479c3e8766f6e820c9e0b71cef1e73dbdaca4d6",
+            "nonzero": true
+          },
+          {
+            "enabled": false,
+            "error": 0,
+            "hash": "20d2635252332e248a2f6454f479c3e8766f6e820c9e0b71cef1e73dbdaca4d6",
+            "nonzero": true
+          }
+        ],
+        "equal": true,
+        "boundary": "Frozen post-scenario scene, full preparation off/on/on/off; not every future shader variant"
+      }
+    },
+    {
+      "name": "shader-functional-1",
+      "raw": "work\\browser-feedback\\evidence\\shader-functional-1.json",
+      "rawSHA256": "ff9156102b2a8d8e07edbd34adc0bdd02b9853b3117c0523f31635c4b97707fa",
+      "rawBytes": 213476,
+      "ok": true,
+      "coreSHA256": "68f80228e8df0f8d43417d48646bd16bbad5ab62bede3200c6eba2ec78d75805",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "shaderWarmup": "1"
+      },
+      "source": "f4c76297efcc5e9207379f98aeba18ed820da648",
+      "clientManifestSHA256": "4fac37b72ceafe0b3b8dc3d6a30d88ec120d92e05eadd071723af902cf27043b",
+      "errors": [],
+      "warningCount": 0,
+      "startup": {
+        "coldReadyMS": 13716.699999809265,
+        "entryMS": 3806.2999999523163,
+        "warmReloadReadyMS": 8404.700000047684,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2401,
+          "coverage": {
+            "pools": [
+              {
+                "label": "world-particles",
+                "before": 0,
+                "warm": 1,
+                "capacity": 4096
+              },
+              {
+                "label": "world-distortion",
+                "before": 0,
+                "warm": 1,
+                "capacity": 192
+              },
+              {
+                "label": "view-muzzle",
+                "before": 0,
+                "warm": 1,
+                "capacity": 44
+              }
+            ],
+            "buffersWritten": false,
+            "programsBefore": 68,
+            "existingJobsMs": 0,
+            "compileMs": 783.8999998569489,
+            "resourcePassesMs": 1606.2000000476837,
+            "fenceWaitMs": 11.200000047683716,
+            "programsAfter": 110,
+            "retainedPrograms": {
+              "retained": 110,
+              "complete": 110,
+              "allComplete": true,
+              "completionOnly": true
+            }
+          }
+        }
+      },
+      "audio": {
+        "queue": 87,
+        "created": 30552,
+        "live": 458,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 375,
+        "bakeMs": 184.49999928474426,
+        "bakeMax": 17.100000143051147,
+        "k9Steps": 0,
+        "k9StepCalls": 0,
+        "casing": null
+      },
+      "functional": {
+        "checks": [
+          "locked",
+          "reflection",
+          "audioQueue",
+          "qualitySwitch",
+          "contextRestore",
+          "equipmentBefore",
+          "equipment"
+        ],
+        "quality": {
+          "quality": "high",
+          "scale": 1,
+          "q": {
+            "scale": 1,
+            "samples": 4,
+            "shadow": 4096,
+            "reflectionHz": 30,
+            "bloom": true,
+            "sharpen": 0.22,
+            "maxDpr": 1.25,
+            "ao": true,
+            "refl": 0.5,
+            "rays": 40,
+            "soft": true,
+            "vol": 20,
+            "distort": true,
+            "mblur": 8,
+            "dirt": 0.34,
+            "streak": 0.3,
+            "dof": 1,
+            "atlas": 4096,
+            "fxK": 1,
+            "vmblur": 9
+          },
+          "pending": false,
+          "error": ""
+        },
+        "qualityGLerror": null,
+        "motionBlurGLerror": null,
+        "contextRestoreGLerror": 1282,
+        "reflection": {
+          "count": 52,
+          "ms": 2100.7999999523163
+        },
+        "equipment": {
+          "slot": 1,
+          "visible": true,
+          "guns": [
+            "ar|reflex.none.none.std.std|factory",
+            "pistol|irons.none.none.std.-|factory"
+          ]
+        }
+      }
+    },
+    {
+      "name": "shader-functional-off-1",
+      "raw": "work\\browser-feedback\\evidence\\shader-functional-off-1.json",
+      "rawSHA256": "388e66ba8f53f061204dc1643db350400592d93a3c3fa988b344cbf8875d22d2",
+      "rawBytes": 201065,
+      "ok": true,
+      "coreSHA256": "68f80228e8df0f8d43417d48646bd16bbad5ab62bede3200c6eba2ec78d75805",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": ""
+      },
+      "source": "f4c76297efcc5e9207379f98aeba18ed820da648",
+      "clientManifestSHA256": "4fac37b72ceafe0b3b8dc3d6a30d88ec120d92e05eadd071723af902cf27043b",
+      "errors": [],
+      "warningCount": 110,
+      "startup": {
+        "coldReadyMS": 13980.599999904633,
+        "entryMS": 3879.9000000953674,
+        "warmReloadReadyMS": 8035.200000047684,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2516
+        }
+      },
+      "audio": {
+        "queue": 87,
+        "created": 18659,
+        "live": 257,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 226,
+        "bakeMs": 186.80000019073486,
+        "bakeMax": 18.800000190734863,
+        "k9Steps": 0,
+        "k9StepCalls": 0,
+        "casing": null
+      },
+      "functional": {
+        "checks": [
+          "locked",
+          "reflection",
+          "audioQueue",
+          "qualitySwitch",
+          "qualityGLerror",
+          "motionBlurGLerror",
+          "contextRestore",
+          "equipmentBefore",
+          "equipment"
+        ],
+        "quality": {
+          "quality": "high",
+          "scale": 1,
+          "q": {
+            "scale": 1,
+            "samples": 4,
+            "shadow": 4096,
+            "reflectionHz": 30,
+            "bloom": true,
+            "sharpen": 0.22,
+            "maxDpr": 1.25,
+            "ao": true,
+            "refl": 0.5,
+            "rays": 40,
+            "soft": true,
+            "vol": 20,
+            "distort": true,
+            "mblur": 8,
+            "dirt": 0.34,
+            "streak": 0.3,
+            "dof": 1,
+            "atlas": 4096,
+            "fxK": 1,
+            "vmblur": 9
+          },
+          "pending": false,
+          "error": ""
+        },
+        "qualityGLerror": 0,
+        "motionBlurGLerror": 0,
+        "contextRestoreGLerror": 1282,
+        "reflection": {
+          "count": 56,
+          "ms": 2107.7999999523163
+        },
+        "equipment": {
+          "slot": 1,
+          "visible": true,
+          "guns": [
+            "ar|reflex.none.none.std.std|factory",
+            "pistol|irons.none.none.std.-|factory"
+          ]
+        }
+      }
+    },
+    {
+      "name": "context-delete-audit-1",
+      "raw": "work\\browser-feedback\\evidence\\context-delete-audit-1.json",
+      "rawSHA256": "7cc67ea9fde6ce1761a07735835dd027bf1061442926439a4c3126e8edc19498",
+      "rawBytes": 201328,
+      "ok": true,
+      "coreSHA256": "68f80228e8df0f8d43417d48646bd16bbad5ab62bede3200c6eba2ec78d75805",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": ""
+      },
+      "source": "f4c76297efcc5e9207379f98aeba18ed820da648",
+      "clientManifestSHA256": "4fac37b72ceafe0b3b8dc3d6a30d88ec120d92e05eadd071723af902cf27043b",
+      "errors": [],
+      "warningCount": 110,
+      "startup": {
+        "coldReadyMS": 15445.5,
+        "entryMS": 3952.600000143051,
+        "warmReloadReadyMS": 9043.899999856949,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2669
+        }
+      },
+      "audio": {
+        "queue": 87,
+        "created": 28142,
+        "live": 713,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 397,
+        "bakeMs": 216.7999997138977,
+        "bakeMax": 21.200000047683716,
+        "k9Steps": 0,
+        "k9StepCalls": 0,
+        "casing": null,
+        "context": {
+          "sampleRate": 48000,
+          "currentTime": 20.338666666666665,
+          "baseLatency": 0.01,
+          "outputLatency": 0.048,
+          "outputTimestamp": {
+            "contextTime": 20.293289999999995,
+            "performanceTime": 36362
+          },
+          "performanceMS": 36357.299999952316
+        }
+      },
+      "functional": {
+        "checks": [
+          "locked",
+          "reflection",
+          "audioQueue",
+          "qualitySwitch",
+          "qualityGLerror",
+          "motionBlurGLerror",
+          "contextRestore",
+          "equipmentBefore",
+          "equipment"
+        ],
+        "quality": {
+          "quality": "high",
+          "scale": 1,
+          "q": {
+            "scale": 1,
+            "samples": 4,
+            "shadow": 4096,
+            "reflectionHz": 30,
+            "bloom": true,
+            "sharpen": 0.22,
+            "maxDpr": 1.25,
+            "ao": true,
+            "refl": 0.5,
+            "rays": 40,
+            "soft": true,
+            "vol": 20,
+            "distort": true,
+            "mblur": 8,
+            "dirt": 0.34,
+            "streak": 0.3,
+            "dof": 1,
+            "atlas": 4096,
+            "fxK": 1,
+            "vmblur": 9
+          },
+          "pending": false,
+          "error": ""
+        },
+        "qualityGLerror": 0,
+        "motionBlurGLerror": 0,
+        "contextRestoreGLerror": 0,
+        "reflection": {
+          "count": 54,
+          "ms": 2112
+        },
+        "equipment": {
+          "slot": 1,
+          "visible": true,
+          "guns": [
+            "ar|reflex.none.none.std.std|factory",
+            "pistol|irons.none.none.std.-|factory"
+          ]
+        }
+      },
+      "glDeleteAudit": {
+        "calls": {
+          "deleteFramebuffer": 41,
+          "deleteRenderbuffer": 28,
+          "deleteTexture": 40,
+          "deleteBuffer": 48,
+          "deleteVertexArray": 42,
+          "deleteShader": 228,
+          "deleteProgram": 9
+        },
+        "failures": [
+          {
+            "name": "deleteFramebuffer",
+            "error": 1282,
+            "stack": "Error\n    at prototype.<computed> [as deleteFramebuffer] (<anonymous>:17:51)\n    at _ (http://127.0.0.1:48910/core/game.js:15841:16)\n    at Vs.T (http://127.0.0.1:48910/core/game.js:15814:45)\n    at Vs.dispatchEvent (http://127.0.0.1:48910/core/game.js:34:56)\n    at Vs.dispose (http://127.0.0.1:48910/core/game.js:1393:12)\n    at http://127.0.0.1:48910/client/webgl-context.js:122:27\n    at rl.traverse (http://127.0.0.1:48910/core/game.js:2155:7)\n    at zr.traverse (http://127.0.0.1:48910/core/game.js:2157:54)\n    at resetShadows (http://127.0.0.1:48910/client/webgl-context.js:119:9)\n    at http://127.0.0.1:48910/client/webgl-context.js:182:11"
+          },
+          {
+            "name": "deleteRenderbuffer",
+            "error": 1282,
+            "stack": "Error\n    at prototype.<computed> [as deleteRenderbuffer] (<anonymous>:17:51)\n    at _ (http://127.0.0.1:48910/core/game.js:15842:40)\n    at Vs.T (http://127.0.0.1:48910/core/game.js:15814:45)\n    at Vs.dispatchEvent (http://127.0.0.1:48910/core/game.js:34:56)\n    at Vs.dispose (http://127.0.0.1:48910/core/game.js:1393:12)\n    at http://127.0.0.1:48910/client/webgl-context.js:122:27\n    at rl.traverse (http://127.0.0.1:48910/core/game.js:2155:7)\n    at zr.traverse (http://127.0.0.1:48910/core/game.js:2157:54)\n    at resetShadows (http://127.0.0.1:48910/client/webgl-context.js:119:9)\n    at http://127.0.0.1:48910/client/webgl-context.js:182:11"
+          },
+          {
+            "name": "deleteTexture",
+            "error": 1282,
+            "stack": "Error\n    at prototype.<computed> [as deleteTexture] (<anonymous>:17:51)\n    at _ (http://127.0.0.1:48910/core/game.js:15848:33)\n    at Vs.T (http://127.0.0.1:48910/core/game.js:15814:45)\n    at Vs.dispatchEvent (http://127.0.0.1:48910/core/game.js:34:56)\n    at Vs.dispose (http://127.0.0.1:48910/core/game.js:1393:12)\n    at http://127.0.0.1:48910/client/webgl-context.js:122:27\n    at rl.traverse (http://127.0.0.1:48910/core/game.js:2155:7)\n    at zr.traverse (http://127.0.0.1:48910/core/game.js:2157:54)\n    at resetShadows (http://127.0.0.1:48910/client/webgl-context.js:119:9)\n    at http://127.0.0.1:48910/client/webgl-context.js:182:11"
+          },
+          {
+            "name": "deleteFramebuffer",
+            "error": 1282,
+            "stack": "Error\n    at prototype.<computed> [as deleteFramebuffer] (<anonymous>:17:51)\n    at _ (http://127.0.0.1:48910/core/game.js:15841:16)\n    at Vs.T (http://127.0.0.1:48910/core/game.js:15814:45)\n    at Vs.dispatchEvent (http://127.0.0.1:48910/core/game.js:34:56)\n    at Vs.dispose (http://127.0.0.1:48910/core/game.js:1393:12)\n    at http://127.0.0.1:48910/client/webgl-context.js:186:22\n    at http://127.0.0.1:48910/client/render-preparation.js:12:23"
+          },
+          {
+            "name": "deleteTexture",
+            "error": 1282,
+            "stack": "Error\n    at prototype.<computed> [as deleteTexture] (<anonymous>:17:51)\n    at _ (http://127.0.0.1:48910/core/game.js:15848:33)\n    at Vs.T (http://127.0.0.1:48910/core/game.js:15814:45)\n    at Vs.dispatchEvent (http://127.0.0.1:48910/core/game.js:34:56)\n    at Vs.dispose (http://127.0.0.1:48910/core/game.js:1393:12)\n    at http://127.0.0.1:48910/client/webgl-context.js:186:22\n    at http://127.0.0.1:48910/client/render-preparation.js:12:23"
+          },
+          {
+            "name": "deleteRenderbuffer",
+            "error": 1282,
+            "stack": "Error\n    at prototype.<computed> [as deleteRenderbuffer] (<anonymous>:17:51)\n    at _ (http://127.0.0.1:48910/core/game.js:15842:40)\n    at Vs.T (http://127.0.0.1:48910/core/game.js:15814:45)\n    at Vs.dispatchEvent (http://127.0.0.1:48910/core/game.js:34:56)\n    at Vs.dispose (http://127.0.0.1:48910/core/game.js:1393:12)\n    at o.dispose (http://127.0.0.1:48910/core/game.js:17959:128)\n    at BM._dispose (http://127.0.0.1:48910/core/game.js:18912:50)\n    at BM._build (http://127.0.0.1:48910/core/game.js:18921:12)\n    at http://127.0.0.1:48910/client/webgl-context.js:189:15\n    at http://127.0.0.1:48910/client/render-preparation.js:12:23"
+          },
+          {
+            "name": "deleteBuffer",
+            "error": 1282,
+            "stack": "Error\n    at prototype.<computed> [as deleteBuffer] (<anonymous>:17:51)\n    at Object.i [as remove] (http://127.0.0.1:48910/core/game.js:9921:15)\n    at o9.a (http://127.0.0.1:48910/core/game.js:14163:37)\n    at o9.dispatchEvent (http://127.0.0.1:48910/core/game.js:34:56)\n    at o9.dispose (http://127.0.0.1:48910/core/game.js:3086:12)\n    at ic.dispose (http://127.0.0.1:48910/core/game.js:17240:27)\n    at o.dispose (http://127.0.0.1:48910/core/game.js:17959:306)\n    at BM._dispose (http://127.0.0.1:48910/core/game.js:18912:50)\n    at BM._build (http://127.0.0.1:48910/core/game.js:18921:12)\n    at http://127.0.0.1:48910/client/webgl-context.js:189:15"
+          },
+          {
+            "name": "deleteBuffer",
+            "error": 1282,
+            "stack": "Error\n    at prototype.<computed> [as deleteBuffer] (<anonymous>:17:51)\n    at Object.i [as remove] (http://127.0.0.1:48910/core/game.js:9921:15)\n    at o9.a (http://127.0.0.1:48910/core/game.js:14163:37)\n    at o9.dispatchEvent (http://127.0.0.1:48910/core/game.js:34:56)\n    at o9.dispose (http://127.0.0.1:48910/core/game.js:3086:12)\n    at ic.dispose (http://127.0.0.1:48910/core/game.js:17240:27)\n    at o.dispose (http://127.0.0.1:48910/core/game.js:17959:306)\n    at BM._dispose (http://127.0.0.1:48910/core/game.js:18912:50)\n    at BM._build (http://127.0.0.1:48910/core/game.js:18921:12)\n    at http://127.0.0.1:48910/client/webgl-context.js:189:15"
+          },
+          {
+            "name": "deleteVertexArray",
+            "error": 1282,
+            "stack": "Error\n    at prototype.<computed> [as deleteVertexArray] (<anonymous>:17:51)\n    at h (http://127.0.0.1:48910/core/game.js:13531:16)\n    at Object.w [as releaseStatesOfGeometry] (http://127.0.0.1:48910/core/game.js:13647:26)\n    at o9.a (http://127.0.0.1:48910/core/game.js:14166:42)\n    at o9.dispatchEvent (http://127.0.0.1:48910/core/game.js:34:56)\n    at o9.dispose (http://127.0.0.1:48910/core/game.js:3086:12)\n    at ic.dispose (http://127.0.0.1:48910/core/game.js:17240:27)\n    at o.dispose (http://127.0.0.1:48910/core/game.js:17959:306)\n    at BM._dispose (http://127.0.0.1:48910/core/game.js:18912:50)\n    at BM._build (http://127.0.0.1:48910/core/game.js:18921:12)"
+          },
+          {
+            "name": "deleteVertexArray",
+            "error": 1282,
+            "stack": "Error\n    at prototype.<computed> [as deleteVertexArray] (<anonymous>:17:51)\n    at h (http://127.0.0.1:48910/core/game.js:13531:16)\n    at Object.w [as releaseStatesOfGeometry] (http://127.0.0.1:48910/core/game.js:13647:26)\n    at o9.a (http://127.0.0.1:48910/core/game.js:14166:42)\n    at o9.dispatchEvent (http://127.0.0.1:48910/core/game.js:34:56)\n    at o9.dispose (http://127.0.0.1:48910/core/game.js:3086:12)\n    at ic.dispose (http://127.0.0.1:48910/core/game.js:17240:27)\n    at o.dispose (http://127.0.0.1:48910/core/game.js:17959:306)\n    at BM._dispose (http://127.0.0.1:48910/core/game.js:18912:50)\n    at BM._build (http://127.0.0.1:48910/core/game.js:18921:12)"
+          }
+        ],
+        "precedingErrors": []
+      }
+    },
+    {
+      "name": "context-fix-off-1",
+      "raw": "work\\browser-feedback\\evidence\\context-fix-off-1.json",
+      "rawSHA256": "1dc8507c7d608b2d38a1a4e1cb5c475e3246a7962f4e72b612557102f7a924db",
+      "rawBytes": 195296,
+      "ok": true,
+      "coreSHA256": "dd22efd9310800df67d4511e99314aae78b37355b36d914b62cccd5eb4f4116a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": ""
+      },
+      "source": "f6a88e932bf03401076f5d2168e9ee9e39405a2d",
+      "clientManifestSHA256": "4a90238a8f8b97e7e878f81835fbcc3db2c21aee24f74a3d37ee66b27c1c874d",
+      "errors": [],
+      "warningCount": 0,
+      "startup": {
+        "coldReadyMS": 13628.799999952316,
+        "entryMS": 3822.2999999523163,
+        "warmReloadReadyMS": 7781.599999904633,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2315
+        }
+      },
+      "audio": {
+        "queue": 88,
+        "created": 30704,
+        "live": 725,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 418,
+        "bakeMs": 194.900000333786,
+        "bakeMax": 19.200000047683716,
+        "k9Steps": 0,
+        "k9StepCalls": 0,
+        "casing": null,
+        "context": {
+          "sampleRate": 48000,
+          "currentTime": 19.570666666666668,
+          "baseLatency": 0.01,
+          "outputLatency": 0.056,
+          "outputTimestamp": {
+            "contextTime": 19.508790999999995,
+            "performanceTime": 33745.59999990463
+          },
+          "performanceMS": 33746.200000047684
+        }
+      },
+      "functional": {
+        "checks": [
+          "locked",
+          "reflection",
+          "audioQueue",
+          "qualitySwitch",
+          "qualityGLerror",
+          "motionBlurGLerror",
+          "contextRestore",
+          "equipmentBefore",
+          "equipment"
+        ],
+        "quality": {
+          "quality": "high",
+          "scale": 1,
+          "q": {
+            "scale": 1,
+            "samples": 4,
+            "shadow": 4096,
+            "reflectionHz": 30,
+            "bloom": true,
+            "sharpen": 0.22,
+            "maxDpr": 1.25,
+            "ao": true,
+            "refl": 0.5,
+            "rays": 40,
+            "soft": true,
+            "vol": 20,
+            "distort": true,
+            "mblur": 8,
+            "dirt": 0.34,
+            "streak": 0.3,
+            "dof": 1,
+            "atlas": 4096,
+            "fxK": 1,
+            "vmblur": 9
+          },
+          "pending": false,
+          "error": ""
+        },
+        "qualityGLerror": 0,
+        "motionBlurGLerror": 0,
+        "contextRestoreGLerror": 0,
+        "reflection": {
+          "count": 57,
+          "ms": 2106.7999999523163
+        },
+        "equipment": {
+          "slot": 1,
+          "visible": true,
+          "guns": [
+            "ar|reflex.none.none.std.std|factory",
+            "pistol|irons.none.none.std.-|factory"
+          ]
+        }
+      },
+      "glDeleteAudit": {
+        "calls": {
+          "deleteShader": 230,
+          "deleteFramebuffer": 10,
+          "deleteTexture": 6,
+          "deleteBuffer": 46,
+          "deleteVertexArray": 19,
+          "deleteProgram": 9,
+          "deleteRenderbuffer": 8
+        },
+        "failures": [],
+        "precedingErrors": []
+      }
+    },
+    {
+      "name": "context-fix-on-1",
+      "raw": "work\\browser-feedback\\evidence\\context-fix-on-1.json",
+      "rawSHA256": "84710e8d00e9c0fafd20dd9b1fdcee996b42177244a2ecf6fab1a43d71632d72",
+      "rawBytes": 214072,
+      "ok": true,
+      "coreSHA256": "dd22efd9310800df67d4511e99314aae78b37355b36d914b62cccd5eb4f4116a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "shaderWarmup": "1"
+      },
+      "source": "f6a88e932bf03401076f5d2168e9ee9e39405a2d",
+      "clientManifestSHA256": "4a90238a8f8b97e7e878f81835fbcc3db2c21aee24f74a3d37ee66b27c1c874d",
+      "errors": [],
+      "warningCount": 0,
+      "startup": {
+        "coldReadyMS": 13493.200000047684,
+        "entryMS": 3908.2999999523163,
+        "warmReloadReadyMS": 7874.599999904633,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2425,
+          "coverage": {
+            "pools": [
+              {
+                "label": "world-particles",
+                "before": 0,
+                "warm": 1,
+                "capacity": 4096
+              },
+              {
+                "label": "world-distortion",
+                "before": 0,
+                "warm": 1,
+                "capacity": 192
+              },
+              {
+                "label": "view-muzzle",
+                "before": 0,
+                "warm": 1,
+                "capacity": 44
+              }
+            ],
+            "buffersWritten": false,
+            "programsBefore": 68,
+            "existingJobsMs": 0,
+            "compileMs": 772.5,
+            "resourcePassesMs": 1641.7999999523163,
+            "fenceWaitMs": 10.799999952316284,
+            "programsAfter": 110,
+            "retainedPrograms": {
+              "retained": 110,
+              "complete": 110,
+              "allComplete": true,
+              "completionOnly": true
+            }
+          }
+        }
+      },
+      "audio": {
+        "queue": 87,
+        "created": 26053,
+        "live": 964,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 229,
+        "bakeMs": 198.00000023841858,
+        "bakeMax": 19.200000047683716,
+        "k9Steps": 0,
+        "k9StepCalls": 0,
+        "casing": null,
+        "context": {
+          "sampleRate": 48000,
+          "currentTime": 19.541333333333334,
+          "baseLatency": 0.01,
+          "outputLatency": 0.048,
+          "outputTimestamp": {
+            "contextTime": 19.491005,
+            "performanceTime": 33627
+          },
+          "performanceMS": 33630.200000047684
+        }
+      },
+      "functional": {
+        "checks": [
+          "locked",
+          "reflection",
+          "audioQueue",
+          "qualitySwitch",
+          "qualityGLerror",
+          "motionBlurGLerror",
+          "contextRestore",
+          "equipmentBefore",
+          "equipment"
+        ],
+        "quality": {
+          "quality": "high",
+          "scale": 1,
+          "q": {
+            "scale": 1,
+            "samples": 4,
+            "shadow": 4096,
+            "reflectionHz": 30,
+            "bloom": true,
+            "sharpen": 0.22,
+            "maxDpr": 1.25,
+            "ao": true,
+            "refl": 0.5,
+            "rays": 40,
+            "soft": true,
+            "vol": 20,
+            "distort": true,
+            "mblur": 8,
+            "dirt": 0.34,
+            "streak": 0.3,
+            "dof": 1,
+            "atlas": 4096,
+            "fxK": 1,
+            "vmblur": 9
+          },
+          "pending": false,
+          "error": ""
+        },
+        "qualityGLerror": 0,
+        "motionBlurGLerror": 0,
+        "contextRestoreGLerror": 0,
+        "reflection": {
+          "count": 56,
+          "ms": 2110.7999999523163
+        },
+        "equipment": {
+          "slot": 1,
+          "visible": true,
+          "guns": [
+            "ar|reflex.none.none.std.std|factory",
+            "pistol|irons.none.none.std.-|factory"
+          ]
+        }
+      },
+      "glDeleteAudit": {
+        "calls": {
+          "deleteShader": 226,
+          "deleteFramebuffer": 10,
+          "deleteTexture": 6,
+          "deleteBuffer": 46,
+          "deleteVertexArray": 19,
+          "deleteProgram": 9,
+          "deleteRenderbuffer": 8
+        },
+        "failures": [],
+        "precedingErrors": []
+      }
+    },
+    {
+      "name": "main-core-clean-1",
+      "raw": "work\\browser-feedback\\evidence\\main-core-clean-1.json",
+      "rawSHA256": "dd8144f7c3d54aa611714d9590bfcda0eac986c1084a1adb2f9473001083edd7",
+      "rawBytes": 803089,
+      "ok": true,
+      "coreSHA256": "dd22efd9310800df67d4511e99314aae78b37355b36d914b62cccd5eb4f4116a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": ""
+      },
+      "source": "f6a88e932bf03401076f5d2168e9ee9e39405a2d",
+      "clientManifestSHA256": "4a90238a8f8b97e7e878f81835fbcc3db2c21aee24f74a3d37ee66b27c1c874d",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "main-core-clean-1",
+        "coreSHA256": "dd22efd9310800df67d4511e99314aae78b37355b36d914b62cccd5eb4f4116a",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.21870000004768,
+        "logicalHz": 59.78209426635164,
+        "renderHz": 58.90196898965257,
+        "overflowDroppedMs": 237.60000000001313,
+        "windows": {
+          "complete": {
+            "frames": 3546,
+            "fps": 58.91647517972152,
+            "onePercentLowFPS": 25.617305909851197,
+            "onePercentTailFrames": 36,
+            "p95Ms": 20.0,
+            "p99Ms": 25.09999990463257,
+            "reciprocalP99FPS": 39.840637601573675,
+            "maxMs": 141.20000004768372,
+            "over50PerMinute": 3.987578692366939,
+            "over100": 1
+          },
+          "warmTick301": {
+            "frames": 3256,
+            "fps": 58.98903376464874,
+            "onePercentLowFPS": 25.918944391112227,
+            "onePercentTailFrames": 33,
+            "p95Ms": 19.899999856948853,
+            "p99Ms": 24.700000047683716,
+            "reciprocalP99FPS": 40.48582988135568,
+            "maxMs": 141.20000004768372,
+            "over50PerMinute": 4.348086026878286,
+            "over100": 1
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 13621.600000143051,
+        "entryMS": 3887.2000000476837,
+        "warmReloadReadyMS": 8060.900000095367,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2317
+        }
+      },
+      "audio": {
+        "queue": 85,
+        "created": 113080,
+        "live": 216,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 963,
+        "bakeMs": 261.60000014305115,
+        "bakeMax": 17.299999952316284,
+        "k9Steps": 153,
+        "k9StepCalls": 210,
+        "casing": null,
+        "context": {
+          "sampleRate": 48000,
+          "currentTime": 64.512,
+          "baseLatency": 0.01,
+          "outputLatency": 0.056,
+          "outputTimestamp": {
+            "contextTime": 64.44748899999999,
+            "performanceTime": 78697.80000019073
+          },
+          "performanceMS": 78701.60000014305
+        }
+      }
+    },
+    {
+      "name": "casing-pcm-1",
+      "raw": "work\\browser-feedback\\evidence\\casing-pcm-1.json",
+      "rawSHA256": "f76a2cf785298ed613a6322cf96e53d498ac8aae948ffc67b84a82d2d7f97396",
+      "rawBytes": 186691,
+      "ok": true,
+      "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "casingAudio": "worklet"
+      },
+      "source": null,
+      "clientManifestSHA256": null,
+      "errors": [],
+      "warningCount": 0,
+      "startup": {
+        "coldReadyMS": 15095.700000047684,
+        "entryMS": 4035.2000000476837,
+        "warmReloadReadyMS": 7969.200000047684,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2638
+        }
+      },
+      "audio": {
+        "queue": 89,
+        "created": 24019,
+        "live": 645,
+        "persistent": 128,
+        "voicePeak": 52,
+        "stolen": 341,
+        "bakeMs": 214.80000019073486,
+        "bakeMax": 20.59999990463257,
+        "k9Steps": 0,
+        "k9StepCalls": 0,
+        "casing": {
+          "status": "ready",
+          "slots": 12,
+          "leased": 0,
+          "peak": 4,
+          "submitted": 13,
+          "fallback": 220,
+          "processorErrors": 0,
+          "lateCues": 2,
+          "lateFrames": 480,
+          "maxLateFrames": 368,
+          "firstSamples": 13,
+          "maxSourceOnsetDelayFrames": 368,
+          "warmed": 12,
+          "expiredSources": 0,
+          "descriptorFallback": 220,
+          "apiPastStartSources": 0,
+          "deliveryMissCues": 2,
+          "maxDeliveryMissFrames": 368,
+          "timingDropped": 0,
+          "maxCommandLeadFrames": 400,
+          "minCommandLeadFrames": -368
+        }
+      },
+      "casingPCMOracle": [
+        {
+          "sampleRate": 44100,
+          "cases": 40,
+          "failedWaveformCases": 23,
+          "failedAcceptedJS": 0,
+          "nativeFallbackCases": 0,
+          "nativeFallbackPCMExactFailures": 0,
+          "nativeFallbackTraceFailures": 0,
+          "maximumNRMSEOutsideDeliveryMiss": 0.488710946545628,
+          "physicalLatencyAccepted": false
+        },
+        {
+          "sampleRate": 48000,
+          "cases": 40,
+          "failedWaveformCases": 12,
+          "failedAcceptedJS": 0,
+          "nativeFallbackCases": 0,
+          "nativeFallbackPCMExactFailures": 0,
+          "nativeFallbackTraceFailures": 0,
+          "maximumNRMSEOutsideDeliveryMiss": 0.16934221333353597,
+          "physicalLatencyAccepted": false
+        }
+      ]
+    },
+    {
+      "name": "casing-pcm-2",
+      "raw": "work\\browser-feedback\\evidence\\casing-pcm-2.json",
+      "rawSHA256": "ef96aca2f5ab31d64dba535c2eb7744da4d5fcde6329a9410c10c2088cd76059",
+      "rawBytes": 541135,
+      "ok": true,
+      "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "casingAudio": "worklet"
+      },
+      "source": "1b7d5de358121872af39c71010ef53937c59c88e",
+      "clientManifestSHA256": "a9448a10fada92bcf670df8d09b94aa72c22ce9735164c7e6b685db93441dcdb",
+      "errors": [],
+      "warningCount": 0,
+      "startup": {
+        "coldReadyMS": 16783.800000190735,
+        "entryMS": 3802.100000143051,
+        "warmReloadReadyMS": 8024,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2355
+        }
+      },
+      "audio": {
+        "queue": 89,
+        "created": 21870,
+        "live": 900,
+        "persistent": 128,
+        "voicePeak": 56,
+        "stolen": 482,
+        "bakeMs": 196.7000002861023,
+        "bakeMax": 16.90000009536743,
+        "k9Steps": 0,
+        "k9StepCalls": 0,
+        "casing": {
+          "status": "ready",
+          "slots": 12,
+          "leased": 9,
+          "peak": 12,
+          "submitted": 258,
+          "fallback": 49,
+          "processorErrors": 0,
+          "lateCues": 112,
+          "lateFrames": 28917,
+          "maxLateFrames": 496,
+          "firstSamples": 258,
+          "maxSourceOnsetDelayFrames": 496,
+          "warmed": 12,
+          "expiredSources": 0,
+          "descriptorFallback": 0,
+          "descriptorReasons": {},
+          "apiPastStartSources": 0,
+          "deliveryMissCues": 112,
+          "maxDeliveryMissFrames": 496,
+          "timingDropped": 0,
+          "maxCommandLeadFrames": 272,
+          "minCommandLeadFrames": -496
+        }
+      },
+      "casingPCMOracle": [
+        {
+          "sampleRate": 44100,
+          "cases": 240,
+          "failedWaveformCases": 4,
+          "failedAcceptedJS": 0,
+          "nativeFallbackCases": 0,
+          "nativeFallbackPCMExactFailures": 0,
+          "nativeFallbackTraceFailures": 0,
+          "maximumNRMSEOutsideDeliveryMiss": 0.13097205357637207,
+          "physicalLatencyAccepted": false
+        },
+        {
+          "sampleRate": 48000,
+          "cases": 240,
+          "failedWaveformCases": 3,
+          "failedAcceptedJS": 0,
+          "nativeFallbackCases": 0,
+          "nativeFallbackPCMExactFailures": 0,
+          "nativeFallbackTraceFailures": 0,
+          "maximumNRMSEOutsideDeliveryMiss": 0.06310925564510164,
+          "physicalLatencyAccepted": false
+        }
+      ]
+    },
+    {
+      "name": "casing-pcm-3",
+      "raw": "work\\browser-feedback\\evidence\\casing-pcm-3.json",
+      "rawSHA256": "7a6f998a58feb39cff009b34ee8fe93b562ee415db574958fbdd2d0691acce1f",
+      "rawBytes": 815624,
+      "ok": true,
+      "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "casingAudio": "worklet"
+      },
+      "source": "2a2e4b97200728b1f67b0e6d8ecd4588a1edaa44",
+      "clientManifestSHA256": "6f035f3daff3055c1296d26a181dd99c586b84533b3c1542da9c50006f55c2cb",
+      "errors": [],
+      "warningCount": 0,
+      "startup": {
+        "coldReadyMS": 17124.900000095367,
+        "entryMS": 3799.7000000476837,
+        "warmReloadReadyMS": 7951.5,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2315
+        }
+      },
+      "audio": {
+        "queue": 89,
+        "created": 19302,
+        "live": 811,
+        "persistent": 128,
+        "voicePeak": 53,
+        "stolen": 344,
+        "bakeMs": 191.2000002861023,
+        "bakeMax": 16.5,
+        "k9Steps": 0,
+        "k9StepCalls": 0,
+        "casing": {
+          "status": "ready",
+          "slots": 12,
+          "leased": 9,
+          "peak": 12,
+          "submitted": 200,
+          "fallback": 20,
+          "processorErrors": 0,
+          "lateCues": 100,
+          "lateFrames": 26678,
+          "maxLateFrames": 368,
+          "firstSamples": 199,
+          "maxSourceOnsetDelayFrames": 368,
+          "warmed": 12,
+          "expiredSources": 0,
+          "descriptorFallback": 0,
+          "descriptorReasons": {},
+          "timingFallback": 0,
+          "timingReasons": {},
+          "apiPastStartSources": 0,
+          "pastAtSubmitSources": 0,
+          "deliveryMissCues": 100,
+          "maxDeliveryMissFrames": 368,
+          "timingDropped": 0,
+          "maxCommandLeadFrames": 145,
+          "minCommandLeadFrames": -368
+        },
+        "context": {
+          "sampleRate": 48000,
+          "currentTime": 12.12,
+          "baseLatency": 0.01,
+          "outputLatency": 0.07200000000000001,
+          "outputTimestamp": {
+            "contextTime": 12.047091,
+            "performanceTime": 29431
+          },
+          "performanceMS": 29432.900000095367
+        }
+      },
+      "casingPCMOracle": [
+        {
+          "sampleRate": 44100,
+          "cases": 240,
+          "failedWaveformCases": 36,
+          "failedAcceptedJS": 0,
+          "nativeFallbackCases": 60,
+          "nativeFallbackPCMExactFailures": 36,
+          "nativeFallbackTraceFailures": 0,
+          "maximumNRMSEOutsideDeliveryMiss": 0.0186948399125337,
+          "physicalLatencyAccepted": false
+        },
+        {
+          "sampleRate": 48000,
+          "cases": 240,
+          "failedWaveformCases": 36,
+          "failedAcceptedJS": 0,
+          "nativeFallbackCases": 60,
+          "nativeFallbackPCMExactFailures": 36,
+          "nativeFallbackTraceFailures": 0,
+          "maximumNRMSEOutsideDeliveryMiss": 0.0010209417655050459,
+          "physicalLatencyAccepted": false
+        }
+      ]
+    },
+    {
+      "name": "casing-full-on-1",
+      "raw": "work\\browser-feedback\\evidence\\casing-full-on-1.json",
+      "rawSHA256": "f3ba453f2b0ddd1439c3970bf5eeb6e27fc098f25f9908eb6538cd772deb04a4",
+      "rawBytes": 947336,
+      "ok": true,
+      "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "casingAudio": "worklet"
+      },
+      "source": "2a2e4b97200728b1f67b0e6d8ecd4588a1edaa44",
+      "clientManifestSHA256": "6f035f3daff3055c1296d26a181dd99c586b84533b3c1542da9c50006f55c2cb",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "casing-full-on-1",
+        "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+        "diagnosticOnly": true,
+        "wallSeconds": 60.1445,
+        "logicalHz": 59.85584716807023,
+        "renderHz": 58.891502963695764,
+        "overflowDroppedMs": 161.70000000000425,
+        "windows": {
+          "complete": {
+            "frames": 3541,
+            "fps": 58.904257708206835,
+            "onePercentLowFPS": 27.3286267276033,
+            "onePercentTailFrames": 36,
+            "p95Ms": 20.0,
+            "p99Ms": 26.09999990463257,
+            "reciprocalP99FPS": 38.31417638520784,
+            "maxMs": 125.5,
+            "over50PerMinute": 4.990476507331842,
+            "over100": 1
+          },
+          "warmTick301": {
+            "frames": 3256,
+            "fps": 59.092237247142556,
+            "onePercentLowFPS": 28.335909327410548,
+            "onePercentTailFrames": 33,
+            "p95Ms": 19.600000143051147,
+            "p99Ms": 24.899999856948853,
+            "reciprocalP99FPS": 40.16064280100506,
+            "maxMs": 125.5,
+            "over50PerMinute": 4.3556931631800415,
+            "over100": 1
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 13972.100000143051,
+        "entryMS": 3895.899999856949,
+        "warmReloadReadyMS": 7787.600000143051,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2421
+        }
+      },
+      "audio": {
+        "queue": 85,
+        "created": 95661,
+        "live": 386,
+        "persistent": 128,
+        "voicePeak": 56,
+        "stolen": 928,
+        "bakeMs": 268.1000003814697,
+        "bakeMax": 16.90000009536743,
+        "k9Steps": 151,
+        "k9StepCalls": 210,
+        "casing": {
+          "status": "ready",
+          "slots": 12,
+          "leased": 2,
+          "peak": 12,
+          "submitted": 899,
+          "fallback": 30,
+          "processorErrors": 0,
+          "lateCues": 343,
+          "lateFrames": 87669,
+          "maxLateFrames": 368,
+          "firstSamples": 899,
+          "maxSourceOnsetDelayFrames": 368,
+          "warmed": 12,
+          "expiredSources": 0,
+          "descriptorFallback": 0,
+          "descriptorReasons": {},
+          "timingFallback": 0,
+          "timingReasons": {},
+          "apiPastStartSources": 0,
+          "pastAtSubmitSources": 0,
+          "deliveryMissCues": 343,
+          "maxDeliveryMissFrames": 368,
+          "timingDropped": 0,
+          "maxCommandLeadFrames": 3728,
+          "minCommandLeadFrames": -368
+        },
+        "context": {
+          "sampleRate": 48000,
+          "currentTime": 64.46133333333333,
+          "baseLatency": 0.01,
+          "outputLatency": 0.064,
+          "outputTimestamp": {
+            "contextTime": 64.392758,
+            "performanceTime": 79051.40000009537
+          },
+          "performanceMS": 79057
+        }
+      }
+    },
+    {
+      "name": "casing-full-off-1",
+      "raw": "work\\browser-feedback\\evidence\\casing-full-off-1.json",
+      "rawSHA256": "287a01072ab2bdef59e6ea60bf360ef49a2aa65101bcfd57a6e247c8aab7389f",
+      "rawBytes": 804064,
+      "ok": true,
+      "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": ""
+      },
+      "source": "2a2e4b97200728b1f67b0e6d8ecd4588a1edaa44",
+      "clientManifestSHA256": "6f035f3daff3055c1296d26a181dd99c586b84533b3c1542da9c50006f55c2cb",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "casing-full-off-1",
+        "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.217,
+        "logicalHz": 59.78378198847501,
+        "renderHz": 59.18594416859027,
+        "overflowDroppedMs": 226.96666666666582,
+        "windows": {
+          "complete": {
+            "frames": 3563,
+            "fps": 59.191847705863744,
+            "onePercentLowFPS": 26.867676709501243,
+            "onePercentTailFrames": 36,
+            "p95Ms": 19.59999990463257,
+            "p99Ms": 23.799999952316284,
+            "reciprocalP99FPS": 42.016806806870484,
+            "maxMs": 116.39999985694885,
+            "over50PerMinute": 3.987101725907184,
+            "over100": 2
+          },
+          "warmTick301": {
+            "frames": 3274,
+            "fps": 59.3088006722784,
+            "onePercentLowFPS": 27.808207644673455,
+            "onePercentTailFrames": 33,
+            "p95Ms": 19.40000009536743,
+            "p99Ms": 23.0,
+            "reciprocalP99FPS": 43.47826086956522,
+            "maxMs": 116.39999985694885,
+            "over50PerMinute": 4.347621307680763,
+            "over100": 2
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 13538.799999952316,
+        "entryMS": 3836.199999809265,
+        "warmReloadReadyMS": 7863.800000190735,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2260
+        }
+      },
+      "audio": {
+        "queue": 86,
+        "created": 112994,
+        "live": 318,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 908,
+        "bakeMs": 259.8999984264374,
+        "bakeMax": 16.600000143051147,
+        "k9Steps": 152,
+        "k9StepCalls": 210,
+        "casing": null,
+        "context": {
+          "sampleRate": 48000,
+          "currentTime": 64.39466666666667,
+          "baseLatency": 0.01,
+          "outputLatency": 0.048,
+          "outputTimestamp": {
+            "contextTime": 64.34453599999999,
+            "performanceTime": 78462.5
+          },
+          "performanceMS": 78463.09999990463
+        }
+      }
+    }
+  ]
+}

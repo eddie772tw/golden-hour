@@ -24,5 +24,6 @@ G-Bull 保留匯入時的兩個 GLB。Chin-Gi 與 Lin-Bei 在第一人稱及世�
 ## 第三方聲明
 
 - 展開的核心可辨識 Three.js r180。其 MIT 授權全文隨附於 [licenses/three-r180.txt](licenses/three-r180.txt)。[上游授權](https://github.com/mrdoob/three.js/blob/r180/LICENSE)
+- 本分支另修改了 bundled renderer 的陰影快取、預熱與 context-loss 資源世代管理；這些是本地修改，並非原版 Three.js 行為。[修改與驗證紀錄](performance/browser-feedback.md)
 - 本機服務相依於 `node-datachannel` 0.33.6，依 [package-lock.json](../package-lock.json) 下載對應平台的套件。套件列示 MPL 2.0；原生二進位與套件內其他相依授權由安裝套件提供。[node-datachannel](https://github.com/murat-dogan/node-datachannel)
 - 本次彙整沒有替 Golden Hour 遊戲內容新增一份涵蓋全專案的授權。其他 LankiYang 專案的授權只對應各該專案。

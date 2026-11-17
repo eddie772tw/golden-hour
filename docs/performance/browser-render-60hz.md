@@ -1,5 +1,11 @@
 # Browser render performance: staged work
 
+Current direction (2026-11-17): browser development resumes with bounded
+backports and main integration. Godot stays on its independent validation
+branch. The Stage 11 stop/pivot below is historical; see
+[current results and promotion policy](browser-feedback.md) for the later user
+instruction, repeated shader controls, loop-cost ceiling and audio limits.
+
 ## Scope and acceptance
 
 1920x1080 drawing buffer, DPR 1, render scale 100%, High effects retained,

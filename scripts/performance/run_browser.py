@@ -32,6 +32,8 @@ P.add_argument('--casing-worklet', action='store_true', help='opt-in casing sour
 P.add_argument('--casing-pcm-oracle', action='store_true', help='diagnostic original WebAudio vs candidate DSP at 44.1/48 kHz')
 P.add_argument('--loop-cost', action='store_true', help='diagnostic catch-up tick phase costs; separate from clean FPS')
 P.add_argument('--loop-upload-bytes', action='store_true', help='also count buffer upload payload bytes; requires --loop-cost')
+P.add_argument('--shader-pixel-oracle', action='store_true', help='post-scenario frozen-scene warmup off/on pixel comparison')
+P.add_argument('--gl-delete-audit', action='store_true', help='diagnostic GL deletion call stacks after context restoration')
 P.add_argument('--seed', type=int, default=0x47484d31)
 P.add_argument('--width', type=int, default=1920)
 P.add_argument('--height', type=int, default=1080)
@@ -70,7 +72,8 @@ result = {'name': name, 'quality': args.quality, 'seconds': args.seconds,
           'deepRender': args.deep_render,
           'nativeLoop': args.native_loop,
           'candidateFeatures': {'shaderWarmup': args.shader_warmup, 'casingWorklet': args.casing_worklet},
-          'developerProbeDiagnostic': bool(args.loop_cost or args.casing_pcm_oracle),
+          'workletSourceExperimentDiagnostic': args.casing_worklet,
+          'developerProbeDiagnostic': bool(args.loop_cost or args.casing_pcm_oracle or args.shader_pixel_oracle or args.gl_delete_audit),
           'coldDefinition': 'fresh browser context/storage/HTTP cache; OS and driver caches retained'}
 client_manifest = args.client.parent / (args.client.name + '-manifest.json')
 if client_manifest.is_file():
@@ -107,16 +110,20 @@ INIT = r"""(() => {
   };
   p.snapshot = () => {
     const d=GH.debug,g=d.gfx,gl=g.renderer.getContext(),ext=gl.getExtension('WEBGL_debug_renderer_info');
+    const audioContext=d.ctx.audio._engine.ctx;
     return {now:performance.now(),state:GH.G.state,match:d.match.state,stats:d.stats(),
       playerShots:d.player.stats.shots,focus:document.hasFocus(),hidden:document.hidden,
       dpr:devicePixelRatio,view:[innerWidth,innerHeight],buffer:[gl.drawingBufferWidth,gl.drawingBufferHeight],
-      renderer:ext?gl.getParameter(ext.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER),
+      renderer:ext?gl.getParameter(ext.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER),glError:gl.getError(),
       settings:{...d.ctx.settings},quality:g.quality,scale:g.q.scale,
       runtimeReady:GH.runtimeReady ?? null,boot:GHBoot.stats,
       startup:document.querySelector('#gh-startup')?.textContent,
       diagnostics:document.querySelector('#gh-performance')?.textContent,
       audio:{queue:d.ctx.audio._engine.bakeQ?.length,...d.ctx.audio._engine.stats,
-        casing:d.ctx.audio._engine.casingAudio?.stats??null},
+        casing:d.ctx.audio._engine.casingAudio?.stats??null,
+        context:audioContext?{sampleRate:audioContext.sampleRate,currentTime:audioContext.currentTime,
+          baseLatency:audioContext.baseLatency,outputLatency:audioContext.outputLatency,
+          outputTimestamp:audioContext.getOutputTimestamp?.(),performanceMS:performance.now()}:null},
       preparation:g.preparation ?? null,loopStats:JSON.parse(JSON.stringify(d.loopStats??GH.loopStats??null))};
   };
 })();"""
@@ -157,7 +164,10 @@ def phase(page, label, seconds, moving=False, shooting=False):
     result.setdefault('phases', {})[label] = {'start': start, 'end': end}
     result['measurement']=page.evaluate('__frames')
     assert end['state']=='playing' and not end['hidden'] and end['quality']==args.quality, end
-    print('PHASE', name, label, json.dumps({'state':end['state'],'quality':end['quality'],'shots':end['playerShots'],'pos':end['stats']['pos'],'audio':end['audio']}), flush=True)
+    audio_summary = dict(end['audio'])
+    if audio_summary.get('casing'):
+        audio_summary['casing'] = {k:v for k,v in audio_summary['casing'].items() if k != 'timings'}
+    print('PHASE', name, label, json.dumps({'state':end['state'],'quality':end['quality'],'shots':end['playerShots'],'pos':end['stats']['pos'],'audio':audio_summary}), flush=True)
 
 def deploy(page):
     # A preparation gate may require a new user gesture after its asynchronous work.
@@ -194,6 +204,8 @@ try:
         performance_events=bool(args.diagnostic or args.profile or args.trace_threads or args.program_audit or args.render_dev)
         result['performanceEventsObserver']=performance_events
         context.add_init_script('window.__ghObservePerformanceEvents='+json.dumps(performance_events)+';'+INIT)
+        if args.gl_delete_audit:
+            context.add_init_script((ROOT/'gl_delete_audit.js').read_text(encoding='utf8'))
         if args.loop_observe:
             context.add_init_script((ROOT/'loop_observer.js').read_text(encoding='utf8'))
             result['developerProbeDiagnostic']=True
@@ -207,7 +219,9 @@ try:
         context.add_init_script('localStorage.setItem("golden-hour-settings-v1",'+json.dumps(json.dumps({'quality':args.quality,'renderScale':1,'renderVersion':1,'motionBlur':'off'}))+');')
         page = context.new_page()
         result['consoleErrors']=[]
+        result['consoleWarnings']=[]
         page.on('console', lambda message: result['consoleErrors'].append(message.text[:2000]) if message.type=='error' else None)
+        page.on('console', lambda message: result['consoleWarnings'].append(message.text[:2000]) if message.type=='warning' else None)
         page.on('pageerror', lambda error: result['consoleErrors'].append(str(error)[:2000]))
         result['browserVersion'] = browser.version
         result['system'] = browser.new_browser_cdp_session().send('SystemInfo.getInfo')
@@ -298,6 +312,7 @@ try:
             result['scenario']=page.evaluate('GH.benchmark.export()')
             if args.loop_cost:
                 result['loopCost']=page.evaluate('loopCost.export()')
+                page.evaluate('loopCost.stop()')
             if args.loop_observe:
                 result['loopPhase']=page.evaluate('__loopPhase.export()')
                 page.evaluate('__loopPhase.restore()')
@@ -337,6 +352,32 @@ try:
                 result['programAuditDiagnostic']=True
             result['scenarioWallMs']=page.evaluate('performance.now()-__frames.scenarioAt')
             result['scenarioLoopStats']=page.evaluate('JSON.parse(JSON.stringify(GH.debug.loopStats??GH.loopStats??null))')
+            if args.shader_pixel_oracle:
+                result['shaderPixelOracle']=page.evaluate('''async()=>{
+                  if(GH.G.state!=='paused')throw Error('Oracle requires the completed paused scenario');
+                  const g=GH.debug.gfx,r=g.renderer,gl=r.getContext(),prior=GHBoot.shaderWarmupCandidate;
+                  const frames=[];
+                  try {
+                    for(const enabled of [false,true,true,false]) {
+                      GHBoot.shaderWarmupCandidate=enabled;
+                      await g.prepare('shader-pixel-oracle');
+                      for(let i=0;i<3;i++) {
+                        g._reflectAt=null;g._shadowAt=null;r.shadowMap.needsUpdate=true;
+                        g.snapExposure();g.render(0);
+                      }
+                      const pixels=new Uint8Array(gl.drawingBufferWidth*gl.drawingBufferHeight*4);
+                      gl.readPixels(0,0,gl.drawingBufferWidth,gl.drawingBufferHeight,gl.RGBA,gl.UNSIGNED_BYTE,pixels);
+                      frames.push({enabled,pixels,error:gl.getError()});
+                    }
+                  }finally{GHBoot.shaderWarmupCandidate=prior;}
+                  for(const frame of frames) {
+                    frame.hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',frame.pixels)),b=>b.toString(16).padStart(2,'0')).join('');
+                    frame.nonzero=frame.pixels.some(x=>x!==0);delete frame.pixels;
+                  }
+                  return {frames,equal:new Set(frames.map(f=>f.hash)).size===1,
+                    boundary:'Frozen post-scenario scene, full preparation off/on/on/off; not every future shader variant'};
+                }''')
+                assert result['shaderPixelOracle']['equal'] and all(f['nonzero'] and f['error']==0 for f in result['shaderPixelOracle']['frames']),result['shaderPixelOracle']
             page.evaluate("__frames.mark('transition');window.__diag?.mark('transition');")
             assert result['scenario']['tick']==result['scenario']['manifest']['totalTicks'],result['scenario']['tick']
             assert result['scenario']['state']['actors'][0]['shots']>0,result['scenario']['state']
@@ -389,10 +430,14 @@ try:
               await g.whenReady();return {quality:g.quality,scale:g.q.scale,q:{...g.q},pending:g.preparation.pending,error:String(g.preparation.error||'')};
             }''')
             q=checks['qualitySwitch']
+            checks['qualityGLerror']=page.evaluate('GH.debug.gfx.renderer.getContext().getError()')
+            assert checks['qualityGLerror']==0, checks['qualityGLerror']
             assert q['quality']=='high' and q['scale']==1 and not q['pending'] and not q['error'],q
             assert all(q['q'][k]==v for k,v in {'samples':4,'shadow':4096,'ao':True,'refl':.5,'rays':40,'vol':20,'reflectionHz':30}.items()),q
             page.evaluate("async()=>{const g=GH.debug.gfx;await g.setMotionBlur('high');await g.whenReady();}")
             page.evaluate("async()=>{const g=GH.debug.gfx;await g.setMotionBlur('off');await g.whenReady();}")
+            checks['motionBlurGLerror']=page.evaluate('GH.debug.gfx.renderer.getContext().getError()')
+            assert checks['motionBlurGLerror']==0, checks['motionBlurGLerror']
             page.evaluate('''()=>{const g=GH.debug.gfx,gl=g.renderer.getContext();window.__loss=gl.getExtension('WEBGL_lose_context');if(!__loss)throw Error('No WEBGL_lose_context');__loss.loseContext();setTimeout(()=>__loss.restoreContext(),350);}''')
             page.wait_for_function("GH.debug.gfx.renderer.getContext().isContextLost()",timeout=10000)
             page.evaluate('''async()=>{window.__contextDiagnostics=(await import('/client/webgl-context.js')).contextDiagnostics;}''')
@@ -401,6 +446,7 @@ try:
             page.wait_for_function("__contextDiagnostics(GH.debug.gfx.renderer.domElement).status==='restored'&&!GH.debug.gfx.preparation.pending&&!GH.debug.gfx.preparation.error",timeout=180000)
             checks['contextRestore']=page.evaluate('__frames.snapshot()')
             assert checks['contextRestore']['state']=='paused',checks['contextRestore']
+            assert checks['contextRestore']['glError']==0,checks['contextRestore']['glError']
             page.bring_to_front()
             page.locator('[data-act="resume"]:visible').click()
             try:
@@ -423,6 +469,9 @@ try:
             page.screenshot(path=str(OUT/(name+'-restored.png')))
             result['functional']=checks
         result['beforeReload']=page.evaluate('__frames.snapshot()')
+        if args.gl_delete_audit:
+            result['glDeleteAudit']=page.evaluate('__glDeleteAudit')
+            assert not result['glDeleteAudit']['failures'] and not result['glDeleteAudit']['precedingErrors'],result['glDeleteAudit']
         result['measurement']=page.evaluate('__frames')
         if args.diagnostic: result['diagnostic']=page.evaluate('__diag.export()')
         if args.render_dev and 'renderDev' not in result:
