@@ -63,6 +63,14 @@
 .online-field input::placeholder {
   color: rgba(255, 255, 255, 0.3);
 }
+#server-target .online-field {
+  margin: 1rem 0;
+}
+#server-target summary {
+  cursor: pointer;
+  color: var(--or2);
+  font-size: var(--f2);
+}
 .online-field select option {
   background: #171a1d;
   color: #fff;

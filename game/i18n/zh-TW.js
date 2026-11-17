@@ -1,4 +1,13 @@
 export default {
+  "server.target": "選擇對戰伺服器",
+  "server.mode": "伺服器類型",
+  "server.address": "伺服器位址",
+  "server.local": "本地／社群伺服器",
+  "server.original": "原版相容伺服器",
+  "server.apply": "切換並重新載入",
+  "server.originalWeapons": "原版相容模式：Shop 武器停用，自動使用同類原版武器；不使用本地帳號或戰績。",
+  "server.localWeapons": "本地模式：可使用 Shop 武器與本地帳號戰績。",
+  "server.name": "對戰呼號",
   "account.avatar": "個人頭像",
   "account.stats": "對局 {0} · 勝 {1} · 敗 {2} · 對人擊殺 {3} · 死亡 {4}",
   "account.title": "本地帳號",

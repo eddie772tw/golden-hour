@@ -80,7 +80,7 @@ export class RTCTransport {
     await this.until(this.pc, "icegatheringstatechange", () => this.pc.iceGatheringState === "complete");
     // Approval is bound by the config loader, never read from remote JSON.
     const response = await fetch(url, {
-      method: "POST", headers: { "Content-Type": "application/json",Authorization:"Bearer "+ticket },
+      method: "POST", headers: { "Content-Type": "application/json", ...(ticket ? {Authorization:"Bearer "+ticket} : {}) },
       body: JSON.stringify(this.pc.localDescription), signal: this.abort.signal,
       cache: "no-store",
       credentials: "omit", redirect: "error",

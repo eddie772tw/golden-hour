@@ -2,7 +2,8 @@ import { protocolError } from "../i18n/errors.js";
 import { RTCTransport } from "./webrtc.js";
 
 const PHASES = ["lobby", "countdown", "live", "over"];
-import { models } from "./weapon-models.js";
+import { models, familyOf } from "./weapon-models.js";
+import { serverTarget } from "./server-target.js";
 export const WEAPONS = ["ar", "smg", "shotgun", "pistol", ...Object.keys(models)];
 const INPUT_BYTES = 25;
 const INPUT_MAGIC = 0x4748;
@@ -57,7 +58,7 @@ export function encodeInput(input, bytes = new Uint8Array(INPUT_BYTES)) {
   view.setUint8(24, input.buttons || 0);
   return bytes;
 }
-export function decodeSnapshot(bytes) {
+export function decodeSnapshot(bytes, original = false) {
   if (bytes instanceof ArrayBuffer) bytes = new Uint8Array(bytes);
   if (bytes.byteLength < 24) return null;
   const v = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
@@ -103,15 +104,16 @@ export function decodeSnapshot(bytes) {
     p.slideCooldown = v.getUint8(o + 59) / 100;
     p.cooldown = v.getUint16(o + 60, true);
     p.slideTime = v.getUint16(o + 62, true) / 1000;
-    if (p.team > 1 || !p.weapon) return null;
+    if (p.team > 1 || !p.weapon || (original && v.getUint8(o + 58) >= 4)) return null;
     out.players.push(p);
   }
   return out;
 }
 
 export class Connection extends EventTarget {
-  constructor({ connectTimeoutMs = 12000, leaveTimeoutMs = 500, writeTimeoutMs = 5000, snapshotTimeoutMs = 5000 } = {}) {
+  constructor({ original = serverTarget.original, connectTimeoutMs = 12000, leaveTimeoutMs = 500, writeTimeoutMs = 5000, snapshotTimeoutMs = 5000 } = {}) {
     super();
+    this.original = original;
     this.connectTimeoutMs = connectTimeoutMs;
     this.leaveTimeoutMs = leaveTimeoutMs;
     this.writeTimeoutMs = writeTimeoutMs;
@@ -189,7 +191,7 @@ export class Connection extends EventTarget {
       if (generation !== this.generation) throw Error("连接已取消。");
     };
     try {
-      const ticket=this.issueTicket ? await this.issueTicket() : hello.ticket;
+      const ticket=this.original ? undefined : this.issueTicket ? await this.issueTicket() : hello.ticket;
       current();
       wt = kind === "webrtc" ? new RTCTransport(config.rtc,ticket) : new WebTransport(config.url, options);
       this.transport = wt;
@@ -259,6 +261,14 @@ export class Connection extends EventTarget {
   }
   send(message) {
     if (!this.writer) return Promise.reject(Error("尚未连接服务器"));
+    if (this.original) {
+      if (message.type === "equip") message = { ...message, weapon: familyOf(message.weapon) };
+      // Original servers have no local admission/account protocol. Never send
+      // a local ticket, profile secret or save even when a caller supplies one.
+      if (message.type === "hello") message = Object.fromEntries(
+        ["type", "name", "quick", "create", "public", "difficulty", "room", "resume"]
+          .filter(key => Object.hasOwn(message, key)).map(key => [key, message[key]]));
+    }
     const writer = this.writer,
       generation = this.generation,
       queue = this.sendQueue;
@@ -383,7 +393,7 @@ export class Connection extends EventTarget {
       while (generation === this.generation) {
         const { value, done } = await reader.read();
         if (done || generation !== this.generation || this.failedGeneration === generation) break;
-        const snapshot = decodeSnapshot(value);
+        const snapshot = decodeSnapshot(value, this.original);
         if (snapshot && snapshot.tick > this.latestTick) {
           if (this.latestTick) this.metrics.snapshotGaps += Math.max(0, Math.floor((snapshot.tick - this.latestTick) / 2) - 1);
           this.lastSnapshotAt = performance.now();

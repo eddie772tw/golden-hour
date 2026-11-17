@@ -1,6 +1,6 @@
 // These static glTF 2 models use packed float attributes, 16-bit indices,
 // embedded PNGs and translation-only nodes. Reuse the game's Three.js runtime.
-import { models } from "./weapon-models.js";
+import { models, shopWeaponsEnabled } from "./weapon-models.js";
 
 const assets = new Map();
 const keyFor = (id, detail) => id + (detail === "view" ? "" : "_world_lod");
@@ -22,6 +22,7 @@ async function loadAsset(key) {
 }
 
 export function loadShopWeaponArt() {
+  if (!shopWeaponsEnabled) return Promise.resolve();
   return Promise.all(Object.keys(models).flatMap(id =>
     ["view", "world"].map(detail => loadAsset(keyFor(id, detail)).catch(error => console.error(error)))));
 }
@@ -88,7 +89,7 @@ const grips = {
 };
 
 export function mountShopWeapon(T, gun, id, detail) {
-  if (!Object.hasOwn(models, id)) return;
+  if (!shopWeaponsEnabled || !Object.hasOwn(models, id)) return;
   const key = keyFor(id, detail), asset = assets.get(key);
   if (!asset) return;
   const { root, sockets } = asset.template ??= buildTemplate(T, asset);

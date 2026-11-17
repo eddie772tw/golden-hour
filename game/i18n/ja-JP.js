@@ -1,4 +1,13 @@
 export default {
+  "server.target": "対戦サーバーを選択",
+  "server.mode": "サーバー種別",
+  "server.address": "サーバーアドレス",
+  "server.local": "ローカル／コミュニティサーバー",
+  "server.original": "オリジナル互換サーバー",
+  "server.apply": "切り替えて再読み込み",
+  "server.originalWeapons": "オリジナル互換モード：Shop武器は無効となり、同種のオリジナル武器に戻ります。ローカルアカウントと戦績は使用しません。",
+  "server.localWeapons": "ローカルモード：Shop武器とローカルアカウントの戦績を使用できます。",
+  "server.name": "コールサイン",
   "account.avatar": "プロフィール画像",
   "account.stats": "試合 {0} · 勝利 {1} · 敗北 {2} · 対人キル {3} · デス {4}",
   "account.title": "ローカルアカウント",

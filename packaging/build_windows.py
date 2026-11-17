@@ -18,7 +18,7 @@ NODE = "24.22.3"
 GIT = "2.56.1"
 SERVER_GAME = (
     "client/local-account.js", "client/weapon-models.js", "client/simulation.js",
-    "client/net.js", "client/api-config.js", "client/webrtc.js", "i18n/errors.js", "i18n/zh-CN.js",
+    "client/net.js", "client/api-config.js", "client/server-target.js", "client/webrtc.js", "i18n/errors.js", "i18n/zh-CN.js",
 )
 SERVER = ("server.mjs", "admission.mjs", "ballistics.mjs", "career.mjs", "room.mjs",
           "visibility.mjs", "world.json", "dedicated/launch.mjs", "dedicated/portable.mjs")

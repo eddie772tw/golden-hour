@@ -1,4 +1,13 @@
 export default {
+  "server.target": "选择对战服务器",
+  "server.mode": "服务器类型",
+  "server.address": "服务器地址",
+  "server.local": "本地／社区服务器",
+  "server.original": "原版相容服务器",
+  "server.apply": "切换并重新载入",
+  "server.originalWeapons": "原版相容模式：Shop 武器停用，自动使用同类原版武器；不使用本地账号或战绩。",
+  "server.localWeapons": "本地模式：可使用 Shop 武器与本地账号战绩。",
+  "server.name": "对战呼号",
   "account.avatar": "头像",
   "account.stats": "对局 {0} · 胜 {1} · 负 {2} · 对人击杀 {3} · 死亡 {4}",
   "account.title": "本地账号",

@@ -1,4 +1,13 @@
 export default {
+  "server.target": "Choose a match server",
+  "server.mode": "Server type",
+  "server.address": "Server address",
+  "server.local": "Local / community server",
+  "server.original": "Original-compatible server",
+  "server.apply": "Switch and reload",
+  "server.originalWeapons": "Original-compatible mode: Shop weapons are disabled and use their original equivalents. Local accounts and career records are not used.",
+  "server.localWeapons": "Local mode: Shop weapons and local account records are available.",
+  "server.name": "Callsign",
   "account.avatar": "Profile picture",
   "account.stats": "Matches {0} · Wins {1} · Losses {2} · PvP kills {3} · Deaths {4}",
   "account.title": "Local account",

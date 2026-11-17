@@ -1,5 +1,5 @@
 import { bind, installLanguageMenu } from "../i18n/dom.js";
-import { selectedModel, weaponName } from "./weapon-models.js";
+import { selectedModel, weaponName, factoryNames } from "./weapon-models.js";
 import { installModelSelector } from "./gunsmith-models.js";
 import { Connection } from "./net.js";
 import { CompetitiveEngine } from "./competitive-engine.js";
@@ -17,14 +17,15 @@ import { fixture } from "./toy-fixture.js";
 import { WeaponAccess, installWeaponGate } from "./toy-weapons.js";
 import { Vault } from "./account-vault.js";
 import { installAccountMenu } from "./account-menu.js";
+import { serverTarget, targetURL } from "./server-target.js";
 
 const net = new Connection();
 const engine = new CompetitiveEngine(net);
-const account = new ToyAccount({sdk:fixture()});
+const account = new ToyAccount({sdk:serverTarget.original ? null : fixture()});
 const onlineKills = new OnlineKills(account);
 const reportGate = new MatchReportGate();
 const query = new URLSearchParams(location.search);
-const multiplayerEnabled = !query.has("solo") && document.documentElement.dataset.apiOrigin !== "";
+const multiplayerEnabled = !query.has("solo") && (serverTarget.original || serverTarget.origin !== "");
 let lastRosterAt = 0;
 let joinGeneration = 0;
 let room = null,
@@ -109,7 +110,7 @@ const page = menus._page(
   <footer class="legend"><span><kbd>↑</kbd><kbd>↓</kbd> 导航</span><span><kbd>ENTER</kbd> 选择</span><span><kbd>ESC</kbd> 返回</span></footer>`,
 );
 const directory = new RoomDirectory({
-  origin: document.documentElement.dataset.apiOrigin,
+  origin: serverTarget.origin,
   pageURL: location.href,
   onChange: renderDirectory,
 });
@@ -196,7 +197,9 @@ dragButton.innerHTML = "<b>拖动瞄准</b><em>当前窗口的备用操作</em>"
 menus.pages.pause.querySelector(".vnav").append(dragButton);
 const progression = installNativeProgress({ gh: engine.gh, account });
 const vault=new Vault();
-try {await vault.init();} catch(e){console.error("Local account storage",e);}
+if (!serverTarget.original) {
+  try {await vault.init();} catch(e){console.error("Local account storage",e);}
+}
 const previousPersist=globalThis.GHProgress.persist;
 let saveTimer;
 function savePreferences(){
@@ -212,17 +215,54 @@ globalThis.GHProgress.persist=(...args)=>{
   return previousPersist(...args);
 };
 document.addEventListener("change",e=>{if(e.target.id==="weapon-model")savePreferences();});
-const access = new WeaponAccess(path=>vault.read(path));
-net.issueTicket=()=>vault.authenticate();
-const accountMenu=installAccountMenu(vault,async()=>{
+const access = new WeaponAccess(serverTarget.original
+  ? async()=>({unlocked:Object.keys(factoryNames),rules:{},kills:{}})
+  : path=>vault.read(path));
+if (serverTarget.original) await access.check();
+else net.issueTicket=()=>vault.authenticate();
+const accountMenu=serverTarget.original ? null : installAccountMenu(vault,async()=>{
   await vault.authenticate();
-  const config=await loadApiConfig(document.documentElement.dataset.apiOrigin,location.href);
+  const config=await loadApiConfig(serverTarget.origin,location.href);
   if(config.legacyMigration)await vault.migrate();
   await access.check();await vault.sync();
 });
-onlineKills.progression = progression;
+onlineKills.progression = serverTarget.original ? null : progression;
 const toyMenus = installToyMenus({ account, engine, progression, access });
-const invitation=await fetch("/api/invite").then(r=>r.json()).catch(()=>({}));
+if (serverTarget.original) {
+  for (const button of menus.root.querySelectorAll('[data-act="toy-ranks"]')) button.remove();
+}
+const targetForm=document.createElement("form");
+targetForm.id="server-target";
+targetForm.innerHTML=`<details><summary></summary>
+  <label class="row online-field"><span data-server-label="mode"></span><select id="server-mode"><option value="local"></option><option value="original"></option></select></label>
+  <label class="row online-field"><span data-server-label="address"></span><input id="server-origin" type="url" spellcheck="false" autocomplete="url"></label>
+  <button class="btn" id="server-apply" type="submit"></button>
+  </details><p id="server-policy" role="status"></p>`;
+bind(targetForm.querySelector("summary"),"server.target");
+for (const label of targetForm.querySelectorAll("[data-server-label]")) bind(label,"server."+label.dataset.serverLabel);
+const targetMode=targetForm.querySelector("#server-mode"), targetOrigin=targetForm.querySelector("#server-origin");
+for (const option of targetMode.options) bind(option,"server."+option.value);
+bind(targetForm.querySelector("#server-apply"),"server.apply");
+bind(targetForm.querySelector("#server-policy"),serverTarget.original ? "server.originalWeapons" : "server.localWeapons");
+targetMode.value=serverTarget.original ? "original" : "local";
+// This is the API origin declared by the archived original HTML. Selection is
+// explicit; merely opening the client never contacts this endpoint.
+targetOrigin.value=serverTarget.original ? serverTarget.origin : "https://cod.apikeygame.top:8008";
+targetOrigin.disabled=!serverTarget.original;
+targetMode.onchange=()=>{targetOrigin.disabled=targetMode.value!=="original";};
+targetForm.onsubmit=event=>{
+  event.preventDefault();
+  if (busy || room) return;
+  try {location.assign(targetURL(location.href,targetMode.value==="original",targetOrigin.value));}
+  catch (e) {error(e.message);}
+};
+$("online-connect").prepend(targetForm);
+const remoteName=document.createElement("input"),remoteNameLabel=document.createElement("label"),remoteNameCaption=document.createElement("span");
+remoteName.id="original-name";remoteName.maxLength=32;remoteName.value=account.playerName;remoteName.autocomplete="nickname";
+remoteNameLabel.className="row online-field";bind(remoteNameCaption,"server.name");remoteNameLabel.append(remoteNameCaption,remoteName);
+remoteNameLabel.hidden=!serverTarget.original;$("online-connect").append(remoteNameLabel);
+$("online-name").parentElement.hidden=serverTarget.original;
+const invitation=serverTarget.original ? {} : await fetch("/api/invite").then(r=>r.json()).catch(()=>({}));
 const code=document.createElement("input"),codeLabel=document.createElement("label"),joinCode=document.createElement("button");
 bind(codeLabel,"account.code");codeLabel.htmlFor=code.id="join-room-code";code.maxLength=8;code.value=invitation.room||"";
 joinCode.type="button";joinCode.className="btn";bind(joinCode,"account.join");
@@ -294,6 +334,10 @@ async function command(value) {
   }
 }
 function setJoinBusy() {
+  targetMode.disabled=busy;
+  targetOrigin.disabled=busy || targetMode.value!=="original";
+  targetForm.querySelector("#server-apply").disabled=busy;
+  remoteName.disabled=busy;
   for (const id of ["online-quick", "online-create", "online-refresh"])
     $(id).disabled = busy;
   for (const button of $("online-list").querySelectorAll("button"))
@@ -336,7 +380,7 @@ function renderDirectory({ state, rooms, message, trustURL }) {
 }
 async function join(mode, roomID) {
   if (!multiplayerEnabled || busy || room) return;
-  if(!vault.account){accountMenu.open();return;}
+  if(!serverTarget.original && !vault.account){accountMenu.open();return;}
   busy = true;
   const generation = ++joinGeneration;
   setJoinBusy();
@@ -347,12 +391,13 @@ async function join(mode, roomID) {
   try {
     net.checkSupport();
     if (generation !== joinGeneration) return;
-    const config = await loadApiConfig(document.documentElement.dataset.apiOrigin, location.href);
+    const config = await loadApiConfig(serverTarget.origin, location.href);
     if (generation !== joinGeneration) return;
     if (query.get("transport") === "webrtc") config.preferredTransport = "webrtc";
     await engine.enter(ctx.settings.primary);
     if (generation !== joinGeneration) return;
-    const hello = joinHello(mode, vault.account.name, roomID);
+    const name=serverTarget.original ? remoteName.value.trim().slice(0,32) || account.playerName : vault.account.name;
+    const hello = joinHello(mode, name, roomID);
     if (mode !== "listed") hello.difficulty = ctx.settings.difficulty;
     await net.connect(hello, config);
     if (generation !== joinGeneration) return;
@@ -408,7 +453,7 @@ async function leave() {
 }
 const actions = {
   online: async () => {
-    openRoom();accountMenu.render();
+    openRoom();accountMenu?.render();
   },
   deploy: async () => {
     await toyMenus.authorize();
@@ -521,14 +566,16 @@ net.addEventListener("status", ({ detail }) => {
 });
 net.addEventListener("error", ({ detail }) => error(detail));
 net.addEventListener("event", ({ detail: e }) => {
-  if ((e.type === "career" || e.type === "welcome") && e.career) access.apply(e.career);
-  if(["career","welcome","round-end"].includes(e.type)) void vault.sync().catch(err=>error(err.message));
+  if (!serverTarget.original) {
+    if ((e.type === "career" || e.type === "welcome") && e.career) access.apply(e.career);
+    if(["career","welcome","round-end"].includes(e.type)) void vault.sync().catch(err=>error(err.message));
+  }
   if (e.type==="spawn" && room) {
     const member=room.players.find(p=>p.id===e.id);
     if (member) member.alive=true;
   }
   engine.event(e);
-  const settlement = onlineKills.event(e, net.id);
+  const settlement = serverTarget.original ? null : onlineKills.event(e, net.id);
   if (e.type === "error") return error(e.message);
   if (e.type === "welcome") visible("online-error", false);
   if (e.type === "room") {

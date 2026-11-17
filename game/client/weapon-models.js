@@ -1,4 +1,6 @@
 // Model IDs travel on the wire. Families select the recovered rigs, attachments and mastery tracks.
+import { serverTarget } from "./server-target.js";
+export const shopWeaponsEnabled = !serverTarget.original;
 export const models = {
   gbull: { family:"pistol", name:"G-Bull", mag:20, rpm:60/0.22, pellets:1, dmg:[34,20],
     range:[16,38], hip:[1.1,3.2], ads:0.14, recoilScale:0.85 },
@@ -18,8 +20,9 @@ try {
     if (Object.hasOwn(models,id) && models[id].family === family) selected[family] = id;
   }
 } catch { /* Storage may be unavailable in a restricted browser. */ }
-export const selectedModel = family => selected[family] ?? family;
+export const selectedModel = family => shopWeaponsEnabled ? selected[family] ?? family : family;
 export function selectModel(family,id) {
+  if (!shopWeaponsEnabled) return;
   if (!Object.hasOwn(factoryNames,family) || familyOf(id) !== family) return;
   selected[family] = id;
   try { localStorage.setItem(storageKey, JSON.stringify(selected)); } catch {}

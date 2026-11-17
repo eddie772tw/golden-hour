@@ -1,5 +1,5 @@
 import { bind } from "../i18n/dom.js";
-import { models, factoryNames, selectModel, selectedModel } from "./weapon-models.js";
+import { models, factoryNames, selectModel, selectedModel, shopWeaponsEnabled } from "./weapon-models.js";
 
 export function installModelSelector(menus) {
   const page=menus.pages.gunsmith;
@@ -9,6 +9,7 @@ export function installModelSelector(menus) {
   const caption=document.createElement("span"), select=document.createElement("select");
   const summary=document.createElement("p"), stats=document.createElement("p");
   select.id="weapon-model";
+  select.disabled=!shopWeaponsEnabled;
   bind(caption,"weapon.model");
   label.append(caption,select);
   panel.append(label,summary,stats);
@@ -31,7 +32,9 @@ export function installModelSelector(menus) {
     select.value=id;
     panel.hidden=select.options.length<2;
     const variant=models[id];
-    summary.hidden=stats.hidden=!variant;
+    summary.hidden=shopWeaponsEnabled && !variant;
+    stats.hidden=!variant;
+    if (!shopWeaponsEnabled) bind(summary,"server.originalWeapons");
     page.querySelector("#gs-wdesc").hidden=!!variant;
     if (variant) {
       bind(summary,"weapon."+id);
