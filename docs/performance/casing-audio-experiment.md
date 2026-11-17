@@ -1,5 +1,28 @@
 # Bounded casing source graph experiment
 
+## Root outcome, 2026-11-17: frozen, not promoted
+
+Root executed the full480-case browser oracle and one full9-bot3600-tick
+on/off diagnostic screen. Evidence is in `evidence/casing-root-screen.json`.
+All on-time and steal-tail JS source cases pass the existing one-sample/2%
+waveform gate. Delivery misses remain deadline failures. Native past-API
+fallback traces/voice state/RNG match, but36 cases at each sample rate fail
+the stricter PCM byte check (representative max error3.725e-9). These raw
+failures remain preserved; there is no overall waveform acceptance.
+
+The full-AI exports match in both arms. Node creation falls112994→95661
+(about15.3%), but on/off FPS58.90/59.19, full1%low27.33/26.87 and P9926.1/23.8ms
+do not show an actionable gain in this single pair. Of899 Worklet submissions,
+343 arrive late;30 voices use capacity fallback, with no descriptor/timing
+fallback or processor errors. This is diagnostic evidence, not clean product
+audio/FPS acceptance.
+
+Interactive browser outputLatency estimates are48–72ms in the root captures,
+well above the20ms target; these are browser-clock estimates, not endpoint
+recordings. Stop further DSP/pool/transport expansion for this configuration.
+Only the separately bounded numeric latencyHint route A/B remains justified.
+Keep this candidate default off on its branch; it is not merged into main.
+
 This branch adds an opt-in browser experiment at `?solo&casingAudio=worklet`.
 Omitting `casingAudio=worklet` retains the original audio graph and does not fetch
 the experiment modules. This is a candidate for measurement, not an enabled

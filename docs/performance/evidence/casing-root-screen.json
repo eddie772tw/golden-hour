@@ -1,0 +1,521 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "target": "1920x1080 High, reflection <=30Hz, full native 9-bot 3600-tick fixture",
+  "cachePolicy": "Fresh browser context/storage/HTTP cache; OS/driver caches retained. Startup cost and active frames are separate.",
+  "boundary": "Render submission intervals and browser audio-clock estimates, not physical presents or loopback output measurements.",
+  "targetAchieved": false,
+  "runs": [
+    {
+      "name": "casing-pcm-1",
+      "raw": "work\\browser-feedback\\evidence\\casing-pcm-1.json",
+      "rawSHA256": "f76a2cf785298ed613a6322cf96e53d498ac8aae948ffc67b84a82d2d7f97396",
+      "rawBytes": 186691,
+      "ok": true,
+      "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "casingAudio": "worklet"
+      },
+      "source": null,
+      "clientManifestSHA256": null,
+      "errors": [],
+      "warningCount": 0,
+      "startup": {
+        "coldReadyMS": 15095.700000047684,
+        "entryMS": 4035.2000000476837,
+        "warmReloadReadyMS": 7969.200000047684,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2638
+        }
+      },
+      "audio": {
+        "queue": 89,
+        "created": 24019,
+        "live": 645,
+        "persistent": 128,
+        "voicePeak": 52,
+        "stolen": 341,
+        "bakeMs": 214.80000019073486,
+        "bakeMax": 20.59999990463257,
+        "k9Steps": 0,
+        "k9StepCalls": 0,
+        "casing": {
+          "status": "ready",
+          "slots": 12,
+          "leased": 0,
+          "peak": 4,
+          "submitted": 13,
+          "fallback": 220,
+          "processorErrors": 0,
+          "lateCues": 2,
+          "lateFrames": 480,
+          "maxLateFrames": 368,
+          "firstSamples": 13,
+          "maxSourceOnsetDelayFrames": 368,
+          "warmed": 12,
+          "expiredSources": 0,
+          "descriptorFallback": 220,
+          "apiPastStartSources": 0,
+          "deliveryMissCues": 2,
+          "maxDeliveryMissFrames": 368,
+          "timingDropped": 0,
+          "maxCommandLeadFrames": 400,
+          "minCommandLeadFrames": -368
+        }
+      },
+      "casingPCMOracle": [
+        {
+          "sampleRate": 44100,
+          "cases": 40,
+          "failedWaveformCases": 23,
+          "failedAcceptedJS": 0,
+          "nativeFallbackCases": 0,
+          "nativeFallbackPCMExactFailures": 0,
+          "nativeFallbackTraceFailures": 0,
+          "maximumNRMSEOutsideDeliveryMiss": 0.488710946545628,
+          "physicalLatencyAccepted": false
+        },
+        {
+          "sampleRate": 48000,
+          "cases": 40,
+          "failedWaveformCases": 12,
+          "failedAcceptedJS": 0,
+          "nativeFallbackCases": 0,
+          "nativeFallbackPCMExactFailures": 0,
+          "nativeFallbackTraceFailures": 0,
+          "maximumNRMSEOutsideDeliveryMiss": 0.16934221333353597,
+          "physicalLatencyAccepted": false
+        }
+      ]
+    },
+    {
+      "name": "casing-pcm-2",
+      "raw": "work\\browser-feedback\\evidence\\casing-pcm-2.json",
+      "rawSHA256": "ef96aca2f5ab31d64dba535c2eb7744da4d5fcde6329a9410c10c2088cd76059",
+      "rawBytes": 541135,
+      "ok": true,
+      "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "casingAudio": "worklet"
+      },
+      "source": "1b7d5de358121872af39c71010ef53937c59c88e",
+      "clientManifestSHA256": "a9448a10fada92bcf670df8d09b94aa72c22ce9735164c7e6b685db93441dcdb",
+      "errors": [],
+      "warningCount": 0,
+      "startup": {
+        "coldReadyMS": 16783.800000190735,
+        "entryMS": 3802.100000143051,
+        "warmReloadReadyMS": 8024,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2355
+        }
+      },
+      "audio": {
+        "queue": 89,
+        "created": 21870,
+        "live": 900,
+        "persistent": 128,
+        "voicePeak": 56,
+        "stolen": 482,
+        "bakeMs": 196.7000002861023,
+        "bakeMax": 16.90000009536743,
+        "k9Steps": 0,
+        "k9StepCalls": 0,
+        "casing": {
+          "status": "ready",
+          "slots": 12,
+          "leased": 9,
+          "peak": 12,
+          "submitted": 258,
+          "fallback": 49,
+          "processorErrors": 0,
+          "lateCues": 112,
+          "lateFrames": 28917,
+          "maxLateFrames": 496,
+          "firstSamples": 258,
+          "maxSourceOnsetDelayFrames": 496,
+          "warmed": 12,
+          "expiredSources": 0,
+          "descriptorFallback": 0,
+          "descriptorReasons": {},
+          "apiPastStartSources": 0,
+          "deliveryMissCues": 112,
+          "maxDeliveryMissFrames": 496,
+          "timingDropped": 0,
+          "maxCommandLeadFrames": 272,
+          "minCommandLeadFrames": -496
+        }
+      },
+      "casingPCMOracle": [
+        {
+          "sampleRate": 44100,
+          "cases": 240,
+          "failedWaveformCases": 4,
+          "failedAcceptedJS": 0,
+          "nativeFallbackCases": 0,
+          "nativeFallbackPCMExactFailures": 0,
+          "nativeFallbackTraceFailures": 0,
+          "maximumNRMSEOutsideDeliveryMiss": 0.13097205357637207,
+          "physicalLatencyAccepted": false
+        },
+        {
+          "sampleRate": 48000,
+          "cases": 240,
+          "failedWaveformCases": 3,
+          "failedAcceptedJS": 0,
+          "nativeFallbackCases": 0,
+          "nativeFallbackPCMExactFailures": 0,
+          "nativeFallbackTraceFailures": 0,
+          "maximumNRMSEOutsideDeliveryMiss": 0.06310925564510164,
+          "physicalLatencyAccepted": false
+        }
+      ]
+    },
+    {
+      "name": "casing-pcm-3",
+      "raw": "work\\browser-feedback\\evidence\\casing-pcm-3.json",
+      "rawSHA256": "7a6f998a58feb39cff009b34ee8fe93b562ee415db574958fbdd2d0691acce1f",
+      "rawBytes": 815624,
+      "ok": true,
+      "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "casingAudio": "worklet"
+      },
+      "source": "2a2e4b97200728b1f67b0e6d8ecd4588a1edaa44",
+      "clientManifestSHA256": "6f035f3daff3055c1296d26a181dd99c586b84533b3c1542da9c50006f55c2cb",
+      "errors": [],
+      "warningCount": 0,
+      "startup": {
+        "coldReadyMS": 17124.900000095367,
+        "entryMS": 3799.7000000476837,
+        "warmReloadReadyMS": 7951.5,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2315
+        }
+      },
+      "audio": {
+        "queue": 89,
+        "created": 19302,
+        "live": 811,
+        "persistent": 128,
+        "voicePeak": 53,
+        "stolen": 344,
+        "bakeMs": 191.2000002861023,
+        "bakeMax": 16.5,
+        "k9Steps": 0,
+        "k9StepCalls": 0,
+        "casing": {
+          "status": "ready",
+          "slots": 12,
+          "leased": 9,
+          "peak": 12,
+          "submitted": 200,
+          "fallback": 20,
+          "processorErrors": 0,
+          "lateCues": 100,
+          "lateFrames": 26678,
+          "maxLateFrames": 368,
+          "firstSamples": 199,
+          "maxSourceOnsetDelayFrames": 368,
+          "warmed": 12,
+          "expiredSources": 0,
+          "descriptorFallback": 0,
+          "descriptorReasons": {},
+          "timingFallback": 0,
+          "timingReasons": {},
+          "apiPastStartSources": 0,
+          "pastAtSubmitSources": 0,
+          "deliveryMissCues": 100,
+          "maxDeliveryMissFrames": 368,
+          "timingDropped": 0,
+          "maxCommandLeadFrames": 145,
+          "minCommandLeadFrames": -368
+        },
+        "context": {
+          "sampleRate": 48000,
+          "currentTime": 12.12,
+          "baseLatency": 0.01,
+          "outputLatency": 0.07200000000000001,
+          "outputTimestamp": {
+            "contextTime": 12.047091,
+            "performanceTime": 29431
+          },
+          "performanceMS": 29432.900000095367
+        }
+      },
+      "casingPCMOracle": [
+        {
+          "sampleRate": 44100,
+          "cases": 240,
+          "failedWaveformCases": 36,
+          "failedAcceptedJS": 0,
+          "nativeFallbackCases": 60,
+          "nativeFallbackPCMExactFailures": 36,
+          "nativeFallbackTraceFailures": 0,
+          "maximumNRMSEOutsideDeliveryMiss": 0.0186948399125337,
+          "physicalLatencyAccepted": false
+        },
+        {
+          "sampleRate": 48000,
+          "cases": 240,
+          "failedWaveformCases": 36,
+          "failedAcceptedJS": 0,
+          "nativeFallbackCases": 60,
+          "nativeFallbackPCMExactFailures": 36,
+          "nativeFallbackTraceFailures": 0,
+          "maximumNRMSEOutsideDeliveryMiss": 0.0010209417655050459,
+          "physicalLatencyAccepted": false
+        }
+      ]
+    },
+    {
+      "name": "casing-full-on-1",
+      "raw": "work\\browser-feedback\\evidence\\casing-full-on-1.json",
+      "rawSHA256": "f3ba453f2b0ddd1439c3970bf5eeb6e27fc098f25f9908eb6538cd772deb04a4",
+      "rawBytes": 947336,
+      "ok": true,
+      "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": "",
+        "casingAudio": "worklet"
+      },
+      "source": "2a2e4b97200728b1f67b0e6d8ecd4588a1edaa44",
+      "clientManifestSHA256": "6f035f3daff3055c1296d26a181dd99c586b84533b3c1542da9c50006f55c2cb",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "casing-full-on-1",
+        "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+        "diagnosticOnly": true,
+        "wallSeconds": 60.1445,
+        "logicalHz": 59.85584716807023,
+        "renderHz": 58.891502963695764,
+        "overflowDroppedMs": 161.70000000000425,
+        "windows": {
+          "complete": {
+            "frames": 3541,
+            "fps": 58.904257708206835,
+            "onePercentLowFPS": 27.3286267276033,
+            "onePercentTailFrames": 36,
+            "p95Ms": 20.0,
+            "p99Ms": 26.09999990463257,
+            "reciprocalP99FPS": 38.31417638520784,
+            "maxMs": 125.5,
+            "over50PerMinute": 4.990476507331842,
+            "over100": 1
+          },
+          "warmTick301": {
+            "frames": 3256,
+            "fps": 59.092237247142556,
+            "onePercentLowFPS": 28.335909327410548,
+            "onePercentTailFrames": 33,
+            "p95Ms": 19.600000143051147,
+            "p99Ms": 24.899999856948853,
+            "reciprocalP99FPS": 40.16064280100506,
+            "maxMs": 125.5,
+            "over50PerMinute": 4.3556931631800415,
+            "over100": 1
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 13972.100000143051,
+        "entryMS": 3895.899999856949,
+        "warmReloadReadyMS": 7787.600000143051,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2421
+        }
+      },
+      "audio": {
+        "queue": 85,
+        "created": 95661,
+        "live": 386,
+        "persistent": 128,
+        "voicePeak": 56,
+        "stolen": 928,
+        "bakeMs": 268.1000003814697,
+        "bakeMax": 16.90000009536743,
+        "k9Steps": 151,
+        "k9StepCalls": 210,
+        "casing": {
+          "status": "ready",
+          "slots": 12,
+          "leased": 2,
+          "peak": 12,
+          "submitted": 899,
+          "fallback": 30,
+          "processorErrors": 0,
+          "lateCues": 343,
+          "lateFrames": 87669,
+          "maxLateFrames": 368,
+          "firstSamples": 899,
+          "maxSourceOnsetDelayFrames": 368,
+          "warmed": 12,
+          "expiredSources": 0,
+          "descriptorFallback": 0,
+          "descriptorReasons": {},
+          "timingFallback": 0,
+          "timingReasons": {},
+          "apiPastStartSources": 0,
+          "pastAtSubmitSources": 0,
+          "deliveryMissCues": 343,
+          "maxDeliveryMissFrames": 368,
+          "timingDropped": 0,
+          "maxCommandLeadFrames": 3728,
+          "minCommandLeadFrames": -368
+        },
+        "context": {
+          "sampleRate": 48000,
+          "currentTime": 64.46133333333333,
+          "baseLatency": 0.01,
+          "outputLatency": 0.064,
+          "outputTimestamp": {
+            "contextTime": 64.392758,
+            "performanceTime": 79051.40000009537
+          },
+          "performanceMS": 79057
+        }
+      }
+    },
+    {
+      "name": "casing-full-off-1",
+      "raw": "work\\browser-feedback\\evidence\\casing-full-off-1.json",
+      "rawSHA256": "287a01072ab2bdef59e6ea60bf360ef49a2aa65101bcfd57a6e247c8aab7389f",
+      "rawBytes": 804064,
+      "ok": true,
+      "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+      "browser": "157.0.4341.60",
+      "query": {
+        "solo": ""
+      },
+      "source": "2a2e4b97200728b1f67b0e6d8ecd4588a1edaa44",
+      "clientManifestSHA256": "6f035f3daff3055c1296d26a181dd99c586b84533b3c1542da9c50006f55c2cb",
+      "errors": [],
+      "warningCount": 0,
+      "analysis": {
+        "name": "casing-full-off-1",
+        "coreSHA256": "c45c5cb22f1646cf38eae126b7b1272c9edad05eb0f3142fbdb926b76068618a",
+        "diagnosticOnly": false,
+        "wallSeconds": 60.217,
+        "logicalHz": 59.78378198847501,
+        "renderHz": 59.18594416859027,
+        "overflowDroppedMs": 226.96666666666582,
+        "windows": {
+          "complete": {
+            "frames": 3563,
+            "fps": 59.191847705863744,
+            "onePercentLowFPS": 26.867676709501243,
+            "onePercentTailFrames": 36,
+            "p95Ms": 19.59999990463257,
+            "p99Ms": 23.799999952316284,
+            "reciprocalP99FPS": 42.016806806870484,
+            "maxMs": 116.39999985694885,
+            "over50PerMinute": 3.987101725907184,
+            "over100": 2
+          },
+          "warmTick301": {
+            "frames": 3274,
+            "fps": 59.3088006722784,
+            "onePercentLowFPS": 27.808207644673455,
+            "onePercentTailFrames": 33,
+            "p95Ms": 19.40000009536743,
+            "p99Ms": 23.0,
+            "reciprocalP99FPS": 43.47826086956522,
+            "maxMs": 116.39999985694885,
+            "over50PerMinute": 4.347621307680763,
+            "over100": 2
+          }
+        },
+        "logicalExportsEqual": {
+          "manifest": true,
+          "seed": true,
+          "equipment": true,
+          "decisionTrace": true,
+          "events": true,
+          "checkpoints": true,
+          "state": true,
+          "coverage": true
+        },
+        "limits": "Render submission intervals, not physical presents. Complete window includes first use; warm is supplemental. 1% low uses the mean of the slowest ceil(N*.01) intervals, not reciprocal P99.",
+        "onePercentGatePassed": false
+      },
+      "exportsSHA256": {
+        "manifest": "e10c18148f40ecbb14887abba005b2598ce269f7d650dde61ecf3cefe7b47cb8",
+        "seed": "fdc5600dce748766b3f73d5c8cd8b424286a173fb26c759b2a42466f86460e9f",
+        "equipment": "246ee3703d6fb64c05c168b6f6b4bb15df59eeb999e75c24949a85966b26cbe3",
+        "decisionTrace": "634a3fc6183b7302a3cd5553b5f1e5e5fe4a068f8918345297804ce4435d0a2a",
+        "events": "e08e362624dd355ac318938d3decf7a96fdec35668d003827f33fa1a9a5a081d",
+        "checkpoints": "29f5d44cebc4b0e8e35a8971e8436561f39011d911576dde8439f5f7152fa13b",
+        "state": "4907e1321e886c0fb9f09768ea2e566641041e637fa9814d1558395e09f27990",
+        "coverage": "29b921dd218b53de48ebba1350d2d1f410bbc5e877a299d897dab7f82655e3a6"
+      },
+      "startup": {
+        "coldReadyMS": 13538.799999952316,
+        "entryMS": 3836.199999809265,
+        "warmReloadReadyMS": 7863.800000190735,
+        "preparation": {
+          "reason": "startup",
+          "ms": 2260
+        }
+      },
+      "audio": {
+        "queue": 86,
+        "created": 112994,
+        "live": 318,
+        "persistent": 116,
+        "voicePeak": 56,
+        "stolen": 908,
+        "bakeMs": 259.8999984264374,
+        "bakeMax": 16.600000143051147,
+        "k9Steps": 152,
+        "k9StepCalls": 210,
+        "casing": null,
+        "context": {
+          "sampleRate": 48000,
+          "currentTime": 64.39466666666667,
+          "baseLatency": 0.01,
+          "outputLatency": 0.048,
+          "outputTimestamp": {
+            "contextTime": 64.34453599999999,
+            "performanceTime": 78462.5
+          },
+          "performanceMS": 78463.09999990463
+        }
+      }
+    }
+  ],
+  "status": "Frozen diagnostic; not promoted into main; strict PCM and output-latency gates remain unmet"
+}
