@@ -1,0 +1,5 @@
+[configuration]
+entry_symbol="gh_audio_init"
+compatibility_minimum="4.5"
+[libraries]
+windows.x86_64="res://bin/gh_audio.dll"

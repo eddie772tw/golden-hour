@@ -1,0 +1,480 @@
+{
+  "allStarts": 31711,
+  "namedCueTotals": {
+    "calls": 9191,
+    "starts": 29776,
+    "layer": 23844,
+    "sineExp": 2748,
+    "noStarts": 4668,
+    "hasProjected": 4521,
+    "allStartedLayersProjected": 3761,
+    "oneshot": 1453
+  },
+  "byCue": {
+    "laser": {
+      "calls": 3168,
+      "starts": 5,
+      "layer": 2,
+      "sineExp": 1,
+      "noStarts": 3167,
+      "hasProjected": 1,
+      "allStartedLayersProjected": 0
+    },
+    "reload": {
+      "calls": 52,
+      "starts": 334,
+      "layer": 176,
+      "noStarts": 0,
+      "hasProjected": 52,
+      "allStartedLayersProjected": 0,
+      "sineExp": 64
+    },
+    "footstep": {
+      "calls": 1172,
+      "starts": 10456,
+      "layer": 8346,
+      "sineExp": 1578,
+      "noStarts": 0,
+      "hasProjected": 1172,
+      "allStartedLayersProjected": 812
+    },
+    "glassCrack": {
+      "calls": 85,
+      "starts": 85,
+      "oneshot": 85,
+      "noStarts": 0,
+      "hasProjected": 85,
+      "allStartedLayersProjected": 85
+    },
+    "impact": {
+      "calls": 874,
+      "starts": 6771,
+      "layer": 5711,
+      "sineExp": 652,
+      "noStarts": 0,
+      "hasProjected": 874,
+      "allStartedLayersProjected": 714
+    },
+    "whiz": {
+      "calls": 9,
+      "starts": 36,
+      "layer": 18,
+      "noStarts": 0,
+      "hasProjected": 9,
+      "allStartedLayersProjected": 0
+    },
+    "gunshot": {
+      "calls": 707,
+      "starts": 966,
+      "oneshot": 966,
+      "noStarts": 0,
+      "hasProjected": 707,
+      "allStartedLayersProjected": 707
+    },
+    "breakProp": {
+      "calls": 44,
+      "starts": 501,
+      "sineExp": 19,
+      "layer": 453,
+      "noStarts": 0,
+      "hasProjected": 44,
+      "allStartedLayersProjected": 19,
+      "oneshot": 4
+    },
+    "sparks": {
+      "calls": 12,
+      "starts": 273,
+      "layer": 182,
+      "noStarts": 0,
+      "hasProjected": 12,
+      "allStartedLayersProjected": 0
+    },
+    "ricochet": {
+      "calls": 46,
+      "starts": 184,
+      "layer": 46,
+      "sineExp": 46,
+      "noStarts": 0,
+      "hasProjected": 46,
+      "allStartedLayersProjected": 0
+    },
+    "propHit": {
+      "calls": 119,
+      "starts": 564,
+      "layer": 462,
+      "sineExp": 102,
+      "noStarts": 0,
+      "hasProjected": 119,
+      "allStartedLayersProjected": 119
+    },
+    "hurt": {
+      "calls": 18,
+      "starts": 54,
+      "sineExp": 18,
+      "layer": 36,
+      "noStarts": 0,
+      "hasProjected": 18,
+      "allStartedLayersProjected": 18
+    },
+    "casing": {
+      "calls": 929,
+      "starts": 7673,
+      "layer": 7598,
+      "noStarts": 0,
+      "hasProjected": 929,
+      "allStartedLayersProjected": 929,
+      "sineExp": 75
+    },
+    "glassDebris": {
+      "calls": 146,
+      "starts": 146,
+      "oneshot": 146,
+      "noStarts": 0,
+      "hasProjected": 146,
+      "allStartedLayersProjected": 146
+    },
+    "grenadeBounce": {
+      "calls": 36,
+      "starts": 252,
+      "layer": 144,
+      "sineExp": 36,
+      "noStarts": 0,
+      "hasProjected": 36,
+      "allStartedLayersProjected": 0
+    },
+    "foley": {
+      "calls": 5,
+      "starts": 27,
+      "layer": 13,
+      "noStarts": 0,
+      "hasProjected": 5,
+      "allStartedLayersProjected": 0
+    },
+    "pianoNote": {
+      "calls": 3,
+      "starts": 39,
+      "layer": 39,
+      "noStarts": 0,
+      "hasProjected": 3,
+      "allStartedLayersProjected": 3
+    },
+    "k9": {
+      "calls": 264,
+      "starts": 1171,
+      "layer": 515,
+      "sineExp": 106,
+      "noStarts": 57,
+      "hasProjected": 207,
+      "allStartedLayersProjected": 162,
+      "oneshot": 201
+    },
+    "k9Loop": {
+      "calls": 1444,
+      "starts": 10,
+      "noStarts": 1442,
+      "hasProjected": 0,
+      "allStartedLayersProjected": 0
+    },
+    "glassShatter": {
+      "calls": 34,
+      "starts": 110,
+      "oneshot": 42,
+      "sineExp": 34,
+      "layer": 34,
+      "noStarts": 0,
+      "hasProjected": 34,
+      "allStartedLayersProjected": 34
+    },
+    "explosion": {
+      "calls": 9,
+      "starts": 9,
+      "oneshot": 9,
+      "noStarts": 0,
+      "hasProjected": 9,
+      "allStartedLayersProjected": 9
+    },
+    "bodyFall": {
+      "calls": 5,
+      "starts": 56,
+      "sineExp": 10,
+      "layer": 28,
+      "noStarts": 0,
+      "hasProjected": 5,
+      "allStartedLayersProjected": 0
+    },
+    "ui": {
+      "calls": 3,
+      "starts": 27,
+      "layer": 27,
+      "noStarts": 0,
+      "hasProjected": 3,
+      "allStartedLayersProjected": 3
+    },
+    "land": {
+      "calls": 1,
+      "starts": 14,
+      "layer": 9,
+      "sineExp": 3,
+      "noStarts": 0,
+      "hasProjected": 1,
+      "allStartedLayersProjected": 0
+    },
+    "death": {
+      "calls": 2,
+      "starts": 6,
+      "sineExp": 4,
+      "noStarts": 0,
+      "hasProjected": 2,
+      "allStartedLayersProjected": 0
+    },
+    "slideStop": {
+      "calls": 2,
+      "starts": 0,
+      "noStarts": 2,
+      "hasProjected": 0,
+      "allStartedLayersProjected": 0
+    },
+    "extinguisher": {
+      "calls": 1,
+      "starts": 4,
+      "layer": 4,
+      "noStarts": 0,
+      "hasProjected": 1,
+      "allStartedLayersProjected": 1
+    },
+    "hitmarker": {
+      "calls": 1,
+      "starts": 3,
+      "layer": 1,
+      "noStarts": 0,
+      "hasProjected": 1,
+      "allStartedLayersProjected": 0
+    }
+  },
+  "excludedStartsByReason": {
+    "non-sine oscillator": 1056,
+    "frequency automation": 205,
+    "frequency modulation": 216,
+    "layer routed through extra graph": 216,
+    "other gain envelope": 16,
+    "other oscillator frequency automation": 8,
+    "other looped PCM": 4,
+    "outside-voice": 10
+  },
+  "excludedStartsByCueAndReason": {
+    "laser": {
+      "non-sine oscillator": 2
+    },
+    "reload": {
+      "frequency automation": 52,
+      "frequency modulation": 12,
+      "layer routed through extra graph": 12,
+      "non-sine oscillator": 18
+    },
+    "footstep": {
+      "non-sine oscillator": 532
+    },
+    "impact": {
+      "frequency modulation": 160,
+      "layer routed through extra graph": 160,
+      "non-sine oscillator": 44,
+      "frequency automation": 44
+    },
+    "whiz": {
+      "frequency automation": 18
+    },
+    "sparks": {
+      "non-sine oscillator": 91
+    },
+    "ricochet": {
+      "non-sine oscillator": 46,
+      "frequency automation": 46
+    },
+    "grenadeBounce": {
+      "frequency modulation": 36,
+      "layer routed through extra graph": 36
+    },
+    "foley": {
+      "non-sine oscillator": 4,
+      "frequency modulation": 2,
+      "layer routed through extra graph": 2,
+      "frequency automation": 6
+    },
+    "k9": {
+      "frequency automation": 32,
+      "non-sine oscillator": 277,
+      "other gain envelope": 16,
+      "frequency modulation": 6,
+      "layer routed through extra graph": 6,
+      "other oscillator frequency automation": 8,
+      "other looped PCM": 4
+    },
+    "k9Loop": {
+      "outside-voice": 10
+    },
+    "bodyFall": {
+      "non-sine oscillator": 13,
+      "frequency automation": 5
+    },
+    "land": {
+      "non-sine oscillator": 2
+    },
+    "death": {
+      "frequency automation": 2
+    },
+    "breakProp": {
+      "non-sine oscillator": 25
+    },
+    "hitmarker": {
+      "non-sine oscillator": 2
+    },
+    "glassCrack": {},
+    "gunshot": {},
+    "propHit": {},
+    "hurt": {},
+    "casing": {},
+    "glassDebris": {},
+    "pianoNote": {},
+    "glassShatter": {},
+    "explosion": {},
+    "ui": {},
+    "slideStop": {},
+    "extinguisher": {}
+  },
+  "outsideNamedCueStarts": {
+    "@outside": 4,
+    "init": 28,
+    "setVolumes": 0,
+    "setOcclusionTester": 0,
+    "setListener": 0,
+    "setEnvironment": 0,
+    "update": 1903
+  },
+  "downstreamNotRendered": {
+    "laser": {
+      "Gain+externalBus": 3
+    },
+    "reload": {
+      "Gain+externalBus": 240
+    },
+    "footstep": {
+      "BiquadFilter+ChannelMerger+Delay+Gain+externalBus": 8923,
+      "Gain+externalBus": 517,
+      "BiquadFilter+ChannelMerger+Gain+externalBus": 475,
+      "ChannelMerger+Gain+externalBus": 9
+    },
+    "glassCrack": {
+      "Gain+Panner+externalBus": 14,
+      "BiquadFilter+Gain+Panner+externalBus": 71
+    },
+    "impact": {
+      "BiquadFilter+ChannelMerger+Delay+Gain+externalBus": 4803,
+      "ChannelMerger+Gain+externalBus": 678,
+      "BiquadFilter+ChannelMerger+Gain+externalBus": 882
+    },
+    "whiz": {
+      "BiquadFilter+ChannelMerger+Delay+Gain+externalBus": 14,
+      "ChannelMerger+Gain+externalBus": 4
+    },
+    "gunshot": {
+      "BiquadFilter+ChannelMerger+Delay+Gain+externalBus": 812,
+      "Gain+externalBus": 122,
+      "BiquadFilter+ChannelMerger+Gain+externalBus": 32
+    },
+    "breakProp": {
+      "BiquadFilter+Gain+Panner+externalBus": 432,
+      "Gain+Panner+externalBus": 44
+    },
+    "sparks": {
+      "BiquadFilter+ChannelMerger+Delay+Gain+externalBus": 182
+    },
+    "ricochet": {
+      "BiquadFilter+ChannelMerger+Delay+Gain+externalBus": 76,
+      "BiquadFilter+ChannelMerger+Gain+externalBus": 16
+    },
+    "propHit": {
+      "BiquadFilter+ChannelMerger+Delay+Gain+externalBus": 538,
+      "BiquadFilter+ChannelMerger+Gain+externalBus": 26
+    },
+    "hurt": {
+      "Gain+externalBus": 54
+    },
+    "casing": {
+      "BiquadFilter+ChannelMerger+Delay+Gain+externalBus": 7426,
+      "ChannelMerger+Gain+externalBus": 173,
+      "BiquadFilter+ChannelMerger+Gain+externalBus": 74
+    },
+    "glassDebris": {
+      "BiquadFilter+Gain+Panner+externalBus": 12,
+      "Gain+Panner+externalBus": 134
+    },
+    "grenadeBounce": {
+      "BiquadFilter+ChannelMerger+Delay+Gain+externalBus": 170,
+      "ChannelMerger+Gain+externalBus": 5,
+      "BiquadFilter+ChannelMerger+Gain+externalBus": 5
+    },
+    "foley": {
+      "Gain+externalBus": 13
+    },
+    "pianoNote": {
+      "Gain+Panner+externalBus": 7,
+      "BiquadFilter+Gain+Panner+externalBus": 32
+    },
+    "k9": {
+      "BiquadFilter+ChannelMerger+Delay+Gain+externalBus": 809,
+      "Gain+externalBus": 8,
+      "BiquadFilter+ChannelMerger+Gain+externalBus": 2,
+      "ChannelMerger+Gain+externalBus": 3
+    },
+    "glassShatter": {
+      "BiquadFilter+Gain+Panner+externalBus": 110
+    },
+    "explosion": {
+      "BiquadFilter+Gain+Panner+externalBus": 9
+    },
+    "bodyFall": {
+      "BiquadFilter+ChannelMerger+Delay+Gain+externalBus": 38
+    },
+    "ui": {
+      "Gain+externalBus": 27
+    },
+    "land": {
+      "Gain+externalBus": 12
+    },
+    "death": {
+      "Gain+externalBus": 4
+    },
+    "extinguisher": {
+      "BiquadFilter+Gain+Panner+externalBus": 4
+    },
+    "hitmarker": {
+      "Gain+externalBus": 1
+    }
+  },
+  "pcmLayouts": {
+    "glassCrack": {
+      "2ch": 85
+    },
+    "gunshot": {
+      "1ch": 844,
+      "2ch": 122
+    },
+    "glassDebris": {
+      "2ch": 146
+    },
+    "glassShatter": {
+      "2ch": 42
+    },
+    "k9": {
+      "1ch": 201
+    },
+    "explosion": {
+      "1ch": 9
+    },
+    "breakProp": {
+      "2ch": 4
+    }
+  },
+  "fullRoutedCuesAccepted": 0,
+  "rawEvidenceSHA256": "5fc879fb10a83936a3f1aafd7b9f07003abc55e521c4259f0f169bf83aa66d4c"
+}

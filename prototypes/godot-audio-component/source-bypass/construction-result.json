@@ -1,0 +1,231 @@
+{
+  "runtime": "v24.13.0",
+  "platform": "win32",
+  "corpus": 929,
+  "warmupPairs": 2,
+  "measuredPairs": 8,
+  "replaysPerMeasuredLane": 16,
+  "metricsUnit": "milliseconds per 929 cues",
+  "alternateOrder": true,
+  "forcedGCBeforeTrial": true,
+  "recordingDisabled": true,
+  "medianMetrics": {
+    "threadCpuMs": {
+      "control": 85.96875,
+      "bypass": 2.4375,
+      "pairedDelta": 84,
+      "controlRange": [
+        82,
+        91.75
+      ],
+      "bypassRange": [
+        1.9375,
+        3
+      ]
+    },
+    "loopWallMs": {
+      "control": 87.08725624999998,
+      "bypass": 2.589178125000018,
+      "pairedDelta": 84.72219374999999,
+      "controlRange": [
+        81.63457499999959,
+        92.4096687500001
+      ],
+      "bypassRange": [
+        1.88665624999976,
+        3.025162499999965
+      ]
+    },
+    "wallCueMs": {
+      "control": 83.87309687500183,
+      "bypass": 1.7432718750002465,
+      "pairedDelta": 82.11146250000162,
+      "controlRange": [
+        78.50888749999706,
+        87.67849999999834
+      ],
+      "bypassRange": [
+        1.2650000000061254,
+        2.1965624999959914
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "control": {
+        "loopWallMs": 90.10299375000001,
+        "wallCueMs": 85.74948125000103,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 89.8125
+      },
+      "bypass": {
+        "loopWallMs": 2.796356249999974,
+        "wallCueMs": 2.0515937500000234,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 2.9375
+      }
+    },
+    {
+      "bypass": {
+        "loopWallMs": 2.6723312500000134,
+        "wallCueMs": 1.8524499999997772,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 1.9375
+      },
+      "control": {
+        "loopWallMs": 85.30150624999996,
+        "wallCueMs": 82.37748750000202,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 83.9375
+      }
+    },
+    {
+      "control": {
+        "loopWallMs": 84.78751875000003,
+        "wallCueMs": 81.64212500000525,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 84.0625
+      },
+      "bypass": {
+        "loopWallMs": 2.5060250000000224,
+        "wallCueMs": 1.6340937500007158,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 2
+      }
+    },
+    {
+      "bypass": {
+        "loopWallMs": 2.0577937499999734,
+        "wallCueMs": 1.4752937500003327,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 1.9375
+      },
+      "control": {
+        "loopWallMs": 88.87300625,
+        "wallCueMs": 85.36870625000165,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 87.875
+      }
+    },
+    {
+      "control": {
+        "loopWallMs": 92.4096687500001,
+        "wallCueMs": 87.27489375000181,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 91.75
+      },
+      "bypass": {
+        "loopWallMs": 2.112274999999954,
+        "wallCueMs": 1.4323437499979832,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 3
+      }
+    },
+    {
+      "bypass": {
+        "loopWallMs": 3.025162499999965,
+        "wallCueMs": 2.1965624999959914,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 2.875
+      },
+      "control": {
+        "loopWallMs": 91.41286250000013,
+        "wallCueMs": 87.67849999999834,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 90.875
+      }
+    },
+    {
+      "control": {
+        "loopWallMs": 81.96553125000014,
+        "wallCueMs": 78.50888749999706,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 82
+      },
+      "bypass": {
+        "loopWallMs": 1.88665624999976,
+        "wallCueMs": 1.2650000000061254,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 1.9375
+      }
+    },
+    {
+      "bypass": {
+        "loopWallMs": 2.8409937500000524,
+        "wallCueMs": 1.9974625000002106,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 2.9375
+      },
+      "control": {
+        "loopWallMs": 81.63457499999959,
+        "wallCueMs": 79.07185624999511,
+        "exact": 929,
+        "ordinal": 929,
+        "victims": 262,
+        "releases": 925,
+        "ownership": 1424330661,
+        "threadCpuMs": 82.0625
+      }
+    }
+  ]
+}

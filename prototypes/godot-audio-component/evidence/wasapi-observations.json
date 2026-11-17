@@ -1,0 +1,2633 @@
+[
+  {
+    "trial": "1-absolute",
+    "contract": "absolute",
+    "driver": "WASAPI",
+    "outputDevice": "Default",
+    "mixRate": 48000.0,
+    "estimatedOutputLatencySeconds": 0.009999999776482582,
+    "callbackFrameSizes": [
+      512
+    ],
+    "qpcFrequency": 10000000,
+    "calibration": [
+      {
+        "qpc_after": 19250401766065,
+        "qpc_before": 19250401766036,
+        "worker_us": 1925040176604
+      },
+      {
+        "qpc_after": 19250412470601,
+        "qpc_before": 19250412470597,
+        "worker_us": 1925041247059
+      }
+    ],
+    "pings": [
+      {
+        "sentMs": 525.7755,
+        "receivedMs": 526.3354,
+        "workerUs": 1925040189188
+      },
+      {
+        "sentMs": 530.6783,
+        "receivedMs": 531.4387,
+        "workerUs": 1925040194236
+      },
+      {
+        "sentMs": 531.5299,
+        "receivedMs": 531.6966,
+        "workerUs": 1925040194645
+      },
+      {
+        "sentMs": 535.0945,
+        "receivedMs": 535.2258,
+        "workerUs": 1925040198215
+      },
+      {
+        "sentMs": 545.7114,
+        "receivedMs": 545.8713,
+        "workerUs": 1925040208845
+      },
+      {
+        "sentMs": 555.837,
+        "receivedMs": 555.9577,
+        "workerUs": 1925040218955
+      },
+      {
+        "sentMs": 555.9901,
+        "receivedMs": 556.0754,
+        "workerUs": 1925040219090
+      },
+      {
+        "sentMs": 562.0616,
+        "receivedMs": 562.225,
+        "workerUs": 1925040225191
+      }
+    ],
+    "rngDraws": 124,
+    "originalSteals": 1,
+    "all14ReceiptStatuses": [
+      10,
+      2,
+      2,
+      0
+    ],
+    "cues": [
+      {
+        "seq": 1,
+        "voice": 1,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 564.701,
+        "producerSendMs": 569.3269,
+        "workerIngressUs": 1925040232454,
+        "callbackDequeueUs": 1925040237617,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": 3216,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 4.6259000000000015,
+        "invokeToWorkerMs": [
+          4.653099988937356,
+          4.738400196075418
+        ],
+        "workerToCallbackMs": 5.163000106811523,
+        "invokeToCallbackMs": [
+          9.81610009574888,
+          9.901400302886941
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250402376172,
+          19250402380166
+        ],
+        "onsetQpc": [
+          19250402377035,
+          19250402377035
+        ],
+        "invokeToRenderedOnsetMs": [
+          9.900500034332254,
+          9.988200162887551
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.08439993858337402,
+          0.08679986000061035
+        ]
+      },
+      {
+        "seq": 2,
+        "voice": 25,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 567.0306,
+        "producerSendMs": 569.3269,
+        "workerIngressUs": 1925040232460,
+        "callbackDequeueUs": 1925040237644,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": 3216,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 2.296299999999974,
+        "invokeToWorkerMs": [
+          2.3295000308989984,
+          2.41480023803706
+        ],
+        "workerToCallbackMs": 5.184000015258789,
+        "invokeToCallbackMs": [
+          7.513500046157787,
+          7.598800253295849
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250402376172,
+          19250402380166
+        ],
+        "onsetQpc": [
+          19250402377035,
+          19250402377036
+        ],
+        "invokeToRenderedOnsetMs": [
+          7.570900034332226,
+          7.658700298690746
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.05739998817443848,
+          0.05990004539489746
+        ]
+      },
+      {
+        "seq": 3,
+        "voice": 49,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 567.5739,
+        "producerSendMs": 569.3269,
+        "workerIngressUs": 1925040232461,
+        "callbackDequeueUs": 1925040237647,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": 3216,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 1.7530000000000427,
+        "invokeToWorkerMs": [
+          1.7871999584198193,
+          1.8725001655578808
+        ],
+        "workerToCallbackMs": 5.186000108718872,
+        "invokeToCallbackMs": [
+          6.973200067138691,
+          7.058500274276753
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250402376172,
+          19250402380166
+        ],
+        "onsetQpc": [
+          19250402377036,
+          19250402377036
+        ],
+        "invokeToRenderedOnsetMs": [
+          7.0277001701355175,
+          7.115400298690815
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.05450010299682617,
+          0.0569000244140625
+        ]
+      },
+      {
+        "seq": 4,
+        "voice": 73,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 567.9604,
+        "producerSendMs": 569.3269,
+        "workerIngressUs": 1925040232461,
+        "callbackDequeueUs": 1925040237649,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": 3216,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 1.3664999999999736,
+        "invokeToWorkerMs": [
+          1.4006999584197501,
+          1.4860001655578117
+        ],
+        "workerToCallbackMs": 5.187999963760376,
+        "invokeToCallbackMs": [
+          6.588699922180126,
+          6.674000129318188
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250402376172,
+          19250402380166
+        ],
+        "onsetQpc": [
+          19250402377037,
+          19250402377037
+        ],
+        "invokeToRenderedOnsetMs": [
+          6.641300067520092,
+          6.72900019607539
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.05260014533996582,
+          0.05500006675720215
+        ]
+      },
+      {
+        "seq": 5,
+        "voice": 97,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 568.3746,
+        "producerSendMs": 569.3269,
+        "workerIngressUs": 1925040232461,
+        "callbackDequeueUs": 1925040237652,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": 3216,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 0.9523000000000366,
+        "invokeToWorkerMs": [
+          0.9864999584198131,
+          1.0718001655578746
+        ],
+        "workerToCallbackMs": 5.190999984741211,
+        "invokeToCallbackMs": [
+          6.177499943161024,
+          6.2628001502990855
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250402376172,
+          19250402380166
+        ],
+        "onsetQpc": [
+          19250402377037,
+          19250402377037
+        ],
+        "invokeToRenderedOnsetMs": [
+          6.227100067520155,
+          6.314800196075453
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.04960012435913086,
+          0.05200004577636719
+        ]
+      },
+      {
+        "seq": 6,
+        "voice": 121,
+        "victim": null,
+        "status": 1,
+        "externalInvokeMs": 584.8055,
+        "producerSendMs": 585.0054,
+        "workerIngressUs": 1925040248130,
+        "callbackDequeueUs": 1925040258556,
+        "externalReadFrame": 3840,
+        "contractTargetFrame": 3984,
+        "sourceReferenceTargetFrame": 3984,
+        "workerIngressFrame": 4096,
+        "admissionFrameBracket": [
+          4096,
+          4096
+        ],
+        "callbackFrame": 4096,
+        "invokeToSendMs": 0.1998999999999569,
+        "invokeToWorkerMs": [
+          0.22460010719294132,
+          0.30990031433100285
+        ],
+        "workerToCallbackMs": 10.425999879837036,
+        "invokeToCallbackMs": [
+          10.650599987029977,
+          10.735900194168039
+        ],
+        "sourceReferenceSlackAtIngressFrames": -112,
+        "sourceReferenceSlackAtCallbackFrames": -112
+      },
+      {
+        "seq": 7,
+        "voice": 126,
+        "victim": 1,
+        "status": 1,
+        "externalInvokeMs": 734.2328,
+        "producerSendMs": 734.9379,
+        "workerIngressUs": 1925040398052,
+        "callbackDequeueUs": 1925040407997,
+        "externalReadFrame": 11008,
+        "contractTargetFrame": 11008,
+        "sourceReferenceTargetFrame": 11008,
+        "workerIngressFrame": 11264,
+        "admissionFrameBracket": [
+          11264,
+          11264
+        ],
+        "callbackFrame": 11264,
+        "invokeToSendMs": 0.7051000000000158,
+        "invokeToWorkerMs": [
+          0.7193000385284449,
+          0.8046002456665065
+        ],
+        "workerToCallbackMs": 9.944999933242798,
+        "invokeToCallbackMs": [
+          10.664299971771243,
+          10.749600178909304
+        ],
+        "sourceReferenceSlackAtIngressFrames": -256,
+        "sourceReferenceSlackAtCallbackFrames": -256
+      }
+    ],
+    "rawSHA256": {
+      "source.json": "88b90b8a13bf037694f5cd8ca8f0822ddd91135c577e63b7531aa6a2d9f494ec",
+      "device-trace.json": "adf4ff3690ffae44f07b843bb6f31de5efd2b72cf7631b7f8997f7dbf278e55c",
+      "cue-callback.csv": "356584ca741e62414d5c642c474aa4cc092f3cd205d2225b13200ed2aabfa66e",
+      "admission.csv": "c268ecd2b09917ebd13894c68323957227382271c5c4b5d58f79ad4a29d0cea7",
+      "onset-report.json": "9d9659557ccb1f3e077e04e7d0c3e4580feefda2ad92b0a93ef7f3de7f11a2ca",
+      "live-stereo.f32": "fa097d1ab0d36f137b97927b5044b0d705decc04a7394e57540b76488e9bcb24"
+    }
+  },
+  {
+    "trial": "1-untimed",
+    "contract": "untimed",
+    "driver": "WASAPI",
+    "outputDevice": "Default",
+    "mixRate": 48000.0,
+    "estimatedOutputLatencySeconds": 0.009999999776482582,
+    "callbackFrameSizes": [
+      512
+    ],
+    "qpcFrequency": 10000000,
+    "calibration": [
+      {
+        "qpc_after": 19250420435398,
+        "qpc_before": 19250420435366,
+        "worker_us": 1925042043537
+      },
+      {
+        "qpc_after": 19250431138769,
+        "qpc_before": 19250431138767,
+        "worker_us": 1925043113876
+      }
+    ],
+    "pings": [
+      {
+        "sentMs": 500.6396,
+        "receivedMs": 501.1353,
+        "workerUs": 1925042055662
+      },
+      {
+        "sentMs": 503.5896,
+        "receivedMs": 503.7246,
+        "workerUs": 1925042058353
+      },
+      {
+        "sentMs": 508.6663,
+        "receivedMs": 508.9312,
+        "workerUs": 1925042063534
+      },
+      {
+        "sentMs": 515.5635,
+        "receivedMs": 515.6766,
+        "workerUs": 1925042070324
+      },
+      {
+        "sentMs": 524.0354,
+        "receivedMs": 524.3451,
+        "workerUs": 1925042078945
+      },
+      {
+        "sentMs": 524.4136,
+        "receivedMs": 524.5767,
+        "workerUs": 1925042079181
+      },
+      {
+        "sentMs": 525.7998,
+        "receivedMs": 525.9119,
+        "workerUs": 1925042080552
+      },
+      {
+        "sentMs": 534.4393,
+        "receivedMs": 534.5572,
+        "workerUs": 1925042089198
+      }
+    ],
+    "rngDraws": 124,
+    "originalSteals": 1,
+    "all14ReceiptStatuses": [
+      14,
+      0,
+      0,
+      0
+    ],
+    "cues": [
+      {
+        "seq": 1,
+        "voice": 1,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 541.0151,
+        "producerSendMs": 545.4562,
+        "workerIngressUs": 1925042100235,
+        "callbackDequeueUs": 1925042108635,
+        "externalReadFrame": 2560,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 2704.0000000000005,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 4.441100000000006,
+        "invokeToWorkerMs": [
+          4.467699768447915,
+          4.572499992752114
+        ],
+        "workerToCallbackMs": 8.400000095367432,
+        "invokeToCallbackMs": [
+          12.867699863815346,
+          12.972500088119546
+        ],
+        "sourceReferenceSlackAtIngressFrames": -367.99999999999955,
+        "sourceReferenceSlackAtCallbackFrames": -367.99999999999955,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250421086345,
+          19250421090844
+        ],
+        "onsetQpc": [
+          19250421087488,
+          19250421087488
+        ],
+        "invokeToRenderedOnsetMs": [
+          12.979599716568032,
+          13.086599829101601
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.11189985275268555,
+          0.11409974098205566
+        ]
+      },
+      {
+        "seq": 2,
+        "voice": 25,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 543.2995,
+        "producerSendMs": 545.4562,
+        "workerIngressUs": 1925042100240,
+        "callbackDequeueUs": 1925042108674,
+        "externalReadFrame": 2560,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 2704.0000000000005,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 2.1567000000000007,
+        "invokeToWorkerMs": [
+          2.1882998828888276,
+          2.293100107193027
+        ],
+        "workerToCallbackMs": 8.434000015258789,
+        "invokeToCallbackMs": [
+          10.622299898147617,
+          10.727100122451816
+        ],
+        "sourceReferenceSlackAtIngressFrames": -367.99999999999955,
+        "sourceReferenceSlackAtCallbackFrames": -367.99999999999955,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250421086345,
+          19250421090844
+        ],
+        "onsetQpc": [
+          19250421087489,
+          19250421087489
+        ],
+        "invokeToRenderedOnsetMs": [
+          10.69529985237125,
+          10.802299964904819
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.07299995422363281,
+          0.07519984245300293
+        ]
+      },
+      {
+        "seq": 3,
+        "voice": 49,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 543.7348,
+        "producerSendMs": 545.4562,
+        "workerIngressUs": 1925042100240,
+        "callbackDequeueUs": 1925042108678,
+        "externalReadFrame": 2560,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 2704.0000000000005,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 1.721400000000017,
+        "invokeToWorkerMs": [
+          1.7529998828888438,
+          1.857800107193043
+        ],
+        "workerToCallbackMs": 8.437999963760376,
+        "invokeToCallbackMs": [
+          10.19099984664922,
+          10.295800070953419
+        ],
+        "sourceReferenceSlackAtIngressFrames": -367.99999999999955,
+        "sourceReferenceSlackAtCallbackFrames": -367.99999999999955,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250421086345,
+          19250421090844
+        ],
+        "onsetQpc": [
+          19250421087490,
+          19250421087490
+        ],
+        "invokeToRenderedOnsetMs": [
+          10.26009974975591,
+          10.367099862289479
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.06909990310668945,
+          0.07129979133605957
+        ]
+      },
+      {
+        "seq": 4,
+        "voice": 73,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 544.1094,
+        "producerSendMs": 545.4562,
+        "workerIngressUs": 1925042100241,
+        "callbackDequeueUs": 1925042108681,
+        "externalReadFrame": 2560,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 2704.0000000000005,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 1.3467999999999165,
+        "invokeToWorkerMs": [
+          1.3793998104094953,
+          1.4842000347136945
+        ],
+        "workerToCallbackMs": 8.440000057220459,
+        "invokeToCallbackMs": [
+          9.819399867629954,
+          9.924200091934154
+        ],
+        "sourceReferenceSlackAtIngressFrames": -367.99999999999955,
+        "sourceReferenceSlackAtCallbackFrames": -367.99999999999955,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250421086345,
+          19250421090844
+        ],
+        "onsetQpc": [
+          19250421087490,
+          19250421087491
+        ],
+        "invokeToRenderedOnsetMs": [
+          9.885499749755809,
+          9.9925999980926
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.06609988212585449,
+          0.06839990615844727
+        ]
+      },
+      {
+        "seq": 5,
+        "voice": 97,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 544.5211,
+        "producerSendMs": 545.4562,
+        "workerIngressUs": 1925042100241,
+        "callbackDequeueUs": 1925042108685,
+        "externalReadFrame": 2560,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 2704.0000000000005,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 0.9350999999999203,
+        "invokeToWorkerMs": [
+          0.9676998104094992,
+          1.0725000347136984
+        ],
+        "workerToCallbackMs": 8.444000005722046,
+        "invokeToCallbackMs": [
+          9.411699816131545,
+          9.516500040435744
+        ],
+        "sourceReferenceSlackAtIngressFrames": -367.99999999999955,
+        "sourceReferenceSlackAtCallbackFrames": -367.99999999999955,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250421086345,
+          19250421090844
+        ],
+        "onsetQpc": [
+          19250421087491,
+          19250421087491
+        ],
+        "invokeToRenderedOnsetMs": [
+          9.473899885559035,
+          9.580899998092605
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.062200069427490234,
+          0.06439995765686035
+        ]
+      },
+      {
+        "seq": 6,
+        "voice": 121,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 564.5868,
+        "producerSendMs": 564.8644,
+        "workerIngressUs": 1925042119658,
+        "callbackDequeueUs": 1925042139971,
+        "externalReadFrame": 3840,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 3984,
+        "workerIngressFrame": 4096,
+        "admissionFrameBracket": [
+          4096,
+          4096
+        ],
+        "callbackFrame": 4096,
+        "invokeToSendMs": 0.27760000000000673,
+        "invokeToWorkerMs": [
+          0.31899986572261696,
+          0.4238000900268162
+        ],
+        "workerToCallbackMs": 20.312999963760376,
+        "invokeToCallbackMs": [
+          20.631999829482993,
+          20.736800053787192
+        ],
+        "sourceReferenceSlackAtIngressFrames": -112,
+        "sourceReferenceSlackAtCallbackFrames": -112,
+        "mixFrame": 4241,
+        "firstSamples": [
+          5.488783062901348e-05,
+          5.488783062901348e-05
+        ],
+        "targetFirstStart": 4240.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 4096,
+        "callbackQpc": [
+          19250421399713,
+          19250421404305
+        ],
+        "onsetQpc": [
+          19250421401088,
+          19250421401088
+        ],
+        "invokeToRenderedOnsetMs": [
+          20.767899850082358,
+          20.874899962615928
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.13590002059936523,
+          0.13809990882873535
+        ]
+      },
+      {
+        "seq": 7,
+        "voice": 126,
+        "victim": 1,
+        "status": 0,
+        "externalInvokeMs": 705.3607,
+        "producerSendMs": 706.0472,
+        "workerIngressUs": 1925042260818,
+        "callbackDequeueUs": 1925042268711,
+        "externalReadFrame": 10496,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 10496,
+        "workerIngressFrame": 10752,
+        "admissionFrameBracket": [
+          10752,
+          10752
+        ],
+        "callbackFrame": 10752,
+        "invokeToSendMs": 0.6865000000000236,
+        "invokeToWorkerMs": [
+          0.7050999515533931,
+          0.8099001758575923
+        ],
+        "workerToCallbackMs": 7.892999887466431,
+        "invokeToCallbackMs": [
+          8.598099839019824,
+          8.702900063324023
+        ],
+        "sourceReferenceSlackAtIngressFrames": -256,
+        "sourceReferenceSlackAtCallbackFrames": -256,
+        "mixFrame": 10897,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 10896.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 10752,
+        "callbackQpc": [
+          19250422687107,
+          19250422693384
+        ],
+        "onsetQpc": [
+          19250422688936,
+          19250422688937
+        ],
+        "invokeToRenderedOnsetMs": [
+          8.778799664306689,
+          8.885899912643481
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.18069982528686523,
+          0.182999849319458
+        ]
+      }
+    ],
+    "rawSHA256": {
+      "source.json": "86df6ffba3a80047c08b7e8313bb84cf1c41a194d96f4837952ec994a9662ef4",
+      "device-trace.json": "344d0d8415bb52f06a4bd76fc39271e8e72ac3ed09e9c9157379a38c8f0c80b6",
+      "cue-callback.csv": "96e4fb3cb5eb5fd40b0aff9f7e2ef85caf228873c95cd8f0cd8b1e1d12af36d3",
+      "admission.csv": "4f46e0e683ea64bf7d2231a85387f769c0c08c937061da6e65eb52ddaf6ea76c",
+      "onset-report.json": "ee108f4b4a0129d8719c4a0f78c29788e15c545bb39365a7af52cf7f1116ba68",
+      "live-stereo.f32": "f9791f0041ad1e9cf9ed7e93066ffde275b96213a48bbac7a1b80841ae297f78"
+    }
+  },
+  {
+    "trial": "2-absolute",
+    "contract": "absolute",
+    "driver": "WASAPI",
+    "outputDevice": "Default",
+    "mixRate": 48000.0,
+    "estimatedOutputLatencySeconds": 0.009999999776482582,
+    "callbackFrameSizes": [
+      512
+    ],
+    "qpcFrequency": 10000000,
+    "calibration": [
+      {
+        "qpc_after": 19250457763719,
+        "qpc_before": 19250457763691,
+        "worker_us": 1925045776369
+      },
+      {
+        "qpc_after": 19250468605098,
+        "qpc_before": 19250468605095,
+        "worker_us": 1925046860509
+      }
+    ],
+    "pings": [
+      {
+        "sentMs": 503.4123,
+        "receivedMs": 504.0348,
+        "workerUs": 1925045788764
+      },
+      {
+        "sentMs": 504.1174,
+        "receivedMs": 504.2387,
+        "workerUs": 1925045789130
+      },
+      {
+        "sentMs": 508.2272,
+        "receivedMs": 508.4076,
+        "workerUs": 1925045793277
+      },
+      {
+        "sentMs": 513.6561,
+        "receivedMs": 513.76,
+        "workerUs": 1925045798672
+      },
+      {
+        "sentMs": 524.0997,
+        "receivedMs": 524.2914,
+        "workerUs": 1925045809142
+      },
+      {
+        "sentMs": 533.466,
+        "receivedMs": 533.5749,
+        "workerUs": 1925045818482
+      },
+      {
+        "sentMs": 540.3522,
+        "receivedMs": 540.5006,
+        "workerUs": 1925045825391
+      },
+      {
+        "sentMs": 543.1469,
+        "receivedMs": 543.2646,
+        "workerUs": 1925045828164
+      }
+    ],
+    "rngDraws": 124,
+    "originalSteals": 1,
+    "all14ReceiptStatuses": [
+      2,
+      5,
+      7,
+      0
+    ],
+    "cues": [
+      {
+        "seq": 1,
+        "voice": 1,
+        "victim": null,
+        "status": 1,
+        "externalInvokeMs": 553.2559,
+        "producerSendMs": 559.1939,
+        "workerIngressUs": 1925045844235,
+        "callbackDequeueUs": 1925045848937,
+        "externalReadFrame": 3328,
+        "contractTargetFrame": 3472,
+        "sourceReferenceTargetFrame": 3472,
+        "workerIngressFrame": 3584,
+        "admissionFrameBracket": [
+          3584,
+          3584
+        ],
+        "callbackFrame": 3584,
+        "invokeToSendMs": 5.937999999999988,
+        "invokeToWorkerMs": [
+          5.96649971160889,
+          6.067099954223636
+        ],
+        "workerToCallbackMs": 4.702000141143799,
+        "invokeToCallbackMs": [
+          10.668499852752689,
+          10.769100095367435
+        ],
+        "sourceReferenceSlackAtIngressFrames": -112,
+        "sourceReferenceSlackAtCallbackFrames": -112
+      },
+      {
+        "seq": 2,
+        "voice": 25,
+        "victim": null,
+        "status": 1,
+        "externalInvokeMs": 555.6504,
+        "producerSendMs": 559.1939,
+        "workerIngressUs": 1925045844240,
+        "callbackDequeueUs": 1925045848953,
+        "externalReadFrame": 3328,
+        "contractTargetFrame": 3472,
+        "sourceReferenceTargetFrame": 3472,
+        "workerIngressFrame": 3584,
+        "admissionFrameBracket": [
+          3584,
+          3584
+        ],
+        "callbackFrame": 3584,
+        "invokeToSendMs": 3.5434999999999945,
+        "invokeToWorkerMs": [
+          3.576999826049814,
+          3.6776000686645602
+        ],
+        "workerToCallbackMs": 4.713000059127808,
+        "invokeToCallbackMs": [
+          8.289999885177622,
+          8.390600127792368
+        ],
+        "sourceReferenceSlackAtIngressFrames": -112,
+        "sourceReferenceSlackAtCallbackFrames": -112
+      },
+      {
+        "seq": 3,
+        "voice": 49,
+        "victim": null,
+        "status": 1,
+        "externalInvokeMs": 557.0822,
+        "producerSendMs": 559.1939,
+        "workerIngressUs": 1925045844240,
+        "callbackDequeueUs": 1925045848953,
+        "externalReadFrame": 3328,
+        "contractTargetFrame": 3472,
+        "sourceReferenceTargetFrame": 3472,
+        "workerIngressFrame": 3584,
+        "admissionFrameBracket": [
+          3584,
+          3584
+        ],
+        "callbackFrame": 3584,
+        "invokeToSendMs": 2.1117000000000417,
+        "invokeToWorkerMs": [
+          2.1451998260498613,
+          2.2458000686646074
+        ],
+        "workerToCallbackMs": 4.713000059127808,
+        "invokeToCallbackMs": [
+          6.858199885177669,
+          6.958800127792415
+        ],
+        "sourceReferenceSlackAtIngressFrames": -112,
+        "sourceReferenceSlackAtCallbackFrames": -112
+      },
+      {
+        "seq": 4,
+        "voice": 73,
+        "victim": null,
+        "status": 1,
+        "externalInvokeMs": 557.5317,
+        "producerSendMs": 559.1939,
+        "workerIngressUs": 1925045844240,
+        "callbackDequeueUs": 1925045848954,
+        "externalReadFrame": 3328,
+        "contractTargetFrame": 3472,
+        "sourceReferenceTargetFrame": 3472,
+        "workerIngressFrame": 3584,
+        "admissionFrameBracket": [
+          3584,
+          3584
+        ],
+        "callbackFrame": 3584,
+        "invokeToSendMs": 1.6621999999999844,
+        "invokeToWorkerMs": [
+          1.695699826049804,
+          1.79630006866455
+        ],
+        "workerToCallbackMs": 4.71399998664856,
+        "invokeToCallbackMs": [
+          6.4096998126983635,
+          6.51030005531311
+        ],
+        "sourceReferenceSlackAtIngressFrames": -112,
+        "sourceReferenceSlackAtCallbackFrames": -112
+      },
+      {
+        "seq": 5,
+        "voice": 97,
+        "victim": null,
+        "status": 1,
+        "externalInvokeMs": 558.0302,
+        "producerSendMs": 559.1939,
+        "workerIngressUs": 1925045844240,
+        "callbackDequeueUs": 1925045848954,
+        "externalReadFrame": 3328,
+        "contractTargetFrame": 3472,
+        "sourceReferenceTargetFrame": 3472,
+        "workerIngressFrame": 3584,
+        "admissionFrameBracket": [
+          3584,
+          3584
+        ],
+        "callbackFrame": 3584,
+        "invokeToSendMs": 1.1636999999999489,
+        "invokeToWorkerMs": [
+          1.1971998260497685,
+          1.2978000686645146
+        ],
+        "workerToCallbackMs": 4.71399998664856,
+        "invokeToCallbackMs": [
+          5.911199812698328,
+          6.011800055313074
+        ],
+        "sourceReferenceSlackAtIngressFrames": -112,
+        "sourceReferenceSlackAtCallbackFrames": -112
+      },
+      {
+        "seq": 6,
+        "voice": 121,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 573.8588,
+        "producerSendMs": 574.0543,
+        "workerIngressUs": 1925045859089,
+        "callbackDequeueUs": 1925045877581,
+        "externalReadFrame": 4608,
+        "contractTargetFrame": 4752,
+        "sourceReferenceTargetFrame": 4752,
+        "workerIngressFrame": 4608,
+        "admissionFrameBracket": [
+          4608,
+          4608
+        ],
+        "callbackFrame": 4608,
+        "invokeToSendMs": 0.1955000000000382,
+        "invokeToWorkerMs": [
+          0.2175998031616473,
+          0.3182000457763934
+        ],
+        "workerToCallbackMs": 18.492000102996826,
+        "invokeToCallbackMs": [
+          18.709599906158473,
+          18.81020014877322
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 4753,
+        "firstSamples": [
+          5.488783062901348e-05,
+          5.488783062901348e-05
+        ],
+        "targetFirstStart": 4752.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 4608,
+        "callbackQpc": [
+          19250458775805,
+          19250458778084
+        ],
+        "onsetQpc": [
+          19250458776542,
+          19250458776543
+        ],
+        "invokeToRenderedOnsetMs": [
+          18.780999833297756,
+          18.883999997329738
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.07139992713928223,
+          0.07379984855651855
+        ]
+      },
+      {
+        "seq": 7,
+        "voice": 126,
+        "victim": 1,
+        "status": 2,
+        "externalInvokeMs": 713.8696,
+        "producerSendMs": 714.7271,
+        "workerIngressUs": 1925045999753,
+        "callbackDequeueUs": 1925046007298,
+        "externalReadFrame": 11264,
+        "contractTargetFrame": 11264,
+        "sourceReferenceTargetFrame": 11264,
+        "workerIngressFrame": 11264,
+        "admissionFrameBracket": [
+          11264,
+          11264
+        ],
+        "callbackFrame": 11264,
+        "invokeToSendMs": 0.8574999999999591,
+        "invokeToWorkerMs": [
+          0.8707998374939052,
+          0.9714000801086513
+        ],
+        "workerToCallbackMs": 7.545000076293945,
+        "invokeToCallbackMs": [
+          8.41579991378785,
+          8.516400156402597
+        ],
+        "sourceReferenceSlackAtIngressFrames": 0,
+        "sourceReferenceSlackAtCallbackFrames": 0
+      }
+    ],
+    "rawSHA256": {
+      "source.json": "9ade7a710ee62535c1e31904c716ec4299719f3b563f698347b4d18b44f96c66",
+      "device-trace.json": "8a5ae648a8045a3a2ca04eabcee7e5a62a500d3f89d6e792d7e8a2231fef45cc",
+      "cue-callback.csv": "8e9d2b0f0f115fee81dcd691b27d2e8780424583c0ab86aa5ce6995bf4a69b92",
+      "admission.csv": "50303e4b002d6137035f6b9e8bcfff87ca0323a01660f5db7d9db695ee9a421e",
+      "onset-report.json": "8cc5d638107187941ed529ae40fabfa3a13fa730f300d2b8c900f5e88332dd44",
+      "live-stereo.f32": "bbe5c1f720d92ce4dd7a58d17d5e8090fa7a8cae80c1a74a3514846c19eaa985"
+    }
+  },
+  {
+    "trial": "2-untimed",
+    "contract": "untimed",
+    "driver": "WASAPI",
+    "outputDevice": "Default",
+    "mixRate": 48000.0,
+    "estimatedOutputLatencySeconds": 0.009999999776482582,
+    "callbackFrameSizes": [
+      512
+    ],
+    "qpcFrequency": 10000000,
+    "calibration": [
+      {
+        "qpc_after": 19250439102215,
+        "qpc_before": 19250439102189,
+        "worker_us": 1925043910219
+      },
+      {
+        "qpc_after": 19250449806600,
+        "qpc_before": 19250449806597,
+        "worker_us": 1925044980659
+      }
+    ],
+    "pings": [
+      {
+        "sentMs": 505.0826,
+        "receivedMs": 505.5596,
+        "workerUs": 1925043922597
+      },
+      {
+        "sentMs": 506.5667,
+        "receivedMs": 506.6935,
+        "workerUs": 1925043923820
+      },
+      {
+        "sentMs": 517.5352,
+        "receivedMs": 517.741,
+        "workerUs": 1925043934819
+      },
+      {
+        "sentMs": 517.8315,
+        "receivedMs": 517.9577,
+        "workerUs": 1925043935099
+      },
+      {
+        "sentMs": 527.4788,
+        "receivedMs": 527.6048,
+        "workerUs": 1925043944748
+      },
+      {
+        "sentMs": 533.8021,
+        "receivedMs": 533.9919,
+        "workerUs": 1925043951082
+      },
+      {
+        "sentMs": 537.0237,
+        "receivedMs": 537.1121,
+        "workerUs": 1925043954276
+      },
+      {
+        "sentMs": 546.0554,
+        "receivedMs": 546.1941,
+        "workerUs": 1925043963322
+      }
+    ],
+    "rngDraws": 124,
+    "originalSteals": 1,
+    "all14ReceiptStatuses": [
+      14,
+      0,
+      0,
+      0
+    ],
+    "cues": [
+      {
+        "seq": 1,
+        "voice": 1,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 549.4725,
+        "producerSendMs": 554.6881,
+        "workerIngressUs": 1925043971993,
+        "callbackDequeueUs": 1925043973829,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 5.215599999999995,
+        "invokeToWorkerMs": [
+          5.268200006485017,
+          5.356599893569978
+        ],
+        "workerToCallbackMs": 1.8359999656677246,
+        "invokeToCallbackMs": [
+          7.104199972152742,
+          7.192599859237703
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250439738292,
+          19250439741796
+        ],
+        "onsetQpc": [
+          19250439739219,
+          19250439739220
+        ],
+        "invokeToRenderedOnsetMs": [
+          7.195099916458162,
+          7.285899724960359
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.09089994430541992,
+          0.09329986572265625
+        ]
+      },
+      {
+        "seq": 2,
+        "voice": 25,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 552.3001,
+        "producerSendMs": 554.6881,
+        "workerIngressUs": 1925043971999,
+        "callbackDequeueUs": 1925043973860,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 2.38799999999992,
+        "invokeToWorkerMs": [
+          2.446600048446612,
+          2.534999935531573
+        ],
+        "workerToCallbackMs": 1.8609998226165771,
+        "invokeToCallbackMs": [
+          4.307599871063189,
+          4.39599975814815
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250439738292,
+          19250439741796
+        ],
+        "onsetQpc": [
+          19250439739221,
+          19250439739221
+        ],
+        "invokeToRenderedOnsetMs": [
+          4.367699949645953,
+          4.458399622344928
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.06010007858276367,
+          0.062399864196777344
+        ]
+      },
+      {
+        "seq": 3,
+        "voice": 49,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 552.7282,
+        "producerSendMs": 554.6881,
+        "workerIngressUs": 1925043971999,
+        "callbackDequeueUs": 1925043973863,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 1.9598999999999478,
+        "invokeToWorkerMs": [
+          2.01850004844664,
+          2.106899935531601
+        ],
+        "workerToCallbackMs": 1.863999843597412,
+        "invokeToCallbackMs": [
+          3.882499892044052,
+          3.970899779129013
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250439738292,
+          19250439741796
+        ],
+        "onsetQpc": [
+          19250439739221,
+          19250439739222
+        ],
+        "invokeToRenderedOnsetMs": [
+          3.939599949645981,
+          4.030399758148178
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.05710005760192871,
+          0.05949997901916504
+        ]
+      },
+      {
+        "seq": 4,
+        "voice": 73,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 553.0863,
+        "producerSendMs": 554.6881,
+        "workerIngressUs": 1925043971999,
+        "callbackDequeueUs": 1925043973866,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 1.601799999999912,
+        "invokeToWorkerMs": [
+          1.6604000484466042,
+          1.748799935531565
+        ],
+        "workerToCallbackMs": 1.866999864578247,
+        "invokeToCallbackMs": [
+          3.5273999130248512,
+          3.615799800109812
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250439738292,
+          19250439741796
+        ],
+        "onsetQpc": [
+          19250439739222,
+          19250439739222
+        ],
+        "invokeToRenderedOnsetMs": [
+          3.5816000854491676,
+          3.6722997581481422
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.054200172424316406,
+          0.05649995803833008
+        ]
+      },
+      {
+        "seq": 5,
+        "voice": 97,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 553.4882,
+        "producerSendMs": 554.6881,
+        "workerIngressUs": 1925043971999,
+        "callbackDequeueUs": 1925043973869,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 1.199899999999957,
+        "invokeToWorkerMs": [
+          1.258500048446649,
+          1.34689993553161
+        ],
+        "workerToCallbackMs": 1.869999885559082,
+        "invokeToCallbackMs": [
+          3.128499934005731,
+          3.216899821090692
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250439738292,
+          19250439741796
+        ],
+        "onsetQpc": [
+          19250439739222,
+          19250439739222
+        ],
+        "invokeToRenderedOnsetMs": [
+          3.1797000854492126,
+          3.270399758148187
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.051200151443481445,
+          0.05349993705749512
+        ]
+      },
+      {
+        "seq": 6,
+        "voice": 121,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 579.8109,
+        "producerSendMs": 580.1267,
+        "workerIngressUs": 1925043997475,
+        "callbackDequeueUs": 1925044004065,
+        "externalReadFrame": 4096,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 4240,
+        "workerIngressFrame": 4096,
+        "admissionFrameBracket": [
+          4096,
+          4096
+        ],
+        "callbackFrame": 4096,
+        "invokeToSendMs": 0.3158000000000811,
+        "invokeToWorkerMs": [
+          0.4117998806000287,
+          0.5001997676849896
+        ],
+        "workerToCallbackMs": 6.590000152587891,
+        "invokeToCallbackMs": [
+          7.001800033187919,
+          7.09019992027288
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 4241,
+        "firstSamples": [
+          5.488783062901348e-05,
+          5.488783062901348e-05
+        ],
+        "targetFirstStart": 4240.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 4096,
+        "callbackQpc": [
+          19250440040647,
+          19250440045118
+        ],
+        "onsetQpc": [
+          19250440041925,
+          19250440041925
+        ],
+        "invokeToRenderedOnsetMs": [
+          7.127299996948295,
+          7.21799966964727
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.12549996376037598,
+          0.12779974937438965
+        ]
+      },
+      {
+        "seq": 7,
+        "voice": 126,
+        "victim": 1,
+        "status": 0,
+        "externalInvokeMs": 709.4874,
+        "producerSendMs": 710.3773,
+        "workerIngressUs": 1925044127673,
+        "callbackDequeueUs": 1925044133266,
+        "externalReadFrame": 10752,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 10752,
+        "workerIngressFrame": 10752,
+        "admissionFrameBracket": [
+          10752,
+          10752
+        ],
+        "callbackFrame": 10752,
+        "invokeToSendMs": 0.8899000000000115,
+        "invokeToWorkerMs": [
+          0.9333000732422079,
+          1.0216999603271688
+        ],
+        "workerToCallbackMs": 5.5929999351501465,
+        "invokeToCallbackMs": [
+          6.526300008392354,
+          6.614699895477315
+        ],
+        "sourceReferenceSlackAtIngressFrames": 0,
+        "sourceReferenceSlackAtCallbackFrames": 0,
+        "mixFrame": 10897,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 10896.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 10752,
+        "callbackQpc": [
+          19250441332661,
+          19250441337176
+        ],
+        "onsetQpc": [
+          19250441333967,
+          19250441333967
+        ],
+        "invokeToRenderedOnsetMs": [
+          6.6550000263214315,
+          6.745699699020406
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.12870001792907715,
+          0.13099980354309082
+        ]
+      }
+    ],
+    "rawSHA256": {
+      "source.json": "f8c673b441589e9cce9f2d80bce3150f3c0bee9f899a00de59c2e5efa6f05dcc",
+      "device-trace.json": "a488f58c93b86a16d353713efffdc8954b1ebc9debb36f336d98ab9953bc59cf",
+      "cue-callback.csv": "316572faac4f4ef368154582601e783074d56acb9bebda05e2b13a5b05d44047",
+      "admission.csv": "4f46e0e683ea64bf7d2231a85387f769c0c08c937061da6e65eb52ddaf6ea76c",
+      "onset-report.json": "876b0e1d1878a5dbc898364b0329961543f944706bc6fe16b189447fd88ba39b",
+      "live-stereo.f32": "f9791f0041ad1e9cf9ed7e93066ffde275b96213a48bbac7a1b80841ae297f78"
+    }
+  },
+  {
+    "trial": "3-absolute",
+    "contract": "absolute",
+    "driver": "WASAPI",
+    "outputDevice": "Default",
+    "mixRate": 48000.0,
+    "estimatedOutputLatencySeconds": 0.009999999776482582,
+    "callbackFrameSizes": [
+      512
+    ],
+    "qpcFrequency": 10000000,
+    "calibration": [
+      {
+        "qpc_after": 19250476477530,
+        "qpc_before": 19250476477505,
+        "worker_us": 1925047647750
+      },
+      {
+        "qpc_after": 19250487260456,
+        "qpc_before": 19250487260453,
+        "worker_us": 1925048726045
+      }
+    ],
+    "pings": [
+      {
+        "sentMs": 505.1494,
+        "receivedMs": 505.7067,
+        "workerUs": 1925047662315
+      },
+      {
+        "sentMs": 510.1627,
+        "receivedMs": 510.3973,
+        "workerUs": 1925047667071
+      },
+      {
+        "sentMs": 515.2024,
+        "receivedMs": 515.3402,
+        "workerUs": 1925047672077
+      },
+      {
+        "sentMs": 525.8756,
+        "receivedMs": 526.0176,
+        "workerUs": 1925047682758
+      },
+      {
+        "sentMs": 527.6086,
+        "receivedMs": 527.7504,
+        "workerUs": 1925047684498
+      },
+      {
+        "sentMs": 534.465,
+        "receivedMs": 534.5754,
+        "workerUs": 1925047691326
+      },
+      {
+        "sentMs": 542.4571,
+        "receivedMs": 542.6545,
+        "workerUs": 1925047699369
+      },
+      {
+        "sentMs": 545.4718,
+        "receivedMs": 545.591,
+        "workerUs": 1925047702332
+      }
+    ],
+    "rngDraws": 124,
+    "originalSteals": 1,
+    "all14ReceiptStatuses": [
+      12,
+      1,
+      1,
+      0
+    ],
+    "cues": [
+      {
+        "seq": 1,
+        "voice": 1,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 556.2466,
+        "producerSendMs": 560.8791,
+        "workerIngressUs": 1925047717769,
+        "callbackDequeueUs": 1925047721558,
+        "externalReadFrame": 3584,
+        "contractTargetFrame": 3728.0000000000005,
+        "sourceReferenceTargetFrame": 3728.0000000000005,
+        "workerIngressFrame": 3584,
+        "admissionFrameBracket": [
+          3584,
+          3584
+        ],
+        "callbackFrame": 3584,
+        "invokeToSendMs": 4.63250000000005,
+        "invokeToWorkerMs": [
+          4.662200125122126,
+          4.771800192260798
+        ],
+        "workerToCallbackMs": 3.7890000343322754,
+        "invokeToCallbackMs": [
+          8.451200159454402,
+          8.560800226593074
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144.00000000000045,
+        "sourceReferenceSlackAtCallbackFrames": 144.00000000000045,
+        "mixFrame": 3729,
+        "firstSamples": [
+          0.0003404554445296526,
+          0.0003404554445296526
+        ],
+        "targetFirstStart": 3728.0000000000005,
+        "sampleOffsetFromScheduledStart": 0.9999999999995453,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3584,
+        "callbackQpc": [
+          19250477215578,
+          19250477219800
+        ],
+        "onsetQpc": [
+          19250477216662,
+          19250477216662
+        ],
+        "invokeToRenderedOnsetMs": [
+          8.557800205612239,
+          8.669500025177058
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.10660004615783691,
+          0.10869979858398438
+        ]
+      },
+      {
+        "seq": 2,
+        "voice": 25,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 558.5739,
+        "producerSendMs": 560.8791,
+        "workerIngressUs": 1925047717774,
+        "callbackDequeueUs": 1925047721591,
+        "externalReadFrame": 3584,
+        "contractTargetFrame": 3728.0000000000005,
+        "sourceReferenceTargetFrame": 3728.0000000000005,
+        "workerIngressFrame": 3584,
+        "admissionFrameBracket": [
+          3584,
+          3584
+        ],
+        "callbackFrame": 3584,
+        "invokeToSendMs": 2.3052000000000135,
+        "invokeToWorkerMs": [
+          2.3399000011444286,
+          2.4495000682831005
+        ],
+        "workerToCallbackMs": 3.817000150680542,
+        "invokeToCallbackMs": [
+          6.156900151824971,
+          6.2665002189636425
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144.00000000000045,
+        "sourceReferenceSlackAtCallbackFrames": 144.00000000000045,
+        "mixFrame": 3729,
+        "firstSamples": [
+          0.0003404554445296526,
+          0.0003404554445296526
+        ],
+        "targetFirstStart": 3728.0000000000005,
+        "sampleOffsetFromScheduledStart": 0.9999999999995453,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3584,
+        "callbackQpc": [
+          19250477215578,
+          19250477219800
+        ],
+        "onsetQpc": [
+          19250477216664,
+          19250477216664
+        ],
+        "invokeToRenderedOnsetMs": [
+          6.230700238800068,
+          6.342400058364888
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.07380008697509766,
+          0.07589983940124512
+        ]
+      },
+      {
+        "seq": 3,
+        "voice": 49,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 559.0509,
+        "producerSendMs": 560.8791,
+        "workerIngressUs": 1925047717774,
+        "callbackDequeueUs": 1925047721595,
+        "externalReadFrame": 3584,
+        "contractTargetFrame": 3728.0000000000005,
+        "sourceReferenceTargetFrame": 3728.0000000000005,
+        "workerIngressFrame": 3584,
+        "admissionFrameBracket": [
+          3584,
+          3584
+        ],
+        "callbackFrame": 3584,
+        "invokeToSendMs": 1.828200000000038,
+        "invokeToWorkerMs": [
+          1.8629000011444532,
+          1.972500068283125
+        ],
+        "workerToCallbackMs": 3.821000099182129,
+        "invokeToCallbackMs": [
+          5.683900100326582,
+          5.793500167465254
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144.00000000000045,
+        "sourceReferenceSlackAtCallbackFrames": 144.00000000000045,
+        "mixFrame": 3729,
+        "firstSamples": [
+          0.0003404554445296526,
+          0.0003404554445296526
+        ],
+        "targetFirstStart": 3728.0000000000005,
+        "sampleOffsetFromScheduledStart": 0.9999999999995453,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3584,
+        "callbackQpc": [
+          19250477215578,
+          19250477219800
+        ],
+        "onsetQpc": [
+          19250477216665,
+          19250477216665
+        ],
+        "invokeToRenderedOnsetMs": [
+          5.753800136184736,
+          5.865499955749556
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.0699000358581543,
+          0.07199978828430176
+        ]
+      },
+      {
+        "seq": 4,
+        "voice": 73,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 559.4372,
+        "producerSendMs": 560.8791,
+        "workerIngressUs": 1925047717774,
+        "callbackDequeueUs": 1925047721599,
+        "externalReadFrame": 3584,
+        "contractTargetFrame": 3728.0000000000005,
+        "sourceReferenceTargetFrame": 3728.0000000000005,
+        "workerIngressFrame": 3584,
+        "admissionFrameBracket": [
+          3584,
+          3584
+        ],
+        "callbackFrame": 3584,
+        "invokeToSendMs": 1.4419000000000324,
+        "invokeToWorkerMs": [
+          1.4766000011444476,
+          1.5862000682831194
+        ],
+        "workerToCallbackMs": 3.825000047683716,
+        "invokeToCallbackMs": [
+          5.301600048828163,
+          5.411200115966835
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144.00000000000045,
+        "sourceReferenceSlackAtCallbackFrames": 144.00000000000045,
+        "mixFrame": 3729,
+        "firstSamples": [
+          0.0003404554445296526,
+          0.0003404554445296526
+        ],
+        "targetFirstStart": 3728.0000000000005,
+        "sampleOffsetFromScheduledStart": 0.9999999999995453,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3584,
+        "callbackQpc": [
+          19250477215578,
+          19250477219800
+        ],
+        "onsetQpc": [
+          19250477216665,
+          19250477216665
+        ],
+        "invokeToRenderedOnsetMs": [
+          5.367500136184731,
+          5.47919995574955
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.06590008735656738,
+          0.06799983978271484
+        ]
+      },
+      {
+        "seq": 5,
+        "voice": 97,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 559.8838,
+        "producerSendMs": 560.8791,
+        "workerIngressUs": 1925047717774,
+        "callbackDequeueUs": 1925047721602,
+        "externalReadFrame": 3584,
+        "contractTargetFrame": 3728.0000000000005,
+        "sourceReferenceTargetFrame": 3728.0000000000005,
+        "workerIngressFrame": 3584,
+        "admissionFrameBracket": [
+          3584,
+          3584
+        ],
+        "callbackFrame": 3584,
+        "invokeToSendMs": 0.9953000000000429,
+        "invokeToWorkerMs": [
+          1.030000001144458,
+          1.13960006828313
+        ],
+        "workerToCallbackMs": 3.828000068664551,
+        "invokeToCallbackMs": [
+          4.858000069809009,
+          4.967600136947681
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144.00000000000045,
+        "sourceReferenceSlackAtCallbackFrames": 144.00000000000045,
+        "mixFrame": 3729,
+        "firstSamples": [
+          0.0003404554445296526,
+          0.0003404554445296526
+        ],
+        "targetFirstStart": 3728.0000000000005,
+        "sampleOffsetFromScheduledStart": 0.9999999999995453,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3584,
+        "callbackQpc": [
+          19250477215578,
+          19250477219800
+        ],
+        "onsetQpc": [
+          19250477216665,
+          19250477216666
+        ],
+        "invokeToRenderedOnsetMs": [
+          4.920900136184741,
+          5.032699853134204
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.06290006637573242,
+          0.06509971618652344
+        ]
+      },
+      {
+        "seq": 6,
+        "voice": 121,
+        "victim": null,
+        "status": 1,
+        "externalInvokeMs": 586.4459,
+        "producerSendMs": 586.6693,
+        "workerIngressUs": 1925047743562,
+        "callbackDequeueUs": 1925047760328,
+        "externalReadFrame": 4864,
+        "contractTargetFrame": 5008,
+        "sourceReferenceTargetFrame": 5008,
+        "workerIngressFrame": 5120,
+        "admissionFrameBracket": [
+          5120,
+          5120
+        ],
+        "callbackFrame": 5120,
+        "invokeToSendMs": 0.22339999999996962,
+        "invokeToWorkerMs": [
+          0.25590010795588114,
+          0.365500175094553
+        ],
+        "workerToCallbackMs": 16.766000032424927,
+        "invokeToCallbackMs": [
+          17.021900140380808,
+          17.13150020751948
+        ],
+        "sourceReferenceSlackAtIngressFrames": -112,
+        "sourceReferenceSlackAtCallbackFrames": -112
+      },
+      {
+        "seq": 7,
+        "voice": 126,
+        "victim": 1,
+        "status": 0,
+        "externalInvokeMs": 716.8748,
+        "producerSendMs": 717.8263,
+        "workerIngressUs": 1925047874801,
+        "callbackDequeueUs": 1925047882567,
+        "externalReadFrame": 11264,
+        "contractTargetFrame": 11264,
+        "sourceReferenceTargetFrame": 11264,
+        "workerIngressFrame": 11264,
+        "admissionFrameBracket": [
+          11264,
+          11264
+        ],
+        "callbackFrame": 11264,
+        "invokeToSendMs": 0.9514999999998963,
+        "invokeToWorkerMs": [
+          1.0660001899718736,
+          1.1756002571105455
+        ],
+        "workerToCallbackMs": 7.765999794006348,
+        "invokeToCallbackMs": [
+          8.831999983978221,
+          8.941600051116893
+        ],
+        "sourceReferenceSlackAtIngressFrames": 0,
+        "sourceReferenceSlackAtCallbackFrames": 0,
+        "mixFrame": 11409,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 11408.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 11264,
+        "callbackQpc": [
+          19250478825675,
+          19250478829271
+        ],
+        "onsetQpc": [
+          19250478826692,
+          19250478826693
+        ],
+        "invokeToRenderedOnsetMs": [
+          8.932600226592967,
+          9.04439994354243
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.1006002426147461,
+          0.10279989242553711
+        ]
+      }
+    ],
+    "rawSHA256": {
+      "source.json": "8d56ce5fe7945b9bff6b80e89c5c8bfe1ee875c01a3d3041b0fb9b53ba251fef",
+      "device-trace.json": "c3eec734e508c901319b50407e4b417daa34d656d652808e448b1c2c2dc2e04d",
+      "cue-callback.csv": "58d1fa6bcad1eeca0760670e752b1410710135733f0ebd687d9346dc90e58346",
+      "admission.csv": "4cf1bc8ac3308158164e0edc27d133b221133156613a5a1ae0e66c8208ad2d5e",
+      "onset-report.json": "4015aded57cd213f4d94a552a25c42884706cb617776ceb7d9ab12d6e9cb4dab",
+      "live-stereo.f32": "69fc12d3c2dcf4a1d72f0014135a535bbb6f0b6063eb8a9871c7c5503766b2af"
+    }
+  },
+  {
+    "trial": "3-untimed",
+    "contract": "untimed",
+    "driver": "WASAPI",
+    "outputDevice": "Default",
+    "mixRate": 48000.0,
+    "estimatedOutputLatencySeconds": 0.009999999776482582,
+    "callbackFrameSizes": [
+      512
+    ],
+    "qpcFrequency": 10000000,
+    "calibration": [
+      {
+        "qpc_after": 19250496769240,
+        "qpc_before": 19250496769210,
+        "worker_us": 1925049676921
+      },
+      {
+        "qpc_after": 19250507486399,
+        "qpc_before": 19250507486396,
+        "worker_us": 1925050748639
+      }
+    ],
+    "pings": [
+      {
+        "sentMs": 603.5256,
+        "receivedMs": 604.1784,
+        "workerUs": 1925049693971
+      },
+      {
+        "sentMs": 612.5456,
+        "receivedMs": 612.7594,
+        "workerUs": 1925049702674
+      },
+      {
+        "sentMs": 613.5374,
+        "receivedMs": 613.6696,
+        "workerUs": 1925049703638
+      },
+      {
+        "sentMs": 622.2464,
+        "receivedMs": 622.3661,
+        "workerUs": 1925049712337
+      },
+      {
+        "sentMs": 629.6066,
+        "receivedMs": 629.9005,
+        "workerUs": 1925049719807
+      },
+      {
+        "sentMs": 630.0092,
+        "receivedMs": 630.1257,
+        "workerUs": 1925049720098
+      },
+      {
+        "sentMs": 633.7857,
+        "receivedMs": 633.9089,
+        "workerUs": 1925049723877
+      },
+      {
+        "sentMs": 642.5995,
+        "receivedMs": 642.8054,
+        "workerUs": 1925049732722
+      }
+    ],
+    "rngDraws": 124,
+    "originalSteals": 1,
+    "all14ReceiptStatuses": [
+      14,
+      0,
+      0,
+      0
+    ],
+    "cues": [
+      {
+        "seq": 1,
+        "voice": 1,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 644.2171,
+        "producerSendMs": 649.2952,
+        "workerIngressUs": 1925049739454,
+        "callbackDequeueUs": 1925049742842,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 5.078100000000063,
+        "invokeToWorkerMs": [
+          5.14810004272465,
+          5.264599943542521
+        ],
+        "workerToCallbackMs": 3.388000011444092,
+        "invokeToCallbackMs": [
+          8.536100054168742,
+          8.652599954986613
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250497428422,
+          19250497433624
+        ],
+        "onsetQpc": [
+          19250497429798,
+          19250497429799
+        ],
+        "invokeToRenderedOnsetMs": [
+          8.671999836349528,
+          8.790899897003214
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.13589978218078613,
+          0.13829994201660156
+        ]
+      },
+      {
+        "seq": 2,
+        "voice": 25,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 646.7156,
+        "producerSendMs": 649.2952,
+        "workerIngressUs": 1925049739465,
+        "callbackDequeueUs": 1925049742889,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 2.5796000000000276,
+        "invokeToWorkerMs": [
+          2.6605999607086233,
+          2.7770998615264944
+        ],
+        "workerToCallbackMs": 3.4240000247955322,
+        "invokeToCallbackMs": [
+          6.0845999855041555,
+          6.201099886322027
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250497428422,
+          19250497433624
+        ],
+        "onsetQpc": [
+          19250497429800,
+          19250497429800
+        ],
+        "invokeToRenderedOnsetMs": [
+          6.173699869537359,
+          6.2924997943878225
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.08909988403320312,
+          0.0913999080657959
+        ]
+      },
+      {
+        "seq": 3,
+        "voice": 49,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 647.188,
+        "producerSendMs": 649.2952,
+        "workerIngressUs": 1925049739465,
+        "callbackDequeueUs": 1925049742894,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 2.1072000000000344,
+        "invokeToWorkerMs": [
+          2.18819996070863,
+          2.304699861526501
+        ],
+        "workerToCallbackMs": 3.42900013923645,
+        "invokeToCallbackMs": [
+          5.61720009994508,
+          5.733700000762951
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250497428422,
+          19250497433624
+        ],
+        "onsetQpc": [
+          19250497429801,
+          19250497429801
+        ],
+        "invokeToRenderedOnsetMs": [
+          5.701400005340588,
+          5.820199930191052
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.08419990539550781,
+          0.08649992942810059
+        ]
+      },
+      {
+        "seq": 4,
+        "voice": 73,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 647.5675,
+        "producerSendMs": 649.2952,
+        "workerIngressUs": 1925049739466,
+        "callbackDequeueUs": 1925049742899,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 1.727700000000027,
+        "invokeToWorkerMs": [
+          1.8097001266479538,
+          1.9262000274658249
+        ],
+        "workerToCallbackMs": 3.432999849319458,
+        "invokeToCallbackMs": [
+          5.242699975967412,
+          5.359199876785283
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250497428422,
+          19250497433624
+        ],
+        "onsetQpc": [
+          19250497429801,
+          19250497429801
+        ],
+        "invokeToRenderedOnsetMs": [
+          5.321900005340581,
+          5.440699930191045
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.07920002937316895,
+          0.08150005340576172
+        ]
+      },
+      {
+        "seq": 5,
+        "voice": 97,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 648.003,
+        "producerSendMs": 649.2952,
+        "workerIngressUs": 1925049739466,
+        "callbackDequeueUs": 1925049742904,
+        "externalReadFrame": 3072,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 3216,
+        "workerIngressFrame": 3072,
+        "admissionFrameBracket": [
+          3072,
+          3072
+        ],
+        "callbackFrame": 3072,
+        "invokeToSendMs": 1.2921999999999798,
+        "invokeToWorkerMs": [
+          1.3742001266479065,
+          1.4907000274657776
+        ],
+        "workerToCallbackMs": 3.437999963760376,
+        "invokeToCallbackMs": [
+          4.8122000904082824,
+          4.9286999912261535
+        ],
+        "sourceReferenceSlackAtIngressFrames": 144,
+        "sourceReferenceSlackAtCallbackFrames": 144,
+        "mixFrame": 3217,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 3216.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 3072,
+        "callbackQpc": [
+          19250497428422,
+          19250497433624
+        ],
+        "onsetQpc": [
+          19250497429802,
+          19250497429802
+        ],
+        "invokeToRenderedOnsetMs": [
+          4.886499902725177,
+          5.005299827575641
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.07429981231689453,
+          0.0765998363494873
+        ]
+      },
+      {
+        "seq": 6,
+        "voice": 121,
+        "victim": null,
+        "status": 0,
+        "externalInvokeMs": 664.2175,
+        "producerSendMs": 664.4882,
+        "workerIngressUs": 1925049754605,
+        "callbackDequeueUs": 1925049771851,
+        "externalReadFrame": 3840,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 3984,
+        "workerIngressFrame": 4096,
+        "admissionFrameBracket": [
+          4096,
+          4096
+        ],
+        "callbackFrame": 4096,
+        "invokeToSendMs": 0.27070000000003347,
+        "invokeToWorkerMs": [
+          0.29870006561282025,
+          0.41519996643069135
+        ],
+        "workerToCallbackMs": 17.246000051498413,
+        "invokeToCallbackMs": [
+          17.544700117111233,
+          17.661200017929104
+        ],
+        "sourceReferenceSlackAtIngressFrames": -112,
+        "sourceReferenceSlackAtCallbackFrames": -112,
+        "mixFrame": 4241,
+        "firstSamples": [
+          5.488783062901348e-05,
+          5.488783062901348e-05
+        ],
+        "targetFirstStart": 4240.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 4096,
+        "callbackQpc": [
+          19250497718506,
+          19250497722908
+        ],
+        "onsetQpc": [
+          19250497719894,
+          19250497719894
+        ],
+        "invokeToRenderedOnsetMs": [
+          17.681199998855618,
+          17.799999923706082
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.13649988174438477,
+          0.13879990577697754
+        ]
+      },
+      {
+        "seq": 7,
+        "voice": 126,
+        "victim": 1,
+        "status": 0,
+        "externalInvokeMs": 811.8763,
+        "producerSendMs": 812.5534,
+        "workerIngressUs": 1925049902642,
+        "callbackDequeueUs": 1925049911172,
+        "externalReadFrame": 11264,
+        "contractTargetFrame": null,
+        "sourceReferenceTargetFrame": 11264,
+        "workerIngressFrame": 11264,
+        "admissionFrameBracket": [
+          11264,
+          11264
+        ],
+        "callbackFrame": 11264,
+        "invokeToSendMs": 0.6770999999999958,
+        "invokeToWorkerMs": [
+          0.6769000064849706,
+          0.7933999073028417
+        ],
+        "workerToCallbackMs": 8.52999997138977,
+        "invokeToCallbackMs": [
+          9.206899977874741,
+          9.323399878692612
+        ],
+        "sourceReferenceSlackAtIngressFrames": 0,
+        "sourceReferenceSlackAtCallbackFrames": 0,
+        "mixFrame": 11409,
+        "firstSamples": [
+          0.003166012465953827,
+          0.003166012465953827
+        ],
+        "targetFirstStart": 11408.0,
+        "sampleOffsetFromScheduledStart": 1.0,
+        "callbackFrameCount": 512,
+        "callbackFirstFrame": 11264,
+        "callbackQpc": [
+          19250499111716,
+          19250499116786
+        ],
+        "onsetQpc": [
+          19250499113543,
+          19250499113544
+        ],
+        "invokeToRenderedOnsetMs": [
+          9.387299872589097,
+          9.506199933242783
+        ],
+        "callbackDequeueToRenderedOnsetMs": [
+          0.18039989471435547,
+          0.1828000545501709
+        ]
+      }
+    ],
+    "rawSHA256": {
+      "source.json": "7d32ca63a983b49ba82226ed192c68608f94fcff9bceac76bc6437d1664d0549",
+      "device-trace.json": "44f6173634b5406750235025e56b2d76af7e86e1fe364f905ef93d14db121713",
+      "cue-callback.csv": "0bb63285249317bece517070c6cecc603c9e18870f9bf89a40e4df4fab4246b7",
+      "admission.csv": "c268ecd2b09917ebd13894c68323957227382271c5c4b5d58f79ad4a29d0cea7",
+      "onset-report.json": "258ff45a30fbea87e9eb9e0a2b8f63809fc097cd7b69b52e4e38905912614a64",
+      "live-stereo.f32": "6ac49a284dc3480dc71bfcc54b23e04913dd399729c8a3292295e8e1a30e15a6"
+    }
+  }
+]

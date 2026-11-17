@@ -8,3 +8,6 @@ prototypes/godot-planar-reflection/** -text whitespace=cr-at-eol
 prototypes/godot-planar-reflection/*/*.log -text -whitespace
 prototypes/godot-post-component/** -text whitespace=cr-at-eol
 
+prototypes/godot-audio-component/** whitespace=cr-at-eol
+prototypes/godot-audio-component/extension/mixer.hpp whitespace=cr-at-eol,-blank-at-eof
+prototypes/godot-audio-component/extension/playback.cpp whitespace=cr-at-eol,-blank-at-eof

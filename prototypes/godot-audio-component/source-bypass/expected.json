@@ -1,0 +1,79 @@
+{
+  "calls": 929,
+  "draws": 14854,
+  "logicalSources": 7673,
+  "stealsDuringCasing": 421,
+  "originalCueTraceSha256": "0c8d4412370e821c5a05ae56a9185c62580e0434f9258467fcc2847bdbbc0cbe",
+  "strictExports": [
+    "manifest",
+    "seed",
+    "equipment",
+    "decisionTrace",
+    "events",
+    "checkpoints",
+    "state",
+    "coverage"
+  ],
+  "voiceLifecycle": {
+    "create": 4541,
+    "release": 4524,
+    "target": 1113,
+    "steal": 1000
+  },
+  "releasesWithinCasing": {
+    "glass": 1,
+    "gun": 1,
+    "own": 1,
+    "impact": 7,
+    "casing": 1,
+    "k9step": 1,
+    "step": 2
+  },
+  "candidateOpsWithinCasing": {
+    "disconnect": 316
+  },
+  "graph": {
+    "keptRecords": 683918,
+    "keptObjects": 88068,
+    "canonicalSha256": "ee8de0a6af86dcdc61cb0f10ddf74d0e4ee968c0b63b1d977495ef091f990824",
+    "retainedByOperation": {
+      "node.create": 87999,
+      "buffer.create": 69,
+      "param.value": 141821,
+      "node.set": 64586,
+      "connect": 94580,
+      "start": 24038,
+      "param.target": 38622,
+      "param.set": 42950,
+      "param.linear": 22445,
+      "param.exponential": 25776,
+      "stop": 26555,
+      "ended": 23977,
+      "disconnect": 87521,
+      "param.cancel": 2979
+    },
+    "removedByOperation": {
+      "node.create": 24374,
+      "param.value": 27859,
+      "node.set": 13548,
+      "connect": 26232,
+      "param.set": 15346,
+      "param.linear": 7673,
+      "param.exponential": 7748,
+      "start": 7673,
+      "stop": 11235,
+      "ended": 7667,
+      "disconnect": 24330,
+      "param.cancel": 421,
+      "param.target": 421
+    },
+    "removedNodeKinds": {
+      "Gain": 11389,
+      "BiquadFilter": 3485,
+      "ChannelMerger": 929,
+      "Delay": 898,
+      "Oscillator": 5283,
+      "BufferSource": 2390
+    }
+  }
+}

@@ -1,0 +1,328 @@
+{
+  "capacity": {
+    "peak": {
+      "allIssuedSourcesAwaitingEnded": {
+        "value": 379,
+        "frame": 1710400
+      },
+      "allReferencedBufferIdsAwaitingEnded": {
+        "value": 30,
+        "frame": 716000
+      },
+      "allTrackedVoicesUntilDisconnect": {
+        "value": 72,
+        "frame": 1718400
+      },
+      "projectedVoices": {
+        "value": 72,
+        "frame": 1718400
+      },
+      "allTrackedVoiceSourceIdsUntilDisconnect": {
+        "value": 494,
+        "frame": 1718400
+      },
+      "projectedLayerSlotsUntilRelease": {
+        "value": 465,
+        "frame": 1718400
+      },
+      "projectedDistinctBuffersUntilRelease": {
+        "value": 34,
+        "frame": 716000
+      },
+      "allStartedBeforeEnded": {
+        "value": 222,
+        "frame": 730544
+      },
+      "allDistinctBuffersStartedBeforeEnded": {
+        "value": 30,
+        "frame": 718544
+      },
+      "projectedStartedBeforeEnded": {
+        "value": 149,
+        "frame": 1711140
+      },
+      "projectedDistinctBuffersStartedBeforeEnded": {
+        "value": 30,
+        "frame": 718544
+      },
+      "sameFrameCommands": {
+        "frame": 1708800,
+        "value": 423
+      }
+    },
+    "ops": {
+      "voice": 4521,
+      "layer": 23844,
+      "sineExp": 2748,
+      "release": 4504,
+      "fade": 1000,
+      "stop": 7145,
+      "oneshot": 1453,
+      "voiceTarget": 113
+    },
+    "originalActiveVoicePeak": 56,
+    "originalStolen": 1000,
+    "allSourceStarts": 31711,
+    "selectedSourceStarts": 28045,
+    "createdBuffers": 69,
+    "observedVoiceIds": 4541,
+    "pendingProjectedVoices": 17,
+    "pendingProjectedLayers": 90,
+    "captureFrames": 2880000
+  },
+  "receipts": {
+    "frames": 2880000,
+    "native": [
+      2377,
+      1600,
+      4096,
+      423,
+      145,
+      2879999,
+      2875092
+    ],
+    "opCounts": {
+      "fade": 1000,
+      "layer": 23844,
+      "oneshot": 1453,
+      "release": 4504,
+      "sineExp": 2748,
+      "stop": 7145,
+      "voice": 4521,
+      "voiceTarget": 113
+    },
+    "rate": 48000,
+    "receipts": {
+      "applied": 45328,
+      "attempted": 45328,
+      "gap": 0,
+      "invalid": 0,
+      "late": 0,
+      "refused": 0,
+      "wrong_frame": 0
+    },
+    "voices": 4521
+  },
+  "stemComparison": {
+    "channels": [
+      {
+        "channel": "left",
+        "absolutePeak": 1.7864524126052856,
+        "aboveUnity": 74,
+        "maxDifference": 3.600935727376964e-07,
+        "worstFrame": 1710559,
+        "relativeRms": 9.066744166127801e-08
+      },
+      {
+        "channel": "right",
+        "absolutePeak": 1.7892986536026,
+        "aboveUnity": 75,
+        "maxDifference": 3.029694835010588e-07,
+        "worstFrame": 2141026,
+        "relativeRms": 9.062010468577423e-08
+      }
+    ],
+    "candidateSHA256": "9ca7a38aad94158ff42cab69b50cd73bf09f675255c68ca2ba41afc2e4c1a3d5",
+    "referenceSHA256": "ca4c724b8c992e5a752234d5184887357894f80241a1dbd89180a3476a6ab0f6"
+  },
+  "edgePrimitiveRows": [
+    {
+      "rate": 44100,
+      "name": "sine-245",
+      "peak": 7.450580596923828e-08,
+      "relativeRms": 3.856664153628582e-07,
+      "candidate": [
+        11159,
+        14949
+      ],
+      "reference": [
+        11159,
+        14949
+      ]
+    },
+    {
+      "rate": 48000,
+      "name": "sine-245",
+      "peak": 5.960464477539063e-08,
+      "relativeRms": 2.9794710404028083e-07,
+      "candidate": [
+        12145,
+        16271
+      ],
+      "reference": [
+        12145,
+        16271
+      ]
+    },
+    {
+      "rate": 44100,
+      "name": "sine-256",
+      "peak": 1.862645149230957e-08,
+      "relativeRms": 3.2357818872806943e-07,
+      "candidate": [
+        13510,
+        17301
+      ],
+      "reference": [
+        13510,
+        17301
+      ]
+    },
+    {
+      "rate": 48000,
+      "name": "sine-256",
+      "peak": 1.862645149230957e-08,
+      "relativeRms": 2.402329263155662e-07,
+      "candidate": [
+        14705,
+        18831
+      ],
+      "reference": [
+        14705,
+        18831
+      ]
+    },
+    {
+      "rate": 44100,
+      "name": "sine-278",
+      "peak": 5.21540641784668e-08,
+      "relativeRms": 3.5466224077362627e-07,
+      "candidate": [
+        11894,
+        15684
+      ],
+      "reference": [
+        11894,
+        15684
+      ]
+    },
+    {
+      "rate": 48000,
+      "name": "sine-278",
+      "peak": 4.470348358154297e-08,
+      "relativeRms": 2.853826179874434e-07,
+      "candidate": [
+        12945,
+        17071
+      ],
+      "reference": [
+        12945,
+        17071
+      ]
+    },
+    {
+      "rate": 44100,
+      "name": "sine-1033",
+      "peak": 1.7881393432617188e-07,
+      "relativeRms": 3.081883396348929e-07,
+      "candidate": [
+        23654,
+        26342
+      ],
+      "reference": [
+        23654,
+        26342
+      ]
+    },
+    {
+      "rate": 48000,
+      "name": "sine-1033",
+      "peak": 1.4901161193847656e-07,
+      "relativeRms": 2.782991823527497e-07,
+      "candidate": [
+        25745,
+        28671
+      ],
+      "reference": [
+        25745,
+        28671
+      ]
+    },
+    {
+      "rate": 44100,
+      "name": "sine-1485",
+      "peak": 1.4901161193847656e-07,
+      "relativeRms": 3.061057419347689e-07,
+      "candidate": [
+        32474,
+        35162
+      ],
+      "reference": [
+        32474,
+        35162
+      ]
+    },
+    {
+      "rate": 48000,
+      "name": "sine-1485",
+      "peak": 1.4901161193847656e-07,
+      "relativeRms": 2.7403277028476524e-07,
+      "candidate": [
+        35345,
+        38271
+      ],
+      "reference": [
+        35345,
+        38271
+      ]
+    },
+    {
+      "rate": 44100,
+      "name": "sine-1897",
+      "peak": 1.4901161193847656e-07,
+      "relativeRms": 3.087099490238166e-07,
+      "candidate": [
+        43499,
+        46628
+      ],
+      "reference": [
+        43499,
+        46628
+      ]
+    },
+    {
+      "rate": 48000,
+      "name": "sine-1897",
+      "peak": 1.4901161193847656e-07,
+      "relativeRms": 3.0478615720916293e-07,
+      "candidate": [
+        47345,
+        50751
+      ],
+      "reference": [
+        47345,
+        50751
+      ]
+    },
+    {
+      "rate": 48000,
+      "name": "real-gunshot-1063",
+      "peak": 0.0,
+      "relativeRms": 0.0,
+      "candidate": [
+        131,
+        21597
+      ],
+      "reference": [
+        131,
+        21597
+      ]
+    },
+    {
+      "rate": 48000,
+      "name": "real-gunshot-4003",
+      "peak": 0.0,
+      "relativeRms": 0.0,
+      "candidate": [
+        241,
+        21599
+      ],
+      "reference": [
+        241,
+        21599
+      ]
+    }
+  ],
+  "graphSHA256": "3052fe6b615ccda188f34f102d09247a6dac65f99e16ccf7a9a1d210db4255a5",
+  "timelineSHA256": "22c402da44f1fb0561a52195fd9671fbb4083f3f1d9c483e1d6312c58fdbda13"
+}

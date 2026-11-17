@@ -1,0 +1,163 @@
+{
+  "stage": 23,
+  "kind": "bounded native casing, device and full-AI source-side guards",
+  "acceptanceEligible": false,
+  "basePublicCommit": "89c9974",
+  "sourceCoreSHA256": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+  "measuredDeviceDllSHA256": "9138dd6bf0cfa5dd9c5c1bd7e627b5b6cc44015e946a8a6c0631f2937cf75f05",
+  "originalGatePinsSHA256": "5902597f554c79399079b50af9cfe2f282b730b0bb41d07f91279416f0fd8ff7",
+  "device": {
+    "WASAPI": {
+      "contracts": {
+        "absolute": {
+          "cues": 21,
+          "rendered": 12,
+          "late": 8,
+          "invalid": 1,
+          "maxInvokeToCallbackMsUpper": 18.81020014877322,
+          "maxInvokeToWorkerMsUpper": 6.067099954223636,
+          "maxInvokeToRenderedOnsetMsUpper": 18.883999997329738
+        },
+        "untimed": {
+          "cues": 21,
+          "rendered": 21,
+          "late": 0,
+          "invalid": 0,
+          "maxInvokeToCallbackMsUpper": 20.736800053787192,
+          "maxInvokeToWorkerMsUpper": 5.356599893569978,
+          "maxInvokeToRenderedOnsetMsUpper": 20.874899962615928
+        }
+      },
+      "rawSummarySHA256": "bac5427c4f5e41859b289929971398c214f56fcab92322f21143beb1c44a00e2"
+    },
+    "Dummy": {
+      "contracts": {
+        "absolute": {
+          "cues": 21,
+          "rendered": 19,
+          "late": 2,
+          "invalid": 0,
+          "maxInvokeToCallbackMsUpper": 78.98090005722042,
+          "maxInvokeToWorkerMsUpper": 5.6698000209808015,
+          "maxInvokeToRenderedOnsetMsUpper": 79.17559982147213
+        },
+        "untimed": {
+          "cues": 21,
+          "rendered": 21,
+          "late": 0,
+          "invalid": 0,
+          "maxInvokeToCallbackMsUpper": 87.17029989204411,
+          "maxInvokeToWorkerMsUpper": 7.449899698257468,
+          "maxInvokeToRenderedOnsetMsUpper": 87.2639998241425
+        }
+      },
+      "rawSummarySHA256": "f423636c54da87c18a0eeccaceac08f62e445db1931f1acac759f1e826248267"
+    }
+  },
+  "sourceBypass": {
+    "fullFixtureTicks": 3600,
+    "strictExports": 8,
+    "casingCalls": 929,
+    "randomDraws": 14854,
+    "logicalCasingStarts": 7673,
+    "unchangedVoiceLifecycleRecords": 11178,
+    "retainedGraphOperations": 683918,
+    "originalCasingNodeCreates": 24374,
+    "bypassCasingNodeCreates": 0
+  },
+  "dryProjection": {
+    "scope": "private offline captured run; evidence only",
+    "namedSourceStarts": 29776,
+    "projected": 28045,
+    "allStarts": 31711,
+    "fullSceneAudibleParity": false,
+    "fullRealtimeDeadlinePass": false
+  },
+  "historicalFailures": {
+    "ipc/harness/full-clock-paced-1": {
+      "statuses": [
+        22987,
+        18420,
+        3921,
+        0
+      ],
+      "records": 45328,
+      "sha256": "fb208ce100ddfe818aa4afa096021944757f9720451ee294394ac9e33aacaebf"
+    },
+    "ipc-clock-event/paired-release-1/2-event": {
+      "statuses": [
+        25901,
+        15464,
+        3963,
+        0
+      ],
+      "records": 45328,
+      "sha256": "99dbc43f7e582b1dbbbb00f7e4b6cc280833e7ba6bc5ac10dc3543b759ac81e7"
+    },
+    "ipc-clock-event/paired-release-1/3-event": {
+      "statuses": [
+        25871,
+        15485,
+        3972,
+        0
+      ],
+      "records": 45328,
+      "sha256": "88e2337bc6053b5ef58b4fae50478a5626227a3c081b24966331eaf6ef92cb97"
+    }
+  },
+  "selectedEvidenceSHA256": {
+    "dry-coverage.json": "91a08aa5a3fecc4156c6969d7df2eafaa4eb9dbf5f9b911684c3dfeab3783978",
+    "dry-simultaneous.json": "65fa50144375f3a5f375ff5e7b5955f8285e0d24e29a7de59e1908733f8c8899",
+    "dummy-observations.json": "0e06bc86b689087c363c355fbe1eeca095152afba3f5c02f707f87d086871b9a",
+    "wasapi-observations.json": "fd1d6e85820569391c56034d49aaba016f474499d6d87881d1213023e26eea02"
+  },
+  "portableRebuild": {
+    "driver": "Dummy",
+    "results": {
+      "absolute": {
+        "cues": 7,
+        "rendered": 1,
+        "late": 5,
+        "invalid": 1,
+        "maxInvokeToCallbackMsUpper": 87.17869977684018,
+        "maxInvokeToWorkerMsUpper": 5.800699755859341,
+        "maxInvokeToRenderedOnsetMsUpper": 54.9432995807648
+      },
+      "untimed": {
+        "cues": 7,
+        "rendered": 7,
+        "late": 0,
+        "invalid": 0,
+        "maxInvokeToCallbackMsUpper": 86.44890005493164,
+        "maxInvokeToWorkerMsUpper": 5.70989997291565,
+        "maxInvokeToRenderedOnsetMsUpper": 86.59519989395142
+      }
+    },
+    "runtimeSHA256": {
+      "game.js": "b3b3084ac3e4dedc54e160a702cc85022e59daf806007fa2237264d972e5be7b",
+      "godot": "c8f0a6bc45a19b33541501e57f6f7cd972ab18453743266339d495cbbe846643",
+      "node": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "gh_audio.dll": "eb282131a4ca1581e66a5047cafe8f746e75f2484279bf9b26e85a77e5f774a8",
+      "white.f32": "44b682016f8c01235d1d4a988a73575d08ec23796b9a8d455c4c76b45f32ba10",
+      "brown.f32": "97983e9f9b797f53a4460c9356b58dbdd70146565352ed388a2642f3388b1f17",
+      "buffers.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "project.godot": "f311a5d3814c6cb3281060a8a56fda3b709cf3672cb3a476d983c438551a118c",
+      "scene_audio.gd": "82f796403d9280205bff88c1ceca290152028048eda209ffc49f65e4f153914f",
+      "ipc.gd": "ff5d1b9f6361c6c0b160022cc059fe078bf40ceeec3687f1851e202b8b116d82",
+      "audio.gdextension": "1f791a76188705947b496eb53205bf0483f9cfa653c82fa16387446c64d088d6"
+    },
+    "godotCppCommit": "27d9dd23c83871e0619fca5dc2cddfbfd69e926a",
+    "wasapiRerun": false
+  },
+  "latencyAcceptanceTarget": {
+    "eventToAudioOutputMaxMs": 20,
+    "furtherOptimizationRangeMs": [
+      10,
+      15
+    ],
+    "furtherOptimizationRequiresSupportingEvidence": true,
+    "archivedSoftwareMaxMs": 20.874899962615928,
+    "archivedBaselineAccepted": false,
+    "endpointOrSpeakerMeasured": false
+  }
+}
