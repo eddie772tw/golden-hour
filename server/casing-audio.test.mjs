@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
-import { createCasingAudio, supportsCasingSources } from "../game/client/casing-audio.js";
+import { createCasingAudio, supportsCasingSources, casingSourceRejection } from "../game/client/casing-audio.js";
 import { CasingMixer } from "../game/client/casing-worklet.js";
 
 // CPU hardware boundary, not a browser AudioNode benchmark or a PCM oracle.
@@ -117,6 +117,9 @@ function run(enabled, { fallback = false, reject = false, interaction, timeScale
   assert.equal(state.active,0); assert.equal(state.voices.length,0);
   assert.equal(api._errors.length,0);
   for(const lease of leases)assert.equal(lease.releases,1);
+  // Check real own keys BEFORE JSON erases dest:undefined from T.partials.
+  assert.ok(cueOriginals.every(supportsCasingSources),"raw actual source descriptors must pass the production guard");
+  assert.ok(!cueOriginals.length || cueOriginals.flat().some(s=>s.kind==="tone" && Object.hasOwn(s.options,"dest")) || interaction,"normal brass exercised own dest key");
   return JSON.parse(JSON.stringify({ actions, draws, cues, cueOriginals, descriptors, summaries, sharedDisconnects, graph:ctx.commands }));
 }
 
@@ -250,4 +253,56 @@ test("actual processor warms DSP before ready, reports onset and ignores stale t
   scope.currentFrame=1024; receive({type:"cue",token:3,commands:[command]});
   assert.equal(node.port.messages.at(-1).leadFrames,-880);
   receive({type:"release",token:3}); assert.equal(node.mixer.sources.length,0);
+});
+
+
+test("production casing admission accepts omitted partials dest but rejects a real route and diagnoses rejection", async () => {
+  const partial={kind:"tone",options:{f:440,d:.03,g:.5,dest:undefined}};
+  assert.ok(Object.hasOwn(partial.options,"dest"));
+  assert.equal(casingSourceRejection([partial]),null);
+  assert.equal(casingSourceRejection([{kind:"tone",options:{...partial.options,dest:null}}]),null);
+  assert.equal(casingSourceRejection([{kind:"tone",options:{...partial.options,dest:{connect(){}}}}]),"custom-routing");
+  assert.equal(casingSourceRejection([{kind:"noise",options:{f:440,type:"bandpass",dest:{}}}]),"custom-routing");
+  assert.equal(casingSourceRejection([{kind:"unknown",options:{f:440}}]),"source-kind");
+  assert.equal(casingSourceRejection([{kind:"tone",options:{f:440,hp:100}}]),"unknown-property");
+  const nodes=[];
+  class Node {
+    constructor() {nodes.push(this);this.port={postMessage(){}};queueMicrotask(()=>this.port.onmessage({data:{type:"ready"}}));}
+    connect(){} disconnect(){}
+  }
+  const pool=createCasingAudio({sampleRate:48000,currentTime:0,audioWorklet:{async addModule(){}}},{sampleRate:48000,getChannelData:()=>new Float32Array(144000)},{Node,slots:1});
+  await pool.ready;
+  const lease=pool.lease({});
+  assert.equal(lease.submit([{start:.003,issuedAt:0}],[partial]),true);
+  assert.equal(lease.submit([{start:.003,issuedAt:0}],[{kind:"tone",options:{f:440,dest:{}}}]),false);
+  assert.deepEqual(pool.stats.descriptorReasons,{"custom-routing":1});
+  assert.equal(pool.stats.submitted,1);assert.equal(pool.stats.descriptorFallback,1);
+  lease.release();
+});
+
+test("Blink automated oscillator starts at zero phase and first partial quantum reads frequency buffer index zero", () => {
+  for(const rate of [44100,48000]) {
+    const command={kind:"tone",start:.003,issuedAt:0,attack:.001,hold:0,decay:.1,gain:1,
+      frequency:600.123456,frequency1:240.123456,frequencyTime:.05};
+    const mixer=new CasingMixer(rate,new Float32Array(rate*3));mixer.cue([command],0);
+    const source=mixer.sources[0],first=Math.ceil(command.start*rate),end=Math.floor(first/128)*128+128;
+    assert.equal(source.phase,0,"frequency automation leaves Blink fractional-start frequency local at zero");
+    assert.equal(source.frequency,Math.fround(command.frequency));
+    assert.equal(source.frequencyOffset,first%128);
+    const output=new Float32Array(end+2);mixer.render(output,0);
+    assert.equal(output[first],0,"first oscillator sample starts at phase0 even with fractional API start");
+    let phase=0;
+    for(let frame=first;frame<output.length;frame++) {
+      const time=frame/rate,clock=(frame<end?frame-first%128:frame)/rate;
+      const frequency=Math.fround(Math.fround(command.frequency)*Math.pow(Math.fround(command.frequency1)/Math.fround(command.frequency),Math.max(0,clock-command.start)/command.frequencyTime));
+      const envelope=time<command.start+command.attack?(time-command.start)/command.attack:Math.pow(.001,(time-command.start-command.attack)/command.decay);
+      assert.ok(Math.abs(output[frame]-Math.fround(Math.sin(phase)*envelope))<1e-7,`actual sample ${frame}`);
+      phase=(phase+2*Math.PI*frequency/rate)%(2*Math.PI);
+    }
+    assert.equal(source.phase,phase);
+  }
+  const mixer=new CasingMixer(48000,new Float32Array(144000));
+  mixer.cue([{kind:"noise",type:"lowpass",start:.003,issuedAt:0,attack:.001,hold:0,decay:.02,gain:.1,frequency:900,q:.7,offset:.03700001,noiseRate:1+1e-9}],0);
+  assert.equal(mixer.sources[0].noiseRate,1,"AudioParam float conversion precedes unity offset rounding");
+  assert.equal(mixer.sources[0].noise,Math.round(.03700001*48000));
 });

@@ -25,13 +25,18 @@ export class CasingMixer {
       s.frequencyEnd = Math.max(command.start+command.frequencyTime,issued);
       s.stop = Math.ceil(Math.max(command.start+command.attack+command.hold+command.decay+.03,issued)*this.rate);
       if (s.kind === "tone") {
-        const at = s.frame/this.rate;
-        const frequency = s.frequency1 && at < s.frequencyEnd
-          ? s.frequency*Math.pow(s.frequency1/s.frequency,Math.max(0,at-s.attackStart)/(s.frequencyEnd-s.attackStart))
-          : s.frequency1 || s.frequency;
-        s.phase = 2*Math.PI*frequency*(first-start*this.rate)/this.rate;
+        // T.tone always schedules frequency automation. Blink's a-rate first
+        // quantum starts with phase zero (its fractional-start frequency=0)
+        // and reads increments from index0, even when output begins mid-block.
+        // Match that boundary rather than analytically advancing a lost phase.
+        s.firstQuantumEnd = Math.floor(s.frame/128)*128+128;
+        s.frequencyOffset = s.frame%128;
+        s.frequency = Math.fround(s.frequency);
+        s.frequency1 = Math.fround(s.frequency1);
       }
       if (s.kind === "noise") {
+        // playbackRate AudioParam stores a float, including its unity fast path.
+        s.noiseRate = Math.fround(s.noiseRate);
         if (s.noiseRate === 1) s.noise = Math.round(s.noise);
         s.noise += (first-start*this.rate)*s.noiseRate;
         // Web Audio low/high-pass Q is in dB; band-pass Q is linear.
@@ -50,10 +55,12 @@ export class CasingMixer {
     let value;
     if (s.kind === "tone") {
       value = Math.sin(s.phase);
-      const frequency = s.frequency1 && time < s.frequencyEnd
-        ? s.frequency * Math.pow(s.frequency1/s.frequency, Math.max(0,time-s.attackStart)/(s.frequencyEnd-s.attackStart))
+      const frequencyTime = (s.frame-1 < s.firstQuantumEnd
+        ? s.frame-1-s.frequencyOffset : s.frame-1)/this.rate;
+      const frequency = s.frequency1 && frequencyTime < s.frequencyEnd
+        ? s.frequency * Math.pow(s.frequency1/s.frequency, Math.max(0,frequencyTime-s.attackStart)/(s.frequencyEnd-s.attackStart))
         : s.frequency1 || s.frequency;
-      s.phase = (s.phase + 2*Math.PI*frequency/this.rate) % (2*Math.PI);
+      s.phase = (s.phase + 2*Math.PI*Math.fround(frequency)/this.rate) % (2*Math.PI);
     } else {
       const length = this.white.length, index = Math.floor(s.noise) % length, part = s.noise % 1;
       value = this.white[index]*(1-part) + this.white[(index+1)%length]*part;

@@ -1,24 +1,33 @@
 // Default-off experiment. The original T voice still owns admission, spatial
 // routing, gain, reverb and release. Only its casing source subgraph is pooled.
-const toneKeys = new Set(["t","a","hold","d","g","f","f1","ft","type"]);
-const noiseKeys = new Set(["t","a","hold","d","g","f","q","rate","type","buf"]);
-export function supportsCasingSources(sources) {
-  return sources.length > 0 && sources.length <= 32 && sources.every(({kind,options:q}) => {
+const toneKeys = new Set(["t","a","hold","d","g","f","f1","ft","type","dest"]);
+const noiseKeys = new Set(["t","a","hold","d","g","f","q","rate","type","buf","dest"]);
+// Stable bounded reason labels; do not accumulate arbitrary descriptor keys.
+export function casingSourceRejection(sources) {
+  if (!sources.length || sources.length > 32) return "source-count";
+  for (const {kind,options:q} of sources) {
+    if (kind !== "tone" && kind !== "noise") return "source-kind";
     const keys = kind === "tone" ? toneKeys : noiseKeys;
-    return Object.keys(q).every(key=>keys.has(key)) && Number.isFinite(q.f) && q.f > 0
-      && [q.t??0,q.a??.001,q.hold??0,q.d??.1,q.g??1,q.f1??1,q.ft??1,q.q??.7,q.rate??1].every(v=>Number.isFinite(v)&&v>=0)
-      && (q.a??.001)>0 && (q.d??.1)>0 && (q.ft??1)>0 && (q.rate??1)>0 && (q.q??.7)>0
-      && (kind === "tone" ? !q.type || q.type === "sine"
-        : ["bandpass","lowpass","highpass"].includes(q.type) && (!q.buf || q.buf === "white"));
-  });
+    if (Object.keys(q).some(key=>!keys.has(key))) return "unknown-property";
+    // partials owns a dest key even when its omitted parameter is undefined.
+    // Null/undefined both use the original sum. Real alternate routing does not.
+    if (q.dest != null) return "custom-routing";
+    if (!Number.isFinite(q.f) || !(q.f > 0)
+      || ![q.t??0,q.a??.001,q.hold??0,q.d??.1,q.g??1,q.f1??1,q.ft??1,q.q??.7,q.rate??1].every(v=>Number.isFinite(v)&&v>=0)
+      || !((q.a??.001)>0 && (q.d??.1)>0 && (q.ft??1)>0 && (q.rate??1)>0 && (q.q??.7)>0)) return "numeric-range";
+    if (kind === "tone" ? q.type && q.type !== "sine"
+      : !["bandpass","lowpass","highpass"].includes(q.type) || q.buf && q.buf !== "white") return "waveform-or-buffer";
+  }
+  return null;
 }
+export function supportsCasingSources(sources) { return casingSourceRejection(sources) === null; }
 export function createCasingAudio(context, white, { register = node => node,
   unregister = node => node.disconnect(), Node = globalThis.AudioWorkletNode,
   slots = 12, timeoutMs = 5000 } = {}) {
   const stats = { status: "preparing", slots, leased: 0, peak: 0, submitted: 0,
     fallback: 0, processorErrors: 0, lateCues: 0, lateFrames: 0, maxLateFrames: 0,
     firstSamples: 0, maxSourceOnsetDelayFrames: 0, warmed: 0, expiredSources: 0,
-    descriptorFallback: 0, apiPastStartSources: 0, deliveryMissCues: 0, maxDeliveryMissFrames: 0,
+    descriptorFallback: 0, descriptorReasons: {}, apiPastStartSources: 0, deliveryMissCues: 0, maxDeliveryMissFrames: 0,
     timings: [], timingDropped: 0,
     maxCommandLeadFrames: 0, minCommandLeadFrames: null };
   const pool = [], api = { stats, ready: null, lease };
@@ -98,8 +107,11 @@ export function createCasingAudio(context, white, { register = node => node,
     let released = false;
     return {
       submit(commands, originals) {
-        if (stats.status !== "ready" || !supportsCasingSources(originals)) {
-          stats.fallback++; stats.descriptorFallback++; return false;
+        const rejection = stats.status !== "ready" ? "not-ready" : casingSourceRejection(originals);
+        if (rejection) {
+          stats.fallback++; stats.descriptorFallback++;
+          stats.descriptorReasons[rejection] = (stats.descriptorReasons[rejection] || 0)+1;
+          return false;
         }
         const cueId = ++stats.submitted;
         const requestedFrame = Math.ceil(Math.min(...commands.map(c=>c.start))*context.sampleRate);

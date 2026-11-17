@@ -23,6 +23,11 @@ offsets. They do not draw random values a second time. Unknown routing, waveform
 buffer, loop or extra descriptor properties use this fallback. Sample rates
 other than 44.1 or 48 kHz also retain the original graph.
 
+Admission accepts the own `dest: undefined` / `dest: null` property emitted by
+`T.partials`: both use the original `T.sum`. A real alternate destination still
+rejects the whole voice. `descriptorReasons` counts bounded rejection labels;
+no arbitrary descriptor keys are retained.
+
 The finite pool copies the three-second mono white buffer twelve times (about
 6.59 MiB at 48 kHz), plus processor state and browser overhead. The original
 spatial graphs are still created per cue. DSP on the audio thread, command
@@ -72,6 +77,14 @@ same actual casing branches, random stream and white PCM. The output is a dry
 source component comparison. It does not test Worklet transport, downstream
 spatial/reverb output, or a physical audio device.
 
+The default diagnostic covers all ten current surface branches and time scales
+0.35, 1 and 1.5. For a small first screen use
+`{sampleRate:44100, surfaces:["metal","wood","water"], timeScales:[1],
+modes:["onTime","pastApi","stealTail"]}` and repeat at48 kHz. Explicit
+`timeScale:1` remains a supported single-scale call. Every row now requires the
+actual production descriptor guard on the un-serialized original descriptors;
+the diagnostic lease cannot bypass unsupported routing.
+
 The four modes have separate meanings:
 
 - `onTime`: both are issued before the requested start.
@@ -88,7 +101,9 @@ The four modes have separate meanings:
 The oracle records requested/effective main start, every main issue time, arrival,
 first nonzero samples, stop/steal time, onset difference, waveform error and correlation. The
 initial on-time/past-API gate is an onset difference of at most one sample and
-normalized RMSE at most 0.02. It remains pending until root actually runs it.
+normalized RMSE at most 0.02. The original root screen (`work/browser-feedback/evidence/casing-pcm-1.json`)
+failed23 waveform cases at44.1 kHz and12 at48 kHz, excluding deliveryMiss.
+The corrected revision has not yet passed a browser oracle.
 The custom oscillator and resampling/filter implementation are not presumed
 bit-exact to a browser. Failed cases require correction or a narrower fallback;
 they cannot be dismissed as an acceptable timbre change.
@@ -133,3 +148,45 @@ Adopt only a distinct repeatable benefit without audible or scheduling
 regressions. Measure event-to-physical-output latency separately against 20 ms;
 only pursue 15–10 ms with evidence of headroom. A passing CPU test or offline
 waveform comparison cannot satisfy that endpoint target.
+
+
+## Correction after the first browser oracle
+
+The original screen had matching first nonzero samples but substantial waveform
+errors, including brass partials and the water frequency ramp. A separate8s
+live smoke submitted13 voices and rejected219 descriptors. Those observations
+are failures, not an acceptable timbre change or performance benefit.
+
+Two bounded implementation errors were identified and corrected:
+
+- `T.partials` always includes its `dest` own key, even when its optional
+  destination is undefined. The old guard rejected these ordinary partials.
+  The old CPU test serialized descriptors through JSON before checking them,
+  erasing the key and hiding the rejection. The guard and regression now run
+  on actual own keys and still reject a real custom route.
+- Original `T.tone` schedules a frequency AudioParam event for every oscillator.
+  Chromium's `OscillatorHandler::Process` leaves its fractional-start frequency
+  local at zero in the sample-accurate path. It sends the initial partial
+  quantum to `ProcessARate` with the frequency buffer from index zero while
+  offsetting the output span. The candidate previously compensated fractional
+  phase and read frequency from the first output's absolute frame. It now
+  starts phase at zero and matches the initial partial128-frame quantum index.
+  Frequency endpoints/samples and noise playbackRate use Float32 AudioParam
+  conversion. The existing linear noise resampler/filter design is retained.
+
+These statements refer to the official source URLs above, inspected2026-11-17;
+`main` is a moving reference, not proof of the installed Edge157 build. The
+actual44.1/48k native offline oracle remains decisive. The mixer targets the
+current default128-frame context quantum; another render quantum is not
+certified. CPU tests verify boundary equations, original raw admission,
+RNG/allocator/whole-voice fallback and block partition invariance. They cannot
+establish browser PCM equivalence.
+
+The six focused tests and full136-test suite pass after this correction; module
+syntax and diff whitespace checks pass. No browser, GPU, audio device or fullAI
+measurement was launched by the correction author. The query remains opt-in;
+no performance run is justified until onTime/pastApi/stealTail pass the unchanged
+2%/one-sample gate. Root must then cover ten surfaces x three time scales,
+retain all errors and measure remaining original graph cost. Casing is only
+one graph family; reducing it does not establish that the roughly113k nodes/min
+baseline or main-thread cleanup spikes are resolved.

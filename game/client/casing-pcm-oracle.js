@@ -1,6 +1,7 @@
 // Developer-only, never imported by startup. Root runs this in the browser.
 // Original WebAudio source graph is the oracle; JS self-consistency is not one.
 import { CasingMixer } from "./casing-worklet.js";
+import { supportsCasingSources } from "./casing-audio.js";
 
 function replaceOnce(source, from, to) {
   if (source.split(from).length !== 2) throw Error("Unrecognized audio owner: "+from);
@@ -13,9 +14,9 @@ function makeAudio(body, ctx, white, start, compact, seed) {
   const bus=ctx.createGain();bus.connect(ctx.destination);
   Object.assign(state,{ctx,nyq:ctx.sampleRate*.45,revIn:ctx.createGain()});
   state.buf.white=white;state.bus.sfx=bus;
-  let commands,stopAt;
-  if(compact)state.casingAudio={lease(){return {submit(value){commands=value;},release(){},stop(at){stopAt=at;}};}};
-  return {api,state,get commands(){return commands;},get stopAt(){return stopAt;}};
+  let commands,originals,stopAt;
+  if(compact)state.casingAudio={lease(){return {submit(value,descriptors){commands=value;originals=descriptors;},release(){},stop(at){stopAt=at;}};}};
+  return {api,state,get commands(){return commands;},get originals(){return originals;},get stopAt(){return stopAt;}};
 }
 function metrics(original,candidate) {
   let error=0, energy=0, candidateEnergy=0, dot=0, maxError=0;
@@ -34,8 +35,9 @@ function metrics(original,candidate) {
 }
 
 export async function runCasingPCMOracle({sampleRate=48000,
-  surfaces=["metal","wood","marble","water","carpet"],kinds=["brass","shell"],
-  modes=["onTime","pastApi","deliveryMiss","stealTail"],timeScale=1,seed=8171,
+  surfaces=["water","carpet","fabric","foliage","wood","metal","marble","tile","glass","concrete"],kinds=["brass","shell"],
+  modes=["onTime","pastApi","deliveryMiss","stealTail"],timeScale,
+  timeScales=timeScale===undefined?[.35,1,1.5]:[timeScale],seed=8171,
   includePCM=false,coreURL=new URL("../core/game.js",import.meta.url)}={}) {
   const source=await (await fetch(coreURL)).text();
   let body=source.slice(source.indexOf("  var qc = Math.PI"),source.indexOf("  var fo = eZ();"));
@@ -47,7 +49,8 @@ export async function runCasingPCMOracle({sampleRate=48000,
     .map(v=>v.toString(16).padStart(2,"0")).join("");
   const rows=[],frames=Math.ceil(sampleRate*.6),requestedStart=.003;
   const suspendFrame=1024,arrivalSeconds=suspendFrame/sampleRate;
-  for(const surface of surfaces)for(const kind of kinds)for(const mode of modes) {
+  for(const timeScale of timeScales)for(const surface of surfaces)for(const kind of kinds)for(const mode of modes) {
+    if(!Number.isFinite(timeScale)||timeScale<=0)throw Error("Invalid diagnostic time scale");
     if(!["onTime","pastApi","deliveryMiss","stealTail"].includes(mode))throw Error("Unknown mode: "+mode);
     const ctx=new OfflineAudioContext(1,frames,sampleRate),white=ctx.createBuffer(1,sampleRate*3,sampleRate);
     const data=white.getChannelData(0);let noiseSeed=131;
@@ -61,6 +64,7 @@ export async function runCasingPCMOracle({sampleRate=48000,
       if(original.api._errors.length||compact.api._errors.length)throw Error("Original/candidate cue error");
       commands=compact.commands;
       if(!commands?.length)throw Error("No compact sources");
+      if(!supportsCasingSources(compact.originals))throw Error("Actual production descriptor guard rejects this oracle voice");
     }
     const suspension=mode==="onTime"?null:ctx.suspend(arrivalSeconds);
     if(mode!=="pastApi")issue();
@@ -85,7 +89,7 @@ export async function runCasingPCMOracle({sampleRate=48000,
     const originalPCM=(await rendered).getChannelData(0),comparison=metrics(originalPCM,candidate);
     const requestedFrame=Math.ceil(Math.min(...commands.map(c=>c.start))*sampleRate);
     const effectiveMainFrame=Math.ceil(Math.min(...commands.map(c=>Math.max(c.start,c.issuedAt)))*sampleRate);
-    const row={surface,kind,mode,timeScale,sourceCount:commands.length,requestedFrame,effectiveMainFrame,
+    const row={surface,kind,mode,timeScale,productionDescriptorSupported:true,sourceCount:commands.length,requestedFrame,effectiveMainFrame,
       issuedFrames:commands.map(c=>Math.round(c.issuedAt*sampleRate)),arrivalFrame,
       apiPastStartSources:commands.filter(c=>c.issuedAt>c.start).length,
       deliveryMissFrames:Math.max(0,arrivalFrame-effectiveMainFrame),
@@ -97,7 +101,7 @@ export async function runCasingPCMOracle({sampleRate=48000,
     if(includePCM) {row.originalPCM=Array.from(originalPCM);row.candidatePCM=Array.from(candidate);}
     rows.push(row);
   }
-  return {schema:1,coreSHA256,sampleRate,rows,
+  return {schema:1,coreSHA256,sampleRate,timeScales,rows,
     failedWaveformCases:rows.filter(row=>row.waveformGate==="fail").length,
     boundary:"Offline original WebAudio graph vs JS CasingMixer; no Worklet transport, physical device latency or browser FPS proof",
     gate:"On-time/past-API source onset within one sample and normalized RMSE <= 0.02; deliveryMiss intentionally fails original onset",
