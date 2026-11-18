@@ -19951,6 +19951,18 @@ void main() {`).replace("#include <lights_fragment_begin>", `#include <lights_fr
       this.drawn = w, this.geo.instanceCount = w, w && (this.ib.clearUpdateRanges(), this.ib.addUpdateRange(0, M), this.ib.needsUpdate = true);
     }
   };
+  // Owner-selected 84-triangle default; retain original/medium for visual A/B.
+  function ghCasingGeometry(detail) {
+    detail = detail === "original" || detail === "high" ? "original" : detail === "medium" ? "medium" : "low";
+    const reduced = detail === "medium" || detail === "low";
+    const profile = reduced
+      ? [[0, -0.5], [0.5, -0.5], [0.5, -0.455], [0.47, -0.385], [0.47, 0.5], [0.4, 0.5], [0.4, 0.15], [0, 0.15]]
+      : [[0, -0.5], [0.17, -0.5], [0.17, -0.492], [0.47, -0.492], [0.5, -0.47], [0.5, -0.455], [0.43, -0.44], [0.43, -0.405], [0.47, -0.385], [0.47, 0.5], [0.405, 0.5], [0.4, 0.15], [0, 0.15]];
+    const points = profile.map(([x, y]) => new It(x * 0.5, y));
+    const geometry = new zo(points, detail === "medium" ? 8 : detail === "low" ? 6 : 18);
+    geometry.rotateX(Math.PI / 2), geometry.translate(0, -0.25, 0), geometry.computeVertexNormals();
+    return geometry;
+  }
   var gb = 8, W2 = { crater: { cells: [[0, 0, 1], [1, 0, 1], [2, 0, 1], [3, 0, 1]], size: [0.11, 0.17] }, cracked: { cells: [[4, 0, 1], [5, 0, 1], [6, 0, 1], [7, 0, 1]], size: [0.15, 0.24] }, metal: { cells: [[0, 1, 1], [1, 1, 1], [2, 1, 1], [3, 1, 1]], size: [0.075, 0.105], metal: 1, heat: 1 }, wood: { cells: [[4, 1, 1], [5, 1, 1], [6, 1, 1], [7, 1, 1]], size: [0.13, 0.2] }, fabric: { cells: [[0, 2, 1], [1, 2, 1], [2, 2, 1]], size: [0.05, 0.075] }, plastic: { cells: [[3, 2, 1], [4, 2, 1]], size: [0.06, 0.085] }, soot: { cells: [[5, 2, 1]], size: [0.3, 0.5] }, chunk: { cells: [[0, 3, 1], [1, 3, 1]], size: [0.3, 0.42] }, chunkCracked: { cells: [[2, 3, 1], [3, 3, 1]], size: [0.34, 0.5] }, chunkWood: { cells: [[4, 3, 1]], size: [0.3, 0.42] }, scorch: { cells: [[0, 4, 2], [2, 4, 2]], size: [2.7, 3.5], heat: 0.5 } };
   function qY(o) {
     let t = o / gb, e = we(o), s = e.getContext("2d"), n = we(o), i = n.getContext("2d", { willReadFrequently: true });
@@ -21023,10 +21035,7 @@ void main() {`).replace("#include <lights_fragment_begin>", `#include <lights_fr
       let t = this.physics, e = t && t.caseMesh;
       if (!e || e.userData.ghBrass) return;
       e.userData.ghBrass = true;
-      let s = [[0, -0.5], [0.17, -0.5], [0.17, -0.492], [0.47, -0.492], [0.5, -0.47], [0.5, -0.455], [0.43, -0.44], [0.43, -0.405], [0.47, -0.385], [0.47, 0.5], [0.405, 0.5], [0.4, 0.15], [0, 0.15]].map((l) => new It(l[0], l[1]));
-      for (let l of s) l.x *= 0.5;
-      let n = new zo(s, 18);
-      n.rotateX(Math.PI / 2), n.translate(0, -0.25, 0), n.computeVertexNormals();
+      let n = ghCasingGeometry(globalThis.__GH_CASING_DETAIL);
       let i = e.geometry;
       e.geometry = n, i && i.dispose();
       let a = new $e({ color: 16777215, metalness: 1, roughness: 0.3, side: nn });

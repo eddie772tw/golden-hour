@@ -1,0 +1,59 @@
+{
+  "sourceSHA256": "09e952fdb2316f7dcba4ef3e7818e62089530c0b01db97aa6a4607ed8032fd6c",
+  "interpretation": "Actual-source offline inventory, not observed draws, bandwidth or GPU time. Fixed-capacity totals apply only if that mesh is submitted by a pass.",
+  "emptyPools": {
+    "casingBeforeStyle": {
+      "capacity": 90,
+      "vertices": 52,
+      "trianglesPerInstance": 32,
+      "trianglesPerDrawAtFixedCapacity": 2880,
+      "geometryAttributeBytes": 1664,
+      "indexBytes": 192,
+      "instanceMatrixBytes": 5760,
+      "instanceColorBytes": 1080,
+      "frustumCulled": false,
+      "castShadow": true
+    },
+    "casingAfterStyle": {
+      "capacity": 90,
+      "vertices": 56,
+      "trianglesPerInstance": 84,
+      "trianglesPerDrawAtFixedCapacity": 7560,
+      "geometryAttributeBytes": 1792,
+      "indexBytes": 504,
+      "instanceMatrixBytes": 5760,
+      "instanceColorBytes": 1080,
+      "frustumCulled": false,
+      "castShadow": true
+    },
+    "debris": {
+      "capacity": 320,
+      "vertices": 24,
+      "trianglesPerInstance": 12,
+      "trianglesPerDrawAtFixedCapacity": 3840,
+      "geometryAttributeBytes": 768,
+      "indexBytes": 72,
+      "instanceMatrixBytes": 20480,
+      "instanceColorBytes": 3840,
+      "frustumCulled": false,
+      "castShadow": true
+    }
+  },
+  "decalSingleAdd": {
+    "capacity": 600,
+    "changedSlots": 1,
+    "dirtyAttributes": 4,
+    "fullBufferBytes": 64800,
+    "changedSlotBytes": 108,
+    "uploadRanges": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "recommendations": [
+    "Profile empty/low occupancy per-pass instance submissions before a high-water count candidate. Preserve ring slot identity and full-capacity reset.",
+    "Profile decal add frequency and upload owner bytes before a four-attribute pending-span candidate. No per-frame bandwidth estimate follows from one add."
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "sourceSHA256": "eef6da385ed6aae70a126b2df98d0242e42b3ff4b6db56f774fec936fd2ddb05",
+  "sourceSHA256": "09e952fdb2316f7dcba4ef3e7818e62089530c0b01db97aa6a4607ed8032fd6c",
   "operatorsSHA256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
   "interpretation": "Static geometry inventory only; no observed draw counts, timing, GPU cost or scene-wide totals.",
   "operatorBodies": [

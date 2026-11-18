@@ -1,5 +1,13 @@
 # Static performance follow-up, 2026-11-18
 
+**Later owner decision:** the original casing inventory below is retained as
+historical evidence. The current default is now the owner's chosen 84-triangle
+casing; the unchanged 90-slot capacity represents 7,560 triangles per submitted
+draw, not measured GPU savings. Running `audit_fixed_pools.mjs` now reproduces
+`evidence/fixed-pools-low-default-20261118.json`, not the earlier 432-triangle
+baseline JSON. See `casing-detail-candidates.md` for original/medium A/B options.
+The empty-slot and other runtime-measurement caveats below remain applicable.
+
 This audit extends `browser-round-20261117.md`, not the superseded candidate
 priorities alone. It does not measure frame time. The only added code in this
 follow-up is a repeatable offline inventory, not a runtime change.
