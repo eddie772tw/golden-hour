@@ -1,0 +1,60 @@
+{
+  "sourceSHA256": "eef6da385ed6aae70a126b2df98d0242e42b3ff4b6db56f774fec936fd2ddb05",
+  "operatorsSHA256": "efdb12a487d0356c0ba402ed3e1becfa8311b199ce555e19a61a8cbf040a2942",
+  "interpretation": "Static geometry inventory only; no observed draw counts, timing, GPU cost or scene-wide totals.",
+  "operatorBodies": [
+    {
+      "slot": 0,
+      "drawRange": {
+        "start": 0,
+        "count": 95922
+      },
+      "activeTriangles": 31974,
+      "storedIndexTriangles": 33322,
+      "storedVertices": 28468
+    },
+    {
+      "slot": 1,
+      "drawRange": {
+        "start": 0,
+        "count": 95922
+      },
+      "activeTriangles": 31974,
+      "storedIndexTriangles": 33322,
+      "storedVertices": 28468
+    }
+  ],
+  "circularWindow": [
+    {
+      "type": "LatheGeometry",
+      "sourceVertices": 270,
+      "triangles": 440,
+      "expandedVertices": 1320
+    },
+    {
+      "type": "TorusGeometry",
+      "sourceVertices": 315,
+      "triangles": 528,
+      "expandedVertices": 1584
+    },
+    {
+      "type": "CylinderGeometry",
+      "sourceVertices": 268,
+      "triangles": 176,
+      "expandedVertices": 528
+    },
+    {
+      "type": "CircleGeometry",
+      "sourceVertices": 46,
+      "triangles": 44,
+      "expandedVertices": 132
+    }
+  ],
+  "circularWindowTotals": {
+    "triangles": 1188,
+    "sourceVertices": 899,
+    "expandedVertices": 3564,
+    "batchedVertexAttributeBytes": 114048
+  },
+  "exclusions": "Window group excludes its eight fasteners and surrounding door geometry; operator body excludes separately attached gear and weapons."
+}

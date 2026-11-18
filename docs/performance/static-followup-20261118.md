@@ -99,3 +99,45 @@ before another dirty-span implementation. It does not replace the established
 1080p DPR1 High, reflection ≤30 Hz, nine native AI / 3,600 ticks, eight logical
 exports, first-use and long-frame preservation, native visual controls and clean
 repeated comparison requirements. No new FPS or 1% low result is claimed.
+
+## Model-density inventory (verified against the integrated source)
+
+Run `node scripts/performance/audit_model_density.mjs`; reproducible values and
+source/asset hashes are in `evidence/model-density-20261118.json`. This evaluates
+the actual bundled geometry constructors and world batch methods, with startup,
+DOM, audio and GPU calls forbidden, and decodes the shipped operator pack using
+its native decoder. No runtime code or visual-quality settings change.
+
+- **Operator body:** both records in `game/assets/operators.bin` have an active
+  draw range of 95,922 indices, or **31,974 triangles**. Each record stores 28,468
+  vertices and 99,966 indices (33,322 stored triangles). The larger storage count
+  must not be substituted for the active draw range. The decoder validates
+  `triangles === drawRange.count / 3`; `restoreOperator` in
+  `game/client/startup-geometry.js` applies that range to the geometry. These are
+  body-pack counts, not an entire equipped actor or all-pass frame total.
+- **Hotel circular door-window components:** the actual four-constructor `Y(...)`
+  line in `game/core/game.js`, identified by `new zo([[0.148 + 0.05, 0]`, builds a
+  six-point / 44-segment lathe (440 triangles), a 6×44 torus (528), a 44-segment
+  capped cylinder (176), and a 44-segment circle (44): **1,188 triangles per four-
+  component group**. This excludes the eight surrounding fasteners and the rest
+  of the door. It is not a count of all windows or visible windows in the scene.
+- **Indexed → non-indexed expansion:** `Mw.addGeometry` invokes `toNonIndexed()`
+  for indexed inputs, then copies position/normal/UV; `Mw.finalize` builds batches
+  without an index buffer. The four window components contain **899 source
+  vertices**, expanding to **3,564 vertices** (three per triangle), about **3.96×**
+  the source vertex count. An isolated same-material batch through those actual
+  methods contains 114,048 bytes of position/normal/UV attributes. This byte
+  count excludes source indices and any other resources; it is not total GPU
+  memory or measured traffic. Triangle count stays 1,188: expansion loses vertex
+  reuse, not adds triangles. The production components have differing materials,
+  so the isolated batch is not a claim of one real-scene draw call.
+
+These values identify where to measure screen-space error, pass inclusion,
+visibility/occupancy, attribute bandwidth and vertex processing. They **do not
+prove these objects are performance bottlenecks**. More vertices may be offset
+by batching benefits; procedural shape detail can be justified in close views.
+Before reducing segments, changing the body mesh or retaining indices, collect
+real GPU/frame-time evidence and compare near/far/shadow/reflection appearance.
+Do not multiply one object's triangles by actor count and passes and label the
+result observed work. The existing full native nine-AI acceptance gates still
+apply; no additional FPS or 1% low improvement is claimed.
