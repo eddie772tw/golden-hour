@@ -137,7 +137,8 @@ test("particle matrix uploads occur only after real writes, including clears", (
   const method = source.slice(source.indexOf("    _simSingles(t, e, s, n) {"), source.indexOf("    wake(t) {", source.indexOf("    _simSingles(t, e, s, n) {")));
   const vector = () => ({ set() { return this; } });
   const clear = {};
-  const Particle = vm.runInNewContext(`(class {${method}})`, {
+  const rangeMethod = source.slice(source.indexOf("    _markSingleRange(attribute, first, last) {"), source.indexOf("    addProp(", source.indexOf("    _markSingleRange(attribute, first, last) {")));
+  const Particle = vm.runInNewContext(`(class {${method}${rangeMethod}})`, {
     DD: 9.81, Sw: clear, xr: vector(), pu: vector(), Vc: vector(), X9: vector(),
     Sg: { setFromAxisAngle() { return this; } }, K9: { compose() { return {}; } },
   });

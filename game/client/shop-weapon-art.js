@@ -2,6 +2,8 @@
 // embedded PNGs and translation-only nodes. Reuse the game's Three.js runtime.
 import { models, shopWeaponsEnabled } from "./weapon-models.js";
 
+import { dressShopOptic, seatShopLaser } from "./shop-mount-trim.js";
+
 const assets = new Map();
 const keyFor = (id, detail) => id + (detail === "view" ? "" : "_world_lod");
 
@@ -114,6 +116,8 @@ export function mountShopWeapon(T, gun, id, detail) {
     else mesh.removeFromParent();
   }
   gun.root.add(body);
+  dressShopOptic(T, gun, body, id);
+  seatShopLaser(T, gun, id);
   gun.anchors.eject.copy(socket("EjectVisualSocket"));
   if (!gun.build?.optic || gun.build.optic === "irons") {
     if (sockets.AimVisualSocket) {

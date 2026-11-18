@@ -14,6 +14,7 @@ function actualMethod(signature) {
   assert.ok(start >= 0 && end > start, signature);
   return vm.runInNewContext(`(function ${source.slice(start + 4, end + 6)})`, globals);
 }
+const markSingleRange = actualMethod("_markSingleRange(attribute, first, last)");
 const debris = actualMethod("debris(t, e, s, n, i, a, r, l, c = 5)");
 const casing = actualMethod("casing(t, e, s)");
 const simulate = actualMethod("_simSingles(t, e, s, n)");
@@ -25,7 +26,7 @@ function fixture(N) {
   for (const key of ["st", "b", "kind"]) pool[key] = new Uint8Array(N);
   const mesh = { retired: [], instanceColor: {}, instanceMatrix: {}, setColorAt() {},
     setMatrixAt(slot, matrix) { this.retired.push([slot, matrix]); } };
-  const owner = { chunks: pool, cases: pool, chunkMesh: mesh, caseMesh: mesh,
+  const owner = { _markSingleRange: markSingleRange, chunks: pool, cases: pool, chunkMesh: mesh, caseMesh: mesh,
     world: { overlap: () => false } };
   return { pool, mesh, owner };
 }
