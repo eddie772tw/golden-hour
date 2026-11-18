@@ -33568,6 +33568,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
         let k0 = n.clips.fire, O0 = k0.holdT === void 0 ? 0.04 : k0.holdT;
         this.hold && this.fireT > O0 ? k0.apply(O0, wu) : this.fireT >= k0.duration ? (this.fireT = -1, n.resetPose && n.resetPose()) : k0.apply(this.fireT, wu);
       }
+      n.updateShopWindow?.(s.slot?.ammo);
       let v = r.pos.x, y = r.pos.y, M = r.pos.z, w = r.rot.x, T = r.rot.y, S = r.rot.z, E = h.sprint * d;
       v += E * (-0.035 * this.sprintF + 0.012 * this.sprintS), y += E * (-0.02 * this.sprintF - 0.012 * this.sprintB + 0.012), M += E * 0.03, w += E * (0.2 * this.sprintF + 0.5 * this.sprintB + 0.3 * Math.abs(this.sprintS)), T += E * (0.5 * this.sprintF + 0.18 * this.sprintB - 0.25 * this.sprintS), S += E * (0.24 * this.sprintF - 0.3 * this.sprintS);
       let _ = h.tac * E;

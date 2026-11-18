@@ -60,6 +60,36 @@ const repo=resolve(__dirname,"../..");
        const clearance=hit.y-b.max.y;
        assert(Math.abs(clearance)<.005,"laser-to-body gap "+id+" "+clearance);
      }
+     if(id==="linbei"&&base){
+       const findRay=(z,direction=-1)=>{
+         const o=body.position.clone().add(new T.Vector3(direction<0?1:-1,.049,z));
+         return new T.Raycaster(o,new T.Vector3(direction,0,0)).intersectObjects(body.children,false)[0];
+       };
+       const back=findRay(-.101),rim=findRay(-.045),opposite=findRay(-.101,1);
+       assert(back&&rim&&opposite,"missing opening, rim or far wall");
+       assert(rim.point.x-back.point.x>.010,"port is still a flat patch");
+       assert(/recess/.test(back.object.material.name),"exterior still covers pocket");
+       assert(/graphite/.test(opposite.object.material.name),"opposite exterior perforated");
+       const prop=gun.root.getObjectByName("LinBeiWindowCartridge");
+       assert.equal(!!prop,detail==="view");
+       if(prop){
+         const z=[];
+         gun.rounds=3;
+         const nativeClip=gun.clips.pump,events=nativeClip.events;
+         const pose={pos:new T.Vector3(),rot:new T.Euler()};
+         for(const t of [0,.10,.16,.34]){
+           gun.clips.pump.apply(t,pose);gun.updateShopWindow(3);
+           assert(prop.visible);z.push(prop.position.z);
+         }
+         assert(z[1]>z[0] && z[2]>z[1] && Math.abs(z[3]-z[0])<1e-6);
+         gun.updateShopWindow(0);assert(!prop.visible);assert.equal(gun.rounds,3);
+         assert.equal(nativeClip.events,events);assert.equal(prop.geometry.index.count/3,140);
+         const still=new T.Raycaster(body.position.clone().add(new T.Vector3(1,.049,-.124)),new T.Vector3(-1,0,0));
+         gun.updateShopWindow(3);gun.root.updateMatrixWorld(true);
+         const near=still.intersectObjects([prop,...body.children],false)[0];
+         assert.equal(near.object,prop,"cartridge hidden behind surface");
+       }
+     }
      console.log(id,optic,detail,"OK",delta===null?"no active optic trim":"center contact "+(delta*1000).toFixed(2)+" game mm");
    }
  }

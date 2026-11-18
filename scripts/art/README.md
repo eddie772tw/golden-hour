@@ -59,7 +59,7 @@ Nothing was extracted from Siege.
 |---|---:|---:|---:|
 | G-Bull | 37,716 | 4,864 | 9 |
 | Chin-Gi | 19,720 | 4,720 | 9 |
-| Lin-Bei | 19,252 | 4,505 | 7 |
+| Lin-Bei | 18,940 | 4,378 | 7 |
 
 Chin-Gi follow-up: kept the rectangular full-size silhouette, but eased the
 outer housing shoulders into the end caps and shaped the handle's waist,
@@ -72,3 +72,20 @@ fore-end and wrist into its receiver shoulders. The full stock/barrel were
 retained. Both close-up optic shrouds were re-seated against the new art after
 the native fitting test detected gaps. No triangle increase vs the previous
 pair. [Same-camera close-ups](../../docs/art/shop-review/gbull-linbei-contour-review.jpg).
+
+Lin-Bei side-window follow-up: run `open_display_window.py` after the two
+Blender passes (input/output directories as its final arguments). Replaces the
+static raised solid panel with an opening in the outward-facing triangles and
+a dark, blind stage pocket. No functional internal assembly is represented.
+The reduced base meshes include the pocket. A separate 140-triangle shared
+prop is rendered only in a loaded, first-person view. Its position follows
+the native pump animation; the actual slot ammo controls whether it is visible.
+Loading does not invent a second pump cycle. No changes to native clip events,
+ballistics, reload duration, network state, ammo or hit registration.
+
+[Still sequence](../../docs/art/shop-review/linbei-window-cycle.jpg):
+native clip pose samples with Blender lighting, not live WebGL frames.
+The rig test samples the original clip, confirms out-and-back movement and
+empty state, tests line of sight to the prop and recessed surface, and checks
+the opposite side is intact. Third-person keeps the opening but omits the
+moving prop; no per-bot animation update.

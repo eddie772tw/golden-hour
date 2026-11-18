@@ -3,6 +3,7 @@
 import { models, shopWeaponsEnabled } from "./weapon-models.js";
 
 import { dressShopOptic, seatShopLaser } from "./shop-mount-trim.js";
+import { mountLinbeiWindow } from "./linbei-window-art.js";
 
 const assets = new Map();
 const keyFor = (id, detail) => id + (detail === "view" ? "" : "_world_lod");
@@ -116,6 +117,7 @@ export function mountShopWeapon(T, gun, id, detail) {
     else mesh.removeFromParent();
   }
   gun.root.add(body);
+  if (id === "linbei") mountLinbeiWindow(T, gun, body, detail);
   dressShopOptic(T, gun, body, id);
   seatShopLaser(T, gun, id);
   gun.anchors.eject.copy(socket("EjectVisualSocket"));
