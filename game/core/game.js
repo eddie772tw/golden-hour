@@ -19951,6 +19951,18 @@ void main() {`).replace("#include <lights_fragment_begin>", `#include <lights_fr
       this.drawn = w, this.geo.instanceCount = w, w && (this.ib.clearUpdateRanges(), this.ib.addUpdateRange(0, M), this.ib.needsUpdate = true);
     }
   };
+  // Owner-selected 84-triangle default; retain original/medium for visual A/B.
+  function ghCasingGeometry(detail) {
+    detail = detail === "original" || detail === "high" ? "original" : detail === "medium" ? "medium" : "low";
+    const reduced = detail === "medium" || detail === "low";
+    const profile = reduced
+      ? [[0, -0.5], [0.5, -0.5], [0.5, -0.455], [0.47, -0.385], [0.47, 0.5], [0.4, 0.5], [0.4, 0.15], [0, 0.15]]
+      : [[0, -0.5], [0.17, -0.5], [0.17, -0.492], [0.47, -0.492], [0.5, -0.47], [0.5, -0.455], [0.43, -0.44], [0.43, -0.405], [0.47, -0.385], [0.47, 0.5], [0.405, 0.5], [0.4, 0.15], [0, 0.15]];
+    const points = profile.map(([x, y]) => new It(x * 0.5, y));
+    const geometry = new zo(points, detail === "medium" ? 8 : detail === "low" ? 6 : 18);
+    geometry.rotateX(Math.PI / 2), geometry.translate(0, -0.25, 0), geometry.computeVertexNormals();
+    return geometry;
+  }
   var gb = 8, W2 = { crater: { cells: [[0, 0, 1], [1, 0, 1], [2, 0, 1], [3, 0, 1]], size: [0.11, 0.17] }, cracked: { cells: [[4, 0, 1], [5, 0, 1], [6, 0, 1], [7, 0, 1]], size: [0.15, 0.24] }, metal: { cells: [[0, 1, 1], [1, 1, 1], [2, 1, 1], [3, 1, 1]], size: [0.075, 0.105], metal: 1, heat: 1 }, wood: { cells: [[4, 1, 1], [5, 1, 1], [6, 1, 1], [7, 1, 1]], size: [0.13, 0.2] }, fabric: { cells: [[0, 2, 1], [1, 2, 1], [2, 2, 1]], size: [0.05, 0.075] }, plastic: { cells: [[3, 2, 1], [4, 2, 1]], size: [0.06, 0.085] }, soot: { cells: [[5, 2, 1]], size: [0.3, 0.5] }, chunk: { cells: [[0, 3, 1], [1, 3, 1]], size: [0.3, 0.42] }, chunkCracked: { cells: [[2, 3, 1], [3, 3, 1]], size: [0.34, 0.5] }, chunkWood: { cells: [[4, 3, 1]], size: [0.3, 0.42] }, scorch: { cells: [[0, 4, 2], [2, 4, 2]], size: [2.7, 3.5], heat: 0.5 } };
   function qY(o) {
     let t = o / gb, e = we(o), s = e.getContext("2d"), n = we(o), i = n.getContext("2d", { willReadFrequently: true });
@@ -21023,10 +21035,7 @@ void main() {`).replace("#include <lights_fragment_begin>", `#include <lights_fr
       let t = this.physics, e = t && t.caseMesh;
       if (!e || e.userData.ghBrass) return;
       e.userData.ghBrass = true;
-      let s = [[0, -0.5], [0.17, -0.5], [0.17, -0.492], [0.47, -0.492], [0.5, -0.47], [0.5, -0.455], [0.43, -0.44], [0.43, -0.405], [0.47, -0.385], [0.47, 0.5], [0.405, 0.5], [0.4, 0.15], [0, 0.15]].map((l) => new It(l[0], l[1]));
-      for (let l of s) l.x *= 0.5;
-      let n = new zo(s, 18);
-      n.rotateX(Math.PI / 2), n.translate(0, -0.25, 0), n.computeVertexNormals();
+      let n = ghCasingGeometry(globalThis.__GH_CASING_DETAIL);
       let i = e.geometry;
       e.geometry = n, i && i.dispose();
       let a = new $e({ color: 16777215, metalness: 1, roughness: 0.3, side: nn });
@@ -25474,8 +25483,27 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
       i.rotateX(Math.PI / 2), this.caseMesh = new ia(i, new $e({ roughness: 0.3, metalness: 0.9 }), HD);
       for (let a of [this.chunkMesh, this.caseMesh]) {
         for (let r = 0; r < a.count; r++) a.setMatrixAt(r, Sw), a.setColorAt(r, Tw.set(16777215));
+        // These attributes belong exclusively to the singles pool. Retain one
+        // dirty span until the renderer actually uploads it (including first allocation).
+        for (const attribute of globalThis.__GH_SINGLE_UPLOAD_RANGES === true ? [a.instanceMatrix, a.instanceColor] : []) {
+          attribute._ghSingleRange = { start: 0, count: 0 };
+          const uploaded = attribute.onUploadCallback;
+          attribute.onUpload(function () { this.clearUpdateRanges(); uploaded.call(this); });
+        }
         a.frustumCulled = false, a.castShadow = true, a.receiveShadow = true, t.add(a);
       }
+    }
+    _markSingleRange(attribute, first, last) {
+      const range = attribute._ghSingleRange;
+      // Unknown/replaced attributes retain the native full-upload contract.
+      if (!range) { attribute.needsUpdate = true; return; }
+      const pending = attribute.updateRanges;
+      for (let i = 0; i < pending.length; i++) {
+        first = Math.min(first, pending[i].start);
+        last = Math.max(last, pending[i].start + pending[i].count);
+      }
+      range.start = first, range.count = last - first;
+      pending.length = 1, pending[0] = range, attribute.needsUpdate = true;
     }
     addProp(t, { size: e, center: s = [0, e[1] / 2, 0], mass: n = 8, mat: i = "wood", breakable: a = null, onBreak: r = null, glassSpeed: l = 3.2 }) {
       let c = Math.max(0.02, e[0] / 2 - 0.03), h = Math.max(0.02, e[1] / 2 - 0.03), f = Math.max(0.02, e[2] / 2 - 0.03), u = { type: "box", n: 8, x: new Float32Array(24), o: new Float32Array(24), r: new Float32Array(8).fill(0.03), ci: [], cl: [], cmin: null, iters: 5, damp: 0.999, fric: 0.035, gScale: 1, half: [c, h, f], center: s, obj: t, mass: n, mat: i, breakable: a, onBreak: r, glass: "break", glassSpeed: l, sleeping: true, still: 0, dead: false, cool: 0, radius: Math.hypot(c, h, f) + 0.05, home: { p: t.position.clone(), q: t.quaternion.clone() }, cx: 0, cy: 0, cz: 0 };
@@ -25535,7 +25563,7 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
       let h = this.chunks, f = h.i;
       h.i = (f + 1) % h.N, h.st[f] === 0 && h.live++;
       let u = f * 3;
-      h.x[u] = t, h.x[u + 1] = e, h.x[u + 2] = s, h.v[u] = n, h.v[u + 1] = i, h.v[u + 2] = a, h.s[u] = r * at(0.6, 1.4), h.s[u + 1] = r * at(0.3, 0.9), h.s[u + 2] = r * at(0.6, 1.3), Wd.set(at(-1, 1), at(-1, 1), at(-1, 1)).normalize(), h.ax[u] = Wd.x, h.ax[u + 1] = Wd.y, h.ax[u + 2] = Wd.z, h.ang[f] = at(0, 6), h.w[f] = at(-14, 14), h.life[f] = c * at(0.7, 1.2), h.st[f] = 1, h.b[f] = 0, this.chunkMesh.setColorAt(f, l.isColor ? l : Tw.set(l)), this.chunkMesh.instanceColor.needsUpdate = true;
+      h.x[u] = t, h.x[u + 1] = e, h.x[u + 2] = s, h.v[u] = n, h.v[u + 1] = i, h.v[u + 2] = a, h.s[u] = r * at(0.6, 1.4), h.s[u + 1] = r * at(0.3, 0.9), h.s[u + 2] = r * at(0.6, 1.3), Wd.set(at(-1, 1), at(-1, 1), at(-1, 1)).normalize(), h.ax[u] = Wd.x, h.ax[u + 1] = Wd.y, h.ax[u + 2] = Wd.z, h.ang[f] = at(0, 6), h.w[f] = at(-14, 14), h.life[f] = c * at(0.7, 1.2), h.st[f] = 1, h.b[f] = 0, this.chunkMesh.setColorAt(f, l.isColor ? l : Tw.set(l)), this._markSingleRange(this.chunkMesh.instanceColor, f * 3, f * 3 + 3);
     }
     burst(t, e, s, n, i, a = 2) {
       for (let r = 0; r < e; r++) this.debris(t.x + at(-0.1, 0.1), t.y + at(-0.1, 0.1), t.z + at(-0.1, 0.1), at(-1, 1) * i, at(0, 1) * i + a, at(-1, 1) * i, n, s);
@@ -25546,16 +25574,16 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
       let a = i * 3;
       n.x[a] = t.x, n.x[a + 1] = t.y, n.x[a + 2] = t.z, n.v[a] = e.x, n.v[a + 1] = e.y, n.v[a + 2] = e.z;
       let r = s === 2 ? 0.06 : s === 1 ? 0.019 : 0.042, l = s === 2 ? 0.02 : s === 1 ? 98e-4 : 96e-4;
-      n.s[a] = l, n.s[a + 1] = l, n.s[a + 2] = r, Wd.set(at(-1, 1), at(-1, 1), at(-1, 1)).normalize(), n.ax[a] = Wd.x, n.ax[a + 1] = Wd.y, n.ax[a + 2] = Wd.z, n.ang[i] = at(0, 6), n.w[i] = at(-30, 30), n.life[i] = 9, n.st[i] = 1, n.b[i] = 0, n.kind[i] = s, this.caseMesh.setColorAt(i, s === 2 ? Tw.setRGB(0.55, 0.06, 0.04) : Tw.setRGB(0.95, 0.72, 0.32)), this.caseMesh.instanceColor.needsUpdate = true;
+      n.s[a] = l, n.s[a + 1] = l, n.s[a + 2] = r, Wd.set(at(-1, 1), at(-1, 1), at(-1, 1)).normalize(), n.ax[a] = Wd.x, n.ax[a + 1] = Wd.y, n.ax[a + 2] = Wd.z, n.ang[i] = at(0, 6), n.w[i] = at(-30, 30), n.life[i] = 9, n.st[i] = 1, n.b[i] = 0, n.kind[i] = s, this.caseMesh.setColorAt(i, s === 2 ? Tw.setRGB(0.55, 0.06, 0.04) : Tw.setRGB(0.95, 0.72, 0.32)), this._markSingleRange(this.caseMesh.instanceColor, i * 3, i * 3 + 3);
     }
     _simSingles(t, e, s, n) {
       if (!t.live) return;
-      let i = this.world, changed = false;
+      let i = this.world, first = t.N, last = -1;
       for (let a = 0; a < t.N; a++) {
         if (!t.st[a]) continue;
         let r = a * 3;
         if ((t.life[a] -= s) <= 0) {
-          t.st[a] = 0, t.live--, e.setMatrixAt(a, Sw), changed = true;
+          t.st[a] = 0, t.live--, e.setMatrixAt(a, Sw), first = Math.min(first, a), last = a;
           continue;
         }
         if (t.st[a] === 1) {
@@ -25567,15 +25595,15 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
             m > 1.2 && t.b[a] < 3 ? (t.v[r + 1] = m * (n ? 0.38 : 0.28), t.v[r] = t.v[r] * 0.6 + at(-0.5, 0.5), t.v[r + 2] = t.v[r + 2] * 0.6 + at(-0.5, 0.5), t.w[a] *= 0.7, t.b[a]++, n && t.b[a] <= 2 && this.hooks.audio.casing(xr.set(c, h, f), d.surf, t.kind[a] === 2 ? "shell" : "brass")) : (t.st[a] = 2, t.v[r] = t.v[r + 1] = t.v[r + 2] = 0, n && (t.ang[a] = 0));
           } else t.v[r] *= -0.3, t.v[r + 2] *= -0.3, c = t.x[r], f = t.x[r + 2];
           else if (h < -40) {
-            t.st[a] = 0, t.live--, e.setMatrixAt(a, Sw), changed = true;
+            t.st[a] = 0, t.live--, e.setMatrixAt(a, Sw), first = Math.min(first, a), last = a;
             continue;
           }
           t.x[r] = c, t.x[r + 1] = h, t.x[r + 2] = f, t.ang[a] += t.w[a] * s;
         } else if (t.life[a] > 1) continue;
         let l = t.st[a] === 2 ? Math.min(1, t.life[a]) : 1;
-        xr.set(t.ax[r], t.ax[r + 1], t.ax[r + 2]), t.st[a] === 2 && n ? Sg.setFromAxisAngle(pu.set(0, 1, 0), t.w[a]) : Sg.setFromAxisAngle(xr, t.ang[a]), Vc.set(t.x[r], t.x[r + 1] + (t.st[a] === 2 ? t.s[r + 1] * (n ? 1 : 0.5) : 0), t.x[r + 2]), n ? X9.set(t.s[r] * 2 * l, t.s[r + 1] * 2 * l, t.s[r + 2] * l) : X9.set(t.s[r] * l, t.s[r + 1] * l, t.s[r + 2] * l), e.setMatrixAt(a, K9.compose(Vc, Sg, X9)), changed = true;
+        xr.set(t.ax[r], t.ax[r + 1], t.ax[r + 2]), t.st[a] === 2 && n ? Sg.setFromAxisAngle(pu.set(0, 1, 0), t.w[a]) : Sg.setFromAxisAngle(xr, t.ang[a]), Vc.set(t.x[r], t.x[r + 1] + (t.st[a] === 2 ? t.s[r + 1] * (n ? 1 : 0.5) : 0), t.x[r + 2]), n ? X9.set(t.s[r] * 2 * l, t.s[r + 1] * 2 * l, t.s[r + 2] * l) : X9.set(t.s[r] * l, t.s[r + 1] * l, t.s[r + 2] * l), e.setMatrixAt(a, K9.compose(Vc, Sg, X9)), first = Math.min(first, a), last = a;
       }
-      changed && (e.instanceMatrix.needsUpdate = true);
+      last >= first && this._markSingleRange(e.instanceMatrix, first * 16, (last + 1) * 16);
     }
     wake(t) {
       t.sleeping && (t.pvx = t.pvy = t.pvz = 0), t.sleeping = false, t.still = 0;
@@ -25676,7 +25704,7 @@ vGw = (modelMatrix * gwp).xyz;`), t.fragmentShader = t.fragmentShader.replace("#
       for (let t of [this.chunks, this.cases]) t.st.fill(0), t.live = 0;
       for (let t of [this.chunkMesh, this.caseMesh]) {
         for (let e = 0; e < t.count; e++) t.setMatrixAt(e, Sw);
-        t.instanceMatrix.needsUpdate = true;
+        this._markSingleRange(t.instanceMatrix, 0, t.instanceMatrix.array.length);
       }
     }
     update(t) {
@@ -33549,6 +33577,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
         let k0 = n.clips.fire, O0 = k0.holdT === void 0 ? 0.04 : k0.holdT;
         this.hold && this.fireT > O0 ? k0.apply(O0, wu) : this.fireT >= k0.duration ? (this.fireT = -1, n.resetPose && n.resetPose()) : k0.apply(this.fireT, wu);
       }
+      n.updateShopWindow?.(s.slot?.ammo);
       let v = r.pos.x, y = r.pos.y, M = r.pos.z, w = r.rot.x, T = r.rot.y, S = r.rot.z, E = h.sprint * d;
       v += E * (-0.035 * this.sprintF + 0.012 * this.sprintS), y += E * (-0.02 * this.sprintF - 0.012 * this.sprintB + 0.012), M += E * 0.03, w += E * (0.2 * this.sprintF + 0.5 * this.sprintB + 0.3 * Math.abs(this.sprintS)), T += E * (0.5 * this.sprintF + 0.18 * this.sprintB - 0.25 * this.sprintS), S += E * (0.24 * this.sprintF - 0.3 * this.sprintS);
       let _ = h.tac * E;
