@@ -82,15 +82,15 @@ The November 17 live run passed: real WebRTC join, 112 snapshots, movement ACK 3
 
 The opt-in live check now observes 60 seconds by default (`GH_LIVE_SECONDS`, 1–300), requires fresh snapshots at the end, and separately reports reconnects. `GH_LIVE_HEADED=1` shows its independent browser. See the [subsequent recovery investigation](original-network-recovery.md) for bounded stall recovery and unresolved original-server latency.
 
-## v60115 公開目錄與 Toy 身分
+## v60115 公開目錄與協定
 
-大廳可以獨立選擇 v60115。此模式從固定正式端點讀取公開配置和版本化地圖目錄，保留正常 TLS 驗證。預覽提供原站入口。原站的封存客戶端在加入前要求 B 站 Toy 授權，本社群客戶端目前沒有獲准使用的 Toy 身分提供者。
+大廳可以獨立選擇 v60115。此模式從固定正式端點讀取公開配置和版本化地圖目錄，保留正常 TLS 驗證，並提供原站入口。這輪的 v60115 支援範圍是公開預覽和本機協定驗證，Toy 登入、授權與正式入房驗收暫緩。
 
 新版封包驗證依照 2026-11-25 客戶端封存。hello 的地圖／模式選擇、Toy UID、武器協定 2、shot ACK 與特效資料報能力分開處理。房間的地圖版本與模式適配器可和公開目錄核對。WebRTC 與同一批准 origin 的 WebSocket 可在本機替身中切換及續接，且與社群登入獨立。既有 v49221 仍使用上文的路徑。
 
 2026-11-25 16:57（Asia/Taipei）正式公開 GET 驗證得到 WebRTC 優先、WebSocket 可用，以及 `hotel@2`、`shipment@3`、`sublevel-07@4` 三張 TDM 地圖。正式目錄未列灰港合作地圖或模式。參閱 [正式原站](https://www.bilibili.com/toy/golden-hour/index.html)。
 
-同日的原站 Edge 驗證進入 `hotel@2` 的編隊大廳。WebRTC offer 回 `200`，房間經 `/api/socket` 成功升級為 WebSocket（`101`，子協定 `gh-pvp-v1`），並收到 704 位元組的 `kind 4` 大廳快照。標頭顯示十筆玩家紀錄和零筆感染者紀錄，封包長度與十個射擊 ACK 欄位吻合。自動測試採用同版型及合成玩家資料。WebRTC 備援原因、fork 的 Toy 授權及正式環境的實戰與續接仍待驗證。
+同日的原站 Edge 紀錄顯示，`hotel@2` 編隊大廳在 WebRTC offer 回 `200` 後，經 `/api/socket` 升級為 WebSocket（`101`，子協定 `gh-pvp-v1`），並收到 704 位元組的 `kind 4` 大廳快照。標頭顯示十筆玩家紀錄和零筆感染者紀錄，封包長度與十個射擊 ACK 欄位吻合。自動測試採用同版型及合成玩家資料。
 
 ## v60115 原服驗收與灰港資產檢查
 
@@ -103,15 +103,4 @@ node scripts/check_original_readiness.mjs --catalog C:/test/catalog.json --asset
 
 `--assets-root` 指向含 `assets/` 的目錄。每張圖的資料以目錄所列的 `assets/maps/<map-id>/<version>/` 為準。把同版本的 `/api/maps/<map-id>?v=<version>` JSON 保存至同層的 `map-data.json`，並放入 `scene.glb`、`actors.json` 及其中宣告的 GLB。工具驗證目錄與場景版本一致、碰撞與導航資料、P3 撤離錨點、場景及 walker、runner、brute 三種感染者各兩個 LOD 的大小和 SHA-256。結果會逐檔標出缺件或校驗錯誤。退出碼 2 表示未公告合作地圖或仍缺可驗證的素材。退出碼 1 表示目錄讀取、解析或參數錯誤。退出碼 0 表示素材檢查通過。
 
-### 使用已授權的瀏覽器觀察原站
-
-1. 在原站以你自己的帳號登入後開啟 DevTools → Network。勾選 Preserve log，再從遊戲內啟動 Toy 授權。記下瀏覽器版本、原站版本、操作時間，以及使用者同意後的授權結果。若能觀察到識別回應，記錄欄位名、型別和是否存在。
-2. 在原作者同意的測試房依序觀察加入、首筆快照、斷線續接及離房。HTTP 請求記錄路徑、狀態碼、來源的主機名、是否為 CORS 錯誤、耗時與先後順序。WebSocket 可從 Network → WS → Messages 記錄方向、長度與事件名稱。 [Chrome DevTools Network 文件](https://developer.chrome.com/docs/devtools/network/reference#websocket)
-3. 使用 Chrome 的 `chrome://webrtc-internals` 或 Edge 的 `edge://webrtc-internals` 記錄 ICE 和 DataChannel 的狀態及計數。需要驗證 `hello`、`welcome` 或快照格式時，由原作者在獲准的測試頁提供送收邊界的觀測點，摘要事件名稱、欄位名、型別、長度和相對時間。
-4. 分享事件摘要前移除 Cookie、Authorization、登入憑證、所有使用者標識、房號、續接值、玩家名稱、SDP、ICE 候選、IP 和查詢字串的敏感值。若採用 sanitized HAR，仍需檢查 URL 和請求與回應內容中的上述資料。 [Chrome DevTools HAR 文件](https://developer.chrome.com/docs/devtools/network/reference#save-as-har)
-
-### 取得 fork 測試條件
-
-- **Toy 測試入口。** 原版從 SDK `getUserProfile()` 取得該 Toy 的 `toyOpenId`，再作為入房 `hello.uid`。請原作者提供可測試此 fork 的 Toy，或由維護者取得發布權限後建立「連結存取」或「密碼存取」的測試 Toy。Bilibili 的自建後端與自有 API 權限另行確認。 [Toy 權限申請](https://www.bilibili.com/toy/intro) · [Bilibili Toy 開發者 FAQ](https://www.bilibili.com/opus/1241171666570051585)
-- **原服測試端點。** 請原服管理者確認測試 Toy 的識別範圍和 HTTPS 來源，並提供同意使用的端點與測試房。取得後才能接上 `Connection` 的 `toyIdentity` 提供者，重跑加入、首筆及持續快照、同席續接與離房。原站已登入的瀏覽器紀錄可用來比對每一步。
-- **灰港。** 請原作者提供可供本專案使用的版本化目錄、場景與同版地圖資料、與場景同目錄的 `actors.json` 及其模型，以及四席、波次與撤離規則。先執行上面的素材檢查，再在同版本的測試環境驗證渲染、四人波次與撤離。
+灰港玩法驗收需要原作者提供可供本專案使用的同版本目錄、素材與四席、波次及撤離規則。素材檢查通過後，再核對場景渲染、四人波次與撤離。
