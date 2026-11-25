@@ -22,6 +22,18 @@ export function installModelSelector(menus) {
   menus._gsRender=function(...args) {
     const result=render.apply(this,args);
     const family=this.gs.w, id=selectedModel(family);
+    if (family === "m200") {
+      panel.hidden = true;
+      bind(page.querySelector("#gs-cls"), "weapon.sniper");
+      const description = page.querySelector("#gs-wdesc");
+      description.hidden = false;
+      bind(description, "weapon.m200");
+      globalThis.GHBoot.m200ArtReady.then(available => {
+        if (!available && menus.gs.w === "m200") bind(description, "weapon.m200_missing_art");
+      });
+      return result;
+    }
+    for (const selector of ["#gs-cls", "#gs-wdesc"]) page.querySelector(selector).removeAttribute("data-l10n-bound");
     if (select.dataset.family!==family) {
       select.dataset.family=family;
       select.replaceChildren(new Option(factoryNames[family],family));

@@ -2,9 +2,10 @@ import { protocolError } from "../i18n/errors.js";
 import { RTCTransport } from "./webrtc.js";
 
 const PHASES = ["lobby", "countdown", "live", "over"];
-import { models, familyOf } from "./weapon-models.js";
+import { familyOf } from "./weapon-models.js";
+import { decodeWeaponIndex, WEAPON_WIRE_IDS } from "./weapon-wire.js";
 import { serverTarget } from "./server-target.js";
-export const WEAPONS = ["ar", "smg", "shotgun", "pistol", ...Object.keys(models)];
+export const WEAPONS = WEAPON_WIRE_IDS.community;
 const INPUT_BYTES = 25;
 const INPUT_MAGIC = 0x4748;
 const MAX_RELIABLE_COMMANDS = 128;
@@ -58,7 +59,9 @@ export function encodeInput(input, bytes = new Uint8Array(INPUT_BYTES)) {
   view.setUint8(24, input.buttons || 0);
   return bytes;
 }
-export function decodeSnapshot(bytes, original = false) {
+export function decodeSnapshot(bytes, weaponFormat = "community") {
+  if (typeof weaponFormat === "boolean") weaponFormat = weaponFormat ? "v49221" : "community";
+  if (!Object.hasOwn(WEAPON_WIRE_IDS, weaponFormat)) return null;
   if (bytes instanceof ArrayBuffer) bytes = new Uint8Array(bytes);
   if (bytes.byteLength < 24) return null;
   const v = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
@@ -100,11 +103,11 @@ export function decodeSnapshot(bytes, original = false) {
     p.jumpHeld = !!(flags & 32);
     p.bot = !!(flags & 64);
     p.sliding = !!(flags & 128);
-    p.weapon = WEAPONS[v.getUint8(o + 58)];
+    p.weapon = decodeWeaponIndex(v.getUint8(o + 58), weaponFormat);
     p.slideCooldown = v.getUint8(o + 59) / 100;
     p.cooldown = v.getUint16(o + 60, true);
     p.slideTime = v.getUint16(o + 62, true) / 1000;
-    if (p.team > 1 || !p.weapon || (original && v.getUint8(o + 58) >= 4)) return null;
+    if (p.team > 1 || !p.weapon) return null;
     out.players.push(p);
   }
   return out;
@@ -238,7 +241,7 @@ export class Connection extends EventTarget {
         this.readEvents(stream.readable, generation);
         this.readSnapshots(wt.datagrams.readable, generation);
         this.emit("status", "正在加入房间…");
-        await this.send({ ...hello, ticket, type: "hello" });
+        await this.send({ ...hello, ticket, type: "hello", communityWeaponVersion: 2 });
         await accepted;
         current();
       }, this.connectTimeoutMs, "连接超时：请重试，并检查服务器 UDP 端口与证书配置。");

@@ -1,6 +1,9 @@
 import { weaponDefinition, selectedModel, familyOf, weaponName } from "./weapon-models.js";
 import { loadShopWeaponArt, mountShopWeapon } from "./shop-weapon-art.js";
-const weaponArtReady = loadShopWeaponArt();
+import { configureM200, installM200Handling, m200Enabled } from "./m200.js";
+import { loadM200Art, mountM200 } from "./m200-art.js";
+const m200ArtReady = loadM200Art();
+const weaponArtReady = Promise.all([loadShopWeaponArt(), m200ArtReady]);
 import "../i18n/dom.js";
 import "./touch-controls.js";
 import { installDesktopInput } from "./desktop-input.js";
@@ -60,6 +63,7 @@ const stats = {
 const start = performance.now();
 const boot = (globalThis.GHBoot = {
   weaponDefinition, selectedModel, familyOf, weaponName, mountShopWeapon,
+  configureM200, mountM200, installM200Handling, m200Enabled, m200ArtReady,
   stats,
   runtimeReady,
   createRenderPreparation,

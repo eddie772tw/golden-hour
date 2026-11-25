@@ -1,3 +1,6 @@
+import { installKeyBindingSettings } from "./key-binding-settings.js";
+import { installGyroSettings } from "./gyro-settings.js";
+
 const names = { keyboard: "鼠标键盘", touch: "屏幕触摸", gamepad: "手柄" };
 
 export function installInputSettings({ menus, devices, controls }) {
@@ -18,6 +21,8 @@ export function installInputSettings({ menus, devices, controls }) {
     </div>
     <p data-input-saved role="status">选择保存在当前浏览器，单人与联机共用。</p>`;
   menus.pages.settings.querySelector('.st-panel[data-tab="controls"]').prepend(section);
+  installKeyBindingSettings({ menus, devices, section });
+  installGyroSettings({ devices, controls, section });
   const mode = section.querySelector("[data-input-mode]");
   const render = () => {
     mode.value = devices.preferences.mode;

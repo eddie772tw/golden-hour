@@ -1,8 +1,4 @@
-const gameplayKeys = new Set([
-  "KeyW", "KeyS", "KeyA", "KeyD", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight",
-  "Space", "ShiftLeft", "ShiftRight", "ControlLeft", "ControlRight", "KeyC", "KeyX", "KeyZ",
-  "KeyR", "KeyV", "KeyF", "KeyG", "KeyQ", "Digit1", "Digit2", "KeyE", "KeyT", "Tab", "KeyB", "Digit3",
-]);
+import { BoundInput, KeyBindings } from "./key-bindings.js";
 
 function editable(event) {
   return (event.composedPath?.() || [event.target]).some((target) =>
@@ -17,14 +13,15 @@ function browserEscape(event) {
 
 // Clear edges as well as holds: a down edge surviving a pause can fire on resume.
 export function clearInputState(input) {
+  input.boundInput?.reset();
   for (const field of ["keys", "down", "up", "touchKeys", "touchDown", "touchUp"])
     input[field]?.clear();
-  for (const field of ["mx", "my", "wheel", "touchForward", "touchRight", "touchMx", "touchMy"])
+  for (const field of ["mx", "my", "wheel", "touchForward", "touchRight", "touchMx", "touchMy", "gyroYaw", "gyroPitch"])
     input[field] = 0;
   input.touchActive = false;
 }
 
-export function installDesktopInput(gh) {
+export function installDesktopInput(gh, bindings = globalThis.GHInput?.keyBindings ?? new KeyBindings()) {
   const input = gh.debug.input;
   const canvas = input.el;
   const doc = canvas.ownerDocument;
@@ -32,6 +29,20 @@ export function installDesktopInput(gh) {
   const playing = () => gh.G.state === "playing";
   // The replay patch consults this before the prototype records keyboard state.
   input.acceptKeyboard = (event) => playing() && !editable(event) && !browserEscape(event);
+  const bound = input.boundInput = new BoundInput(input, bindings);
+  input.handleKeyboard = (event, down) => {
+    if (!down) bound.release(event.code);
+    else if (!event.repeat && input.acceptKeyboard(event)) bound.press(event.code);
+  };
+  input.handleMouse = (event, down) => {
+    const physical = "Mouse" + event.button;
+    if (!down) bound.release(physical);
+    else if (playing() && !editable(event)) bound.press(physical);
+  };
+  input.handleWheel = event => {
+    if (playing() && event.deltaY) bound.pulse(event.deltaY < 0 ? "WheelUp" : "WheelDown");
+  };
+  bindings.addEventListener("change", () => clearInputState(input));
   let suspending = false;
   function suspend() {
     if (suspending) return;
@@ -67,7 +78,7 @@ export function installDesktopInput(gh) {
       suspend();
       return; // Preserve the browser's pointer-lock/fullscreen escape.
     }
-    if (!browserEscape(event) && gameplayKeys.has(event.code)) event.preventDefault();
+    if (!browserEscape(event) && bindings.byCode.has(event.code)) event.preventDefault();
   }, { capture: true });
   win.addEventListener("blur", suspend);
   win.addEventListener("pagehide", suspend);

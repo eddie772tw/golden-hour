@@ -1,3 +1,4 @@
+import { KeyBindings } from "./key-bindings.js";
 import { startupPolicy } from "./performance-policy.js";
 import { clearInputState } from "./desktop-input.js";
 import { GamepadControls, navigateGamepadMenu } from "./gamepad-controls.js";
@@ -15,6 +16,7 @@ export class InputDevices extends EventTarget {
   constructor({ storage, handheld = false, win, doc, getPads } = {}) {
     super();
     this.storage = storage;
+    this.keyBindings = new KeyBindings(storage);
     this.win = win;
     this.doc = doc;
     this.handheld = handheld;

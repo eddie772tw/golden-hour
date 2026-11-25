@@ -99,7 +99,7 @@ test("ten verified opposing-player gun kills unlock each primary, persist, and c
   career.db.close(); career=new Career(filename);
   assert.equal(career.board(id).mine.score,20);
   assert.equal(career.board(profileID(randomUUID())).mine.ranked,false);
-  assert.deepEqual(career.progress(id).unlocked,["ar","pistol","smg","shotgun"]);
+  assert.deepEqual(career.progress(id).unlocked,["ar","pistol","m200","smg","shotgun"]);
 });
 
 test("walls withhold enemy records and shot coordinates per recipient; openings restore them",()=>{

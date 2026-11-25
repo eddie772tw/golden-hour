@@ -1,5 +1,6 @@
 // Model IDs travel on the wire. Families select the recovered rigs, attachments and mastery tracks.
 import { serverTarget } from "./server-target.js";
+import { M200, m200Enabled } from "./m200.js";
 export const shopWeaponsEnabled = !serverTarget.original;
 export const models = {
   gbull: { family:"pistol", name:"G-Bull", mag:20, rpm:60/0.22, pellets:1, dmg:[34,20],
@@ -9,9 +10,9 @@ export const models = {
   linbei: { family:"shotgun", name:"Lin-Bei", mag:6, rpm:60/0.85, pellets:6, dmg:[12,10],
     range:[20,38], hip:[1.25,2.4], ads:0.65, recoilScale:0.75 },
 };
-export const factoryNames = { ar:"KR-7 CARBINE", smg:"VESPER 9", shotgun:"M12 BREACHER", pistol:"STRIX 9" };
+export const factoryNames = { ar:"KR-7 CARBINE", smg:"VESPER 9", shotgun:"M12 BREACHER", pistol:"STRIX 9", ...(m200Enabled && { m200:M200.name }) };
 export const familyOf = id => Object.hasOwn(models,id) ? models[id].family : id;
-export const weaponName = id => models[id]?.name ?? factoryNames[id];
+export const weaponName = id => models[id]?.name ?? factoryNames[id] ?? (id === "m200" ? M200.name : undefined);
 const storageKey = "gh_weapon_models_v1";
 const selected = {};
 try {

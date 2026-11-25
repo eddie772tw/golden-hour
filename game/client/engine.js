@@ -217,8 +217,7 @@ export class Engine extends EventTarget {
       (e) => {
         if (!this.dragActive) return;
         e.preventDefault();
-        input.keys.add("Mouse" + e.button);
-        input.down.add("Mouse" + e.button);
+        input.handleMouse(e, true);
       },
       opts,
     );
@@ -233,13 +232,13 @@ export class Engine extends EventTarget {
       },
       opts,
     );
+    canvas.addEventListener("wheel", e => { if (this.dragActive) input.handleWheel(e); }, opts);
     canvas.addEventListener("pointerup", (e) => {
       if (e.pointerId === this.dragPointer) this.releaseDrag();
     }, opts);
     canvas.addEventListener("mouseup", (e) => {
       if (!this.dragActive) return;
-      const key = "Mouse" + e.button;
-      if (input.keys.delete(key)) input.up.add(key);
+      input.handleMouse(e, false);
     }, opts);
     for (const type of ["pointercancel", "lostpointercapture"])
       canvas.addEventListener(type, (e) => {
@@ -341,10 +340,7 @@ export class Engine extends EventTarget {
     if (pointer !== null && pointer !== undefined &&
         this.input.el.hasPointerCapture(pointer))
       this.input.el.releasePointerCapture(pointer);
-    for (let button = 0; button <= 4; button++) {
-      const key = "Mouse" + button;
-      if (this.input.keys.delete(key)) this.input.up.add(key);
-    }
+    this.input.boundInput?.releaseMouse();
   }
   applySpecs() {
     for (const slot of this.ctx.arsenal.slots) {
@@ -441,9 +437,9 @@ export class Engine extends EventTarget {
         0.0022 *
         this.ctx.settings.sens *
         (1 + (this.ctx.settings.adsSens - 1) * p.adsK);
-      p.yaw -= (this.input.mx + this.input.touchMx) * sens;
+      p.yaw -= (this.input.mx + this.input.touchMx) * sens + this.input.gyroYaw;
       p.pitch = clamp(
-        p.pitch - (this.input.my + this.input.touchMy) * sens * (this.ctx.settings.invertY ? -1 : 1),
+        p.pitch - ((this.input.my + this.input.touchMy) * sens + this.input.gyroPitch) * (this.ctx.settings.invertY ? -1 : 1),
         -1.5,
         1.5,
       );
@@ -856,7 +852,7 @@ export class Engine extends EventTarget {
       if (r) r.actor.lastShot = this.ctx.time();
       const pos = p.pos.clone().set(e.x, e.y, e.z),
         dir = p.pos.clone().set(e.dx, e.dy, e.dz);
-      this.ctx.audio.gunshot(familyOf(e.weapon), pos);
+      this.ctx.audio.gunshot(e.weapon === "m200" ? "ar" : familyOf(e.weapon), pos);
       this.ctx.fx.muzzle?.(pos, dir, 1, true);
     }
     if (e.type === "damage" && e.id === this.net.id) {
