@@ -47533,13 +47533,13 @@ vCard = aCard; vCuv = uv;`).replace("#include <project_vertex>", `#include <proj
       return l || Math.abs(p - i) < 0.7;
     }
     startNode(t, e, s, n) {
-      let i = this.nav.nodes, a = this.nn, r = this._ci, l = this._cd, c = this.D, h = 0;
+      let i = this.nav.nodes, a = this.nn, r = this._ci, l = this._cd, c = this.D, h = 0, goal = i[n];
       for (let u = 0; u < a; u++) {
         let d = i[u];
         if (Math.abs(d.y - e) > 4) continue;
         let m = Math.hypot(d.x - t, d.z - s);
         if (m > 14) continue;
-        let p = m + (n >= 0 ? c[u * a + n] : 0);
+        let p = m + (goal ? c ? c[u * a + n] : Math.hypot(goal.x - d.x, goal.y - d.y, goal.z - d.z) : 0);
         if (h === 10 && p >= l[9]) continue;
         let x = h < 10 ? h++ : 9;
         for (; x > 0 && l[x - 1] > p; ) l[x] = l[x - 1], r[x] = r[x - 1], x--;
@@ -47990,7 +47990,12 @@ vCard = aCard; vCuv = uv;`).replace("#include <project_vertex>", `#include <proj
       let s = this.sys, n = s.nn, i = this.e;
       this.pn = this.pi = 0, this.goalNode = t, this.planT = e, this.replan = false;
       let a = s.startNode(i.x, i.y, i.z, t);
-      if (a < 0 || t < 0 || s.D[a * n + t] > 1e8) return;
+      if (a < 0 || t < 0 || s.D && s.D[a * n + t] > 1e8) return;
+      if (!s.NX) {
+        let path = s.nav.path(a, t).slice(0, this.pp.length);
+        this.pp.set(path), this.pn = path.length, this.legX = i.x, this.legZ = i.z;
+        return;
+      }
       this.legX = i.x, this.legZ = i.z;
       let r = a;
       for (this.pp[this.pn++] = r; r !== t && this.pn < this.pp.length && (r = s.NX[r * n + t], !(r < 0)); ) this.pp[this.pn++] = r;
@@ -48498,7 +48503,7 @@ vCard = aCard; vCuv = uv;`).replace("#include <project_vertex>", `#include <proj
     }
     pickSpawn(t, e) {
       let s = null, n = -1e9;
-      for (let i of cs0) {
+      for (let i of this.mapSpawns || cs0) {
         let a = i.y || 0, r = 1e9, l = false, c = 0;
         for (let f of this.actors) {
           if (f === t || !f.alive) continue;
@@ -48512,7 +48517,8 @@ vCard = aCard; vCuv = uv;`).replace("#include <project_vertex>", `#include <proj
     }
     respawn(t, e = false) {
       let s = this.pickSpawn(t, e);
-      t.spawn(s.x + at(-0.4, 0.4), s.y || 0, s.z + at(-0.4, 0.4), s.yaw), t.spawnT = this.ctx.time(), t.isPlayer && (this.ctx.arsenal.reset(this.ctx.settings.primary), this.ctx.hud.respawned());
+      let spread = this.mapSpawns ? 0 : 0.4;
+      t.spawn(s.x + at(-spread, spread), s.y || 0, s.z + at(-spread, spread), s.yaw), t.spawnT = this.ctx.time(), t.isPlayer && (this.ctx.arsenal.reset(this.ctx.settings.primary), this.ctx.hud.respawned());
     }
     start() {
       let { physics: t, glass: e, hud: s } = this.ctx;
@@ -48975,7 +48981,14 @@ vCard = aCard; vCuv = uv;`).replace("#include <project_vertex>", `#include <proj
         let h = document.createElement("canvas");
         return h.width = r, h.height = l, h.style.width = `calc(var(--mpm) * ${this.wm.toFixed(2)})`, h.style.height = `calc(var(--mpm) * ${this.hm.toFixed(2)})`, h;
       };
-      this.cv = [c(), c()], this._plan(this.cv[0], t, e, 0, null), this._plan(this.cv[1], t, e, 3.8, this.cv[0]), this.cv[1].style.opacity = 0, this.map.append(this.cv[0], this.cv[1]), this.layer = document.createElement("div"), this.map.appendChild(this.layer), addEventListener("resize", () => {
+      for (let blip of [...this.blips, ...(this.kb || [])]) {
+        blip?.ring?.cancel();
+        blip?.anim?.cancel();
+      }
+      this.blips.length = 0, this.kb = null, this.upper = false;
+      this.c.px = this.c.pz = this.c.yaw = 1e9, this.c.up = null;
+      this.map.replaceChildren();
+      this.cv = [c(), c()], this._plan(this.cv[0], t, e, 0, null), this._plan(this.cv[1], t, e, 3.8, this.cv[0]), this.cv[1].style.opacity = 0, this.map.append(this.cv[0], this.cv[1]), this.layer = document.createElement("div"), this.map.appendChild(this.layer), !this.ready && addEventListener("resize", () => {
         this._lay = true;
       }), this._lay = true, this.ready = true;
     }
@@ -49050,8 +49063,8 @@ vCard = aCard; vCuv = uv;`).replace("#include <project_vertex>", `#include <proj
         this.tick = 0.1;
         let d = Math.round(-l * 57.29578) % 360;
         d < 0 && (d += 360), d !== r.hd && (r.hd = d, this.hdg.textContent = HU[Math.round(d / 45) % 8] + " " + (d < 10 ? "00" : d < 100 ? "0" : "") + d);
-        let m = c ? "BALCONY" : "SOLSTICE HOTEL";
-        if (!c) for (let p = 0; p < IU.length; p++) {
+        let m = this.mapName || (c ? "BALCONY" : "SOLSTICE HOTEL");
+        if (!this.mapName && !c) for (let p = 0; p < IU.length; p++) {
           let x = IU[p];
           if (e.pos.x >= x[1] && e.pos.x < x[2] && e.pos.z >= x[3] && e.pos.z < x[4]) {
             m = x[0];
@@ -49965,6 +49978,7 @@ vCard = aCard; vCuv = uv;`).replace("#include <project_vertex>", `#include <proj
       for (let s of this.dmg) s.t = 0, s.a.cancel();
       if (this.stat = { medals: {}, streak: 0, unlocked: [], base: JSON.parse(JSON.stringify(mi.weapons)) }, this.map.reset(), this.k9hud.reset(), this.studio) for (let s of [this.ctx.settings.primary, "pistol"]) this.studio.icons(s);
       e.wkey = "", t.intro.innerHTML = `${Hh(0)}<div class="i-mode">TEAM DEATHMATCH</div><div class="i-map">SOLSTICE HOTEL</div><div class="i-rule"></div><div class="i-sub">FIRST TO 40 ELIMINATIONS</div>`, t.intro.animate([{ opacity: 0, transform: "translateY(1.2rem)" }, { opacity: 1, transform: "none", offset: 0.1 }, { opacity: 1, offset: 0.86 }, { opacity: 0, transform: "translateY(-.8rem)" }], { duration: 3300, easing: "ease-out" }), t.intro.querySelector(".i-rule").animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], { duration: 700, delay: 150, easing: ta, fill: "forwards" }), t.intro.querySelector(".i-map").animate([{ letterSpacing: ".5em", opacity: 0 }, { letterSpacing: ".14em", opacity: 1 }], { duration: 650, easing: ta }), Oa.hints && Oa.seen < 3 && (Oa.seen++, i6(), this.hint("<span><kbd>SHIFT</kbd>SPRINT ANY DIRECTION</span><span><kbd>C</kbd>SLIDE</span><span><kbd>X</kbd>DIVE</span><span><kbd>B</kbd>K9 UNIT</span><span><kbd>TAB</kbd>SCORES</span>", 8));
+      if (this.map.mapName) t.intro.querySelector(".i-map").textContent = this.map.mapName;
     }
     count(t) {
       let e = this.e;
@@ -50867,6 +50881,7 @@ ${o.filename || ""}:${o.lineno || ""}`;
     t.loading(0.12, "RAISING THE HOTEL"), await q1();
     let f = new Mw(), u = new $M(i), d = new Ew(i, f, { audio: fo, fx: u }), m, p = new _w(i, f, { audio: fo, fx: u, glass: d, onExplode: (f0, _0) => m.explode(f0, _0) });
     u.physics = p;
+    const ghSharedRoots = new Set(i.children);
     let x = PL(i), g = FD({ scene: i, world: f, glass: d, fx: u, M: c, SURF_OF: A9 });
     t.loading(0.14, "DRESSING THE LOBBY"), await q1();
     let b, v = { scene: i, world: f, glass: d, physics: p, fx: u, M: c, P: h, audio: fo, onChandelier: (f0, _0) => O(f0, _0) };
@@ -50874,6 +50889,11 @@ ${o.filename || ""}:${o.lineno || ""}`;
       let _0 = f0.material;
       _0 && (f0.isMesh || f0.isPoints || f0.isSprite) && !Array.isArray(_0) && (_0.transparent || _0.blending !== H2 || _0.depthWrite === false) && f0.layers.set(1);
     });
+    const ghMapRuntime = {
+      THREE: Ct, createWorld: () => new Mw(), createNav: world => new $9(world),
+      hotelRoots: [d.shards, ...i.children.filter(root => !ghSharedRoots.has(root))],
+      active: null
+    };
     let y = new QM(i, a);
     y.hide.push(x.flare), y.add(c.marbleFloor, { k: 1, blur: 0, rough: 6.5 }), y.add(c.oakFloor, { k: 0.6, blur: 1.4, rough: 7.5 }), y.add(c.kitchenFloor, { k: 0.55, blur: 1, rough: 7.5 }), y.add(c.terraceStone, { k: 0.22, blur: 2.4, rough: 7 }), n.preRender = (f0) => y.render(f0);
     let M = () => {
@@ -50937,7 +50957,7 @@ ${o.filename || ""}:${o.lineno || ""}`;
     } };
     m = new Uw(L), L.combat = m;
     let A = new Xw(L);
-    L.arsenal = A, L.hud = t, L.resetWorld = () => g.resetDress(), L.setTimeScale = (f0) => {
+    L.arsenal = A, L.hud = t, L.resetWorld = () => { if (!ghMapRuntime.active) g.resetDress(); }, L.setTimeScale = (f0) => {
       Je.timeScale = f0, fo.setTimeScale(f0);
     }, L.botCtx = { scene: i, world: f, physics: p, glass: d, hotel: g, audio: fo, fx: u, nav: w, combat: m, time: T, createCharacter: n7, buildGrenade: R, worldGun: (f0, _0 = null, modelId = f0) => Ky(f0, { detail: "world", build: _0, modelId }) }, b = new A7(L), L.match = b, L.botCtx.match = b, t.loading(0.47, "PREPARING THE ARMOURY"), await q1(), u.attach && u.attach({ gfx: n, world: f, physics: p, glass: d, hotel: g, player: S, match: b, audio: fo, time: T }), t.attach && t.attach({ world: f, nav: w, hotel: g, match: b, player: S, arsenal: A, gfx: n, physics: p, glass: d, fx: u, buildGun: Ky, buildGrenade: Nk, settings: _s, audio: fo, input: l, time: T }), t.loading(0.8, "BRIEFING OPERATORS"), await q1(), b.createBots(5);
     for (let f0 of b.bots) for (let _0 of f0.rigs) _0.root.visible = false;
@@ -51205,6 +51225,7 @@ ${o.filename || ""}:${o.lineno || ""}`;
       let m0 = _0 ? F0 : Je.state === "paused" || Je.state === "over" ? 0 : f0;
       ghObs?.enter(6, g.update.length);
       for (let Y0 of g.update) Y0(m0);
+      g.mapScene?.update(m0);
       ghObs?.enter(7);
       u.update(m0, Je.time + performance.now() * 1e-4, r.domElement.height);
       ghObs?.enter(8);
@@ -51226,12 +51247,13 @@ ${o.filename || ""}:${o.lineno || ""}`;
         let Y0 = j0 ? Je.envIn : Je.envOut;
         Y0 && n.vmScene.environment !== Y0 && (n.vmScene.environment = Y0);
       }
-      u.tint = Ht(1, 0.5, n0) * (0.75 + 0.5 * K), x.update(a, f0, T0);
+      u.tint = Ht(1, 0.5, n0) * (0.75 + 0.5 * K);
+      if (!g.mapScene) x.update(a, f0, T0);
       {
         let Y0 = i3.dot(Ii);
         a3.copy(S0).addScaledVector(Ii, 1e3).project(a);
         let et = Math.max(Math.abs(a3.x), Math.abs(a3.y));
-        n.sunUv.set(a3.x * 0.5 + 0.5, a3.y * 0.5 + 0.5), n.rayK = Y0 > 0.05 ? 0.3 * ns((2 - et) / 0.9) * ns(Y0 * 3) : 0;
+        n.sunUv.set(a3.x * 0.5 + 0.5, a3.y * 0.5 + 0.5), n.rayK = !g.mapScene && Y0 > 0.05 ? 0.3 * ns((2 - et) / 0.9) * ns(Y0 * 3) : 0;
       }
       ghObs?.enter(11);
       let lt = n.uniforms;
@@ -51330,7 +51352,7 @@ ${o.filename || ""}:${o.lineno || ""}`;
       let f0 = [];
       for (let _0 of w.nodes) f.overlap(_0.x - 0.3, _0.y + 0.45, _0.z - 0.3, _0.x + 0.3, _0.y + 1.7, _0.z + 0.3, true) ? f0.push("blocked node " + _0.i + " @" + [_0.x, _0.y, _0.z]) : _0.links.length < 1 && f0.push("orphan node " + _0.i + " @" + [_0.x, _0.y, _0.z]);
       return { links: w.nodes.reduce((_0, F0) => _0 + F0.links.length, 0) / 2, islands: w.islands.length, bad: f0, calls: r.info.render.calls, tris: r.info.render.triangles, fps: Math.round(Je.fps) };
-    }, ctx: L, hotel: g, nav: w, gfx: n, match: b, player: S, arsenal: A, physics: p, glass: d, fx: u, vm: E, input: l, world: f, boot: s, swatches: FU, k9: b.k9.debug }, window.GH.debug.fpbody = C, t.loading(0.93, "FINAL CHECKS"), await q1();
+    }, ctx: L, mapRuntime: ghMapRuntime, hotel: g, nav: w, gfx: n, match: b, player: S, arsenal: A, physics: p, glass: d, fx: u, vm: E, input: l, world: f, boot: s, swatches: FU, k9: b.k9.debug }, window.GH.debug.fpbody = C, t.loading(0.93, "FINAL CHECKS"), await q1();
     await n.prepare("startup");
     t.loading(1, "READY"), await q1(), Je.state = "menu", t.show("menu"), window.GH.ready = true;
     G.getDelta(), r.setAnimationLoop(M0);
