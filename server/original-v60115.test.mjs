@@ -29,6 +29,9 @@ test("v60115 uses its published map/mode versions and isolates both identity and
     maps: [{ id: "hotel", name: "Hotel", version: "2", clientScene: "hotel", modes: ["tdm"] }],
     modes: [{ id: "tdm", name: "TDM", clientAdapter: "teams" }] });
   assert.equal(matchOriginalV60115Room(room, catalog).map.version, "2");
+  assert.deepEqual(originalV60115Hello({ ...hello, m200Build: {
+    optic: "irons", stock: "factory", uid: "bad", magazine: "../26",
+  } }, identity).m200Build, { optic: "irons", stock: "factory" });
   assert.throws(() => matchOriginalV60115Room({ ...room, mapVersion: "1" }, catalog), /目录/);
   assert.throws(() => matchOriginalV60115Room({ ...room, modeAdapter: "zombies" }, catalog), /目录/);
   assert.throws(() => originalV60115Catalog({ ...catalog, maps: [{ ...catalog.maps[0], version: "../2" }] }), /无效/);
@@ -143,6 +146,11 @@ test("modern socket only uses the approved origin; RTC failure falls back and re
   assert.equal(frames[0].ticket, undefined);
   assert.equal(frames[0].uid, identity);
   assert.equal(net.hello.uid, undefined);
+  await net.send({type:"equip",weapon:"m200",m200Build:{optic:"irons",uid:"hidden"},ticket:"local-ticket"});
+  await net.send({type:"loadout",m200Build:{magazine:"std",profile:"hidden"}});
+  assert.deepEqual(frames.splice(1), [
+    {type:"equip",weapon:"m200",m200Build:{optic:"irons"}}, {type:"loadout",m200Build:{magazine:"std"}},
+  ]);
   assert.equal(events.find(event => event.type === "room").mapVersion, "2");
   const received = new Promise(resolve => net.addEventListener("snapshot", e => resolve(e.detail), { once: true }));
   sockets[0].packet(cosmeticPacket());

@@ -8,6 +8,22 @@ export const ORIGINAL_V60115_SITE = "https://www.bilibili.com/toy/golden-hour/in
 const roomId = /^[A-F0-9]{8}$/;
 const identifier = /^[a-z0-9][a-z0-9_-]{0,31}$/;
 const version = /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/;
+const m200Fields = ["optic", "muzzle", "underbarrel", "magazine", "stock", "camo"];
+
+export function originalV60115Build(build) {
+  if (!build || typeof build !== "object" || Array.isArray(build)) return undefined;
+  const entries = m200Fields.filter(key => typeof build[key] === "string" && identifier.test(build[key]));
+  return entries.length ? Object.fromEntries(entries.map(key => [key, build[key]])) : undefined;
+}
+
+export function validateOriginalV60115Welcome(event) {
+  if (!roomId.test(event.room || "") || !Number.isSafeInteger(event.id) || event.id < 1 || event.id > 0xffffffff ||
+      (event.resume != null && (typeof event.resume !== "string" || event.resume.length > 256))) {
+    const error = Error("v60115 入场确认无效。");
+    error.application = true;
+    throw error;
+  }
+}
 
 export function originalV60115Hello(message, identity) {
   if (typeof identity !== "string" || !identity.trim() || identity.length > 256) {
@@ -16,10 +32,13 @@ export function originalV60115Hello(message, identity) {
     throw error;
   }
   const hello = {
-    type: "hello", uid: identity.trim(), name: message.name,
+    type: "hello", uid: identity.trim(), name: typeof message.name === "string" ? message.name.trim().slice(0, 32) : "",
+    ...(message.m200Build && { m200Build: originalV60115Build(message.m200Build) }),
     weaponProtocol: 2, cosmeticDatagrams: true, shotAcks: true,
   };
-  if (message.resume && roomId.test(message.room || "")) {
+  if (message.resume) {
+    if (!roomId.test(message.room || "") || typeof message.resume !== "string" || message.resume.length > 256)
+      throw Error("v60115 续接参数无效。");
     hello.room = message.room;
     hello.resume = message.resume;
     return hello;

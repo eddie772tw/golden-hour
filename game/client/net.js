@@ -2,8 +2,9 @@ import { protocolError } from "../i18n/errors.js";
 import { RTCTransport } from "./webrtc.js";
 import { SocketTransport } from "./socket-transport.js";
 import { originalSocketURL } from "./api-config.js";
-import { decodeOriginalCosmetic, decodeZombieRecords, originalV60115Hello,
-  originalV60115Room, originalV60115SnapshotLayout } from "./original-v60115.js";
+import { decodeOriginalCosmetic, decodeZombieRecords, matchOriginalV60115Room, originalV60115Build, originalV60115Catalog,
+  originalV60115Hello, originalV60115Room, originalV60115SnapshotLayout,
+  validateOriginalV60115Welcome } from "./original-v60115.js";
 
 const PHASES = ["lobby", "countdown", "live", "over"];
 import { familyOf } from "./weapon-models.js";
@@ -126,11 +127,12 @@ export function decodeSnapshot(bytes, weaponFormat = "community") {
 }
 
 export class Connection extends EventTarget {
-  constructor({ original = serverTarget.original, originalVersion = serverTarget.version, toyIdentity, connectTimeoutMs = 12000, leaveTimeoutMs = 500, writeTimeoutMs = 5000, snapshotTimeoutMs = 5000 } = {}) {
+  constructor({ original = serverTarget.original, originalVersion = serverTarget.version, toyIdentity, originalCatalog, connectTimeoutMs = 12000, leaveTimeoutMs = 500, writeTimeoutMs = 5000, snapshotTimeoutMs = 5000 } = {}) {
     super();
     this.original = original;
     this.originalVersion = original ? originalVersion : null;
     this.toyIdentity = toyIdentity;
+    this.originalCatalog = this.originalVersion === "v60115" && originalCatalog ? originalV60115Catalog(originalCatalog) : null;
     this.coopSnapshot = false;
     this.connectTimeoutMs = connectTimeoutMs;
     this.leaveTimeoutMs = leaveTimeoutMs;
@@ -348,8 +350,12 @@ export class Connection extends EventTarget {
       if (message.type === "equip" || message.type === "shot") {
         const weapon = encodeWeaponIndex(message.weapon, "v60115") !== undefined ? message.weapon : familyOf(message.weapon);
         if (encodeWeaponIndex(weapon, "v60115") === undefined) return Promise.reject(Error("v60115 不支持此武器。"));
-        message = { ...message, weapon };
+        message = message.type === "equip"
+          ? { type: "equip", weapon, m200Build: originalV60115Build(message.m200Build) }
+          : { type: "shot", weapon, tick: message.tick, yaw: message.yaw, pitch: message.pitch, shotSeq: message.shotSeq };
       }
+      if (message.type === "loadout")
+        message = { type: "loadout", m200Build: originalV60115Build(message.m200Build) };
     } else if (this.original) {
       if (message.type === "equip") message = { ...message, weapon: familyOf(message.weapon) };
       // Original servers have no local admission/account protocol. Never send
@@ -439,7 +445,13 @@ export class Connection extends EventTarget {
           buffer = buffer.slice(n + 1);
           if (!line) continue;
           const e = JSON.parse(line);
-          if (this.originalVersion === "v60115" && e.type === "room") originalV60115Room(e);
+          if (this.originalVersion === "v60115") {
+            if (e.type === "welcome") validateOriginalV60115Welcome(e);
+            if (e.type === "room") {
+              if (this.originalCatalog) matchOriginalV60115Room(e, this.originalCatalog);
+              else originalV60115Room(e);
+            }
+          }
           if (!this.original && e.type === "room") this.coopSnapshot = e.modeId === "zombie-coop";
           if (e.type === "pong" && Number.isFinite(e.nonce))
             this.metrics.rttMs = Math.round(performance.now() - e.nonce);
