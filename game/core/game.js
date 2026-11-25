@@ -32277,7 +32277,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
       J && (typeof J.indoor == "number" && isFinite(J.indoor) && (o.indoorT = Ai(J.indoor)), "space" in J && (o.space = typeof J.space == "string" ? J.space : null));
     }
     function currentSoundKeys(weapons) {
-      const families = new Set(weapons.map(id => globalThis.GHBoot?.familyOf(id) || id));
+      const families = new Set(weapons.map(id => id === "m200" ? "ar" : globalThis.GHBoot?.familyOf(id) || id));
       return B$().filter(key => key.startsWith("gun:") ? families.has(key.split(":")[1]) : /^(glass:.*:0|exp:0)$/.test(key));
     }
     function soundsReady(weapons) {

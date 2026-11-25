@@ -22,7 +22,8 @@ specs.m200 = { id: M200.id, interval: 60 / M200.rpm, mag: M200.mag, reserve: M20
 const initialWeapons = new Set(["ar", "pistol", "m200"]);
 const wireWeapon = (id, viewer) => id === "m200" && !viewer.supportsM200 ? "ar" : id;
 function send(viewer, event) {
-  if (event.weapon === "m200" && !viewer.supportsM200) event = { ...event, weapon: "ar" };
+  const weapon = wireWeapon(event.weapon, viewer);
+  if (weapon !== event.weapon) event = { ...event, weapon };
   viewer.peer?.send(event);
 }
 
@@ -43,6 +44,7 @@ function equip(p, weapon) {
   p.ammo = p.inventory[weapon].ammo;
   p.reserve = p.inventory[weapon].reserve;
   p.reload = 0;
+  p.reloadQueued = false;
 }
 function spawn(p, {pos:[x,y,z], yaw=0}) {
   Object.assign(p,motion({x,y,z}),{yaw,pitch:0,hp:100,alive:true,respawn:0,cooldown:0,
@@ -136,8 +138,10 @@ export class Room {
       equip(p,e.weapon);
     }
     const gun=specs[p.weapon];
-    if (e.type === "reload" && !p.reload && p.reserve && p.ammo < gun.mag &&
-        (p.weapon !== "m200" || !p.m200Action)) p.reload = gun.reloadMs ?? 1200;
+    if (e.type === "reload" && !p.reload && p.reserve && p.ammo < gun.mag) {
+      if (p.weapon === "m200" && p.m200Action) p.reloadQueued = true;
+      else p.reload = gun.reloadMs ?? 1200;
+    }
     if (!["shot","melee"].includes(e.type) || ![e.yaw,e.pitch].every(Number.isFinite) || p.cooldown || p.reload) return;
     const melee=e.type==="melee", weapon=melee?"melee":p.weapon;
     if (!melee && !p.ammo) return;
@@ -222,6 +226,10 @@ export class Room {
           const n=Math.min(p.reserve,specs[p.weapon].mag-p.ammo);
           p.inventory[p.weapon].ammo=p.ammo+=n; p.inventory[p.weapon].reserve=p.reserve-=n;
         }
+      }
+      if (p.reloadQueued && !p.m200Action) {
+        p.reloadQueued = false;
+        p.reload = specs.m200.reloadMs;
       }
       if (p.bot) {
         if (this.map!==builtinMap) {

@@ -31,7 +31,9 @@ function tuneMotion(gun, bolt) {
     const scale = M200_RELOAD / clip.duration;
     gun.clips[name] = {
       ...clip, duration: M200_RELOAD,
-      events: clip.events.map(event => ({ ...event, t: event.type === "ammo" ? M200_RELOAD : event.t * scale })),
+      events: clip.events
+        .map(event => ({ ...event, t: event.type === "ammo" ? M200_RELOAD : event.t * scale }))
+        .sort((a, b) => a.t - b.t),
       apply(time, pose) { resetBolt(); clip.apply(time / scale, pose); },
     };
   }

@@ -56,7 +56,9 @@ test("M200 is server-authoritative and survives switching and reconnecting", () 
     assert.ok(oldEvents.some(event => event.type === "damage" && event.weapon === "ar"));
     room.command(user, { type: "reload" });
     assert.equal(user.reload, 0);
+    assert.equal(user.reloadQueued, true);
     room.command(user, { type: "equip", weapon: "pistol" });
+    assert.equal(user.reloadQueued, false);
     assert.equal(user.weapon, "pistol");
     room.command(user, { type: "equip", weapon: "m200" });
     assert.equal(user.ammo, 4);
@@ -64,8 +66,8 @@ test("M200 is server-authoritative and survives switching and reconnecting", () 
     assert.equal(room.join(peer, { resume: user.token, communityWeaponVersion: 2 }, "modern"), user);
     assert.equal(user.weapon, "m200");
     assert.equal(user.ammo, 4);
-    for (let i = 0; i < 76; i++) room.step();
     room.command(user, { type: "reload" });
+    while (user.m200Action) room.step();
     assert.equal(user.reload, 2800);
     for (let i = 0; i < 169; i++) room.step();
     assert.equal(user.ammo, 5);

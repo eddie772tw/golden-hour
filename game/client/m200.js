@@ -24,7 +24,7 @@ export function configureM200(specs, choices, attachments, weapons, primaries) {
   specs.m200 = M200;
   choices.m200 = Object.fromEntries(Object.entries(parts).map(([slot, options]) => {
     for (const [id, name] of Object.entries(options)) {
-      if (name) attachments[slot][id] = { name, desc: "M200 APPEARANCE ONLY", mods: {} };
+      if (name) attachments[slot][id] = { name, desc: "APPEARANCE ONLY", mods: {} };
     }
     return [slot, Object.keys(options)];
   }));
