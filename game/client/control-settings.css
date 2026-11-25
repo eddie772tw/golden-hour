@@ -1,3 +1,5 @@
+#pg-settings .st-panel[data-tab="controls"].on { overflow-y: auto; overscroll-behavior: contain; }
+body.input-keyboard #pg-settings .st-panel[data-tab="controls"] > .binds { display: none; }
 [data-key-bindings] { margin: .8rem 0; }
 [data-key-bindings] summary { cursor: pointer; font-weight: 700; }
 [data-key-bindings] fieldset { min-width: 0; border: 1px solid #283b44; margin: .5rem 0; }

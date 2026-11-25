@@ -14,11 +14,12 @@ export function installKeyBindingSettings({ devices, menus, section }) {
   const panel = section.closest(".st-panel");
   const editor = document.createElement("details");
   editor.dataset.keyBindings = "";
-  editor.innerHTML = `<summary data-nav></summary><p data-key-help></p><div data-key-groups></div>
+  editor.innerHTML = `<summary data-nav></summary><p data-key-help></p>
     <p data-key-status role="status" aria-live="polite"></p>
     <button type="button" data-nav data-key-replace hidden></button>
     <button type="button" data-nav data-key-cancel hidden></button>
-    <button type="button" data-nav data-key-reset></button>`;
+    <button type="button" data-nav data-key-reset></button>
+    <div data-key-groups></div>`;
   section.append(editor);
   const query = selector => editor.querySelector(selector);
   const groups = query("[data-key-groups]");
@@ -90,7 +91,7 @@ export function installKeyBindingSettings({ devices, menus, section }) {
     capture = conflict = null;
     render();
     if (focus && previous && available())
-      (buttonFor(previous) ?? buttonFor({ id: previous.id, slot: 0 }))?.focus({ preventScroll: true });
+      (buttonFor(previous) ?? buttonFor({ id: previous.id, slot: 0 }))?.focus();
   }
   function info(key, ...args) {
     bind(status, "bindings." + key, ...args);
