@@ -60,6 +60,7 @@ with sync_playwright() as pw:
     selector.wait_for(timeout=150000)
     assert selector.input_value() == "ja-JP-x-kyoto"
     page.locator('#pg-main [data-act="deploy"]').click()
+    page.locator("#training-deploy").click()
     page.wait_for_function("GH.debug.match.live && GH.debug.match.time < 479.9", timeout=90000)
     assert page.evaluate("GH.debug.match.bots.length") == 9
     pos = page.evaluate("GH.debug.player.pos.toArray()")

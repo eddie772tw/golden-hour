@@ -32,6 +32,7 @@ with sync_playwright() as pw:
         }""", [family, model])
     page.evaluate("GH.debug.ctx.hud.menus.go('main')")
     page.locator('#pg-main [data-act="deploy"]').click()
+    page.locator("#training-deploy").click()
     page.wait_for_function("GH.debug.match.live && GH.debug.match.time < 479.9", timeout=90000)
     # Exercise every native family on the firing range without writing competitive progress.
     for family, model, name, rounds in guns:

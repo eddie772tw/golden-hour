@@ -1,0 +1,28 @@
+.training-layout {
+  position: absolute;
+  inset: 11rem 8rem 7rem;
+  display: grid;
+  align-content: center;
+  gap: 2rem;
+  overflow: auto;
+}
+
+#training-maps {
+  display: grid;
+  gap: 0.6rem;
+  max-width: 32rem;
+}
+
+#training-maps [aria-pressed="true"] {
+  border-inline-start: 0.3rem solid var(--hot, #ff703d);
+  background: rgba(255, 123, 76, 0.16);
+}
+
+.training-actions {
+  display: grid;
+  justify-items: start;
+}
+
+#training-status {
+  min-height: 1.5em;
+}

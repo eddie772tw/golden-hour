@@ -9,6 +9,7 @@ import { ToyAccount } from "./toy-account.js";
 import { OnlineKills } from "./online-kills.js";
 import { MatchReportGate } from "./online-results.js";
 import { installToyMenus } from "./toy-menu.js";
+import { installTrainingMenu } from "./maps/training-menu.js";
 import { installTrainingKills } from "./training-kills.js";
 import { installTouchSettings } from "./touch-settings.js";
 import { installInputSettings } from "./input-settings.js";
@@ -274,6 +275,7 @@ bind(inviteLabel,"account.invite");inviteLabel.htmlFor=inviteField.id="room-invi
 inviteField.readOnly=true;inviteField.onclick=()=>inviteField.select();$("online-room").append(inviteLabel,inviteField);
 installWeaponGate({ access, engine, progression });
 installModelSelector(menus);
+installTrainingMenu(engine.gh);
 const trainingKills = installTrainingKills({ gh: engine.gh, account, isOnline: () => engine.active });
 function saveKills() {
   trainingKills.sample();

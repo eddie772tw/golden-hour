@@ -179,8 +179,9 @@ def phase(page, label, seconds, moving=False, shooting=False):
 
 def deploy(page):
     # A preparation gate may require a new user gesture after its asynchronous work.
+    page.locator('#pg-main [data-act="deploy"]').click(timeout=60000)
     for _ in range(3):
-        page.locator('#pg-main [data-act="deploy"]').click(timeout=60000)
+        page.locator('#training-deploy').click(timeout=60000)
         page.wait_for_timeout(100)
         page.evaluate('async()=>{const g=GH.debug.gfx;if(g._deploying)await g._deploying;if(g.whenReady)await g.whenReady();}')
         if page.evaluate('GH.G.state')=='playing': break
@@ -273,7 +274,7 @@ try:
             profiler.send('Profiler.setSamplingInterval',{'interval':1000})
             profiler.send('Profiler.start')
         page.bring_to_front()
-        page.evaluate('''()=>{document.querySelector('#pg-main [data-act="deploy"]').addEventListener('click',e=>{__frames.entryAt=performance.now();__frames.mark('first-entry')},{once:true,capture:true})}''')
+        page.evaluate('''()=>{document.querySelector('#training-deploy').addEventListener('click',e=>{__frames.entryAt=performance.now();__frames.mark('first-entry')},{once:true,capture:true})}''')
         deploy(page)
         result['deployToLiveMs']=page.evaluate('performance.now()-__frames.entryAt')
         if args.casing_worklet:

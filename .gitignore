@@ -13,3 +13,4 @@ playwright-report/
 scripts/performance/evidence/
 
 dist/
+/game/assets/maps/

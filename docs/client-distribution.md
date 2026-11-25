@@ -14,6 +14,14 @@ python packaging/check_windows.py dist
 
 打包來源固定為 `HEAD` 的 Git 快照。修改遊戲後先提交再重建。腳本校驗固定版 Node 與 PortableGit 的 SHA-256，從後者只取 OpenSSL 執行檔、DLL 和授權。npm 模組從 lockfile 指定的來源取得並驗證完整性；建置機與玩家電腦均不需執行 npm 安裝。以 `--cache 目錄` 指定下載快取，所有輸入已備妥時可離線重建。版本及來源提交在 ZIP 的 `VERSION.txt`。
 
+需要在本機 Windows 套件加入該提交支援的 v60115 素材時，可將已取得的原版封存檔傳給同一個打包器。它會從指定的 Git 提交解出匯入工具，驗證封存與素材，再將匯入結果放入 ZIP。專服只帶地圖資料。選項為手動提供，常規 CI 打包走既有路徑。
+
+```powershell
+python packaging/build_windows.py --output dist --upstream-archive <resources.zip>
+python packaging/check_windows.py dist
+```
+
+
 要驗證從原始碼版升級，執行 `python packaging/check_windows.py dist --previous 舊版專案路徑`，舊版需已安裝其 Node 相依。測試先在舊版完成一局、停服並搬移臨時 SQLite 和身分金鑰，接著用可攜版在原瀏覽器來源解鎖。另用空白設定檔驗證加密備份匯入。可用 `GH_LAN_IP` 指定實際區網 IPv4。
 
 GitHub Actions 在 [Windows x64 portable release](../.github/workflows/windows-release.yml) 的 `release.published` 事件建置並測試兩包，成功後將兩個 ZIP 與校驗檔附到該 Release。手動執行 `workflow_dispatch` 只產生 Actions artifact；不會建立或發布 Release。若啟用 immutable releases，附件需在草稿階段先透過手動建置產生並附上，發布後 GitHub 會鎖定附件。
