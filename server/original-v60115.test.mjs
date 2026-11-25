@@ -81,6 +81,26 @@ test("v60115 extended packet boundaries isolate v49221 and decode M200, zombie s
   assert.equal(decodeOriginalCosmetic(cosmetic), null);
 });
 
+test("v60115 decodes a 704-byte TDM lobby snapshot with ten shot ACK slots", () => {
+  // The official WebSocket lobby used this layout. The player records and ACK values are synthetic.
+  const bytes = Buffer.alloc(704);
+  bytes.set([0x48, 0x47, 1, 4]);
+  bytes[13] = 10;
+  bytes.writeInt8(-1, 22);
+  for (let i = 0; i < 10; i++) {
+    bytes.writeUInt32LE(i + 1, 24 + 64 * i);
+    bytes.writeUInt32LE(100 + i, 664 + 4 * i);
+  }
+
+  const decoded = decodeSnapshot(bytes, "v60115");
+  assert.equal(decoded?.phase, "lobby");
+  assert.equal(decoded.players.length, 10);
+  assert.deepEqual(decoded.players.map(player => player.shotAck), [100, 101, 102, 103, 104, 105, 106, 107, 108, 109]);
+  assert.equal(decoded.zombies, undefined);
+  assert.equal(decodeSnapshot(bytes.subarray(0, 700), "v60115"), null);
+  assert.equal(decodeSnapshot(bytes, "v49221"), null);
+});
+
 test("modern socket only uses the approved origin; RTC failure falls back and reconnect resumes the same seat", async t => {
   const frames = [], sockets = [];
   class Socket extends EventTarget {

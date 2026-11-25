@@ -82,10 +82,25 @@ The November 17 live run passed: real WebRTC join, 112 snapshots, movement ACK 3
 
 The opt-in live check now observes 60 seconds by default (`GH_LIVE_SECONDS`, 1–300), requires fresh snapshots at the end, and separately reports reconnects. `GH_LIVE_HEADED=1` shows its independent browser. See the [subsequent recovery investigation](original-network-recovery.md) for bounded stall recovery and unresolved original-server latency.
 
-## v60115 公開目錄與 Toy 身分
+## v60115 公開目錄與協定
 
-大廳可以獨立選擇 v60115。此模式從固定正式端點讀取公開配置和版本化地圖目錄，保留正常 TLS 驗證。預覽提供原站入口。原站的封存客戶端在加入前要求 B 站 Toy 授權，本社群客戶端目前沒有獲准使用的 Toy 身分提供者。
+大廳可以獨立選擇 v60115。此模式從固定正式端點讀取公開配置和版本化地圖目錄，保留正常 TLS 驗證，並提供原站入口。這輪的 v60115 支援範圍是公開預覽和本機協定驗證，Toy 登入、授權與正式入房驗收暫緩。
 
 新版封包驗證依照 2026-11-25 客戶端封存。hello 的地圖／模式選擇、Toy UID、武器協定 2、shot ACK 與特效資料報能力分開處理。房間的地圖版本與模式適配器可和公開目錄核對。WebRTC 與同一批准 origin 的 WebSocket 可在本機替身中切換及續接，且與社群登入獨立。既有 v49221 仍使用上文的路徑。
 
-2026-11-25 16:57（Asia/Taipei）正式公開 GET 驗證得到 WebRTC 優先、WebSocket 可用，以及 `hotel@2`、`shipment@3`、`sublevel-07@4` 三張 TDM 地圖。正式目錄未列灰港合作地圖或模式。實際 Toy 授權入房、正式服務上的資料通道與灰港資源仍待驗證。參閱 [正式原站](https://www.bilibili.com/toy/golden-hour/index.html)。
+2026-11-25 16:57（Asia/Taipei）正式公開 GET 驗證得到 WebRTC 優先、WebSocket 可用，以及 `hotel@2`、`shipment@3`、`sublevel-07@4` 三張 TDM 地圖。正式目錄未列灰港合作地圖或模式。參閱 [正式原站](https://www.bilibili.com/toy/golden-hour/index.html)。
+
+同日的原站 Edge 紀錄顯示，`hotel@2` 編隊大廳在 WebRTC offer 回 `200` 後，經 `/api/socket` 升級為 WebSocket（`101`，子協定 `gh-pvp-v1`），並收到 704 位元組的 `kind 4` 大廳快照。標頭顯示十筆玩家紀錄和零筆感染者紀錄，封包長度與十個射擊 ACK 欄位吻合。自動測試採用同版型及合成玩家資料。
+
+## v60115 原服驗收與灰港資產檢查
+
+公開檢查會向固定的正式端點讀取 `/api/config` 和 `/api/catalog`。輸出列出協定與傳輸能力、目錄中的地圖版本及是否宣告 `zombie-coop`。本機模式也可讀取原作者提供的目錄與素材，方便在正式上線前驗證。
+
+```powershell
+node scripts/check_original_readiness.mjs
+node scripts/check_original_readiness.mjs --catalog C:/test/catalog.json --assets-root C:/test/game
+```
+
+`--assets-root` 指向含 `assets/` 的目錄。每張圖的資料以目錄所列的 `assets/maps/<map-id>/<version>/` 為準。把同版本的 `/api/maps/<map-id>?v=<version>` JSON 保存至同層的 `map-data.json`，並放入 `scene.glb`、`actors.json` 及其中宣告的 GLB。工具驗證目錄與場景版本一致、碰撞與導航資料、P3 撤離錨點、場景及 walker、runner、brute 三種感染者各兩個 LOD 的大小和 SHA-256。結果會逐檔標出缺件或校驗錯誤。退出碼 2 表示未公告合作地圖或仍缺可驗證的素材。退出碼 1 表示目錄讀取、解析或參數錯誤。退出碼 0 表示素材檢查通過。
+
+灰港玩法驗收需要原作者提供可供本專案使用的同版本目錄、素材與四席、波次及撤離規則。素材檢查通過後，再核對場景渲染、四人波次與撤離。
