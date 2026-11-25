@@ -730,6 +730,7 @@ export default {
   "error.room_missing": "部屋が見つかりません。",
   "error.join_first": "先に部屋に入ってください。",
   "error.resume": "席を復旧できませんでした。",
+  "error.map_version": "ルームのマップまたはモードのバージョンが一致しません。ロビーを更新し、マップを確認してください。",
   "error.room_full": "部屋が満員です。",
   "error.weapon_locked": "武器のキル条件を満たしていません。",
   "error.command": "無効な対戦コマンドです。",

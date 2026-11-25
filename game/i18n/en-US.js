@@ -730,6 +730,7 @@ export default {
   "error.room_missing": "Room not found.",
   "error.join_first": "Join a room first.",
   "error.resume": "Could not recover your slot.",
+  "error.map_version": "Room map or mode version mismatch. Refresh the lobby and check the installed map.",
   "error.room_full": "Room full.",
   "error.weapon_locked": "Weapon kill requirement unmet.",
   "error.command": "Invalid match command.",

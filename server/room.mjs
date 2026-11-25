@@ -3,18 +3,18 @@ import { models, familyOf } from "../game/client/weapon-models.js";
 import { visibleEnemy } from "./visibility.mjs";
 
 import { randomUUID, randomBytes } from "node:crypto";
-import { readFileSync } from "node:fs";
+import { builtinMap } from "./maps.mjs";
+import { roomContent } from "./room-content.mjs";
+import { navigateBot } from "./bot-navigation.mjs";
 import { World, motion, clamp, ADS } from "../game/client/simulation.js";
 import { WEAPONS } from "../game/client/net.js";
 
-const map = JSON.parse(readFileSync(new URL("./world.json", import.meta.url)));
-export const world = new World(map.colliders);
-const specs = Object.fromEntries(map.weapons.map(w => [w.id, w]));
+export const world = new World(builtinMap.colliders,builtinMap.bounds);
+const specs = Object.fromEntries(builtinMap.weapons.map(w => [w.id, w]));
 for (const [id, model] of Object.entries(models)) {
   specs[id] = {id, interval:60/model.rpm, mag:model.mag, reserve:model.mag*5, pellets:model.pellets,
     damage:model.dmg[0], farDamage:model.dmg[1], range:model.range, hip:model.hip[0], ads:model.ads};
 }
-const bulletCover = map.colliders.filter(c => !c.noRay);
 const emptyInput = { forward: 0, right: 0, yaw: 0, pitch: 0, buttons: 0, seq: 0 };
 const phases = ["lobby", "countdown", "live", "over"];
 const stepMs = 1000 / 60;
@@ -33,21 +33,25 @@ function equip(p, weapon) {
   p.reserve = p.inventory[weapon].reserve;
   p.reload = 0;
 }
-function spawn(p) {
-  const [x,y,z] = map.nodes[p.id-1];
-  Object.assign(p,motion({x,y,z}),{yaw:0,pitch:0,hp:100,alive:true,respawn:0,cooldown:0,
-    input:{...emptyInput,seq:p.ack},inputAge:0,
-    threat:null, modelsThisLife:{}, inventory:Object.fromEntries(Object.values(specs).map(w=>[w.id,{ammo:w.mag,reserve:w.reserve}]))});
+function spawn(p, {pos:[x,y,z], yaw=0}) {
+  Object.assign(p,motion({x,y,z}),{yaw,pitch:0,hp:100,alive:true,respawn:0,cooldown:0,
+    input:{...emptyInput,yaw,seq:p.ack},inputAge:0,
+    threat:null, nav:null, modelsThisLife:{}, inventory:Object.fromEntries(Object.values(specs).map(w=>[w.id,{ammo:w.mag,reserve:w.reserve}]))});
   equip(p,"ar");
 }
-function seat(id) {
-  const p = {id,team:(id-1)%2,bot:true,name:"靶标 "+id,kills:0,deaths:0,score:0,ack:0};
-  spawn(p);
-  return p;
+function seat(id, team = (id-1)%2) {
+  return {id,team,bot:true,name:"靶标 "+id,kills:0,deaths:0,score:0,ack:0};
 }
 
 export class Room {
-  constructor(difficulty = "regular", duration = 480000, career = null) {
+  constructor(difficulty = "regular", duration = 480000, career = null, {map=builtinMap,modeId="tdm"}={}) {
+    if (modeId!=="tdm") throw Error("error.map_version");
+    this.modeId=modeId;
+    this.map=map;
+    this.content=Object.freeze(roomContent(map,modeId));
+    this.world=new World(map.colliders,map.bounds);
+    this.teamSpawns=[0,1].map(team=>map.spawns.filter(spawn=>spawn.team===team));
+    this.fallLimit=map.colliders.reduce((min,c)=>Math.min(min,c.min[1]),0)-5;
     this.id=randomBytes(4).toString("hex").toUpperCase();
     this.matchID = randomUUID();
     this.elimination = 0;
@@ -56,12 +60,17 @@ export class Room {
     this.tick=0; this.round=0; this.duration=duration; this.difficulty=difficulty;
     this.start();
   }
+  spawn(p) {
+    const index=this.players.filter(q=>q.team===p.team && q.id<p.id).length;
+    spawn(p,this.map===builtinMap?this.map.spawns[p.id-1]:this.teamSpawns[p.team][index]);
+  }
   start() {
     this.round++; this.phase="live"; this.scores=[0,0]; this.winner=-1; this.remaining=this.duration;
-    for (const p of this.players) { spawn(p); p.kills=p.deaths=p.score=0; }
+    for (const p of this.players) { this.spawn(p); p.kills=p.deaths=p.score=0; }
     this.broadcast({type:"round-start",round:this.round}); this.roster();
   }
   end() {
+    if (this.phase==="over") return;
     this.phase="over"; this.winner=this.scores[0]===this.scores[1]?-1:Number(this.scores[1]>this.scores[0]);
     this.career?.finishRound(this.matchID,this.round,this.winner,this.players);
     this.broadcast({type:"round-end",round:this.round,winner:this.winner}); this.roster();
@@ -69,23 +78,32 @@ export class Room {
   broadcast(event) { for (const p of this.players) p.peer?.send(event); }
   summary() {
     const humans=this.players.filter(p=>!p.bot);
-    return {room:this.id,phase:this.phase,difficulty:this.difficulty,hostName:humans[0]?.name,
+    return {room:this.id,...this.content,phase:this.phase,difficulty:this.difficulty,hostName:humans[0]?.name,
       humans:humans.length,bots:10-humans.length,capacity:10,joinable:humans.length<10};
   }
   roster() {
-    this.broadcast({type:"room",room:this.id,round:this.round,host:this.players.find(p=>!p.bot)?.id,
+    this.broadcast({type:"room",room:this.id,...this.content,round:this.round,host:this.players.find(p=>!p.bot)?.id,
       phase:this.phase,scores:this.scores,winner:this.winner,scoreLimit:40,difficulty:this.difficulty,
       players:this.players.map(({id,team,name,bot,peer,kills,deaths,score,alive})=>({id,team,name,bot,alive,connected:!!peer,kills,deaths,score}))});
   }
   join(peer,msg,profile = null) {
     const p=msg.resume ? this.players.find(p=>p.token===msg.resume && p.profile===profile && !p.peer) : this.players.find(p=>p.bot);
     if (!p) throw Error(msg.resume?"error.resume":"error.room_full");
-    if (!msg.resume) { const team=p.team; Object.assign(p,seat(p.id),{team}); p.name=String(msg.name||"本机干员").replace(/[<>&]/g,"").slice(0,32); }
+    if (!msg.resume) {
+      Object.assign(p,seat(p.id,p.team));
+      this.spawn(p);
+      p.name=String(msg.name||"本机干员").replace(/[<>&]/g,"").slice(0,32);
+    }
     p.profile=profile; p.bot=false; p.peer=peer; p.token=randomBytes(16).toString("hex"); clearTimeout(p.expiry);
-    peer.send({type:"welcome",room:this.id,id:p.id,resume:p.token,inputSeq:p.ack,career:this.career?.progress(profile),weapons:Object.values(specs)});
+    peer.send({type:"welcome",room:this.id,...this.content,id:p.id,resume:p.token,inputSeq:p.ack,career:this.career?.progress(profile),weapons:Object.values(specs)});
     this.roster(); return p;
   }
-  remove(p) { clearTimeout(p.expiry); const team=p.team; Object.assign(p,seat(p.id),{team,profile:null,peer:null,token:null}); this.roster(); }
+  remove(p) {
+    clearTimeout(p.expiry);
+    Object.assign(p,seat(p.id,p.team),{profile:null,peer:null,token:null});
+    this.spawn(p);
+    this.roster();
+  }
   command(p,e) {
     if (e.type==="ping" && Number.isFinite(e.nonce)) return p.peer.send({type:"pong",nonce:e.nonce});
     if (this.phase==="over" && e.type==="ready" && e.ready===true) return this.start();
@@ -114,14 +132,14 @@ export class Room {
       p.inventory[weapon].ammo=--p.ammo;
       const shot = {type:"shot",id:p.id,weapon,x:pos[0],y:pos[1],z:pos[2],dx:dir[0],dy:dir[1],dz:dir[2]};
       for (const viewer of this.players) {
-        if (viewer.peer && visibleEnemy(viewer,p,map.walls)) viewer.peer.send(shot);
+        if (viewer.peer && visibleEnemy(viewer,p,this.map.walls)) viewer.peer.send(shot);
       }
     }
     const gun=specs[p.weapon];
     const hits=traceDischarge({origin:pos,yaw:e.yaw,pitch,pellets:melee?1:gun.pellets,
       spread:melee?0:(p.input.buttons & ADS ? gun.ads : gun.hip), reach:melee?2:140,
       damage:melee?[100,100]:[gun.damage,gun.farDamage], falloff:gun.range},
-      this.players.filter(q=>q.alive && q.team!==p.team),bulletCover);
+      this.players.filter(q=>q.alive && q.team!==p.team),this.map.bulletCover);
     for (const [target,amount] of hits) {
       if (this.phase!=="live") break;
       this.hit(p,target,weapon,Math.round(amount));
@@ -147,6 +165,7 @@ export class Room {
     }
   }
   returnFire(bot) {
+    const {bulletCover}=this.map;
     const threat=bot.threat, enemy=this.players.find(p=>p.id===threat.id);
     if (!enemy?.alive || !enemy.peer || enemy.team===bot.team || this.tick>threat.until) {
       bot.threat=null;
@@ -175,7 +194,7 @@ export class Room {
     for (const p of this.players) {
       if (!p.alive) {
         p.respawn=Math.max(0,p.respawn-stepMs);
-        if (!p.respawn) { spawn(p); this.broadcast({type:"spawn",id:p.id}); }
+        if (!p.respawn) { this.spawn(p); this.broadcast({type:"spawn",id:p.id}); }
         continue;
       }
       p.cooldown=Math.max(0,p.cooldown-stepMs);
@@ -186,16 +205,26 @@ export class Room {
           p.inventory[p.weapon].ammo=p.ammo+=n; p.inventory[p.weapon].reserve=p.reserve-=n;
         }
       }
-      if (p.bot && p.threat) this.returnFire(p);
-      if (!p.bot) {
+      if (p.bot) {
+        if (this.map!==builtinMap) {
+          const enemy=this.players.find(q=>q.id===p.threat?.id && q.alive && q.peer);
+          navigateBot(p,enemy,this.map.nodes,this.world,this.tick);
+        }
+        if (p.threat) this.returnFire(p);
+      } else {
         const i=p.input;
         if (++p.inputAge>15) i.forward=i.right=i.buttons=0;
-        world.move(p,i); p.ack=i.seq; p.yaw=i.yaw; p.pitch=i.pitch;
+        this.world.move(p,i); p.ack=i.seq; p.yaw=i.yaw; p.pitch=i.pitch;
       }
+      if (this.map!==builtinMap && p.y<this.fallLimit) {
+        this.spawn(p);
+        this.broadcast({type:"spawn",id:p.id});
+      }
+      if (this.phase!=="live") break;
     }
   }
   packet(viewer) {
-    const visible = this.players.filter(target => visibleEnemy(viewer,target,map.walls));
+    const visible = this.players.filter(target => visibleEnemy(viewer,target,this.map.walls));
     const b=Buffer.alloc(24+64*visible.length);
     b.writeUInt32LE(0x02014748); b.writeUInt32LE(this.tick>>>0,4); b.writeUInt32LE(Math.floor(this.tick*stepMs)>>>0,8);
     b[12]=phases.indexOf(this.phase); b[13]=visible.length; b.writeUInt16LE(this.scores[0],14);

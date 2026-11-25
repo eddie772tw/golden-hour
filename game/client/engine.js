@@ -84,6 +84,11 @@ export class Engine extends EventTarget {
         })),
     );
   }
+  useWorld(colliders, bounds) {
+    const previous = this.world;
+    this.world = new World(colliders, bounds);
+    return () => { this.world = previous; };
+  }
   async enter(primary = "ar") {
     await this.ready();
     await globalThis.GHBoot?.runtimeReady;

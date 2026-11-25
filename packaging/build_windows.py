@@ -22,7 +22,8 @@ SERVER_GAME = (
     "client/net.js", "client/api-config.js", "client/server-target.js", "client/webrtc.js", "i18n/errors.js", "i18n/zh-CN.js",
 )
 SERVER = ("server.mjs", "original-gateway.mjs", "admission.mjs", "ballistics.mjs", "career.mjs", "room.mjs",
-          "visibility.mjs", "world.json", "dedicated/launch.mjs", "dedicated/portable.mjs")
+          "visibility.mjs", "world.json", "maps.mjs", "room-content.mjs", "bot-navigation.mjs",
+          "dedicated/launch.mjs", "dedicated/portable.mjs")
 
 
 def fetch(cache, url, algorithm, digest):
