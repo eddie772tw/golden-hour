@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import tarfile
 import tempfile
 import urllib.request
@@ -86,11 +87,34 @@ def pack(path, files):
             z.writestr(info, data, compress_type=zipfile.ZIP_DEFLATED, compresslevel=6)
 
 
+def upstream_files(repo, archive, staging):
+    source = staging / "upstream-source"
+    repo.extractall(source)
+    files = {}
+    for script, prefix in (
+        ("import_maps.py", "game/assets/maps"),
+        ("import-v60115-m200.py", "game/assets/upstream-weapons/v60115"),
+    ):
+        importer = source / "scripts" / script
+        if not importer.is_file():
+            continue
+        subprocess.run([sys.executable, importer, archive], cwd=source, check=True)
+        for path in (source / prefix).rglob("*"):
+            if path.is_file():
+                files[path.relative_to(source).as_posix()] = path.read_bytes()
+    if not files:
+        raise ValueError("No v60115 asset importer produced files from this commit")
+    return files
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=ROOT/"dist")
     parser.add_argument("--cache", type=Path, default=Path(os.environ["LOCALAPPDATA"])/"GoldenHourBuild")
+    parser.add_argument("--upstream-archive", type=Path,
+                        help="optionally import verified v60115 assets for a local Windows build")
     args = parser.parse_args()
+    upstream = args.upstream_archive.resolve(strict=True) if args.upstream_archive else None
     args.cache.mkdir(parents=True, exist_ok=True)
     args.output.mkdir(parents=True, exist_ok=True)
     commit = subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
@@ -103,12 +127,22 @@ def main():
             common[name] = repo.read(name)
         common["README.txt"] = repo.read("packaging/windows/README.txt")
         common["VERSION.txt"] = f"Golden Hour {commit}\nWindows x64\nNode {NODE}\nOpenSSL from PortableGit {GIT}.windows.1\n".encode()
+        optional = upstream_files(repo, upstream, tmp) if upstream else {}
+        if upstream:
+            with upstream.open("rb") as archive:
+                digest = hashlib.file_digest(archive, "sha256").hexdigest()
+            common["VERSION.txt"] += f"v60115 archive SHA-256 {digest}\n".encode()
         sums = []
         for role, cmd in (("Client","Play.cmd"),("Dedicated-Server","Start-Server.cmd")):
             files = dict(common)
             paths = ([p for p in repo.namelist() if p.startswith("game/") and not p.endswith("/")]
                      if role=="Client" else ["game/"+p for p in SERVER_GAME])
             files.update({p:repo.read(p) for p in paths})
+            if role == "Client":
+                files.update(optional)
+            else:
+                files.update({name: data for name, data in optional.items()
+                              if name.startswith("game/assets/maps/") and name.endswith(".json")})
             files[cmd] = repo.read("packaging/windows/"+cmd)
             out = tmp / f"Golden-Hour-{role}-Windows-x64.zip"
             pack(out, files)
