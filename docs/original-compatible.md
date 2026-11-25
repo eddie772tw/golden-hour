@@ -110,4 +110,8 @@ node scripts/check_original_readiness.mjs --catalog C:/test/catalog.json --asset
 3. 使用 Chrome 的 `chrome://webrtc-internals` 或 Edge 的 `edge://webrtc-internals` 記錄 ICE 和 DataChannel 的狀態及計數。需要驗證 `hello`、`welcome` 或快照格式時，由原作者在獲准的測試頁提供送收邊界的觀測點，摘要事件名稱、欄位名、型別、長度和相對時間。
 4. 分享事件摘要前移除 Cookie、Authorization、登入憑證、所有使用者標識、房號、續接值、玩家名稱、SDP、ICE 候選、IP 和查詢字串的敏感值。若採用 sanitized HAR，仍需檢查 URL 和請求與回應內容中的上述資料。 [Chrome DevTools HAR 文件](https://developer.chrome.com/docs/devtools/network/reference#save-as-har)
 
-原站瀏覽器紀錄可確認官方成功流程。這個 fork 的正式入房驗收則需由營運方核准測試入口、登入身分流程及連線來源，並在該入口重跑上列流程。灰港素材檢查通過後，實際渲染、波次和撤離仍需對照同版本授權測試環境。 [Bilibili Toy 開發者 FAQ](https://www.bilibili.com/opus/1241171666570051585)
+### 取得 fork 測試條件
+
+- **Toy 測試入口。** 原版從 SDK `getUserProfile()` 取得該 Toy 的 `toyOpenId`，再作為入房 `hello.uid`。請原作者提供可測試此 fork 的 Toy，或由維護者取得發布權限後建立「連結存取」或「密碼存取」的測試 Toy。Bilibili 的自建後端與自有 API 權限另行確認。 [Toy 權限申請](https://www.bilibili.com/toy/intro) · [Bilibili Toy 開發者 FAQ](https://www.bilibili.com/opus/1241171666570051585)
+- **原服測試端點。** 請原服管理者確認測試 Toy 的識別範圍和 HTTPS 來源，並提供同意使用的端點與測試房。取得後才能接上 `Connection` 的 `toyIdentity` 提供者，重跑加入、首筆及持續快照、同席續接與離房。原站已登入的瀏覽器紀錄可用來比對每一步。
+- **灰港。** 請原作者提供可供本專案使用的版本化目錄、場景與同版地圖資料、與場景同目錄的 `actors.json` 及其模型，以及四席、波次與撤離規則。先執行上面的素材檢查，再在同版本的測試環境驗證渲染、四人波次與撤離。
