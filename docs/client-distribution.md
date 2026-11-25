@@ -14,7 +14,7 @@ python packaging/check_windows.py dist
 
 打包來源固定為 `HEAD` 的 Git 快照。修改遊戲後先提交再重建。腳本校驗固定版 Node 與 PortableGit 的 SHA-256，從後者只取 OpenSSL 執行檔、DLL 和授權。npm 模組從 lockfile 指定的來源取得並驗證完整性；建置機與玩家電腦均不需執行 npm 安裝。以 `--cache 目錄` 指定下載快取，所有輸入已備妥時可離線重建。版本及來源提交在 ZIP 的 `VERSION.txt`。
 
-需要在本機 Windows 套件加入 v60115 的地圖及武器素材時，可將已取得的原版封存檔傳給同一個打包器。它會從指定的 Git 提交解出匯入工具，驗證封存與素材，再將匯入結果放入 ZIP。專服只帶地圖資料。選項為手動提供，常規 CI 打包走既有路徑。
+需要在本機 Windows 套件加入該提交支援的 v60115 素材時，可將已取得的原版封存檔傳給同一個打包器。它會從指定的 Git 提交解出匯入工具，驗證封存與素材，再將匯入結果放入 ZIP。專服只帶地圖資料。選項為手動提供，常規 CI 打包走既有路徑。
 
 ```powershell
 python packaging/build_windows.py --output dist --upstream-archive <resources.zip>

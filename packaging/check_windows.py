@@ -58,8 +58,10 @@ def deploy_solo(page):
     page.bring_to_front()
     # The first gesture can prepare sounds/equipment. The game then explicitly
     # asks for another Deploy gesture; do not bypass its preparation/input gate.
+    page.locator('#pg-main [data-act="deploy"]').click(timeout=60000)
+    deploy = page.locator("#training-deploy")
     for _ in range(3):
-        page.locator('#pg-main [data-act="deploy"]').click(timeout=60000)
+        deploy.click(timeout=60000)
         page.evaluate("""async()=>{const g=GH.debug.gfx;
           if(g._deploying)await g._deploying;await g.whenReady();}""")
         status=page.evaluate("""({state:GH.G.state,

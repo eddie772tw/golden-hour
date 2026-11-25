@@ -123,7 +123,11 @@ def main():
         tmp = Path(tmp)
         common = runtime_files(args.cache, tmp, json.loads(repo.read("package-lock.json")))
         common.update({"server/"+p: repo.read("server/"+p) for p in SERVER})
-        for name in ("package.json","package-lock.json","docs/provenance.md","docs/sources.json","docs/licenses/three-r180.txt"):
+        for name in ("package.json","package-lock.json","docs/provenance.md","docs/sources.json"):
+            common[name] = repo.read(name)
+        for name in repo.namelist():
+            if not name.startswith("docs/licenses/") or name.endswith("/"):
+                continue
             common[name] = repo.read(name)
         common["README.txt"] = repo.read("packaging/windows/README.txt")
         common["VERSION.txt"] = f"Golden Hour {commit}\nWindows x64\nNode {NODE}\nOpenSSL from PortableGit {GIT}.windows.1\n".encode()
