@@ -30383,10 +30383,13 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
   var Cw = class {
     constructor(t) {
       this.el = t, this.keys = /* @__PURE__ */ new Set(), this.down = /* @__PURE__ */ new Set(), this.up = /* @__PURE__ */ new Set(), this.mx = 0, this.my = 0, this.wheel = 0, this.touchKeys = /* @__PURE__ */ new Set(), this.touchDown = /* @__PURE__ */ new Set(), this.touchUp = /* @__PURE__ */ new Set(), this.touchForward = 0, this.touchRight = 0, this.touchMx = 0, this.touchMy = 0, this.touchActive = false, this.locked = false, this.onLockChange = null, this.enabled = true;
+      this.gyroYaw = this.gyroPitch = 0;
       let e = (i) => {
+        if (this.handleKeyboard) return this.handleKeyboard(i, true);
         if (!this.acceptKeyboard?.(i) || i.repeat) return;
         this.keys.add(i.code), this.down.add(i.code);
       }, s = (i) => {
+        if (this.handleKeyboard) return this.handleKeyboard(i, false);
         this.keys.delete(i.code), this.acceptKeyboard?.(i) && this.up.add(i.code);
       };
       addEventListener("keydown", e), addEventListener("keyup", s), addEventListener("blur", () => this.keys.clear()), addEventListener("mousemove", (i) => {
@@ -30394,13 +30397,20 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
       });
       let n = (i) => "Mouse" + i;
       addEventListener("mousedown", (i) => {
-        this.locked && (this.keys.add(n(i.button)), this.down.add(n(i.button)), i.preventDefault());
+        if (!this.locked) return;
+        if (this.handleMouse) this.handleMouse(i, true);
+        else this.keys.add(n(i.button)), this.down.add(n(i.button));
+        i.preventDefault();
       }), addEventListener("mouseup", (i) => {
-        this.keys.delete(n(i.button)), this.up.add(n(i.button)), this.locked && i.button >= 3 && i.preventDefault();
+        if (this.handleMouse) this.handleMouse(i, false);
+        else this.keys.delete(n(i.button)), this.up.add(n(i.button));
+        if (this.locked && i.button >= 3) i.preventDefault();
       }), addEventListener("auxclick", (i) => {
         this.locked && i.preventDefault();
       }), addEventListener("wheel", (i) => {
-        this.locked && (this.wheel += Math.sign(i.deltaY));
+        if (!this.locked) return;
+        if (this.handleWheel) this.handleWheel(i);
+        else this.wheel += Math.sign(i.deltaY);
       }, { passive: true }), document.addEventListener("pointerlockchange", () => {
         this.locked = document.pointerLockElement === t;
         if (this.locked && (!this.allowLock || document.hidden || !document.hasFocus())) {
@@ -30450,6 +30460,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
     endFrame() {
       globalThis.GHTouch?.update();
       this.down.clear(), this.up.clear(), this.touchDown.clear(), this.touchUp.clear(), this.mx = 0, this.my = 0, this.touchMx = 0, this.touchMy = 0, this.wheel = 0;
+      this.gyroYaw = this.gyroPitch = 0;
     }
   }, Ri = { forward: ["KeyW", "ArrowUp"], back: ["KeyS", "ArrowDown"], left: ["KeyA", "ArrowLeft"], right: ["KeyD", "ArrowRight"], jump: ["Space"], sprint: ["ShiftLeft", "ShiftRight"], crouch: ["KeyC"], dive: ["KeyX", "KeyZ"], fire: ["Mouse0"], ads: ["Mouse1", "Mouse2"], reload: ["KeyR"], melee: ["KeyV", "KeyF", "Mouse3", "Mouse4"], grenade: ["KeyG", "KeyQ"], swap: ["Digit1", "Digit2", "KeyE"], inspect: ["KeyT"], score: ["Tab"], k9: ["KeyB", "Digit3"] };
   var QD = "golden-hour-settings-v1", Ib = { sens: 1, adsSens: 0.9, fov: 100, master: 0.8, sfx: 1, music: 0.6, quality: "auto", motionBlur: "off", renderScale: 1, renderVersion: 1, difficulty: "regular", primary: "ar", invertY: false }, Ag = { recruit: { label: "RECRUIT", react: 0.55, aim: 2.3, dmg: 0.55, burst: 0.7 }, regular: { label: "REGULAR", react: 0.36, aim: 1.55, dmg: 0.8, burst: 0.85 }, hardened: { label: "HARDENED", react: 0.24, aim: 1.05, dmg: 1, burst: 1 }, veteran: { label: "VETERAN", react: 0.15, aim: 0.7, dmg: 1.15, burst: 1.15 } }, _s = { ...Ib };
@@ -32369,7 +32380,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
         return;
       }
       let r = Math.tan(this.ctx.camera.fov * jn / 2) / Math.tan(kg(_s.fov, this.ctx.camera.aspect) * jn / 2), l = 22e-4 * _s.sens * r * Ht(1, _s.adsSens, this.adsK);
-      this.yaw -= (s.mx + s.touchMx) * l, this.pitch = Zt(this.pitch - (s.my + s.touchMy) * l * (_s.invertY ? -1 : 1), -1.5, 1.5);
+      this.yaw -= (s.mx + s.touchMx) * l + s.gyroYaw, this.pitch = Zt(this.pitch - ((s.my + s.touchMy) * l + s.gyroPitch) * (_s.invertY ? -1 : 1), -1.5, 1.5);
       let c = (s.any(Ri.forward) ? 1 : 0) - (s.any(Ri.back) ? 1 : 0) + (s.enabled ? s.touchForward : 0), h = (s.any(Ri.right) ? 1 : 0) - (s.any(Ri.left) ? 1 : 0) + (s.enabled ? s.touchRight : 0), f = Math.hypot(c, h);
       f > 1 && (c /= f, h /= f);
       let u = Math.sin(this.yaw), d = Math.cos(this.yaw);

@@ -1,4 +1,5 @@
 import { TouchInput, stickVector } from "./touch-input.js";
+import { GyroAim } from "./gyro-aim.js";
 import "./input-devices.js";
 import { startupPolicy } from "./performance-policy.js";
 import { defaultLayout, normalizeLayout, controlRect, readLayout, saveLayout, canStartLook, touchLookDelta, LAYOUT_KEY } from "./touch-layout.js";
@@ -35,6 +36,10 @@ export class TouchControls {
     this.lookVector = {};
     this.lookOwner = null;
     try { this.storage = globalThis.localStorage; } catch { this.storage = null; }
+    this.gyro = new GyroAim({ win: window, storage: this.storage, look: (yaw, pitch) => {
+      this.state.input.gyroYaw += yaw;
+      this.state.input.gyroPitch += pitch;
+    } });
     this.layout = readLayout(this.storage, Math.max(innerWidth, innerHeight), Math.min(innerWidth, innerHeight));
     try { this.customLayout = JSON.parse(this.storage?.getItem(LAYOUT_KEY))?.version === 1; } catch { this.customLayout = false; }
     this.buttons = new Map();
@@ -122,6 +127,7 @@ export class TouchControls {
     const enabled = globalThis.GHInput ? globalThis.GHInput.effective === "touch" : this.coarse.matches || this.handheld || this.usedTouch;
     if (!enabled && this.enabled) this.deactivate();
     this.enabled = enabled;
+    this.gyro.update({ selected: enabled, active: false, ads: false });
     document.body.classList.toggle("touch-device", enabled || this.handheld);
     this.resize();
   }
@@ -130,6 +136,7 @@ export class TouchControls {
     if (portrait && !this.portrait) this.suspend();
     else if (this.pointers.size) this.reset();
     this.portrait = portrait;
+    this.gyro.reset();
     document.body.classList.toggle("touch-portrait", portrait);
     const { width, height } = this.viewport();
     if (!this.customLayout) this.layout = defaultLayout(Math.max(width, height), Math.min(width, height));
@@ -184,6 +191,7 @@ export class TouchControls {
     return true;
   }
   deactivate() {
+    this.gyro.stop();
     this.reset();
     if (this.state) this.state.input.touchActive = false;
   }
@@ -194,6 +202,7 @@ export class TouchControls {
     this.update();
   }
   reset() {
+    this.gyro.reset();
     this.state?.reset();
     const pointers = [...this.pointers.values()];
     this.pointers.clear();
@@ -223,6 +232,7 @@ export class TouchControls {
     const interactive = this.enabled && !this.portrait && !document.hidden && playing && alive && debug.ctx.match.state !== "countdown" && debug.ctx.match.state !== "over";
     if ((!interactive && this.interactive) || (this.enabled && this.online !== undefined && this.online !== online)) this.reset();
     this.interactive = interactive;
+    this.gyro.update({ selected: this.enabled, active: interactive, ads: this.state.input.touchKeys.has("Mouse1") });
     this.online = online;
     if (globalThis.GHInput?.effective !== "gamepad")
       this.state.input.touchActive = this.enabled && !this.portrait && !document.hidden && playing;

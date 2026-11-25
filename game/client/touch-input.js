@@ -58,5 +58,6 @@ export class TouchInput {
     input.touchDown.clear();
     input.touchUp.clear();
     input.touchForward = input.touchRight = input.touchMx = input.touchMy = 0;
+    input.gyroYaw = input.gyroPitch = 0;
   }
 }
