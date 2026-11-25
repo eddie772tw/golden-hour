@@ -1,6 +1,15 @@
 // Only local HTML configuration approves a backend. Remote JSON cannot grant
 // itself permission to send SDP to a different signaling origin.
 const approvedRTCOrigins = new WeakMap();
+const approvedSocketOrigins = new WeakMap();
+
+export function originalSocketURL(config) {
+  const origin = approvedSocketOrigins.get(config);
+  if (!origin) return null;
+  const url = new URL("/api/socket", origin);
+  url.protocol = url.protocol === "https:" ? "wss:" : "ws:";
+  return url;
+}
 export const ORIGINAL_ORIGIN = "https://cod.apikeygame.top:8008";
 
 export function originalApiURL(path, pageURL) {
@@ -32,7 +41,7 @@ export function rtcSignalingURL(config, pageURL) {
   return url;
 }
 
-export async function loadApiConfig(origin, pageURL, request = globalThis.fetch, { gateway = false } = {}) {
+export async function loadApiConfig(origin, pageURL, request = globalThis.fetch, { gateway = false, originalVersion } = {}) {
   const approved = apiOrigin(origin, pageURL);
   const proxied = gateway && approved === ORIGINAL_ORIGIN;
   try {
@@ -46,6 +55,10 @@ export async function loadApiConfig(origin, pageURL, request = globalThis.fetch,
     const config = await response.json();
     if (!config || typeof config !== "object" || Array.isArray(config))
       throw Error("联机配置无效，请稍后重试。");
+    if (originalVersion === "v60115") {
+      if (config.protocol !== 1) throw Error("不支持的 v60115 联机协议。");
+      if (config.websocket === true) approvedSocketOrigins.set(config, approved);
+    }
     if (config.rtc && typeof config.rtc === "object") {
       approvedRTCOrigins.set(config.rtc, approved);
       const signaling = rtcSignalingURL(config.rtc, pageURL);

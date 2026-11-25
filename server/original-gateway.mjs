@@ -1,5 +1,6 @@
 import http2 from "node:http2";
 import tls from "node:tls";
+import { ORIGINAL_V60115_ORIGIN } from "../game/client/original-v60115.js";
 import { ORIGINAL_ORIGIN } from "../game/client/api-config.js";
 
 const upstream = new URL(ORIGINAL_ORIGIN);
@@ -32,6 +33,43 @@ export async function originalGateway(req, res, url, localOrigin, connect = conn
   };
   if (req.headers.host !== new URL(localOrigin).host || (req.headers.origin && req.headers.origin !== localOrigin))
     return reply(403, "Local origin required");
+  // The new official endpoint is read-only until the app has an approved Toy
+  // flow. No browser header, ticket or URL is forwarded.
+  if (url.pathname.startsWith("/api/original/v60115/")) {
+    const name = url.pathname.slice("/api/original/v60115/".length);
+    if (url.search || !["config", "catalog"].includes(name)) return reply(404, "Unknown original API");
+    if (req.method !== "GET") return reply(405, "Method not allowed");
+    if (active >= 16) return reply(503, "Original connection limit");
+    const abort = new AbortController();
+    const close = () => abort.abort();
+    res.once("close", close);
+    active++;
+    try {
+      const response = await fetch(new URL("/api/" + name, ORIGINAL_V60115_ORIGIN), {
+        redirect: "error", signal: AbortSignal.any([abort.signal, AbortSignal.timeout(5000)]),
+      });
+      if (!response.ok || !response.headers.get("content-type")?.startsWith("application/json"))
+        throw Error("Upstream API unavailable");
+      const chunks = [];
+      let size = 0;
+      for await (const chunk of response.body) {
+        size += chunk.length;
+        if (size > 65536) throw Error("Upstream response too large");
+        chunks.push(chunk);
+      }
+      res.writeHead(200, {
+        "Content-Type": "application/json", "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff",
+      });
+      res.end(Buffer.concat(chunks));
+    } catch {
+      abort.abort();
+      if (!res.destroyed) reply(502, "v60115 public API unavailable");
+    } finally {
+      active--;
+      res.off("close", close);
+    }
+    return;
+  }
   const suffix = url.pathname.slice("/api/original".length);
   if (!url.pathname.startsWith("/api/original/") || url.search || !paths.has(suffix))
     return reply(404, "Unknown original API");

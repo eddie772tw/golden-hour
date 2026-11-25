@@ -81,3 +81,11 @@ The Toy SDK provides the original platform's nickname and cloud saves. The origi
 The November 17 live run passed: real WebRTC join, 112 snapshots, movement ACK 30, original STRIX 9 with 15 rounds, and normal leave. There were no browser cross-origin HTTP requests or page errors. This establishes a short real-server smoke test, not long-term stability, performance or broad NAT/TURN acceptance.
 
 The opt-in live check now observes 60 seconds by default (`GH_LIVE_SECONDS`, 1–300), requires fresh snapshots at the end, and separately reports reconnects. `GH_LIVE_HEADED=1` shows its independent browser. See the [subsequent recovery investigation](original-network-recovery.md) for bounded stall recovery and unresolved original-server latency.
+
+## v60115 公開目錄與 Toy 身分
+
+大廳可以獨立選擇 v60115。此模式從固定正式端點讀取公開配置和版本化地圖目錄，保留正常 TLS 驗證。預覽提供原站入口。原站的封存客戶端在加入前要求 B 站 Toy 授權，本社群客戶端目前沒有獲准使用的 Toy 身分提供者。
+
+新版封包驗證依照 2026-11-25 客戶端封存。hello 的地圖／模式選擇、Toy UID、武器協定 2、shot ACK 與特效資料報能力分開處理。房間的地圖版本與模式適配器可和公開目錄核對。WebRTC 與同一批准 origin 的 WebSocket 可在本機替身中切換及續接，且與社群登入獨立。既有 v49221 仍使用上文的路徑。
+
+2026-11-25 16:57（Asia/Taipei）正式公開 GET 驗證得到 WebRTC 優先、WebSocket 可用，以及 `hotel@2`、`shipment@3`、`sublevel-07@4` 三張 TDM 地圖。正式目錄未列灰港合作地圖或模式。實際 Toy 授權入房、正式服務上的資料通道與灰港資源仍待驗證。參閱 [正式原站](https://www.bilibili.com/toy/golden-hour/index.html)。
