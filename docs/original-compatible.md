@@ -88,7 +88,9 @@ The opt-in live check now observes 60 seconds by default (`GH_LIVE_SECONDS`, 1�
 
 新版封包驗證依照 2026-11-25 客戶端封存。hello 的地圖／模式選擇、Toy UID、武器協定 2、shot ACK 與特效資料報能力分開處理。房間的地圖版本與模式適配器可和公開目錄核對。WebRTC 與同一批准 origin 的 WebSocket 可在本機替身中切換及續接，且與社群登入獨立。既有 v49221 仍使用上文的路徑。
 
-2026-11-25 16:57（Asia/Taipei）正式公開 GET 驗證得到 WebRTC 優先、WebSocket 可用，以及 `hotel@2`、`shipment@3`、`sublevel-07@4` 三張 TDM 地圖。正式目錄未列灰港合作地圖或模式。實際 Toy 授權入房、正式服務上的資料通道與灰港資源仍待驗證。參閱 [正式原站](https://www.bilibili.com/toy/golden-hour/index.html)。
+2026-11-25 16:57（Asia/Taipei）正式公開 GET 驗證得到 WebRTC 優先、WebSocket 可用，以及 `hotel@2`、`shipment@3`、`sublevel-07@4` 三張 TDM 地圖。正式目錄未列灰港合作地圖或模式。參閱 [正式原站](https://www.bilibili.com/toy/golden-hour/index.html)。
+
+同日的原站 Edge 驗證進入 `hotel@2` 的編隊大廳。WebRTC offer 回 `200`，房間經 `/api/socket` 成功升級為 WebSocket（`101`，子協定 `gh-pvp-v1`），並收到 704 位元組的 `kind 4` 大廳快照。標頭顯示十筆玩家紀錄和零筆感染者紀錄，封包長度與十個射擊 ACK 欄位吻合。自動測試採用同版型及合成玩家資料。WebRTC 備援原因、fork 的 Toy 授權及正式環境的實戰與續接仍待驗證。
 
 ## v60115 原服驗收與灰港資產檢查
 
