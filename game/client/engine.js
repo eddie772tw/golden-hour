@@ -608,7 +608,7 @@ export class Engine extends EventTarget {
     this.player.def = this.ctx.arsenal.slots.find(
       (w) => w.def.profileId === me.weapon,
     )?.def;
-    if (!me.alive) this.ctx.hud.respawnIn(me.respawn / 1000);
+    if (!me.alive && this.room?.modeId !== "zombie-coop") this.ctx.hud.respawnIn(me.respawn / 1000);
     const slot = this.ctx.arsenal.slots.find((w) => w.def.profileId === me.weapon);
     if (slot) {
       const pending = this.pendingShots.filter(shot => shot.weapon === me.weapon).length;
@@ -795,6 +795,7 @@ export class Engine extends EventTarget {
     });
   }
   renderRemotes(dt) {
+    this.modeFrame?.(dt);
     if (!this.snapshots.length) return;
     const latest = this.snapshots.at(-1);
     const desired = latest.time + (performance.now() - latest.received) - 100;

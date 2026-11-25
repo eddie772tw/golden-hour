@@ -2,6 +2,7 @@ export default {
   "server.target": "対戦サーバーを選択",
   "server.mode": "サーバー種別",
   "server.address": "サーバーアドレス",
+  "error.coop_unsupported": "このクライアントまたはサーバーのマップでは、中庭脱出協力モードを利用できません。",
   "server.local": "ローカル／コミュニティサーバー",
   "server.original": "オリジナル互換サーバー",
   "server.apply": "切り替えて再読み込み",

@@ -65,6 +65,8 @@ export function encodeInput(input, bytes = new Uint8Array(INPUT_BYTES)) {
 }
 export function decodeSnapshot(bytes, weaponFormat = "community") {
   if (typeof weaponFormat === "boolean") weaponFormat = weaponFormat ? "v49221" : "community";
+  const coop = weaponFormat === "community-coop";
+  if (coop) weaponFormat = "community";
   if (!Object.hasOwn(WEAPON_WIRE_IDS, weaponFormat)) return null;
   if (bytes instanceof ArrayBuffer) bytes = new Uint8Array(bytes);
   if (!bytes || bytes.byteLength < 24) return null;
@@ -74,10 +76,10 @@ export function decodeSnapshot(bytes, weaponFormat = "community") {
     v.getUint8(2) !== 1
   )
     return null;
-  const modern = weaponFormat === "v60115";
-  const layout = modern ? originalV60115SnapshotLayout(v) : null;
+  const extended = coop || weaponFormat === "v60115";
+  const layout = extended ? originalV60115SnapshotLayout(v) : null;
   const count = v.getUint8(13);
-  if (v.getUint8(12) > 3 || (modern ? !layout :
+  if (v.getUint8(12) > 3 || (extended ? !layout :
       v.getUint8(3) !== 2 || count > 10 || bytes.byteLength !== 24 + 64 * count)) return null;
   const out = {
     tick: v.getUint32(4, true),
@@ -129,6 +131,7 @@ export class Connection extends EventTarget {
     this.original = original;
     this.originalVersion = original ? originalVersion : null;
     this.toyIdentity = toyIdentity;
+    this.coopSnapshot = false;
     this.connectTimeoutMs = connectTimeoutMs;
     this.leaveTimeoutMs = leaveTimeoutMs;
     this.writeTimeoutMs = writeTimeoutMs;
@@ -180,7 +183,9 @@ export class Connection extends EventTarget {
     if (this.intentional) this.retry = 0;
     this.checkSupport();
     if (this.originalVersion === "v60115") {
+      const pendingGeneration = this.generation;
       const identity = await this.toyIdentity?.();
+      if (pendingGeneration !== this.generation) throw Error("连接已取消。");
       // A caller-supplied hello.uid is never an identity provider.
       originalV60115Hello(hello, identity);
       const kinds = [];
@@ -435,6 +440,7 @@ export class Connection extends EventTarget {
           if (!line) continue;
           const e = JSON.parse(line);
           if (this.originalVersion === "v60115" && e.type === "room") originalV60115Room(e);
+          if (!this.original && e.type === "room") this.coopSnapshot = e.modeId === "zombie-coop";
           if (e.type === "pong" && Number.isFinite(e.nonce))
             this.metrics.rttMs = Math.round(performance.now() - e.nonce);
           if (e.type === "welcome") {
@@ -485,7 +491,7 @@ export class Connection extends EventTarget {
             continue;
           }
         }
-        const snapshot = decodeSnapshot(value, this.originalVersion || this.original);
+        const snapshot = decodeSnapshot(value, this.originalVersion || (this.coopSnapshot ? "community-coop" : this.original));
         if (snapshot && snapshot.tick > this.latestTick) {
           if (this.latestTick) this.metrics.snapshotGaps += Math.max(0, Math.floor((snapshot.tick - this.latestTick) / 2) - 1);
           const now = performance.now();
@@ -583,6 +589,7 @@ export class Connection extends EventTarget {
     this.datagrams = null;
     this.id = null;
     this.hello = null;
+    this.coopSnapshot = false;
     this.sendChain = Promise.resolve();
     this.sendQueue = { count: 0, bytes: 0, abort: new AbortController() };
     this.inputFlight = null;

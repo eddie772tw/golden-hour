@@ -2,6 +2,7 @@ export default {
   "server.target": "选择对战服务器",
   "server.mode": "服务器类型",
   "server.address": "服务器地址",
+  "error.coop_unsupported": "此客户端或服务器地图不支持前庭撤离合作模式。",
   "server.local": "本地／社区服务器",
   "server.original": "原版相容服务器",
   "server.apply": "切换并重新载入",
