@@ -1,4 +1,7 @@
 import { bind } from "../i18n/dom.js";
+import { m200Enabled } from "./m200.js";
+
+const initialWeapons = ["ar", "pistol", ...(m200Enabled ? ["m200"] : [])];
 
 const labels = { ar: "KR-7", pistol: "STRIX 9", smg: "VESPER", shotgun: "M12" };
 
@@ -7,7 +10,7 @@ export class WeaponAccess extends EventTarget {
     super();
     this.read = read;
     this.version = 0;
-    this.state = { unlocked:["ar","pistol"], rules:{smg:{source:"ar",required:10},shotgun:{source:"smg",required:10}}, kills:{} };
+    this.state = { unlocked:[...initialWeapons], rules:{smg:{source:"ar",required:10},shotgun:{source:"smg",required:10}}, kills:{} };
   }
   canUse(id) { return this.state.unlocked.includes(id); }
   apply(state) {
@@ -21,7 +24,7 @@ export class WeaponAccess extends EventTarget {
       const state = await this.read("/api/career");
       if (version===this.version) this.apply(state);
     } catch {
-      if (version===this.version) this.apply({unlocked:["ar","pistol"],kills:{},rules:this.state.rules,error:"无法读取服务器战绩，请重试。"});
+      if (version===this.version) this.apply({unlocked:[...initialWeapons],kills:{},rules:this.state.rules,error:"无法读取服务器战绩，请重试。"});
     }
   }
 }

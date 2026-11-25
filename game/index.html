@@ -31,6 +31,15 @@
 
   /* ================================ IN-MATCH HUD ================================ */
   #hud { text-shadow: var(--ts); transition: opacity .25s; }
+  #m200-scope { position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(circle closest-side, transparent 74%, #080b10 77%);
+  }
+  #m200-scope::before, #m200-scope::after { content:""; position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%); background:#151b20;
+  }
+  #m200-scope::before { width:66vmin; height:1px; }
+  #m200-scope::after { width:1px; height:66vmin; }
+  #hud:has(#m200-scope:not([hidden])) #cross { visibility:hidden; }
   #world { position: absolute; inset: 0; }
   #safe { position: absolute; top: 0; bottom: 0; left: max(0px, calc((100vw - 220vh) / 2)); right: max(0px, calc((100vw - 220vh) / 2)); }
   #hud.is-clean #safe > :not(#banner) { opacity: 0 !important; transition: opacity .4s; }

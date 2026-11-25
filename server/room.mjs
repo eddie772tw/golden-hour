@@ -1,13 +1,14 @@
 import { clearSegment, traceDischarge } from "./ballistics.mjs";
 import { models, familyOf } from "../game/client/weapon-models.js";
 import { visibleEnemy } from "./visibility.mjs";
+import { M200, M200_ACTION, M200_RELOAD } from "../game/client/m200.js";
+import { encodeWeaponIndex, WEAPON_WIRE_IDS } from "../game/client/weapon-wire.js";
 
 import { randomUUID, randomBytes } from "node:crypto";
 import { builtinMap } from "./maps.mjs";
 import { roomContent } from "./room-content.mjs";
 import { navigateBot } from "./bot-navigation.mjs";
 import { World, motion, clamp, ADS } from "../game/client/simulation.js";
-import { WEAPONS } from "../game/client/net.js";
 
 export const world = new World(builtinMap.colliders,builtinMap.bounds);
 const specs = Object.fromEntries(builtinMap.weapons.map(w => [w.id, w]));
@@ -15,6 +16,16 @@ for (const [id, model] of Object.entries(models)) {
   specs[id] = {id, interval:60/model.rpm, mag:model.mag, reserve:model.mag*5, pellets:model.pellets,
     damage:model.dmg[0], farDamage:model.dmg[1], range:model.range, hip:model.hip[0], ads:model.ads};
 }
+specs.m200 = { id: M200.id, interval: 60 / M200.rpm, mag: M200.mag, reserve: M200.reserve,
+  pellets: M200.pellets, damage: M200.dmg[0], farDamage: M200.dmg[1], range: M200.range,
+  hip: M200.hip[0], ads: M200.ads, reach: M200.range[1], reloadMs: M200_RELOAD * 1000 };
+const initialWeapons = new Set(["ar", "pistol", "m200"]);
+const wireWeapon = (id, viewer) => id === "m200" && !viewer.supportsM200 ? "ar" : id;
+function send(viewer, event) {
+  if (event.weapon === "m200" && !viewer.supportsM200) event = { ...event, weapon: "ar" };
+  viewer.peer?.send(event);
+}
+
 const emptyInput = { forward: 0, right: 0, yaw: 0, pitch: 0, buttons: 0, seq: 0 };
 const phases = ["lobby", "countdown", "live", "over"];
 const stepMs = 1000 / 60;
@@ -35,7 +46,7 @@ function equip(p, weapon) {
 }
 function spawn(p, {pos:[x,y,z], yaw=0}) {
   Object.assign(p,motion({x,y,z}),{yaw,pitch:0,hp:100,alive:true,respawn:0,cooldown:0,
-    input:{...emptyInput,yaw,seq:p.ack},inputAge:0,
+    input:{...emptyInput,yaw,seq:p.ack},inputAge:0,m200Action:0,
     threat:null, nav:null, modelsThisLife:{}, inventory:Object.fromEntries(Object.values(specs).map(w=>[w.id,{ammo:w.mag,reserve:w.reserve}]))});
   equip(p,"ar");
 }
@@ -75,7 +86,7 @@ export class Room {
     this.career?.finishRound(this.matchID,this.round,this.winner,this.players);
     this.broadcast({type:"round-end",round:this.round,winner:this.winner}); this.roster();
   }
-  broadcast(event) { for (const p of this.players) p.peer?.send(event); }
+  broadcast(event) { for (const p of this.players) send(p,event); }
   summary() {
     const humans=this.players.filter(p=>!p.bot);
     return {room:this.id,...this.content,phase:this.phase,difficulty:this.difficulty,hostName:humans[0]?.name,
@@ -95,7 +106,10 @@ export class Room {
       p.name=String(msg.name||"本机干员").replace(/[<>&]/g,"").slice(0,32);
     }
     p.profile=profile; p.bot=false; p.peer=peer; p.token=randomBytes(16).toString("hex"); clearTimeout(p.expiry);
-    peer.send({type:"welcome",room:this.id,...this.content,id:p.id,resume:p.token,inputSeq:p.ack,career:this.career?.progress(profile),weapons:Object.values(specs)});
+    p.supportsM200 = msg.communityWeaponVersion === 2;
+    if (!p.supportsM200 && p.weapon === "m200") equip(p, "ar");
+    const weapons = Object.values(specs).filter(spec => p.supportsM200 || spec.id !== "m200");
+    peer.send({type:"welcome",room:this.id,...this.content,id:p.id,resume:p.token,inputSeq:p.ack,career:this.career?.progress(profile),weapons});
     this.roster(); return p;
   }
   remove(p) {
@@ -112,15 +126,18 @@ export class Room {
       if (swap) { swap.team=p.team; p.team=e.team; this.roster(); }
     }
     if (this.phase!=="live" || !p.alive) return;
-    if (e.type==="equip" && WEAPONS.includes(e.weapon) && e.weapon!==p.weapon) {
+    if (e.type==="equip" && WEAPON_WIRE_IDS.community.includes(e.weapon) && e.weapon!==p.weapon) {
       const family=familyOf(e.weapon);
-      const allowed = family==="ar" || family==="pistol" || this.career?.progress(p.profile).unlocked.includes(family);
+      const allowed = (family !== "m200" || p.supportsM200) &&
+        (initialWeapons.has(family) || this.career?.progress(p.profile).unlocked.includes(family));
       if (!allowed) return p.peer.send({type:"error", code:"error.weapon_locked", params:[]});
       if (p.modelsThisLife[family] && p.modelsThisLife[family] !== e.weapon) return;
       p.modelsThisLife[family] = e.weapon;
       equip(p,e.weapon);
     }
-    if (e.type==="reload" && !p.reload && p.reserve && p.ammo<specs[p.weapon].mag) p.reload=1200;
+    const gun=specs[p.weapon];
+    if (e.type === "reload" && !p.reload && p.reserve && p.ammo < gun.mag &&
+        (p.weapon !== "m200" || !p.m200Action)) p.reload = gun.reloadMs ?? 1200;
     if (!["shot","melee"].includes(e.type) || ![e.yaw,e.pitch].every(Number.isFinite) || p.cooldown || p.reload) return;
     const melee=e.type==="melee", weapon=melee?"melee":p.weapon;
     if (!melee && !p.ammo) return;
@@ -129,15 +146,15 @@ export class Room {
     const pos=[p.x,p.y+(p.crouch?1:1.55),p.z];
     p.cooldown=melee?500:specs[weapon].interval*1000;
     if (!melee) {
+      if (weapon === "m200") p.m200Action = M200_ACTION * 1000;
       p.inventory[weapon].ammo=--p.ammo;
       const shot = {type:"shot",id:p.id,weapon,x:pos[0],y:pos[1],z:pos[2],dx:dir[0],dy:dir[1],dz:dir[2]};
       for (const viewer of this.players) {
-        if (viewer.peer && visibleEnemy(viewer,p,this.map.walls)) viewer.peer.send(shot);
+        if (viewer.peer && visibleEnemy(viewer,p,this.map.walls)) send(viewer,shot);
       }
     }
-    const gun=specs[p.weapon];
     const hits=traceDischarge({origin:pos,yaw:e.yaw,pitch,pellets:melee?1:gun.pellets,
-      spread:melee?0:(p.input.buttons & ADS ? gun.ads : gun.hip), reach:melee?2:140,
+      spread:melee?0:(p.input.buttons & ADS ? gun.ads : gun.hip), reach:melee?2:gun.reach ?? 140,
       damage:melee?[100,100]:[gun.damage,gun.farDamage], falloff:gun.range},
       this.players.filter(q=>q.alive && q.team!==p.team),this.map.bulletCover);
     for (const [target,amount] of hits) {
@@ -148,11 +165,11 @@ export class Room {
   hit(p,target,weapon,amount) {
     target.hp=Math.max(0,target.hp-amount);
     const damage = {type:"damage",attacker:p.id,id:target.id,hp:target.hp,head:false,weapon};
-    p.peer?.send(damage);
+    send(p,damage);
     if (target.bot && target.hp && !p.bot && target.threat?.id!==p.id) {
       target.threat={id:p.id, next:this.tick+32+target.id, until:this.tick+300};
     }
-    target.peer?.send(damage);
+    send(target,damage);
     if (!target.hp) {
       target.alive=false; target.deaths++; target.respawn=2000;
       p.kills++; p.score+=100; this.scores[p.team]++;
@@ -198,6 +215,7 @@ export class Room {
         continue;
       }
       p.cooldown=Math.max(0,p.cooldown-stepMs);
+      p.m200Action=Math.max(0,p.m200Action-stepMs);
       if (p.reload) {
         p.reload=Math.max(0,p.reload-stepMs);
         if (!p.reload) {
@@ -236,7 +254,7 @@ export class Room {
       ["hp","ammo","reserve","kills","deaths","score","respawn","reload"].forEach((k,j)=>b.writeUInt16LE(Math.min(65535,Math.ceil(p[k])),o+40+j*2));
       b[o+56]=p.team; b[o+57]=+p.alive | (+p.crouch<<1) | (+p.ground<<2) | (+(p.bot || !!p.peer)<<3) |
         (+p.jumpHeld<<5) | (+p.bot<<6) | (+p.sliding<<7);
-      b[o+58]=WEAPONS.indexOf(p.weapon); b[o+59]=Math.round(p.slideCooldown*100);
+      b[o+58]=encodeWeaponIndex(wireWeapon(p.weapon, viewer)); b[o+59]=Math.round(p.slideCooldown*100);
       b.writeUInt16LE(Math.ceil(p.cooldown),o+60); b.writeUInt16LE(Math.round(p.slideTime*1000),o+62);
     });
     return b;

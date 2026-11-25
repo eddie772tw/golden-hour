@@ -5,7 +5,7 @@ export const LEGACY_KEY = "gh_growth_legacy_v1";
 export const LOADOUT_KEY = "gh_loadout_v1";
 export const LEGACY_PREFIX = "gh_legacy_v1_";
 export const LOADOUT_PREFIX = "gh_loadout_v1_";
-export const WEAPON_IDS = ["ar", "smg", "shotgun", "pistol"];
+export const WEAPON_IDS = ["ar", "smg", "shotgun", "pistol", "m200"];
 const COUNTERS = ["xp", "matches", "wins", "kills"];
 const PARTS = ["optic", "muzzle", "underbarrel", "magazine", "stock", "camo"];
 const clone = value => JSON.parse(JSON.stringify(value));
@@ -22,6 +22,7 @@ export function profile(value) {
   for (const field of COUNTERS) out[field] = number(value[field]);
   for (const id of WEAPON_IDS) {
     const weapon = value.weapons[id];
+    if (id === "m200" && weapon === undefined) continue; // Pre-v60115 saves have no M200 record.
     out.weapons[id] = { kills: number(weapon?.kills), headshots: number(weapon?.headshots) };
     if (weapon.headshots > weapon.kills) throw Error("invalid headshots");
   }
@@ -44,7 +45,7 @@ export const maxProfile = (a, b) => {
 export const profileDelta = (after, before) => combine(after, before, (x, y) => Math.max(0, x - y));
 export const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 export function loadout(value) {
-  if (!value || !["ar", "smg", "shotgun"].includes(value.primary) || !value.builds || typeof value.builds !== "object") throw Error("invalid loadout");
+  if (!value || !["ar", "smg", "shotgun", "m200"].includes(value.primary) || !value.builds || typeof value.builds !== "object") throw Error("invalid loadout");
   const builds = {};
   for (const id of WEAPON_IDS) {
     const build = {};

@@ -856,7 +856,7 @@ export class Engine extends EventTarget {
       if (r) r.actor.lastShot = this.ctx.time();
       const pos = p.pos.clone().set(e.x, e.y, e.z),
         dir = p.pos.clone().set(e.dx, e.dy, e.dz);
-      this.ctx.audio.gunshot(familyOf(e.weapon), pos);
+      this.ctx.audio.gunshot(e.weapon === "m200" ? "ar" : familyOf(e.weapon), pos);
       this.ctx.fx.muzzle?.(pos, dir, 1, true);
     }
     if (e.type === "damage" && e.id === this.net.id) {

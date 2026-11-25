@@ -67,7 +67,7 @@ export class Career {
   }
   progress(id) {
     const kills = Object.fromEntries(this.counts.all(id).map(row => [row.weapon,row.n]));
-    const unlocked = ["ar","pistol"];
+    const unlocked = ["ar","pistol","m200"];
     for (const [weapon, rule] of Object.entries(rules)) {
       if ((kills[rule.source] || 0) >= rule.required) unlocked.push(weapon);
     }

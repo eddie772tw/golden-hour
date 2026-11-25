@@ -5,10 +5,9 @@ import { models, shopWeaponsEnabled } from "./weapon-models.js";
 const assets = new Map();
 const keyFor = (id, detail) => id + (detail === "view" ? "" : "_world_lod");
 
-async function loadAsset(key) {
-  const url = new URL("../assets/shop-weapons/" + key + ".glb", import.meta.url);
-  const response = await fetch(url);
-  if (!response.ok) throw Error("Weapon art " + key + ": HTTP " + response.status);
+export async function loadWeaponGLB(url, options) {
+  const response = await fetch(url, options);
+  if (!response.ok) throw Error("Weapon art " + url.pathname + ": HTTP " + response.status);
   const bytes = await response.arrayBuffer(), header = new DataView(bytes);
   const jsonLength = header.getUint32(12, true);
   const doc = JSON.parse(new TextDecoder().decode(new Uint8Array(bytes, 20, jsonLength)));
@@ -18,7 +17,12 @@ async function loadAsset(key) {
     const data = new Uint8Array(bytes, bin + (view.byteOffset || 0), view.byteLength);
     return createImageBitmap(new Blob([data], { type: image.mimeType }), { colorSpaceConversion: "none" });
   }));
-  assets.set(key, { doc, bytes, bin, images });
+  return { doc, bytes, bin, images };
+}
+
+async function loadAsset(key) {
+  const url = new URL("../assets/shop-weapons/" + key + ".glb", import.meta.url);
+  assets.set(key, await loadWeaponGLB(url));
 }
 
 export function loadShopWeaponArt() {
@@ -27,7 +31,7 @@ export function loadShopWeaponArt() {
     ["view", "world"].map(detail => loadAsset(keyFor(id, detail)).catch(error => console.error(error)))));
 }
 
-function buildTemplate(T, asset) {
+export function weaponGLBTemplate(T, asset, { scenes = false } = {}) {
   const { doc, bytes, bin, images } = asset;
   function attribute(index) {
     const a = doc.accessors[index], view = doc.bufferViews[a.bufferView];
@@ -47,6 +51,7 @@ function buildTemplate(T, asset) {
       color: new T.Color().fromArray(p.baseColorFactor ?? [1,1,1]),
       metalness: p.metallicFactor ?? 1, roughness: p.roughnessFactor ?? 1,
       side: m.doubleSided ? T.DoubleSide : T.FrontSide,
+      transparent: m.alphaMode === "BLEND", depthWrite: m.alphaMode !== "BLEND",
     });
     material.name = m.name;
     if (p.baseColorTexture) {
@@ -60,9 +65,16 @@ function buildTemplate(T, asset) {
     return material;
   });
   const root = new T.Group(), sockets = {};
-  for (const node of doc.nodes) {
+  const groups = scenes ? doc.nodes.map(() => new T.Group()) : null;
+  for (const [index, node] of doc.nodes.entries()) {
     const position = new T.Vector3().fromArray(node.translation ?? [0,0,0]);
-    if (node.name.endsWith("VisualSocket")) sockets[node.name] = position;
+    const group = groups?.[index];
+    if (group) {
+      group.name = node.name;
+      group.position.copy(position);
+      if (node.matrix) new T.Matrix4().fromArray(node.matrix).decompose(group.position, group.quaternion, group.scale);
+      for (const child of node.children ?? []) group.add(groups[child]);
+    } else if (node.name.endsWith("VisualSocket")) sockets[node.name] = position;
     if (node.mesh === undefined) continue;
     for (const part of doc.meshes[node.mesh].primitives) {
       const geometry = new T.BufferGeometry();
@@ -72,11 +84,16 @@ function buildTemplate(T, asset) {
       const mesh = new T.Mesh(geometry, materials[part.material]);
       mesh.name = node.name;
       if (node.extras?.removableIrons) mesh.userData.removableIrons = true;
-      mesh.position.copy(position);
+      if (!group) mesh.position.copy(position);
       mesh.castShadow = mesh.receiveShadow = true;
-      root.add(mesh);
+      (group ?? root).add(mesh);
     }
   }
+  if (groups) return doc.scenes.map(scene => {
+    const group = new T.Group();
+    for (const node of scene.nodes) group.add(groups[node]);
+    return group;
+  });
   return { root, sockets };
 }
 
@@ -92,7 +109,7 @@ export function mountShopWeapon(T, gun, id, detail) {
   if (!shopWeaponsEnabled || !Object.hasOwn(models, id)) return;
   const key = keyFor(id, detail), asset = assets.get(key);
   if (!asset) return;
-  const { root, sockets } = asset.template ??= buildTemplate(T, asset);
+  const { root, sockets } = asset.template ??= weaponGLBTemplate(T, asset);
   const body = root.clone();
   body.name = key;
   body.position.fromArray(grips[id].fire).sub(sockets.GripVisualSocket);

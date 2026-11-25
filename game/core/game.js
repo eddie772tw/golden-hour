@@ -30467,7 +30467,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
   }
   for (let o of Object.keys(_s)) o in Ib || delete _s[o];
   Ag[_s.difficulty] || (_s.difficulty = Ib.difficulty);
-  ["ar", "smg", "shotgun"].includes(_s.primary) || (_s.primary = Ib.primary);
+  (["ar", "smg", "shotgun"].includes(_s.primary) || _s.primary === "m200" && GHBoot.m200Enabled) || (_s.primary = Ib.primary);
   ["off", "low", "high"].includes(_s.motionBlur) || (_s.motionBlur = Ib.motionBlur);
   function Pw() {
     try {
@@ -32686,6 +32686,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
     }
   };
   var R1 = ["optic", "muzzle", "underbarrel", "magazine", "stock"], iR = { optic: "OPTIC", muzzle: "MUZZLE", underbarrel: "UNDERBARREL", magazine: "MAGAZINE", stock: "STOCK" }, Lg = { optic: { irons: { name: "IRON SIGHTS", desc: "Nothing between you and the target. Fastest to the eye.", mods: { adsTime: 0.93 } }, reflex: { name: "KITE REFLEX", desc: "Open red dot. Precise and quick.", mods: {} }, holo: { name: "HALO HOLOGRAPHIC", desc: "Wide window with a ring-and-dot reticle.", mods: { adsTime: 1.04, zoom: 1.05 } }, prism: { name: "VANTAGE 2.5×", desc: "Magnified prism sight for the long lanes.", mods: { adsTime: 1.15, zoom: 1.7, adsMove: 0.9 } } }, muzzle: { none: { name: "FACTORY MUZZLE", desc: "Standard flash hider.", mods: {} }, suppressor: { name: "MONOLITH SUPPRESSOR", desc: "Quiet report and a hidden flash. Enemies hear you late.", mods: { range: 0.92, adsTime: 1.05, flash: 0.22 }, suppressed: true }, comp: { name: "PORTED COMPENSATOR", desc: "Vents gas upward to hold the muzzle down.", mods: { recoilV: 0.8 } }, brake: { name: "SLOTTED BRAKE", desc: "Kills side-to-side drift.", mods: { recoilH: 0.7 } }, choke: { name: "FULL CHOKE", desc: "Tighter pattern, longer reach.", mods: { hip: 0.72, range: 1.18 } } }, underbarrel: { none: { name: "NO UNDERBARREL", desc: "Bare handguard.", mods: {} }, vgrip: { name: "VERTICAL FOREGRIP", desc: "A firm hold that steadies sustained fire.", mods: { recoilV: 0.9, recoilH: 0.84, mobility: 0.985 } }, angled: { name: "ANGLED FOREGRIP", desc: "Snappier to the shoulder and out of a sprint.", mods: { adsTime: 0.91, sprintOut: 0.88 } }, laser: { name: "TAC LASER", desc: "Visible beam. Tightens hip fire.", mods: { hip: 0.74, sprintOut: 0.94 }, laser: true } }, magazine: { std: { name: "STANDARD MAG", desc: "Factory capacity.", mods: {} }, ext: { name: "EXTENDED MAG", desc: "Half again as many rounds; a little slower to handle.", mods: { mag: 1.5, reload: 1.1, adsTime: 1.04, mobility: 0.99 } }, fast: { name: "SPEED MAG", desc: "Flared well and a pull tab for faster changes.", mods: { reload: 0.8 } } }, stock: { std: { name: "FACTORY STOCK", desc: "Balanced.", mods: {} }, light: { name: "SKELETON STOCK", desc: "Light and fast; kicks harder.", mods: { mobility: 1.03, adsMove: 1.12, sprintOut: 0.88, recoilV: 1.08 } }, heavy: { name: "PADDED STOCK", desc: "Soaks up recoil at the cost of speed.", mods: { recoilV: 0.87, recoilH: 0.9, adsTime: 1.06 } } } }, vu = { ar: { optic: ["reflex", "irons", "holo", "prism"], muzzle: ["none", "suppressor", "comp", "brake"], underbarrel: ["none", "vgrip", "angled", "laser"], magazine: ["std", "ext", "fast"], stock: ["std", "light", "heavy"] }, smg: { optic: ["irons", "reflex", "holo"], muzzle: ["none", "suppressor", "comp"], underbarrel: ["none", "vgrip", "laser"], magazine: ["std", "ext", "fast"], stock: ["std", "light"] }, shotgun: { optic: ["irons", "reflex"], muzzle: ["none", "choke", "brake"], underbarrel: ["none", "laser"], magazine: ["std", "ext"], stock: ["std", "heavy"] }, pistol: { optic: ["irons", "reflex"], muzzle: ["none", "suppressor", "comp"], underbarrel: ["none", "laser"], magazine: ["std", "ext"], stock: [] } }, yr = [{ id: "factory", name: "FACTORY", tier: 0, need: null, desc: "As issued." }, { id: "dune", name: "DUNE", tier: 1, need: { kills: 5 }, desc: "Flat dark earth with worn edges." }, { id: "timberline", name: "TIMBERLINE", tier: 1, need: { kills: 15 }, desc: "Hand-sprayed woodland through netting." }, { id: "fracture", name: "FRACTURE", tier: 1, need: { kills: 30 }, desc: "Urban shards in three greys." }, { id: "tigerstripe", name: "TIGERSTRIPE", tier: 2, need: { headshots: 5 }, desc: "Black brushstrokes over olive and tan." }, { id: "topo", name: "EMBER TOPO", tier: 2, need: { headshots: 15 }, desc: "Burnt-orange contour lines on matte black." }, { id: "carbon", name: "CARBON WEAVE", tier: 2, need: { kills: 60 }, desc: "Twill-weave carbon under clear coat." }, { id: "damascus", name: "DAMASCUS", tier: 3, need: { kills: 100 }, desc: "Folded-steel waves, acid etched." }, { id: "gold", name: "SOLSTICE GOLD", tier: 3, need: { kills: 150, headshots: 30 }, desc: "Polished gold with engraved scrollwork." }, { id: "obsidian", name: "MOLTEN OBSIDIAN", tier: 4, need: { allGold: true }, desc: "Black glass with a slow ember glow in the cracks." }], Ol = ["ar", "smg", "shotgun", "pistol"], Gw = ["ar", "smg", "shotgun"], mI = "golden-hour-builds-v1", gI = "golden-hour-profile-v1";
+  globalThis.GHBoot?.configureM200?.(Ya, vu, Lg, Ol, Gw);
   function xI(o, t) {
     try {
       return JSON.parse(localStorage.getItem(o)) || t;
@@ -32755,7 +32756,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
   }, readLoadout: () => ({ primary: _s.primary, builds: Object.fromEntries(Ol.map((w) => [w, Zi(w)])) }), writeLoadout: (p) => {
     oR = {};
     for (let w of Ol) Ww(w, p.builds[w] || {});
-    _s.primary = p.primary;
+    _s.primary = p.primary === "m200" && !GHBoot.m200Enabled ? "ar" : p.primary;
     Pw();
   }, recordKill: (w, h) => {
     let u = yI(w, h);
@@ -33069,7 +33070,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
       for (; this.evI < t.events.length && t.events[this.evI].t <= this.clipT; ) {
         let n = t.events[this.evI++];
         if (n.type === "sfx") {
-          e.reload(s.def.id, n.id);
+          e.reload(s.def.id === "m200" ? "ar" : s.def.id, n.id);
           let i = bZ[n.id];
           i && this.ctx.player.nudge(i[0], i[1]);
         } else n.type === "ammo" ? this._load() : n.type === "eject" ? this._eject() : n.type === "magdrop" && this._dropMag();
@@ -33168,7 +33169,7 @@ uniform vec2 uSunXZ;`).replace("#include <dithering_fragment>", `#include <dithe
         a.sightSlope(Qd), this.recoil.sightNow(Qd, this.ctx.gfx.camera, a.cam), f = xZ.copy(i.viewDir), f.x += (p[0] * Qd.x + p[4] * Qd.y) * m, f.y += (p[1] * Qd.x + p[5] * Qd.y) * m, f.z += (p[2] * Qd.x + p[6] * Qd.y) * m, f.normalize();
       }
       let u = r.fire(i, i.eye, f, e, this.spread, n5), d = i.stats;
-      d && (d.shots++, u.actor && d.hits++, u.head && d.head++), n.gunshot(e.id, null, { suppressed: !!e.suppressed }), e.suppressed || (i.lastShot = this.ctx.time()), a.flash(e), l.flashLight(n5, 16752720, 42 * e.flash, 12, 0.055), l.muzzleSmoke ? l.muzzleSmoke(n5, i.viewDir, this.heat) : Math.random() < 0.5 && l.smoke(n5.x, n5.y, n5.z, 1, { size: 0.08, life: 0.7, a: 0.12, dx: i.viewDir.x, dy: i.viewDir.y + 0.4, dz: i.viewDir.z, speed: 1.4 }), e.pump ? (this.pumpWait = 0.16, a.gun && (a.gun.rounds = t.ammo, a.gun.clips && a.gun.clips.fire && a.playFire(false))) : (a.gun && a.gun.clips && a.gun.clips.fire && a.playFire(t.ammo === 0 && (e.id === "ar" || e.id === "pistol")), this._eject()), this.heat = Math.min(14, this.heat + (e.pump ? 3 : 1)), this.bloom += (e.hip[1] - e.hip[0]) * 0.24, this.shots++, i.addShake(e.shake), i.gunShake = Math.min(i.shake, (i.gunShake || 0) + e.shake);
+      d && (d.shots++, u.actor && d.hits++, u.head && d.head++), n.gunshot(e.id === "m200" ? "ar" : e.id, null, { suppressed: !!e.suppressed }), e.suppressed || (i.lastShot = this.ctx.time()), a.flash(e), l.flashLight(n5, 16752720, 42 * e.flash, 12, 0.055), l.muzzleSmoke ? l.muzzleSmoke(n5, i.viewDir, this.heat) : Math.random() < 0.5 && l.smoke(n5.x, n5.y, n5.z, 1, { size: 0.08, life: 0.7, a: 0.12, dx: i.viewDir.x, dy: i.viewDir.y + 0.4, dz: i.viewDir.z, speed: 1.4 }), e.pump ? (this.pumpWait = 0.16, a.gun && (a.gun.rounds = t.ammo, a.gun.clips && a.gun.clips.fire && a.playFire(false))) : (a.gun && a.gun.clips && a.gun.clips.fire && a.playFire(t.ammo === 0 && (e.id === "ar" || e.id === "pistol")), this._eject()), this.heat = Math.min(14, this.heat + (e.pump ? 3 : 1)), this.bloom += (e.hip[1] - e.hip[0]) * 0.24, this.shots++, i.addShake(e.shake), i.gunShake = Math.min(i.shake, (i.gunShake || 0) + e.shake);
     }
     _recoil(t, e) {
       let s = this.ctx.player;
@@ -44389,8 +44390,14 @@ vec4 smgTri( vec3 p, vec3 w ) { return texture2D( uWearMap, p.zy ) * w.x + textu
   }
   var rt0 = { ar: ak, smg: vk, shotgun: Ok, pistol: GT }, lt0 = { ar: ak, smg: vk, shotgun: Ok, pistol: GT };
   function Ky(o, { detail: t = "view", build: e = null, portal: s = true, modelId = GHBoot.selectedModel(o) } = {}) {
-    let n = t === "view" ? rt0[o] : lt0[o], i = n ? n({ build: e, detail: t, portal: s }) : WI(o, { detail: t, build: e });
-    GHBoot.mountShopWeapon(Ct, i, modelId, t);
+    let kind = o === "m200" ? "ar" : o,
+      n = t === "view" ? rt0[kind] : lt0[kind],
+      i = n ? n({ build: o === "m200" ? Vb("ar") : e, detail: t, portal: s }) : WI(o, { detail: t, build: e });
+    if (o === "m200") {
+      i.id = o;
+      i.build = e;
+      GHBoot.mountM200(Ct, i, t, e ?? {});
+    } else GHBoot.mountShopWeapon(Ct, i, modelId, t);
     return i.build === void 0 && (i.build = e), i;
   }
   var Nk = Z2;
@@ -50957,7 +50964,9 @@ ${o.filename || ""}:${o.lineno || ""}`;
     } };
     m = new Uw(L), L.combat = m;
     let A = new Xw(L);
-    L.arsenal = A, L.hud = t, L.resetWorld = () => { if (!ghMapRuntime.active) g.resetDress(); }, L.setTimeScale = (f0) => {
+    L.arsenal = A, L.hud = t;
+    if (GHBoot.m200Enabled) GHBoot.installM200Handling(L);
+    L.resetWorld = () => { if (!ghMapRuntime.active) g.resetDress(); }, L.setTimeScale = (f0) => {
       Je.timeScale = f0, fo.setTimeScale(f0);
     }, L.botCtx = { scene: i, world: f, physics: p, glass: d, hotel: g, audio: fo, fx: u, nav: w, combat: m, time: T, createCharacter: n7, buildGrenade: R, worldGun: (f0, _0 = null, modelId = f0) => Ky(f0, { detail: "world", build: _0, modelId }) }, b = new A7(L), L.match = b, L.botCtx.match = b, t.loading(0.47, "PREPARING THE ARMOURY"), await q1(), u.attach && u.attach({ gfx: n, world: f, physics: p, glass: d, hotel: g, player: S, match: b, audio: fo, time: T }), t.attach && t.attach({ world: f, nav: w, hotel: g, match: b, player: S, arsenal: A, gfx: n, physics: p, glass: d, fx: u, buildGun: Ky, buildGrenade: Nk, settings: _s, audio: fo, input: l, time: T }), t.loading(0.8, "BRIEFING OPERATORS"), await q1(), b.createBots(5);
     for (let f0 of b.bots) for (let _0 of f0.rigs) _0.root.visible = false;

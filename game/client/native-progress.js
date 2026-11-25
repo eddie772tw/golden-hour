@@ -1,5 +1,5 @@
 import { familyOf } from "./weapon-models.js";
-import { emptyProfile, profile, profileDelta, same, loadout, maxProfile } from "./progress-ledger.js";
+import { WEAPON_IDS, emptyProfile, profile, profileDelta, same, loadout, maxProfile } from "./progress-ledger.js";
 
 // Native rR/yI/vI remain the source of rank, XP, weapon mastery and camo rules.
 // Authenticated saves go to account-scoped pending components, never the guest key.
@@ -98,7 +98,7 @@ export function installNativeProgress({ gh, account, bridge = globalThis.GHProgr
         const next = profile(bridge.readProfile()); next.kills += delta - 1;
         bridge.writeProfile(next); bridge.persist(bridge.profileKey, next);
       }
-      if (["ar", "smg", "shotgun", "pistol"].includes(weapon)) {
+      if (WEAPON_IDS.includes(weapon)) {
         const unlocked = bridge.recordKill(weapon, !!head);
         for (const camo of unlocked) gh.debug.ctx.hud.unlock?.(weapon, camo);
       } else {
