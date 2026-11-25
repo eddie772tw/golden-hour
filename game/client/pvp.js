@@ -23,6 +23,13 @@ import { serverTarget, targetURL } from "./server-target.js";
 
 const net = new Connection();
 const engine = new CompetitiveEngine(net);
+import { ORIGINAL_V60115, ORIGINAL_V60115_IDENTITY, ORIGINAL_V60115_ORIGIN,
+  ORIGINAL_V60115_SITE, originalV60115Catalog } from "./original-v60115.js";
+
+import { COOP_MODE, COOP_NAME, coopStatus, supportsCoop, installCoopPresentation } from "./community-coop.js";
+
+let disposeCoop;
+const previewOriginal = serverTarget.version === ORIGINAL_V60115;
 const account = new ToyAccount({sdk:serverTarget.original ? null : fixture()});
 const onlineKills = new OnlineKills(account);
 const reportGate = new MatchReportGate();
@@ -120,7 +127,7 @@ const directory = new RoomDirectory({
   onChange: renderDirectory,
 });
 function syncDirectory() {
-  directory.setActive(multiplayerEnabled && menus.page === "online" && !menus.root.classList.contains("hidden") && !room && !busy && !document.hidden);
+  directory.setActive(!previewOriginal && multiplayerEnabled && menus.page === "online" && !menus.root.classList.contains("hidden") && !room && !busy && !document.hidden);
 }
 document.addEventListener("visibilitychange", syncDirectory);
 page.addEventListener("click", (event) => {
@@ -240,33 +247,56 @@ if (serverTarget.original) {
 const targetForm=document.createElement("form");
 targetForm.id="server-target";
 targetForm.innerHTML=`<details><summary></summary>
-  <label class="row online-field"><span data-server-label="mode"></span><select id="server-mode"><option value="local"></option><option value="original"></option></select></label>
+  <label class="row online-field"><span data-server-label="mode"></span><select id="server-mode"><option value="local"></option><option value="original"></option><option value="v60115">原版 v60115</option></select></label>
   <label class="row online-field"><span data-server-label="address"></span><input id="server-origin" type="url" spellcheck="false" autocomplete="url"></label>
   <button class="btn" id="server-apply" type="submit"></button>
   </details><p id="server-policy" role="status"></p>`;
 bind(targetForm.querySelector("summary"),"server.target");
 for (const label of targetForm.querySelectorAll("[data-server-label]")) bind(label,"server."+label.dataset.serverLabel);
 const targetMode=targetForm.querySelector("#server-mode"), targetOrigin=targetForm.querySelector("#server-origin");
-for (const option of targetMode.options) bind(option,"server."+option.value);
+for (const option of targetMode.options) if (option.value !== ORIGINAL_V60115) bind(option,"server."+option.value);
 bind(targetForm.querySelector("#server-apply"),"server.apply");
 bind(targetForm.querySelector("#server-policy"),serverTarget.original ? "server.originalWeapons" : "server.localWeapons");
-targetMode.value=serverTarget.original ? "original" : "local";
+targetMode.value=previewOriginal ? ORIGINAL_V60115 : serverTarget.original ? "original" : "local";
 // This is the API origin declared by the archived original HTML. Selection is
 // explicit; merely opening the client never contacts this endpoint.
 targetOrigin.value=serverTarget.original ? serverTarget.origin : ORIGINAL_ORIGIN;
 targetOrigin.disabled=!serverTarget.original;
-targetMode.onchange=()=>{targetOrigin.disabled=targetMode.value!=="original";};
+targetMode.onchange=()=>{
+  targetOrigin.disabled=targetMode.value==="local";
+  if (targetMode.value!== "local")
+    targetOrigin.value=targetMode.value===ORIGINAL_V60115 ? ORIGINAL_V60115_ORIGIN : ORIGINAL_ORIGIN;
+};
 targetForm.onsubmit=event=>{
   event.preventDefault();
   if (busy || room) return;
-  try {location.assign(targetURL(location.href,targetMode.value==="original",targetOrigin.value));}
+  try {location.assign(targetURL(location.href,targetMode.value!=="local",targetOrigin.value,targetMode.value));}
   catch (e) {error(e.message);}
 };
 $("online-connect").prepend(targetForm);
+const modeLabel = document.createElement("label");
+modeLabel.className = "row online-field";
+modeLabel.hidden = true;
+modeLabel.innerHTML = '<span>模式</span><select id="community-mode"><option value="tdm">团队死斗</option></select>';
+const communityMode = modeLabel.querySelector("select");
+communityMode.add(new Option(COOP_NAME, COOP_MODE));
+communityMode.addEventListener("change", renderRoom);
+$("online-connect").append(modeLabel);
+function applyCommunityModes(config) {
+  modeLabel.hidden = !supportsCoop(config);
+  if (modeLabel.hidden) communityMode.value = "tdm";
+}
+let communityModesRequest;
+function refreshCommunityModes() {
+  if (serverTarget.original || communityModesRequest) return;
+  communityModesRequest = loadApiConfig(serverTarget.origin, location.href).then(applyCommunityModes).catch(() => {
+    applyCommunityModes(null);
+  }).finally(() => { communityModesRequest = null; });
+}
 const remoteName=document.createElement("input"),remoteNameLabel=document.createElement("label"),remoteNameCaption=document.createElement("span");
 remoteName.id="original-name";remoteName.maxLength=32;remoteName.value=account.playerName;remoteName.autocomplete="nickname";
 remoteNameLabel.className="row online-field";bind(remoteNameCaption,"server.name");remoteNameLabel.append(remoteNameCaption,remoteName);
-remoteNameLabel.hidden=!serverTarget.original;$("online-connect").append(remoteNameLabel);
+remoteNameLabel.hidden=!serverTarget.original || previewOriginal;$("online-connect").append(remoteNameLabel);
 $("online-name").parentElement.hidden=serverTarget.original;
 const invitation=serverTarget.original ? {} : await fetch("/api/invite").then(r=>r.json()).catch(()=>({}));
 const code=document.createElement("input"),codeLabel=document.createElement("label"),joinCode=document.createElement("button");
@@ -274,6 +304,18 @@ bind(codeLabel,"account.code");codeLabel.htmlFor=code.id="join-room-code";code.m
 joinCode.type="button";joinCode.className="btn";bind(joinCode,"account.join");
 joinCode.onclick=()=>{const id=code.value.trim().toUpperCase();if(/^[A-F0-9]{8}$/.test(id))void join("listed",id);else code.focus();};
 $("online-connect").append(codeLabel,code,joinCode);
+if (previewOriginal) {
+  const notice = targetForm.querySelector("#server-policy");
+  notice.textContent = ORIGINAL_V60115_IDENTITY + " ";
+  const link = document.createElement("a");
+  link.href = ORIGINAL_V60115_SITE;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = "在原站打开";
+  notice.append(link);
+  for (const control of [codeLabel, code, joinCode, $("online-quick"), $("online-create")]) control.hidden = true;
+  void previewOriginalService();
+}
 const inviteField=document.createElement("input"),inviteLabel=document.createElement("label");
 bind(inviteLabel,"account.invite");inviteLabel.htmlFor=inviteField.id="room-invite";
 inviteField.readOnly=true;inviteField.onclick=()=>inviteField.select();$("online-room").append(inviteLabel,inviteField);
@@ -343,14 +385,41 @@ async function command(value) {
 function setJoinBusy() {
   if (community) community.picker.disabled=busy;
   targetMode.disabled=busy;
-  targetOrigin.disabled=busy || targetMode.value!=="original";
+  targetOrigin.disabled=busy || targetMode.value==="local";
   targetForm.querySelector("#server-apply").disabled=busy;
   remoteName.disabled=busy;
+  communityMode.disabled=busy;
   for (const id of ["online-quick", "online-create", "online-refresh"])
     $(id).disabled = busy;
   for (const button of $("online-list").querySelectorAll("button"))
     button.disabled = busy || button.dataset.joinable !== "true";
 }
+async function previewOriginalService() {
+  if (serverTarget.origin !== ORIGINAL_V60115_ORIGIN) {
+    label("online-directory-status", "v60115 的预览只读取正式原服公开目录。");
+    return;
+  }
+  label("online-directory-status", "正在读取 v60115 公开配置与目录…");
+  const read = async endpoint => {
+    const response = await fetch("/api/original/v60115/" + endpoint, {
+      credentials: "omit", redirect: "error", signal: AbortSignal.timeout(7000),
+    });
+    if (!response.ok) throw Error("v60115 公开 API 不可用");
+    return response.json();
+  };
+  try {
+    const [config, value] = await Promise.all([read("config"), read("catalog")]);
+    if (config.protocol !== 1) throw Error("不支持的 v60115 联机协议");
+    const catalog = originalV60115Catalog(value);
+    const modes = catalog.modes.map(mode => mode.name).join("／");
+    const missingCoop = !catalog.modes.some(mode => mode.id === COOP_MODE);
+    label("online-directory-status", `v60115 公开服务可用 · ${catalog.maps.length} 张地图 · ${modes}` +
+      (missingCoop ? " · 灰港合作未列入公开目录" : ""));
+  } catch {
+    label("online-directory-status", "无法读取 v60115 公开服务。请检查网络及原服证书状态后重试。");
+  }
+}
+
 function renderDirectory({ state, rooms, message, trustURL }) {
   label("online-directory-status", state === "loading"
     ? "正在获取公开房间…"
@@ -370,7 +439,9 @@ function renderDirectory({ state, rooms, message, trustURL }) {
     const host = document.createElement("b");
     bind(host, "room.host", summary.hostName);
     const details = document.createElement("span");
-    details.textContent = `${phases[summary.phase]} · ${difficultyLabel(summary.difficulty)}人机 · ${summary.humans} 真人 / ${summary.bots} 人机 · ${summary.humans}/${summary.capacity} 席`;
+    details.textContent = summary.modeId === COOP_MODE
+      ? `${COOP_NAME} · ${phases[summary.phase]} · ${summary.humans}/${summary.capacity} 席`
+      : `${phases[summary.phase]} · ${difficultyLabel(summary.difficulty)}人机 · ${summary.humans} 真人 / ${summary.bots} 人机 · ${summary.humans}/${summary.capacity} 席`;
     if (community) details.textContent = community.listingName(summary)+" · "+details.textContent;
     info.append(host, details);
     const button = document.createElement("button");
@@ -379,7 +450,7 @@ function renderDirectory({ state, rooms, message, trustURL }) {
     button.dataset.act = "online-room:" + summary.room;
     button.dataset.joinable = String(summary.joinable);
     button.disabled = busy || !summary.joinable;
-    button.textContent = summary.joinable ? "加入战场 ›" : "真人已满";
+    button.textContent = summary.joinable ? "加入战场 ›" : summary.humans === summary.capacity ? "真人已满" : "行动已开始";
     entry.append(info, button);
     list.append(entry);
   }
@@ -390,6 +461,7 @@ function renderDirectory({ state, rooms, message, trustURL }) {
 }
 async function join(mode, roomID) {
   if (!multiplayerEnabled || busy || room) return;
+  if (previewOriginal) return error(ORIGINAL_V60115_IDENTITY);
   if(!serverTarget.original && !vault.account){accountMenu.open();return;}
   busy = true;
   const generation = ++joinGeneration;
@@ -404,8 +476,12 @@ async function join(mode, roomID) {
     const config = await loadApiConfig(serverTarget.origin, location.href, globalThis.fetch, { gateway: serverTarget.original });
     if (generation !== joinGeneration) return;
     if (query.get("transport") === "webrtc") config.preferredTransport = "webrtc";
+    const coopAvailable = !serverTarget.original && supportsCoop(config);
+    const selectedMode = mode !== "listed" && community ? communityMode.value : "tdm";
+    if (community) applyCommunityModes(config);
+    if (selectedMode === COOP_MODE && !coopAvailable) throw Error("此服务器暂未提供四人合作模式。");
     community?.configure(config);
-    const session=community?.start(mode,roomID);
+    const session=community?.start(mode,roomID,selectedMode,coopAvailable);
     await session?.preload(engine);
     if (generation !== joinGeneration) return;
     await engine.enter(ctx.settings.primary);
@@ -413,6 +489,7 @@ async function join(mode, roomID) {
     const name=serverTarget.original ? remoteName.value.trim().slice(0,32) || account.playerName : vault.account.name;
     const hello = joinHello(mode, name, roomID);
     if (mode !== "listed") hello.difficulty = ctx.settings.difficulty;
+    if (coopAvailable) hello.coopProtocol = 1;
     await net.connect({...hello,...session?.fields}, config);
     if (generation !== joinGeneration) return;
     if (session) {
@@ -439,6 +516,8 @@ async function join(mode, roomID) {
     status("连接未完成");
     await net.leave();
     if (generation !== joinGeneration) return;
+    disposeCoop?.();
+    disposeCoop = null;
     engine.exit();
     community?.reset();
     room = null;
@@ -462,6 +541,8 @@ async function leave() {
   if (generation !== joinGeneration) return;
   onlineKills.reset();
   void account.flush();
+  disposeCoop?.();
+  disposeCoop = null;
   engine.exit();
   community?.reset();
   toyMenus.render();
@@ -476,11 +557,11 @@ async function leave() {
   visible("online-trust", false);
   renderRoom();
   menus.go("main");
-  status("已退出房间。空位由人机接替。");
+  status("已退出房间。");
 }
 const actions = {
   online: async () => {
-    openRoom();accountMenu?.render();
+    openRoom();accountMenu?.render();refreshCommunityModes();
   },
   deploy: async () => {
     await toyMenus.authorize();
@@ -490,7 +571,12 @@ const actions = {
   "online-back": () => menus.back(),
   "online-quick": () => join("quick"),
   "online-create": () => join("create"),
-  "online-refresh": () => { community?.refresh(true); directory.retry(); },
+  "online-refresh": () => {
+    if (previewOriginal) return previewOriginalService();
+    community?.refresh(true);
+    refreshCommunityModes();
+    directory.retry();
+  },
   "online-next": () => command({ type: "ready", ready: true }),
   "online-team-a": () => command({ type: "team", team: 0 }),
   "online-team-b": () => command({ type: "team", team: 1 }),
@@ -504,7 +590,16 @@ const actions = {
 };
 function renderRoom() {
   const difficulty = difficultyLabel(room?.difficulty || ctx.settings.difficulty);
-  page.querySelector(".online-mode").textContent = `暮色酒店 · 团队死斗 · ${difficulty}人机 · 先到 40 分`;
+  const coop = !serverTarget.original && (room ? room.modeId === COOP_MODE : communityMode.value === COOP_MODE);
+  const mapName = community?.nameFor(room) ?? "暮色酒店";
+  if (community) {
+    community.field.hidden = coop || community.entries.length <= 1;
+    community.picker.disabled = busy || coop;
+  }
+  page.querySelector(".online-mode").textContent = previewOriginal ? "原版 v60115 · 公开目录"
+    : coop ? "暮色酒店 · " + COOP_NAME : `${mapName} · 团队死斗 · ${difficulty}人机 · 先到 40 分`;
+  page.querySelectorAll(".online-fill").forEach(p => { p.hidden = coop || previewOriginal; });
+  page.querySelector("#online-roster .sech span:last-child").textContent = coop ? "四人小队" : "真人优先 · 自动补位";
   visible("online-connect", !room);
   visible("online-hall", !room);
   syncDirectory();
@@ -520,24 +615,24 @@ function renderRoom() {
     active = inMatch();
   if (menus.page === "online") menus.root.dataset.bg = "dim";
   const humans = room.players.filter((p) => !p.bot).length;
-  label("online-section", "公开战场");
-  label("online-members", `${humans} 真人 / ${10 - humans} 人机`);
+  label("online-section", coop ? COOP_NAME : "公开战场");
+  label("online-members", coop ? `${room.modeState?.connected ?? 0}/4 真人在线` : `${humans} 真人 / ${10 - humans} 人机`);
   label(
     "online-phase",
     active ? "对局进行中" : room.phase === "over" ? "对局战绩" : "编队准备",
   );
   const table = $("online-teams");
   table.replaceChildren();
-  for (let team = 0; team < 2; team++) {
+  for (let team = 0; team < (coop ? 1 : 2); team++) {
     const section = document.createElement("section");
     section.className = "t" + team;
     const heading = document.createElement("div");
     heading.className = "th";
     const title = document.createElement("b");
-    title.textContent = team ? "余烬" : "先锋";
+    title.textContent = coop ? "撤离小队" : team ? "余烬" : "先锋";
     const score = document.createElement("em");
     score.textContent =
-      active || room.phase === "over" ? room.scores[team] : "5 / 5";
+      coop ? `${humans} / 4` : active || room.phase === "over" ? room.scores[team] : "5 / 5";
     heading.append(title, score);
     section.append(heading);
     for (const [index, p] of room.players
@@ -557,7 +652,7 @@ function renderRoom() {
           : p.bot
             ? "人机 · 就绪"
             : !p.connected
-              ? "人机代打"
+              ? coop ? "保留席位" : "人机代打"
               : "在线";
       const role = document.createElement("small");
       role.textContent =
@@ -570,19 +665,25 @@ function renderRoom() {
   }
   visible("online-next", !active);
   visible("online-resume", active);
-  for (const id of ["online-team-a", "online-team-b"]) $(id).disabled = active;
+  $("online-next").disabled = coop && (room.host !== net.id || room.modeState?.connected !== 4);
+  $("online-next").querySelector("b").textContent = coop && room.phase === "lobby" ? "开始行动" : "再来一局";
+  $("online-next").querySelector("em").textContent = coop ? "四人到齐后由房主开始 ›" : "当前房间立即开战 ›";
+  for (const id of ["online-team-a", "online-team-b"]) {
+    $(id).disabled = active || coop;
+    $(id).hidden = coop;
+  }
   visible("online-result", room.phase === "over");
   if (room.phase === "over")
     label(
       "online-result",
-      room.winner < 0
+      coop ? coopStatus(room.modeState) : room.winner < 0
         ? "平局"
         : room.winner === me?.team
           ? "任务完成 · 胜利"
           : "任务结束 · 再战",
     );
   status(
-    active
+    coop ? coopStatus(room.modeState) : active
       ? "战场持续运行，空位由人机补齐。"
       : "点击再来一局，留在当前房间立即开战。",
   );
@@ -616,12 +717,16 @@ function handleEvent(e) {
     if (member) member.alive=true;
   }
   engine.event(e);
-  const settlement = serverTarget.original ? null : onlineKills.event(e, net.id);
+  const coop = !serverTarget.original && (e.modeId === COOP_MODE || room?.modeId === COOP_MODE);
+  const settlement = serverTarget.original || coop ? null : onlineKills.event(e, net.id);
+  if (coop && e.type === "zombie-hit" && e.attacker === net.id && engine.roundStarted)
+    ctx.hud.hit(false, e.kill, false);
   if (e.type === "error") return error(e.message);
   if (e.type === "welcome") visible("online-error", false);
   if (e.type === "room") {
     room = e;
     community?.room(room);
+    if (coop && !disposeCoop) disposeCoop = installCoopPresentation(engine);
     engine.setRoom(e);
     renderRoom();
     const me = room.players.find((player) => player.id === net.id);

@@ -77,8 +77,8 @@ export class Room {
     const index=this.players.filter(q=>q.team===p.team && q.id<p.id).length;
     spawn(p,this.map===builtinMap?this.map.spawns[p.id-1]:this.teamSpawns[p.team][index]);
   }
-  start() {
-    this.round++; this.phase="live"; this.scores=[0,0]; this.winner=-1; this.remaining=this.duration;
+  start(phase = "live") {
+    this.round++; this.phase=phase; this.scores=[0,0]; this.winner=-1; this.remaining=this.duration;
     for (const p of this.players) { this.spawn(p); p.kills=p.deaths=p.score=0; }
     this.broadcast({type:"round-start",round:this.round}); this.roster();
   }
@@ -160,12 +160,15 @@ export class Room {
     const hits=traceDischarge({origin:pos,yaw:e.yaw,pitch,pellets:melee?1:gun.pellets,
       spread:melee?0:(p.input.buttons & ADS ? gun.ads : gun.hip), reach:melee?2:gun.reach ?? 140,
       damage:melee?[100,100]:[gun.damage,gun.farDamage], falloff:gun.range},
-      this.players.filter(q=>q.alive && q.team!==p.team),this.map.bulletCover);
+      this.targets(p),this.map.bulletCover);
     for (const [target,amount] of hits) {
       if (this.phase!=="live") break;
       this.hit(p,target,weapon,Math.round(amount));
     }
   }
+  targets(p) { return this.players.filter(q=>q.alive && q.team!==p.team); }
+  simulationPlayers() { return this.players; }
+  visiblePlayers(viewer) { return this.players.filter(target => visibleEnemy(viewer,target,this.map.walls)); }
   hit(p,target,weapon,amount) {
     target.hp=Math.max(0,target.hp-amount);
     const damage = {type:"damage",attacker:p.id,id:target.id,hp:target.hp,head:false,weapon};
@@ -212,7 +215,7 @@ export class Room {
     if (this.phase!=="live") return;
     this.remaining=Math.max(0,this.remaining-stepMs);
     if (!this.remaining) return this.end();
-    for (const p of this.players) {
+    for (const p of this.simulationPlayers()) {
       if (!p.alive) {
         p.respawn=Math.max(0,p.respawn-stepMs);
         if (!p.respawn) { this.spawn(p); this.broadcast({type:"spawn",id:p.id}); }
@@ -250,7 +253,7 @@ export class Room {
     }
   }
   packet(viewer) {
-    const visible = this.players.filter(target => visibleEnemy(viewer,target,this.map.walls));
+    const visible = this.visiblePlayers(viewer);
     const b=Buffer.alloc(24+64*visible.length);
     b.writeUInt32LE(0x02014748); b.writeUInt32LE(this.tick>>>0,4); b.writeUInt32LE(Math.floor(this.tick*stepMs)>>>0,8);
     b[12]=phases.indexOf(this.phase); b[13]=visible.length; b.writeUInt16LE(this.scores[0],14);

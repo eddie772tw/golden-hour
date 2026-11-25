@@ -10,8 +10,9 @@ import { fileURLToPath } from "node:url";
 import { resolve, sep, extname } from "node:path";
 import rtc from "node-datachannel";
 import { Room, readInput } from "./room.mjs";
-import { loadMapCatalog } from "./maps.mjs";
+import { builtinMap, loadMapCatalog } from "./maps.mjs";
 import { acceptsMap, findTdmRoom, selectTdmMap } from "./room-content.mjs";
+import { COOP_MODE, CoopRoom } from "./coop-room.mjs";
 import { originalGateway } from "./original-gateway.mjs";
 
 const port=Number(process.env.GH_DEV_PORT || 48722), host=process.env.GH_BIND_IP || "127.0.0.1";
@@ -79,14 +80,21 @@ function signal(offer,ticket,signed) {
           let room;
           if (e.room) room=rooms.get(e.room);
           else if (!e.resume && (e.create===true || e.quick===true)) {
-            const map=selectTdmMap(maps,e);
-            if (e.quick) room=findTdmRoom(rooms.values(),map);
+            const coop = e.modeId === COOP_MODE;
+            if (coop && (e.coopProtocol !== 1 || !acceptsMap(e,builtinMap,COOP_MODE)))
+              throw Error("error.coop_unsupported");
+            const map = coop ? builtinMap : selectTdmMap(maps,e);
+            if (e.quick) room = coop
+              ? [...rooms.values()].find(r=>r.modeId===COOP_MODE && r.summary().joinable)
+              : findTdmRoom(rooms.values(),map);
             if (!room) {
               const difficulty=["recruit","regular","hardened","veteran"].includes(e.difficulty)?e.difficulty:"regular";
-              room=new Room(difficulty,duration,career,{map}); rooms.set(room.id,room);
+              room=coop ? new CoopRoom(difficulty,duration,career) : new Room(difficulty,duration,career,{map});
+              rooms.set(room.id,room);
             }
           }
           if (!room) throw Error("error.room_missing");
+          if (room.modeId===COOP_MODE && e.coopProtocol!==1) throw Error("error.coop_unsupported");
           if (!acceptsMap(e,room.map,room.modeId)) throw Error("error.map_version");
           peer.p=room.join(peer,e,signed.id); peer.room=room; clearTimeout(idle); publish();
         } else if (e?.type==="leave") { detach(true); peer.send({type:"left"}); }
@@ -168,7 +176,8 @@ const listener=async(req,res)=>{
       const result = path==="/api/ranks" ? career.board(id) : career.progress(id);
       return reply(200,types[".json"],JSON.stringify(result));
     }
-    if (path==="/api/config") return reply(200,types[".json"],JSON.stringify({legacyMigration:!tls,communityMaps,preferredTransport:"webrtc",rtc:{url:"/api/rtc",iceServers:[]}}));
+    if (path==="/api/config") return reply(200,types[".json"],JSON.stringify({legacyMigration:!tls,communityMaps,preferredTransport:"webrtc",rtc:{url:"/api/rtc",iceServers:[]},
+      communityModes:{protocol:1,modes:["tdm",COOP_MODE]}}));
     if (path==="/api/invite") return reply(200,types[".json"],"{}");
     if (path==="/api/health") return reply(200,types[".json"],'{"mode":"local-development"}');
     if (path==="/api/rooms/events") {

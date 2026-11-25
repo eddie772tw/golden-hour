@@ -2,6 +2,7 @@ export default {
   "server.target": "Choose a match server",
   "server.mode": "Server type",
   "server.address": "Server address",
+  "error.coop_unsupported": "This client or server map does not support Courtyard Evacuation co-op.",
   "server.local": "Local / community server",
   "server.original": "Original-compatible server",
   "server.apply": "Switch and reload",

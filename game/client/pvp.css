@@ -347,3 +347,18 @@ body.touch-device #pg-toy-unlock :is(button, .btn) { min-height: 44px; }
     grid-row: auto;
   }
 }
+
+.community-coop-hud {
+  position: absolute;
+  top: max(1.4rem, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 88vw;
+  padding: .45rem 1rem;
+  border-left: 2px solid #6affce;
+  background: #131b19e8;
+  color: #e6f8f2;
+  font-size: .9rem;
+  font-weight: 600;
+  text-align: center;
+}

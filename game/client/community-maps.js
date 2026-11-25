@@ -3,7 +3,7 @@ import { protocolError } from "../i18n/errors.js";
 
 const builtin = { id:"hotel", version:"builtin", revision:"builtin", name:"暮色酒店", clientScene:"hotel" };
 const matches = (entry, room) => entry.id===room?.mapId && entry.version===room.mapVersion && entry.revision===room.mapRevision;
-const selection = entry => ({ mapId:entry.id, mapVersion:entry.version, mapRevision:entry.revision, modeId:"tdm" });
+const selection = (entry, modeId = "tdm") => ({ mapId:entry.id, mapVersion:entry.version, mapRevision:entry.revision, modeId });
 const validEntry = entry => entry && typeof entry.revision==="string" && typeof entry.id==="string" && /^[a-z0-9][a-z0-9_-]{0,31}$/.test(entry.id) &&
   typeof entry.version==="string" && /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/.test(entry.version) &&
   typeof entry.name==="string" && entry.name.length>0 && entry.name.length<=80 && (entry.id===builtin.id && entry.version===builtin.version && entry.revision===builtin.revision
@@ -71,17 +71,21 @@ export class CommunityMaps {
   entryFor(room) {
     return this.entries.find(entry=>matches(entry,room));
   }
-  room(room) {
+  nameFor(room) {
     const entry=room?this.entryFor(room):this.entries.find(entry=>key(entry)===this.picker.value);
-    this.header.textContent=(entry ?? builtin).name+" · 团队死斗 · 先到 40 分";
+    return (entry ?? builtin).name;
   }
-  start(mode, roomID) {
+  room(room) {
+    this.header.textContent=this.nameFor(room)+" · 团队死斗 · 先到 40 分";
+  }
+  start(mode, roomID, selectedMode = "tdm", coopAvailable = false) {
     const listed=this.rooms.get(roomID);
-    const chosen=mode==="listed"
-      ? this.entryFor(listed) : this.entries.find(entry=>key(entry)===this.picker.value);
+    const modeId=mode==="listed"?listed?.modeId:selectedMode;
+    const chosen=mode==="listed"?this.entryFor(listed):modeId==="zombie-coop"?builtin:
+      this.entries.find(entry=>key(entry)===this.picker.value);
     if (this.protocol && (mode!=="listed" && !chosen || listed?.mapId && !chosen)) throw mismatch();
-    const fields=this.protocol?{ mapProtocol:1, ...(chosen && selection(chosen)) }:{};
-    this.active=new CommunitySession(this.pageURL,this.entries,fields,chosen);
+    const fields=this.protocol?{ mapProtocol:1, ...(chosen && selection(chosen,modeId)) }:{};
+    this.active=new CommunitySession(this.pageURL,this.entries,fields,chosen,modeId,coopAvailable);
     return this.active;
   }
   reset() {
@@ -97,11 +101,13 @@ export class CommunityMaps {
 }
 
 class CommunitySession {
-  constructor(pageURL, entries, fields, chosen) {
+  constructor(pageURL, entries, fields, chosen, modeId, coopAvailable) {
     this.pageURL=pageURL;
     this.entries=entries;
     this.fields=fields;
     this.chosen=chosen;
+    this.modeId=modeId;
+    this.coopAvailable=coopAvailable;
     this.controller=new AbortController();
     this.events=[];
   }
@@ -124,7 +130,7 @@ class CommunitySession {
     return true;
   }
   sameRoom(value) {
-    return value.room===this.welcome.room && value.modeId==="tdm" &&
+    return value.room===this.welcome.room && value.modeId===this.modeId &&
       matches(this.chosen,value);
   }
   async preload(engine) {
@@ -166,8 +172,12 @@ class CommunitySession {
     if (!welcome) throw mismatch();
     if (this.fields.mapProtocol) {
       const entry=this.entries.find(candidate=>matches(candidate,welcome));
-      if (!entry || welcome.modeId!=="tdm" || this.chosen && !matches(this.chosen,welcome)) throw mismatch();
+      const supportedMode=welcome.modeId==="tdm" ||
+        welcome.modeId==="zombie-coop" && this.coopAvailable && matches(builtin,welcome);
+      if (!entry || !supportedMode || this.modeId && this.modeId!==welcome.modeId ||
+          this.chosen && !matches(this.chosen,welcome)) throw mismatch();
       this.chosen=entry;
+      this.modeId=welcome.modeId;
       const asset=this.prepared ?? await this.prepare(engine,entry);
       if (asset) {
         this.prepared=asset;

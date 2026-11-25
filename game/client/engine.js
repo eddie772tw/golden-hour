@@ -35,6 +35,8 @@ export class Engine extends EventTarget {
     this.accumulator = 0;
     this.snapshots = [];
     this.active = false;
+    this.shotSeq = 0;
+    this.pendingShots = [];
     this.error = { x: 0, y: 0, z: 0 };
     this.hasInitialSnapshot = false;
     this.initialEvents = [];
@@ -90,6 +92,9 @@ export class Engine extends EventTarget {
     return () => { this.world = previous; };
   }
   async enter(primary = "ar") {
+    this.shotSeq = 0;
+    this.pendingShots.length = 0;
+    this.usesShotAcks = false;
     await this.ready();
     await globalThis.GHBoot?.runtimeReady;
     await this.debug.gfx?.whenReady?.();
@@ -155,15 +160,7 @@ export class Engine extends EventTarget {
     ctx.arsenal.grenades = 0;
     p.update = (dt, ars) => this.update(dt, ars);
     ctx.combat.fire = (actor, eye, dir) => {
-      if (this.phase === "live" && p.alive && !this.net.stale)
-        this.net
-          .send({
-            type: "shot",
-            tick: this.net.latestTick,
-            yaw: Math.atan2(-dir.x, -dir.z),
-            pitch: Math.asin(clamp(dir.y, -1, 1)),
-          })
-          .catch(() => {});
+      if (this.phase === "live" && p.alive && !this.net.stale) this.sendShot(dir);
       return {
         point: eye.clone().addScaledVector(dir, 140),
         actor: null,
@@ -498,11 +495,34 @@ export class Engine extends EventTarget {
       (this.input.locked || this.input.touchActive || this.dragActive);
     this.renderRemotes(dt);
   }
+  sendShot(dir) {
+    const command = {
+      type: "shot", tick: this.net.latestTick,
+      yaw: Math.atan2(-dir.x, -dir.z), pitch: Math.asin(clamp(dir.y, -1, 1)),
+    };
+    let pending;
+    if (this.net.originalVersion === "v60115") {
+      command.weapon = this.ctx.arsenal.slot.def.profileId || this.ctx.arsenal.slot.def.id;
+      if (this.usesShotAcks) {
+        command.shotSeq = ++this.shotSeq;
+        pending = { seq: command.shotSeq, weapon: command.weapon };
+        this.pendingShots.push(pending);
+        if (this.pendingShots.length > 64) this.pendingShots.shift();
+      }
+    }
+    this.net.send(command).catch(() => {
+      if (pending) this.pendingShots = this.pendingShots.filter(shot => shot !== pending);
+    });
+  }
   snapshot(s) {
     if (!this.active) return;
     const me = s.players.find((p) => p.id === this.net.id);
     if (!me) return;
     this.phase = s.phase;
+    this.usesShotAcks = me.shotAck !== undefined;
+    if (this.usesShotAcks) this.shotSeq = Math.max(this.shotSeq, me.shotAck);
+    if (!me.alive || s.phase !== "live" || !this.usesShotAcks) this.pendingShots.length = 0;
+    else this.pendingShots = this.pendingShots.filter(shot => shot.seq > me.shotAck);
     this.lastSnapshot = s;
     this.receivedAt = performance.now();
     const match = this.ctx.match;
@@ -588,10 +608,11 @@ export class Engine extends EventTarget {
     this.player.def = this.ctx.arsenal.slots.find(
       (w) => w.def.profileId === me.weapon,
     )?.def;
-    if (!me.alive) this.ctx.hud.respawnIn(me.respawn / 1000);
+    if (!me.alive && this.room?.modeId !== "zombie-coop") this.ctx.hud.respawnIn(me.respawn / 1000);
     const slot = this.ctx.arsenal.slots.find((w) => w.def.profileId === me.weapon);
     if (slot) {
-      slot.ammo = me.ammo;
+      const pending = this.pendingShots.filter(shot => shot.weapon === me.weapon).length;
+      slot.ammo = pending ? Math.max(0, me.ammo - pending) : me.ammo;
       slot.reserve = me.reserve;
     }
     if (
@@ -774,6 +795,7 @@ export class Engine extends EventTarget {
     });
   }
   renderRemotes(dt) {
+    this.modeFrame?.(dt);
     if (!this.snapshots.length) return;
     const latest = this.snapshots.at(-1);
     const desired = latest.time + (performance.now() - latest.received) - 100;

@@ -51373,6 +51373,10 @@ ${o.filename || ""}:${o.lineno || ""}`;
       for (let _0 of w.nodes) f.overlap(_0.x - 0.3, _0.y + 0.45, _0.z - 0.3, _0.x + 0.3, _0.y + 1.7, _0.z + 0.3, true) ? f0.push("blocked node " + _0.i + " @" + [_0.x, _0.y, _0.z]) : _0.links.length < 1 && f0.push("orphan node " + _0.i + " @" + [_0.x, _0.y, _0.z]);
       return { links: w.nodes.reduce((_0, F0) => _0 + F0.links.length, 0) / 2, islands: w.islands.length, bad: f0, calls: r.info.render.calls, tris: r.info.render.triangles, fps: Math.round(Je.fps) };
     }, ctx: L, mapRuntime: ghMapRuntime, hotel: g, nav: w, gfx: n, match: b, player: S, arsenal: A, physics: p, glass: d, fx: u, vm: E, input: l, world: f, boot: s, swatches: FU, k9: b.k9.debug }, window.GH.debug.fpbody = C, t.loading(0.93, "FINAL CHECKS"), await q1();
+    window.GH.debug.coopVisuals = {
+      Group: Ct.Group, Mesh: Ct.Mesh, BoxGeometry: Ct.BoxGeometry, RingGeometry: Ct.RingGeometry,
+      MeshStandardMaterial: Ct.MeshStandardMaterial, MeshBasicMaterial: Ct.MeshBasicMaterial
+    };
     await n.prepare("startup");
     t.loading(1, "READY"), await q1(), Je.state = "menu", t.show("menu"), window.GH.ready = true;
     G.getDelta(), r.setAnimationLoop(M0);

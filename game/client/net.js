@@ -1,9 +1,14 @@
 import { protocolError } from "../i18n/errors.js";
 import { RTCTransport } from "./webrtc.js";
+import { SocketTransport } from "./socket-transport.js";
+import { originalSocketURL } from "./api-config.js";
+import { decodeOriginalCosmetic, decodeZombieRecords, matchOriginalV60115Room, originalV60115Build, originalV60115Catalog,
+  originalV60115Hello, originalV60115Room, originalV60115SnapshotLayout,
+  validateOriginalV60115Welcome } from "./original-v60115.js";
 
 const PHASES = ["lobby", "countdown", "live", "over"];
 import { familyOf } from "./weapon-models.js";
-import { decodeWeaponIndex, WEAPON_WIRE_IDS } from "./weapon-wire.js";
+import { decodeWeaponIndex, encodeWeaponIndex, WEAPON_WIRE_IDS } from "./weapon-wire.js";
 import { serverTarget } from "./server-target.js";
 export const WEAPONS = WEAPON_WIRE_IDS.community;
 const INPUT_BYTES = 25;
@@ -61,19 +66,22 @@ export function encodeInput(input, bytes = new Uint8Array(INPUT_BYTES)) {
 }
 export function decodeSnapshot(bytes, weaponFormat = "community") {
   if (typeof weaponFormat === "boolean") weaponFormat = weaponFormat ? "v49221" : "community";
+  const coop = weaponFormat === "community-coop";
+  if (coop) weaponFormat = "community";
   if (!Object.hasOwn(WEAPON_WIRE_IDS, weaponFormat)) return null;
   if (bytes instanceof ArrayBuffer) bytes = new Uint8Array(bytes);
-  if (bytes.byteLength < 24) return null;
+  if (!bytes || bytes.byteLength < 24) return null;
   const v = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
   if (
     v.getUint16(0, true) !== 0x4748 ||
-    v.getUint8(2) !== 1 ||
-    v.getUint8(3) !== 2
+    v.getUint8(2) !== 1
   )
     return null;
+  const extended = coop || weaponFormat === "v60115";
+  const layout = extended ? originalV60115SnapshotLayout(v) : null;
   const count = v.getUint8(13);
-  if (count > 10 || bytes.byteLength !== 24 + 64 * count || v.getUint8(12) > 3)
-    return null;
+  if (v.getUint8(12) > 3 || (extended ? !layout :
+      v.getUint8(3) !== 2 || count > 10 || bytes.byteLength !== 24 + 64 * count)) return null;
   const out = {
     tick: v.getUint32(4, true),
     time: v.getUint32(8, true),
@@ -104,19 +112,28 @@ export function decodeSnapshot(bytes, weaponFormat = "community") {
     p.bot = !!(flags & 64);
     p.sliding = !!(flags & 128);
     p.weapon = decodeWeaponIndex(v.getUint8(o + 58), weaponFormat);
+    if (layout?.shotAcks) p.shotAck = v.getUint32(layout.zombiesEnd + i * 4, true);
     p.slideCooldown = v.getUint8(o + 59) / 100;
     p.cooldown = v.getUint16(o + 60, true);
     p.slideTime = v.getUint16(o + 62, true) / 1000;
     if (p.team > 1 || !p.weapon) return null;
     out.players.push(p);
   }
+  if (layout?.zombies) {
+    out.zombies = decodeZombieRecords(v, layout);
+    if (!out.zombies) return null;
+  }
   return out;
 }
 
 export class Connection extends EventTarget {
-  constructor({ original = serverTarget.original, connectTimeoutMs = 12000, leaveTimeoutMs = 500, writeTimeoutMs = 5000, snapshotTimeoutMs = 5000 } = {}) {
+  constructor({ original = serverTarget.original, originalVersion = serverTarget.version, toyIdentity, originalCatalog, connectTimeoutMs = 12000, leaveTimeoutMs = 500, writeTimeoutMs = 5000, snapshotTimeoutMs = 5000 } = {}) {
     super();
     this.original = original;
+    this.originalVersion = original ? originalVersion : null;
+    this.toyIdentity = toyIdentity;
+    this.originalCatalog = this.originalVersion === "v60115" && originalCatalog ? originalV60115Catalog(originalCatalog) : null;
+    this.coopSnapshot = false;
     this.connectTimeoutMs = connectTimeoutMs;
     this.leaveTimeoutMs = leaveTimeoutMs;
     this.writeTimeoutMs = writeTimeoutMs;
@@ -156,7 +173,8 @@ export class Connection extends EventTarget {
     this.dispatchEvent(new CustomEvent(type, { detail }));
   }
   checkSupport() {
-    if (typeof globalThis.WebTransport !== "function" && typeof globalThis.RTCPeerConnection !== "function")
+    if (typeof globalThis.WebTransport !== "function" && typeof globalThis.RTCPeerConnection !== "function" &&
+        !(this.originalVersion === "v60115" && typeof globalThis.WebSocket === "function"))
       throw Error(
         "当前浏览器不支持 WebTransport 或 WebRTC，请更新浏览器后重试。",
       );
@@ -166,6 +184,31 @@ export class Connection extends EventTarget {
   async connect(hello, config) {
     if (this.intentional) this.retry = 0;
     this.checkSupport();
+    if (this.originalVersion === "v60115") {
+      const pendingGeneration = this.generation;
+      const identity = await this.toyIdentity?.();
+      if (pendingGeneration !== this.generation) throw Error("连接已取消。");
+      // A caller-supplied hello.uid is never an identity provider.
+      originalV60115Hello(hello, identity);
+      const kinds = [];
+      const socket = typeof globalThis.WebSocket === "function" && originalSocketURL(config);
+      const rtc = config.rtc && typeof globalThis.RTCPeerConnection === "function";
+      if (hello.resume && socket && this.metrics.transport === "websocket") kinds.push("websocket");
+      if (rtc) kinds.push("webrtc");
+      if (socket && !kinds.includes("websocket")) kinds.push("websocket");
+      if (!kinds.length) throw Error("v60115 服务器未提供可用的 WebRTC 或 WebSocket。");
+      for (const [index, kind] of kinds.entries()) {
+        const attempt = this.generation + 1;
+        try {
+          await this.connectAttempt(index && this.hello?.resume ? this.hello : hello, config, kind, identity);
+          return;
+        } catch (error) {
+          if (index === kinds.length - 1 || this.generation !== attempt + 1 || this.intentional || error.application) throw error;
+          this.emit("status", "正在切换备用连接…");
+        }
+      }
+      return;
+    }
     const rtc = config.rtc && typeof globalThis.RTCPeerConnection === "function";
     const kind = config.preferredTransport === "webrtc" || typeof globalThis.WebTransport !== "function" ? "webrtc" : "webtransport";
     if (kind === "webrtc" && !rtc) throw Error("服务器或浏览器未提供 WebRTC 连接支持。");
@@ -180,7 +223,7 @@ export class Connection extends EventTarget {
       await this.connectAttempt(this.hello?.resume ? this.hello : hello, config, "webrtc");
     }
   }
-  async connectAttempt(hello, config, kind) {
+  async connectAttempt(hello, config, kind, identity) {
     clearInterval(this.watchdog);
     this.sendQueue.abort.abort();
     this.intentional = false;
@@ -188,7 +231,8 @@ export class Connection extends EventTarget {
     this.staleAt = null;
     this.lastSnapshotAt = performance.now();
     this.healthySince = null;
-    this.hello = { ...hello };
+    this.hello = this.originalVersion === "v60115" ? originalV60115Hello(hello, identity) : { ...hello };
+    if (this.originalVersion === "v60115") delete this.hello.uid;
     this.config = config;
     const generation = ++this.generation;
     this.emit("status", "正在连接服务器…");
@@ -210,7 +254,8 @@ export class Connection extends EventTarget {
     try {
       const ticket=this.original ? undefined : this.issueTicket ? await this.issueTicket() : hello.ticket;
       current();
-      wt = kind === "webrtc" ? new RTCTransport(config.rtc,ticket) : new WebTransport(config.url, options);
+      wt = kind === "webrtc" ? new RTCTransport(config.rtc,ticket) :
+        kind === "websocket" ? new SocketTransport(originalSocketURL(config)) : new WebTransport(config.url, options);
       this.transport = wt;
       wt.closed.catch(() => {});
       // One deadline covers TLS, stream creation, the hello write and welcome.
@@ -241,7 +286,8 @@ export class Connection extends EventTarget {
         this.readEvents(stream.readable, generation);
         this.readSnapshots(wt.datagrams.readable, generation);
         this.emit("status", "正在加入房间…");
-        await this.send({ ...hello, ticket, type: "hello", communityWeaponVersion: 2 });
+        await this.send({ ...hello, ticket, type: "hello",
+          ...(!this.original && { communityWeaponVersion: 2 }) }, identity);
         await accepted;
         current();
       }, this.connectTimeoutMs, "连接超时：请重试，并检查服务器 UDP 端口与证书配置。");
@@ -297,9 +343,20 @@ export class Connection extends EventTarget {
     }
     this.fail(this.generation, "snapshot-timeout");
   }
-  send(message) {
+  send(message, toyIdentity) {
     if (!this.writer) return Promise.reject(Error("尚未连接服务器"));
-    if (this.original) {
+    if (this.originalVersion === "v60115") {
+      if (message.type === "hello") message = originalV60115Hello(message, toyIdentity);
+      if (message.type === "equip" || message.type === "shot") {
+        const weapon = encodeWeaponIndex(message.weapon, "v60115") !== undefined ? message.weapon : familyOf(message.weapon);
+        if (encodeWeaponIndex(weapon, "v60115") === undefined) return Promise.reject(Error("v60115 不支持此武器。"));
+        message = message.type === "equip"
+          ? { type: "equip", weapon, m200Build: originalV60115Build(message.m200Build) }
+          : { type: "shot", weapon, tick: message.tick, yaw: message.yaw, pitch: message.pitch, shotSeq: message.shotSeq };
+      }
+      if (message.type === "loadout")
+        message = { type: "loadout", m200Build: originalV60115Build(message.m200Build) };
+    } else if (this.original) {
       if (message.type === "equip") message = { ...message, weapon: familyOf(message.weapon) };
       // Original servers have no local admission/account protocol. Never send
       // a local ticket, profile secret or save even when a caller supplies one.
@@ -388,6 +445,14 @@ export class Connection extends EventTarget {
           buffer = buffer.slice(n + 1);
           if (!line) continue;
           const e = JSON.parse(line);
+          if (this.originalVersion === "v60115") {
+            if (e.type === "welcome") validateOriginalV60115Welcome(e);
+            if (e.type === "room") {
+              if (this.originalCatalog) matchOriginalV60115Room(e, this.originalCatalog);
+              else originalV60115Room(e);
+            }
+          }
+          if (!this.original && e.type === "room") this.coopSnapshot = e.modeId === "zombie-coop";
           if (e.type === "pong" && Number.isFinite(e.nonce))
             this.metrics.rttMs = Math.round(performance.now() - e.nonce);
           if (e.type === "welcome") {
@@ -431,7 +496,14 @@ export class Connection extends EventTarget {
       while (generation === this.generation) {
         const { value, done } = await reader.read();
         if (done || generation !== this.generation || this.failedGeneration === generation) break;
-        const snapshot = decodeSnapshot(value, this.original);
+        if (this.originalVersion === "v60115") {
+          const shot = decodeOriginalCosmetic(value);
+          if (shot) {
+            this.emit("event", shot);
+            continue;
+          }
+        }
+        const snapshot = decodeSnapshot(value, this.originalVersion || (this.coopSnapshot ? "community-coop" : this.original));
         if (snapshot && snapshot.tick > this.latestTick) {
           if (this.latestTick) this.metrics.snapshotGaps += Math.max(0, Math.floor((snapshot.tick - this.latestTick) / 2) - 1);
           const now = performance.now();
@@ -529,6 +601,7 @@ export class Connection extends EventTarget {
     this.datagrams = null;
     this.id = null;
     this.hello = null;
+    this.coopSnapshot = false;
     this.sendChain = Promise.resolve();
     this.sendQueue = { count: 0, bytes: 0, abort: new AbortController() };
     this.inputFlight = null;

@@ -58,9 +58,10 @@ export class RoomDirectory {
           const data = JSON.parse(event.data);
           if (data?.type !== "rooms" || !Array.isArray(data.rooms) || !data.rooms.every((room) =>
             room && /^[A-F0-9]{8}$/.test(room.room) && typeof room.hostName === "string" &&
-            ["lobby", "countdown", "live", "over"].includes(room.phase) && room.capacity === 10 &&
-            Number.isInteger(room.humans) && room.humans > 0 && room.humans <= 10 &&
-            Number.isInteger(room.bots) && room.bots >= 0 && room.bots <= 10 && typeof room.joinable === "boolean"
+            ["lobby", "countdown", "live", "over"].includes(room.phase) &&
+            (room.modeId === "zombie-coop" ? room.capacity === 4 && room.bots === 0 : room.capacity === 10) &&
+            Number.isInteger(room.humans) && room.humans > 0 && room.humans <= room.capacity &&
+            Number.isInteger(room.bots) && room.bots >= 0 && room.bots <= room.capacity && typeof room.joinable === "boolean"
           )) throw Error("房间列表数据无效，请重试。");
           this.onChange({ state: "ready", rooms: data.rooms });
         } catch (error) {

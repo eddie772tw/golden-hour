@@ -68,6 +68,16 @@ def run(origin):
                 const d = GH.debug;
                 window.hotel = { cols: d.world.cols, nodes: d.nav.nodes, panes: d.glass.panes,
                     props: d.physics.props.length, roots: d.mapRuntime.hotelRoots };
+                window.authoredSpawns = new Map();
+                const respawn = d.match.respawn;
+                d.match.respawn = function(actor, ...args) {
+                    const result = respawn.call(this, actor, ...args);
+                    // Capture the native spawn before countdown physics adjusts the height.
+                    if (d.mapRuntime.active) authoredSpawns.set(actor, {
+                        map: d.mapRuntime.active.ref.id, side: actor.team, position: actor.pos.clone()
+                    });
+                    return result;
+                };
                 window.trackMap = () => {
                     const active = d.mapRuntime.active, root = active.scene.root, objects = new Set();
                     const images = new Set(), geometries = new Set(), materials = new Set(), textures = new Set();
@@ -148,8 +158,11 @@ def run(origin):
                 const d = GH.debug, a = d.mapRuntime.active;
                 return { map: a.ref.id, nodes: d.nav.nodes.length, colliders: d.world.cols.length, islands: d.nav.islands,
                     actors: d.match.actors.length, panes: d.glass.panes.length,
-                    spawns: d.match.actors.every(actor => a.spawns.some(
-                        s => s.side === actor.team && actor.pos.distanceTo({x:s.x,y:s.y,z:s.z}) < .025)),
+                    spawns: d.match.actors.every(actor => {
+                        const spawn = authoredSpawns.get(actor);
+                        return spawn?.map === a.ref.id && a.spawns.some(
+                            authored => authored.side === spawn.side && spawn.position.distanceTo(authored) < .025);
+                    }),
                     path: d.nav.path(d.nav.nearest(...a.data.gameplay.spawns[0].pos, false),
                         d.nav.nearest(...a.data.gameplay.spawns[8].pos, false)).length,
                     ground: a.spawns.every(s => Math.abs(d.world.groundAt(s.x, s.z, s.y + .4) - s.y) < .2),
