@@ -31,7 +31,8 @@ export const motion = (s) => {
 
 // Fixed-step prediction, kept numerically equivalent to internal/game/world.go.
 export class World {
-  constructor(colliders) {
+  constructor(colliders, bounds = { minX:-31, maxX:31, minZ:-24, maxZ:25 }) {
+    this.bounds = bounds;
     this.colliders = colliders;
     this.grid = new Map();
     this.seen = new Uint32Array(colliders.length);
@@ -211,7 +212,7 @@ export class World {
       m.slideCooldown = 0.4;
       m.crouch = crouch || this.blocked(m, 1.8);
     }
-    m.x = clamp(m.x, -31, 31);
-    m.z = clamp(m.z, -24, 25);
+    m.x = clamp(m.x, this.bounds.minX, this.bounds.maxX);
+    m.z = clamp(m.z, this.bounds.minZ, this.bounds.maxZ);
   }
 }

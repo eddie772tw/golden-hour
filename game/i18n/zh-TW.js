@@ -730,6 +730,7 @@ export default {
   "error.room_missing": "找不到房間",
   "error.join_first": "請先加入房間",
   "error.resume": "無法恢復席位",
+  "error.map_version": "房間地圖或模式的版本不符。請重新整理大廳並檢查已安裝的地圖。",
   "error.room_full": "房間已滿",
   "error.weapon_locked": "武器擊殺條件尚未達成",
   "error.command": "無效的對戰指令",

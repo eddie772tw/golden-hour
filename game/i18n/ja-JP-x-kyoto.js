@@ -730,6 +730,7 @@ export default {
   "error.room_missing": "部屋が見つからへんえ。",
   "error.join_first": "先に部屋に入ってな。",
   "error.resume": "席を取り戻せへんかったわ。",
+  "error.map_version": "部屋のマップかモードの版が合ってへんえ。ロビーを更新して、マップを確認しとくれやす。",
   "error.room_full": "部屋は満員やで。",
   "error.weapon_locked": "この武器を使うには、まだキルが足りひんえ。",
   "error.command": "その対戦コマンドは使えへんえ。",

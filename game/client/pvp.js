@@ -5,6 +5,7 @@ import { Connection } from "./net.js";
 import { CompetitiveEngine } from "./competitive-engine.js";
 import { loadApiConfig, ORIGINAL_ORIGIN } from "./api-config.js";
 import { RoomDirectory, joinHello } from "./lobby.js";
+import { CommunityMaps } from "./community-maps.js";
 import { ToyAccount } from "./toy-account.js";
 import { OnlineKills } from "./online-kills.js";
 import { MatchReportGate } from "./online-results.js";
@@ -110,6 +111,8 @@ const page = menus._page(
   </div>
   <footer class="legend"><span><kbd>↑</kbd><kbd>↓</kbd> 导航</span><span><kbd>ENTER</kbd> 选择</span><span><kbd>ESC</kbd> 返回</span></footer>`,
 );
+const community = multiplayerEnabled && !serverTarget.original
+  ? new CommunityMaps(page,serverTarget.origin,location.href) : null;
 const directory = new RoomDirectory({
   origin: serverTarget.origin,
   gateway: serverTarget.original,
@@ -129,6 +132,7 @@ menus.go = function (name, force) {
   if (!multiplayerEnabled && name === "online") return;
   originalGo.call(this, name, force);
   if (name === "online") {
+    community?.refresh();
     this.root.dataset.bg = room ? "dim" : "menu";
     const first = page.querySelector("[data-nav]:not([hidden]):not(:disabled)");
     first?.focus({ preventScroll: true });
@@ -337,6 +341,7 @@ async function command(value) {
   }
 }
 function setJoinBusy() {
+  if (community) community.picker.disabled=busy;
   targetMode.disabled=busy;
   targetOrigin.disabled=busy || targetMode.value!=="original";
   targetForm.querySelector("#server-apply").disabled=busy;
@@ -353,6 +358,7 @@ function renderDirectory({ state, rooms, message, trustURL }) {
       : rooms.length ? `${rooms.length} 个公开房间 · 实时更新` : "暂无公开房间。点击快速加入，自动创建并立即开战。");
   visible("online-directory-trust", !!trustURL);
   if (trustURL) $("online-directory-trust-link").href = trustURL;
+  community?.list(rooms);
   const list = $("online-list");
   const focused = list.contains(document.activeElement) ? document.activeElement.dataset.act : null;
   list.replaceChildren();
@@ -365,6 +371,7 @@ function renderDirectory({ state, rooms, message, trustURL }) {
     bind(host, "room.host", summary.hostName);
     const details = document.createElement("span");
     details.textContent = `${phases[summary.phase]} · ${difficultyLabel(summary.difficulty)}人机 · ${summary.humans} 真人 / ${summary.bots} 人机 · ${summary.humans}/${summary.capacity} 席`;
+    if (community) details.textContent = community.listingName(summary)+" · "+details.textContent;
     info.append(host, details);
     const button = document.createElement("button");
     button.className = "btn";
@@ -397,13 +404,27 @@ async function join(mode, roomID) {
     const config = await loadApiConfig(serverTarget.origin, location.href, globalThis.fetch, { gateway: serverTarget.original });
     if (generation !== joinGeneration) return;
     if (query.get("transport") === "webrtc") config.preferredTransport = "webrtc";
+    community?.configure(config);
+    const session=community?.start(mode,roomID);
+    await session?.preload(engine);
+    if (generation !== joinGeneration) return;
     await engine.enter(ctx.settings.primary);
     if (generation !== joinGeneration) return;
     const name=serverTarget.original ? remoteName.value.trim().slice(0,32) || account.playerName : vault.account.name;
     const hello = joinHello(mode, name, roomID);
     if (mode !== "listed") hello.difficulty = ctx.settings.difficulty;
-    await net.connect(hello, config);
+    await net.connect({...hello,...session?.fields}, config);
     if (generation !== joinGeneration) return;
+    if (session) {
+      const pending=await session.mount(engine);
+      if (generation !== joinGeneration) return;
+      if (session.chosen && net.hello && session.fields.mapProtocol) {
+        const {mapId, mapVersion, mapRevision, modeId}=session.welcome;
+        Object.assign(net.hello,{mapId,mapVersion,mapRevision,modeId});
+      }
+      for (const event of pending.events) handleEvent(event);
+      if (pending.snapshot) handleSnapshot(pending.snapshot);
+    }
     await command({ type: "equip", weapon: engine.ctx.arsenal.slots[0].def.profileId });
     if (generation !== joinGeneration) return;
     roomButton.hidden = false;
@@ -419,6 +440,7 @@ async function join(mode, roomID) {
     await net.leave();
     if (generation !== joinGeneration) return;
     engine.exit();
+    community?.reset();
     room = null;
     renderRoom();
     openRoom();
@@ -432,6 +454,7 @@ async function join(mode, roomID) {
 }
 async function leave() {
   const generation = ++joinGeneration;
+  community?.active?.controller.abort();
   busy = true;
   setJoinBusy();
   syncDirectory();
@@ -440,6 +463,7 @@ async function leave() {
   onlineKills.reset();
   void account.flush();
   engine.exit();
+  community?.reset();
   toyMenus.render();
   room = null;
   busy = false;
@@ -466,7 +490,7 @@ const actions = {
   "online-back": () => menus.back(),
   "online-quick": () => join("quick"),
   "online-create": () => join("create"),
-  "online-refresh": () => directory.retry(),
+  "online-refresh": () => { community?.refresh(true); directory.retry(); },
   "online-next": () => command({ type: "ready", ready: true }),
   "online-team-a": () => command({ type: "team", team: 0 }),
   "online-team-b": () => command({ type: "team", team: 1 }),
@@ -573,6 +597,16 @@ net.addEventListener("stale", ({ detail }) => {
   ctx.hud.hint(detail ? "网络状态更新延迟，正在等待恢复…" : "网络状态更新已恢复。", detail ? 6 : 2);
 });
 net.addEventListener("event", ({ detail: e }) => {
+  if (community?.active?.holdEvent(e)) {
+    if (community.active.error && !busy) {
+      const message=community.active.error.message;
+      void leave().then(()=>{ openRoom(); error(message); });
+    }
+    return;
+  }
+  handleEvent(e);
+});
+function handleEvent(e) {
   if (!serverTarget.original) {
     if ((e.type === "career" || e.type === "welcome") && e.career) access.apply(e.career);
     if(["career","welcome","round-end"].includes(e.type)) void vault.sync().catch(err=>error(err.message));
@@ -587,6 +621,7 @@ net.addEventListener("event", ({ detail: e }) => {
   if (e.type === "welcome") visible("online-error", false);
   if (e.type === "room") {
     room = e;
+    community?.room(room);
     engine.setRoom(e);
     renderRoom();
     const me = room.players.find((player) => player.id === net.id);
@@ -611,8 +646,11 @@ net.addEventListener("event", ({ detail: e }) => {
       ctx.hud.matchEnd(outcome, scoreboardMatch(match), settlement?.award);
     }
   }
-});
+}
 net.addEventListener("snapshot", ({ detail: s }) => {
+  if (!community?.active?.holdSnapshot(s)) handleSnapshot(s);
+});
+function handleSnapshot(s) {
   engine.snapshot(s);
   if (room) {
     room.scores = s.scores;
@@ -630,7 +668,7 @@ net.addEventListener("snapshot", ({ detail: s }) => {
       if (menus.page === "pause") menus._refreshPause();
     }
   }
-});
+}
 engine.addEventListener("lockerror", () => {
   dragButton.hidden = false;
   if (!inMatch()) return;
